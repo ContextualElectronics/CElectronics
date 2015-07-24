@@ -20,6 +20,7 @@ INCLUDE_PARAM = $(foreach d, $(INCLUDE), -I$d)
 # check if our output director exist, if not create it
 
 all: $(SRC)
+
 	# Check if the ouput directory exist, if not create it
 	if [ ! -d $(OUTPUT_DIR) ]; \
 	then mkdir $(OUTPUT_DIR); \

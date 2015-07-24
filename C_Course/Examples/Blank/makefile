@@ -26,7 +26,6 @@ all: $(SRC)
 	then mkdir $(OUTPUT_DIR); \
 	fi
 	
-	
 	gcc $(CFLAGS) -I$(INCLUDE_PARAM) -o $(OUTPUT_DIR)$(PROGRAM_NAME) $(SRC)
 
 clean:
