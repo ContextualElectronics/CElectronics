@@ -1,0 +1,13 @@
+{
+	"folders":
+	[
+		{
+			"path": "/home/vagrant/Documents/test/CElectronics/C_Course/Examples/Blank"
+		}
+	],
+	 "settings":
+	 {
+	 "sublimegdb_commandline": "gdb -q --interpreter=mi ../output/Main",
+	 "sublimegdb_workingdir": "${folder:${project_path:source/}}"
+	 }
+}
