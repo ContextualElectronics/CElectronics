@@ -1,0 +1,11 @@
+
+#ifndef __TICK_H__
+#define __TICK_H__
+#include "common.h"
+
+    void Tick_init(void);
+    uint32_t Tick_GetTickMs(void);
+    void timer_DelayMs(uint32_t ticks);
+
+
+#endif

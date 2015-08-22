@@ -1,0 +1,17 @@
+////////////////////////////////////////////////////////////////////////////////
+/// \file uart.h
+///	Author: Ronald Sousa (@Opticalworm)
+////////////////////////////////////////////////////////////////////////////////
+
+#ifndef __UART_TWO_MCU_H__
+#define __UART_TWO_MCU_H__
+
+	#include "../common.h"
+
+	void Uart2_Init(uint32_t  baud);
+	void Uart2_Setbaud(uint32_t  baud);
+	void Uart2_IsWriteBusy(uint8_t source);
+	uint_fast8_t Uart2_WriteBusy(void);
+	uint_fast8_t Uart2_ReadByte(uint8_t * destination);
+
+#endif

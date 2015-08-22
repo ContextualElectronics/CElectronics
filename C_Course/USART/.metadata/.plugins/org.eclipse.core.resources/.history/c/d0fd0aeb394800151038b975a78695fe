@@ -1,0 +1,43 @@
+/////////////////////////////////////////////////////////////////////////
+/// \file uart2.c
+/// \brief STM32 serial2 MCU hardware interface layer. to maintain
+/// code portability, the hardware related code is split from the main logic.
+///
+/// \section UartLayer Serial Layer
+///
+/// Author: Ronald Sousa (Opticalworm)
+/////////////////////////////////////////////////////////////////////////
+#include "tick.h"
+
+static volatile uint32_t TickCounter;
+
+void Tick_init(void)
+{
+  // Use SysTick as reference for the delay loops.
+  SysTick_Config (SystemCoreClock / TIMER_FREQUENCY_HZ);
+}
+
+uint32_t Tick_GetCurrentTick(void)
+{
+    return TickCounter;
+}
+
+void Tick_DelayMs (uint32_t delayMs)
+{
+  uint32_t StartTickValue;
+
+  StartTickValue = TickCounter;
+
+  // sit in the while loop until the difference between the start tick
+  // and current tick is greater than or equal to
+  // the delayMs.
+  while((TickCounter - StartTickValue) < delayMs);
+
+}
+
+void SysTick_Handler (void)
+{
+    TickCounter++;
+}
+
+// ----------------------------------------------------------------------------

@@ -1,0 +1,17 @@
+////////////////////////////////////////////////////////////////////////////////
+/// \file uart.h
+///	\brief Portable serial layer header.
+///
+///	Author: Ronald Sousa (@Opticalworm)
+////////////////////////////////////////////////////////////////////////////////
+#ifndef __UART_LAYER_MCU_H__
+#define __UART_LAYER_MCU_H__
+	#include "../common.h"
+
+	void Uart_Init(uint32_t  baud);
+	void Uart_Setbaud(uint32_t  baud);
+	void Uart_WriteByte(uint8_t source);
+	uint_fast8_t Uart_WriteBusy(void);
+	uint_fast8_t Uart_ReadByte(uint8_t * destination);
+
+#endif

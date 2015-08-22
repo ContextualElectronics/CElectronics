@@ -1,0 +1,13 @@
+
+#ifndef __TICK_H__
+#define __TICK_H__
+#include "common.h"
+
+#define TIMER_FREQUENCY_HZ (1000u)
+
+    void tick_init(void);
+    uint32_t timer_GetTick(void);
+    void timer_sleep (uint32_t ticks);
+
+
+#endif

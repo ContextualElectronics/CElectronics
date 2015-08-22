@@ -1,0 +1,39 @@
+/////////////////////////////////////////////////////////////////////////
+///	\file main.c
+///	\brief This is the main program code.
+///
+///	Author: Ronald Sousa (Opticalworm)
+/////////////////////////////////////////////////////////////////////////
+#include "common.h"
+#include "MCU/led.h"
+#include "MCU/usart2.h"
+#include "MCU/tick.h"
+
+/////////////////////////////////////////////////////////////////////////
+///	\brief the first user code function to be called after the ARM M0
+///	has initial.
+/////////////////////////////////////////////////////////////////////////
+void main(void)
+{
+    uint8_t RecevieByte;
+
+    Led_Init();
+    Tick_init();
+    //SerialPort2.Open(9600);
+
+
+    //SerialPort2.SendString((uint8_t *)"Hello World!\r\n");
+    SDebug_Init(&SerialPort2);
+
+    for ( ;; )
+    {
+        SDebug_Monitor();
+
+
+        //Tick_DelayMs(1000); // delay 1s;
+
+        //snprintf(&StringTemp[0], 25, "Tick %d\r\n", Tick_GetMs());
+
+        //Usart2_WriteString(&StringTemp[0]);
+    }
+}

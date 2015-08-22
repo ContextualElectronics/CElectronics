@@ -1,0 +1,7 @@
+architecture=SVD(CMSIS)
+bitbuttons=true
+board=---  none ---
+chip=STM32F030
+combolength=20
+eclipse.preferences.version=1
+vendor=STMicro

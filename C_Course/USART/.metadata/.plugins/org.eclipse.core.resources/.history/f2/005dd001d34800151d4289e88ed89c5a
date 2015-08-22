@@ -1,0 +1,31 @@
+/////////////////////////////////////////////////////////////////////////
+///	\file main.c
+///	\brief This is the main program code.
+///
+///	\section UartLayer Serial Layer
+///
+///	Author: Ronald Sousa (Opticalworm)
+/////////////////////////////////////////////////////////////////////////
+#include "common.h"
+#include "MCU/LED.h"
+#include "MCU/uart2.h"
+#include "MCU/tick.h"
+
+/////////////////////////////////////////////////////////////////////////
+///	\brief the first user code function to be called after the ARM M0
+///	has initial.
+/////////////////////////////////////////////////////////////////////////
+void main(void)
+{
+    LED_Init();
+    Tick_init();
+    Uart2_Init(115200);
+
+    Uart2_WriteString("Hello World!\n");
+
+    for ( ;; )
+    {
+        LED_Toggle();
+        Tick_DelayMs(1000); // delay 1s;
+    }
+}

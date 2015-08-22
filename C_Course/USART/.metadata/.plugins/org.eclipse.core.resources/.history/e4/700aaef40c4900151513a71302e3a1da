@@ -1,0 +1,19 @@
+////////////////////////////////////////////////////////////////////////////////
+/// \file usart.h
+///	Author: Ronald Sousa (@Opticalworm)
+////////////////////////////////////////////////////////////////////////////////
+
+#ifndef __USART_TWO_MCU_H__
+#define __USART_TWO_MCU_H__
+
+	#include "../common.h"
+    #include "MCU/SeriaStructure.h"
+
+	void Usart2_Init(uint32_t  baud);
+	void Usart2_Setbaud(uint32_t  baud);
+	void Usart2_WriteByte(uint8_t source);
+	void Usart2_WriteString(uint8_t * source);
+	uint_fast8_t Usart2_IsWriteBusy(void);
+	uint_fast8_t Usart2_ReadByte(uint8_t * destination);
+
+#endif

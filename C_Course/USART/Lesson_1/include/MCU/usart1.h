@@ -1,0 +1,14 @@
+////////////////////////////////////////////////////////////////////////////////
+/// \file usart1.h
+/// Author: Ronald Sousa (@Opticalworm)
+////////////////////////////////////////////////////////////////////////////////
+
+#ifndef __USART_ONE_MCU_H__
+#define __USART_ONE_MCU_H__
+
+    #include "common.h"
+    #include "MCU/SeriaStructure.h"
+
+    extern SerialInterface SerialPort1;
+
+#endif
