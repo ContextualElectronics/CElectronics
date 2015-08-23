@@ -1,245 +1,18 @@
-22:04:23 **** Build of configuration Debug for project Lesson_1 ****
+08:53:20 **** Incremental Build of configuration Debug for project Lesson_1 ****
 make all 
-Building file: ../system/src/stm32f0-stdperiph/stm32f0xx_gpio.c
-Invoking: Cross ARM C Compiler
-arm-none-eabi-gcc -mcpu=cortex-m0 -mthumb -Og -fmessage-length=0 -fsigned-char -ffunction-sections -fdata-sections -ffreestanding -fno-move-loop-invariants -Wall -Wextra  -g3 -DDEBUG -DUSE_FULL_ASSERT -DTRACE -DOS_USE_TRACE_SEMIHOSTING_DEBUG -DSTM32F030 -DUSE_STDPERIPH_DRIVER -DHSE_VALUE=8000000 -I"../include" -I"../system/include" -I"../system/include/cmsis" -I"../system/include/stm32f0-stdperiph" -std=gnu11 -MMD -MP -MF"system/src/stm32f0-stdperiph/stm32f0xx_gpio.d" -MT"system/src/stm32f0-stdperiph/stm32f0xx_gpio.o" -c -o "system/src/stm32f0-stdperiph/stm32f0xx_gpio.o" "../system/src/stm32f0-stdperiph/stm32f0xx_gpio.c"
-Finished building: ../system/src/stm32f0-stdperiph/stm32f0xx_gpio.c
- 
-Building file: ../system/src/stm32f0-stdperiph/stm32f0xx_rcc.c
-Invoking: Cross ARM C Compiler
-arm-none-eabi-gcc -mcpu=cortex-m0 -mthumb -Og -fmessage-length=0 -fsigned-char -ffunction-sections -fdata-sections -ffreestanding -fno-move-loop-invariants -Wall -Wextra  -g3 -DDEBUG -DUSE_FULL_ASSERT -DTRACE -DOS_USE_TRACE_SEMIHOSTING_DEBUG -DSTM32F030 -DUSE_STDPERIPH_DRIVER -DHSE_VALUE=8000000 -I"../include" -I"../system/include" -I"../system/include/cmsis" -I"../system/include/stm32f0-stdperiph" -std=gnu11 -MMD -MP -MF"system/src/stm32f0-stdperiph/stm32f0xx_rcc.d" -MT"system/src/stm32f0-stdperiph/stm32f0xx_rcc.o" -c -o "system/src/stm32f0-stdperiph/stm32f0xx_rcc.o" "../system/src/stm32f0-stdperiph/stm32f0xx_rcc.c"
-Finished building: ../system/src/stm32f0-stdperiph/stm32f0xx_rcc.c
- 
-Building file: ../system/src/newlib/_cxx.cpp
-Invoking: Cross ARM C++ Compiler
-arm-none-eabi-g++ -mcpu=cortex-m0 -mthumb -Og -fmessage-length=0 -fsigned-char -ffunction-sections -fdata-sections -ffreestanding -fno-move-loop-invariants -Wall -Wextra  -g3 -DDEBUG -DUSE_FULL_ASSERT -DTRACE -DOS_USE_TRACE_SEMIHOSTING_DEBUG -DSTM32F030 -DUSE_STDPERIPH_DRIVER -DHSE_VALUE=8000000 -I"../include" -I"../system/include" -I"../system/include/cmsis" -I"../system/include/stm32f0-stdperiph" -std=gnu++11 -fabi-version=0 -fno-exceptions -fno-rtti -fno-use-cxa-atexit -fno-threadsafe-statics -MMD -MP -MF"system/src/newlib/_cxx.d" -MT"system/src/newlib/_cxx.o" -c -o "system/src/newlib/_cxx.o" "../system/src/newlib/_cxx.cpp"
-Finished building: ../system/src/newlib/_cxx.cpp
- 
-Building file: ../system/src/newlib/_exit.c
-Invoking: Cross ARM C Compiler
-arm-none-eabi-gcc -mcpu=cortex-m0 -mthumb -Og -fmessage-length=0 -fsigned-char -ffunction-sections -fdata-sections -ffreestanding -fno-move-loop-invariants -Wall -Wextra  -g3 -DDEBUG -DUSE_FULL_ASSERT -DTRACE -DOS_USE_TRACE_SEMIHOSTING_DEBUG -DSTM32F030 -DUSE_STDPERIPH_DRIVER -DHSE_VALUE=8000000 -I"../include" -I"../system/include" -I"../system/include/cmsis" -I"../system/include/stm32f0-stdperiph" -std=gnu11 -MMD -MP -MF"system/src/newlib/_exit.d" -MT"system/src/newlib/_exit.o" -c -o "system/src/newlib/_exit.o" "../system/src/newlib/_exit.c"
-Finished building: ../system/src/newlib/_exit.c
- 
-Building file: ../system/src/newlib/_sbrk.c
-Invoking: Cross ARM C Compiler
-arm-none-eabi-gcc -mcpu=cortex-m0 -mthumb -Og -fmessage-length=0 -fsigned-char -ffunction-sections -fdata-sections -ffreestanding -fno-move-loop-invariants -Wall -Wextra  -g3 -DDEBUG -DUSE_FULL_ASSERT -DTRACE -DOS_USE_TRACE_SEMIHOSTING_DEBUG -DSTM32F030 -DUSE_STDPERIPH_DRIVER -DHSE_VALUE=8000000 -I"../include" -I"../system/include" -I"../system/include/cmsis" -I"../system/include/stm32f0-stdperiph" -std=gnu11 -MMD -MP -MF"system/src/newlib/_sbrk.d" -MT"system/src/newlib/_sbrk.o" -c -o "system/src/newlib/_sbrk.o" "../system/src/newlib/_sbrk.c"
-Finished building: ../system/src/newlib/_sbrk.c
- 
-Building file: ../system/src/newlib/_startup.c
-Invoking: Cross ARM C Compiler
-arm-none-eabi-gcc -mcpu=cortex-m0 -mthumb -Og -fmessage-length=0 -fsigned-char -ffunction-sections -fdata-sections -ffreestanding -fno-move-loop-invariants -Wall -Wextra  -g3 -DDEBUG -DUSE_FULL_ASSERT -DTRACE -DOS_USE_TRACE_SEMIHOSTING_DEBUG -DSTM32F030 -DUSE_STDPERIPH_DRIVER -DHSE_VALUE=8000000 -I"../include" -I"../system/include" -I"../system/include/cmsis" -I"../system/include/stm32f0-stdperiph" -std=gnu11 -MMD -MP -MF"system/src/newlib/_startup.d" -MT"system/src/newlib/_startup.o" -c -o "system/src/newlib/_startup.o" "../system/src/newlib/_startup.c"
-Finished building: ../system/src/newlib/_startup.c
- 
-Building file: ../system/src/newlib/_syscalls.c
-Invoking: Cross ARM C Compiler
-arm-none-eabi-gcc -mcpu=cortex-m0 -mthumb -Og -fmessage-length=0 -fsigned-char -ffunction-sections -fdata-sections -ffreestanding -fno-move-loop-invariants -Wall -Wextra  -g3 -DDEBUG -DUSE_FULL_ASSERT -DTRACE -DOS_USE_TRACE_SEMIHOSTING_DEBUG -DSTM32F030 -DUSE_STDPERIPH_DRIVER -DHSE_VALUE=8000000 -I"../include" -I"../system/include" -I"../system/include/cmsis" -I"../system/include/stm32f0-stdperiph" -std=gnu11 -MMD -MP -MF"system/src/newlib/_syscalls.d" -MT"system/src/newlib/_syscalls.o" -c -o "system/src/newlib/_syscalls.o" "../system/src/newlib/_syscalls.c"
-Finished building: ../system/src/newlib/_syscalls.c
- 
-Building file: ../system/src/newlib/assert.c
-Invoking: Cross ARM C Compiler
-arm-none-eabi-gcc -mcpu=cortex-m0 -mthumb -Og -fmessage-length=0 -fsigned-char -ffunction-sections -fdata-sections -ffreestanding -fno-move-loop-invariants -Wall -Wextra  -g3 -DDEBUG -DUSE_FULL_ASSERT -DTRACE -DOS_USE_TRACE_SEMIHOSTING_DEBUG -DSTM32F030 -DUSE_STDPERIPH_DRIVER -DHSE_VALUE=8000000 -I"../include" -I"../system/include" -I"../system/include/cmsis" -I"../system/include/stm32f0-stdperiph" -std=gnu11 -MMD -MP -MF"system/src/newlib/assert.d" -MT"system/src/newlib/assert.o" -c -o "system/src/newlib/assert.o" "../system/src/newlib/assert.c"
-Finished building: ../system/src/newlib/assert.c
- 
-Building file: ../system/src/diag/Trace.c
-Invoking: Cross ARM C Compiler
-arm-none-eabi-gcc -mcpu=cortex-m0 -mthumb -Og -fmessage-length=0 -fsigned-char -ffunction-sections -fdata-sections -ffreestanding -fno-move-loop-invariants -Wall -Wextra  -g3 -DDEBUG -DUSE_FULL_ASSERT -DTRACE -DOS_USE_TRACE_SEMIHOSTING_DEBUG -DSTM32F030 -DUSE_STDPERIPH_DRIVER -DHSE_VALUE=8000000 -I"../include" -I"../system/include" -I"../system/include/cmsis" -I"../system/include/stm32f0-stdperiph" -std=gnu11 -MMD -MP -MF"system/src/diag/Trace.d" -MT"system/src/diag/Trace.o" -c -o "system/src/diag/Trace.o" "../system/src/diag/Trace.c"
-Finished building: ../system/src/diag/Trace.c
- 
-Building file: ../system/src/diag/trace_impl.c
-Invoking: Cross ARM C Compiler
-arm-none-eabi-gcc -mcpu=cortex-m0 -mthumb -Og -fmessage-length=0 -fsigned-char -ffunction-sections -fdata-sections -ffreestanding -fno-move-loop-invariants -Wall -Wextra  -g3 -DDEBUG -DUSE_FULL_ASSERT -DTRACE -DOS_USE_TRACE_SEMIHOSTING_DEBUG -DSTM32F030 -DUSE_STDPERIPH_DRIVER -DHSE_VALUE=8000000 -I"../include" -I"../system/include" -I"../system/include/cmsis" -I"../system/include/stm32f0-stdperiph" -std=gnu11 -MMD -MP -MF"system/src/diag/trace_impl.d" -MT"system/src/diag/trace_impl.o" -c -o "system/src/diag/trace_impl.o" "../system/src/diag/trace_impl.c"
-Finished building: ../system/src/diag/trace_impl.c
- 
-Building file: ../system/src/cortexm/_initialize_hardware.c
-Invoking: Cross ARM C Compiler
-arm-none-eabi-gcc -mcpu=cortex-m0 -mthumb -Og -fmessage-length=0 -fsigned-char -ffunction-sections -fdata-sections -ffreestanding -fno-move-loop-invariants -Wall -Wextra  -g3 -DDEBUG -DUSE_FULL_ASSERT -DTRACE -DOS_USE_TRACE_SEMIHOSTING_DEBUG -DSTM32F030 -DUSE_STDPERIPH_DRIVER -DHSE_VALUE=8000000 -I"../include" -I"../system/include" -I"../system/include/cmsis" -I"../system/include/stm32f0-stdperiph" -std=gnu11 -MMD -MP -MF"system/src/cortexm/_initialize_hardware.d" -MT"system/src/cortexm/_initialize_hardware.o" -c -o "system/src/cortexm/_initialize_hardware.o" "../system/src/cortexm/_initialize_hardware.c"
-Finished building: ../system/src/cortexm/_initialize_hardware.c
- 
-Building file: ../system/src/cortexm/_reset_hardware.c
-Invoking: Cross ARM C Compiler
-arm-none-eabi-gcc -mcpu=cortex-m0 -mthumb -Og -fmessage-length=0 -fsigned-char -ffunction-sections -fdata-sections -ffreestanding -fno-move-loop-invariants -Wall -Wextra  -g3 -DDEBUG -DUSE_FULL_ASSERT -DTRACE -DOS_USE_TRACE_SEMIHOSTING_DEBUG -DSTM32F030 -DUSE_STDPERIPH_DRIVER -DHSE_VALUE=8000000 -I"../include" -I"../system/include" -I"../system/include/cmsis" -I"../system/include/stm32f0-stdperiph" -std=gnu11 -MMD -MP -MF"system/src/cortexm/_reset_hardware.d" -MT"system/src/cortexm/_reset_hardware.o" -c -o "system/src/cortexm/_reset_hardware.o" "../system/src/cortexm/_reset_hardware.c"
-Finished building: ../system/src/cortexm/_reset_hardware.c
- 
-Building file: ../system/src/cortexm/exception_handlers.c
-Invoking: Cross ARM C Compiler
-arm-none-eabi-gcc -mcpu=cortex-m0 -mthumb -Og -fmessage-length=0 -fsigned-char -ffunction-sections -fdata-sections -ffreestanding -fno-move-loop-invariants -Wall -Wextra  -g3 -DDEBUG -DUSE_FULL_ASSERT -DTRACE -DOS_USE_TRACE_SEMIHOSTING_DEBUG -DSTM32F030 -DUSE_STDPERIPH_DRIVER -DHSE_VALUE=8000000 -I"../include" -I"../system/include" -I"../system/include/cmsis" -I"../system/include/stm32f0-stdperiph" -std=gnu11 -MMD -MP -MF"system/src/cortexm/exception_handlers.d" -MT"system/src/cortexm/exception_handlers.o" -c -o "system/src/cortexm/exception_handlers.o" "../system/src/cortexm/exception_handlers.c"
-Finished building: ../system/src/cortexm/exception_handlers.c
- 
-Building file: ../system/src/cmsis/system_stm32f0xx.c
-Invoking: Cross ARM C Compiler
-arm-none-eabi-gcc -mcpu=cortex-m0 -mthumb -Og -fmessage-length=0 -fsigned-char -ffunction-sections -fdata-sections -ffreestanding -fno-move-loop-invariants -Wall -Wextra  -g3 -DDEBUG -DUSE_FULL_ASSERT -DTRACE -DOS_USE_TRACE_SEMIHOSTING_DEBUG -DSTM32F030 -DUSE_STDPERIPH_DRIVER -DHSE_VALUE=8000000 -I"../include" -I"../system/include" -I"../system/include/cmsis" -I"../system/include/stm32f0-stdperiph" -std=gnu11 -MMD -MP -MF"system/src/cmsis/system_stm32f0xx.d" -MT"system/src/cmsis/system_stm32f0xx.o" -c -o "system/src/cmsis/system_stm32f0xx.o" "../system/src/cmsis/system_stm32f0xx.c"
-Finished building: ../system/src/cmsis/system_stm32f0xx.c
- 
-Building file: ../system/src/cmsis/vectors_stm32f0xx.c
-Invoking: Cross ARM C Compiler
-arm-none-eabi-gcc -mcpu=cortex-m0 -mthumb -Og -fmessage-length=0 -fsigned-char -ffunction-sections -fdata-sections -ffreestanding -fno-move-loop-invariants -Wall -Wextra  -g3 -DDEBUG -DUSE_FULL_ASSERT -DTRACE -DOS_USE_TRACE_SEMIHOSTING_DEBUG -DSTM32F030 -DUSE_STDPERIPH_DRIVER -DHSE_VALUE=8000000 -I"../include" -I"../system/include" -I"../system/include/cmsis" -I"../system/include/stm32f0-stdperiph" -std=gnu11 -MMD -MP -MF"system/src/cmsis/vectors_stm32f0xx.d" -MT"system/src/cmsis/vectors_stm32f0xx.o" -c -o "system/src/cmsis/vectors_stm32f0xx.o" "../system/src/cmsis/vectors_stm32f0xx.c"
-Finished building: ../system/src/cmsis/vectors_stm32f0xx.c
- 
-Building file: ../src/Terminal/DebugInterface.c
-Invoking: Cross ARM C Compiler
-arm-none-eabi-gcc -mcpu=cortex-m0 -mthumb -Og -fmessage-length=0 -fsigned-char -ffunction-sections -fdata-sections -ffreestanding -fno-move-loop-invariants -Wall -Wextra  -g3 -DDEBUG -DUSE_FULL_ASSERT -DTRACE -DOS_USE_TRACE_SEMIHOSTING_DEBUG -DSTM32F030 -DUSE_STDPERIPH_DRIVER -DHSE_VALUE=8000000 -I"../include" -I"../system/include" -I"../system/include/cmsis" -I"../system/include/stm32f0-stdperiph" -std=gnu11 -MMD -MP -MF"src/Terminal/DebugInterface.d" -MT"src/Terminal/DebugInterface.o" -c -o "src/Terminal/DebugInterface.o" "../src/Terminal/DebugInterface.c"
-../src/Terminal/DebugInterface.c: In function 'SDbug_DrawHeader':
-../src/Terminal/DebugInterface.c:154:25: warning: pointer targets in passing argument 1 of 'SDebug_WriteString' differ in signedness [-Wpointer-sign]
-     SDebug_WriteString( "\t [@.@]\n\r"
-                         ^
-../src/Terminal/DebugInterface.c:100:6: note: expected 'unsigned char *' but argument is of type 'char *'
- void SDebug_WriteString(uint8_t *source)
-      ^
-../src/Terminal/DebugInterface.c:157:24: warning: pointer targets in passing argument 1 of 'SDebug_WriteString' differ in signedness [-Wpointer-sign]
-     SDebug_WriteString("Ronald Sousa\n\r");
-                        ^
-../src/Terminal/DebugInterface.c:100:6: note: expected 'unsigned char *' but argument is of type 'char *'
- void SDebug_WriteString(uint8_t *source)
-      ^
-../src/Terminal/DebugInterface.c:158:24: warning: pointer targets in passing argument 1 of 'SDebug_WriteString' differ in signedness [-Wpointer-sign]
-     SDebug_WriteString("HashDefineElectronics.com\n\r\n\r");
-                        ^
-../src/Terminal/DebugInterface.c:100:6: note: expected 'unsigned char *' but argument is of type 'char *'
- void SDebug_WriteString(uint8_t *source)
-      ^
-../src/Terminal/DebugInterface.c: In function 'SDebug_DrawPrompt':
-../src/Terminal/DebugInterface.c:166:24: warning: pointer targets in passing argument 1 of 'SDebug_WriteString' differ in signedness [-Wpointer-sign]
-     SDebug_WriteString("\n\r[");
-                        ^
-../src/Terminal/DebugInterface.c:100:6: note: expected 'unsigned char *' but argument is of type 'char *'
- void SDebug_WriteString(uint8_t *source)
-      ^
-../src/Terminal/DebugInterface.c:171:24: warning: pointer targets in passing argument 1 of 'SDebug_WriteString' differ in signedness [-Wpointer-sign]
-     SDebug_WriteString("] > ");
-                        ^
-../src/Terminal/DebugInterface.c:100:6: note: expected 'unsigned char *' but argument is of type 'char *'
- void SDebug_WriteString(uint8_t *source)
-      ^
-../src/Terminal/DebugInterface.c: In function 'SDebug_SendAcknowledgement':
-../src/Terminal/DebugInterface.c:191:18: warning: pointer targets in passing argument 1 of 'snprintf' differ in signedness [-Wpointer-sign]
-         snprintf(&Buffer[0], 20, "\n\r%c%u %c%u\n\r",SDEnum_S, code, SDEnum_U, parameterLength);
-                  ^
-In file included from /home/vagrant/gcc-arm-none-eabi-4_9-2015q2/arm-none-eabi/include/stdio.h:29:0,
-                 from ../include/common.h:9,
-                 from ../src/Terminal/DebugInterface.c:9:
-/home/vagrant/gcc-arm-none-eabi-4_9-2015q2/arm-none-eabi/include/stdio.h:271:5: note: expected 'char * restrict' but argument is of type 'unsigned char *'
- int _EXFUN(snprintf, (char *__restrict, size_t, const char *__restrict, ...)
-     ^
-../src/Terminal/DebugInterface.c:191:9: warning: format '%u' expects argument of type 'unsigned int', but argument 5 has type 'long unsigned int' [-Wformat=]
-         snprintf(&Buffer[0], 20, "\n\r%c%u %c%u\n\r",SDEnum_S, code, SDEnum_U, parameterLength);
-         ^
-../src/Terminal/DebugInterface.c:191:9: warning: format '%u' expects argument of type 'unsigned int', but argument 7 has type 'long unsigned int' [-Wformat=]
-../src/Terminal/DebugInterface.c:195:18: warning: pointer targets in passing argument 1 of 'snprintf' differ in signedness [-Wpointer-sign]
-         snprintf(&Buffer[0], 20, "\n\r%c%u\n\r",SDEnum_E, code);
-                  ^
-In file included from /home/vagrant/gcc-arm-none-eabi-4_9-2015q2/arm-none-eabi/include/stdio.h:29:0,
-                 from ../include/common.h:9,
-                 from ../src/Terminal/DebugInterface.c:9:
-/home/vagrant/gcc-arm-none-eabi-4_9-2015q2/arm-none-eabi/include/stdio.h:271:5: note: expected 'char * restrict' but argument is of type 'unsigned char *'
- int _EXFUN(snprintf, (char *__restrict, size_t, const char *__restrict, ...)
-     ^
-../src/Terminal/DebugInterface.c:195:9: warning: format '%u' expects argument of type 'unsigned int', but argument 5 has type 'long unsigned int' [-Wformat=]
-         snprintf(&Buffer[0], 20, "\n\r%c%u\n\r",SDEnum_E, code);
-         ^
-../src/Terminal/DebugInterface.c: In function 'SDebug_ExtractParameters':
-../src/Terminal/DebugInterface.c:293:78: warning: pointer targets in passing argument 1 of 'atoll' differ in signedness [-Wpointer-sign]
-                 SystemData->Parameter[ParameterIndex].Data.ui32_t[0] = atoll(&SystemData->Parameter[ParameterIndex].String[1]);
-                                                                              ^
-In file included from /home/vagrant/gcc-arm-none-eabi-4_9-2015q2/arm-none-eabi/include/stdio.h:29:0,
-                 from ../include/common.h:9,
-                 from ../src/Terminal/DebugInterface.c:9:
-/home/vagrant/gcc-arm-none-eabi-4_9-2015q2/arm-none-eabi/include/stdlib.h:211:11: note: expected 'const char *' but argument is of type 'unsigned char *'
- long long _EXFUN(atoll,(const char *__nptr));
-           ^
-../src/Terminal/DebugInterface.c:299:76: warning: pointer targets in passing argument 1 of 'atoi' differ in signedness [-Wpointer-sign]
-                 SystemData->Parameter[ParameterIndex].Data.i32_t[0] = atoi(&SystemData->Parameter[ParameterIndex].String[1]);
-                                                                            ^
-In file included from /home/vagrant/gcc-arm-none-eabi-4_9-2015q2/arm-none-eabi/include/stdio.h:29:0,
-                 from ../include/common.h:9,
-                 from ../src/Terminal/DebugInterface.c:9:
-/home/vagrant/gcc-arm-none-eabi-4_9-2015q2/arm-none-eabi/include/stdlib.h:74:5: note: expected 'const char *' but argument is of type 'unsigned char *'
- int _EXFUN(atoi,(const char *__nptr));
-     ^
-../src/Terminal/DebugInterface.c:305:76: warning: pointer targets in passing argument 1 of 'atof' differ in signedness [-Wpointer-sign]
-                 SystemData->Parameter[ParameterIndex].Data.f32_t[0] = atof(&SystemData->Parameter[ParameterIndex].String[1]);
-                                                                            ^
-In file included from /home/vagrant/gcc-arm-none-eabi-4_9-2015q2/arm-none-eabi/include/stdio.h:29:0,
-                 from ../include/common.h:9,
-                 from ../src/Terminal/DebugInterface.c:9:
-/home/vagrant/gcc-arm-none-eabi-4_9-2015q2/arm-none-eabi/include/stdlib.h:70:8: note: expected 'const char *' but argument is of type 'unsigned char *'
- double _EXFUN(atof,(const char *__nptr));
-        ^
-../src/Terminal/DebugInterface.c: In function 'SDebug_Init':
-../src/Terminal/DebugInterface.c:490:25: warning: pointer targets in passing argument 1 of 'SDebug_WriteString' differ in signedness [-Wpointer-sign]
-     SDebug_WriteString( "COMPILED       "  COMPILED_DATA_TIME  "\n\r"
-                         ^
-../src/Terminal/DebugInterface.c:100:6: note: expected 'unsigned char *' but argument is of type 'char *'
- void SDebug_WriteString(uint8_t *source)
-      ^
-Finished building: ../src/Terminal/DebugInterface.c
- 
-Building file: ../src/Terminal/Debug_MainMenu.c
-Invoking: Cross ARM C Compiler
-arm-none-eabi-gcc -mcpu=cortex-m0 -mthumb -Og -fmessage-length=0 -fsigned-char -ffunction-sections -fdata-sections -ffreestanding -fno-move-loop-invariants -Wall -Wextra  -g3 -DDEBUG -DUSE_FULL_ASSERT -DTRACE -DOS_USE_TRACE_SEMIHOSTING_DEBUG -DSTM32F030 -DUSE_STDPERIPH_DRIVER -DHSE_VALUE=8000000 -I"../include" -I"../system/include" -I"../system/include/cmsis" -I"../system/include/stm32f0-stdperiph" -std=gnu11 -MMD -MP -MF"src/Terminal/Debug_MainMenu.d" -MT"src/Terminal/Debug_MainMenu.o" -c -o "src/Terminal/Debug_MainMenu.o" "../src/Terminal/Debug_MainMenu.c"
-../src/Terminal/Debug_MainMenu.c: In function 'SDebug_DrawMainMenu':
-../src/Terminal/Debug_MainMenu.c:20:25: warning: pointer targets in passing argument 1 of 'SDebug_WriteString' differ in signedness [-Wpointer-sign]
-     SDebug_WriteString( "\n\r"
-                         ^
-In file included from ../src/Terminal/Debug_MainMenu.c:12:0:
-../include/Terminal/DebugInterface.h:100:10: note: expected 'unsigned char *' but argument is of type 'char *'
-     void SDebug_WriteString(uint8_t *source);
-          ^
-../src/Terminal/Debug_MainMenu.c: In function 'SDebug_MainMenu':
-../src/Terminal/Debug_MainMenu.c:44:21: warning: unused variable 'PulseUpdateRate' [-Wunused-variable]
-     static uint32_t PulseUpdateRate = 100;
-                     ^
-../src/Terminal/Debug_MainMenu.c:43:21: warning: unused variable 'NumberOFPulse' [-Wunused-variable]
-     static uint32_t NumberOFPulse = 1;
-                     ^
-../src/Terminal/Debug_MainMenu.c:42:11: warning: unused variable 'TickInSecond' [-Wunused-variable]
-     float TickInSecond = 0;
-           ^
-../src/Terminal/Debug_MainMenu.c:41:14: warning: unused variable 'CurrentTickCounter' [-Wunused-variable]
-     uint32_t CurrentTickCounter = 0;
-              ^
-../src/Terminal/Debug_MainMenu.c:40:13: warning: unused variable 'Buffer' [-Wunused-variable]
-     uint8_t Buffer[1024];
-             ^
-../src/Terminal/Debug_MainMenu.c: At top level:
-../src/Terminal/Debug_MainMenu.c:79:5: warning: pointer targets in initialization differ in signedness [-Wpointer-sign]
-     "Main Menu",
-     ^
-../src/Terminal/Debug_MainMenu.c:79:5: warning: (near initialization for 'DefaultMenu.MenuTitle') [-Wpointer-sign]
-Finished building: ../src/Terminal/Debug_MainMenu.c
- 
-Building file: ../src/MCU/led.c
-Invoking: Cross ARM C Compiler
-arm-none-eabi-gcc -mcpu=cortex-m0 -mthumb -Og -fmessage-length=0 -fsigned-char -ffunction-sections -fdata-sections -ffreestanding -fno-move-loop-invariants -Wall -Wextra  -g3 -DDEBUG -DUSE_FULL_ASSERT -DTRACE -DOS_USE_TRACE_SEMIHOSTING_DEBUG -DSTM32F030 -DUSE_STDPERIPH_DRIVER -DHSE_VALUE=8000000 -I"../include" -I"../system/include" -I"../system/include/cmsis" -I"../system/include/stm32f0-stdperiph" -std=gnu11 -MMD -MP -MF"src/MCU/led.d" -MT"src/MCU/led.o" -c -o "src/MCU/led.o" "../src/MCU/led.c"
-Finished building: ../src/MCU/led.c
- 
-Building file: ../src/MCU/tick.c
-Invoking: Cross ARM C Compiler
-arm-none-eabi-gcc -mcpu=cortex-m0 -mthumb -Og -fmessage-length=0 -fsigned-char -ffunction-sections -fdata-sections -ffreestanding -fno-move-loop-invariants -Wall -Wextra  -g3 -DDEBUG -DUSE_FULL_ASSERT -DTRACE -DOS_USE_TRACE_SEMIHOSTING_DEBUG -DSTM32F030 -DUSE_STDPERIPH_DRIVER -DHSE_VALUE=8000000 -I"../include" -I"../system/include" -I"../system/include/cmsis" -I"../system/include/stm32f0-stdperiph" -std=gnu11 -MMD -MP -MF"src/MCU/tick.d" -MT"src/MCU/tick.o" -c -o "src/MCU/tick.o" "../src/MCU/tick.c"
-Finished building: ../src/MCU/tick.c
- 
-Building file: ../src/MCU/usart1.c
-Invoking: Cross ARM C Compiler
-arm-none-eabi-gcc -mcpu=cortex-m0 -mthumb -Og -fmessage-length=0 -fsigned-char -ffunction-sections -fdata-sections -ffreestanding -fno-move-loop-invariants -Wall -Wextra  -g3 -DDEBUG -DUSE_FULL_ASSERT -DTRACE -DOS_USE_TRACE_SEMIHOSTING_DEBUG -DSTM32F030 -DUSE_STDPERIPH_DRIVER -DHSE_VALUE=8000000 -I"../include" -I"../system/include" -I"../system/include/cmsis" -I"../system/include/stm32f0-stdperiph" -std=gnu11 -MMD -MP -MF"src/MCU/usart1.d" -MT"src/MCU/usart1.o" -c -o "src/MCU/usart1.o" "../src/MCU/usart1.c"
-Finished building: ../src/MCU/usart1.c
- 
-Building file: ../src/MCU/usart2.c
-Invoking: Cross ARM C Compiler
-arm-none-eabi-gcc -mcpu=cortex-m0 -mthumb -Og -fmessage-length=0 -fsigned-char -ffunction-sections -fdata-sections -ffreestanding -fno-move-loop-invariants -Wall -Wextra  -g3 -DDEBUG -DUSE_FULL_ASSERT -DTRACE -DOS_USE_TRACE_SEMIHOSTING_DEBUG -DSTM32F030 -DUSE_STDPERIPH_DRIVER -DHSE_VALUE=8000000 -I"../include" -I"../system/include" -I"../system/include/cmsis" -I"../system/include/stm32f0-stdperiph" -std=gnu11 -MMD -MP -MF"src/MCU/usart2.d" -MT"src/MCU/usart2.o" -c -o "src/MCU/usart2.o" "../src/MCU/usart2.c"
-Finished building: ../src/MCU/usart2.c
- 
 Building file: ../src/main.c
 Invoking: Cross ARM C Compiler
 arm-none-eabi-gcc -mcpu=cortex-m0 -mthumb -Og -fmessage-length=0 -fsigned-char -ffunction-sections -fdata-sections -ffreestanding -fno-move-loop-invariants -Wall -Wextra  -g3 -DDEBUG -DUSE_FULL_ASSERT -DTRACE -DOS_USE_TRACE_SEMIHOSTING_DEBUG -DSTM32F030 -DUSE_STDPERIPH_DRIVER -DHSE_VALUE=8000000 -I"../include" -I"../system/include" -I"../system/include/cmsis" -I"../system/include/stm32f0-stdperiph" -std=gnu11 -MMD -MP -MF"src/main.d" -MT"src/main.o" -c -o "src/main.o" "../src/main.c"
 ../src/main.c: In function 'main':
-../src/main.c:28:28: warning: pointer targets in passing argument 1 of 'SerialPort1.SendString' differ in signedness [-Wpointer-sign]
-     SerialPort1.SendString("Hello World\r\n");
+../src/main.c:27:28: warning: pointer targets in passing argument 1 of 'SerialPort2.SendString' differ in signedness [-Wpointer-sign]
+     SerialPort2.SendString((int8_t *)"Hello World\r\n");
                             ^
-../src/main.c:28:28: note: expected 'const unsigned char *' but argument is of type 'char *'
+../src/main.c:27:28: note: expected 'const unsigned char *' but argument is of type 'signed char *'
 Finished building: ../src/main.c
  
 Building target: Lesson_1.elf
 Invoking: Cross ARM C++ Linker
-arm-none-eabi-g++ -mcpu=cortex-m0 -mthumb -Og -fmessage-length=0 -fsigned-char -ffunction-sections -fdata-sections -ffreestanding -fno-move-loop-invariants -Wall -Wextra  -g3 -T mem.ld -T libs.ld -T sections.ld -nostartfiles -Xlinker --gc-sections -L"../ldscripts" -Wl,-Map,"Lesson_1.map" --specs=nano.specs -o "Lesson_1.elf"  ./system/src/stm32f0-stdperiph/stm32f0xx_gpio.o ./system/src/stm32f0-stdperiph/stm32f0xx_rcc.o  ./system/src/newlib/_cxx.o ./system/src/newlib/_exit.o ./system/src/newlib/_sbrk.o ./system/src/newlib/_startup.o ./system/src/newlib/_syscalls.o ./system/src/newlib/assert.o  ./system/src/diag/Trace.o ./system/src/diag/trace_impl.o  ./system/src/cortexm/_initialize_hardware.o ./system/src/cortexm/_reset_hardware.o ./system/src/cortexm/exception_handlers.o  ./system/src/cmsis/system_stm32f0xx.o ./system/src/cmsis/vectors_stm32f0xx.o  ./src/Terminal/DebugInterface.o ./src/Terminal/Debug_MainMenu.o  ./src/MCU/led.o ./src/MCU/tick.o ./src/MCU/usart1.o ./src/MCU/usart2.o  ./src/main.o   
+arm-none-eabi-g++ -mcpu=cortex-m0 -mthumb -Og -fmessage-length=0 -fsigned-char -ffunction-sections -fdata-sections -ffreestanding -fno-move-loop-invariants -Wall -Wextra  -g3 -T mem.ld -T libs.ld -T sections.ld -nostartfiles -Xlinker --gc-sections -L"../ldscripts" -Wl,-Map,"Lesson_1.map" --specs=nano.specs -o "Lesson_1.elf"  ./system/src/stm32f0-stdperiph/stm32f0xx_gpio.o ./system/src/stm32f0-stdperiph/stm32f0xx_rcc.o  ./system/src/newlib/_cxx.o ./system/src/newlib/_exit.o ./system/src/newlib/_sbrk.o ./system/src/newlib/_startup.o ./system/src/newlib/_syscalls.o ./system/src/newlib/assert.o  ./system/src/diag/Trace.o ./system/src/diag/trace_impl.o  ./system/src/cortexm/_initialize_hardware.o ./system/src/cortexm/_reset_hardware.o ./system/src/cortexm/exception_handlers.o  ./system/src/cmsis/system_stm32f0xx.o ./system/src/cmsis/vectors_stm32f0xx.o  ./src/MCU/led.o ./src/MCU/tick.o ./src/MCU/usart2.o  ./src/main.o   
 Finished building target: Lesson_1.elf
  
 make --no-print-directory post-build
@@ -253,9 +26,9 @@ Finished building: Lesson_1.hex
 Invoking: Cross ARM GNU Print Size
 arm-none-eabi-size --format=berkeley "Lesson_1.elf"
    text	   data	    bss	    dec	    hex	filename
-  25032	    332	    940	  26304	   66c0	Lesson_1.elf
+   4765	    208	    420	   5393	   1511	Lesson_1.elf
 Finished building: Lesson_1.siz
  
 
-22:04:29 Build Finished (took 5s.965ms)
+08:53:20 Build Finished (took 296ms)
 

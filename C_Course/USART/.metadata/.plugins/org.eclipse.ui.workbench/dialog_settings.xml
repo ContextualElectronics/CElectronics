@@ -2,7 +2,7 @@
 <section name="Workbench">
 	<section name="WorkbenchPreferenceDialogSettings">
 		<item value="280" key="DIALOG_X_ORIGIN"/>
-		<item value="0" key="DIALOG_Y_ORIGIN"/>
+		<item value="10" key="DIALOG_Y_ORIGIN"/>
 	</section>
 	<section name="org.eclipse.ui.internal.QuickAccess">
 		<item value="610" key="dialogHeight"/>
@@ -26,5 +26,7 @@
 		<list key="ShowViewDialog.STORE_EXPANDED_CATEGORIES_ID">
 			<item value="org.eclipse.debug.ui"/>
 		</list>
+	</section>
+	<section name="ImportExportAction">
 	</section>
 </section>

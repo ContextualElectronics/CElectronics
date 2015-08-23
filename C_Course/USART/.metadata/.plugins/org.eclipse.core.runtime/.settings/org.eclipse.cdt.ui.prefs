@@ -11,6 +11,7 @@ scalability.enableAll=true
 scalability.parserBasedContentAssist=true
 scalability.semanticHighlight=true
 scalability.syntaxColor=true
+sourceHoverBackgroundColor=255,255,255
 spelling_locale_initialized=true
 useAnnotationsPrefPage=true
 useQuickDiffPrefPage=true
