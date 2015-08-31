@@ -1,0 +1,5 @@
+architecture=SVD(CMSIS)
+board=---  none ---
+chip=STM32F030
+eclipse.preferences.version=1
+vendor=STMicro
