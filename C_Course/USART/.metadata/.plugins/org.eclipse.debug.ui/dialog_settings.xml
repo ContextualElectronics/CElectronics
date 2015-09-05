@@ -1,31 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <section name="Workbench">
-	<section name="FAVORITES_DIALOG_SECTION">
-		<item value="350" key="DIALOG_WIDTH"/>
-		<item value="1|Ubuntu|11.0|0|GTK|1|" key="DIALOG_FONT_NAME"/>
-		<item value="400" key="DIALOG_HEIGHT"/>
-		<item value="752" key="DIALOG_X_ORIGIN"/>
-		<item value="224" key="DIALOG_Y_ORIGIN"/>
-	</section>
 	<section name="org.eclipse.debug.ui.STRING_VARIABLE_SELECTION_DIALOG_SECTION">
 		<item value="444" key="DIALOG_WIDTH"/>
 		<item value="1|Ubuntu|11.0|0|GTK|1|" key="DIALOG_FONT_NAME"/>
 		<item value="660" key="DIALOG_HEIGHT"/>
-		<item value="58" key="DIALOG_X_ORIGIN"/>
-		<item value="-8" key="DIALOG_Y_ORIGIN"/>
-	</section>
-	<section name="org.eclipse.debug.ui.SELECT_FAVORITESS_DIALOG">
-		<item value="295" key="DIALOG_WIDTH"/>
-		<item value="1|Ubuntu|11.0|0|GTK|1|" key="DIALOG_FONT_NAME"/>
-		<item value="361" key="DIALOG_HEIGHT"/>
-	</section>
-	<section name="org.eclipse.debug.ui.SCOPED_SAVE_SELECTION_DIALOG">
-		<item value="314" key="DIALOG_WIDTH"/>
-		<item value="1|Ubuntu|11.0|0|GTK|1|" key="DIALOG_FONT_NAME"/>
-		<item value="420" key="DIALOG_HEIGHT"/>
+		<item value="247" key="DIALOG_X_ORIGIN"/>
+		<item value="0" key="DIALOG_Y_ORIGIN"/>
 	</section>
 	<section name="org.eclipse.debug.ui.LAUNCH_CONFIGURATIONS_DIALOG_SECTION">
-		<item value="1015" key="DIALOG_WIDTH"/>
+		<item value="980" key="DIALOG_WIDTH"/>
 		<item value="1|Ubuntu|11.0|0|GTK|1|" key="DIALOG_FONT_NAME"/>
 		<item value=", ilg.gnuarmeclipse.debug.gdbjtag.openocd.launchConfigurationType, " key="org.eclipse.debug.ui.EXPANDED_NODES"/>
 		<item value="762" key="org.eclipse.debug.ui.DIALOG_SASH_WEIGHTS_2"/>

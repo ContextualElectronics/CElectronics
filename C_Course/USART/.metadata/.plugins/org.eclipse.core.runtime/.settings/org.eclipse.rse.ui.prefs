@@ -1,4 +1,2 @@
 eclipse.preferences.version=1
 org.eclipse.rse.preferences.order.connections=stm32-eclipse.Local
-org.eclipse.rse.preferences.rememberState=false
-org.eclipse.rse.preferences.restoreStateFromCache=false
