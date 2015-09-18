@@ -63,9 +63,7 @@ static uint_fast8_t IsWriteBusy(void)
 ///////////////////////////////////////////////////////////////////////////////
 static uint_fast8_t Open(uint32_t baudrate)
 {
-
-    /// \todo Need to implement Usart2 Open()
-
+	/// \todo implement USART2 open functions
     return FALSE;
 }
 
@@ -76,7 +74,7 @@ static uint_fast8_t Open(uint32_t baudrate)
 ///////////////////////////////////////////////////////////////////////////////
 static void Close(void)
 {
-    /// \todo Need to implement Usart2 Close()
+	/// \todo implement USART2 close functions
 }
 
 ///////////////////////////////////////////////////////////////////////////////
