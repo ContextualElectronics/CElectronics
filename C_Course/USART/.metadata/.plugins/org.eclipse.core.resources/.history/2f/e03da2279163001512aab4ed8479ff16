@@ -11,7 +11,7 @@
 /// \brief enable 16x oversampling. Used to reduce the baudrate calculation
 /// error.
 /////////////////////////////////////////////////////////////////////////
-//#define USART_OVER_SAMPLE_16
+#define USART_OVER_SAMPLE_16
 
 ///////////////////////////////////////////////////////////////////////////////
 /// \brief Keeps track if the serial port is configure and opend
@@ -28,6 +28,16 @@ static uint_fast8_t IsSerialOpen(void)
     return IsOpenFlag;
 }
 
+///////////////////////////////////////////////////////////////////////////////
+/// \brief Open the serial port
+///
+/// \return true = success else port is already open
+///////////////////////////////////////////////////////////////////////////////
+static void Close(void)
+{
+	USART2->CR1 &= ~(1);
+}
+
 /////////////////////////////////////////////////////////////////////////
 ///	\brief	Set usart baudrate. can be called at any time.
 ///
@@ -38,7 +48,32 @@ static uint_fast8_t IsSerialOpen(void)
 /////////////////////////////////////////////////////////////////////////
 static void Setbaudrate(uint32_t baud)
 {
-    /// \todo Need to implement Usart2 Setbaudrate()
+	uint_fast8_t WasUartEnable = FALSE;
+
+	uint16_t BaudrateTemp = 0;
+
+	if (IsOpenFlag)
+	{
+		WasUartEnable = TRUE;
+		Close();
+	}
+
+#ifdef USART_OVER_SAMPLE_16
+	BaudrateTemp = (SystemCoreClock) / (baud);
+#else
+	BaudrateTemp = (2 * SystemCoreClock) / (baud);
+
+	BaudrateTemp = ((BaudrateTemp & 0xFFFFFFF0) | ((BaudrateTemp >> 1) & 0x00000007));
+#endif
+
+	USART2->BRR = BaudrateTemp;
+
+
+	if(WasUartEnable)
+	{
+		USART2->CR1 |=  1;
+	}
+
 }
 
 /////////////////////////////////////////////////////////////////////////
@@ -64,20 +99,32 @@ static uint_fast8_t IsWriteBusy(void)
 static uint_fast8_t Open(uint32_t baudrate)
 {
 
-    /// \todo Need to implement Usart2 Open()
+	if(!IsOpenFlag)
+	{
+		RCC->APB1ENR |= (1<<17); // en USART clock
 
+		USART2->CR1 = 0;
+
+		RCC->AHBENR |= (1<<17); // en GPIOA clock
+
+		GPIOA->MODER &= ~(3<<4); // clear PA2 moder
+		GPIOA->MODER  |= (2<<4); // Set PA2 to alter function
+
+		GPIOA->AFR[0] &= ~(0xF << 8); // clear PA2 config
+		GPIOA->AFR[0] |= (1<<8);
+
+		// set baudrate
+		Setbaudrate(baudrate);
+
+
+		USART2->CR1 |= (1<<15) | 1 | (1<<3);
+
+		IsOpenFlag = TRUE;
+	}
     return FALSE;
 }
 
-///////////////////////////////////////////////////////////////////////////////
-/// \brief Open the serial port
-///
-/// \return true = success else port is already open
-///////////////////////////////////////////////////////////////////////////////
-static void Close(void)
-{
-    /// \todo Need to implement Usart2 Close()
-}
+
 
 ///////////////////////////////////////////////////////////////////////////////
 /// \brief Send a single byte

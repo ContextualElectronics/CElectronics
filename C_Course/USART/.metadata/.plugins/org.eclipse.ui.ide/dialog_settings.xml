@@ -15,6 +15,10 @@
 		<list key="ENABLED_TRANSFERS">
 		</list>
 	</section>
+	<section name="ResourceNavigator">
+		<item value="Aggregate for window 1442562507737" key="ResourceWorkingSetFilter.STORE_WORKING_SET"/>
+		<item value="1" key="ResourceViewer.STORE_SORT_TYPE"/>
+	</section>
 	<section name="ChooseWorkspaceDialogSettings">
 		<item value="615" key="DIALOG_X_ORIGIN"/>
 		<item value="298" key="DIALOG_Y_ORIGIN"/>

@@ -1,45 +1,6 @@
-11:04:45 **** Incremental Build of configuration Debug for project Lesson_2 ****
+13:44:55 **** Incremental Build of configuration Debug for project Lesson_2 ****
 make all 
-Building file: ../src/MCU/usart2.c
-Invoking: Cross ARM C Compiler
-arm-none-eabi-gcc -mcpu=cortex-m0 -mthumb -Og -fmessage-length=0 -fsigned-char -ffunction-sections -fdata-sections -ffreestanding -fno-move-loop-invariants -Wall -Wextra  -g3 -DDEBUG -DUSE_FULL_ASSERT -DTRACE -DOS_USE_TRACE_SEMIHOSTING_DEBUG -DSTM32F030 -DUSE_STDPERIPH_DRIVER -DHSE_VALUE=8000000 -I"../include" -I"../system/include" -I"../system/include/cmsis" -I"../system/include/stm32f0-stdperiph" -std=gnu11 -MMD -MP -MF"src/MCU/usart2.d" -MT"src/MCU/usart2.o" -c -o "src/MCU/usart2.o" "../src/MCU/usart2.c"
-../src/MCU/usart2.c: In function 'Setbaudrate':
-../src/MCU/usart2.c:39:34: warning: unused parameter 'baud' [-Wunused-parameter]
- static void Setbaudrate(uint32_t baud)
-                                  ^
-../src/MCU/usart2.c: In function 'SendByte':
-../src/MCU/usart2.c:107:38: warning: unused parameter 'source' [-Wunused-parameter]
- static uint_fast8_t SendByte(uint8_t source)
-                                      ^
-../src/MCU/usart2.c: In function 'GetByte':
-../src/MCU/usart2.c:133:37: warning: unused parameter 'destination' [-Wunused-parameter]
- static int_fast8_t GetByte(uint8_t *destination)
-                                     ^
-../src/MCU/usart2.c: At top level:
-../src/MCU/usart2.c:51:21: warning: 'IsWriteBusy' defined but not used [-Wunused-function]
- static uint_fast8_t IsWriteBusy(void)
-                     ^
-Finished building: ../src/MCU/usart2.c
- 
-Building target: Lesson_2.elf
-Invoking: Cross ARM C++ Linker
-arm-none-eabi-g++ -mcpu=cortex-m0 -mthumb -Og -fmessage-length=0 -fsigned-char -ffunction-sections -fdata-sections -ffreestanding -fno-move-loop-invariants -Wall -Wextra  -g3 -T mem.ld -T libs.ld -T sections.ld -nostartfiles -Xlinker --gc-sections -L"../ldscripts" -Wl,-Map,"Lesson_2.map" --specs=nano.specs -o "Lesson_2.elf"  ./system/src/stm32f0-stdperiph/stm32f0xx_gpio.o ./system/src/stm32f0-stdperiph/stm32f0xx_rcc.o  ./system/src/newlib/_cxx.o ./system/src/newlib/_exit.o ./system/src/newlib/_sbrk.o ./system/src/newlib/_startup.o ./system/src/newlib/_syscalls.o ./system/src/newlib/assert.o  ./system/src/diag/Trace.o ./system/src/diag/trace_impl.o  ./system/src/cortexm/_initialize_hardware.o ./system/src/cortexm/_reset_hardware.o ./system/src/cortexm/exception_handlers.o  ./system/src/cmsis/system_stm32f0xx.o ./system/src/cmsis/vectors_stm32f0xx.o  ./src/MCU/led.o ./src/MCU/tick.o ./src/MCU/usart2.o  ./src/main.o   
-Finished building target: Lesson_2.elf
- 
-make --no-print-directory post-build
-Binary
-arm-none-eabi-objcopy -S  -O binary  "Lesson_2.elf" "Lesson_2.bin"
- 
-Invoking: Cross ARM GNU Create Flash Image
-arm-none-eabi-objcopy -O ihex "Lesson_2.elf"  "Lesson_2.hex"
-Finished building: Lesson_2.hex
- 
-Invoking: Cross ARM GNU Print Size
-arm-none-eabi-size --format=berkeley "Lesson_2.elf"
-   text	   data	    bss	    dec	    hex	filename
-   4537	    208	    420	   5165	   142d	Lesson_2.elf
-Finished building: Lesson_2.siz
- 
+Cannot run program "make": Unknown reason
 
-11:04:46 Build Finished (took 655ms)
+13:44:55 Build Finished (took 19ms)
 
