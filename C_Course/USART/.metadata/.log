@@ -1786,3 +1786,161 @@ java.io.FileNotFoundException: /home/vagrant/Desktop/CElectronics/C_Course/USART
 	at org.eclipse.core.internal.resources.Workspace.save(Workspace.java:2344)
 	at org.eclipse.ui.internal.ide.application.IDEWorkbenchAdvisor$5.run(IDEWorkbenchAdvisor.java:509)
 	at org.eclipse.jface.operation.ModalContext$ModalContextThread.run(ModalContext.java:122)
+!SESSION 2015-10-01 17:35:24.909 -----------------------------------------------
+eclipse.buildId=4.4.2.M20150204-1700
+java.version=1.8.0_60
+java.vendor=Oracle Corporation
+BootLoader constants: OS=linux, ARCH=x86_64, WS=gtk, NL=en_US
+Framework arguments:  -product org.eclipse.epp.package.cpp.product
+Command-line arguments:  -os linux -ws gtk -arch x86_64 -product org.eclipse.epp.package.cpp.product
+
+!ENTRY org.eclipse.cdt.core 4 0 2015-10-01 17:36:26.971
+!MESSAGE Error: Error
+!STACK 1
+org.eclipse.core.runtime.CoreException: Error
+	at org.eclipse.cdt.internal.core.pdom.db.Database.databaseCorruptionDetected(Database.java:292)
+	at org.eclipse.cdt.internal.core.pdom.db.Database.getChunk(Database.java:274)
+	at org.eclipse.cdt.internal.core.pdom.db.Database.getRecPtr(Database.java:486)
+	at org.eclipse.cdt.internal.core.pdom.dom.PDOMLinkage.getLinkageID(PDOMLinkage.java:123)
+	at org.eclipse.cdt.internal.core.pdom.PDOM.readLinkages(PDOM.java:422)
+	at org.eclipse.cdt.internal.core.pdom.PDOM.loadDatabase(PDOM.java:405)
+	at org.eclipse.cdt.internal.core.pdom.PDOM.<init>(PDOM.java:381)
+	at org.eclipse.cdt.internal.core.pdom.WritablePDOM.<init>(WritablePDOM.java:64)
+	at org.eclipse.cdt.internal.core.pdom.WritablePDOM.<init>(WritablePDOM.java:59)
+	at org.eclipse.cdt.internal.core.pdom.PDOMManager.getOrCreatePDOM(PDOMManager.java:384)
+	at org.eclipse.cdt.internal.core.pdom.PDOMManager.createIndexer(PDOMManager.java:571)
+	at org.eclipse.cdt.internal.core.pdom.PDOMSetupJob.run(PDOMSetupJob.java:58)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:54)
+!SUBENTRY 1 org.eclipse.cdt.core 4 0 2015-10-01 17:36:26.973
+!MESSAGE Error
+!SESSION 2015-10-01 17:39:21.087 -----------------------------------------------
+eclipse.buildId=4.4.2.M20150204-1700
+java.version=1.8.0_60
+java.vendor=Oracle Corporation
+BootLoader constants: OS=linux, ARCH=x86_64, WS=gtk, NL=en_US
+Framework arguments:  -product org.eclipse.epp.package.cpp.product
+Command-line arguments:  -os linux -ws gtk -arch x86_64 -product org.eclipse.epp.package.cpp.product
+
+!ENTRY org.eclipse.cdt.core 4 0 2015-10-01 17:40:33.047
+!MESSAGE Error: Error
+!STACK 1
+org.eclipse.core.runtime.CoreException: Error
+	at org.eclipse.cdt.internal.core.pdom.db.Database.databaseCorruptionDetected(Database.java:292)
+	at org.eclipse.cdt.internal.core.pdom.db.Database.getChunk(Database.java:274)
+	at org.eclipse.cdt.internal.core.pdom.db.Database.getRecPtr(Database.java:486)
+	at org.eclipse.cdt.internal.core.pdom.dom.PDOMLinkage.getLinkageID(PDOMLinkage.java:123)
+	at org.eclipse.cdt.internal.core.pdom.PDOM.readLinkages(PDOM.java:422)
+	at org.eclipse.cdt.internal.core.pdom.PDOM.loadDatabase(PDOM.java:405)
+	at org.eclipse.cdt.internal.core.pdom.PDOM.<init>(PDOM.java:381)
+	at org.eclipse.cdt.internal.core.pdom.WritablePDOM.<init>(WritablePDOM.java:64)
+	at org.eclipse.cdt.internal.core.pdom.WritablePDOM.<init>(WritablePDOM.java:59)
+	at org.eclipse.cdt.internal.core.pdom.PDOMManager.getOrCreatePDOM(PDOMManager.java:384)
+	at org.eclipse.cdt.internal.core.pdom.PDOMManager.createIndexer(PDOMManager.java:571)
+	at org.eclipse.cdt.internal.core.pdom.PDOMSetupJob.run(PDOMSetupJob.java:58)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:54)
+!SUBENTRY 1 org.eclipse.cdt.core 4 0 2015-10-01 17:40:33.057
+!MESSAGE Error
+
+!ENTRY org.eclipse.cdt.core 4 0 2015-10-01 17:40:52.629
+!MESSAGE Error: Error
+!STACK 1
+org.eclipse.core.runtime.CoreException: Error
+	at org.eclipse.cdt.internal.core.pdom.db.Database.databaseCorruptionDetected(Database.java:292)
+	at org.eclipse.cdt.internal.core.pdom.db.Database.getChunk(Database.java:274)
+	at org.eclipse.cdt.internal.core.pdom.db.Database.getRecPtr(Database.java:486)
+	at org.eclipse.cdt.internal.core.pdom.dom.PDOMLinkage.getLinkageID(PDOMLinkage.java:123)
+	at org.eclipse.cdt.internal.core.pdom.PDOM.readLinkages(PDOM.java:422)
+	at org.eclipse.cdt.internal.core.pdom.PDOM.loadDatabase(PDOM.java:405)
+	at org.eclipse.cdt.internal.core.pdom.PDOM.<init>(PDOM.java:381)
+	at org.eclipse.cdt.internal.core.pdom.WritablePDOM.<init>(WritablePDOM.java:64)
+	at org.eclipse.cdt.internal.core.pdom.WritablePDOM.<init>(WritablePDOM.java:59)
+	at org.eclipse.cdt.internal.core.pdom.PDOMManager.getOrCreatePDOM(PDOMManager.java:384)
+	at org.eclipse.cdt.internal.core.pdom.PDOMManager.createIndexer(PDOMManager.java:571)
+	at org.eclipse.cdt.internal.core.pdom.PDOMSetupJob.run(PDOMSetupJob.java:58)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:54)
+!SUBENTRY 1 org.eclipse.cdt.core 4 0 2015-10-01 17:40:52.629
+!MESSAGE Error
+
+!ENTRY org.eclipse.debug.core 4 2 2015-10-01 18:16:20.081
+!MESSAGE Problems occurred when invoking code from plug-in: "org.eclipse.debug.core".
+!STACK 0
+java.lang.NullPointerException
+	at org.eclipse.cdt.embsysregview.views.GDBSessionTranslator.readMemory(GDBSessionTranslator.java:371)
+	at org.eclipse.cdt.embsysregview.views.GDBSessionTranslator.readMemory(GDBSessionTranslator.java:211)
+	at org.eclipse.cdt.embsysregview.views.GDBSessionTranslator.readMemory(GDBSessionTranslator.java:221)
+	at org.eclipse.cdt.embsysregview.views.GDBEventListener.readMemory(GDBEventListener.java:66)
+	at org.eclipse.cdt.embsysregview.views.TreeRegister.readValue(TreeRegister.java:149)
+	at org.eclipse.cdt.embsysregview.views.EmbSysRegView.updateTreeFields(EmbSysRegView.java:860)
+	at org.eclipse.cdt.embsysregview.views.EmbSysRegView.updateTreeFields(EmbSysRegView.java:865)
+	at org.eclipse.cdt.embsysregview.views.EmbSysRegView.updateTreeFields(EmbSysRegView.java:865)
+	at org.eclipse.cdt.embsysregview.views.EmbSysRegView.updateTreeFields(EmbSysRegView.java:865)
+	at org.eclipse.cdt.embsysregview.views.EmbSysRegView.gdbSuspendListener(EmbSysRegView.java:896)
+	at org.eclipse.cdt.embsysregview.views.GDBEventListener.handleDebugEvents(GDBEventListener.java:118)
+	at org.eclipse.debug.core.DebugPlugin$EventNotifier.run(DebugPlugin.java:1151)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:42)
+	at org.eclipse.debug.core.DebugPlugin$EventNotifier.dispatch(DebugPlugin.java:1187)
+	at org.eclipse.debug.core.DebugPlugin$EventDispatchJob.run(DebugPlugin.java:431)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:54)
+
+!ENTRY org.eclipse.debug.core 4 125 2015-10-01 18:16:20.082
+!MESSAGE An exception occurred while dispatching debug events.
+!STACK 0
+java.lang.NullPointerException
+	at org.eclipse.cdt.embsysregview.views.GDBSessionTranslator.readMemory(GDBSessionTranslator.java:371)
+	at org.eclipse.cdt.embsysregview.views.GDBSessionTranslator.readMemory(GDBSessionTranslator.java:211)
+	at org.eclipse.cdt.embsysregview.views.GDBSessionTranslator.readMemory(GDBSessionTranslator.java:221)
+	at org.eclipse.cdt.embsysregview.views.GDBEventListener.readMemory(GDBEventListener.java:66)
+	at org.eclipse.cdt.embsysregview.views.TreeRegister.readValue(TreeRegister.java:149)
+	at org.eclipse.cdt.embsysregview.views.EmbSysRegView.updateTreeFields(EmbSysRegView.java:860)
+	at org.eclipse.cdt.embsysregview.views.EmbSysRegView.updateTreeFields(EmbSysRegView.java:865)
+	at org.eclipse.cdt.embsysregview.views.EmbSysRegView.updateTreeFields(EmbSysRegView.java:865)
+	at org.eclipse.cdt.embsysregview.views.EmbSysRegView.updateTreeFields(EmbSysRegView.java:865)
+	at org.eclipse.cdt.embsysregview.views.EmbSysRegView.gdbSuspendListener(EmbSysRegView.java:896)
+	at org.eclipse.cdt.embsysregview.views.GDBEventListener.handleDebugEvents(GDBEventListener.java:118)
+	at org.eclipse.debug.core.DebugPlugin$EventNotifier.run(DebugPlugin.java:1151)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:42)
+	at org.eclipse.debug.core.DebugPlugin$EventNotifier.dispatch(DebugPlugin.java:1187)
+	at org.eclipse.debug.core.DebugPlugin$EventDispatchJob.run(DebugPlugin.java:431)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:54)
+
+!ENTRY org.eclipse.debug.core 4 2 2015-10-01 18:17:09.418
+!MESSAGE Problems occurred when invoking code from plug-in: "org.eclipse.debug.core".
+!STACK 0
+java.lang.NullPointerException
+	at org.eclipse.cdt.embsysregview.views.GDBSessionTranslator.readMemory(GDBSessionTranslator.java:371)
+	at org.eclipse.cdt.embsysregview.views.GDBSessionTranslator.readMemory(GDBSessionTranslator.java:211)
+	at org.eclipse.cdt.embsysregview.views.GDBSessionTranslator.readMemory(GDBSessionTranslator.java:221)
+	at org.eclipse.cdt.embsysregview.views.GDBEventListener.readMemory(GDBEventListener.java:66)
+	at org.eclipse.cdt.embsysregview.views.TreeRegister.readValue(TreeRegister.java:149)
+	at org.eclipse.cdt.embsysregview.views.EmbSysRegView.updateTreeFields(EmbSysRegView.java:860)
+	at org.eclipse.cdt.embsysregview.views.EmbSysRegView.updateTreeFields(EmbSysRegView.java:865)
+	at org.eclipse.cdt.embsysregview.views.EmbSysRegView.updateTreeFields(EmbSysRegView.java:865)
+	at org.eclipse.cdt.embsysregview.views.EmbSysRegView.updateTreeFields(EmbSysRegView.java:865)
+	at org.eclipse.cdt.embsysregview.views.EmbSysRegView.gdbSuspendListener(EmbSysRegView.java:896)
+	at org.eclipse.cdt.embsysregview.views.GDBEventListener.handleDebugEvents(GDBEventListener.java:118)
+	at org.eclipse.debug.core.DebugPlugin$EventNotifier.run(DebugPlugin.java:1151)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:42)
+	at org.eclipse.debug.core.DebugPlugin$EventNotifier.dispatch(DebugPlugin.java:1187)
+	at org.eclipse.debug.core.DebugPlugin$EventDispatchJob.run(DebugPlugin.java:431)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:54)
+
+!ENTRY org.eclipse.debug.core 4 125 2015-10-01 18:17:09.430
+!MESSAGE An exception occurred while dispatching debug events.
+!STACK 0
+java.lang.NullPointerException
+	at org.eclipse.cdt.embsysregview.views.GDBSessionTranslator.readMemory(GDBSessionTranslator.java:371)
+	at org.eclipse.cdt.embsysregview.views.GDBSessionTranslator.readMemory(GDBSessionTranslator.java:211)
+	at org.eclipse.cdt.embsysregview.views.GDBSessionTranslator.readMemory(GDBSessionTranslator.java:221)
+	at org.eclipse.cdt.embsysregview.views.GDBEventListener.readMemory(GDBEventListener.java:66)
+	at org.eclipse.cdt.embsysregview.views.TreeRegister.readValue(TreeRegister.java:149)
+	at org.eclipse.cdt.embsysregview.views.EmbSysRegView.updateTreeFields(EmbSysRegView.java:860)
+	at org.eclipse.cdt.embsysregview.views.EmbSysRegView.updateTreeFields(EmbSysRegView.java:865)
+	at org.eclipse.cdt.embsysregview.views.EmbSysRegView.updateTreeFields(EmbSysRegView.java:865)
+	at org.eclipse.cdt.embsysregview.views.EmbSysRegView.updateTreeFields(EmbSysRegView.java:865)
+	at org.eclipse.cdt.embsysregview.views.EmbSysRegView.gdbSuspendListener(EmbSysRegView.java:896)
+	at org.eclipse.cdt.embsysregview.views.GDBEventListener.handleDebugEvents(GDBEventListener.java:118)
+	at org.eclipse.debug.core.DebugPlugin$EventNotifier.run(DebugPlugin.java:1151)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:42)
+	at org.eclipse.debug.core.DebugPlugin$EventNotifier.dispatch(DebugPlugin.java:1187)
+	at org.eclipse.debug.core.DebugPlugin$EventDispatchJob.run(DebugPlugin.java:431)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:54)
