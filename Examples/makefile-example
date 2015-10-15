@@ -1,6 +1,0 @@
-
-all:
-	gcc -g -Wall main.c -o output
-
-clean:
-	rm output
