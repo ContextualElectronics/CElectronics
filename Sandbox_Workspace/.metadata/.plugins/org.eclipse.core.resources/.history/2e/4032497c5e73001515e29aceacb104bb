@@ -1,0 +1,52 @@
+//
+// This file is part of the GNU ARM Eclipse distribution.
+// Copyright (c) 2014 Liviu Ionescu.
+//
+
+// ----------------------------------------------------------------------------
+#include "common.h"
+#include "MCU/led.h"
+#include "MCU/usart2.h"
+#include "MCU/tick.h"
+
+typedef union{
+struct {
+		uint8_t time;
+		uint8_t location;
+		uint8_t name;
+	} Data;
+
+	uint8_t myArray[3];
+
+} DataLogPointType;
+
+
+void main(void)
+{
+	myStructureType DataPoint;
+
+
+    uint8_t TempData;
+
+    DataPoint.name = 0;
+
+
+
+    Led_Init();
+    Tick_init();
+
+    SerialPort2.Open(9600);
+
+    SerialPort2.SendByte(0x0C); // clear terminal
+
+
+    SerialPort2.SendString((int8_t *)"Hello World\r\n");
+
+    for ( ;; )
+    {
+        if(SerialPort2.GetByte(&TempData))
+        {
+            SerialPort2.SendByte(TempData);
+        }
+    }
+}
