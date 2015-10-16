@@ -25,6 +25,7 @@ struct {
 
 void main(void)
 {
+	DataLogPointType DataPoint;
 	DataConverter Data;
     uint8_t TempData;
 
@@ -42,6 +43,5 @@ void main(void)
 
     for ( ;; )
     {
-    	// insert code
     }
 }

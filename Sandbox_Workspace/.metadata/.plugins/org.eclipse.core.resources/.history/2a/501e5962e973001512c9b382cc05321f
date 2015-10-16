@@ -55,7 +55,7 @@
         uint16_t    ui16_t[4];  ///< unsigned 16bit.
         int16_t     i16_t[4];   ///< signed 16bit.
         uint8_t     ui8_t[8];   ///< unsigned 8bit.
-        int8_t      i8_t[8];    ///< singed 8bit.
+        int8_t      i8_t;    ///< singed 8bit.
     }DataConverter;
 
 #endif

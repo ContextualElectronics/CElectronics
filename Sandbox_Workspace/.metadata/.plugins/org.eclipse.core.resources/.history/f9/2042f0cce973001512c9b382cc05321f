@@ -26,6 +26,7 @@ struct {
 void main(void)
 {
 	DataConverter Data;
+
     uint8_t TempData;
 
     Data.f32_t[0] = 1.2;
