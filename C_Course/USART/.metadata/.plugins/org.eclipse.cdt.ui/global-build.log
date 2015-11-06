@@ -1,4 +1,4 @@
-16:11:07 **** Build of configuration Debug for project Lesson_4 ****
+14:16:33 **** Build of configuration Debug for project Lesson_5 ****
 make all 
 Building file: ../system/src/stm32f0-stdperiph/stm32f0xx_gpio.c
 Invoking: Cross ARM C Compiler
@@ -95,26 +95,26 @@ Invoking: Cross ARM C Compiler
 arm-none-eabi-gcc -mcpu=cortex-m0 -mthumb -Og -fmessage-length=0 -fsigned-char -ffunction-sections -fdata-sections -ffreestanding -fno-move-loop-invariants -Wall -Wextra  -g3 -DDEBUG -DUSE_FULL_ASSERT -DTRACE -DOS_USE_TRACE_SEMIHOSTING_DEBUG -DSTM32F030 -DUSE_STDPERIPH_DRIVER -DHSE_VALUE=8000000 -I"../include" -I"../system/include" -I"../system/include/cmsis" -I"../system/include/stm32f0-stdperiph" -std=gnu11 -MMD -MP -MF"src/main.d" -MT"src/main.o" -c -o "src/main.o" "../src/main.c"
 Finished building: ../src/main.c
  
-Building target: Lesson_4.elf
+Building target: Lesson_5.elf
 Invoking: Cross ARM C++ Linker
-arm-none-eabi-g++ -mcpu=cortex-m0 -mthumb -Og -fmessage-length=0 -fsigned-char -ffunction-sections -fdata-sections -ffreestanding -fno-move-loop-invariants -Wall -Wextra  -g3 -T mem.ld -T libs.ld -T sections.ld -nostartfiles -Xlinker --gc-sections -L"../ldscripts" -Wl,-Map,"Lesson_4.map" --specs=nano.specs -o "Lesson_4.elf"  ./system/src/stm32f0-stdperiph/stm32f0xx_gpio.o ./system/src/stm32f0-stdperiph/stm32f0xx_rcc.o  ./system/src/newlib/_cxx.o ./system/src/newlib/_exit.o ./system/src/newlib/_sbrk.o ./system/src/newlib/_startup.o ./system/src/newlib/_syscalls.o ./system/src/newlib/assert.o  ./system/src/diag/Trace.o ./system/src/diag/trace_impl.o  ./system/src/cortexm/_initialize_hardware.o ./system/src/cortexm/_reset_hardware.o ./system/src/cortexm/exception_handlers.o  ./system/src/cmsis/system_stm32f0xx.o ./system/src/cmsis/vectors_stm32f0xx.o  ./src/MCU/led.o ./src/MCU/tick.o ./src/MCU/usart2.o  ./src/main.o   
-Finished building target: Lesson_4.elf
+arm-none-eabi-g++ -mcpu=cortex-m0 -mthumb -Og -fmessage-length=0 -fsigned-char -ffunction-sections -fdata-sections -ffreestanding -fno-move-loop-invariants -Wall -Wextra  -g3 -T mem.ld -T libs.ld -T sections.ld -nostartfiles -Xlinker --gc-sections -L"../ldscripts" -Wl,-Map,"Lesson_5.map" --specs=nano.specs -o "Lesson_5.elf"  ./system/src/stm32f0-stdperiph/stm32f0xx_gpio.o ./system/src/stm32f0-stdperiph/stm32f0xx_rcc.o  ./system/src/newlib/_cxx.o ./system/src/newlib/_exit.o ./system/src/newlib/_sbrk.o ./system/src/newlib/_startup.o ./system/src/newlib/_syscalls.o ./system/src/newlib/assert.o  ./system/src/diag/Trace.o ./system/src/diag/trace_impl.o  ./system/src/cortexm/_initialize_hardware.o ./system/src/cortexm/_reset_hardware.o ./system/src/cortexm/exception_handlers.o  ./system/src/cmsis/system_stm32f0xx.o ./system/src/cmsis/vectors_stm32f0xx.o  ./src/MCU/led.o ./src/MCU/tick.o ./src/MCU/usart2.o  ./src/main.o   
+Finished building target: Lesson_5.elf
  
 make --no-print-directory post-build
 Binary
-arm-none-eabi-objcopy -S  -O binary  "Lesson_4.elf" "Lesson_4.bin"
+arm-none-eabi-objcopy -S  -O binary  "Lesson_5.elf" "Lesson_5.bin"
  
 Invoking: Cross ARM GNU Create Flash Image
-arm-none-eabi-objcopy -O ihex "Lesson_4.elf"  "Lesson_4.hex"
-Finished building: Lesson_4.hex
+arm-none-eabi-objcopy -O ihex "Lesson_5.elf"  "Lesson_5.hex"
+Finished building: Lesson_5.hex
  
 Invoking: Cross ARM GNU Print Size
-arm-none-eabi-size --format=berkeley "Lesson_4.elf"
+arm-none-eabi-size --format=berkeley "Lesson_5.elf"
    text	   data	    bss	    dec	    hex	filename
-   4761	    208	    420	   5389	   150d	Lesson_4.elf
-Finished building: Lesson_4.siz
+   4861	    208	    420	   5489	   1571	Lesson_5.elf
+Finished building: Lesson_5.siz
  
-16:12:10 **** Incremental Build of configuration Debug for project Lesson_4 ****
+14:17:20 **** Incremental Build of configuration Debug for project Lesson_5 ****
 make all 
 Building file: ../system/src/stm32f0-stdperiph/stm32f0xx_gpio.c
 Invoking: Cross ARM C Compiler
@@ -211,142 +211,30 @@ Invoking: Cross ARM C Compiler
 arm-none-eabi-gcc -mcpu=cortex-m0 -mthumb -Og -fmessage-length=0 -fsigned-char -ffunction-sections -fdata-sections -ffreestanding -fno-move-loop-invariants -Wall -Wextra  -g3 -DDEBUG -DUSE_FULL_ASSERT -DTRACE -DOS_USE_TRACE_SEMIHOSTING_DEBUG -DSTM32F030 -DUSE_STDPERIPH_DRIVER -DHSE_VALUE=8000000 -I"../include" -I"../system/include" -I"../system/include/cmsis" -I"../system/include/stm32f0-stdperiph" -std=gnu11 -MMD -MP -MF"src/main.d" -MT"src/main.o" -c -o "src/main.o" "../src/main.c"
 Finished building: ../src/main.c
  
-Building target: Lesson_4.elf
+Building target: Lesson_5.elf
 Invoking: Cross ARM C++ Linker
-arm-none-eabi-g++ -mcpu=cortex-m0 -mthumb -Og -fmessage-length=0 -fsigned-char -ffunction-sections -fdata-sections -ffreestanding -fno-move-loop-invariants -Wall -Wextra  -g3 -T mem.ld -T libs.ld -T sections.ld -nostartfiles -Xlinker --gc-sections -L"../ldscripts" -Wl,-Map,"Lesson_4.map" --specs=nano.specs -o "Lesson_4.elf"  ./system/src/stm32f0-stdperiph/stm32f0xx_gpio.o ./system/src/stm32f0-stdperiph/stm32f0xx_rcc.o  ./system/src/newlib/_cxx.o ./system/src/newlib/_exit.o ./system/src/newlib/_sbrk.o ./system/src/newlib/_startup.o ./system/src/newlib/_syscalls.o ./system/src/newlib/assert.o  ./system/src/diag/Trace.o ./system/src/diag/trace_impl.o  ./system/src/cortexm/_initialize_hardware.o ./system/src/cortexm/_reset_hardware.o ./system/src/cortexm/exception_handlers.o  ./system/src/cmsis/system_stm32f0xx.o ./system/src/cmsis/vectors_stm32f0xx.o  ./src/MCU/led.o ./src/MCU/tick.o ./src/MCU/usart2.o  ./src/main.o   
-Finished building target: Lesson_4.elf
+arm-none-eabi-g++ -mcpu=cortex-m0 -mthumb -Og -fmessage-length=0 -fsigned-char -ffunction-sections -fdata-sections -ffreestanding -fno-move-loop-invariants -Wall -Wextra  -g3 -T mem.ld -T libs.ld -T sections.ld -nostartfiles -Xlinker --gc-sections -L"../ldscripts" -Wl,-Map,"Lesson_5.map" --specs=nano.specs -o "Lesson_5.elf"  ./system/src/stm32f0-stdperiph/stm32f0xx_gpio.o ./system/src/stm32f0-stdperiph/stm32f0xx_rcc.o  ./system/src/newlib/_cxx.o ./system/src/newlib/_exit.o ./system/src/newlib/_sbrk.o ./system/src/newlib/_startup.o ./system/src/newlib/_syscalls.o ./system/src/newlib/assert.o  ./system/src/diag/Trace.o ./system/src/diag/trace_impl.o  ./system/src/cortexm/_initialize_hardware.o ./system/src/cortexm/_reset_hardware.o ./system/src/cortexm/exception_handlers.o  ./system/src/cmsis/system_stm32f0xx.o ./system/src/cmsis/vectors_stm32f0xx.o  ./src/MCU/led.o ./src/MCU/tick.o ./src/MCU/usart2.o  ./src/main.o   
+Finished building target: Lesson_5.elf
  
 make --no-print-directory post-build
 Binary
-arm-none-eabi-objcopy -S  -O binary  "Lesson_4.elf" "Lesson_4.bin"
+arm-none-eabi-objcopy -S  -O binary  "Lesson_5.elf" "Lesson_5.bin"
  
 Invoking: Cross ARM GNU Create Flash Image
-arm-none-eabi-objcopy -O ihex "Lesson_4.elf"  "Lesson_4.hex"
-Finished building: Lesson_4.hex
+arm-none-eabi-objcopy -O ihex "Lesson_5.elf"  "Lesson_5.hex"
+Finished building: Lesson_5.hex
  
 Invoking: Cross ARM GNU Print Size
-arm-none-eabi-size --format=berkeley "Lesson_4.elf"
+arm-none-eabi-size --format=berkeley "Lesson_5.elf"
    text	   data	    bss	    dec	    hex	filename
-   4761	    208	    420	   5389	   150d	Lesson_4.elf
-Finished building: Lesson_4.siz
+   4861	    208	    420	   5489	   1571	Lesson_5.elf
+Finished building: Lesson_5.siz
  
-16:14:37 **** Incremental Build of configuration Debug for project Lesson_4 ****
-make all 
-Building file: ../src/main.c
-Invoking: Cross ARM C Compiler
-arm-none-eabi-gcc -mcpu=cortex-m0 -mthumb -Og -fmessage-length=0 -fsigned-char -ffunction-sections -fdata-sections -ffreestanding -fno-move-loop-invariants -Wall -Wextra  -g3 -DDEBUG -DUSE_FULL_ASSERT -DTRACE -DOS_USE_TRACE_SEMIHOSTING_DEBUG -DSTM32F030 -DUSE_STDPERIPH_DRIVER -DHSE_VALUE=8000000 -I"../include" -I"../system/include" -I"../system/include/cmsis" -I"../system/include/stm32f0-stdperiph" -std=gnu11 -MMD -MP -MF"src/main.d" -MT"src/main.o" -c -o "src/main.o" "../src/main.c"
-../src/main.c: In function 'main':
-../src/main.c:19:14: warning: unused variable 'DelayCount' [-Wunused-variable]
-     uint32_t DelayCount;
-              ^
-Finished building: ../src/main.c
- 
-Building target: Lesson_4.elf
-Invoking: Cross ARM C++ Linker
-arm-none-eabi-g++ -mcpu=cortex-m0 -mthumb -Og -fmessage-length=0 -fsigned-char -ffunction-sections -fdata-sections -ffreestanding -fno-move-loop-invariants -Wall -Wextra  -g3 -T mem.ld -T libs.ld -T sections.ld -nostartfiles -Xlinker --gc-sections -L"../ldscripts" -Wl,-Map,"Lesson_4.map" --specs=nano.specs -o "Lesson_4.elf"  ./system/src/stm32f0-stdperiph/stm32f0xx_gpio.o ./system/src/stm32f0-stdperiph/stm32f0xx_rcc.o  ./system/src/newlib/_cxx.o ./system/src/newlib/_exit.o ./system/src/newlib/_sbrk.o ./system/src/newlib/_startup.o ./system/src/newlib/_syscalls.o ./system/src/newlib/assert.o  ./system/src/diag/Trace.o ./system/src/diag/trace_impl.o  ./system/src/cortexm/_initialize_hardware.o ./system/src/cortexm/_reset_hardware.o ./system/src/cortexm/exception_handlers.o  ./system/src/cmsis/system_stm32f0xx.o ./system/src/cmsis/vectors_stm32f0xx.o  ./src/MCU/led.o ./src/MCU/tick.o ./src/MCU/usart2.o  ./src/main.o   
-Finished building target: Lesson_4.elf
- 
-make --no-print-directory post-build
-Binary
-arm-none-eabi-objcopy -S  -O binary  "Lesson_4.elf" "Lesson_4.bin"
- 
-Invoking: Cross ARM GNU Create Flash Image
-arm-none-eabi-objcopy -O ihex "Lesson_4.elf"  "Lesson_4.hex"
-Finished building: Lesson_4.hex
- 
-Invoking: Cross ARM GNU Print Size
-arm-none-eabi-size --format=berkeley "Lesson_4.elf"
-   text	   data	    bss	    dec	    hex	filename
-   4705	    208	    420	   5333	   14d5	Lesson_4.elf
-Finished building: Lesson_4.siz
- 
-16:18:47 **** Incremental Build of configuration Debug for project Lesson_4 ****
-make all 
-Building file: ../src/main.c
-Invoking: Cross ARM C Compiler
-arm-none-eabi-gcc -mcpu=cortex-m0 -mthumb -Og -fmessage-length=0 -fsigned-char -ffunction-sections -fdata-sections -ffreestanding -fno-move-loop-invariants -Wall -Wextra  -g3 -DDEBUG -DUSE_FULL_ASSERT -DTRACE -DOS_USE_TRACE_SEMIHOSTING_DEBUG -DSTM32F030 -DUSE_STDPERIPH_DRIVER -DHSE_VALUE=8000000 -I"../include" -I"../system/include" -I"../system/include/cmsis" -I"../system/include/stm32f0-stdperiph" -std=gnu11 -MMD -MP -MF"src/main.d" -MT"src/main.o" -c -o "src/main.o" "../src/main.c"
-Finished building: ../src/main.c
- 
-Building target: Lesson_4.elf
-Invoking: Cross ARM C++ Linker
-arm-none-eabi-g++ -mcpu=cortex-m0 -mthumb -Og -fmessage-length=0 -fsigned-char -ffunction-sections -fdata-sections -ffreestanding -fno-move-loop-invariants -Wall -Wextra  -g3 -T mem.ld -T libs.ld -T sections.ld -nostartfiles -Xlinker --gc-sections -L"../ldscripts" -Wl,-Map,"Lesson_4.map" --specs=nano.specs -o "Lesson_4.elf"  ./system/src/stm32f0-stdperiph/stm32f0xx_gpio.o ./system/src/stm32f0-stdperiph/stm32f0xx_rcc.o  ./system/src/newlib/_cxx.o ./system/src/newlib/_exit.o ./system/src/newlib/_sbrk.o ./system/src/newlib/_startup.o ./system/src/newlib/_syscalls.o ./system/src/newlib/assert.o  ./system/src/diag/Trace.o ./system/src/diag/trace_impl.o  ./system/src/cortexm/_initialize_hardware.o ./system/src/cortexm/_reset_hardware.o ./system/src/cortexm/exception_handlers.o  ./system/src/cmsis/system_stm32f0xx.o ./system/src/cmsis/vectors_stm32f0xx.o  ./src/MCU/led.o ./src/MCU/tick.o ./src/MCU/usart2.o  ./src/main.o   
-Finished building target: Lesson_4.elf
- 
-make --no-print-directory post-build
-Binary
-arm-none-eabi-objcopy -S  -O binary  "Lesson_4.elf" "Lesson_4.bin"
- 
-Invoking: Cross ARM GNU Create Flash Image
-arm-none-eabi-objcopy -O ihex "Lesson_4.elf"  "Lesson_4.hex"
-Finished building: Lesson_4.hex
- 
-Invoking: Cross ARM GNU Print Size
-arm-none-eabi-size --format=berkeley "Lesson_4.elf"
-   text	   data	    bss	    dec	    hex	filename
-   4761	    208	    420	   5389	   150d	Lesson_4.elf
-Finished building: Lesson_4.siz
- 
-16:39:03 **** Incremental Build of configuration Debug for project Lesson_4 ****
-make all 
-Building file: ../src/MCU/usart2.c
-Invoking: Cross ARM C Compiler
-arm-none-eabi-gcc -mcpu=cortex-m0 -mthumb -Og -fmessage-length=0 -fsigned-char -ffunction-sections -fdata-sections -ffreestanding -fno-move-loop-invariants -Wall -Wextra  -g3 -DDEBUG -DUSE_FULL_ASSERT -DTRACE -DOS_USE_TRACE_SEMIHOSTING_DEBUG -DSTM32F030 -DUSE_STDPERIPH_DRIVER -DHSE_VALUE=8000000 -I"../include" -I"../system/include" -I"../system/include/cmsis" -I"../system/include/stm32f0-stdperiph" -std=gnu11 -MMD -MP -MF"src/MCU/usart2.d" -MT"src/MCU/usart2.o" -c -o "src/MCU/usart2.o" "../src/MCU/usart2.c"
-../src/MCU/usart2.c: In function 'GetByte':
-../src/MCU/usart2.c:204:4: error: 'USRAT2' undeclared (first use in this function)
-    USRAT2->ICR |= (1<<3);
-    ^
-../src/MCU/usart2.c:204:4: note: each undeclared identifier is reported only once for each function it appears in
-make: *** [src/MCU/usart2.o] Error 1
-16:39:18 **** Incremental Build of configuration Debug for project Lesson_4 ****
-make all 
-Building file: ../src/MCU/usart2.c
-Invoking: Cross ARM C Compiler
-arm-none-eabi-gcc -mcpu=cortex-m0 -mthumb -Og -fmessage-length=0 -fsigned-char -ffunction-sections -fdata-sections -ffreestanding -fno-move-loop-invariants -Wall -Wextra  -g3 -DDEBUG -DUSE_FULL_ASSERT -DTRACE -DOS_USE_TRACE_SEMIHOSTING_DEBUG -DSTM32F030 -DUSE_STDPERIPH_DRIVER -DHSE_VALUE=8000000 -I"../include" -I"../system/include" -I"../system/include/cmsis" -I"../system/include/stm32f0-stdperiph" -std=gnu11 -MMD -MP -MF"src/MCU/usart2.d" -MT"src/MCU/usart2.o" -c -o "src/MCU/usart2.o" "../src/MCU/usart2.c"
-../src/MCU/usart2.c: In function 'GetByte':
-../src/MCU/usart2.c:210:4: error: 'USRAT2' undeclared (first use in this function)
-    USRAT2->ICR |= (1<<1);
-    ^
-../src/MCU/usart2.c:210:4: note: each undeclared identifier is reported only once for each function it appears in
-make: *** [src/MCU/usart2.o] Error 1
-16:39:31 **** Incremental Build of configuration Debug for project Lesson_4 ****
-make all 
-Building file: ../src/MCU/usart2.c
-Invoking: Cross ARM C Compiler
-arm-none-eabi-gcc -mcpu=cortex-m0 -mthumb -Og -fmessage-length=0 -fsigned-char -ffunction-sections -fdata-sections -ffreestanding -fno-move-loop-invariants -Wall -Wextra  -g3 -DDEBUG -DUSE_FULL_ASSERT -DTRACE -DOS_USE_TRACE_SEMIHOSTING_DEBUG -DSTM32F030 -DUSE_STDPERIPH_DRIVER -DHSE_VALUE=8000000 -I"../include" -I"../system/include" -I"../system/include/cmsis" -I"../system/include/stm32f0-stdperiph" -std=gnu11 -MMD -MP -MF"src/MCU/usart2.d" -MT"src/MCU/usart2.o" -c -o "src/MCU/usart2.o" "../src/MCU/usart2.c"
-Finished building: ../src/MCU/usart2.c
- 
-Building target: Lesson_4.elf
-Invoking: Cross ARM C++ Linker
-arm-none-eabi-g++ -mcpu=cortex-m0 -mthumb -Og -fmessage-length=0 -fsigned-char -ffunction-sections -fdata-sections -ffreestanding -fno-move-loop-invariants -Wall -Wextra  -g3 -T mem.ld -T libs.ld -T sections.ld -nostartfiles -Xlinker --gc-sections -L"../ldscripts" -Wl,-Map,"Lesson_4.map" --specs=nano.specs -o "Lesson_4.elf"  ./system/src/stm32f0-stdperiph/stm32f0xx_gpio.o ./system/src/stm32f0-stdperiph/stm32f0xx_rcc.o  ./system/src/newlib/_cxx.o ./system/src/newlib/_exit.o ./system/src/newlib/_sbrk.o ./system/src/newlib/_startup.o ./system/src/newlib/_syscalls.o ./system/src/newlib/assert.o  ./system/src/diag/Trace.o ./system/src/diag/trace_impl.o  ./system/src/cortexm/_initialize_hardware.o ./system/src/cortexm/_reset_hardware.o ./system/src/cortexm/exception_handlers.o  ./system/src/cmsis/system_stm32f0xx.o ./system/src/cmsis/vectors_stm32f0xx.o  ./src/MCU/led.o ./src/MCU/tick.o ./src/MCU/usart2.o  ./src/main.o   
-Finished building target: Lesson_4.elf
- 
-make --no-print-directory post-build
-Binary
-arm-none-eabi-objcopy -S  -O binary  "Lesson_4.elf" "Lesson_4.bin"
- 
-Invoking: Cross ARM GNU Create Flash Image
-arm-none-eabi-objcopy -O ihex "Lesson_4.elf"  "Lesson_4.hex"
-Finished building: Lesson_4.hex
- 
-Invoking: Cross ARM GNU Print Size
-arm-none-eabi-size --format=berkeley "Lesson_4.elf"
-   text	   data	    bss	    dec	    hex	filename
-   4817	    208	    420	   5445	   1545	Lesson_4.elf
-Finished building: Lesson_4.siz
- 
-16:47:07 **** Incremental Build of configuration Debug for project Lesson_4 ****
+14:17:39 **** Incremental Build of configuration Debug for project Lesson_5 ****
 make all 
 Invoking: Cross ARM GNU Print Size
-arm-none-eabi-size --format=berkeley "Lesson_4.elf"
+arm-none-eabi-size --format=berkeley "Lesson_5.elf"
    text	   data	    bss	    dec	    hex	filename
-   4817	    208	    420	   5445	   1545	Lesson_4.elf
-Finished building: Lesson_4.siz
- 
-16:52:37 **** Incremental Build of configuration Debug for project Lesson_4 ****
-make all 
-Invoking: Cross ARM GNU Print Size
-arm-none-eabi-size --format=berkeley "Lesson_4.elf"
-   text	   data	    bss	    dec	    hex	filename
-   4817	    208	    420	   5445	   1545	Lesson_4.elf
-Finished building: Lesson_4.siz
+   4861	    208	    420	   5489	   1571	Lesson_5.elf
+Finished building: Lesson_5.siz
  

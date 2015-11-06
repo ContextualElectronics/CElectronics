@@ -1,0 +1,11 @@
+14:17:39 **** Incremental Build of configuration Debug for project Lesson_5 ****
+make all 
+Invoking: Cross ARM GNU Print Size
+arm-none-eabi-size --format=berkeley "Lesson_5.elf"
+   text	   data	    bss	    dec	    hex	filename
+   4861	    208	    420	   5489	   1571	Lesson_5.elf
+Finished building: Lesson_5.siz
+ 
+
+14:17:40 Build Finished (took 79ms)
+
