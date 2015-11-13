@@ -1,0 +1,11 @@
+17:57:01 **** Incremental Build of configuration Debug for project Lesson_7 - FiFO Read ****
+make all 
+Invoking: Cross ARM GNU Print Size
+arm-none-eabi-size --format=berkeley "Lesson_7 - FiFO Read.elf"
+   text	   data	    bss	    dec	    hex	filename
+   5073	    208	    436	   5717	   1655	Lesson_7 - FiFO Read.elf
+Finished building: Lesson_7 - FiFO Read.siz
+ 
+
+17:57:01 Build Finished (took 151ms)
+
