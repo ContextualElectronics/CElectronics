@@ -8,6 +8,8 @@
 #include "MCU/led.h"
 #include "MCU/usart2.h"
 #include "MCU/tick.h"
+#include "FIFO.h"
+
 
 /////////////////////////////////////////////////////////////////////////
 ///	\brief the first user code function to be called after the ARM M0
@@ -16,9 +18,8 @@
 void main(void)
 {
     uint8_t TempData;
-    uint32_t DelayCount;
 
-
+    FIFO_Initialiser();
     Led_Init();
     Tick_init();
 
@@ -28,13 +29,15 @@ void main(void)
     {
         if(SerialPort2.GetByte(&TempData))
         {
+        	if( FALSE == FIFO_Write(TempData) )
+        	{
+        		SerialPort2.SendString("Buffer is full");
+        		FIFO_Initialiser();
+        	}
+
             SerialPort2.SendByte(TempData);
 
-            // Application
-            for(DelayCount = 100; DelayCount ; DelayCount--)
-            {
-            	Led_Toggle();
-            }
+            Led_Toggle();
         }
     }
 }

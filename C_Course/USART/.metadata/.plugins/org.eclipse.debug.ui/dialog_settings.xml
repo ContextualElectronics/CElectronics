@@ -3,7 +3,7 @@
 	<section name="org.eclipse.debug.ui.STRING_VARIABLE_SELECTION_DIALOG_SECTION">
 		<item value="444" key="DIALOG_WIDTH"/>
 		<item value="1|Ubuntu|11.0|0|GTK|1|" key="DIALOG_FONT_NAME"/>
-		<item value="660" key="DIALOG_HEIGHT"/>
+		<item value="632" key="DIALOG_HEIGHT"/>
 		<item value="247" key="DIALOG_X_ORIGIN"/>
 		<item value="0" key="DIALOG_Y_ORIGIN"/>
 	</section>
@@ -13,11 +13,11 @@
 		<item value="392" key="DIALOG_HEIGHT"/>
 	</section>
 	<section name="org.eclipse.debug.ui.LAUNCH_CONFIGURATIONS_DIALOG_SECTION">
-		<item value="1132" key="DIALOG_WIDTH"/>
+		<item value="1179" key="DIALOG_WIDTH"/>
 		<item value="1|Ubuntu|11.0|0|GTK|1|" key="DIALOG_FONT_NAME"/>
 		<item value=", ilg.gnuarmeclipse.debug.gdbjtag.openocd.launchConfigurationType, " key="org.eclipse.debug.ui.EXPANDED_NODES"/>
 		<item value="762" key="org.eclipse.debug.ui.DIALOG_SASH_WEIGHTS_2"/>
-		<item value="660" key="DIALOG_HEIGHT"/>
+		<item value="632" key="DIALOG_HEIGHT"/>
 		<item value="237" key="org.eclipse.debug.ui.DIALOG_SASH_WEIGHTS_1"/>
 	</section>
 </section>

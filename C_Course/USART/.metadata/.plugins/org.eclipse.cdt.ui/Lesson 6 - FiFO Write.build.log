@@ -1,0 +1,11 @@
+15:59:04 **** Incremental Build of configuration Debug for project Lesson 6 - FiFO Write ****
+make all 
+Invoking: Cross ARM GNU Print Size
+arm-none-eabi-size --format=berkeley "Lesson 6 - FiFO Write.elf"
+   text	   data	    bss	    dec	    hex	filename
+   4997	    208	    432	   5637	   1605	Lesson 6 - FiFO Write.elf
+Finished building: Lesson 6 - FiFO Write.siz
+ 
+
+15:59:04 Build Finished (took 242ms)
+

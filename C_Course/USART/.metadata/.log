@@ -2707,3 +2707,747 @@ org.eclipse.core.runtime.CoreException: Error
 !MESSAGE OpenOCD failed with code (1).
 
 For more details, see the openocd console.
+!SESSION 2015-11-11 17:35:44.305 -----------------------------------------------
+eclipse.buildId=4.4.2.M20150204-1700
+java.version=1.8.0_60
+java.vendor=Oracle Corporation
+BootLoader constants: OS=linux, ARCH=x86_64, WS=gtk, NL=en_US
+Framework arguments:  -product org.eclipse.epp.package.cpp.product
+Command-line arguments:  -data /home/vagrant/Embedded/C_Course/USART -os linux -ws gtk -arch x86_64 -product org.eclipse.epp.package.cpp.product
+
+!ENTRY org.eclipse.cdt.core 4 0 2015-11-11 17:35:55.852
+!MESSAGE Error: Error
+!STACK 1
+org.eclipse.core.runtime.CoreException: Error
+	at org.eclipse.cdt.internal.core.pdom.db.Database.databaseCorruptionDetected(Database.java:292)
+	at org.eclipse.cdt.internal.core.pdom.db.Database.getChunk(Database.java:274)
+	at org.eclipse.cdt.internal.core.pdom.db.Database.getRecPtr(Database.java:486)
+	at org.eclipse.cdt.internal.core.pdom.dom.PDOMLinkage.getLinkageID(PDOMLinkage.java:123)
+	at org.eclipse.cdt.internal.core.pdom.PDOM.readLinkages(PDOM.java:422)
+	at org.eclipse.cdt.internal.core.pdom.PDOM.loadDatabase(PDOM.java:405)
+	at org.eclipse.cdt.internal.core.pdom.PDOM.<init>(PDOM.java:381)
+	at org.eclipse.cdt.internal.core.pdom.WritablePDOM.<init>(WritablePDOM.java:64)
+	at org.eclipse.cdt.internal.core.pdom.WritablePDOM.<init>(WritablePDOM.java:59)
+	at org.eclipse.cdt.internal.core.pdom.PDOMManager.getOrCreatePDOM(PDOMManager.java:384)
+	at org.eclipse.cdt.internal.core.pdom.PDOMManager.createIndexer(PDOMManager.java:571)
+	at org.eclipse.cdt.internal.core.pdom.PDOMSetupJob.run(PDOMSetupJob.java:58)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:54)
+!SUBENTRY 1 org.eclipse.cdt.core 4 0 2015-11-11 17:35:55.853
+!MESSAGE Error
+
+!ENTRY org.eclipse.cdt.dsf.gdb 4 103 2015-11-11 17:39:46.486
+!MESSAGE Program file does not exist
+!SUBENTRY 1 org.eclipse.cdt.dsf.gdb 4 103 2015-11-11 17:39:46.487
+!MESSAGE 
+
+!ENTRY org.eclipse.cdt.dsf.gdb 4 103 2015-11-11 17:40:30.899
+!MESSAGE Program file does not exist
+!SUBENTRY 1 org.eclipse.cdt.dsf.gdb 4 103 2015-11-11 17:40:30.899
+!MESSAGE 
+
+!ENTRY org.eclipse.cdt.dsf 4 10005 2015-11-11 17:42:24.471
+!MESSAGE Request for monitor: 'RequestMonitor (org.eclipse.cdt.dsf.concurrent.RequestMonitorWithProgress@68bbddb6): Status ERROR: ilg.gnuarmeclipse.debug.gdbjtag code=-1 Launching command [/home/vagrant/openocd/0.9.0-201505190955//openocd -c gdb_port 3333 -c telnet_port 4444 -f board/st_nucleo_f0.cfg -c echo "Started by GNU ARM Eclipse"] failed. org.eclipse.core.runtime.CoreException: Launching command [/home/vagrant/openocd/0.9.0-201505190955//openocd -c gdb_port 3333 -c telnet_port 4444 -f board/st_nucleo_f0.cfg -c echo "Started by GNU ARM Eclipse"] failed.' resulted in an error.
+!SUBENTRY 1 ilg.gnuarmeclipse.debug.gdbjtag 4 -1 2015-11-11 17:42:24.471
+!MESSAGE Launching command [/home/vagrant/openocd/0.9.0-201505190955//openocd -c gdb_port 3333 -c telnet_port 4444 -f board/st_nucleo_f0.cfg -c echo "Started by GNU ARM Eclipse"] failed.
+!STACK 1
+org.eclipse.core.runtime.CoreException: Launching command [/home/vagrant/openocd/0.9.0-201505190955//openocd -c gdb_port 3333 -c telnet_port 4444 -f board/st_nucleo_f0.cfg -c echo "Started by GNU ARM Eclipse"] failed.
+	at ilg.gnuarmeclipse.debug.gdbjtag.DebugUtils.exec(DebugUtils.java:512)
+	at ilg.gnuarmeclipse.debug.gdbjtag.dsf.GnuArmGdbServerBackend.launchGdbServerProcess(GnuArmGdbServerBackend.java:350)
+	at ilg.gnuarmeclipse.debug.gdbjtag.dsf.GnuArmGdbServerBackend$GdbServerStep$2.run(GnuArmGdbServerBackend.java:834)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:54)
+Caused by: java.io.IOException: Cannot run program "/home/vagrant/openocd/0.9.0-201505190955//openocd": Unknown reason
+	at org.eclipse.cdt.utils.spawner.Spawner.exec(Spawner.java:349)
+	at org.eclipse.cdt.utils.spawner.Spawner.<init>(Spawner.java:91)
+	at org.eclipse.cdt.utils.spawner.ProcessFactory.exec(ProcessFactory.java:91)
+	at ilg.gnuarmeclipse.debug.gdbjtag.DebugUtils.exec(DebugUtils.java:507)
+	... 3 more
+!SUBENTRY 2 ilg.gnuarmeclipse.debug.gdbjtag 4 -1 2015-11-11 17:42:24.472
+!MESSAGE Launching command [/home/vagrant/openocd/0.9.0-201505190955//openocd -c gdb_port 3333 -c telnet_port 4444 -f board/st_nucleo_f0.cfg -c echo "Started by GNU ARM Eclipse"] failed.
+!STACK 0
+java.io.IOException: Cannot run program "/home/vagrant/openocd/0.9.0-201505190955//openocd": Unknown reason
+	at org.eclipse.cdt.utils.spawner.Spawner.exec(Spawner.java:349)
+	at org.eclipse.cdt.utils.spawner.Spawner.<init>(Spawner.java:91)
+	at org.eclipse.cdt.utils.spawner.ProcessFactory.exec(ProcessFactory.java:91)
+	at ilg.gnuarmeclipse.debug.gdbjtag.DebugUtils.exec(DebugUtils.java:507)
+	at ilg.gnuarmeclipse.debug.gdbjtag.dsf.GnuArmGdbServerBackend.launchGdbServerProcess(GnuArmGdbServerBackend.java:350)
+	at ilg.gnuarmeclipse.debug.gdbjtag.dsf.GnuArmGdbServerBackend$GdbServerStep$2.run(GnuArmGdbServerBackend.java:834)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:54)
+
+!ENTRY org.eclipse.cdt.dsf.gdb 4 5012 2015-11-11 17:42:24.478
+!MESSAGE Error in services launch sequence
+!STACK 1
+org.eclipse.core.runtime.CoreException: Launching command [/home/vagrant/openocd/0.9.0-201505190955//openocd -c gdb_port 3333 -c telnet_port 4444 -f board/st_nucleo_f0.cfg -c echo "Started by GNU ARM Eclipse"] failed.
+	at org.eclipse.cdt.dsf.concurrent.Sequence.abortExecution(Sequence.java:582)
+	at org.eclipse.cdt.dsf.concurrent.Sequence.access$4(Sequence.java:574)
+	at org.eclipse.cdt.dsf.concurrent.Sequence$2.handleErrorOrWarning(Sequence.java:431)
+	at org.eclipse.cdt.dsf.concurrent.RequestMonitor.handleFailure(RequestMonitor.java:425)
+	at org.eclipse.cdt.dsf.concurrent.RequestMonitor.handleCompleted(RequestMonitor.java:388)
+	at org.eclipse.cdt.dsf.concurrent.RequestMonitor$2.run(RequestMonitor.java:313)
+	at java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:511)
+	at java.util.concurrent.FutureTask.run(FutureTask.java:266)
+	at java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.access$201(ScheduledThreadPoolExecutor.java:180)
+	at java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.run(ScheduledThreadPoolExecutor.java:293)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1142)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:617)
+	at java.lang.Thread.run(Thread.java:745)
+Caused by: org.eclipse.core.runtime.CoreException: Launching command [/home/vagrant/openocd/0.9.0-201505190955//openocd -c gdb_port 3333 -c telnet_port 4444 -f board/st_nucleo_f0.cfg -c echo "Started by GNU ARM Eclipse"] failed.
+	at ilg.gnuarmeclipse.debug.gdbjtag.DebugUtils.exec(DebugUtils.java:512)
+	at ilg.gnuarmeclipse.debug.gdbjtag.dsf.GnuArmGdbServerBackend.launchGdbServerProcess(GnuArmGdbServerBackend.java:350)
+	at ilg.gnuarmeclipse.debug.gdbjtag.dsf.GnuArmGdbServerBackend$GdbServerStep$2.run(GnuArmGdbServerBackend.java:834)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:54)
+Caused by: java.io.IOException: Cannot run program "/home/vagrant/openocd/0.9.0-201505190955//openocd": Unknown reason
+	at org.eclipse.cdt.utils.spawner.Spawner.exec(Spawner.java:349)
+	at org.eclipse.cdt.utils.spawner.Spawner.<init>(Spawner.java:91)
+	at org.eclipse.cdt.utils.spawner.ProcessFactory.exec(ProcessFactory.java:91)
+	at ilg.gnuarmeclipse.debug.gdbjtag.DebugUtils.exec(DebugUtils.java:507)
+	... 3 more
+!SUBENTRY 1 ilg.gnuarmeclipse.debug.gdbjtag 4 -1 2015-11-11 17:42:24.482
+!MESSAGE Launching command [/home/vagrant/openocd/0.9.0-201505190955//openocd -c gdb_port 3333 -c telnet_port 4444 -f board/st_nucleo_f0.cfg -c echo "Started by GNU ARM Eclipse"] failed.
+!STACK 1
+org.eclipse.core.runtime.CoreException: Launching command [/home/vagrant/openocd/0.9.0-201505190955//openocd -c gdb_port 3333 -c telnet_port 4444 -f board/st_nucleo_f0.cfg -c echo "Started by GNU ARM Eclipse"] failed.
+	at ilg.gnuarmeclipse.debug.gdbjtag.DebugUtils.exec(DebugUtils.java:512)
+	at ilg.gnuarmeclipse.debug.gdbjtag.dsf.GnuArmGdbServerBackend.launchGdbServerProcess(GnuArmGdbServerBackend.java:350)
+	at ilg.gnuarmeclipse.debug.gdbjtag.dsf.GnuArmGdbServerBackend$GdbServerStep$2.run(GnuArmGdbServerBackend.java:834)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:54)
+Caused by: java.io.IOException: Cannot run program "/home/vagrant/openocd/0.9.0-201505190955//openocd": Unknown reason
+	at org.eclipse.cdt.utils.spawner.Spawner.exec(Spawner.java:349)
+	at org.eclipse.cdt.utils.spawner.Spawner.<init>(Spawner.java:91)
+	at org.eclipse.cdt.utils.spawner.ProcessFactory.exec(ProcessFactory.java:91)
+	at ilg.gnuarmeclipse.debug.gdbjtag.DebugUtils.exec(DebugUtils.java:507)
+	... 3 more
+!SUBENTRY 2 ilg.gnuarmeclipse.debug.gdbjtag 4 -1 2015-11-11 17:42:24.482
+!MESSAGE Launching command [/home/vagrant/openocd/0.9.0-201505190955//openocd -c gdb_port 3333 -c telnet_port 4444 -f board/st_nucleo_f0.cfg -c echo "Started by GNU ARM Eclipse"] failed.
+!STACK 0
+java.io.IOException: Cannot run program "/home/vagrant/openocd/0.9.0-201505190955//openocd": Unknown reason
+	at org.eclipse.cdt.utils.spawner.Spawner.exec(Spawner.java:349)
+	at org.eclipse.cdt.utils.spawner.Spawner.<init>(Spawner.java:91)
+	at org.eclipse.cdt.utils.spawner.ProcessFactory.exec(ProcessFactory.java:91)
+	at ilg.gnuarmeclipse.debug.gdbjtag.DebugUtils.exec(DebugUtils.java:507)
+	at ilg.gnuarmeclipse.debug.gdbjtag.dsf.GnuArmGdbServerBackend.launchGdbServerProcess(GnuArmGdbServerBackend.java:350)
+	at ilg.gnuarmeclipse.debug.gdbjtag.dsf.GnuArmGdbServerBackend$GdbServerStep$2.run(GnuArmGdbServerBackend.java:834)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:54)
+!SESSION 2015-11-13 14:25:16.907 -----------------------------------------------
+eclipse.buildId=4.4.2.M20150204-1700
+java.version=1.8.0_60
+java.vendor=Oracle Corporation
+BootLoader constants: OS=linux, ARCH=x86_64, WS=gtk, NL=en_US
+Framework arguments:  -product org.eclipse.epp.package.cpp.product
+Command-line arguments:  -os linux -ws gtk -arch x86_64 -product org.eclipse.epp.package.cpp.product
+
+!ENTRY org.eclipse.cdt.core 4 0 2015-11-13 14:25:38.147
+!MESSAGE Error: Error
+!STACK 1
+org.eclipse.core.runtime.CoreException: Error
+	at org.eclipse.cdt.internal.core.pdom.db.Database.databaseCorruptionDetected(Database.java:292)
+	at org.eclipse.cdt.internal.core.pdom.db.Database.getChunk(Database.java:274)
+	at org.eclipse.cdt.internal.core.pdom.db.Database.getRecPtr(Database.java:486)
+	at org.eclipse.cdt.internal.core.pdom.dom.PDOMLinkage.getLinkageID(PDOMLinkage.java:123)
+	at org.eclipse.cdt.internal.core.pdom.PDOM.readLinkages(PDOM.java:422)
+	at org.eclipse.cdt.internal.core.pdom.PDOM.loadDatabase(PDOM.java:405)
+	at org.eclipse.cdt.internal.core.pdom.PDOM.<init>(PDOM.java:381)
+	at org.eclipse.cdt.internal.core.pdom.WritablePDOM.<init>(WritablePDOM.java:64)
+	at org.eclipse.cdt.internal.core.pdom.WritablePDOM.<init>(WritablePDOM.java:59)
+	at org.eclipse.cdt.internal.core.pdom.PDOMManager.getOrCreatePDOM(PDOMManager.java:384)
+	at org.eclipse.cdt.internal.core.pdom.PDOMManager.createIndexer(PDOMManager.java:571)
+	at org.eclipse.cdt.internal.core.pdom.PDOMSetupJob.run(PDOMSetupJob.java:58)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:54)
+!SUBENTRY 1 org.eclipse.cdt.core 4 0 2015-11-13 14:25:38.161
+!MESSAGE Error
+
+!ENTRY org.eclipse.cdt.core 4 0 2015-11-13 14:43:13.994
+!MESSAGE Error: Error
+!STACK 1
+org.eclipse.core.runtime.CoreException: Error
+	at org.eclipse.cdt.internal.core.pdom.db.Database.databaseCorruptionDetected(Database.java:292)
+	at org.eclipse.cdt.internal.core.pdom.db.Database.getChunk(Database.java:274)
+	at org.eclipse.cdt.internal.core.pdom.db.Database.getRecPtr(Database.java:486)
+	at org.eclipse.cdt.internal.core.pdom.dom.PDOMLinkage.getLinkageID(PDOMLinkage.java:123)
+	at org.eclipse.cdt.internal.core.pdom.PDOM.readLinkages(PDOM.java:422)
+	at org.eclipse.cdt.internal.core.pdom.PDOM.loadDatabase(PDOM.java:405)
+	at org.eclipse.cdt.internal.core.pdom.PDOM.<init>(PDOM.java:381)
+	at org.eclipse.cdt.internal.core.pdom.WritablePDOM.<init>(WritablePDOM.java:64)
+	at org.eclipse.cdt.internal.core.pdom.WritablePDOM.<init>(WritablePDOM.java:59)
+	at org.eclipse.cdt.internal.core.pdom.PDOMManager.getOrCreatePDOM(PDOMManager.java:384)
+	at org.eclipse.cdt.internal.core.pdom.PDOMManager.createIndexer(PDOMManager.java:571)
+	at org.eclipse.cdt.internal.core.pdom.PDOMSetupJob.run(PDOMSetupJob.java:58)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:54)
+!SUBENTRY 1 org.eclipse.cdt.core 4 0 2015-11-13 14:43:13.995
+!MESSAGE Error
+!SESSION 2015-11-13 14:57:05.839 -----------------------------------------------
+eclipse.buildId=4.4.2.M20150204-1700
+java.version=1.8.0_60
+java.vendor=Oracle Corporation
+BootLoader constants: OS=linux, ARCH=x86_64, WS=gtk, NL=en_US
+Framework arguments:  -product org.eclipse.epp.package.cpp.product
+Command-line arguments:  -os linux -ws gtk -arch x86_64 -product org.eclipse.epp.package.cpp.product
+
+!ENTRY org.eclipse.cdt.core 4 0 2015-11-13 14:57:34.699
+!MESSAGE Error: Error
+!STACK 1
+org.eclipse.core.runtime.CoreException: Error
+	at org.eclipse.cdt.internal.core.pdom.db.Database.databaseCorruptionDetected(Database.java:292)
+	at org.eclipse.cdt.internal.core.pdom.db.Database.getChunk(Database.java:274)
+	at org.eclipse.cdt.internal.core.pdom.db.Database.getRecPtr(Database.java:486)
+	at org.eclipse.cdt.internal.core.pdom.dom.PDOMLinkage.getLinkageID(PDOMLinkage.java:123)
+	at org.eclipse.cdt.internal.core.pdom.PDOM.readLinkages(PDOM.java:422)
+	at org.eclipse.cdt.internal.core.pdom.PDOM.loadDatabase(PDOM.java:405)
+	at org.eclipse.cdt.internal.core.pdom.PDOM.<init>(PDOM.java:381)
+	at org.eclipse.cdt.internal.core.pdom.WritablePDOM.<init>(WritablePDOM.java:64)
+	at org.eclipse.cdt.internal.core.pdom.WritablePDOM.<init>(WritablePDOM.java:59)
+	at org.eclipse.cdt.internal.core.pdom.PDOMManager.getOrCreatePDOM(PDOMManager.java:384)
+	at org.eclipse.cdt.internal.core.pdom.PDOMManager.createIndexer(PDOMManager.java:571)
+	at org.eclipse.cdt.internal.core.pdom.PDOMSetupJob.run(PDOMSetupJob.java:58)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:54)
+!SUBENTRY 1 org.eclipse.cdt.core 4 0 2015-11-13 14:57:34.712
+!MESSAGE Error
+
+!ENTRY org.eclipse.cdt.dsf 4 10005 2015-11-13 15:41:35.840
+!MESSAGE Request for monitor: 'RequestMonitor (org.eclipse.cdt.dsf.concurrent.RequestMonitorWithProgress@28c04c0c): Status ERROR: ilg.gnuarmeclipse.debug.gdbjtag code=-1 Launching command [/home/vagrant/openocd/0.9.0-201505190955//openocd -c gdb_port 3333 -c telnet_port 4444 -f board/st_nucleo_f0.cfg -c echo "Started by GNU ARM Eclipse"] failed. org.eclipse.core.runtime.CoreException: Launching command [/home/vagrant/openocd/0.9.0-201505190955//openocd -c gdb_port 3333 -c telnet_port 4444 -f board/st_nucleo_f0.cfg -c echo "Started by GNU ARM Eclipse"] failed.' resulted in an error.
+!SUBENTRY 1 ilg.gnuarmeclipse.debug.gdbjtag 4 -1 2015-11-13 15:41:35.841
+!MESSAGE Launching command [/home/vagrant/openocd/0.9.0-201505190955//openocd -c gdb_port 3333 -c telnet_port 4444 -f board/st_nucleo_f0.cfg -c echo "Started by GNU ARM Eclipse"] failed.
+!STACK 1
+org.eclipse.core.runtime.CoreException: Launching command [/home/vagrant/openocd/0.9.0-201505190955//openocd -c gdb_port 3333 -c telnet_port 4444 -f board/st_nucleo_f0.cfg -c echo "Started by GNU ARM Eclipse"] failed.
+	at ilg.gnuarmeclipse.debug.gdbjtag.DebugUtils.exec(DebugUtils.java:512)
+	at ilg.gnuarmeclipse.debug.gdbjtag.dsf.GnuArmGdbServerBackend.launchGdbServerProcess(GnuArmGdbServerBackend.java:350)
+	at ilg.gnuarmeclipse.debug.gdbjtag.dsf.GnuArmGdbServerBackend$GdbServerStep$2.run(GnuArmGdbServerBackend.java:834)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:54)
+Caused by: java.io.IOException: Cannot run program "/home/vagrant/openocd/0.9.0-201505190955//openocd": Unknown reason
+	at org.eclipse.cdt.utils.spawner.Spawner.exec(Spawner.java:349)
+	at org.eclipse.cdt.utils.spawner.Spawner.<init>(Spawner.java:91)
+	at org.eclipse.cdt.utils.spawner.ProcessFactory.exec(ProcessFactory.java:91)
+	at ilg.gnuarmeclipse.debug.gdbjtag.DebugUtils.exec(DebugUtils.java:507)
+	... 3 more
+!SUBENTRY 2 ilg.gnuarmeclipse.debug.gdbjtag 4 -1 2015-11-13 15:41:35.842
+!MESSAGE Launching command [/home/vagrant/openocd/0.9.0-201505190955//openocd -c gdb_port 3333 -c telnet_port 4444 -f board/st_nucleo_f0.cfg -c echo "Started by GNU ARM Eclipse"] failed.
+!STACK 0
+java.io.IOException: Cannot run program "/home/vagrant/openocd/0.9.0-201505190955//openocd": Unknown reason
+	at org.eclipse.cdt.utils.spawner.Spawner.exec(Spawner.java:349)
+	at org.eclipse.cdt.utils.spawner.Spawner.<init>(Spawner.java:91)
+	at org.eclipse.cdt.utils.spawner.ProcessFactory.exec(ProcessFactory.java:91)
+	at ilg.gnuarmeclipse.debug.gdbjtag.DebugUtils.exec(DebugUtils.java:507)
+	at ilg.gnuarmeclipse.debug.gdbjtag.dsf.GnuArmGdbServerBackend.launchGdbServerProcess(GnuArmGdbServerBackend.java:350)
+	at ilg.gnuarmeclipse.debug.gdbjtag.dsf.GnuArmGdbServerBackend$GdbServerStep$2.run(GnuArmGdbServerBackend.java:834)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:54)
+
+!ENTRY org.eclipse.cdt.dsf.gdb 4 5012 2015-11-13 15:41:35.907
+!MESSAGE Error in services launch sequence
+!STACK 1
+org.eclipse.core.runtime.CoreException: Launching command [/home/vagrant/openocd/0.9.0-201505190955//openocd -c gdb_port 3333 -c telnet_port 4444 -f board/st_nucleo_f0.cfg -c echo "Started by GNU ARM Eclipse"] failed.
+	at org.eclipse.cdt.dsf.concurrent.Sequence.abortExecution(Sequence.java:582)
+	at org.eclipse.cdt.dsf.concurrent.Sequence.access$4(Sequence.java:574)
+	at org.eclipse.cdt.dsf.concurrent.Sequence$2.handleErrorOrWarning(Sequence.java:431)
+	at org.eclipse.cdt.dsf.concurrent.RequestMonitor.handleFailure(RequestMonitor.java:425)
+	at org.eclipse.cdt.dsf.concurrent.RequestMonitor.handleCompleted(RequestMonitor.java:388)
+	at org.eclipse.cdt.dsf.concurrent.RequestMonitor$2.run(RequestMonitor.java:313)
+	at java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:511)
+	at java.util.concurrent.FutureTask.run(FutureTask.java:266)
+	at java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.access$201(ScheduledThreadPoolExecutor.java:180)
+	at java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.run(ScheduledThreadPoolExecutor.java:293)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1142)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:617)
+	at java.lang.Thread.run(Thread.java:745)
+Caused by: org.eclipse.core.runtime.CoreException: Launching command [/home/vagrant/openocd/0.9.0-201505190955//openocd -c gdb_port 3333 -c telnet_port 4444 -f board/st_nucleo_f0.cfg -c echo "Started by GNU ARM Eclipse"] failed.
+	at ilg.gnuarmeclipse.debug.gdbjtag.DebugUtils.exec(DebugUtils.java:512)
+	at ilg.gnuarmeclipse.debug.gdbjtag.dsf.GnuArmGdbServerBackend.launchGdbServerProcess(GnuArmGdbServerBackend.java:350)
+	at ilg.gnuarmeclipse.debug.gdbjtag.dsf.GnuArmGdbServerBackend$GdbServerStep$2.run(GnuArmGdbServerBackend.java:834)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:54)
+Caused by: java.io.IOException: Cannot run program "/home/vagrant/openocd/0.9.0-201505190955//openocd": Unknown reason
+	at org.eclipse.cdt.utils.spawner.Spawner.exec(Spawner.java:349)
+	at org.eclipse.cdt.utils.spawner.Spawner.<init>(Spawner.java:91)
+	at org.eclipse.cdt.utils.spawner.ProcessFactory.exec(ProcessFactory.java:91)
+	at ilg.gnuarmeclipse.debug.gdbjtag.DebugUtils.exec(DebugUtils.java:507)
+	... 3 more
+!SUBENTRY 1 ilg.gnuarmeclipse.debug.gdbjtag 4 -1 2015-11-13 15:41:35.918
+!MESSAGE Launching command [/home/vagrant/openocd/0.9.0-201505190955//openocd -c gdb_port 3333 -c telnet_port 4444 -f board/st_nucleo_f0.cfg -c echo "Started by GNU ARM Eclipse"] failed.
+!STACK 1
+org.eclipse.core.runtime.CoreException: Launching command [/home/vagrant/openocd/0.9.0-201505190955//openocd -c gdb_port 3333 -c telnet_port 4444 -f board/st_nucleo_f0.cfg -c echo "Started by GNU ARM Eclipse"] failed.
+	at ilg.gnuarmeclipse.debug.gdbjtag.DebugUtils.exec(DebugUtils.java:512)
+	at ilg.gnuarmeclipse.debug.gdbjtag.dsf.GnuArmGdbServerBackend.launchGdbServerProcess(GnuArmGdbServerBackend.java:350)
+	at ilg.gnuarmeclipse.debug.gdbjtag.dsf.GnuArmGdbServerBackend$GdbServerStep$2.run(GnuArmGdbServerBackend.java:834)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:54)
+Caused by: java.io.IOException: Cannot run program "/home/vagrant/openocd/0.9.0-201505190955//openocd": Unknown reason
+	at org.eclipse.cdt.utils.spawner.Spawner.exec(Spawner.java:349)
+	at org.eclipse.cdt.utils.spawner.Spawner.<init>(Spawner.java:91)
+	at org.eclipse.cdt.utils.spawner.ProcessFactory.exec(ProcessFactory.java:91)
+	at ilg.gnuarmeclipse.debug.gdbjtag.DebugUtils.exec(DebugUtils.java:507)
+	... 3 more
+!SUBENTRY 2 ilg.gnuarmeclipse.debug.gdbjtag 4 -1 2015-11-13 15:41:35.918
+!MESSAGE Launching command [/home/vagrant/openocd/0.9.0-201505190955//openocd -c gdb_port 3333 -c telnet_port 4444 -f board/st_nucleo_f0.cfg -c echo "Started by GNU ARM Eclipse"] failed.
+!STACK 0
+java.io.IOException: Cannot run program "/home/vagrant/openocd/0.9.0-201505190955//openocd": Unknown reason
+	at org.eclipse.cdt.utils.spawner.Spawner.exec(Spawner.java:349)
+	at org.eclipse.cdt.utils.spawner.Spawner.<init>(Spawner.java:91)
+	at org.eclipse.cdt.utils.spawner.ProcessFactory.exec(ProcessFactory.java:91)
+	at ilg.gnuarmeclipse.debug.gdbjtag.DebugUtils.exec(DebugUtils.java:507)
+	at ilg.gnuarmeclipse.debug.gdbjtag.dsf.GnuArmGdbServerBackend.launchGdbServerProcess(GnuArmGdbServerBackend.java:350)
+	at ilg.gnuarmeclipse.debug.gdbjtag.dsf.GnuArmGdbServerBackend$GdbServerStep$2.run(GnuArmGdbServerBackend.java:834)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:54)
+
+!ENTRY org.eclipse.cdt.dsf 4 10005 2015-11-13 15:42:03.637
+!MESSAGE Request for monitor: 'RequestMonitor (org.eclipse.cdt.dsf.concurrent.RequestMonitorWithProgress@1d09aaa8): Status ERROR: ilg.gnuarmeclipse.debug.gdbjtag code=-1 Launching command [/home/vagrant/openocd/0.9.0-201505190955//openocd -c gdb_port 3333 -c telnet_port 4444 -f board/st_nucleo_f0.cfg -c echo "Started by GNU ARM Eclipse"] failed. org.eclipse.core.runtime.CoreException: Launching command [/home/vagrant/openocd/0.9.0-201505190955//openocd -c gdb_port 3333 -c telnet_port 4444 -f board/st_nucleo_f0.cfg -c echo "Started by GNU ARM Eclipse"] failed.' resulted in an error.
+!SUBENTRY 1 ilg.gnuarmeclipse.debug.gdbjtag 4 -1 2015-11-13 15:42:03.644
+!MESSAGE Launching command [/home/vagrant/openocd/0.9.0-201505190955//openocd -c gdb_port 3333 -c telnet_port 4444 -f board/st_nucleo_f0.cfg -c echo "Started by GNU ARM Eclipse"] failed.
+!STACK 1
+org.eclipse.core.runtime.CoreException: Launching command [/home/vagrant/openocd/0.9.0-201505190955//openocd -c gdb_port 3333 -c telnet_port 4444 -f board/st_nucleo_f0.cfg -c echo "Started by GNU ARM Eclipse"] failed.
+	at ilg.gnuarmeclipse.debug.gdbjtag.DebugUtils.exec(DebugUtils.java:512)
+	at ilg.gnuarmeclipse.debug.gdbjtag.dsf.GnuArmGdbServerBackend.launchGdbServerProcess(GnuArmGdbServerBackend.java:350)
+	at ilg.gnuarmeclipse.debug.gdbjtag.dsf.GnuArmGdbServerBackend$GdbServerStep$2.run(GnuArmGdbServerBackend.java:834)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:54)
+Caused by: java.io.IOException: Cannot run program "/home/vagrant/openocd/0.9.0-201505190955//openocd": Unknown reason
+	at org.eclipse.cdt.utils.spawner.Spawner.exec(Spawner.java:349)
+	at org.eclipse.cdt.utils.spawner.Spawner.<init>(Spawner.java:91)
+	at org.eclipse.cdt.utils.spawner.ProcessFactory.exec(ProcessFactory.java:91)
+	at ilg.gnuarmeclipse.debug.gdbjtag.DebugUtils.exec(DebugUtils.java:507)
+	... 3 more
+!SUBENTRY 2 ilg.gnuarmeclipse.debug.gdbjtag 4 -1 2015-11-13 15:42:03.649
+!MESSAGE Launching command [/home/vagrant/openocd/0.9.0-201505190955//openocd -c gdb_port 3333 -c telnet_port 4444 -f board/st_nucleo_f0.cfg -c echo "Started by GNU ARM Eclipse"] failed.
+!STACK 0
+java.io.IOException: Cannot run program "/home/vagrant/openocd/0.9.0-201505190955//openocd": Unknown reason
+	at org.eclipse.cdt.utils.spawner.Spawner.exec(Spawner.java:349)
+	at org.eclipse.cdt.utils.spawner.Spawner.<init>(Spawner.java:91)
+	at org.eclipse.cdt.utils.spawner.ProcessFactory.exec(ProcessFactory.java:91)
+	at ilg.gnuarmeclipse.debug.gdbjtag.DebugUtils.exec(DebugUtils.java:507)
+	at ilg.gnuarmeclipse.debug.gdbjtag.dsf.GnuArmGdbServerBackend.launchGdbServerProcess(GnuArmGdbServerBackend.java:350)
+	at ilg.gnuarmeclipse.debug.gdbjtag.dsf.GnuArmGdbServerBackend$GdbServerStep$2.run(GnuArmGdbServerBackend.java:834)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:54)
+
+!ENTRY org.eclipse.cdt.dsf.gdb 4 5012 2015-11-13 15:42:03.672
+!MESSAGE Error in services launch sequence
+!STACK 1
+org.eclipse.core.runtime.CoreException: Launching command [/home/vagrant/openocd/0.9.0-201505190955//openocd -c gdb_port 3333 -c telnet_port 4444 -f board/st_nucleo_f0.cfg -c echo "Started by GNU ARM Eclipse"] failed.
+	at org.eclipse.cdt.dsf.concurrent.Sequence.abortExecution(Sequence.java:582)
+	at org.eclipse.cdt.dsf.concurrent.Sequence.access$4(Sequence.java:574)
+	at org.eclipse.cdt.dsf.concurrent.Sequence$2.handleErrorOrWarning(Sequence.java:431)
+	at org.eclipse.cdt.dsf.concurrent.RequestMonitor.handleFailure(RequestMonitor.java:425)
+	at org.eclipse.cdt.dsf.concurrent.RequestMonitor.handleCompleted(RequestMonitor.java:388)
+	at org.eclipse.cdt.dsf.concurrent.RequestMonitor$2.run(RequestMonitor.java:313)
+	at java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:511)
+	at java.util.concurrent.FutureTask.run(FutureTask.java:266)
+	at java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.access$201(ScheduledThreadPoolExecutor.java:180)
+	at java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.run(ScheduledThreadPoolExecutor.java:293)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1142)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:617)
+	at java.lang.Thread.run(Thread.java:745)
+Caused by: org.eclipse.core.runtime.CoreException: Launching command [/home/vagrant/openocd/0.9.0-201505190955//openocd -c gdb_port 3333 -c telnet_port 4444 -f board/st_nucleo_f0.cfg -c echo "Started by GNU ARM Eclipse"] failed.
+	at ilg.gnuarmeclipse.debug.gdbjtag.DebugUtils.exec(DebugUtils.java:512)
+	at ilg.gnuarmeclipse.debug.gdbjtag.dsf.GnuArmGdbServerBackend.launchGdbServerProcess(GnuArmGdbServerBackend.java:350)
+	at ilg.gnuarmeclipse.debug.gdbjtag.dsf.GnuArmGdbServerBackend$GdbServerStep$2.run(GnuArmGdbServerBackend.java:834)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:54)
+Caused by: java.io.IOException: Cannot run program "/home/vagrant/openocd/0.9.0-201505190955//openocd": Unknown reason
+	at org.eclipse.cdt.utils.spawner.Spawner.exec(Spawner.java:349)
+	at org.eclipse.cdt.utils.spawner.Spawner.<init>(Spawner.java:91)
+	at org.eclipse.cdt.utils.spawner.ProcessFactory.exec(ProcessFactory.java:91)
+	at ilg.gnuarmeclipse.debug.gdbjtag.DebugUtils.exec(DebugUtils.java:507)
+	... 3 more
+!SUBENTRY 1 ilg.gnuarmeclipse.debug.gdbjtag 4 -1 2015-11-13 15:42:03.673
+!MESSAGE Launching command [/home/vagrant/openocd/0.9.0-201505190955//openocd -c gdb_port 3333 -c telnet_port 4444 -f board/st_nucleo_f0.cfg -c echo "Started by GNU ARM Eclipse"] failed.
+!STACK 1
+org.eclipse.core.runtime.CoreException: Launching command [/home/vagrant/openocd/0.9.0-201505190955//openocd -c gdb_port 3333 -c telnet_port 4444 -f board/st_nucleo_f0.cfg -c echo "Started by GNU ARM Eclipse"] failed.
+	at ilg.gnuarmeclipse.debug.gdbjtag.DebugUtils.exec(DebugUtils.java:512)
+	at ilg.gnuarmeclipse.debug.gdbjtag.dsf.GnuArmGdbServerBackend.launchGdbServerProcess(GnuArmGdbServerBackend.java:350)
+	at ilg.gnuarmeclipse.debug.gdbjtag.dsf.GnuArmGdbServerBackend$GdbServerStep$2.run(GnuArmGdbServerBackend.java:834)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:54)
+Caused by: java.io.IOException: Cannot run program "/home/vagrant/openocd/0.9.0-201505190955//openocd": Unknown reason
+	at org.eclipse.cdt.utils.spawner.Spawner.exec(Spawner.java:349)
+	at org.eclipse.cdt.utils.spawner.Spawner.<init>(Spawner.java:91)
+	at org.eclipse.cdt.utils.spawner.ProcessFactory.exec(ProcessFactory.java:91)
+	at ilg.gnuarmeclipse.debug.gdbjtag.DebugUtils.exec(DebugUtils.java:507)
+	... 3 more
+!SUBENTRY 2 ilg.gnuarmeclipse.debug.gdbjtag 4 -1 2015-11-13 15:42:03.673
+!MESSAGE Launching command [/home/vagrant/openocd/0.9.0-201505190955//openocd -c gdb_port 3333 -c telnet_port 4444 -f board/st_nucleo_f0.cfg -c echo "Started by GNU ARM Eclipse"] failed.
+!STACK 0
+java.io.IOException: Cannot run program "/home/vagrant/openocd/0.9.0-201505190955//openocd": Unknown reason
+	at org.eclipse.cdt.utils.spawner.Spawner.exec(Spawner.java:349)
+	at org.eclipse.cdt.utils.spawner.Spawner.<init>(Spawner.java:91)
+	at org.eclipse.cdt.utils.spawner.ProcessFactory.exec(ProcessFactory.java:91)
+	at ilg.gnuarmeclipse.debug.gdbjtag.DebugUtils.exec(DebugUtils.java:507)
+	at ilg.gnuarmeclipse.debug.gdbjtag.dsf.GnuArmGdbServerBackend.launchGdbServerProcess(GnuArmGdbServerBackend.java:350)
+	at ilg.gnuarmeclipse.debug.gdbjtag.dsf.GnuArmGdbServerBackend$GdbServerStep$2.run(GnuArmGdbServerBackend.java:834)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:54)
+
+!ENTRY org.eclipse.cdt.dsf 4 10005 2015-11-13 15:42:41.861
+!MESSAGE Request for monitor: 'RequestMonitor (org.eclipse.cdt.dsf.concurrent.RequestMonitorWithProgress@202d2330): Status ERROR: ilg.gnuarmeclipse.debug.gdbjtag code=-1 Launching command [/home/vagrant/openocd/0.9.0-201505190955//openocd -c gdb_port 3333 -c telnet_port 4444 -f board/st_nucleo_f0.cfg -c echo "Started by GNU ARM Eclipse"] failed. org.eclipse.core.runtime.CoreException: Launching command [/home/vagrant/openocd/0.9.0-201505190955//openocd -c gdb_port 3333 -c telnet_port 4444 -f board/st_nucleo_f0.cfg -c echo "Started by GNU ARM Eclipse"] failed.' resulted in an error.
+!SUBENTRY 1 ilg.gnuarmeclipse.debug.gdbjtag 4 -1 2015-11-13 15:42:41.861
+!MESSAGE Launching command [/home/vagrant/openocd/0.9.0-201505190955//openocd -c gdb_port 3333 -c telnet_port 4444 -f board/st_nucleo_f0.cfg -c echo "Started by GNU ARM Eclipse"] failed.
+!STACK 1
+org.eclipse.core.runtime.CoreException: Launching command [/home/vagrant/openocd/0.9.0-201505190955//openocd -c gdb_port 3333 -c telnet_port 4444 -f board/st_nucleo_f0.cfg -c echo "Started by GNU ARM Eclipse"] failed.
+	at ilg.gnuarmeclipse.debug.gdbjtag.DebugUtils.exec(DebugUtils.java:512)
+	at ilg.gnuarmeclipse.debug.gdbjtag.dsf.GnuArmGdbServerBackend.launchGdbServerProcess(GnuArmGdbServerBackend.java:350)
+	at ilg.gnuarmeclipse.debug.gdbjtag.dsf.GnuArmGdbServerBackend$GdbServerStep$2.run(GnuArmGdbServerBackend.java:834)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:54)
+Caused by: java.io.IOException: Cannot run program "/home/vagrant/openocd/0.9.0-201505190955//openocd": Unknown reason
+	at org.eclipse.cdt.utils.spawner.Spawner.exec(Spawner.java:349)
+	at org.eclipse.cdt.utils.spawner.Spawner.<init>(Spawner.java:91)
+	at org.eclipse.cdt.utils.spawner.ProcessFactory.exec(ProcessFactory.java:91)
+	at ilg.gnuarmeclipse.debug.gdbjtag.DebugUtils.exec(DebugUtils.java:507)
+	... 3 more
+!SUBENTRY 2 ilg.gnuarmeclipse.debug.gdbjtag 4 -1 2015-11-13 15:42:41.864
+!MESSAGE Launching command [/home/vagrant/openocd/0.9.0-201505190955//openocd -c gdb_port 3333 -c telnet_port 4444 -f board/st_nucleo_f0.cfg -c echo "Started by GNU ARM Eclipse"] failed.
+!STACK 0
+java.io.IOException: Cannot run program "/home/vagrant/openocd/0.9.0-201505190955//openocd": Unknown reason
+	at org.eclipse.cdt.utils.spawner.Spawner.exec(Spawner.java:349)
+	at org.eclipse.cdt.utils.spawner.Spawner.<init>(Spawner.java:91)
+	at org.eclipse.cdt.utils.spawner.ProcessFactory.exec(ProcessFactory.java:91)
+	at ilg.gnuarmeclipse.debug.gdbjtag.DebugUtils.exec(DebugUtils.java:507)
+	at ilg.gnuarmeclipse.debug.gdbjtag.dsf.GnuArmGdbServerBackend.launchGdbServerProcess(GnuArmGdbServerBackend.java:350)
+	at ilg.gnuarmeclipse.debug.gdbjtag.dsf.GnuArmGdbServerBackend$GdbServerStep$2.run(GnuArmGdbServerBackend.java:834)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:54)
+
+!ENTRY org.eclipse.cdt.dsf.gdb 4 5012 2015-11-13 15:42:41.868
+!MESSAGE Error in services launch sequence
+!STACK 1
+org.eclipse.core.runtime.CoreException: Launching command [/home/vagrant/openocd/0.9.0-201505190955//openocd -c gdb_port 3333 -c telnet_port 4444 -f board/st_nucleo_f0.cfg -c echo "Started by GNU ARM Eclipse"] failed.
+	at org.eclipse.cdt.dsf.concurrent.Sequence.abortExecution(Sequence.java:582)
+	at org.eclipse.cdt.dsf.concurrent.Sequence.access$4(Sequence.java:574)
+	at org.eclipse.cdt.dsf.concurrent.Sequence$2.handleErrorOrWarning(Sequence.java:431)
+	at org.eclipse.cdt.dsf.concurrent.RequestMonitor.handleFailure(RequestMonitor.java:425)
+	at org.eclipse.cdt.dsf.concurrent.RequestMonitor.handleCompleted(RequestMonitor.java:388)
+	at org.eclipse.cdt.dsf.concurrent.RequestMonitor$2.run(RequestMonitor.java:313)
+	at java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:511)
+	at java.util.concurrent.FutureTask.run(FutureTask.java:266)
+	at java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.access$201(ScheduledThreadPoolExecutor.java:180)
+	at java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.run(ScheduledThreadPoolExecutor.java:293)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1142)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:617)
+	at java.lang.Thread.run(Thread.java:745)
+Caused by: org.eclipse.core.runtime.CoreException: Launching command [/home/vagrant/openocd/0.9.0-201505190955//openocd -c gdb_port 3333 -c telnet_port 4444 -f board/st_nucleo_f0.cfg -c echo "Started by GNU ARM Eclipse"] failed.
+	at ilg.gnuarmeclipse.debug.gdbjtag.DebugUtils.exec(DebugUtils.java:512)
+	at ilg.gnuarmeclipse.debug.gdbjtag.dsf.GnuArmGdbServerBackend.launchGdbServerProcess(GnuArmGdbServerBackend.java:350)
+	at ilg.gnuarmeclipse.debug.gdbjtag.dsf.GnuArmGdbServerBackend$GdbServerStep$2.run(GnuArmGdbServerBackend.java:834)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:54)
+Caused by: java.io.IOException: Cannot run program "/home/vagrant/openocd/0.9.0-201505190955//openocd": Unknown reason
+	at org.eclipse.cdt.utils.spawner.Spawner.exec(Spawner.java:349)
+	at org.eclipse.cdt.utils.spawner.Spawner.<init>(Spawner.java:91)
+	at org.eclipse.cdt.utils.spawner.ProcessFactory.exec(ProcessFactory.java:91)
+	at ilg.gnuarmeclipse.debug.gdbjtag.DebugUtils.exec(DebugUtils.java:507)
+	... 3 more
+!SUBENTRY 1 ilg.gnuarmeclipse.debug.gdbjtag 4 -1 2015-11-13 15:42:41.875
+!MESSAGE Launching command [/home/vagrant/openocd/0.9.0-201505190955//openocd -c gdb_port 3333 -c telnet_port 4444 -f board/st_nucleo_f0.cfg -c echo "Started by GNU ARM Eclipse"] failed.
+!STACK 1
+org.eclipse.core.runtime.CoreException: Launching command [/home/vagrant/openocd/0.9.0-201505190955//openocd -c gdb_port 3333 -c telnet_port 4444 -f board/st_nucleo_f0.cfg -c echo "Started by GNU ARM Eclipse"] failed.
+	at ilg.gnuarmeclipse.debug.gdbjtag.DebugUtils.exec(DebugUtils.java:512)
+	at ilg.gnuarmeclipse.debug.gdbjtag.dsf.GnuArmGdbServerBackend.launchGdbServerProcess(GnuArmGdbServerBackend.java:350)
+	at ilg.gnuarmeclipse.debug.gdbjtag.dsf.GnuArmGdbServerBackend$GdbServerStep$2.run(GnuArmGdbServerBackend.java:834)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:54)
+Caused by: java.io.IOException: Cannot run program "/home/vagrant/openocd/0.9.0-201505190955//openocd": Unknown reason
+	at org.eclipse.cdt.utils.spawner.Spawner.exec(Spawner.java:349)
+	at org.eclipse.cdt.utils.spawner.Spawner.<init>(Spawner.java:91)
+	at org.eclipse.cdt.utils.spawner.ProcessFactory.exec(ProcessFactory.java:91)
+	at ilg.gnuarmeclipse.debug.gdbjtag.DebugUtils.exec(DebugUtils.java:507)
+	... 3 more
+!SUBENTRY 2 ilg.gnuarmeclipse.debug.gdbjtag 4 -1 2015-11-13 15:42:41.875
+!MESSAGE Launching command [/home/vagrant/openocd/0.9.0-201505190955//openocd -c gdb_port 3333 -c telnet_port 4444 -f board/st_nucleo_f0.cfg -c echo "Started by GNU ARM Eclipse"] failed.
+!STACK 0
+java.io.IOException: Cannot run program "/home/vagrant/openocd/0.9.0-201505190955//openocd": Unknown reason
+	at org.eclipse.cdt.utils.spawner.Spawner.exec(Spawner.java:349)
+	at org.eclipse.cdt.utils.spawner.Spawner.<init>(Spawner.java:91)
+	at org.eclipse.cdt.utils.spawner.ProcessFactory.exec(ProcessFactory.java:91)
+	at ilg.gnuarmeclipse.debug.gdbjtag.DebugUtils.exec(DebugUtils.java:507)
+	at ilg.gnuarmeclipse.debug.gdbjtag.dsf.GnuArmGdbServerBackend.launchGdbServerProcess(GnuArmGdbServerBackend.java:350)
+	at ilg.gnuarmeclipse.debug.gdbjtag.dsf.GnuArmGdbServerBackend$GdbServerStep$2.run(GnuArmGdbServerBackend.java:834)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:54)
+!SESSION 2015-11-13 15:44:14.373 -----------------------------------------------
+eclipse.buildId=4.4.2.M20150204-1700
+java.version=1.8.0_60
+java.vendor=Oracle Corporation
+BootLoader constants: OS=linux, ARCH=x86_64, WS=gtk, NL=en_US
+Framework arguments:  -product org.eclipse.epp.package.cpp.product
+Command-line arguments:  -os linux -ws gtk -arch x86_64 -product org.eclipse.epp.package.cpp.product
+
+!ENTRY org.eclipse.cdt.core 4 0 2015-11-13 15:44:31.110
+!MESSAGE Error: Error
+!STACK 1
+org.eclipse.core.runtime.CoreException: Error
+	at org.eclipse.cdt.internal.core.pdom.db.Database.databaseCorruptionDetected(Database.java:292)
+	at org.eclipse.cdt.internal.core.pdom.db.Database.getChunk(Database.java:274)
+	at org.eclipse.cdt.internal.core.pdom.db.Database.getRecPtr(Database.java:486)
+	at org.eclipse.cdt.internal.core.pdom.dom.PDOMLinkage.getLinkageID(PDOMLinkage.java:123)
+	at org.eclipse.cdt.internal.core.pdom.PDOM.readLinkages(PDOM.java:422)
+	at org.eclipse.cdt.internal.core.pdom.PDOM.loadDatabase(PDOM.java:405)
+	at org.eclipse.cdt.internal.core.pdom.PDOM.<init>(PDOM.java:381)
+	at org.eclipse.cdt.internal.core.pdom.WritablePDOM.<init>(WritablePDOM.java:64)
+	at org.eclipse.cdt.internal.core.pdom.WritablePDOM.<init>(WritablePDOM.java:59)
+	at org.eclipse.cdt.internal.core.pdom.PDOMManager.getOrCreatePDOM(PDOMManager.java:384)
+	at org.eclipse.cdt.internal.core.pdom.PDOMManager.createIndexer(PDOMManager.java:571)
+	at org.eclipse.cdt.internal.core.pdom.PDOMSetupJob.run(PDOMSetupJob.java:58)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:54)
+!SUBENTRY 1 org.eclipse.cdt.core 4 0 2015-11-13 15:44:31.120
+!MESSAGE Error
+
+!ENTRY org.eclipse.cdt.dsf 4 10005 2015-11-13 15:44:57.738
+!MESSAGE Request for monitor: 'RequestMonitor (org.eclipse.cdt.dsf.concurrent.RequestMonitorWithProgress@75070271): Status ERROR: ilg.gnuarmeclipse.debug.gdbjtag code=-1 Launching command [/home/vagrant/openocd/0.9.0-201505190955//openocd -c gdb_port 3333 -c telnet_port 4444 -f board/st_nucleo_f0.cfg -c echo "Started by GNU ARM Eclipse"] failed. org.eclipse.core.runtime.CoreException: Launching command [/home/vagrant/openocd/0.9.0-201505190955//openocd -c gdb_port 3333 -c telnet_port 4444 -f board/st_nucleo_f0.cfg -c echo "Started by GNU ARM Eclipse"] failed.' resulted in an error.
+!SUBENTRY 1 ilg.gnuarmeclipse.debug.gdbjtag 4 -1 2015-11-13 15:44:57.738
+!MESSAGE Launching command [/home/vagrant/openocd/0.9.0-201505190955//openocd -c gdb_port 3333 -c telnet_port 4444 -f board/st_nucleo_f0.cfg -c echo "Started by GNU ARM Eclipse"] failed.
+!STACK 1
+org.eclipse.core.runtime.CoreException: Launching command [/home/vagrant/openocd/0.9.0-201505190955//openocd -c gdb_port 3333 -c telnet_port 4444 -f board/st_nucleo_f0.cfg -c echo "Started by GNU ARM Eclipse"] failed.
+	at ilg.gnuarmeclipse.debug.gdbjtag.DebugUtils.exec(DebugUtils.java:512)
+	at ilg.gnuarmeclipse.debug.gdbjtag.dsf.GnuArmGdbServerBackend.launchGdbServerProcess(GnuArmGdbServerBackend.java:350)
+	at ilg.gnuarmeclipse.debug.gdbjtag.dsf.GnuArmGdbServerBackend$GdbServerStep$2.run(GnuArmGdbServerBackend.java:834)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:54)
+Caused by: java.io.IOException: Cannot run program "/home/vagrant/openocd/0.9.0-201505190955//openocd": Unknown reason
+	at org.eclipse.cdt.utils.spawner.Spawner.exec(Spawner.java:349)
+	at org.eclipse.cdt.utils.spawner.Spawner.<init>(Spawner.java:91)
+	at org.eclipse.cdt.utils.spawner.ProcessFactory.exec(ProcessFactory.java:91)
+	at ilg.gnuarmeclipse.debug.gdbjtag.DebugUtils.exec(DebugUtils.java:507)
+	... 3 more
+!SUBENTRY 2 ilg.gnuarmeclipse.debug.gdbjtag 4 -1 2015-11-13 15:44:57.740
+!MESSAGE Launching command [/home/vagrant/openocd/0.9.0-201505190955//openocd -c gdb_port 3333 -c telnet_port 4444 -f board/st_nucleo_f0.cfg -c echo "Started by GNU ARM Eclipse"] failed.
+!STACK 0
+java.io.IOException: Cannot run program "/home/vagrant/openocd/0.9.0-201505190955//openocd": Unknown reason
+	at org.eclipse.cdt.utils.spawner.Spawner.exec(Spawner.java:349)
+	at org.eclipse.cdt.utils.spawner.Spawner.<init>(Spawner.java:91)
+	at org.eclipse.cdt.utils.spawner.ProcessFactory.exec(ProcessFactory.java:91)
+	at ilg.gnuarmeclipse.debug.gdbjtag.DebugUtils.exec(DebugUtils.java:507)
+	at ilg.gnuarmeclipse.debug.gdbjtag.dsf.GnuArmGdbServerBackend.launchGdbServerProcess(GnuArmGdbServerBackend.java:350)
+	at ilg.gnuarmeclipse.debug.gdbjtag.dsf.GnuArmGdbServerBackend$GdbServerStep$2.run(GnuArmGdbServerBackend.java:834)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:54)
+
+!ENTRY org.eclipse.cdt.dsf.gdb 4 5012 2015-11-13 15:44:57.798
+!MESSAGE Error in services launch sequence
+!STACK 1
+org.eclipse.core.runtime.CoreException: Launching command [/home/vagrant/openocd/0.9.0-201505190955//openocd -c gdb_port 3333 -c telnet_port 4444 -f board/st_nucleo_f0.cfg -c echo "Started by GNU ARM Eclipse"] failed.
+	at org.eclipse.cdt.dsf.concurrent.Sequence.abortExecution(Sequence.java:582)
+	at org.eclipse.cdt.dsf.concurrent.Sequence.access$4(Sequence.java:574)
+	at org.eclipse.cdt.dsf.concurrent.Sequence$2.handleErrorOrWarning(Sequence.java:431)
+	at org.eclipse.cdt.dsf.concurrent.RequestMonitor.handleFailure(RequestMonitor.java:425)
+	at org.eclipse.cdt.dsf.concurrent.RequestMonitor.handleCompleted(RequestMonitor.java:388)
+	at org.eclipse.cdt.dsf.concurrent.RequestMonitor$2.run(RequestMonitor.java:313)
+	at java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:511)
+	at java.util.concurrent.FutureTask.run(FutureTask.java:266)
+	at java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.access$201(ScheduledThreadPoolExecutor.java:180)
+	at java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.run(ScheduledThreadPoolExecutor.java:293)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1142)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:617)
+	at java.lang.Thread.run(Thread.java:745)
+Caused by: org.eclipse.core.runtime.CoreException: Launching command [/home/vagrant/openocd/0.9.0-201505190955//openocd -c gdb_port 3333 -c telnet_port 4444 -f board/st_nucleo_f0.cfg -c echo "Started by GNU ARM Eclipse"] failed.
+	at ilg.gnuarmeclipse.debug.gdbjtag.DebugUtils.exec(DebugUtils.java:512)
+	at ilg.gnuarmeclipse.debug.gdbjtag.dsf.GnuArmGdbServerBackend.launchGdbServerProcess(GnuArmGdbServerBackend.java:350)
+	at ilg.gnuarmeclipse.debug.gdbjtag.dsf.GnuArmGdbServerBackend$GdbServerStep$2.run(GnuArmGdbServerBackend.java:834)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:54)
+Caused by: java.io.IOException: Cannot run program "/home/vagrant/openocd/0.9.0-201505190955//openocd": Unknown reason
+	at org.eclipse.cdt.utils.spawner.Spawner.exec(Spawner.java:349)
+	at org.eclipse.cdt.utils.spawner.Spawner.<init>(Spawner.java:91)
+	at org.eclipse.cdt.utils.spawner.ProcessFactory.exec(ProcessFactory.java:91)
+	at ilg.gnuarmeclipse.debug.gdbjtag.DebugUtils.exec(DebugUtils.java:507)
+	... 3 more
+!SUBENTRY 1 ilg.gnuarmeclipse.debug.gdbjtag 4 -1 2015-11-13 15:44:57.808
+!MESSAGE Launching command [/home/vagrant/openocd/0.9.0-201505190955//openocd -c gdb_port 3333 -c telnet_port 4444 -f board/st_nucleo_f0.cfg -c echo "Started by GNU ARM Eclipse"] failed.
+!STACK 1
+org.eclipse.core.runtime.CoreException: Launching command [/home/vagrant/openocd/0.9.0-201505190955//openocd -c gdb_port 3333 -c telnet_port 4444 -f board/st_nucleo_f0.cfg -c echo "Started by GNU ARM Eclipse"] failed.
+	at ilg.gnuarmeclipse.debug.gdbjtag.DebugUtils.exec(DebugUtils.java:512)
+	at ilg.gnuarmeclipse.debug.gdbjtag.dsf.GnuArmGdbServerBackend.launchGdbServerProcess(GnuArmGdbServerBackend.java:350)
+	at ilg.gnuarmeclipse.debug.gdbjtag.dsf.GnuArmGdbServerBackend$GdbServerStep$2.run(GnuArmGdbServerBackend.java:834)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:54)
+Caused by: java.io.IOException: Cannot run program "/home/vagrant/openocd/0.9.0-201505190955//openocd": Unknown reason
+	at org.eclipse.cdt.utils.spawner.Spawner.exec(Spawner.java:349)
+	at org.eclipse.cdt.utils.spawner.Spawner.<init>(Spawner.java:91)
+	at org.eclipse.cdt.utils.spawner.ProcessFactory.exec(ProcessFactory.java:91)
+	at ilg.gnuarmeclipse.debug.gdbjtag.DebugUtils.exec(DebugUtils.java:507)
+	... 3 more
+!SUBENTRY 2 ilg.gnuarmeclipse.debug.gdbjtag 4 -1 2015-11-13 15:44:57.808
+!MESSAGE Launching command [/home/vagrant/openocd/0.9.0-201505190955//openocd -c gdb_port 3333 -c telnet_port 4444 -f board/st_nucleo_f0.cfg -c echo "Started by GNU ARM Eclipse"] failed.
+!STACK 0
+java.io.IOException: Cannot run program "/home/vagrant/openocd/0.9.0-201505190955//openocd": Unknown reason
+	at org.eclipse.cdt.utils.spawner.Spawner.exec(Spawner.java:349)
+	at org.eclipse.cdt.utils.spawner.Spawner.<init>(Spawner.java:91)
+	at org.eclipse.cdt.utils.spawner.ProcessFactory.exec(ProcessFactory.java:91)
+	at ilg.gnuarmeclipse.debug.gdbjtag.DebugUtils.exec(DebugUtils.java:507)
+	at ilg.gnuarmeclipse.debug.gdbjtag.dsf.GnuArmGdbServerBackend.launchGdbServerProcess(GnuArmGdbServerBackend.java:350)
+	at ilg.gnuarmeclipse.debug.gdbjtag.dsf.GnuArmGdbServerBackend$GdbServerStep$2.run(GnuArmGdbServerBackend.java:834)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:54)
+
+!ENTRY org.eclipse.cdt.dsf 4 10005 2015-11-13 15:45:43.340
+!MESSAGE Request for monitor: 'RequestMonitor (org.eclipse.cdt.dsf.concurrent.RequestMonitorWithProgress@2066500e): Status ERROR: ilg.gnuarmeclipse.debug.gdbjtag code=-1 Launching command [/home/vagrant/openocd/0.9.0-201505190955/openocd -c gdb_port 3333 -c telnet_port 4444 -f board/st_nucleo_f0.cfg -c echo "Started by GNU ARM Eclipse"] failed. org.eclipse.core.runtime.CoreException: Launching command [/home/vagrant/openocd/0.9.0-201505190955/openocd -c gdb_port 3333 -c telnet_port 4444 -f board/st_nucleo_f0.cfg -c echo "Started by GNU ARM Eclipse"] failed.' resulted in an error.
+!SUBENTRY 1 ilg.gnuarmeclipse.debug.gdbjtag 4 -1 2015-11-13 15:45:43.341
+!MESSAGE Launching command [/home/vagrant/openocd/0.9.0-201505190955/openocd -c gdb_port 3333 -c telnet_port 4444 -f board/st_nucleo_f0.cfg -c echo "Started by GNU ARM Eclipse"] failed.
+!STACK 1
+org.eclipse.core.runtime.CoreException: Launching command [/home/vagrant/openocd/0.9.0-201505190955/openocd -c gdb_port 3333 -c telnet_port 4444 -f board/st_nucleo_f0.cfg -c echo "Started by GNU ARM Eclipse"] failed.
+	at ilg.gnuarmeclipse.debug.gdbjtag.DebugUtils.exec(DebugUtils.java:512)
+	at ilg.gnuarmeclipse.debug.gdbjtag.dsf.GnuArmGdbServerBackend.launchGdbServerProcess(GnuArmGdbServerBackend.java:350)
+	at ilg.gnuarmeclipse.debug.gdbjtag.dsf.GnuArmGdbServerBackend$GdbServerStep$2.run(GnuArmGdbServerBackend.java:834)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:54)
+Caused by: java.io.IOException: Cannot run program "/home/vagrant/openocd/0.9.0-201505190955/openocd": Unknown reason
+	at org.eclipse.cdt.utils.spawner.Spawner.exec(Spawner.java:349)
+	at org.eclipse.cdt.utils.spawner.Spawner.<init>(Spawner.java:91)
+	at org.eclipse.cdt.utils.spawner.ProcessFactory.exec(ProcessFactory.java:91)
+	at ilg.gnuarmeclipse.debug.gdbjtag.DebugUtils.exec(DebugUtils.java:507)
+	... 3 more
+!SUBENTRY 2 ilg.gnuarmeclipse.debug.gdbjtag 4 -1 2015-11-13 15:45:43.349
+!MESSAGE Launching command [/home/vagrant/openocd/0.9.0-201505190955/openocd -c gdb_port 3333 -c telnet_port 4444 -f board/st_nucleo_f0.cfg -c echo "Started by GNU ARM Eclipse"] failed.
+!STACK 0
+java.io.IOException: Cannot run program "/home/vagrant/openocd/0.9.0-201505190955/openocd": Unknown reason
+	at org.eclipse.cdt.utils.spawner.Spawner.exec(Spawner.java:349)
+	at org.eclipse.cdt.utils.spawner.Spawner.<init>(Spawner.java:91)
+	at org.eclipse.cdt.utils.spawner.ProcessFactory.exec(ProcessFactory.java:91)
+	at ilg.gnuarmeclipse.debug.gdbjtag.DebugUtils.exec(DebugUtils.java:507)
+	at ilg.gnuarmeclipse.debug.gdbjtag.dsf.GnuArmGdbServerBackend.launchGdbServerProcess(GnuArmGdbServerBackend.java:350)
+	at ilg.gnuarmeclipse.debug.gdbjtag.dsf.GnuArmGdbServerBackend$GdbServerStep$2.run(GnuArmGdbServerBackend.java:834)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:54)
+
+!ENTRY org.eclipse.cdt.dsf.gdb 4 5012 2015-11-13 15:45:43.353
+!MESSAGE Error in services launch sequence
+!STACK 1
+org.eclipse.core.runtime.CoreException: Launching command [/home/vagrant/openocd/0.9.0-201505190955/openocd -c gdb_port 3333 -c telnet_port 4444 -f board/st_nucleo_f0.cfg -c echo "Started by GNU ARM Eclipse"] failed.
+	at org.eclipse.cdt.dsf.concurrent.Sequence.abortExecution(Sequence.java:582)
+	at org.eclipse.cdt.dsf.concurrent.Sequence.access$4(Sequence.java:574)
+	at org.eclipse.cdt.dsf.concurrent.Sequence$2.handleErrorOrWarning(Sequence.java:431)
+	at org.eclipse.cdt.dsf.concurrent.RequestMonitor.handleFailure(RequestMonitor.java:425)
+	at org.eclipse.cdt.dsf.concurrent.RequestMonitor.handleCompleted(RequestMonitor.java:388)
+	at org.eclipse.cdt.dsf.concurrent.RequestMonitor$2.run(RequestMonitor.java:313)
+	at java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:511)
+	at java.util.concurrent.FutureTask.run(FutureTask.java:266)
+	at java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.access$201(ScheduledThreadPoolExecutor.java:180)
+	at java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.run(ScheduledThreadPoolExecutor.java:293)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1142)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:617)
+	at java.lang.Thread.run(Thread.java:745)
+Caused by: org.eclipse.core.runtime.CoreException: Launching command [/home/vagrant/openocd/0.9.0-201505190955/openocd -c gdb_port 3333 -c telnet_port 4444 -f board/st_nucleo_f0.cfg -c echo "Started by GNU ARM Eclipse"] failed.
+	at ilg.gnuarmeclipse.debug.gdbjtag.DebugUtils.exec(DebugUtils.java:512)
+	at ilg.gnuarmeclipse.debug.gdbjtag.dsf.GnuArmGdbServerBackend.launchGdbServerProcess(GnuArmGdbServerBackend.java:350)
+	at ilg.gnuarmeclipse.debug.gdbjtag.dsf.GnuArmGdbServerBackend$GdbServerStep$2.run(GnuArmGdbServerBackend.java:834)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:54)
+Caused by: java.io.IOException: Cannot run program "/home/vagrant/openocd/0.9.0-201505190955/openocd": Unknown reason
+	at org.eclipse.cdt.utils.spawner.Spawner.exec(Spawner.java:349)
+	at org.eclipse.cdt.utils.spawner.Spawner.<init>(Spawner.java:91)
+	at org.eclipse.cdt.utils.spawner.ProcessFactory.exec(ProcessFactory.java:91)
+	at ilg.gnuarmeclipse.debug.gdbjtag.DebugUtils.exec(DebugUtils.java:507)
+	... 3 more
+!SUBENTRY 1 ilg.gnuarmeclipse.debug.gdbjtag 4 -1 2015-11-13 15:45:43.355
+!MESSAGE Launching command [/home/vagrant/openocd/0.9.0-201505190955/openocd -c gdb_port 3333 -c telnet_port 4444 -f board/st_nucleo_f0.cfg -c echo "Started by GNU ARM Eclipse"] failed.
+!STACK 1
+org.eclipse.core.runtime.CoreException: Launching command [/home/vagrant/openocd/0.9.0-201505190955/openocd -c gdb_port 3333 -c telnet_port 4444 -f board/st_nucleo_f0.cfg -c echo "Started by GNU ARM Eclipse"] failed.
+	at ilg.gnuarmeclipse.debug.gdbjtag.DebugUtils.exec(DebugUtils.java:512)
+	at ilg.gnuarmeclipse.debug.gdbjtag.dsf.GnuArmGdbServerBackend.launchGdbServerProcess(GnuArmGdbServerBackend.java:350)
+	at ilg.gnuarmeclipse.debug.gdbjtag.dsf.GnuArmGdbServerBackend$GdbServerStep$2.run(GnuArmGdbServerBackend.java:834)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:54)
+Caused by: java.io.IOException: Cannot run program "/home/vagrant/openocd/0.9.0-201505190955/openocd": Unknown reason
+	at org.eclipse.cdt.utils.spawner.Spawner.exec(Spawner.java:349)
+	at org.eclipse.cdt.utils.spawner.Spawner.<init>(Spawner.java:91)
+	at org.eclipse.cdt.utils.spawner.ProcessFactory.exec(ProcessFactory.java:91)
+	at ilg.gnuarmeclipse.debug.gdbjtag.DebugUtils.exec(DebugUtils.java:507)
+	... 3 more
+!SUBENTRY 2 ilg.gnuarmeclipse.debug.gdbjtag 4 -1 2015-11-13 15:45:43.355
+!MESSAGE Launching command [/home/vagrant/openocd/0.9.0-201505190955/openocd -c gdb_port 3333 -c telnet_port 4444 -f board/st_nucleo_f0.cfg -c echo "Started by GNU ARM Eclipse"] failed.
+!STACK 0
+java.io.IOException: Cannot run program "/home/vagrant/openocd/0.9.0-201505190955/openocd": Unknown reason
+	at org.eclipse.cdt.utils.spawner.Spawner.exec(Spawner.java:349)
+	at org.eclipse.cdt.utils.spawner.Spawner.<init>(Spawner.java:91)
+	at org.eclipse.cdt.utils.spawner.ProcessFactory.exec(ProcessFactory.java:91)
+	at ilg.gnuarmeclipse.debug.gdbjtag.DebugUtils.exec(DebugUtils.java:507)
+	at ilg.gnuarmeclipse.debug.gdbjtag.dsf.GnuArmGdbServerBackend.launchGdbServerProcess(GnuArmGdbServerBackend.java:350)
+	at ilg.gnuarmeclipse.debug.gdbjtag.dsf.GnuArmGdbServerBackend$GdbServerStep$2.run(GnuArmGdbServerBackend.java:834)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:54)
+
+!ENTRY org.eclipse.cdt.core 4 0 2015-11-13 16:11:47.722
+!MESSAGE Error: Error
+!STACK 1
+org.eclipse.core.runtime.CoreException: Error
+	at org.eclipse.cdt.internal.core.pdom.db.Database.databaseCorruptionDetected(Database.java:292)
+	at org.eclipse.cdt.internal.core.pdom.db.Database.getChunk(Database.java:274)
+	at org.eclipse.cdt.internal.core.pdom.db.Database.getRecPtr(Database.java:486)
+	at org.eclipse.cdt.internal.core.pdom.dom.PDOMLinkage.getLinkageID(PDOMLinkage.java:123)
+	at org.eclipse.cdt.internal.core.pdom.PDOM.readLinkages(PDOM.java:422)
+	at org.eclipse.cdt.internal.core.pdom.PDOM.loadDatabase(PDOM.java:405)
+	at org.eclipse.cdt.internal.core.pdom.PDOM.<init>(PDOM.java:381)
+	at org.eclipse.cdt.internal.core.pdom.WritablePDOM.<init>(WritablePDOM.java:64)
+	at org.eclipse.cdt.internal.core.pdom.WritablePDOM.<init>(WritablePDOM.java:59)
+	at org.eclipse.cdt.internal.core.pdom.PDOMManager.getOrCreatePDOM(PDOMManager.java:384)
+	at org.eclipse.cdt.internal.core.pdom.PDOMManager.createIndexer(PDOMManager.java:571)
+	at org.eclipse.cdt.internal.core.pdom.PDOMSetupJob.run(PDOMSetupJob.java:58)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:54)
+!SUBENTRY 1 org.eclipse.cdt.core 4 0 2015-11-13 16:11:47.723
+!MESSAGE Error
+
+!ENTRY org.eclipse.cdt.core 4 0 2015-11-13 16:12:14.714
+!MESSAGE Error: Error
+!STACK 1
+org.eclipse.core.runtime.CoreException: Error
+	at org.eclipse.cdt.internal.core.pdom.db.Database.databaseCorruptionDetected(Database.java:292)
+	at org.eclipse.cdt.internal.core.pdom.db.Database.getChunk(Database.java:274)
+	at org.eclipse.cdt.internal.core.pdom.db.Database.getRecPtr(Database.java:486)
+	at org.eclipse.cdt.internal.core.pdom.dom.PDOMLinkage.getLinkageID(PDOMLinkage.java:123)
+	at org.eclipse.cdt.internal.core.pdom.PDOM.readLinkages(PDOM.java:422)
+	at org.eclipse.cdt.internal.core.pdom.PDOM.loadDatabase(PDOM.java:405)
+	at org.eclipse.cdt.internal.core.pdom.PDOM.<init>(PDOM.java:381)
+	at org.eclipse.cdt.internal.core.pdom.WritablePDOM.<init>(WritablePDOM.java:64)
+	at org.eclipse.cdt.internal.core.pdom.WritablePDOM.<init>(WritablePDOM.java:59)
+	at org.eclipse.cdt.internal.core.pdom.PDOMManager.getOrCreatePDOM(PDOMManager.java:384)
+	at org.eclipse.cdt.internal.core.pdom.PDOMManager.createIndexer(PDOMManager.java:571)
+	at org.eclipse.cdt.internal.core.pdom.PDOMSetupJob.run(PDOMSetupJob.java:58)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:54)
+!SUBENTRY 1 org.eclipse.cdt.core 4 0 2015-11-13 16:12:14.714
+!MESSAGE Error
+!SESSION 2015-11-13 16:12:39.603 -----------------------------------------------
+eclipse.buildId=4.4.2.M20150204-1700
+java.version=1.8.0_60
+java.vendor=Oracle Corporation
+BootLoader constants: OS=linux, ARCH=x86_64, WS=gtk, NL=en_US
+Framework arguments:  -product org.eclipse.epp.package.cpp.product
+Command-line arguments:  -os linux -ws gtk -arch x86_64 -product org.eclipse.epp.package.cpp.product
+
+!ENTRY org.eclipse.cdt.core 4 0 2015-11-13 16:13:19.106
+!MESSAGE Error: Error
+!STACK 1
+org.eclipse.core.runtime.CoreException: Error
+	at org.eclipse.cdt.internal.core.pdom.db.Database.databaseCorruptionDetected(Database.java:292)
+	at org.eclipse.cdt.internal.core.pdom.db.Database.getChunk(Database.java:274)
+	at org.eclipse.cdt.internal.core.pdom.db.Database.getRecPtr(Database.java:486)
+	at org.eclipse.cdt.internal.core.pdom.dom.PDOMLinkage.getLinkageID(PDOMLinkage.java:123)
+	at org.eclipse.cdt.internal.core.pdom.PDOM.readLinkages(PDOM.java:422)
+	at org.eclipse.cdt.internal.core.pdom.PDOM.loadDatabase(PDOM.java:405)
+	at org.eclipse.cdt.internal.core.pdom.PDOM.<init>(PDOM.java:381)
+	at org.eclipse.cdt.internal.core.pdom.WritablePDOM.<init>(WritablePDOM.java:64)
+	at org.eclipse.cdt.internal.core.pdom.WritablePDOM.<init>(WritablePDOM.java:59)
+	at org.eclipse.cdt.internal.core.pdom.PDOMManager.getOrCreatePDOM(PDOMManager.java:384)
+	at org.eclipse.cdt.internal.core.pdom.PDOMManager.createIndexer(PDOMManager.java:571)
+	at org.eclipse.cdt.internal.core.pdom.PDOMSetupJob.run(PDOMSetupJob.java:58)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:54)
+!SUBENTRY 1 org.eclipse.cdt.core 4 0 2015-11-13 16:13:19.108
+!MESSAGE Error
+!SESSION 2015-11-13 16:59:41.226 -----------------------------------------------
+eclipse.buildId=4.4.2.M20150204-1700
+java.version=1.8.0_60
+java.vendor=Oracle Corporation
+BootLoader constants: OS=linux, ARCH=x86_64, WS=gtk, NL=en_US
+Framework arguments:  -product org.eclipse.epp.package.cpp.product
+Command-line arguments:  -os linux -ws gtk -arch x86_64 -product org.eclipse.epp.package.cpp.product
+
+!ENTRY org.eclipse.cdt.core 4 0 2015-11-13 17:00:58.206
+!MESSAGE Error: Error
+!STACK 1
+org.eclipse.core.runtime.CoreException: Error
+	at org.eclipse.cdt.internal.core.pdom.db.Database.databaseCorruptionDetected(Database.java:292)
+	at org.eclipse.cdt.internal.core.pdom.db.Database.getChunk(Database.java:274)
+	at org.eclipse.cdt.internal.core.pdom.db.Database.getRecPtr(Database.java:486)
+	at org.eclipse.cdt.internal.core.pdom.dom.PDOMLinkage.getLinkageID(PDOMLinkage.java:123)
+	at org.eclipse.cdt.internal.core.pdom.PDOM.readLinkages(PDOM.java:422)
+	at org.eclipse.cdt.internal.core.pdom.PDOM.loadDatabase(PDOM.java:405)
+	at org.eclipse.cdt.internal.core.pdom.PDOM.<init>(PDOM.java:381)
+	at org.eclipse.cdt.internal.core.pdom.WritablePDOM.<init>(WritablePDOM.java:64)
+	at org.eclipse.cdt.internal.core.pdom.WritablePDOM.<init>(WritablePDOM.java:59)
+	at org.eclipse.cdt.internal.core.pdom.PDOMManager.getOrCreatePDOM(PDOMManager.java:384)
+	at org.eclipse.cdt.internal.core.pdom.PDOMManager.createIndexer(PDOMManager.java:571)
+	at org.eclipse.cdt.internal.core.pdom.PDOMSetupJob.run(PDOMSetupJob.java:58)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:54)
+!SUBENTRY 1 org.eclipse.cdt.core 4 0 2015-11-13 17:00:58.220
+!MESSAGE Error
+
+!ENTRY org.eclipse.cdt.core 4 0 2015-11-13 17:01:35.378
+!MESSAGE Error: Error
+!STACK 1
+org.eclipse.core.runtime.CoreException: Error
+	at org.eclipse.cdt.internal.core.pdom.db.Database.databaseCorruptionDetected(Database.java:292)
+	at org.eclipse.cdt.internal.core.pdom.db.Database.getChunk(Database.java:274)
+	at org.eclipse.cdt.internal.core.pdom.db.Database.getRecPtr(Database.java:486)
+	at org.eclipse.cdt.internal.core.pdom.dom.PDOMLinkage.getLinkageID(PDOMLinkage.java:123)
+	at org.eclipse.cdt.internal.core.pdom.PDOM.readLinkages(PDOM.java:422)
+	at org.eclipse.cdt.internal.core.pdom.PDOM.loadDatabase(PDOM.java:405)
+	at org.eclipse.cdt.internal.core.pdom.PDOM.<init>(PDOM.java:381)
+	at org.eclipse.cdt.internal.core.pdom.WritablePDOM.<init>(WritablePDOM.java:64)
+	at org.eclipse.cdt.internal.core.pdom.WritablePDOM.<init>(WritablePDOM.java:59)
+	at org.eclipse.cdt.internal.core.pdom.PDOMManager.getOrCreatePDOM(PDOMManager.java:384)
+	at org.eclipse.cdt.internal.core.pdom.PDOMManager.createIndexer(PDOMManager.java:571)
+	at org.eclipse.cdt.internal.core.pdom.PDOMSetupJob.run(PDOMSetupJob.java:58)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:54)
+!SUBENTRY 1 org.eclipse.cdt.core 4 0 2015-11-13 17:01:35.378
+!MESSAGE Error
