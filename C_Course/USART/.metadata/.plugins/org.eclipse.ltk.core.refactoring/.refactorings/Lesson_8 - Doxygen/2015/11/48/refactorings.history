@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename resource &apos;Lesson_8 - Doxygen/include/MCU/SeriaStructure.h&apos; to &apos;SerialStructure.h&apos;" description="Rename resource &apos;SeriaStructure.h&apos;" flags="7" id="org.eclipse.ltk.core.refactoring.rename.resource" input="include/MCU/SeriaStructure.h" name="SerialStructure.h" stamp="1448551043670" updateReferences="true"/>
+</session>
