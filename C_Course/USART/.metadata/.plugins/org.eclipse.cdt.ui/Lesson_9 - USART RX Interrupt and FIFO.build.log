@@ -1,0 +1,11 @@
+17:09:32 **** Incremental Build of configuration Debug for project Lesson_9 - USART RX Interrupt and FIFO ****
+make all 
+Invoking: Cross ARM GNU Print Size
+arm-none-eabi-size --format=berkeley "Lesson_9 - USART RX Interrupt and FIFO.elf"
+   text	   data	    bss	    dec	    hex	filename
+   5105	    208	    436	   5749	   1675	Lesson_9 - USART RX Interrupt and FIFO.elf
+Finished building: Lesson_9 - USART RX Interrupt and FIFO.siz
+ 
+
+17:09:32 Build Finished (took 203ms)
+

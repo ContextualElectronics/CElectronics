@@ -1,0 +1,73 @@
+\hypertarget{common_8h}{\section{common.\-h File Reference}
+\label{common_8h}\index{common.\-h@{common.\-h}}
+}
+
+
+Holds all common code definitions.  
+
+
+{\ttfamily \#include $<$stdio.\-h$>$}\\*
+{\ttfamily \#include $<$stdlib.\-h$>$}\\*
+{\ttfamily \#include \char`\"{}stm32f0xx.\-h\char`\"{}}\\*
+Include dependency graph for common.\-h\-:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=281pt]{common_8h__incl}
+\end{center}
+\end{figure}
+This graph shows which files directly or indirectly include this file\-:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{common_8h__dep__incl}
+\end{center}
+\end{figure}
+\subsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+union \hyperlink{union_data_converter}{Data\-Converter}
+\begin{DoxyCompactList}\small\item\em define the union type used to convert between types. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{common_8h_aa8cecfc5c5c054d2875c03e77b7be15d}{\#define \hyperlink{common_8h_aa8cecfc5c5c054d2875c03e77b7be15d}{T\-R\-U\-E}~1}\label{common_8h_aa8cecfc5c5c054d2875c03e77b7be15d}
+
+\begin{DoxyCompactList}\small\item\em Defines the true state. \end{DoxyCompactList}\item 
+\hypertarget{common_8h_aa93f0eb578d23995850d61f7d61c55c1}{\#define \hyperlink{common_8h_aa93f0eb578d23995850d61f7d61c55c1}{F\-A\-L\-S\-E}~0}\label{common_8h_aa93f0eb578d23995850d61f7d61c55c1}
+
+\begin{DoxyCompactList}\small\item\em Defines the false state. \end{DoxyCompactList}\item 
+\hypertarget{common_8h_a8fe83ac76edc595f6b98cd4a4127aed5}{\#define \hyperlink{common_8h_a8fe83ac76edc595f6b98cd4a4127aed5}{E\-R\-R\-O\-R}~-\/1}\label{common_8h_a8fe83ac76edc595f6b98cd4a4127aed5}
+
+\begin{DoxyCompactList}\small\item\em Defines the default error state. \end{DoxyCompactList}\item 
+\hypertarget{common_8h_a09b90b1d00e10094106f51f108e05dfe}{\#define \hyperlink{common_8h_a09b90b1d00e10094106f51f108e05dfe}{E\-R\-R\-O\-R\-\_\-\-I\-N\-V\-A\-L\-I\-D\-\_\-\-P\-O\-I\-N\-T\-E\-R}~-\/2}\label{common_8h_a09b90b1d00e10094106f51f108e05dfe}
+
+\begin{DoxyCompactList}\small\item\em Defines the an error for when pointer are invalid. \end{DoxyCompactList}\item 
+\#define \hyperlink{common_8h_aa14dc39d52ab121ceb570f1a265385e0}{F\-I\-R\-M\-W\-A\-R\-E\-\_\-\-V\-E\-R\-S\-I\-O\-N}~\char`\"{}00.\-0001\-D\char`\"{}
+\begin{DoxyCompactList}\small\item\em Firmware version D = development version of the firmware. Should only be used for testing purposes C = concession version. This version of the firmware is usual custome for a customer. see C\-O\-N\-C\-E\-S\-S\-I\-O\-N\-\_\-\-N\-U\-M\-B\-E\-R P = production version. \end{DoxyCompactList}\item 
+\hypertarget{common_8h_a7c770e481dd85c7ffb40e3b3edb0beb5}{\#define \hyperlink{common_8h_a7c770e481dd85c7ffb40e3b3edb0beb5}{H\-A\-R\-D\-W\-A\-R\-E\-\_\-\-V\-E\-R\-S\-I\-O\-N}~\char`\"{}00\char`\"{}}\label{common_8h_a7c770e481dd85c7ffb40e3b3edb0beb5}
+
+\begin{DoxyCompactList}\small\item\em Hardware version. \end{DoxyCompactList}\item 
+\hypertarget{common_8h_a4c681fec0533353b247257c82546f7cd}{\#define \hyperlink{common_8h_a4c681fec0533353b247257c82546f7cd}{C\-O\-M\-P\-I\-L\-E\-D\-\_\-\-D\-A\-T\-A\-\_\-\-T\-I\-M\-E}~\char`\"{}\mbox{[}\char`\"{} \-\_\-\-\_\-\-D\-A\-T\-E\-\_\-\-\_\- \char`\"{} \char`\"{} \-\_\-\-\_\-\-T\-I\-M\-E\-\_\-\-\_\- \char`\"{}\mbox{]}\char`\"{}}\label{common_8h_a4c681fec0533353b247257c82546f7cd}
+
+\begin{DoxyCompactList}\small\item\em Hardware version. \end{DoxyCompactList}\item 
+\hypertarget{common_8h_a5d95e93610ec76137962e82eebebd723}{\#define \hyperlink{common_8h_a5d95e93610ec76137962e82eebebd723}{E\-N\-\_\-\-D\-E\-B\-U\-G\-\_\-\-I\-N\-T\-E\-R\-F\-A\-C\-E}}\label{common_8h_a5d95e93610ec76137962e82eebebd723}
+
+\begin{DoxyCompactList}\small\item\em Enables the debug interface and all debug message associated. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Holds all common code definitions. Author\-: Ronald Sousa () 
+
+\subsection{Macro Definition Documentation}
+\hypertarget{common_8h_aa14dc39d52ab121ceb570f1a265385e0}{\index{common.\-h@{common.\-h}!F\-I\-R\-M\-W\-A\-R\-E\-\_\-\-V\-E\-R\-S\-I\-O\-N@{F\-I\-R\-M\-W\-A\-R\-E\-\_\-\-V\-E\-R\-S\-I\-O\-N}}
+\index{F\-I\-R\-M\-W\-A\-R\-E\-\_\-\-V\-E\-R\-S\-I\-O\-N@{F\-I\-R\-M\-W\-A\-R\-E\-\_\-\-V\-E\-R\-S\-I\-O\-N}!common.h@{common.\-h}}
+\subsubsection[{F\-I\-R\-M\-W\-A\-R\-E\-\_\-\-V\-E\-R\-S\-I\-O\-N}]{\setlength{\rightskip}{0pt plus 5cm}\#define F\-I\-R\-M\-W\-A\-R\-E\-\_\-\-V\-E\-R\-S\-I\-O\-N~\char`\"{}00.\-0001\-D\char`\"{}}}\label{common_8h_aa14dc39d52ab121ceb570f1a265385e0}
+
+
+Firmware version D = development version of the firmware. Should only be used for testing purposes C = concession version. This version of the firmware is usual custome for a customer. see C\-O\-N\-C\-E\-S\-S\-I\-O\-N\-\_\-\-N\-U\-M\-B\-E\-R P = production version. 
+
+\begin{DoxySeeAlso}{See Also}
+C\-O\-N\-C\-E\-S\-S\-I\-O\-N\-\_\-\-N\-U\-M\-B\-E\-R 
+\end{DoxySeeAlso}

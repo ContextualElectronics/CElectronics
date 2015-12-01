@@ -1,0 +1,7 @@
+<map id="main.c" name="main.c">
+<area shape="rect" id="node2" href="$common_8h.html" title="Holds all common code definitions. " alt="" coords="108,229,189,256"/>
+<area shape="rect" id="node6" href="$led_8h.html" title="MCU/led.h" alt="" coords="27,155,112,181"/>
+<area shape="rect" id="node7" href="$usart2_8h.html" title="MCU/usart2.h" alt="" coords="107,80,211,107"/>
+<area shape="rect" id="node9" href="$tick_8h.html" title="MCU/tick.h" alt="" coords="285,80,373,107"/>
+<area shape="rect" id="node8" href="$_serial_structure_8h.html" title="define the serial interface layer structure " alt="" coords="187,155,340,181"/>
+</map>
