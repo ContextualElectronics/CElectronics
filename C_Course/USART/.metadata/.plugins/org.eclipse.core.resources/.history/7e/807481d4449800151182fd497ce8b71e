@@ -46,8 +46,8 @@ static uint_fast8_t IsSerialOpen(void)
 ///////////////////////////////////////////////////////////////////////////////
 static void Close(void)
 {
-	USART2->CR1 &= ~(USART_CR1_UE);
 	NVIC_DisableIRQ(USART2_IRQn);
+	USART2->CR1 &= ~(USART_CR1_UE);
 }
 
 /////////////////////////////////////////////////////////////////////////
@@ -134,6 +134,7 @@ static uint_fast8_t Open(const uint32_t baudrate)
 		// set baudrate
 		Setbaudrate(baudrate);
 
+
 		NVIC_SetPriority(USART2_IRQn, 0); // set the USART to the highest interrupt priority
 
 		NVIC_EnableIRQ(USART2_IRQn); 	// enable interrupt
@@ -151,9 +152,8 @@ static uint_fast8_t Open(const uint32_t baudrate)
 		IsOpenFlag = TRUE;
 	}
 
-	// This Setbaudrate is for testing if it does turn of and off the uart while is setting the baudrate.
+	// set baudrate
 	Setbaudrate(baudrate);
-
     return FALSE;
 }
 

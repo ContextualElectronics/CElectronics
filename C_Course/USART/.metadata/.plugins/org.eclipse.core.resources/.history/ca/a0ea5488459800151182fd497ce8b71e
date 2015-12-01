@@ -21,20 +21,17 @@ void main(void)
     Led_Init();
     Tick_init();
 
-    SerialPort2.Open(57600);
+    SerialPort2.Open(115200);
 
     for ( ;; )
     {
-        while ( TRUE == SerialPort2.GetByte(&TempData) )
+        if(SerialPort2.GetByte(&TempData))
         {
 			SerialPort2.SendByte(TempData);
-
+			Led_Toggle();
         }
 
         // Some code to run
-        Tick_DelayMs(500);
-		Led_Toggle();
-
 
     }
 }
