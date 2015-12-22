@@ -1,0 +1,94 @@
+\hypertarget{_f_i_f_o_8c}{\section{F\-I\-F\-O.\-c File Reference}
+\label{_f_i_f_o_8c}\index{F\-I\-F\-O.\-c@{F\-I\-F\-O.\-c}}
+}
+
+
+This is our F\-I\-F\-O library.  
+
+
+{\ttfamily \#include \char`\"{}common.\-h\char`\"{}}\\*
+Include dependency graph for F\-I\-F\-O.\-c\-:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=281pt]{_f_i_f_o_8c__incl}
+\end{center}
+\end{figure}
+\subsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{_f_i_f_o_8c_a09cc7a19970e19234eaf82ce09b6c2ad}{\#define \hyperlink{_f_i_f_o_8c_a09cc7a19970e19234eaf82ce09b6c2ad}{F\-I\-F\-O\-\_\-\-B\-U\-F\-F\-E\-R\-\_\-\-M\-A\-X\-\_\-\-S\-I\-Z\-E}~3}\label{_f_i_f_o_8c_a09cc7a19970e19234eaf82ce09b6c2ad}
+
+\begin{DoxyCompactList}\small\item\em defines the fifo buffer max size. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+uint32\-\_\-t \hyperlink{_f_i_f_o_8c_a1fe07979ab19f7405a4b5bedbdc26a07}{F\-I\-F\-O\-\_\-\-Counnter\-Buffer\-Count} (void)
+\begin{DoxyCompactList}\small\item\em return the number of bytes in buffer \end{DoxyCompactList}\item 
+\hypertarget{_f_i_f_o_8c_ac782a85fa346582e7b1faeb82f7cbe75}{void \hyperlink{_f_i_f_o_8c_ac782a85fa346582e7b1faeb82f7cbe75}{F\-I\-F\-O\-\_\-\-Initialiser} (void)}\label{_f_i_f_o_8c_ac782a85fa346582e7b1faeb82f7cbe75}
+
+\begin{DoxyCompactList}\small\item\em This will init the fifo variables and clear the buffer. \end{DoxyCompactList}\item 
+uint\-\_\-fast8\-\_\-t \hyperlink{_f_i_f_o_8c_a8328a1725cddf8c3b62939cb86037b9c}{F\-I\-F\-O\-\_\-\-Read} (uint8\-\_\-t $\ast$output\-Data\-Pointer)
+\begin{DoxyCompactList}\small\item\em Read one bute from the buffer. Return false if we didn't. \end{DoxyCompactList}\item 
+uint\-\_\-fast8\-\_\-t \hyperlink{_f_i_f_o_8c_adb6a9350a95d5de88479c528d8447521}{F\-I\-F\-O\-\_\-\-Write} (uint8\-\_\-t input\-Data)
+\begin{DoxyCompactList}\small\item\em Write input\-Data into our buffer. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+This is our F\-I\-F\-O library. \begin{DoxyAuthor}{Author}
+Ronald Sousa  
+\end{DoxyAuthor}
+
+
+\subsection{Function Documentation}
+\hypertarget{_f_i_f_o_8c_a1fe07979ab19f7405a4b5bedbdc26a07}{\index{F\-I\-F\-O.\-c@{F\-I\-F\-O.\-c}!F\-I\-F\-O\-\_\-\-Counnter\-Buffer\-Count@{F\-I\-F\-O\-\_\-\-Counnter\-Buffer\-Count}}
+\index{F\-I\-F\-O\-\_\-\-Counnter\-Buffer\-Count@{F\-I\-F\-O\-\_\-\-Counnter\-Buffer\-Count}!FIFO.c@{F\-I\-F\-O.\-c}}
+\subsubsection[{F\-I\-F\-O\-\_\-\-Counnter\-Buffer\-Count}]{\setlength{\rightskip}{0pt plus 5cm}uint32\-\_\-t F\-I\-F\-O\-\_\-\-Counnter\-Buffer\-Count (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+)}}\label{_f_i_f_o_8c_a1fe07979ab19f7405a4b5bedbdc26a07}
+
+
+return the number of bytes in buffer 
+
+\begin{DoxyRefDesc}{Todo}
+\item[\hyperlink{todo__todo000001}{Todo}]Implement interrupt save code. ie enable and disable interrupt \end{DoxyRefDesc}
+\hypertarget{_f_i_f_o_8c_a8328a1725cddf8c3b62939cb86037b9c}{\index{F\-I\-F\-O.\-c@{F\-I\-F\-O.\-c}!F\-I\-F\-O\-\_\-\-Read@{F\-I\-F\-O\-\_\-\-Read}}
+\index{F\-I\-F\-O\-\_\-\-Read@{F\-I\-F\-O\-\_\-\-Read}!FIFO.c@{F\-I\-F\-O.\-c}}
+\subsubsection[{F\-I\-F\-O\-\_\-\-Read}]{\setlength{\rightskip}{0pt plus 5cm}uint\-\_\-fast8\-\_\-t F\-I\-F\-O\-\_\-\-Read (
+\begin{DoxyParamCaption}
+\item[{uint8\-\_\-t $\ast$}]{output\-Data\-Pointer}
+\end{DoxyParamCaption}
+)}}\label{_f_i_f_o_8c_a8328a1725cddf8c3b62939cb86037b9c}
+
+
+Read one bute from the buffer. Return false if we didn't. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em output\-Data\-Pointer} & pointer to return the read value.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+T\-R\-U\-E = successfully read a byte rom buffer F\-A\-L\-S\-E = no data to read E\-R\-R\-O\-R\-\_\-\-I\-N\-V\-A\-L\-I\-D\-\_\-\-P\-O\-I\-N\-T\-E\-R = Invalid output\-Data\-Pointer pointer 
+\end{DoxyReturn}
+\hypertarget{_f_i_f_o_8c_adb6a9350a95d5de88479c528d8447521}{\index{F\-I\-F\-O.\-c@{F\-I\-F\-O.\-c}!F\-I\-F\-O\-\_\-\-Write@{F\-I\-F\-O\-\_\-\-Write}}
+\index{F\-I\-F\-O\-\_\-\-Write@{F\-I\-F\-O\-\_\-\-Write}!FIFO.c@{F\-I\-F\-O.\-c}}
+\subsubsection[{F\-I\-F\-O\-\_\-\-Write}]{\setlength{\rightskip}{0pt plus 5cm}uint\-\_\-fast8\-\_\-t F\-I\-F\-O\-\_\-\-Write (
+\begin{DoxyParamCaption}
+\item[{uint8\-\_\-t}]{input\-Data}
+\end{DoxyParamCaption}
+)}}\label{_f_i_f_o_8c_adb6a9350a95d5de88479c528d8447521}
+
+
+Write input\-Data into our buffer. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em input\-Data} & copy of the data we want to store\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+T\-R\-U\-E = successfully writing data to our buffer F\-A\-L\-S\-E = No space in buffer 
+\end{DoxyReturn}

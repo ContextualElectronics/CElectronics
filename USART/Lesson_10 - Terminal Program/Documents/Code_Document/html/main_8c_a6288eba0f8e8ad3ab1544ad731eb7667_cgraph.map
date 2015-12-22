@@ -1,0 +1,10 @@
+<map id="main" name="main">
+<area shape="rect" id="node2" href="$_f_i_f_o_8c.html#ac782a85fa346582e7b1faeb82f7cbe75" title="This will init the fifo variables and clear the buffer. " alt="" coords="105,5,215,32"/>
+<area shape="rect" id="node3" href="$led_8c.html#af1aee968a5ceeb7915921aa6d78aca23" title="Setup the LED IO. " alt="" coords="126,56,194,83"/>
+<area shape="rect" id="node5" href="$tick_8h.html#ade660961e7af4755750dd6ff81535e68" title="setup the ARM M0 tick counter to trigger every 1ms " alt="" coords="125,107,195,133"/>
+<area shape="rect" id="node6" href="$_f_i_f_o_8c.html#adb6a9350a95d5de88479c528d8447521" title="Write inputData into our buffer. " alt="" coords="115,157,205,184"/>
+<area shape="rect" id="node7" href="$_f_i_f_o_8c.html#a8328a1725cddf8c3b62939cb86037b9c" title="Read one bute from the buffer. Return false if we didn&#39;t. " alt="" coords="115,208,205,235"/>
+<area shape="rect" id="node8" href="$led_8c.html#a5ebbd778fb3444fbfbded2130e08b33d" title="Toggle the LED state. " alt="" coords="115,259,205,285"/>
+<area shape="rect" id="node4" href="$led_8c.html#a274dbef77287444be852fe96969b3c55" title="Turns off the LED. " alt="" coords="265,132,333,159"/>
+<area shape="rect" id="node9" href="$led_8c.html#a39675df62ae72fa5af35fc7ec2e8c950" title="Turns on the LED. " alt="" coords="265,259,332,285"/>
+</map>

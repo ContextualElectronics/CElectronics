@@ -1,0 +1,47 @@
+\hypertarget{struct_serial_interface}{\section{Serial\-Interface Struct Reference}
+\label{struct_serial_interface}\index{Serial\-Interface@{Serial\-Interface}}
+}
+
+
+define the standard serial interface  
+
+
+
+
+{\ttfamily \#include $<$Serial\-Structure.\-h$>$}
+
+\subsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{struct_serial_interface_aa12245208003c78ea024ad24f9d84f2a}{uint\-\_\-fast8\-\_\-t($\ast$ \hyperlink{struct_serial_interface_aa12245208003c78ea024ad24f9d84f2a}{Is\-Serial\-Open} )(void)}\label{struct_serial_interface_aa12245208003c78ea024ad24f9d84f2a}
+
+\begin{DoxyCompactList}\small\item\em return the serial connection state \end{DoxyCompactList}\item 
+\hypertarget{struct_serial_interface_ab506189cbcec1de46dfc75142fb82068}{uint\-\_\-fast8\-\_\-t($\ast$ \hyperlink{struct_serial_interface_ab506189cbcec1de46dfc75142fb82068}{Open} )(const uint32\-\_\-t baudrate)}\label{struct_serial_interface_ab506189cbcec1de46dfc75142fb82068}
+
+\begin{DoxyCompactList}\small\item\em opens the serial connection \end{DoxyCompactList}\item 
+\hypertarget{struct_serial_interface_a6a28860e0cb0ab7a3f9c49527e883685}{void($\ast$ \hyperlink{struct_serial_interface_a6a28860e0cb0ab7a3f9c49527e883685}{Close} )(void)}\label{struct_serial_interface_a6a28860e0cb0ab7a3f9c49527e883685}
+
+\begin{DoxyCompactList}\small\item\em closes serial connection \end{DoxyCompactList}\item 
+\hypertarget{struct_serial_interface_aac8d6d754ee55b326fa8877cf5b51947}{uint\-\_\-fast8\-\_\-t($\ast$ \hyperlink{struct_serial_interface_aac8d6d754ee55b326fa8877cf5b51947}{Send\-Byte} )(const uint8\-\_\-t source)}\label{struct_serial_interface_aac8d6d754ee55b326fa8877cf5b51947}
+
+\begin{DoxyCompactList}\small\item\em send a single byte \end{DoxyCompactList}\item 
+\hypertarget{struct_serial_interface_a2dc11441227e78ac5a281f88f8fab577}{uint\-\_\-fast8\-\_\-t($\ast$ \hyperlink{struct_serial_interface_a2dc11441227e78ac5a281f88f8fab577}{Send\-String} )(const uint8\-\_\-t $\ast$source)}\label{struct_serial_interface_a2dc11441227e78ac5a281f88f8fab577}
+
+\begin{DoxyCompactList}\small\item\em send a string that. The string should be terminated by null character \end{DoxyCompactList}\item 
+\hypertarget{struct_serial_interface_a2f49f38e4a372077a2755eb5e7884b35}{uint\-\_\-fast8\-\_\-t($\ast$ \hyperlink{struct_serial_interface_a2f49f38e4a372077a2755eb5e7884b35}{Send\-Array} )(const uint8\-\_\-t $\ast$source, uint32\-\_\-t length)}\label{struct_serial_interface_a2f49f38e4a372077a2755eb5e7884b35}
+
+\begin{DoxyCompactList}\small\item\em send an array of data \end{DoxyCompactList}\item 
+\hypertarget{struct_serial_interface_a3c8c5895d4ebeaa8d1bf911c7f5e9dbd}{int\-\_\-fast8\-\_\-t($\ast$ \hyperlink{struct_serial_interface_a3c8c5895d4ebeaa8d1bf911c7f5e9dbd}{Does\-Receive\-Buffer\-Have\-Data} )(void)}\label{struct_serial_interface_a3c8c5895d4ebeaa8d1bf911c7f5e9dbd}
+
+\begin{DoxyCompactList}\small\item\em return the state of the serial receive buffer \end{DoxyCompactList}\item 
+\hypertarget{struct_serial_interface_a318df81760d2f0b0fb209fc39594b45e}{int\-\_\-fast8\-\_\-t($\ast$ \hyperlink{struct_serial_interface_a318df81760d2f0b0fb209fc39594b45e}{Get\-Byte} )(uint8\-\_\-t $\ast$destination)}\label{struct_serial_interface_a318df81760d2f0b0fb209fc39594b45e}
+
+\begin{DoxyCompactList}\small\item\em get a single byte from the serial \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+define the standard serial interface 
+
+The documentation for this struct was generated from the following file\-:\begin{DoxyCompactItemize}
+\item 
+\hyperlink{_serial_structure_8h}{Serial\-Structure.\-h}\end{DoxyCompactItemize}
