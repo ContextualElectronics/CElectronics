@@ -1,0 +1,116 @@
+\hypertarget{_terminal_8c}{\section{Terminal.\-c File Reference}
+\label{_terminal_8c}\index{Terminal.\-c@{Terminal.\-c}}
+}
+{\ttfamily \#include \char`\"{}common.\-h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}M\-C\-U/led.\-h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}M\-C\-U/usart2.\-h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}M\-C\-U/tick.\-h\char`\"{}}\\*
+Include dependency graph for Terminal.\-c\-:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{_terminal_8c__incl}
+\end{center}
+\end{figure}
+\subsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+struct \hyperlink{struct_param_structure_type}{Param\-Structure\-Type}
+\begin{DoxyCompactList}\small\item\em Defines the parameter data type. \end{DoxyCompactList}\item 
+struct \hyperlink{struct_list_of_parameter_structure_type}{List\-Of\-Parameter\-Structure\-Type}
+\begin{DoxyCompactList}\small\item\em Defines the list of parameter data structure. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \hyperlink{_terminal_8c_a4254377693b37d0990025e2a86a1ec0d}{T\-E\-R\-M\-I\-N\-A\-L\-\_\-\-B\-U\-F\-F\-E\-R\-\_\-\-S\-I\-Z\-E}~25
+\begin{DoxyCompactList}\small\item\em Defines our terminal buffer size which in turn set the longest command. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{_terminal_8c_acc9b80fa13f248f795d961b1817b7d4b}{Terminal\-\_\-\-Init} (void)
+\begin{DoxyCompactList}\small\item\em Init the terminal program. \end{DoxyCompactList}\item 
+int\-\_\-fast8\-\_\-t \hyperlink{_terminal_8c_a683f74bf787b52b7f357e405c6c2819c}{Terminal\-\_\-\-Process} (void)
+\begin{DoxyCompactList}\small\item\em process the buffer data and extract the commands \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+\begin{DoxyAuthor}{Author}
+Ronald Sousa  
+\end{DoxyAuthor}
+
+
+\subsection{Macro Definition Documentation}
+\hypertarget{_terminal_8c_a4254377693b37d0990025e2a86a1ec0d}{\index{Terminal.\-c@{Terminal.\-c}!T\-E\-R\-M\-I\-N\-A\-L\-\_\-\-B\-U\-F\-F\-E\-R\-\_\-\-S\-I\-Z\-E@{T\-E\-R\-M\-I\-N\-A\-L\-\_\-\-B\-U\-F\-F\-E\-R\-\_\-\-S\-I\-Z\-E}}
+\index{T\-E\-R\-M\-I\-N\-A\-L\-\_\-\-B\-U\-F\-F\-E\-R\-\_\-\-S\-I\-Z\-E@{T\-E\-R\-M\-I\-N\-A\-L\-\_\-\-B\-U\-F\-F\-E\-R\-\_\-\-S\-I\-Z\-E}!Terminal.c@{Terminal.\-c}}
+\subsubsection[{T\-E\-R\-M\-I\-N\-A\-L\-\_\-\-B\-U\-F\-F\-E\-R\-\_\-\-S\-I\-Z\-E}]{\setlength{\rightskip}{0pt plus 5cm}\#define T\-E\-R\-M\-I\-N\-A\-L\-\_\-\-B\-U\-F\-F\-E\-R\-\_\-\-S\-I\-Z\-E~25}}\label{_terminal_8c_a4254377693b37d0990025e2a86a1ec0d}
+
+
+Defines our terminal buffer size which in turn set the longest command. 
+
+
+
+\subsection{Function Documentation}
+\hypertarget{_terminal_8c_acc9b80fa13f248f795d961b1817b7d4b}{\index{Terminal.\-c@{Terminal.\-c}!Terminal\-\_\-\-Init@{Terminal\-\_\-\-Init}}
+\index{Terminal\-\_\-\-Init@{Terminal\-\_\-\-Init}!Terminal.c@{Terminal.\-c}}
+\subsubsection[{Terminal\-\_\-\-Init}]{\setlength{\rightskip}{0pt plus 5cm}void Terminal\-\_\-\-Init (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+)}}\label{_terminal_8c_acc9b80fa13f248f795d961b1817b7d4b}
+
+
+Init the terminal program. 
+
+
+
+Here is the call graph for this function\-:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=332pt]{_terminal_8c_acc9b80fa13f248f795d961b1817b7d4b_cgraph}
+\end{center}
+\end{figure}
+
+
+
+
+Here is the caller graph for this function\-:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=228pt]{_terminal_8c_acc9b80fa13f248f795d961b1817b7d4b_icgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{_terminal_8c_a683f74bf787b52b7f357e405c6c2819c}{\index{Terminal.\-c@{Terminal.\-c}!Terminal\-\_\-\-Process@{Terminal\-\_\-\-Process}}
+\index{Terminal\-\_\-\-Process@{Terminal\-\_\-\-Process}!Terminal.c@{Terminal.\-c}}
+\subsubsection[{Terminal\-\_\-\-Process}]{\setlength{\rightskip}{0pt plus 5cm}int\-\_\-fast8\-\_\-t Terminal\-\_\-\-Process (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+)}}\label{_terminal_8c_a683f74bf787b52b7f357e405c6c2819c}
+
+
+process the buffer data and extract the commands 
+
+\begin{DoxyReturn}{Returns}
+T\-R\-U\-E success. F\-A\-L\-S\-E no error
+\end{DoxyReturn}
+\begin{DoxyRefDesc}{Todo}
+\item[\hyperlink{todo__todo000005}{Todo}]update the document return state value. need to implement \end{DoxyRefDesc}
+\begin{DoxyRefDesc}{Todo}
+\item[\hyperlink{todo__todo000006}{Todo}]call the process data \end{DoxyRefDesc}
+
+
+Here is the caller graph for this function\-:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=250pt]{_terminal_8c_a683f74bf787b52b7f357e405c6c2819c_icgraph}
+\end{center}
+\end{figure}
+
+

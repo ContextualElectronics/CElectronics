@@ -1,0 +1,5 @@
+<map id="SerialStructure.h" name="SerialStructure.h">
+<area shape="rect" id="node2" href="$usart2_8h.html" title="usart2.h" alt="" coords="55,80,124,107"/>
+<area shape="rect" id="node3" href="$usart2_8c.html" title="STM32 serial2 MCU hardware interface layer. to maintain code portability, the hardware related code i..." alt="" coords="5,155,75,181"/>
+<area shape="rect" id="node4" href="$_terminal_8c.html" title="Terminal.c" alt="" coords="99,155,180,181"/>
+</map>
