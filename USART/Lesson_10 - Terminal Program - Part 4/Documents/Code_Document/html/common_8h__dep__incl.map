@@ -1,0 +1,12 @@
+<map id="common.h" name="common.h">
+<area shape="rect" id="node2" href="$_f_i_f_o_8c.html" title="This is our FIFO library. " alt="" coords="5,80,67,107"/>
+<area shape="rect" id="node3" href="$main_8c.html" title="This is the main program code. " alt="" coords="92,80,153,107"/>
+<area shape="rect" id="node4" href="$_terminal_8c.html" title="Terminal.c" alt="" coords="224,229,305,256"/>
+<area shape="rect" id="node5" href="$led_8h.html" title="led.h" alt="" coords="177,80,228,107"/>
+<area shape="rect" id="node7" href="$_serial_structure_8h.html" title="define the serial interface layer structure " alt="" coords="434,80,552,107"/>
+<area shape="rect" id="node8" href="$usart2_8h.html" title="usart2.h" alt="" coords="383,155,452,181"/>
+<area shape="rect" id="node10" href="$tick_8h.html" title="tick.h" alt="" coords="253,80,307,107"/>
+<area shape="rect" id="node6" href="$led_8c.html" title="this is the LED hardware interface layer. " alt="" coords="127,155,177,181"/>
+<area shape="rect" id="node9" href="$usart2_8c.html" title="STM32 serial2 MCU hardware interface layer. to maintain code portability, the hardware related code i..." alt="" coords="383,229,452,256"/>
+<area shape="rect" id="node11" href="$tick_8c.html" title="implements mili&#45;second tick counter. " alt="" coords="253,155,307,181"/>
+</map>
