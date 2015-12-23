@@ -1,0 +1,192 @@
+\hypertarget{tick_8h}{\section{tick.\-h File Reference}
+\label{tick_8h}\index{tick.\-h@{tick.\-h}}
+}
+{\ttfamily \#include \char`\"{}common.\-h\char`\"{}}\\*
+Include dependency graph for tick.\-h\-:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=281pt]{tick_8h__incl}
+\end{center}
+\end{figure}
+This graph shows which files directly or indirectly include this file\-:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=201pt]{tick_8h__dep__incl}
+\end{center}
+\end{figure}
+\subsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+struct \hyperlink{struct_tick_type}{Tick\-Type}
+\begin{DoxyCompactList}\small\item\em defines a non-\/blocking delay data type. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{tick_8h_ade660961e7af4755750dd6ff81535e68}{Tick\-\_\-init} (void)
+\begin{DoxyCompactList}\small\item\em setup the A\-R\-M M0 tick counter to trigger every 1ms \end{DoxyCompactList}\item 
+uint32\-\_\-t \hyperlink{tick_8h_a5018c28a90fe9864e870a712c8e2b571}{Tick\-\_\-\-Get\-Ms} (void)
+\begin{DoxyCompactList}\small\item\em return the number of mili-\/seconds since power up. \end{DoxyCompactList}\item 
+int\-\_\-fast8\-\_\-t \hyperlink{tick_8h_a700a086c5fb6a2a2491026af0fda77a8}{Tick\-\_\-\-Delay\-Ms\-\_\-\-Non\-Blocking} (uint\-\_\-fast8\-\_\-t reset, \hyperlink{struct_tick_type}{Tick\-Type} $\ast$config)
+\begin{DoxyCompactList}\small\item\em Non-\/blocking delay in ms. \end{DoxyCompactList}\item 
+void \hyperlink{tick_8h_a01864fcfa99d364250b9e3e10390ff93}{Tick\-\_\-\-Delay\-Ms} (uint32\-\_\-t delay\-Ms)
+\begin{DoxyCompactList}\small\item\em this is a blocking delay. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Author\-: Ronald Sousa () 
+
+\subsection{Function Documentation}
+\hypertarget{tick_8h_a01864fcfa99d364250b9e3e10390ff93}{\index{tick.\-h@{tick.\-h}!Tick\-\_\-\-Delay\-Ms@{Tick\-\_\-\-Delay\-Ms}}
+\index{Tick\-\_\-\-Delay\-Ms@{Tick\-\_\-\-Delay\-Ms}!tick.h@{tick.\-h}}
+\subsubsection[{Tick\-\_\-\-Delay\-Ms}]{\setlength{\rightskip}{0pt plus 5cm}void Tick\-\_\-\-Delay\-Ms (
+\begin{DoxyParamCaption}
+\item[{uint32\-\_\-t}]{delay\-Ms}
+\end{DoxyParamCaption}
+)}}\label{tick_8h_a01864fcfa99d364250b9e3e10390ff93}
+
+
+this is a blocking delay. 
+
+
+\begin{DoxyCode}
+\textcolor{preprocessor}{ #include "\hyperlink{common_8h}{common.h}"}
+\textcolor{preprocessor}{ #include "\hyperlink{led_8h}{MCU/led.h}"}
+\textcolor{preprocessor}{ #include "\hyperlink{tick_8h}{MCU/tick.h}"}
+
+ \textcolor{keywordtype}{void} \hyperlink{main_8c_a6288eba0f8e8ad3ab1544ad731eb7667}{main}(\textcolor{keywordtype}{void}) \{
+
+     \hyperlink{led_8c_af1aee968a5ceeb7915921aa6d78aca23}{Led\_Init}();
+     \hyperlink{tick_8c_ade660961e7af4755750dd6ff81535e68}{Tick\_init}();
+
+     \textcolor{keywordflow}{for}( ;;) \{
+       \hyperlink{tick_8c_a01864fcfa99d364250b9e3e10390ff93}{Tick\_DelayMs}(1000); \textcolor{comment}{// delay 1s;}
+       \hyperlink{led_8c_a5ebbd778fb3444fbfbded2130e08b33d}{Led\_Toggle}();
+     \}
+\}
+\end{DoxyCode}
+
+
+
+\begin{DoxyParams}{Parameters}
+{\em delay\-Ms} & how long to delay for. \\
+\hline
+\end{DoxyParams}
+\hypertarget{tick_8h_a700a086c5fb6a2a2491026af0fda77a8}{\index{tick.\-h@{tick.\-h}!Tick\-\_\-\-Delay\-Ms\-\_\-\-Non\-Blocking@{Tick\-\_\-\-Delay\-Ms\-\_\-\-Non\-Blocking}}
+\index{Tick\-\_\-\-Delay\-Ms\-\_\-\-Non\-Blocking@{Tick\-\_\-\-Delay\-Ms\-\_\-\-Non\-Blocking}!tick.h@{tick.\-h}}
+\subsubsection[{Tick\-\_\-\-Delay\-Ms\-\_\-\-Non\-Blocking}]{\setlength{\rightskip}{0pt plus 5cm}int\-\_\-fast8\-\_\-t Tick\-\_\-\-Delay\-Ms\-\_\-\-Non\-Blocking (
+\begin{DoxyParamCaption}
+\item[{uint\-\_\-fast8\-\_\-t}]{reset, }
+\item[{{\bf Tick\-Type} $\ast$}]{config}
+\end{DoxyParamCaption}
+)}}\label{tick_8h_a700a086c5fb6a2a2491026af0fda77a8}
+
+
+Non-\/blocking delay in ms. 
+
+
+\begin{DoxyCode}
+\textcolor{preprocessor}{ #include "\hyperlink{common_8h}{common.h}"}
+\textcolor{preprocessor}{ #include "\hyperlink{led_8h}{MCU/led.h}"}
+\textcolor{preprocessor}{ #include "\hyperlink{tick_8h}{MCU/tick.h}"}
+
+ \textcolor{keywordtype}{void} \hyperlink{main_8c_a6288eba0f8e8ad3ab1544ad731eb7667}{main}(\textcolor{keywordtype}{void}) \{
+     \hyperlink{struct_tick_type}{TickType} Delay;
+     Delay.\hyperlink{struct_tick_type_ae24ecd63a2b008c5c9a6864cbb3b30a7}{DelayMs} = 1000; \textcolor{comment}{//set to 1s}
+
+     \hyperlink{led_8c_af1aee968a5ceeb7915921aa6d78aca23}{Led\_Init}();
+     \hyperlink{tick_8c_ade660961e7af4755750dd6ff81535e68}{Tick\_init}();
+
+     \textcolor{comment}{// reset the counter}
+     \hyperlink{tick_8c_a700a086c5fb6a2a2491026af0fda77a8}{Tick\_DelayMs\_NonBlocking}(\hyperlink{common_8h_aa8cecfc5c5c054d2875c03e77b7be15d}{TRUE}, &Delay);
+
+     \textcolor{keywordflow}{for}( ;;) \{
+
+         \textcolor{keywordflow}{if}(\hyperlink{tick_8c_a700a086c5fb6a2a2491026af0fda77a8}{Tick\_DelayMs\_NonBlocking}(\hyperlink{common_8h_aa8cecfc5c5c054d2875c03e77b7be15d}{TRUE}, &Delay)) \{
+             \textcolor{comment}{// Delay has been reached}
+
+             \hyperlink{tick_8c_a700a086c5fb6a2a2491026af0fda77a8}{Tick\_DelayMs\_NonBlocking}(\hyperlink{common_8h_aa8cecfc5c5c054d2875c03e77b7be15d}{TRUE}, &Delay);
+             \hyperlink{led_8c_a5ebbd778fb3444fbfbded2130e08b33d}{Led\_Toggle}();
+             \}
+         \textcolor{keywordflow}{else} \{
+             \textcolor{comment}{// User code when the code delay hasn't passed}
+             \}
+
+     \}
+\}
+\end{DoxyCode}
+
+
+
+\begin{DoxyParams}{Parameters}
+{\em reset} & true = reset timer start value/ false = Check if time has lapsed \\
+\hline
+{\em config} & delay setting\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+1 = the desire delay has been reached. 0 = not reached the desire delay time. -\/1 = config point is null 
+\end{DoxyReturn}
+
+
+Here is the call graph for this function\-:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=326pt]{tick_8h_a700a086c5fb6a2a2491026af0fda77a8_cgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{tick_8h_a5018c28a90fe9864e870a712c8e2b571}{\index{tick.\-h@{tick.\-h}!Tick\-\_\-\-Get\-Ms@{Tick\-\_\-\-Get\-Ms}}
+\index{Tick\-\_\-\-Get\-Ms@{Tick\-\_\-\-Get\-Ms}!tick.h@{tick.\-h}}
+\subsubsection[{Tick\-\_\-\-Get\-Ms}]{\setlength{\rightskip}{0pt plus 5cm}uint32\-\_\-t Tick\-\_\-\-Get\-Ms (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+)}}\label{tick_8h_a5018c28a90fe9864e870a712c8e2b571}
+
+
+return the number of mili-\/seconds since power up. 
+
+\begin{DoxyReturn}{Returns}
+number of mili-\/seconds.
+\end{DoxyReturn}
+\begin{DoxyNote}{Note}
+the tick counter is expected to overflow and therefore code using the tick value should take this into account. 
+\end{DoxyNote}
+
+
+Here is the caller graph for this function\-:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=326pt]{tick_8h_a5018c28a90fe9864e870a712c8e2b571_icgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{tick_8h_ade660961e7af4755750dd6ff81535e68}{\index{tick.\-h@{tick.\-h}!Tick\-\_\-init@{Tick\-\_\-init}}
+\index{Tick\-\_\-init@{Tick\-\_\-init}!tick.h@{tick.\-h}}
+\subsubsection[{Tick\-\_\-init}]{\setlength{\rightskip}{0pt plus 5cm}void Tick\-\_\-init (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+)}}\label{tick_8h_ade660961e7af4755750dd6ff81535e68}
+
+
+setup the A\-R\-M M0 tick counter to trigger every 1ms 
+
+
+
+Here is the caller graph for this function\-:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=318pt]{tick_8h_ade660961e7af4755750dd6ff81535e68_icgraph}
+\end{center}
+\end{figure}
+
+

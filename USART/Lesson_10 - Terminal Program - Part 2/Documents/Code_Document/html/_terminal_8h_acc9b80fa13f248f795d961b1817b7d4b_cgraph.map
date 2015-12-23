@@ -1,0 +1,5 @@
+<map id="Terminal_Init" name="Terminal_Init">
+<area shape="rect" id="node2" href="$led_8c.html#af1aee968a5ceeb7915921aa6d78aca23" title="Setup the LED IO. " alt="" coords="154,5,222,32"/>
+<area shape="rect" id="node4" href="$tick_8c.html#ade660961e7af4755750dd6ff81535e68" title="setup the ARM M0 tick counter to trigger every 1ms " alt="" coords="153,56,223,83"/>
+<area shape="rect" id="node3" href="$led_8c.html#a274dbef77287444be852fe96969b3c55" title="Turns off the LED. " alt="" coords="273,5,341,32"/>
+</map>

@@ -4421,3 +4421,164 @@ org.eclipse.core.runtime.CoreException: Error
 	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:54)
 !SUBENTRY 1 org.eclipse.cdt.core 4 0 2015-12-23 08:19:16.065
 !MESSAGE Error
+!SESSION 2015-12-23 08:49:26.423 -----------------------------------------------
+eclipse.buildId=4.4.2.M20150204-1700
+java.version=1.8.0_66
+java.vendor=Oracle Corporation
+BootLoader constants: OS=linux, ARCH=x86_64, WS=gtk, NL=en_US
+Framework arguments:  -product org.eclipse.epp.package.cpp.product
+Command-line arguments:  -os linux -ws gtk -arch x86_64 -product org.eclipse.epp.package.cpp.product
+
+!ENTRY org.eclipse.cdt.core 4 0 2015-12-23 08:52:45.180
+!MESSAGE Error: Error
+!STACK 1
+org.eclipse.core.runtime.CoreException: Error
+	at org.eclipse.cdt.internal.core.pdom.db.Database.databaseCorruptionDetected(Database.java:292)
+	at org.eclipse.cdt.internal.core.pdom.db.Database.getChunk(Database.java:274)
+	at org.eclipse.cdt.internal.core.pdom.db.Database.getRecPtr(Database.java:486)
+	at org.eclipse.cdt.internal.core.pdom.dom.PDOMLinkage.getLinkageID(PDOMLinkage.java:123)
+	at org.eclipse.cdt.internal.core.pdom.PDOM.readLinkages(PDOM.java:422)
+	at org.eclipse.cdt.internal.core.pdom.PDOM.loadDatabase(PDOM.java:405)
+	at org.eclipse.cdt.internal.core.pdom.PDOM.<init>(PDOM.java:381)
+	at org.eclipse.cdt.internal.core.pdom.WritablePDOM.<init>(WritablePDOM.java:64)
+	at org.eclipse.cdt.internal.core.pdom.WritablePDOM.<init>(WritablePDOM.java:59)
+	at org.eclipse.cdt.internal.core.pdom.PDOMManager.getOrCreatePDOM(PDOMManager.java:384)
+	at org.eclipse.cdt.internal.core.pdom.PDOMManager.createIndexer(PDOMManager.java:571)
+	at org.eclipse.cdt.internal.core.pdom.PDOMSetupJob.run(PDOMSetupJob.java:58)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:54)
+!SUBENTRY 1 org.eclipse.cdt.core 4 0 2015-12-23 08:52:45.183
+!MESSAGE Error
+
+!ENTRY org.eclipse.cdt.core 4 0 2015-12-23 08:56:07.586
+!MESSAGE Error: Error
+!STACK 1
+org.eclipse.core.runtime.CoreException: Error
+	at org.eclipse.cdt.internal.core.pdom.db.Database.databaseCorruptionDetected(Database.java:292)
+	at org.eclipse.cdt.internal.core.pdom.db.Database.getChunk(Database.java:274)
+	at org.eclipse.cdt.internal.core.pdom.db.Database.getRecPtr(Database.java:486)
+	at org.eclipse.cdt.internal.core.pdom.dom.PDOMLinkage.getLinkageID(PDOMLinkage.java:123)
+	at org.eclipse.cdt.internal.core.pdom.PDOM.readLinkages(PDOM.java:422)
+	at org.eclipse.cdt.internal.core.pdom.PDOM.loadDatabase(PDOM.java:405)
+	at org.eclipse.cdt.internal.core.pdom.PDOM.<init>(PDOM.java:381)
+	at org.eclipse.cdt.internal.core.pdom.WritablePDOM.<init>(WritablePDOM.java:64)
+	at org.eclipse.cdt.internal.core.pdom.WritablePDOM.<init>(WritablePDOM.java:59)
+	at org.eclipse.cdt.internal.core.pdom.PDOMManager.getOrCreatePDOM(PDOMManager.java:384)
+	at org.eclipse.cdt.internal.core.pdom.PDOMManager.createIndexer(PDOMManager.java:571)
+	at org.eclipse.cdt.internal.core.pdom.PDOMSetupJob.run(PDOMSetupJob.java:58)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:54)
+!SUBENTRY 1 org.eclipse.cdt.core 4 0 2015-12-23 08:56:07.586
+!MESSAGE Error
+
+!ENTRY org.eclipse.cdt.core 4 0 2015-12-23 08:56:41.352
+!MESSAGE Error: Error
+!STACK 1
+org.eclipse.core.runtime.CoreException: Error
+	at org.eclipse.cdt.internal.core.pdom.db.Database.databaseCorruptionDetected(Database.java:292)
+	at org.eclipse.cdt.internal.core.pdom.db.Database.getChunk(Database.java:274)
+	at org.eclipse.cdt.internal.core.pdom.db.Database.getRecPtr(Database.java:486)
+	at org.eclipse.cdt.internal.core.pdom.dom.PDOMLinkage.getLinkageID(PDOMLinkage.java:123)
+	at org.eclipse.cdt.internal.core.pdom.PDOM.readLinkages(PDOM.java:422)
+	at org.eclipse.cdt.internal.core.pdom.PDOM.loadDatabase(PDOM.java:405)
+	at org.eclipse.cdt.internal.core.pdom.PDOM.<init>(PDOM.java:381)
+	at org.eclipse.cdt.internal.core.pdom.WritablePDOM.<init>(WritablePDOM.java:64)
+	at org.eclipse.cdt.internal.core.pdom.WritablePDOM.<init>(WritablePDOM.java:59)
+	at org.eclipse.cdt.internal.core.pdom.PDOMManager.getOrCreatePDOM(PDOMManager.java:384)
+	at org.eclipse.cdt.internal.core.pdom.PDOMManager.createIndexer(PDOMManager.java:571)
+	at org.eclipse.cdt.internal.core.pdom.PDOMSetupJob.run(PDOMSetupJob.java:58)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:54)
+!SUBENTRY 1 org.eclipse.cdt.core 4 0 2015-12-23 08:56:41.353
+!MESSAGE Error
+
+!ENTRY org.eclipse.egit.core 4 0 2015-12-23 09:03:39.450
+!MESSAGE Remove repository mapping of Git mapped resource for which project or mapped git repository has disappeared: 'RepositoryMapping[<empty> -> '../../../.git', absolute path: '/home/vagrant/Desktop/.git' ]'
+!STACK 0
+java.io.FileNotFoundException: 
+	at org.eclipse.egit.core.project.GitProjectData.logAndUnmapGoneMappedResource(GitProjectData.java:531)
+	at org.eclipse.egit.core.project.GitProjectData.map(GitProjectData.java:497)
+	at org.eclipse.egit.core.project.GitProjectData.remapAll(GitProjectData.java:471)
+	at org.eclipse.egit.core.project.GitProjectData.load(GitProjectData.java:464)
+	at org.eclipse.egit.core.project.GitProjectData.get(GitProjectData.java:204)
+	at org.eclipse.egit.core.GitProvider.getData(GitProvider.java:86)
+	at org.eclipse.egit.core.project.RepositoryMapping.getMapping(RepositoryMapping.java:268)
+	at org.eclipse.egit.core.Activator$AutoShareProjects.visitConnect(Activator.java:311)
+	at org.eclipse.egit.core.Activator$AutoShareProjects.access$0(Activator.java:298)
+	at org.eclipse.egit.core.Activator$AutoShareProjects$1.visit(Activator.java:280)
+	at org.eclipse.core.internal.events.ResourceDelta.accept(ResourceDelta.java:69)
+	at org.eclipse.core.internal.events.ResourceDelta.accept(ResourceDelta.java:80)
+	at org.eclipse.core.internal.events.ResourceDelta.accept(ResourceDelta.java:49)
+	at org.eclipse.egit.core.Activator$AutoShareProjects.resourceChanged(Activator.java:277)
+	at org.eclipse.core.internal.events.NotificationManager$1.run(NotificationManager.java:291)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:42)
+	at org.eclipse.core.internal.events.NotificationManager.notify(NotificationManager.java:285)
+	at org.eclipse.core.internal.events.NotificationManager.broadcastChanges(NotificationManager.java:149)
+	at org.eclipse.core.internal.resources.Workspace.broadcastPostChange(Workspace.java:378)
+	at org.eclipse.core.internal.resources.Workspace.endOperation(Workspace.java:1498)
+	at org.eclipse.core.internal.resources.InternalWorkspaceJob.run(InternalWorkspaceJob.java:45)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:54)
+
+!ENTRY org.eclipse.egit.core 4 0 2015-12-23 09:03:39.455
+!MESSAGE Unmapping gone mapped resource {0} failed
+!STACK 1
+org.eclipse.team.core.TeamException: The resource tree is locked for modifications.
+	at org.eclipse.team.internal.core.TeamPlugin.wrapException(TeamPlugin.java:128)
+	at org.eclipse.team.core.RepositoryProvider.unmap(RepositoryProvider.java:289)
+	at org.eclipse.egit.core.project.GitProjectData.logAndUnmapGoneMappedResource(GitProjectData.java:534)
+	at org.eclipse.egit.core.project.GitProjectData.map(GitProjectData.java:497)
+	at org.eclipse.egit.core.project.GitProjectData.remapAll(GitProjectData.java:471)
+	at org.eclipse.egit.core.project.GitProjectData.load(GitProjectData.java:464)
+	at org.eclipse.egit.core.project.GitProjectData.get(GitProjectData.java:204)
+	at org.eclipse.egit.core.GitProvider.getData(GitProvider.java:86)
+	at org.eclipse.egit.core.project.RepositoryMapping.getMapping(RepositoryMapping.java:268)
+	at org.eclipse.egit.core.Activator$AutoShareProjects.visitConnect(Activator.java:311)
+	at org.eclipse.egit.core.Activator$AutoShareProjects.access$0(Activator.java:298)
+	at org.eclipse.egit.core.Activator$AutoShareProjects$1.visit(Activator.java:280)
+	at org.eclipse.core.internal.events.ResourceDelta.accept(ResourceDelta.java:69)
+	at org.eclipse.core.internal.events.ResourceDelta.accept(ResourceDelta.java:80)
+	at org.eclipse.core.internal.events.ResourceDelta.accept(ResourceDelta.java:49)
+	at org.eclipse.egit.core.Activator$AutoShareProjects.resourceChanged(Activator.java:277)
+	at org.eclipse.core.internal.events.NotificationManager$1.run(NotificationManager.java:291)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:42)
+	at org.eclipse.core.internal.events.NotificationManager.notify(NotificationManager.java:285)
+	at org.eclipse.core.internal.events.NotificationManager.broadcastChanges(NotificationManager.java:149)
+	at org.eclipse.core.internal.resources.Workspace.broadcastPostChange(Workspace.java:378)
+	at org.eclipse.core.internal.resources.Workspace.endOperation(Workspace.java:1498)
+	at org.eclipse.core.internal.resources.InternalWorkspaceJob.run(InternalWorkspaceJob.java:45)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:54)
+Caused by: org.eclipse.core.internal.resources.ResourceException: The resource tree is locked for modifications.
+	at org.eclipse.core.internal.resources.WorkManager.checkIn(WorkManager.java:116)
+	at org.eclipse.core.internal.resources.Workspace.prepareOperation(Workspace.java:2251)
+	at org.eclipse.core.internal.resources.Project.touch(Project.java:1401)
+	at org.eclipse.team.core.RepositoryProvider.unmap(RepositoryProvider.java:277)
+	... 22 more
+!SUBENTRY 1 org.eclipse.team.core 4 380 2015-12-23 09:03:39.456
+!MESSAGE The resource tree is locked for modifications.
+!STACK 1
+org.eclipse.core.internal.resources.ResourceException: The resource tree is locked for modifications.
+	at org.eclipse.core.internal.resources.WorkManager.checkIn(WorkManager.java:116)
+	at org.eclipse.core.internal.resources.Workspace.prepareOperation(Workspace.java:2251)
+	at org.eclipse.core.internal.resources.Project.touch(Project.java:1401)
+	at org.eclipse.team.core.RepositoryProvider.unmap(RepositoryProvider.java:277)
+	at org.eclipse.egit.core.project.GitProjectData.logAndUnmapGoneMappedResource(GitProjectData.java:534)
+	at org.eclipse.egit.core.project.GitProjectData.map(GitProjectData.java:497)
+	at org.eclipse.egit.core.project.GitProjectData.remapAll(GitProjectData.java:471)
+	at org.eclipse.egit.core.project.GitProjectData.load(GitProjectData.java:464)
+	at org.eclipse.egit.core.project.GitProjectData.get(GitProjectData.java:204)
+	at org.eclipse.egit.core.GitProvider.getData(GitProvider.java:86)
+	at org.eclipse.egit.core.project.RepositoryMapping.getMapping(RepositoryMapping.java:268)
+	at org.eclipse.egit.core.Activator$AutoShareProjects.visitConnect(Activator.java:311)
+	at org.eclipse.egit.core.Activator$AutoShareProjects.access$0(Activator.java:298)
+	at org.eclipse.egit.core.Activator$AutoShareProjects$1.visit(Activator.java:280)
+	at org.eclipse.core.internal.events.ResourceDelta.accept(ResourceDelta.java:69)
+	at org.eclipse.core.internal.events.ResourceDelta.accept(ResourceDelta.java:80)
+	at org.eclipse.core.internal.events.ResourceDelta.accept(ResourceDelta.java:49)
+	at org.eclipse.egit.core.Activator$AutoShareProjects.resourceChanged(Activator.java:277)
+	at org.eclipse.core.internal.events.NotificationManager$1.run(NotificationManager.java:291)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:42)
+	at org.eclipse.core.internal.events.NotificationManager.notify(NotificationManager.java:285)
+	at org.eclipse.core.internal.events.NotificationManager.broadcastChanges(NotificationManager.java:149)
+	at org.eclipse.core.internal.resources.Workspace.broadcastPostChange(Workspace.java:378)
+	at org.eclipse.core.internal.resources.Workspace.endOperation(Workspace.java:1498)
+	at org.eclipse.core.internal.resources.InternalWorkspaceJob.run(InternalWorkspaceJob.java:45)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:54)
+!SUBENTRY 2 org.eclipse.core.resources 4 380 2015-12-23 09:03:39.457
+!MESSAGE The resource tree is locked for modifications.

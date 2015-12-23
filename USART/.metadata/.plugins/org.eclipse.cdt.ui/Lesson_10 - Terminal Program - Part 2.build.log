@@ -1,0 +1,11 @@
+09:15:55 **** Incremental Build of configuration Debug for project Lesson_10 - Terminal Program - Part 2 ****
+make all 
+Invoking: Cross ARM GNU Print Size
+arm-none-eabi-size --format=berkeley "Lesson_10 - Terminal Program - Part 2.elf"
+   text	   data	    bss	    dec	    hex	filename
+   5392	    208	   3024	   8624	   21b0	Lesson_10 - Terminal Program - Part 2.elf
+Finished building: Lesson_10 - Terminal Program - Part 2.siz
+ 
+
+09:15:55 Build Finished (took 183ms)
+

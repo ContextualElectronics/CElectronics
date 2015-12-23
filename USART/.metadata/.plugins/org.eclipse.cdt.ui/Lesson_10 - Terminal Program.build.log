@@ -1,11 +1,25 @@
-17:42:31 **** Incremental Build of configuration Debug for project Lesson_10 - Terminal Program ****
+08:53:27 **** Incremental Build of configuration Debug for project Lesson_10 - Terminal Program ****
 make all 
+Building target: Lesson_10 - Terminal Program.elf
+Invoking: Cross ARM C++ Linker
+arm-none-eabi-g++ -mcpu=cortex-m0 -mthumb -Og -fmessage-length=0 -fsigned-char -ffunction-sections -fdata-sections -ffreestanding -fno-move-loop-invariants -Wall -Wextra  -g3 -T mem.ld -T libs.ld -T sections.ld -nostartfiles -Xlinker --gc-sections -L"../ldscripts" -Wl,-Map,"Lesson_10 - Terminal Program.map" --specs=nano.specs -o "Lesson_10 - Terminal Program.elf"   
+/home/vagrant/gcc-arm-none-eabi-4_9-2015q2/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/bin/ld: warning: cannot find entry symbol _start; defaulting to 08000028
+Finished building target: Lesson_10 - Terminal Program.elf
+ 
+make --no-print-directory post-build
+Binary
+arm-none-eabi-objcopy -S  -O binary  "Lesson_10 - Terminal Program.elf" "Lesson_10 - Terminal Program.bin"
+ 
+Invoking: Cross ARM GNU Create Flash Image
+arm-none-eabi-objcopy -O ihex "Lesson_10 - Terminal Program.elf"  "Lesson_10 - Terminal Program.hex"
+Finished building: Lesson_10 - Terminal Program.hex
+ 
 Invoking: Cross ARM GNU Print Size
 arm-none-eabi-size --format=berkeley "Lesson_10 - Terminal Program.elf"
    text	   data	    bss	    dec	    hex	filename
-   5225	    208	   3004	   8437	   20f5	Lesson_10 - Terminal Program.elf
+      0	     40	    256	    296	    128	Lesson_10 - Terminal Program.elf
 Finished building: Lesson_10 - Terminal Program.siz
  
 
-17:42:31 Build Finished (took 139ms)
+08:53:28 Build Finished (took 753ms)
 
