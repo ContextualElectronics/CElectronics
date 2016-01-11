@@ -20,7 +20,7 @@ void main(void)
     Tick_init();
     SerialPort2.Open(115200);
 
-    SerialPort2.SendString((uint8_t *)"Hello World!\r\n");
+    SerialPort2.SendString("Hello World!\n");
 
     for ( ;; )
     {

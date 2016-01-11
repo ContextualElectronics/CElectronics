@@ -20,12 +20,12 @@ void main(void)
     Tick_init();
     SerialPort2.Open(115200);
 
-    SerialPort2.SendString((uint8_t *)"Hello World!\r\n");
+    SerialPort2.SendString("Hello World!\n");
 
     for ( ;; )
     {
 
     	Tick_DelayMs(500); // Delay for 500ms = 1/2s
-    	Led_Toggle(); // Toggle the LED. This should cause the LED to turn on every second
+    	Led_Toggle(); // Toggle the LED. This should cause the LED to turn on every secodn
     }
 }
