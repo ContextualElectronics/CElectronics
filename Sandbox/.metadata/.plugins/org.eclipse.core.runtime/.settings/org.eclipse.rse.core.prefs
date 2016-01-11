@@ -1,3 +1,4 @@
+activeuserprofiles=CE-virtual-machine;Team;stm32-eclipse
 eclipse.preferences.version=1
 org.eclipse.rse.systemtype.local.systemType.defaultUserId=vagrant
 useridperkey=stm32-eclipse.Local\=vagrant;

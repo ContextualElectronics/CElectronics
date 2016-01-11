@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<section name="Workbench">
+	<section name="BasicNewProjectResourceWizard">
+	</section>
+	<section name="ExternalProjectImportWizard">
+		<item value="false" key="WizardProjectsImportPage.STORE_ARCHIVE_SELECTED"/>
+		<item value="true" key="WizardProjectsImportPage.STORE_COPY_PROJECT_ID"/>
+		<item value="false" key="WizardProjectsImportPage.STORE_NESTED_PROJECTS"/>
+		<list key="WizardProjectsImportPage.STORE_DIRECTORIES">
+			<item value="/home/vagrant/Desktop/Embedded/USART/Lesson_10 - Terminal Program - Part 4"/>
+		</list>
+		<list key="WizardProjectsImportPage.STORE_ARCHIVES">
+			<item value=""/>
+		</list>
+	</section>
+	<section name="ResourceNavigator">
+		<item value="Aggregate for window 1444987647207" key="ResourceWorkingSetFilter.STORE_WORKING_SET"/>
+		<item value="1" key="ResourceViewer.STORE_SORT_TYPE"/>
+	</section>
+	<section name="CleanDialogSettings">
+		<item value="563" key="DIALOG_WIDTH"/>
+		<item value="true" key="BUILD_NOW"/>
+		<item value="true" key="BUILD_ALL"/>
+		<item value="219" key="DIALOG_Y_ORIGIN"/>
+		<item value="473" key="DIALOG_HEIGHT"/>
+		<item value="711" key="DIALOG_X_ORIGIN"/>
+		<item value="false" key="TOGGLE_SELECTED"/>
+	</section>
+</section>
