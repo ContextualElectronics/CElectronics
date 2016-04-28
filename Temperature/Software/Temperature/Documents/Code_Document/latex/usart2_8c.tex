@@ -1,0 +1,96 @@
+\hypertarget{usart2_8c}{\section{usart2.\-c File Reference}
+\label{usart2_8c}\index{usart2.\-c@{usart2.\-c}}
+}
+
+
+S\-T\-M32 serial2 M\-C\-U hardware interface layer. to maintain code portability, the hardware related code is split from the main logic.  
+
+
+{\ttfamily \#include \char`\"{}M\-C\-U/usart2.\-h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}F\-I\-F\-O.\-h\char`\"{}}\\*
+Include dependency graph for usart2.\-c\-:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=281pt]{usart2_8c__incl}
+\end{center}
+\end{figure}
+\subsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \hyperlink{usart2_8c_a7bc0edf283b01a071b7ed8451eada11c}{G\-P\-I\-O\-\_\-\-A\-F\-R\-L\-\_\-\-A\-F\-R2\-\_\-0}~((uint32\-\_\-t) 0x00000100)
+\begin{DoxyCompactList}\small\item\em alternative function set bit 1 for A\-F\-R2 \end{DoxyCompactList}\item 
+\#define \hyperlink{usart2_8c_af91c2a8b8c966e16328c4384d1a31b23}{G\-P\-I\-O\-\_\-\-A\-F\-R\-L\-\_\-\-A\-F\-R3\-\_\-0}~((uint32\-\_\-t) 0x00001000)
+\begin{DoxyCompactList}\small\item\em alternative function set bit 1 for A\-F\-R3 \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{usart2_8c_a0ca6fd0e6f77921dd1123539857ba0a8}{U\-S\-A\-R\-T2\-\_\-\-I\-R\-Q\-Handler} (void)
+\begin{DoxyCompactList}\small\item\em the U\-S\-A\-R\-T 2 interrupt handler. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{struct_serial_interface}{Serial\-Interface} \hyperlink{usart2_8c_a0ad9cd4fbffc7497abd537641dcc99af}{Serial\-Port2}
+\begin{DoxyCompactList}\small\item\em Defines the standard serial functions for usart 2. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+S\-T\-M32 serial2 M\-C\-U hardware interface layer. to maintain code portability, the hardware related code is split from the main logic. Author\-: Ronald Sousa (Opticalworm) 
+
+\subsection{Macro Definition Documentation}
+\hypertarget{usart2_8c_a7bc0edf283b01a071b7ed8451eada11c}{\index{usart2.\-c@{usart2.\-c}!G\-P\-I\-O\-\_\-\-A\-F\-R\-L\-\_\-\-A\-F\-R2\-\_\-0@{G\-P\-I\-O\-\_\-\-A\-F\-R\-L\-\_\-\-A\-F\-R2\-\_\-0}}
+\index{G\-P\-I\-O\-\_\-\-A\-F\-R\-L\-\_\-\-A\-F\-R2\-\_\-0@{G\-P\-I\-O\-\_\-\-A\-F\-R\-L\-\_\-\-A\-F\-R2\-\_\-0}!usart2.c@{usart2.\-c}}
+\subsubsection[{G\-P\-I\-O\-\_\-\-A\-F\-R\-L\-\_\-\-A\-F\-R2\-\_\-0}]{\setlength{\rightskip}{0pt plus 5cm}\#define G\-P\-I\-O\-\_\-\-A\-F\-R\-L\-\_\-\-A\-F\-R2\-\_\-0~((uint32\-\_\-t) 0x00000100)}}\label{usart2_8c_a7bc0edf283b01a071b7ed8451eada11c}
+
+
+alternative function set bit 1 for A\-F\-R2 
+
+\hypertarget{usart2_8c_af91c2a8b8c966e16328c4384d1a31b23}{\index{usart2.\-c@{usart2.\-c}!G\-P\-I\-O\-\_\-\-A\-F\-R\-L\-\_\-\-A\-F\-R3\-\_\-0@{G\-P\-I\-O\-\_\-\-A\-F\-R\-L\-\_\-\-A\-F\-R3\-\_\-0}}
+\index{G\-P\-I\-O\-\_\-\-A\-F\-R\-L\-\_\-\-A\-F\-R3\-\_\-0@{G\-P\-I\-O\-\_\-\-A\-F\-R\-L\-\_\-\-A\-F\-R3\-\_\-0}!usart2.c@{usart2.\-c}}
+\subsubsection[{G\-P\-I\-O\-\_\-\-A\-F\-R\-L\-\_\-\-A\-F\-R3\-\_\-0}]{\setlength{\rightskip}{0pt plus 5cm}\#define G\-P\-I\-O\-\_\-\-A\-F\-R\-L\-\_\-\-A\-F\-R3\-\_\-0~((uint32\-\_\-t) 0x00001000)}}\label{usart2_8c_af91c2a8b8c966e16328c4384d1a31b23}
+
+
+alternative function set bit 1 for A\-F\-R3 
+
+
+
+\subsection{Function Documentation}
+\hypertarget{usart2_8c_a0ca6fd0e6f77921dd1123539857ba0a8}{\index{usart2.\-c@{usart2.\-c}!U\-S\-A\-R\-T2\-\_\-\-I\-R\-Q\-Handler@{U\-S\-A\-R\-T2\-\_\-\-I\-R\-Q\-Handler}}
+\index{U\-S\-A\-R\-T2\-\_\-\-I\-R\-Q\-Handler@{U\-S\-A\-R\-T2\-\_\-\-I\-R\-Q\-Handler}!usart2.c@{usart2.\-c}}
+\subsubsection[{U\-S\-A\-R\-T2\-\_\-\-I\-R\-Q\-Handler}]{\setlength{\rightskip}{0pt plus 5cm}void U\-S\-A\-R\-T2\-\_\-\-I\-R\-Q\-Handler (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+)}}\label{usart2_8c_a0ca6fd0e6f77921dd1123539857ba0a8}
+
+
+the U\-S\-A\-R\-T 2 interrupt handler. 
+
+\begin{DoxyRefDesc}{Todo}
+\item[\hyperlink{todo__todo000002}{Todo}]Need to implement the T\-X interrupt \end{DoxyRefDesc}
+
+
+\subsection{Variable Documentation}
+\hypertarget{usart2_8c_a0ad9cd4fbffc7497abd537641dcc99af}{\index{usart2.\-c@{usart2.\-c}!Serial\-Port2@{Serial\-Port2}}
+\index{Serial\-Port2@{Serial\-Port2}!usart2.c@{usart2.\-c}}
+\subsubsection[{Serial\-Port2}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Serial\-Interface} Serial\-Port2}}\label{usart2_8c_a0ad9cd4fbffc7497abd537641dcc99af}
+{\bfseries Initial value\-:}
+\begin{DoxyCode}
+= \{
+                                    IsSerialOpen,
+                                    Open,
+                                    Close,
+                                    SendByte,
+                                    SendString,
+                                    SendArray,
+                                    DoesReceiveBufferHaveData,
+                                    GetByte
+                                \}
+\end{DoxyCode}
+
+
+Defines the standard serial functions for usart 2. 
+
+\begin{DoxySeeAlso}{See Also}
+\hyperlink{struct_serial_interface}{Serial\-Interface} 
+\end{DoxySeeAlso}

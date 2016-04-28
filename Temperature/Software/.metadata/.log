@@ -1,0 +1,58 @@
+!SESSION 2016-04-22 15:09:54.363 -----------------------------------------------
+eclipse.buildId=4.5.1.M20150904-0015
+java.version=1.7.0_95
+java.vendor=Oracle Corporation
+BootLoader constants: OS=linux, ARCH=x86_64, WS=gtk, NL=en_US
+Framework arguments:  -product org.eclipse.epp.package.cpp.product
+Command-line arguments:  -data /home/vagrant/Desktop/Temperature/Software -os linux -ws gtk -arch x86_64 -product org.eclipse.epp.package.cpp.product
+
+!ENTRY org.eclipse.cdt.core 1 0 2016-04-22 15:13:08.897
+!MESSAGE Indexed 'temperature' (19 sources, 55 headers) in 16.3 sec: 5,956 declarations; 7,468 references; 33 unresolved inclusions; 187 syntax errors; 3,386 unresolved names (20%)
+
+!ENTRY org.eclipse.cdt.core 1 0 2016-04-22 15:14:42.410
+!MESSAGE Indexed 'Temperature' (17 sources, 49 headers) in 7.64 sec: 5,836 declarations; 6,919 references; 35 unresolved inclusions; 215 syntax errors; 3,733 unresolved names (23%)
+
+!ENTRY org.eclipse.cdt.core 1 0 2016-04-22 15:22:03.402
+!MESSAGE Indexed 'Serial_Template' (20 sources, 146 headers) in 3.13 sec: 9,971 declarations; 16,353 references; 1 unresolved inclusions; 34 syntax errors; 97 unresolved names (0.37%)
+
+!ENTRY org.eclipse.cdt.core 1 0 2016-04-22 15:23:48.854
+!MESSAGE Indexed 'Temperature' (20 sources, 146 headers) in 3.03 sec: 9,971 declarations; 16,353 references; 1 unresolved inclusions; 34 syntax errors; 97 unresolved names (0.37%)
+
+!ENTRY org.eclipse.cdt.core 1 0 2016-04-22 15:28:24.458
+!MESSAGE Indexed 'Lesson_10 - Terminal Program - Part 4' (21 sources, 147 headers) in 2.71 sec: 10,006 declarations; 16,549 references; 1 unresolved inclusions; 34 syntax errors; 97 unresolved names (0.36%)
+
+!ENTRY org.eclipse.cdt.core 1 0 2016-04-22 15:29:08.793
+!MESSAGE Indexed 'temperature' (21 sources, 147 headers) in 2.46 sec: 10,006 declarations; 16,549 references; 1 unresolved inclusions; 34 syntax errors; 97 unresolved names (0.36%)
+
+!ENTRY org.eclipse.cdt.core 1 0 2016-04-22 16:33:18.601
+!MESSAGE Indexed 'Temperature' (0 sources, 0 headers) in 0 sec: 0 declarations; 0 references; 0 unresolved inclusions; 0 syntax errors; 0 unresolved names (0%)
+
+!ENTRY org.eclipse.cdt.core 1 0 2016-04-22 16:38:31.372
+!MESSAGE Indexed 'Lesson_10 - Terminal Program - Part 4' (21 sources, 147 headers) in 1.94 sec: 10,006 declarations; 16,549 references; 1 unresolved inclusions; 34 syntax errors; 97 unresolved names (0.36%)
+
+!ENTRY org.eclipse.ltk.ui.refactoring 4 10000 2016-04-22 16:38:48.196
+!MESSAGE Internal Error
+!STACK 1
+org.eclipse.core.internal.resources.ResourceException: Problems encountered while moving resources.
+	at org.eclipse.core.internal.resources.Resource.move(Resource.java:1542)
+	at org.eclipse.ltk.core.refactoring.resource.RenameResourceChange.perform(RenameResourceChange.java:123)
+	at org.eclipse.ltk.core.refactoring.CompositeChange.perform(CompositeChange.java:278)
+	at org.eclipse.ltk.core.refactoring.PerformChangeOperation$1.run(PerformChangeOperation.java:258)
+	at org.eclipse.core.internal.resources.Workspace.run(Workspace.java:2241)
+	at org.eclipse.ltk.core.refactoring.PerformChangeOperation.executeChange(PerformChangeOperation.java:306)
+	at org.eclipse.ltk.internal.ui.refactoring.UIPerformChangeOperation.executeChange(UIPerformChangeOperation.java:92)
+	at org.eclipse.ltk.core.refactoring.PerformChangeOperation.run(PerformChangeOperation.java:218)
+	at org.eclipse.core.internal.resources.Workspace.run(Workspace.java:2241)
+	at org.eclipse.ltk.internal.ui.refactoring.WorkbenchRunnableAdapter.run(WorkbenchRunnableAdapter.java:87)
+	at org.eclipse.jface.operation.ModalContext$ModalContextThread.run(ModalContext.java:119)
+Contains: Resource already exists on disk: '/home/vagrant/Desktop/Temperature/Software/Temperature'.
+!SUBENTRY 1 org.eclipse.core.resources 1 4 2016-04-22 16:38:48.209
+!MESSAGE Problems encountered while moving resources.
+!SUBENTRY 2 org.eclipse.core.resources 1 4 2016-04-22 16:38:48.209
+!MESSAGE Resource already exists on disk: '/home/vagrant/Desktop/Temperature/Software/Temperature'.
+
+!ENTRY org.eclipse.cdt.core 1 0 2016-04-22 16:39:39.897
+!MESSAGE Indexed 'Temp' (0 sources, 0 headers) in 0 sec: 0 declarations; 0 references; 0 unresolved inclusions; 0 syntax errors; 0 unresolved names (0%)
+
+!ENTRY org.eclipse.cdt.core 1 0 2016-04-22 16:40:10.207
+!MESSAGE Indexed 'Temperature' (21 sources, 147 headers) in 1.82 sec: 10,006 declarations; 16,549 references; 1 unresolved inclusions; 34 syntax errors; 97 unresolved names (0.36%)

@@ -1,0 +1,7 @@
+<map id="main" name="main">
+<area shape="rect" id="node2" href="$_terminal_8c.html#acc9b80fa13f248f795d961b1817b7d4b" title="Init the terminal program. " alt="" coords="119,31,217,57"/>
+<area shape="rect" id="node6" href="$_terminal_8c.html#a683f74bf787b52b7f357e405c6c2819c" title="process the buffer data and extract the commands " alt="" coords="105,81,231,108"/>
+<area shape="rect" id="node3" href="$led_8c.html#af1aee968a5ceeb7915921aa6d78aca23" title="Setup the LED IO. " alt="" coords="282,5,350,32"/>
+<area shape="rect" id="node5" href="$tick_8c.html#ade660961e7af4755750dd6ff81535e68" title="setup the ARM M0 tick counter to trigger every 1ms " alt="" coords="281,56,351,83"/>
+<area shape="rect" id="node4" href="$led_8c.html#a274dbef77287444be852fe96969b3c55" title="Turns off the LED. " alt="" coords="401,5,469,32"/>
+</map>
