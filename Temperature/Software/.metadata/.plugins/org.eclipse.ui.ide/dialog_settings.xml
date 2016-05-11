@@ -2,7 +2,7 @@
 <section name="Workbench">
 	<section name="ChooseWorkspaceDialogSettings">
 		<item value="298" key="DIALOG_Y_ORIGIN"/>
-		<item value="615" key="DIALOG_X_ORIGIN"/>
+		<item value="585" key="DIALOG_X_ORIGIN"/>
 	</section>
 	<section name="BasicNewProjectResourceWizard">
 	</section>
@@ -11,11 +11,16 @@
 		<item value="true" key="WizardProjectsImportPage.STORE_COPY_PROJECT_ID"/>
 		<item value="false" key="WizardProjectsImportPage.STORE_NESTED_PROJECTS"/>
 		<list key="WizardProjectsImportPage.STORE_DIRECTORIES">
+			<item value="/home/vagrant/Desktop/Temperature"/>
 			<item value="/home/vagrant/Downloads/Embedded-master/USART/Lesson_10 - Terminal Program - Part 4"/>
 			<item value="/home/vagrant/Downloads/Embedded-master/Sandbox/Serial_Template"/>
 		</list>
 		<list key="WizardProjectsImportPage.STORE_ARCHIVES">
 			<item value=""/>
+		</list>
+	</section>
+	<section name="WORKBENCH_SETTINGS">
+		<list key="ENABLED_TRANSFERS">
 		</list>
 	</section>
 	<section name="NewWizardAction">
