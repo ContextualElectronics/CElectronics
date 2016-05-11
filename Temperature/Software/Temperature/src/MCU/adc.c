@@ -11,6 +11,15 @@
 /////////////////////////////////////////////////////////////////////////
 void ADC_On(void)
 {
+	RCC->APB2RSTR |= RCC_APB2RSTR_ADCRST;
+	RCC->APB2ENR |= RCC_APB2ENR_ADCEN;
+
+	ADC->CCR |= ADC_CCR_TSEN; // enable the temperature sensor.
+
+	// enable ADC
+	ADC1->CR |= ADC_CR_ADEN;
+	// wait until the ADC is ready to start conversion
+	while ( ! ADC1->ISR & ADC_ISR_ADRDY ) ;
 
 }
 
@@ -19,21 +28,46 @@ void ADC_On(void)
 /////////////////////////////////////////////////////////////////////////
 void ADC_Off(void)
 {
+	ADC1->CR |= ADC_CR_ADDIS;
+	// wait until the ADC is disable. ADDIS = 1: mean that the system is still in the process of turning of the ADC
+	while( ADC1->CR & ADC_CR_ADDIS );
 
 }
 
 /////////////////////////////////////////////////////////////////////////
 /// \brief reads the raw adc value from the select channel.
 ///
-///	\param ADC channel
+///	\param channel the ADC channel to select range 0 to 17
 ///	\param destination pointer to return the read value
 ///
 ///	\return true on success else adc is not open
 /////////////////////////////////////////////////////////////////////////
 uint_fast8_t ADC_Read(uint_fast32_t channel, uint_fast16_t * destination)
 {
+	// Check that the ADC is on
+	if(!(ADC1->CR & ADC_CR_ADEN) || channel > 17 || !destination )
+	{
+		return FALSE;
+	}
 
-	return FALSE; // error
+	// check to see if the ADC is already running, if so return false
+	if (ADC1->CR & ADC_CR_ADSTART)
+	{
+		return FALSE;
+	}
+
+	// select channel
+	ADC1->CHSELR = ((uint32_t)(1 << channel));
+
+	// start the conversion
+	ADC1->CR |= ADC_CR_ADSTART;
+
+	// wait until ADC is done with conversion
+	while(!ADC1->ISR & ADC_ISR_EOC ) ;
+
+	*destination = (uint32_t)(0x0000FFFF & ADC1->DR);
+
+	return TRUE;
 }
 
 /////////////////////////////////////////////////////////////////////////
@@ -46,7 +80,6 @@ uint_fast8_t ADC_Read(uint_fast32_t channel, uint_fast16_t * destination)
 /////////////////////////////////////////////////////////////////////////
 uint_fast8_t ADC_ReadNorm(uint_fast32_t channel, float * destination)
 {
-	return FALSE; // error
 }
 
 /////////////////////////////////////////////////////////////////////////

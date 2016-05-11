@@ -1,4 +1,4 @@
-11:20:38 **** Build of configuration Debug for project Temperature ****
+11:30:25 **** Incremental Build of configuration Debug for project Temperature ****
 make all 
 Invoking: Cross ARM GNU Print Size
 arm-none-eabi-size --format=berkeley "Temperature.elf"
@@ -7,5 +7,5 @@ arm-none-eabi-size --format=berkeley "Temperature.elf"
 Finished building: Temperature.siz
  
 
-11:20:39 Build Finished (took 692ms)
+11:30:25 Build Finished (took 120ms)
 

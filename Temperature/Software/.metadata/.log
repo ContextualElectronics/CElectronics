@@ -351,3 +351,8 @@ Caused by: org.apache.http.client.HttpResponseException: Service Temporarily Una
 	at org.eclipse.epp.internal.logging.aeri.ui.v2.AeriServer.refreshConfiguration(AeriServer.java:74)
 	at org.eclipse.epp.internal.logging.aeri.ide.Startup.initializeServerAndConfiguration(Startup.java:211)
 	... 3 more
+
+!ENTRY ilg.gnuarmeclipse.debug.gdbjtag 4 0 2016-05-11 11:25:24.736
+!MESSAGE OpenOCD failed with code (1).
+
+For more details, see the openocd console.

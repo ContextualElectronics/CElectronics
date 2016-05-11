@@ -1,0 +1,81 @@
+/////////////////////////////////////////////////////////////////////////
+///	\file adc.c
+///	\brief STM32 adc MCU hardware layer.
+///
+///	Author: Ronald Sousa (Opticalworm)
+/////////////////////////////////////////////////////////////////////////
+#include "MCU/adc.h"
+
+/////////////////////////////////////////////////////////////////////////
+/// \brief enables the ADC so that we can read from the temperature channel
+/////////////////////////////////////////////////////////////////////////
+void ADC_On(void)
+{
+	RCC->APB2RSTR |= RCC_APB2RSTR_ADCRST;
+	RCC->APB2ENR |= RCC_APB2ENR_ADCEN;
+
+	ADC->CCR |= ADC_CCR_TSEN; // enable the temperature sensor.
+
+	// enable ADC
+	ADC1->CR |= ADC_CR_ADEN;
+	// wait until the ADC is ready to start conversion
+	while ( ! ADC1->ISR & ADC_ISR_ADRDY ) ;
+
+}
+
+/////////////////////////////////////////////////////////////////////////
+/// \brief disable the ADC and ensure that it doesn't consume power
+/////////////////////////////////////////////////////////////////////////
+void ADC_Off(void)
+{
+	ADC1->CR |= ADC_CR_ADDIS;
+	// wait until the ADC is disable. ADDIS = 1: mean that the system is still in the process of turning of the ADC
+	while( ADC1->CR & ADC_CR_ADDIS );
+
+}
+
+/////////////////////////////////////////////////////////////////////////
+/// \brief reads the raw adc value from the select channel.
+///
+///	\param ADC channel
+///	\param destination pointer to return the read value
+///
+///	\return true on success else adc is not open
+/////////////////////////////////////////////////////////////////////////
+uint_fast8_t ADC_Read(uint_fast32_t channel, uint_fast16_t * destination)
+{
+	if(!ADC1->CR & ADC_CR_ADEN ) {
+
+	}
+
+	return FALSE; // error
+}
+
+/////////////////////////////////////////////////////////////////////////
+/// \brief return the normalized adc value from the select channel.
+///
+///	\param ADC channel
+///	\param destination pointer to return the read value
+///
+///	\return true on success else adc is not open
+/////////////////////////////////////////////////////////////////////////
+uint_fast8_t ADC_ReadNorm(uint_fast32_t channel, float * destination)
+{
+	return FALSE; // error
+}
+
+/////////////////////////////////////////////////////////////////////////
+/// \brief return the converted/calibrated temperature reading.
+///
+///	\param rawData the ADC raw data for the temperature sensor.
+///
+///	\return returns the converted value
+///	\sa ADC_Read()
+/////////////////////////////////////////////////////////////////////////
+float ADC_ReturnCalibratedTemperaturer(uint_fast16_t rawData)
+{
+	float Result = 0;
+
+
+	return Result;
+}
