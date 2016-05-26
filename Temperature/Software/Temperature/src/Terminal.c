@@ -7,6 +7,7 @@
 #include "MCU/led.h"
 #include "MCU/usart2.h"
 #include "MCU/tick.h"
+#include "MCU/adc.h"
 
 ///////////////////////////////////////////////////////////////////////////////
 /// \brief Defines our terminal buffer size which in turn set the longest command
@@ -42,7 +43,11 @@ static const uint8_t SystemMessageString[] = "----------------------------------
 											"Firm : " FIRMWARE_VERSION "\r\n"
 											"Hard : " HARDWARE_VERSION "\r\n"
 											COMPILED_DATA_TIME "\r\n"
-											"-----------------------------------\r\n";
+											"-----------------------------------\r\n"
+											"S1 - LED Control: U0 = led state\r\n"
+											"S2 - ADC On\r\n"
+											"S3 - ADC Off\r\n"
+											"S4 - ADC Sample: U0 = channel\r\n";
 
 ///////////////////////////////////////////////////////////////////////////////
 /// \brief Defines the parameter data type
@@ -81,7 +86,7 @@ static void DisplaySystemInformation(void)
 	SerialPort2.SendByte(0x0C); // clear terminal
     SerialPort2.SendString(&SystemMessageString[0]);
 	// Send new line feed and prompt
-	SerialPort2.SendString("\n> ");
+	SerialPort2.SendString((uint8_t*)"\n> ");
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -228,10 +233,18 @@ static int_fast8_t ProcessData(uint8_t *source, uint32_t length, ListOfParameter
 ///////////////////////////////////////////////////////////////////////////////
 static int_fast8_t RunCommand(ListOfParameterStructureType *source)
 {
+	uint_fast16_t ADCSample;
+
+	enum{
+		Command_LEDControl = 1,
+		Command_ADCOn,
+		Command_ADCOff,
+		Command_ADCSample,
+	};
 
 	switch ( source->List[0].Value.i32_t[0] )
 	{
-		case 1: // control the LED
+		case Command_LEDControl: // control the LED
 
 			if ( source->NumberOfParameter > 1 && source->List[1].Type == 'u')
 			{
@@ -250,7 +263,20 @@ static int_fast8_t RunCommand(ListOfParameterStructureType *source)
 				Led_Toggle();
 			}
 			break;
+		case Command_ADCOn:
+			ADC_On();
+			break;
 
+		case Command_ADCOff:
+			ADC_Off();
+			break;
+
+		case Command_ADCSample:
+			if ( source->NumberOfParameter > 1 && source->List[1].Type == 'u')
+			{
+				ADC_Read(source->List[1].Value.ui32_t[0] , &ADCSample);
+			}
+			break;
 		default:
 			// undefined command
 			return FALSE;
@@ -286,7 +312,7 @@ int_fast8_t Terminal_Process(void)
 	if ('\r' == SerialTempData)
 	{
 		// Send new line feed and prompt
-		SerialPort2.SendString("\n> ");
+		SerialPort2.SendString((uint8_t*)"\n> ");
 
 		if (NumberOfByteReceived)
 		{

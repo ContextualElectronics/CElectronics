@@ -63,7 +63,7 @@ uint_fast8_t ADC_Read(uint_fast32_t channel, uint_fast16_t * destination)
 	ADC1->CR |= ADC_CR_ADSTART;
 
 	// wait until ADC is done with conversion
-	while(!ADC1->ISR & ADC_ISR_EOC ) ;
+	while(!(ADC1->ISR & ADC_ISR_EOC) ) ;
 
 	*destination = (uint32_t)(0x0000FFFF & ADC1->DR);
 
@@ -90,7 +90,7 @@ uint_fast8_t ADC_ReadNorm(uint_fast32_t channel, float * destination)
 ///	\return returns the converted value
 ///	\sa ADC_Read()
 /////////////////////////////////////////////////////////////////////////
-float ADC_ReturnCalibratedTemperaturer(uint_fast16_t rawData)
+float ADC_ReturnCalibratedTemperature(uint_fast16_t rawData)
 {
 	float Result = 0;
 
