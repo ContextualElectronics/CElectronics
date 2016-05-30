@@ -81,20 +81,50 @@ uint_fast8_t ADC_Read(uint_fast32_t channel, uint_fast16_t * destination)
 /////////////////////////////////////////////////////////////////////////
 uint_fast8_t ADC_ReadNorm(uint_fast32_t channel, float * destination)
 {
+	uint_fast8_t Status = ERROR;
+	uint_fast16_t ADCSample;
+	uint32_t ADCResolution;
+
+	if (destination){
+		Status = ADC_Read(channel, &ADCSample);
+
+		if (TRUE == Status){
+
+			if(0 == ADCSample) {
+				ADCResolution = ((uint32_t)12 - (((uint32_t)(ADC1->CFGR1 & ADC_CFGR1_RES) >> 3) * 2));
+				ADCResolution = ((uint32_t)(1 << ADCResolution))-1;
+				*destination = ((float)ADCSample/ADCResolution);
+			} else {
+				*destination = 0;
+			}
+		}
+	}
+
+	return Status;
 }
 
+/* Temperature sensor calibration value address */
+#define TEMP110_CAL_ADDR ((uint16_t*) ((uint32_t) 0x1FFFF7C2))
+#define TEMP30_CAL_ADDR ((uint16_t*) ((uint32_t) 0x1FFFF7B8))
+#define VDD_CALIB ((uint16_t) (330))
+#define VDD_APPLI ((uint16_t) (300))
+
+
 /////////////////////////////////////////////////////////////////////////
-/// \brief return the converted/calibrated temperature reading.
+/// \brief return the converted/calibrated temperature reading in Degree
 ///
 ///	\param rawData the ADC raw data for the temperature sensor.
 ///
 ///	\return returns the converted value
 ///	\sa ADC_Read()
 /////////////////////////////////////////////////////////////////////////
-float ADC_ReturnCalibratedTemperature(uint_fast16_t rawData)
+int32_t ADC_ReturnCalibratedTemperature(uint_fast16_t rawData)
 {
-	float Result = 0;
+	int32_t Temperature; /* will contain the temperature in degree Celsius */
+	Temperature = (((int32_t) rawData * VDD_APPLI / VDD_CALIB) - (int32_t) *TEMP30_CAL_ADDR );
+	Temperature = Temperature * (int32_t)(110 - 30);
+	Temperature = Temperature / (int32_t)(*TEMP110_CAL_ADDR - *TEMP30_CAL_ADDR);
+	Temperature = Temperature + 30;
 
-
-	return Result;
+	return Temperature;
 }
