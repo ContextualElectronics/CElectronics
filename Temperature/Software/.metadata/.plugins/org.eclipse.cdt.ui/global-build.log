@@ -317,3 +317,255 @@ arm-none-eabi-size --format=berkeley "Temperature.elf"
   22664	    268	   3272	  26204	   665c	Temperature.elf
 Finished building: Temperature.siz
  
+15:04:27 **** Incremental Build of configuration Debug for project Temperature ****
+make all 
+Building file: ../src/MCU/adc.c
+Invoking: Cross ARM C Compiler
+arm-none-eabi-gcc -mcpu=cortex-m0 -mthumb -Og -fmessage-length=0 -fsigned-char -ffunction-sections -fdata-sections -ffreestanding -fno-move-loop-invariants -Wall -Wextra  -g3 -DDEBUG -DUSE_FULL_ASSERT -DTRACE -DOS_USE_TRACE_SEMIHOSTING_DEBUG -DSTM32F030 -DUSE_STDPERIPH_DRIVER -DHSE_VALUE=8000000 -I"../include" -I"../system/include" -I"../system/include/cmsis" -I"../system/include/stm32f0-stdperiph" -std=gnu11 -MMD -MP -MF"src/MCU/adc.d" -MT"src/MCU/adc.o" -c -o "src/MCU/adc.o" "../src/MCU/adc.c"
+../src/MCU/adc.c: In function 'ADC_ReadNorm':
+../src/MCU/adc.c:81:41: warning: unused parameter 'channel' [-Wunused-parameter]
+ uint_fast8_t ADC_ReadNorm(uint_fast32_t channel, float * destination)
+                                         ^
+../src/MCU/adc.c:81:58: warning: unused parameter 'destination' [-Wunused-parameter]
+ uint_fast8_t ADC_ReadNorm(uint_fast32_t channel, float * destination)
+                                                          ^
+../src/MCU/adc.c: In function 'ADC_ReturnCalibratedTemperature':
+../src/MCU/adc.c:93:53: warning: unused parameter 'rawData' [-Wunused-parameter]
+ float ADC_ReturnCalibratedTemperature(uint_fast16_t rawData)
+                                                     ^
+../src/MCU/adc.c: In function 'ADC_ReadNorm':
+../src/MCU/adc.c:83:1: warning: control reaches end of non-void function [-Wreturn-type]
+ }
+ ^
+Finished building: ../src/MCU/adc.c
+ 
+Building file: ../src/MCU/usart2.c
+Invoking: Cross ARM C Compiler
+arm-none-eabi-gcc -mcpu=cortex-m0 -mthumb -Og -fmessage-length=0 -fsigned-char -ffunction-sections -fdata-sections -ffreestanding -fno-move-loop-invariants -Wall -Wextra  -g3 -DDEBUG -DUSE_FULL_ASSERT -DTRACE -DOS_USE_TRACE_SEMIHOSTING_DEBUG -DSTM32F030 -DUSE_STDPERIPH_DRIVER -DHSE_VALUE=8000000 -I"../include" -I"../system/include" -I"../system/include/cmsis" -I"../system/include/stm32f0-stdperiph" -std=gnu11 -MMD -MP -MF"src/MCU/usart2.d" -MT"src/MCU/usart2.o" -c -o "src/MCU/usart2.o" "../src/MCU/usart2.c"
+Finished building: ../src/MCU/usart2.c
+ 
+Building file: ../src/Terminal.c
+Invoking: Cross ARM C Compiler
+arm-none-eabi-gcc -mcpu=cortex-m0 -mthumb -Og -fmessage-length=0 -fsigned-char -ffunction-sections -fdata-sections -ffreestanding -fno-move-loop-invariants -Wall -Wextra  -g3 -DDEBUG -DUSE_FULL_ASSERT -DTRACE -DOS_USE_TRACE_SEMIHOSTING_DEBUG -DSTM32F030 -DUSE_STDPERIPH_DRIVER -DHSE_VALUE=8000000 -I"../include" -I"../system/include" -I"../system/include/cmsis" -I"../system/include/stm32f0-stdperiph" -std=gnu11 -MMD -MP -MF"src/Terminal.d" -MT"src/Terminal.o" -c -o "src/Terminal.o" "../src/Terminal.c"
+Finished building: ../src/Terminal.c
+ 
+Building file: ../src/main.c
+Invoking: Cross ARM C Compiler
+arm-none-eabi-gcc -mcpu=cortex-m0 -mthumb -Og -fmessage-length=0 -fsigned-char -ffunction-sections -fdata-sections -ffreestanding -fno-move-loop-invariants -Wall -Wextra  -g3 -DDEBUG -DUSE_FULL_ASSERT -DTRACE -DOS_USE_TRACE_SEMIHOSTING_DEBUG -DSTM32F030 -DUSE_STDPERIPH_DRIVER -DHSE_VALUE=8000000 -I"../include" -I"../system/include" -I"../system/include/cmsis" -I"../system/include/stm32f0-stdperiph" -std=gnu11 -MMD -MP -MF"src/main.d" -MT"src/main.o" -c -o "src/main.o" "../src/main.c"
+Finished building: ../src/main.c
+ 
+Building target: Temperature.elf
+Invoking: Cross ARM C++ Linker
+arm-none-eabi-g++ -mcpu=cortex-m0 -mthumb -Og -fmessage-length=0 -fsigned-char -ffunction-sections -fdata-sections -ffreestanding -fno-move-loop-invariants -Wall -Wextra  -g3 -T mem.ld -T libs.ld -T sections.ld -nostartfiles -Xlinker --gc-sections -L"../ldscripts" -Wl,-Map,"Temperature.map" --specs=nano.specs -o "Temperature.elf"  ./system/src/stm32f0-stdperiph/stm32f0xx_gpio.o ./system/src/stm32f0-stdperiph/stm32f0xx_rcc.o  ./system/src/newlib/_cxx.o ./system/src/newlib/_exit.o ./system/src/newlib/_sbrk.o ./system/src/newlib/_startup.o ./system/src/newlib/_syscalls.o ./system/src/newlib/assert.o  ./system/src/diag/Trace.o ./system/src/diag/trace_impl.o  ./system/src/cortexm/_initialize_hardware.o ./system/src/cortexm/_reset_hardware.o ./system/src/cortexm/exception_handlers.o  ./system/src/cmsis/system_stm32f0xx.o ./system/src/cmsis/vectors_stm32f0xx.o  ./src/MCU/adc.o ./src/MCU/led.o ./src/MCU/tick.o ./src/MCU/usart2.o  ./src/FIFO.o ./src/Terminal.o ./src/main.o   
+Finished building target: Temperature.elf
+ 
+make --no-print-directory post-build
+Binary
+arm-none-eabi-objcopy -S  -O binary  "Temperature.elf" "Temperature.bin"
+ 
+Invoking: Cross ARM GNU Create Flash Image
+arm-none-eabi-objcopy -O ihex "Temperature.elf"  "Temperature.hex"
+Finished building: Temperature.hex
+ 
+Invoking: Cross ARM GNU Print Size
+arm-none-eabi-size --format=berkeley "Temperature.elf"
+   text	   data	    bss	    dec	    hex	filename
+  22664	    268	   3272	  26204	   665c	Temperature.elf
+Finished building: Temperature.siz
+ 
+15:06:38 **** Incremental Build of configuration Debug for project Temperature ****
+make all 
+Invoking: Cross ARM GNU Print Size
+arm-none-eabi-size --format=berkeley "Temperature.elf"
+   text	   data	    bss	    dec	    hex	filename
+  22664	    268	   3272	  26204	   665c	Temperature.elf
+Finished building: Temperature.siz
+ 
+15:10:56 **** Incremental Build of configuration Debug for project Temperature ****
+make all 
+Building file: ../src/MCU/usart2.c
+Invoking: Cross ARM C Compiler
+arm-none-eabi-gcc -mcpu=cortex-m0 -mthumb -Og -fmessage-length=0 -fsigned-char -ffunction-sections -fdata-sections -ffreestanding -fno-move-loop-invariants -Wall -Wextra  -g3 -DDEBUG -DUSE_FULL_ASSERT -DTRACE -DOS_USE_TRACE_SEMIHOSTING_DEBUG -DSTM32F030 -DUSE_STDPERIPH_DRIVER -DHSE_VALUE=8000000 -I"../include" -I"../system/include" -I"../system/include/cmsis" -I"../system/include/stm32f0-stdperiph" -std=gnu11 -MMD -MP -MF"src/MCU/usart2.d" -MT"src/MCU/usart2.o" -c -o "src/MCU/usart2.o" "../src/MCU/usart2.c"
+Finished building: ../src/MCU/usart2.c
+ 
+Building target: Temperature.elf
+Invoking: Cross ARM C++ Linker
+arm-none-eabi-g++ -mcpu=cortex-m0 -mthumb -Og -fmessage-length=0 -fsigned-char -ffunction-sections -fdata-sections -ffreestanding -fno-move-loop-invariants -Wall -Wextra  -g3 -T mem.ld -T libs.ld -T sections.ld -nostartfiles -Xlinker --gc-sections -L"../ldscripts" -Wl,-Map,"Temperature.map" --specs=nano.specs -o "Temperature.elf"  ./system/src/stm32f0-stdperiph/stm32f0xx_gpio.o ./system/src/stm32f0-stdperiph/stm32f0xx_rcc.o  ./system/src/newlib/_cxx.o ./system/src/newlib/_exit.o ./system/src/newlib/_sbrk.o ./system/src/newlib/_startup.o ./system/src/newlib/_syscalls.o ./system/src/newlib/assert.o  ./system/src/diag/Trace.o ./system/src/diag/trace_impl.o  ./system/src/cortexm/_initialize_hardware.o ./system/src/cortexm/_reset_hardware.o ./system/src/cortexm/exception_handlers.o  ./system/src/cmsis/system_stm32f0xx.o ./system/src/cmsis/vectors_stm32f0xx.o  ./src/MCU/adc.o ./src/MCU/led.o ./src/MCU/tick.o ./src/MCU/usart2.o  ./src/FIFO.o ./src/Terminal.o ./src/main.o   
+Finished building target: Temperature.elf
+ 
+make --no-print-directory post-build
+Binary
+arm-none-eabi-objcopy -S  -O binary  "Temperature.elf" "Temperature.bin"
+ 
+Invoking: Cross ARM GNU Create Flash Image
+arm-none-eabi-objcopy -O ihex "Temperature.elf"  "Temperature.hex"
+Finished building: Temperature.hex
+ 
+Invoking: Cross ARM GNU Print Size
+arm-none-eabi-size --format=berkeley "Temperature.elf"
+   text	   data	    bss	    dec	    hex	filename
+  22656	    268	   3272	  26196	   6654	Temperature.elf
+Finished building: Temperature.siz
+ 
+15:11:04 **** Incremental Build of configuration Debug for project Temperature ****
+make all 
+Invoking: Cross ARM GNU Print Size
+arm-none-eabi-size --format=berkeley "Temperature.elf"
+   text	   data	    bss	    dec	    hex	filename
+  22656	    268	   3272	  26196	   6654	Temperature.elf
+Finished building: Temperature.siz
+ 
+15:15:37 **** Incremental Build of configuration Debug for project Temperature ****
+make all 
+Building file: ../src/MCU/adc.c
+Invoking: Cross ARM C Compiler
+arm-none-eabi-gcc -mcpu=cortex-m0 -mthumb -Og -fmessage-length=0 -fsigned-char -ffunction-sections -fdata-sections -ffreestanding -fno-move-loop-invariants -Wall -Wextra  -g3 -DDEBUG -DUSE_FULL_ASSERT -DTRACE -DOS_USE_TRACE_SEMIHOSTING_DEBUG -DSTM32F030 -DUSE_STDPERIPH_DRIVER -DHSE_VALUE=8000000 -I"../include" -I"../system/include" -I"../system/include/cmsis" -I"../system/include/stm32f0-stdperiph" -std=gnu11 -MMD -MP -MF"src/MCU/adc.d" -MT"src/MCU/adc.o" -c -o "src/MCU/adc.o" "../src/MCU/adc.c"
+../src/MCU/adc.c: In function 'ADC_ReadNorm':
+../src/MCU/adc.c:82:41: warning: unused parameter 'channel' [-Wunused-parameter]
+ uint_fast8_t ADC_ReadNorm(uint_fast32_t channel, float * destination)
+                                         ^
+../src/MCU/adc.c:82:58: warning: unused parameter 'destination' [-Wunused-parameter]
+ uint_fast8_t ADC_ReadNorm(uint_fast32_t channel, float * destination)
+                                                          ^
+../src/MCU/adc.c: In function 'ADC_ReturnCalibratedTemperature':
+../src/MCU/adc.c:94:53: warning: unused parameter 'rawData' [-Wunused-parameter]
+ float ADC_ReturnCalibratedTemperature(uint_fast16_t rawData)
+                                                     ^
+../src/MCU/adc.c: In function 'ADC_ReadNorm':
+../src/MCU/adc.c:84:1: warning: control reaches end of non-void function [-Wreturn-type]
+ }
+ ^
+Finished building: ../src/MCU/adc.c
+ 
+Building file: ../src/MCU/usart2.c
+Invoking: Cross ARM C Compiler
+arm-none-eabi-gcc -mcpu=cortex-m0 -mthumb -Og -fmessage-length=0 -fsigned-char -ffunction-sections -fdata-sections -ffreestanding -fno-move-loop-invariants -Wall -Wextra  -g3 -DDEBUG -DUSE_FULL_ASSERT -DTRACE -DOS_USE_TRACE_SEMIHOSTING_DEBUG -DSTM32F030 -DUSE_STDPERIPH_DRIVER -DHSE_VALUE=8000000 -I"../include" -I"../system/include" -I"../system/include/cmsis" -I"../system/include/stm32f0-stdperiph" -std=gnu11 -MMD -MP -MF"src/MCU/usart2.d" -MT"src/MCU/usart2.o" -c -o "src/MCU/usart2.o" "../src/MCU/usart2.c"
+Finished building: ../src/MCU/usart2.c
+ 
+Building target: Temperature.elf
+Invoking: Cross ARM C++ Linker
+arm-none-eabi-g++ -mcpu=cortex-m0 -mthumb -Og -fmessage-length=0 -fsigned-char -ffunction-sections -fdata-sections -ffreestanding -fno-move-loop-invariants -Wall -Wextra  -g3 -T mem.ld -T libs.ld -T sections.ld -nostartfiles -Xlinker --gc-sections -L"../ldscripts" -Wl,-Map,"Temperature.map" --specs=nano.specs -o "Temperature.elf"  ./system/src/stm32f0-stdperiph/stm32f0xx_gpio.o ./system/src/stm32f0-stdperiph/stm32f0xx_rcc.o  ./system/src/newlib/_cxx.o ./system/src/newlib/_exit.o ./system/src/newlib/_sbrk.o ./system/src/newlib/_startup.o ./system/src/newlib/_syscalls.o ./system/src/newlib/assert.o  ./system/src/diag/Trace.o ./system/src/diag/trace_impl.o  ./system/src/cortexm/_initialize_hardware.o ./system/src/cortexm/_reset_hardware.o ./system/src/cortexm/exception_handlers.o  ./system/src/cmsis/system_stm32f0xx.o ./system/src/cmsis/vectors_stm32f0xx.o  ./src/MCU/adc.o ./src/MCU/led.o ./src/MCU/tick.o ./src/MCU/usart2.o  ./src/FIFO.o ./src/Terminal.o ./src/main.o   
+Finished building target: Temperature.elf
+ 
+make --no-print-directory post-build
+Binary
+arm-none-eabi-objcopy -S  -O binary  "Temperature.elf" "Temperature.bin"
+ 
+Invoking: Cross ARM GNU Create Flash Image
+arm-none-eabi-objcopy -O ihex "Temperature.elf"  "Temperature.hex"
+Finished building: Temperature.hex
+ 
+Invoking: Cross ARM GNU Print Size
+arm-none-eabi-size --format=berkeley "Temperature.elf"
+   text	   data	    bss	    dec	    hex	filename
+  22688	    268	   3272	  26228	   6674	Temperature.elf
+Finished building: Temperature.siz
+ 
+15:16:02 **** Incremental Build of configuration Debug for project Temperature ****
+make all 
+Invoking: Cross ARM GNU Print Size
+arm-none-eabi-size --format=berkeley "Temperature.elf"
+   text	   data	    bss	    dec	    hex	filename
+  22688	    268	   3272	  26228	   6674	Temperature.elf
+Finished building: Temperature.siz
+ 
+15:29:23 **** Incremental Build of configuration Debug for project Temperature ****
+make all 
+Invoking: Cross ARM GNU Print Size
+arm-none-eabi-size --format=berkeley "Temperature.elf"
+   text	   data	    bss	    dec	    hex	filename
+  22688	    268	   3272	  26228	   6674	Temperature.elf
+Finished building: Temperature.siz
+ 
+15:31:54 **** Incremental Build of configuration Debug for project Temperature ****
+make all 
+Invoking: Cross ARM GNU Print Size
+arm-none-eabi-size --format=berkeley "Temperature.elf"
+   text	   data	    bss	    dec	    hex	filename
+  22688	    268	   3272	  26228	   6674	Temperature.elf
+Finished building: Temperature.siz
+ 
+15:41:44 **** Incremental Build of configuration Debug for project Temperature ****
+make all 
+Invoking: Cross ARM GNU Print Size
+arm-none-eabi-size --format=berkeley "Temperature.elf"
+   text	   data	    bss	    dec	    hex	filename
+  22688	    268	   3272	  26228	   6674	Temperature.elf
+Finished building: Temperature.siz
+ 
+15:41:55 **** Incremental Build of configuration Debug for project Temperature ****
+make all 
+Invoking: Cross ARM GNU Print Size
+arm-none-eabi-size --format=berkeley "Temperature.elf"
+   text	   data	    bss	    dec	    hex	filename
+  22688	    268	   3272	  26228	   6674	Temperature.elf
+Finished building: Temperature.siz
+ 
+15:44:34 **** Incremental Build of configuration Debug for project Temperature ****
+make all 
+Invoking: Cross ARM GNU Print Size
+arm-none-eabi-size --format=berkeley "Temperature.elf"
+   text	   data	    bss	    dec	    hex	filename
+  22688	    268	   3272	  26228	   6674	Temperature.elf
+Finished building: Temperature.siz
+ 
+15:44:44 **** Incremental Build of configuration Debug for project Temperature ****
+make all 
+Invoking: Cross ARM GNU Print Size
+arm-none-eabi-size --format=berkeley "Temperature.elf"
+   text	   data	    bss	    dec	    hex	filename
+  22688	    268	   3272	  26228	   6674	Temperature.elf
+Finished building: Temperature.siz
+ 
+15:51:59 **** Incremental Build of configuration Debug for project Temperature ****
+make all 
+Invoking: Cross ARM GNU Print Size
+arm-none-eabi-size --format=berkeley "Temperature.elf"
+   text	   data	    bss	    dec	    hex	filename
+  22688	    268	   3272	  26228	   6674	Temperature.elf
+Finished building: Temperature.siz
+ 
+16:07:48 **** Incremental Build of configuration Debug for project Temperature ****
+make all 
+Building file: ../src/Terminal.c
+Invoking: Cross ARM C Compiler
+arm-none-eabi-gcc -mcpu=cortex-m0 -mthumb -Og -fmessage-length=0 -fsigned-char -ffunction-sections -fdata-sections -ffreestanding -fno-move-loop-invariants -Wall -Wextra  -g3 -DDEBUG -DUSE_FULL_ASSERT -DTRACE -DOS_USE_TRACE_SEMIHOSTING_DEBUG -DSTM32F030 -DUSE_STDPERIPH_DRIVER -DHSE_VALUE=8000000 -I"../include" -I"../system/include" -I"../system/include/cmsis" -I"../system/include/stm32f0-stdperiph" -std=gnu11 -MMD -MP -MF"src/Terminal.d" -MT"src/Terminal.o" -c -o "src/Terminal.o" "../src/Terminal.c"
+../src/Terminal.c: In function 'RunCommand':
+../src/Terminal.c:279:14: warning: pointer targets in passing argument 1 of 'snprintf' differ in signedness [-Wpointer-sign]
+     snprintf(&Message[0], 25, "%d", ADCSample );
+              ^
+In file included from /usr/local/gcc-arm-none-eabi-4_9-2015q3/arm-none-eabi/include/stdio.h:29:0,
+                 from ../include/common.h:9,
+                 from ../src/Terminal.c:6:
+/usr/local/gcc-arm-none-eabi-4_9-2015q3/arm-none-eabi/include/stdio.h:271:5: note: expected 'char * restrict' but argument is of type 'unsigned char *'
+ int _EXFUN(snprintf, (char *__restrict, size_t, const char *__restrict, ...)
+     ^
+Finished building: ../src/Terminal.c
+ 
+Building target: Temperature.elf
+Invoking: Cross ARM C++ Linker
+arm-none-eabi-g++ -mcpu=cortex-m0 -mthumb -Og -fmessage-length=0 -fsigned-char -ffunction-sections -fdata-sections -ffreestanding -fno-move-loop-invariants -Wall -Wextra  -g3 -T mem.ld -T libs.ld -T sections.ld -nostartfiles -Xlinker --gc-sections -L"../ldscripts" -Wl,-Map,"Temperature.map" --specs=nano.specs -o "Temperature.elf"  ./system/src/stm32f0-stdperiph/stm32f0xx_gpio.o ./system/src/stm32f0-stdperiph/stm32f0xx_rcc.o  ./system/src/newlib/_cxx.o ./system/src/newlib/_exit.o ./system/src/newlib/_sbrk.o ./system/src/newlib/_startup.o ./system/src/newlib/_syscalls.o ./system/src/newlib/assert.o  ./system/src/diag/Trace.o ./system/src/diag/trace_impl.o  ./system/src/cortexm/_initialize_hardware.o ./system/src/cortexm/_reset_hardware.o ./system/src/cortexm/exception_handlers.o  ./system/src/cmsis/system_stm32f0xx.o ./system/src/cmsis/vectors_stm32f0xx.o  ./src/MCU/adc.o ./src/MCU/led.o ./src/MCU/tick.o ./src/MCU/usart2.o  ./src/FIFO.o ./src/Terminal.o ./src/main.o   
+Finished building target: Temperature.elf
+ 
+make --no-print-directory post-build
+Binary
+arm-none-eabi-objcopy -S  -O binary  "Temperature.elf" "Temperature.bin"
+ 
+Invoking: Cross ARM GNU Create Flash Image
+arm-none-eabi-objcopy -O ihex "Temperature.elf"  "Temperature.hex"
+Finished building: Temperature.hex
+ 
+Invoking: Cross ARM GNU Print Size
+arm-none-eabi-size --format=berkeley "Temperature.elf"
+   text	   data	    bss	    dec	    hex	filename
+  22824	    268	   3272	  26364	   66fc	Temperature.elf
+Finished building: Temperature.siz
+ 
+16:08:15 **** Incremental Build of configuration Debug for project Temperature ****
+make all 
+Invoking: Cross ARM GNU Print Size
+arm-none-eabi-size --format=berkeley "Temperature.elf"
+   text	   data	    bss	    dec	    hex	filename
+  22824	    268	   3272	  26364	   66fc	Temperature.elf
+Finished building: Temperature.siz
+ 

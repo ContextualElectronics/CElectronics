@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<package schemaVersion="1.1" xmlns:xs="http://www.w3.org/2001/XMLSchema-instance" xs:noNamespaceSchemaLocation="PACK.xsd">
+  <vendor>Keil</vendor>
+  <url>http://www.keil.com/pack/</url>
+  <name>Kinetis_KSxx_DFP</name>
+  <description>Freescale Kinetis KSxx Series Device Support</description>
+
+  <releases>
+    <release version="1.0.0" date="2015-12-1">
+      First Release version of KSxx Device Family Pack.
+    </release>
+  </releases>
+
+  <keywords>
+  <!-- keywords for indexing -->
+    <keyword>Freescale</keyword>
+    <keyword>Device Support</keyword>
+    <keyword>Device Family Package Freescale</keyword>
+    <keyword>KSxx</keyword>
+  </keywords>
+
+  <devices>
+
+    <family Dfamily="KSxx Series" Dvendor="Freescale:78">
+
+      <!-- ******************************  KW4x  ****************************** -->
+      <subFamily DsubFamily="KS22">
+        <processor Dcore="Cortex-M4" DcoreVersion="r0p1"/>
+        <book name="Documents\dui0553a_cortex_m4_dgug.pdf" title="Cortex-M4 Generic User Guide"/>
+        <!--book name="Documents\???RM.pdf" title="KS22Sub-Family Reference Manual"/-->
+
+        <description>
+The KS22 is ...
+        </description>
+
+        <!-- ******************************  MKS22FN128xxx12  ***************************** -->
+        <device Dname="MKS22FN128xxx12">
+          <processor Dfpu="SP_FPU" Dmpu="0" Dendian="Little-endian" Dclock="120000000"/>
+          <compile header="Device\Include\MKS22F25612.h" define="MKS22FN128xxx12"/>
+          <debug svd="SVD\MKS22F25612.svd"/>
+          <memory id="IROM1"                    start="0x00000000" size="0x00020000" default="1" startup="1"/>
+          <memory id="IRAM1"                    start="0x1FFFC000" size="0x00010000" default="1" init   ="0"/>
+          <algorithm name="Flash\MK_P128.FLM"   start="0x00000000" size="0x00020000" default="1" RAMstart="0x20000000" RAMsize="0x1000"/>
+
+          <!--book name="Documents\???.pdf"   title="KS22FN128xxx12 Data Sheet"/-->
+          <feature type="IOs"           n="56"                          name="General Purpose I/O pins"/>
+        </device>
+
+        <device Dname="MKS22FN256xxx12">
+          <processor Dfpu="SP_FPU" Dmpu="0" Dendian="Little-endian" Dclock="120000000"/>
+          <compile header="Device\Include\MKS22F25612.h" define="MKS22FN256xxx12"/>
+          <debug svd="SVD\MKS22F25612.svd"/>
+          <memory id="IROM1"                    start="0x00000000" size="0x00040000" default="1" startup="1"/>
+          <memory id="IRAM1"                    start="0x1FFFC000" size="0x00010000" default="1" init   ="0"/>
+          <algorithm name="Flash\MK_P256.FLM"   start="0x00000000" size="0x00040000" default="1" RAMstart="0x20000000" RAMsize="0x1000"/>
+
+          <!--book name="Documents\???.pdf"   title="MKS22FN256xxx12 Data Sheet"/-->
+        </device>
+      </subFamily>
+
+    </family>
+  </devices>
+
+  <conditions>
+    <!-- Compiler Conditions -->
+    <condition id="Compiler ARMCC">
+      <require Tcompiler="ARMCC"/>
+    </condition>
+
+    <!-- Device + CMSIS Conditions -->
+    <condition id="MKS22F25612 CMSIS">
+      <description>Freescale Kinetis KS22 120MHz Devices and CMSIS-CORE</description>
+      <require Cclass="CMSIS" Cgroup="CORE"/>
+      <require Dvendor="Freescale:78"/>
+      <accept Dname="MKS22FN128xxx12"/>
+      <accept Dname="MKS22FN256xxx12"/>
+    </condition>
+
+  </conditions>
+
+  <components>
+    <!-- Startup MKS22F25612 -->
+    <component Cclass="Device" Cgroup="Startup" Cversion="2.0.0" condition="MKS22F25612 CMSIS">
+      <description>System Startup for Kinetis KS22 120MHz Devices</description>
+      <files>
+        <!-- include folder / file -->
+        <file category="header"  name="Device\Include\MKS22F25612.h"/>
+        <!-- startup / system file -->
+        <file category="source" name="Device\Source\ARM\startup_MKS22F25612.s"  attr="config" version="2.0.0" condition="Compiler ARMCC"/>
+        <file category="source" name="Device\Source\system_MKS22F25612.c"       attr="config" version="2.0.0"/>
+        <file category="header" name="Device\Source\system_MKS22F25612.h"       attr="config" version="2.0.0"/>
+      </files>
+    </component>
+
+  </components>
+
+</package>

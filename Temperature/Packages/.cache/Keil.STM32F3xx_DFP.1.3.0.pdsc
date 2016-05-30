@@ -1,0 +1,2650 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<package schemaVersion="1.2" xmlns:xs="http://www.w3.org/2001/XMLSchema-instance" xs:noNamespaceSchemaLocation="PACK.xsd">
+  <vendor>Keil</vendor>
+  <url>http://www.keil.com/pack/</url>
+  <name>STM32F3xx_DFP</name>
+  <description>STMicroelectronics STM32F3 Series Device Support and Examples</description>
+
+  <releases>
+    <release version="1.3.0" date="2015-03-02">
+      Added devices: STM32F302xE, STM32F302xD, STM32F303xE, STM32F303xD.
+      Added device STM32F398VE.
+      Added device feature description.
+      Updated device support files.
+      Updated reference manuals, datasheets, errata sheets.
+      Reworked 'Conditions', 'Component Startup'.
+    </release>
+    <release version="1.2.0" date="2014-11-18">
+      Fixed device define for STM32F301 devices from "STM32F301x8" to "STM32F302x8"
+      Updated STM32373C-EVAL GLCD board support files.
+      Updated STM32373C-EVAL board description.
+    </release>
+    <release version="1.1.0" date="2014-10-01">
+      Device Support for STM32F301, STM32F302, STM32F303, STM32F3x4, STM32F3x8 and STM32F373 Device Subfamilies
+      - based on STM32F30x_DSP_StdPeriph_Lib_V1.2.0 and STM32F37x_DSP_StdPeriph_Lib_V1.0.0
+      Added: Board description, Board support for
+      - STMicroelectronics STM32F3-Discovery, STM32373C-EVAL and STM32303C-EVAL
+    </release>
+    <release version="1.0.1">
+      Updated: Device descriptions updated with features
+    </release>
+    <release version="1.0.0">
+      First Release version of STM32F3 Device Family Pack.
+    </release>
+  </releases>
+
+  <keywords>
+    <!-- keywords for indexing -->
+    <keyword>ST</keyword>
+    <keyword>Device Support</keyword>
+    <keyword>Device Family Package STMicroelectronics</keyword>
+    <keyword>STM32F3</keyword>
+    <keyword>STM32</keyword>
+  </keywords>
+
+  <devices>
+    <family Dfamily="STM32F3 Series" Dvendor="STMicroelectronics:13">
+      <processor Dcore="Cortex-M4" DcoreVersion="r0p1" Dfpu="1" Dmpu="1" Dendian="Little-endian"/>
+      <book name="Documents\dui0553a_cortex_m4_dgug.pdf" title="Cortex-M4 Generic User Guide"/>
+      <description>
+STMicroelectronics' STM32F3 family offers an extensive range of enhanced I/Os and peripherals connected to two APB buses.
+
+  - SRAM with HW parity checking
+  - Timer with quadrature (incremental) encoder input
+  - Timer with deadtime generation and emergency stop
+  - 5 V-tolerant I/Os
+  - Rail-to-rail analog comparators
+  - Operational amplifiers
+  - 96-bit unique ID
+      </description>
+
+      <!-- ************************  Subfamily 'STM32F301'  **************************** -->
+      <subFamily DsubFamily="STM32F301">
+        <processor Dclock="72000000"/>
+
+        <book name="Documents\DM00094350.pdf" title="STM32F301x6/8 and STM32F318x8 Reference Manual"/>
+        <book name="Documents\DM00093332.pdf" title="STM32F301x6 STM32F301x8 Dataheet"/>
+        <book name="Documents\DM00104412.pdf" title="STM32F301x6 STM32F301x8 Errata Sheet"/>
+
+        <!-- *************************  Device 'STM32F301C6'  ************************** -->
+        <device Dname="STM32F301C6">
+          <compile header="Device\Include\stm32f3xx.h" define="STM32F301x8"/>
+          <debug svd="SVD\STM32F301x.svd"/>
+          <memory id="IROM1"                        start="0x08000000" size="0x00008000" startup="1" default="1"/>
+          <memory id="IRAM1"                        start="0x20000000" size="0x00003000" init   ="0" default="1"/>
+          <algorithm name="Flash\STM32F3xx_256.FLM" start="0x08000000" size="0x00008000"             default="1"/>
+          <algorithm name="Flash\STM32F3xx_OPT.FLM" start="0x1FFFF800" size="0x00000010"             default="0"/>
+
+          <feature type="QFP"           n="48"/>
+          <feature type="Timer"         n="5"       m="16"      name="IC/OC/PWM"/>
+          <feature type="Timer"         n="1"       m="32"      name="IC/OC/PWM"/>
+          <feature type="WDT"           n="2"/>
+          <feature type="RTC"           n="32768"/>
+          <feature type="ADC"           n="1"       m="12"/>
+          <feature type="IOs"           n="37"/>
+          <feature type="DAC"           n="1"       m="12"/>
+          <feature type="AnalogOther"   n="1"                   name="Operational Amplifier"/>
+          <feature type="SPI"           n="2"/>
+          <feature type="I2C"           n="3"/>
+          <feature type="USART"         n="3"/>
+          <feature type="VCC"           n="2.00"    m="3.60"/>
+          <feature type="Temp"          n="-40"     m="85"/>
+        </device>
+
+        <!-- *************************  Device 'STM32F301C8'  ************************** -->
+        <device Dname="STM32F301C8">
+          <compile header="Device\Include\stm32f3xx.h" define="STM32F301x8"/>
+          <debug svd="SVD\STM32F301x.svd"/>
+          <memory id="IROM1"                        start="0x08000000" size="0x00010000" startup="1" default="1"/>
+          <memory id="IRAM1"                        start="0x20000000" size="0x00004000" init   ="0" default="1"/>
+          <algorithm name="Flash\STM32F3xx_256.FLM" start="0x08000000" size="0x00010000"             default="1"/>
+          <algorithm name="Flash\STM32F3xx_OPT.FLM" start="0x1FFFF800" size="0x00000010"             default="0"/>
+
+          <feature type="QFP"           n="48"/>
+          <feature type="CSP"           n="49"/>
+          <feature type="Timer"         n="5"       m="16"      name="IC/OC/PWM"/>
+          <feature type="Timer"         n="1"       m="32"      name="IC/OC/PWM"/>
+          <feature type="WDT"           n="2"/>
+          <feature type="RTC"           n="32768"/>
+          <feature type="ADC"           n="1"       m="12"/>
+          <feature type="IOs"           n="37"/>
+          <feature type="DAC"           n="1"       m="12"/>
+          <feature type="AnalogOther"   n="1"                   name="Operational Amplifier"/>
+          <feature type="SPI"           n="2"/>
+          <feature type="I2C"           n="3"/>
+          <feature type="USART"         n="3"/>
+          <feature type="VCC"           n="2.00"    m="3.60"/>
+          <feature type="Temp"          n="-40"     m="85"/>
+        </device>
+
+        <!-- *************************  Device 'STM32F301K6'  ************************** -->
+        <device Dname="STM32F301K6">
+          <compile header="Device\Include\stm32f3xx.h" define="STM32F301x8"/>
+          <debug svd="SVD\STM32F301x.svd"/>
+          <memory id="IROM1"                        start="0x08000000" size="0x00008000" startup="1" default="1"/>
+          <memory id="IRAM1"                        start="0x20000000" size="0x00003000" init   ="0" default="1"/>
+          <algorithm name="Flash\STM32F3xx_256.FLM" start="0x08000000" size="0x00008000"             default="1"/>
+          <algorithm name="Flash\STM32F3xx_OPT.FLM" start="0x1FFFF800" size="0x00000010"             default="0"/>
+
+          <feature type="QFP"           n="32"/>
+          <feature type="Timer"         n="5"       m="16"      name="IC/OC/PWM"/>
+          <feature type="Timer"         n="1"       m="32"      name="IC/OC/PWM"/>
+          <feature type="WDT"           n="2"/>
+          <feature type="RTC"           n="32768"/>
+          <feature type="ADC"           n="1"       m="12"/>
+          <feature type="IOs"           n="24"/>
+          <feature type="DAC"           n="1"       m="12"/>
+          <feature type="AnalogOther"   n="1"                   name="Operational Amplifier"/>
+          <feature type="SPI"           n="2"/>
+          <feature type="I2C"           n="3"/>
+          <feature type="USART"         n="3"/>
+          <feature type="VCC"           n="2.00"    m="3.60"/>
+          <feature type="Temp"          n="-40"     m="85"/>
+        </device>
+
+        <!-- *************************  Device 'STM32F301K8'  ************************** -->
+        <device Dname="STM32F301K8">
+          <compile header="Device\Include\stm32f3xx.h" define="STM32F301x8"/>
+          <debug svd="SVD\STM32F301x.svd"/>
+          <memory id="IROM1"                        start="0x08000000" size="0x00010000" startup="1" default="1"/>
+          <memory id="IRAM1"                        start="0x20000000" size="0x00004000" init   ="0" default="1"/>
+          <algorithm name="Flash\STM32F3xx_256.FLM" start="0x08000000" size="0x00010000"             default="1"/>
+          <algorithm name="Flash\STM32F3xx_OPT.FLM" start="0x1FFFF800" size="0x00000010"             default="0"/>
+
+          <feature type="QFP"           n="32"/>
+          <feature type="Timer"         n="5"       m="16"      name="IC/OC/PWM"/>
+          <feature type="Timer"         n="1"       m="32"      name="IC/OC/PWM"/>
+          <feature type="WDT"           n="2"/>
+          <feature type="RTC"           n="32768"/>
+          <feature type="ADC"           n="1"       m="12"/>
+          <feature type="IOs"           n="24"/>
+          <feature type="DAC"           n="1"       m="12"/>
+          <feature type="AnalogOther"   n="1"                   name="Operational Amplifier"/>
+          <feature type="SPI"           n="2"/>
+          <feature type="I2C"           n="3"/>
+          <feature type="USART"         n="3"/>
+          <feature type="VCC"           n="2.00"    m="3.60"/>
+          <feature type="Temp"          n="-40"     m="85"/>
+        </device>
+
+        <!-- *************************  Device 'STM32F301R6'  ************************** -->
+        <device Dname="STM32F301R6">
+          <compile header="Device\Include\stm32f3xx.h" define="STM32F301x8"/>
+          <debug svd="SVD\STM32F301x.svd"/>
+          <memory id="IROM1"                        start="0x08000000" size="0x00008000" startup="1" default="1"/>
+          <memory id="IRAM1"                        start="0x20000000" size="0x00003000" init   ="0" default="1"/>
+          <algorithm name="Flash\STM32F3xx_256.FLM" start="0x08000000" size="0x00008000"             default="1"/>
+          <algorithm name="Flash\STM32F3xx_OPT.FLM" start="0x1FFFF800" size="0x00000010"             default="0"/>
+
+          <feature type="QFP"           n="64"/>
+          <feature type="Timer"         n="5"       m="16"      name="IC/OC/PWM"/>
+          <feature type="Timer"         n="1"       m="32"      name="IC/OC/PWM"/>
+          <feature type="WDT"           n="2"/>
+          <feature type="RTC"           n="32768"/>
+          <feature type="ADC"           n="1"       m="12"/>
+          <feature type="IOs"           n="51"/>
+          <feature type="DAC"           n="1"       m="12"/>
+          <feature type="AnalogOther"   n="1"                   name="Operational Amplifier"/>
+          <feature type="SPI"           n="2"/>
+          <feature type="I2C"           n="3"/>
+          <feature type="USART"         n="3"/>
+          <feature type="VCC"           n="2.00"    m="3.60"/>
+          <feature type="Temp"          n="-40"     m="85"/>
+        </device>
+
+        <!-- *************************  Device 'STM32F301R8'  ************************** -->
+        <device Dname="STM32F301R8">
+          <compile header="Device\Include\stm32f3xx.h" define="STM32F301x8"/>
+          <debug svd="SVD\STM32F301x.svd"/>
+          <memory id="IROM1"                        start="0x08000000" size="0x00010000" startup="1" default="1"/>
+          <memory id="IRAM1"                        start="0x20000000" size="0x00004000" init   ="0" default="1"/>
+          <algorithm name="Flash\STM32F3xx_256.FLM" start="0x08000000" size="0x00010000"             default="1"/>
+          <algorithm name="Flash\STM32F3xx_OPT.FLM" start="0x1FFFF800" size="0x00000010"             default="0"/>
+
+          <feature type="QFP"           n="64"/>
+          <feature type="Timer"         n="5"       m="16"      name="IC/OC/PWM"/>
+          <feature type="Timer"         n="1"       m="32"      name="IC/OC/PWM"/>
+          <feature type="WDT"           n="2"/>
+          <feature type="RTC"           n="32768"/>
+          <feature type="ADC"           n="1"       m="12"/>
+          <feature type="IOs"           n="51"/>
+          <feature type="DAC"           n="1"       m="12"/>
+          <feature type="AnalogOther"   n="1"                   name="Operational Amplifier"/>
+          <feature type="SPI"           n="2"/>
+          <feature type="I2C"           n="3"/>
+          <feature type="USART"         n="3"/>
+          <feature type="VCC"           n="2.00"    m="3.60"/>
+          <feature type="Temp"          n="-40"     m="85"/>
+        </device>
+      </subFamily>
+
+      <!-- ************************  Subfamily 'STM32F302'  **************************** -->
+      <subFamily DsubFamily="STM32F302">
+        <processor Dclock="72000000"/>
+
+        <book name="Documents\DM00094349.pdf" title="STM32F302xB/C/D/E and STM32F302x6/8 Reference Manual"/>
+
+        <!-- *************************  Device 'STM32F302C6'  ************************** -->
+        <device Dname="STM32F302C6">
+          <compile header="Device\Include\stm32f3xx.h" define="STM32F302x8"/>
+          <debug svd="SVD\STM32F302x.svd"/>
+          <memory id="IROM1"                        start="0x08000000" size="0x00008000" startup="1" default="1"/>
+          <memory id="IRAM1"                        start="0x20000000" size="0x00003000" init   ="0" default="1"/>
+          <algorithm name="Flash\STM32F3xx_256.FLM" start="0x08000000" size="0x00008000"             default="1"/>
+          <algorithm name="Flash\STM32F3xx_OPT.FLM" start="0x1FFFF800" size="0x00000010"             default="0"/>
+
+          <book name="Documents\DM00093333.pdf" title="STM32F302x6 STM32F302x8 Datasheet"/>
+          <book name="Documents\DM00109012.pdf" title="STM32F302x6 STM32F302x8 Errata Sheet"/>
+
+          <feature type="QFP"           n="48"/>
+          <feature type="Timer"         n="5"       m="16"      name="IC/OC/PWM"/>
+          <feature type="Timer"         n="1"       m="32"      name="IC/OC/PWM"/>
+          <feature type="WDT"           n="2"/>
+          <feature type="RTC"           n="32768"/>
+          <feature type="ADC"           n="1"       m="12"/>
+          <feature type="IOs"           n="37"/>
+          <feature type="DAC"           n="1"       m="12"/>
+          <feature type="AnalogOther"   n="1"                   name="Operational Amplifier"/>
+          <feature type="SPI"           n="2"/>
+          <feature type="I2C"           n="3"/>
+          <feature type="USART"         n="3"/>
+          <feature type="USBD"          n="1"/>
+          <feature type="CAN"           n="1"/>
+          <feature type="VCC"           n="2.00"    m="3.60"/>
+          <feature type="Temp"          n="-40"     m="85"/>
+        </device>
+
+        <!-- *************************  Device 'STM32F302C8'  ************************** -->
+        <device Dname="STM32F302C8">
+          <compile header="Device\Include\stm32f3xx.h" define="STM32F302x8"/>
+          <debug svd="SVD\STM32F302x.svd"/>
+          <memory id="IROM1"                        start="0x08000000" size="0x00010000" startup="1" default="1"/>
+          <memory id="IRAM1"                        start="0x20000000" size="0x00004000" init   ="0" default="1"/>
+          <algorithm name="Flash\STM32F3xx_256.FLM" start="0x08000000" size="0x00010000"             default="1"/>
+          <algorithm name="Flash\STM32F3xx_OPT.FLM" start="0x1FFFF800" size="0x00000010"             default="0"/>
+
+          <book name="Documents\DM00093333.pdf" title="STM32F302x6 STM32F302x8 Datasheet"/>
+          <book name="Documents\DM00109012.pdf" title="STM32F302x6 STM32F302x8 Errata Sheet"/>
+
+          <feature type="QFP"           n="48"/>
+          <feature type="CSP"           n="49"/>
+          <feature type="Timer"         n="5"       m="16"      name="IC/OC/PWM"/>
+          <feature type="Timer"         n="1"       m="32"      name="IC/OC/PWM"/>
+          <feature type="WDT"           n="2"/>
+          <feature type="RTC"           n="32768"/>
+          <feature type="ADC"           n="15"      m="12"/>
+          <feature type="IOs"           n="37"/>
+          <feature type="DAC"           n="1"       m="12"/>
+          <feature type="AnalogOther"   n="1"                   name="Operational Amplifier"/>
+          <feature type="SPI"           n="2"/>
+          <feature type="I2C"           n="3"/>
+          <feature type="USART"         n="3"/>
+          <feature type="USBD"          n="1"/>
+          <feature type="CAN"           n="1"/>
+          <feature type="VCC"           n="2.00"    m="3.60"/>
+          <feature type="Temp"          n="-40"     m="85"/>
+        </device>
+
+        <!-- *************************  Device 'STM32F302CB'  ************************** -->
+        <device Dname="STM32F302CB">
+          <compile header="Device\Include\stm32f3xx.h" define="STM32F302xC"/>
+          <debug svd="SVD\STM32F30x.svd"/>
+          <memory id="IROM1"                        start="0x08000000" size="0x00020000" startup="1" default="1"/>
+          <memory id="IRAM1"                        start="0x20000000" size="0x00006000" init   ="0" default="1"/>
+          <algorithm name="Flash\STM32F3xx_256.FLM" start="0x08000000" size="0x00020000"             default="1"/>
+          <algorithm name="Flash\STM32F3xx_OPT.FLM" start="0x1FFFF800" size="0x00000010"             default="0"/>
+
+          <book name="Documents\DM00094064.pdf" title="STM32F302xB STM32F302xC Datasheet"/>
+          <book name="Documents\DM00099975.pdf" title="STM32F302xB/C Errata Sheet"/>
+
+          <feature type="QFP"           n="48"/>
+          <feature type="Timer"         n="7"       m="16"      name="IC/OC/PWM"/>
+          <feature type="Timer"         n="1"       m="32"      name="IC/OC/PWM"/>
+          <feature type="WDT"           n="2"/>
+          <feature type="RTC"           n="32768"/>
+          <feature type="ADC"           n="9"       m="12"/>
+          <feature type="IOs"           n="37"/>
+          <feature type="DAC"           n="1"       m="12"/>
+          <feature type="AnalogOther"   n="2"                   name="Operational Amplifier"/>
+          <feature type="SPI"           n="3"/>
+          <feature type="I2C"           n="2"/>
+          <feature type="USART"         n="3"/>
+          <feature type="USBD"          n="1"/>
+          <feature type="CAN"           n="1"/>
+          <feature type="VCC"           n="2.00"    m="3.60"/>
+          <feature type="Temp"          n="-40"     m="85"/>
+        </device>
+
+        <!-- *************************  Device 'STM32F302CC'  ************************** -->
+        <device Dname="STM32F302CC">
+          <compile header="Device\Include\stm32f3xx.h" define="STM32F302xC"/>
+          <debug svd="SVD\STM32F30x.svd"/>
+          <memory id="IROM1"                        start="0x08000000" size="0x00040000" startup="1" default="1"/>
+          <memory id="IRAM1"                        start="0x20000000" size="0x00008000" init   ="0" default="1"/>
+          <algorithm name="Flash\STM32F3xx_256.FLM" start="0x08000000" size="0x00040000"             default="1"/>
+          <algorithm name="Flash\STM32F3xx_OPT.FLM" start="0x1FFFF800" size="0x00000010"             default="0"/>
+
+          <book name="Documents\DM00094064.pdf" title="STM32F302xB STM32F302xC Datasheet"/>
+          <book name="Documents\DM00099975.pdf" title="STM32F302xB/C Errata Sheet"/>
+
+          <feature type="QFP"           n="48"/>
+          <feature type="Timer"         n="7"       m="16"      name="IC/OC/PWM"/>
+          <feature type="Timer"         n="1"       m="32"      name="IC/OC/PWM"/>
+          <feature type="WDT"           n="2"/>
+          <feature type="RTC"           n="32768"/>
+          <feature type="ADC"           n="9"       m="12"/>
+          <feature type="IOs"           n="37"/>
+          <feature type="DAC"           n="1"       m="12"/>
+          <feature type="AnalogOther"   n="2"                   name="Operational Amplifier"/>
+          <feature type="SPI"           n="3"/>
+          <feature type="I2C"           n="2"/>
+          <feature type="USART"         n="3"/>
+          <feature type="USBD"          n="1"/>
+          <feature type="CAN"           n="1"/>
+          <feature type="VCC"           n="2.00"    m="3.60"/>
+          <feature type="Temp"          n="-40"     m="85"/>
+        </device>
+
+        <!-- *************************  Device 'STM32F302K6'  ************************** -->
+        <device Dname="STM32F302K6">
+          <compile header="Device\Include\stm32f3xx.h" define="STM32F302x8"/>
+          <debug svd="SVD\STM32F302x.svd"/>
+          <memory id="IROM1"                        start="0x08000000" size="0x00008000" startup="1" default="1"/>
+          <memory id="IRAM1"                        start="0x20000000" size="0x00003000" init   ="0" default="1"/>
+          <algorithm name="Flash\STM32F3xx_256.FLM" start="0x08000000" size="0x00008000"             default="1"/>
+          <algorithm name="Flash\STM32F3xx_OPT.FLM" start="0x1FFFF800" size="0x00000010"             default="0"/>
+
+          <book name="Documents\DM00094064.pdf" title="STM32F302xB STM32F302xC Datasheet"/>
+          <book name="Documents\DM00099975.pdf" title="STM32F302xB/C Errata Sheet"/>
+
+          <feature type="QFP"           n="32"/>
+          <feature type="Timer"         n="5"       m="16"      name="IC/OC/PWM"/>
+          <feature type="Timer"         n="1"       m="32"      name="IC/OC/PWM"/>
+          <feature type="WDT"           n="2"/>
+          <feature type="RTC"           n="32768"/>
+          <feature type="ADC"           n="15"      m="12"/>
+          <feature type="IOs"           n="24"/>
+          <feature type="DAC"           n="1"       m="12"/>
+          <feature type="AnalogOther"   n="1"                   name="Operational Amplifier"/>
+          <feature type="SPI"           n="1"/>
+          <feature type="I2C"           n="1"/>
+          <feature type="UART"          n="2"/>
+          <feature type="USBD"          n="1"/>
+          <feature type="CAN"           n="1"/>
+          <feature type="VCC"           n="2.00"    m="3.60"/>
+          <feature type="Temp"          n="-40"     m="85"/>
+        </device>
+
+        <!-- *************************  Device 'STM32F302K8'  ************************** -->
+        <device Dname="STM32F302K8">
+          <compile header="Device\Include\stm32f3xx.h" define="STM32F302x8"/>
+          <debug svd="SVD\STM32F302x.svd"/>
+          <memory id="IROM1"                        start="0x08000000" size="0x00010000" startup="1" default="1"/>
+          <memory id="IRAM1"                        start="0x20000000" size="0x00004000" init   ="0" default="1"/>
+          <algorithm name="Flash\STM32F3xx_256.FLM" start="0x08000000" size="0x00010000"             default="1"/>
+          <algorithm name="Flash\STM32F3xx_OPT.FLM" start="0x1FFFF800" size="0x00000010"             default="0"/>
+
+          <book name="Documents\DM00093333.pdf" title="STM32F302x6 STM32F302x8 Datasheet"/>
+          <book name="Documents\DM00109012.pdf" title="STM32F302x6 STM32F302x8 Errata Sheet"/>
+
+          <feature type="QFP"           n="32"/>
+          <feature type="Timer"         n="5"       m="16"      name="IC/OC/PWM"/>
+          <feature type="Timer"         n="1"       m="32"      name="IC/OC/PWM"/>
+          <feature type="WDT"           n="2"/>
+          <feature type="RTC"           n="32768"/>
+          <feature type="ADC"           n="15"      m="12"/>
+          <feature type="IOs"           n="24"/>
+          <feature type="DAC"           n="1"       m="12"/>
+          <feature type="AnalogOther"   n="1"                   name="Operational Amplifier"/>
+          <feature type="SPI"           n="1"/>
+          <feature type="I2C"           n="1"/>
+          <feature type="UART"          n="2"/>
+          <feature type="USBD"          n="1"/>
+          <feature type="CAN"           n="1"/>
+          <feature type="VCC"           n="2.00"    m="3.60"/>
+          <feature type="Temp"          n="-40"     m="105"/>
+        </device>
+
+        <!-- *************************  Device 'STM32F302R6'  ************************** -->
+        <device Dname="STM32F302R6">
+          <compile header="Device\Include\stm32f3xx.h" define="STM32F302x8"/>
+          <debug svd="SVD\STM32F302x.svd"/>
+          <memory id="IROM1"                        start="0x08000000" size="0x00008000" startup="1" default="1"/>
+          <memory id="IRAM1"                        start="0x20000000" size="0x00003000" init   ="0" default="1"/>
+          <algorithm name="Flash\STM32F3xx_256.FLM" start="0x08000000" size="0x00008000"             default="1"/>
+          <algorithm name="Flash\STM32F3xx_OPT.FLM" start="0x1FFFF800" size="0x00000010"             default="0"/>
+
+          <book name="Documents\DM00093333.pdf" title="STM32F302x6 STM32F302x8 Datasheet"/>
+          <book name="Documents\DM00109012.pdf" title="STM32F302x6 STM32F302x8 Errata Sheet"/>
+
+          <feature type="QFP"           n="64"/>
+          <feature type="Timer"         n="5"       m="16"      name="IC/OC/PWM"/>
+          <feature type="Timer"         n="1"       m="32"      name="IC/OC/PWM"/>
+          <feature type="WDT"           n="2"/>
+          <feature type="RTC"           n="32768"/>
+          <feature type="ADC"           n="15"      m="12"/>
+          <feature type="IOs"           n="51"/>
+          <feature type="DAC"           n="1"       m="12"/>
+          <feature type="AnalogOther"   n="1"                   name="Operational Amplifier"/>
+          <feature type="SPI"           n="1"/>
+          <feature type="USART"         n="3"/>
+          <feature type="USBD"          n="1"/>
+          <feature type="CAN"           n="1"/>
+          <feature type="VCC"           n="2.00"    m="3.60"/>
+          <feature type="Temp"          n="-40"     m="85"/>
+        </device>
+
+        <!-- *************************  Device 'STM32F302R8'  ************************** -->
+        <device Dname="STM32F302R8">
+          <compile header="Device\Include\stm32f3xx.h" define="STM32F302x8"/>
+          <debug svd="SVD\STM32F302x.svd"/>
+          <memory id="IROM1"                        start="0x08000000" size="0x00010000" startup="1" default="1"/>
+          <memory id="IRAM1"                        start="0x20000000" size="0x00004000" init   ="0" default="1"/>
+          <algorithm name="Flash\STM32F3xx_256.FLM" start="0x08000000" size="0x00010000"             default="1"/>
+          <algorithm name="Flash\STM32F3xx_OPT.FLM" start="0x1FFFF800" size="0x00000010"             default="0"/>
+
+          <book name="Documents\DM00093333.pdf" title="STM32F302x6 STM32F302x8 Datasheet"/>
+          <book name="Documents\DM00109012.pdf" title="STM32F302x6 STM32F302x8 Errata Sheet"/>
+
+          <feature type="QFP"           n="64"/>
+          <feature type="Timer"         n="5"       m="16"      name="IC/OC/PWM"/>
+          <feature type="Timer"         n="1"       m="32"      name="IC/OC/PWM"/>
+          <feature type="WDT"           n="2"/>
+          <feature type="RTC"           n="32768"/>
+          <feature type="ADC"           n="15"      m="12"/>
+          <feature type="IOs"           n="51"/>
+          <feature type="DAC"           n="1"       m="12"/>
+          <feature type="AnalogOther"   n="1"                   name="Operational Amplifier"/>
+          <feature type="SPI"           n="1"/>
+          <feature type="I2C"           n="1"/>
+          <feature type="USART"         n="3"/>
+          <feature type="USBD"          n="1"/>
+          <feature type="CAN"           n="1"/>
+          <feature type="VCC"           n="2.00"    m="3.60"/>
+          <feature type="Temp"          n="-40"     m="105"/>
+        </device>
+
+        <!-- *************************  Device 'STM32F302RB'  ************************** -->
+        <device Dname="STM32F302RB">
+          <compile header="Device\Include\stm32f3xx.h" define="STM32F302xC"/>
+          <debug svd="SVD\STM32F30x.svd"/>
+          <memory id="IROM1"                        start="0x08000000" size="0x00020000" startup="1" default="1"/>
+          <memory id="IRAM1"                        start="0x20000000" size="0x00006000" init   ="0" default="1"/>
+          <algorithm name="Flash\STM32F3xx_256.FLM" start="0x08000000" size="0x00020000"             default="1"/>
+          <algorithm name="Flash\STM32F3xx_OPT.FLM" start="0x1FFFF800" size="0x00000010"             default="0"/>
+
+          <book name="Documents\DM00094064.pdf" title="STM32F302xB STM32F302xC Datasheet"/>
+          <book name="Documents\DM00099975.pdf" title="STM32F302xB/C Errata Sheet"/>
+
+          <feature type="QFP"           n="64"/>
+          <feature type="Timer"         n="7"       m="16"      name="IC/OC/PWM"/>
+          <feature type="Timer"         n="1"       m="32"      name="IC/OC/PWM"/>
+          <feature type="WDT"           n="2"/>
+          <feature type="RTC"           n="32768"/>
+          <feature type="ADC"           n="16"      m="12"/>
+          <feature type="IOs"           n="52"/>
+          <feature type="DAC"           n="2"       m="12"/>
+          <feature type="AnalogOther"   n="2"                   name="Operational Amplifier"/>
+          <feature type="SPI"           n="3"/>
+          <feature type="I2C"           n="2"/>
+          <feature type="UART"          n="2"/>
+          <feature type="USART"         n="3"/>
+          <feature type="USBD"          n="1"/>
+          <feature type="CAN"           n="1"/>
+          <feature type="VCC"           n="2.00"    m="3.60"/>
+          <feature type="Temp"          n="-40"     m="105"/>
+        </device>
+
+        <!-- *************************  Device 'STM32F302RC'  ************************** -->
+        <device Dname="STM32F302RC">
+          <compile header="Device\Include\stm32f3xx.h" define="STM32F302xC"/>
+          <debug svd="SVD\STM32F30x.svd"/>
+          <memory id="IROM1"                        start="0x08000000" size="0x00040000" startup="1" default="1"/>
+          <memory id="IRAM1"                        start="0x20000000" size="0x00008000" init   ="0" default="1"/>
+          <algorithm name="Flash\STM32F3xx_256.FLM" start="0x08000000" size="0x00040000"             default="1"/>
+          <algorithm name="Flash\STM32F3xx_OPT.FLM" start="0x1FFFF800" size="0x00000010"             default="0"/>
+
+          <book name="Documents\DM00094064.pdf" title="STM32F302xB STM32F302xC Datasheet"/>
+          <book name="Documents\DM00099975.pdf" title="STM32F302xB/C Errata Sheet"/>
+
+          <feature type="QFP"           n="64"/>
+          <feature type="Timer"         n="7"       m="16"      name="IC/OC/PWM"/>
+          <feature type="Timer"         n="1"       m="32"      name="IC/OC/PWM"/>
+          <feature type="WDT"           n="2"/>
+          <feature type="RTC"           n="32768"/>
+          <feature type="ADC"           n="16"      m="12"/>
+          <feature type="IOs"           n="52"/>
+          <feature type="DAC"           n="1"       m="12"/>
+          <feature type="AnalogOther"   n="2"                   name="Operational Amplifier"/>
+          <feature type="SPI"           n="3"/>
+          <feature type="I2C"           n="2"/>
+          <feature type="USART"         n="3"/>
+          <feature type="USBD"          n="1"/>
+          <feature type="CAN"           n="1"/>
+          <feature type="VCC"           n="2.00"    m="3.60"/>
+          <feature type="Temp"          n="-40"     m="85"/>
+        </device>
+
+        <!-- *************************  Device 'STM32F302RD'  ************************** -->
+        <device Dname="STM32F302RD">
+          <compile header="Device\Include\stm32f3xx.h" define="STM32F302xE"/>
+          <debug svd="SVD\STM32F303xE.svd"/>
+          <memory id="IROM1"                        start="0x08000000" size="0x00060000" startup="1" default="1"/>
+          <memory id="IRAM1"                        start="0x20000000" size="0x00010000" init   ="0" default="1"/>
+          <algorithm name="Flash\STM32F3xx_512.FLM" start="0x08000000" size="0x00060000"             default="1"/>
+          <algorithm name="Flash\STM32F3xx_OPT.FLM" start="0x1FFFF800" size="0x00000010"             default="0"/>
+
+          <book name="Documents\DM00133117.pdf" title="STM32F302xD STM32F302xE Datasheet"/>
+          <book name="Documents\DM00135245.pdf" title="STM32F302xD STM32F302xE Errata Sheet"/>
+
+          <feature type="QFP"           n="64"/>
+          <feature type="Timer"         n="7"       m="16"      name="IC/OC/PWM"/>
+          <feature type="Timer"         n="1"       m="32"      name="IC/OC/PWM"/>
+          <feature type="WDT"           n="2"/>
+          <feature type="RTC"           n="32768"/>
+          <feature type="ADC"           n="16"      m="12"/>
+          <feature type="IOs"           n="51"/>
+          <feature type="DAC"           n="1"       m="12"/>
+          <feature type="AnalogOther"   n="2"                   name="Operational Amplifier"/>
+          <feature type="SPI"           n="4"/>
+          <feature type="I2C"           n="3"/>
+          <feature type="UART"          n="2"/>
+          <feature type="USART"         n="3"/>
+          <feature type="USBD"          n="1"/>
+          <feature type="CAN"           n="1"/>
+          <feature type="VCC"           n="2.00"    m="3.60"/>
+          <feature type="Temp"          n="-40"     m="105"/>
+        </device>
+
+        <!-- *************************  Device 'STM32F302RE'  ************************** -->
+        <device Dname="STM32F302RE">
+          <compile header="Device\Include\stm32f3xx.h" define="STM32F302xE"/>
+          <debug svd="SVD\STM32F303xE.svd"/>
+          <memory id="IROM1"                        start="0x08000000" size="0x00080000" startup="1" default="1"/>
+          <memory id="IRAM1"                        start="0x20000000" size="0x00010000" init   ="0" default="1"/>
+          <algorithm name="Flash\STM32F3xx_512.FLM" start="0x08000000" size="0x00080000"             default="1"/>
+          <algorithm name="Flash\STM32F3xx_OPT.FLM" start="0x1FFFF800" size="0x00000010"             default="0"/>
+
+          <book name="Documents\DM00133117.pdf" title="STM32F302xD STM32F302xE Datasheet"/>
+          <book name="Documents\DM00135245.pdf" title="STM32F302xD STM32F302xE Errata Sheet"/>
+
+          <feature type="QFP"           n="64"/>
+          <feature type="Timer"         n="7"       m="16"      name="IC/OC/PWM"/>
+          <feature type="Timer"         n="1"       m="32"      name="IC/OC/PWM"/>
+          <feature type="WDT"           n="2"/>
+          <feature type="RTC"           n="32768"/>
+          <feature type="ADC"           n="16"      m="12"/>
+          <feature type="IOs"           n="51"/>
+          <feature type="DAC"           n="1"       m="12"/>
+          <feature type="AnalogOther"   n="2"                   name="Operational Amplifier"/>
+          <feature type="SPI"           n="4"/>
+          <feature type="I2C"           n="3"/>
+          <feature type="UART"          n="2"/>
+          <feature type="USART"         n="3"/>
+          <feature type="USBD"          n="1"/>
+          <feature type="CAN"           n="1"/>
+          <feature type="VCC"           n="2.00"    m="3.60"/>
+          <feature type="Temp"          n="-40"     m="105"/>
+        </device>
+
+        <!-- *************************  Device 'STM32F302VB'  ************************** -->
+        <device Dname="STM32F302VB">
+          <compile header="Device\Include\stm32f3xx.h"  define="STM32F302xC"/>
+          <debug svd="SVD\STM32F30x.svd"/>
+          <memory id="IROM1"                        start="0x08000000" size="0x00020000" startup="1" default="1"/>
+          <memory id="IRAM1"                        start="0x20000000" size="0x00006000" init   ="0" default="1"/>
+          <algorithm name="Flash\STM32F3xx_256.FLM" start="0x08000000" size="0x00020000"             default="1"/>
+          <algorithm name="Flash\STM32F3xx_OPT.FLM" start="0x1FFFF800" size="0x00000010"             default="0"/>
+
+          <book name="Documents\DM00094064.pdf" title="STM32F302xB STM32F302xC Datasheet"/>
+          <book name="Documents\DM00099975.pdf" title="STM32F302xB/C Errata Sheet"/>
+
+          <feature type="QFP"           n="100"/>
+          <feature type="Timer"         n="7"       m="16"      name="IC/OC/PWM"/>
+          <feature type="Timer"         n="1"       m="32"      name="IC/OC/PWM"/>
+          <feature type="WDT"           n="2"/>
+          <feature type="RTC"           n="32768"/>
+          <feature type="ADC"           n="17"      m="12"/>
+          <feature type="IOs"           n="87"/>
+          <feature type="DAC"           n="1"       m="12"/>
+          <feature type="AnalogOther"   n="2"                   name="Operational Amplifier"/>
+          <feature type="SPI"           n="3"/>
+          <feature type="I2C"           n="2"/>
+          <feature type="UART"          n="2"/>
+          <feature type="USART"         n="3"/>
+          <feature type="USBD"          n="1"/>
+          <feature type="CAN"           n="1"/>
+          <feature type="VCC"           n="2.00"    m="3.60"/>
+          <feature type="Temp"          n="-40"     m="105"/>
+        </device>
+
+        <!-- *************************  Device 'STM32F302VC'  ************************** -->
+        <device Dname="STM32F302VC">
+          <compile header="Device\Include\stm32f3xx.h"  define="STM32F302xC"/>
+          <debug svd="SVD\STM32F30x.svd"/>
+          <memory id="IROM1"                        start="0x08000000" size="0x00040000" startup="1" default="1"/>
+          <memory id="IRAM1"                        start="0x20000000" size="0x00008000" init   ="0" default="1"/>
+          <algorithm name="Flash\STM32F3xx_256.FLM" start="0x08000000" size="0x00040000"             default="1"/>
+          <algorithm name="Flash\STM32F3xx_OPT.FLM" start="0x1FFFF800" size="0x00000010"             default="0"/>
+
+          <book name="Documents\DM00094064.pdf" title="STM32F302xB STM32F302xC Datasheet"/>
+          <book name="Documents\DM00099975.pdf" title="STM32F302xB/C Errata Sheet"/>
+
+          <feature type="QFP"           n="100"/>
+          <feature type="Timer"         n="7"       m="16"      name="IC/OC/PWM"/>
+          <feature type="Timer"         n="1"       m="32"      name="IC/OC/PWM"/>
+          <feature type="WDT"           n="2"/>
+          <feature type="RTC"           n="32768"/>
+          <feature type="ADC"           n="17"      m="12"/>
+          <feature type="IOs"           n="87"/>
+          <feature type="DAC"           n="1"       m="12"/>
+          <feature type="AnalogOther"   n="2"                   name="Operational Amplifier"/>
+          <feature type="SPI"           n="3"/>
+          <feature type="I2C"           n="2"/>
+          <feature type="UART"          n="2"/>
+          <feature type="USART"         n="3"/>
+          <feature type="USBD"          n="1"/>
+          <feature type="CAN"           n="1"/>
+          <feature type="VCC"           n="2.00"    m="3.60"/>
+          <feature type="Temp"          n="-40"     m="105"/>
+        </device>
+
+        <!-- *************************  Device 'STM32F302VD'  ************************** -->
+        <device Dname="STM32F302VD">
+          <compile header="Device\Include\stm32f3xx.h" define="STM32F302xE"/>
+          <debug svd="SVD\STM32F303xE.svd"/>
+          <memory id="IROM1"                        start="0x08000000" size="0x00060000" startup="1" default="1"/>
+          <memory id="IRAM1"                        start="0x20000000" size="0x00010000" init   ="0" default="1"/>
+          <algorithm name="Flash\STM32F3xx_512.FLM" start="0x08000000" size="0x00060000"             default="1"/>
+          <algorithm name="Flash\STM32F3xx_OPT.FLM" start="0x1FFFF800" size="0x00000010"             default="0"/>
+
+          <book name="Documents\DM00133117.pdf" title="STM32F302xD STM32F302xE Datasheet"/>
+          <book name="Documents\DM00135245.pdf" title="STM32F302xD STM32F302xE Errata Sheet"/>
+
+          <feature type="QFP"           n="100"/>
+          <feature type="Timer"         n="7"       m="16"      name="IC/OC/PWM"/>
+          <feature type="Timer"         n="1"       m="32"      name="IC/OC/PWM"/>
+          <feature type="WDT"           n="2"/>
+          <feature type="RTC"           n="32768"/>
+          <feature type="ADC"           n="17"      m="12"/>
+          <feature type="IOs"           n="86"/>
+          <feature type="DAC"           n="1"       m="12"/>
+          <feature type="AnalogOther"   n="2"                   name="Operational Amplifier"/>
+          <feature type="SPI"           n="4"/>
+          <feature type="I2C"           n="3"/>
+          <feature type="UART"          n="2"/>
+          <feature type="USART"         n="3"/>
+          <feature type="USBD"          n="1"/>
+          <feature type="CAN"           n="1"/>
+          <feature type="VCC"           n="2.00"    m="3.60"/>
+          <feature type="Temp"          n="-40"     m="105"/>
+        </device>
+
+        <!-- *************************  Device 'STM32F302VE'  ************************** -->
+        <device Dname="STM32F302VE">
+          <compile header="Device\Include\stm32f3xx.h" define="STM32F302xE"/>
+          <debug svd="SVD\STM32F303xE.svd"/>
+          <memory id="IROM1"                        start="0x08000000" size="0x00080000" startup="1" default="1"/>
+          <memory id="IRAM1"                        start="0x20000000" size="0x00010000" init   ="0" default="1"/>
+          <algorithm name="Flash\STM32F3xx_512.FLM" start="0x08000000" size="0x00080000"             default="1"/>
+          <algorithm name="Flash\STM32F3xx_OPT.FLM" start="0x1FFFF800" size="0x00000010"             default="0"/>
+
+          <book name="Documents\DM00133117.pdf" title="STM32F302xD STM32F302xE Datasheet"/>
+          <book name="Documents\DM00135245.pdf" title="STM32F302xD STM32F302xE Errata Sheet"/>
+
+          <feature type="QFP"           n="100"/>
+          <feature type="Timer"         n="7"       m="16"      name="IC/OC/PWM"/>
+          <feature type="Timer"         n="1"       m="32"      name="IC/OC/PWM"/>
+          <feature type="WDT"           n="2"/>
+          <feature type="RTC"           n="32768"/>
+          <feature type="ADC"           n="17"      m="12"/>
+          <feature type="IOs"           n="86"/>
+          <feature type="DAC"           n="1"       m="12"/>
+          <feature type="AnalogOther"   n="2"                   name="Operational Amplifier"/>
+          <feature type="SPI"           n="4"/>
+          <feature type="I2C"           n="3"/>
+          <feature type="UART"          n="2"/>
+          <feature type="USART"         n="3"/>
+          <feature type="USBD"          n="1"/>
+          <feature type="CAN"           n="1"/>
+          <feature type="VCC"           n="2.00"    m="3.60"/>
+          <feature type="Temp"          n="-40"     m="105"/>
+        </device>
+
+       <!-- **************************  Device 'STM32F302ZD'  ************************** -->
+       <device Dname="STM32F302ZD">
+          <compile header="Device\Include\stm32f3xx.h" define="STM32F302xE"/>
+          <debug svd="SVD\STM32F303xE.svd"/>
+          <memory id="IROM1"                        start="0x08000000" size="0x00060000" startup="1" default="1"/>
+          <memory id="IRAM1"                        start="0x20000000" size="0x00010000" init   ="0" default="1"/>
+          <algorithm name="Flash\STM32F3xx_512.FLM" start="0x08000000" size="0x00060000"             default="1"/>
+          <algorithm name="Flash\STM32F3xx_OPT.FLM" start="0x1FFFF800" size="0x00000010"             default="0"/>
+
+          <book name="Documents\DM00133117.pdf" title="STM32F302xD STM32F302xE Datasheet"/>
+          <book name="Documents\DM00135245.pdf" title="STM32F302xD STM32F302xE Errata Sheet"/>
+
+          <feature type="QFP"           n="144"/>
+          <feature type="Timer"         n="7"       m="16"      name="IC/OC/PWM"/>
+          <feature type="Timer"         n="1"       m="32"      name="IC/OC/PWM"/>
+          <feature type="WDT"           n="2"/>
+          <feature type="RTC"           n="32768"/>
+          <feature type="ADC"           n="18"      m="12"/>
+          <feature type="IOs"           n="115"/>
+          <feature type="DAC"           n="1"       m="12"/>
+          <feature type="AnalogOther"   n="2"                   name="Operational Amplifier"/>
+          <feature type="SPI"           n="4"/>
+          <feature type="I2C"           n="3"/>
+          <feature type="UART"          n="2"/>
+          <feature type="USART"         n="3"/>
+          <feature type="USBD"          n="1"/>
+          <feature type="CAN"           n="1"/>
+          <feature type="VCC"           n="2.00"    m="3.60"/>
+          <feature type="Temp"          n="-40"     m="105"/>
+        </device>
+
+        <!-- *************************  Device 'STM32F302ZE'  ************************** -->
+        <device Dname="STM32F302ZE">
+          <compile header="Device\Include\stm32f3xx.h" define="STM32F302xE"/>
+          <debug svd="SVD\STM32F303xE.svd"/>
+          <memory id="IROM1"                        start="0x08000000" size="0x00080000" startup="1" default="1"/>
+          <memory id="IRAM1"                        start="0x20000000" size="0x00010000" init   ="0" default="1"/>
+          <algorithm name="Flash\STM32F3xx_512.FLM" start="0x08000000" size="0x00080000"             default="1"/>
+          <algorithm name="Flash\STM32F3xx_OPT.FLM" start="0x1FFFF800" size="0x00000010"             default="0"/>
+
+          <book name="Documents\DM00133117.pdf" title="STM32F302xD STM32F302xE Datasheet"/>
+          <book name="Documents\DM00135245.pdf" title="STM32F302xD STM32F302xE Errata Sheet"/>
+
+          <feature type="QFP"           n="144"/>
+          <feature type="Timer"         n="7"       m="16"      name="IC/OC/PWM"/>
+          <feature type="Timer"         n="1"       m="32"      name="IC/OC/PWM"/>
+          <feature type="WDT"           n="2"/>
+          <feature type="RTC"           n="32768"/>
+          <feature type="ADC"           n="18"      m="12"/>
+          <feature type="IOs"           n="115"/>
+          <feature type="DAC"           n="1"       m="12"/>
+          <feature type="AnalogOther"   n="2"                   name="Operational Amplifier"/>
+          <feature type="SPI"           n="4"/>
+          <feature type="I2C"           n="3"/>
+          <feature type="UART"          n="2"/>
+          <feature type="USART"         n="3"/>
+          <feature type="USBD"          n="1"/>
+          <feature type="CAN"           n="1"/>
+          <feature type="VCC"           n="2.00"    m="3.60"/>
+          <feature type="Temp"          n="-40"     m="85"/>
+        </device>
+      </subFamily>
+
+      <!-- ************************  Subfamily 'STM32F303'  **************************** -->
+      <subFamily DsubFamily="STM32F303">
+        <processor Dclock="72000000"/>
+
+        <book name="Documents\DM00043574.pdf" title="STM32F303xB/C/D/E, STM32F303x6/8, STM32F328x8, STM32F358xC, STM32F398xE Reference Manual"/>
+
+        <!-- *************************  Device 'STM32F303C6'  ************************** -->
+        <device Dname="STM32F303C6">
+          <compile header="Device\Include\stm32f3xx.h" define="STM32F303x8"/>
+          <debug svd="SVD\STM32F303x.svd"/>
+          <memory id="IROM1"                        start="0x08000000" size="0x00008000" startup="1" default="1"/>
+          <memory id="IRAM1"                        start="0x20000000" size="0x00003000" init   ="0" default="1"/>
+          <algorithm name="Flash\STM32F3xx_256.FLM" start="0x08000000" size="0x00008000"             default="1"/>
+          <algorithm name="Flash\STM32F3xx_OPT.FLM" start="0x1FFFF800" size="0x00000010"             default="0"/>
+
+          <book name="Documents\DM00092070.pdf" title="STM32F303x6/x8 Datasheet"/>
+          <book name="Documents\DM00109011.pdf" title="STM32F303x6/x8 Errata Sheet"/>
+
+          <feature type="QFP"           n="48"/>
+          <feature type="Timer"         n="7"       m="16"      name="IC/OC/PWM"/>
+          <feature type="Timer"         n="1"       m="32"      name="IC/OC/PWM"/>
+          <feature type="WDT"           n="2"/>
+          <feature type="RTC"           n="32768"/>
+          <feature type="ADC"           n="2"      m="12"/>
+          <feature type="IOs"           n="37"/>
+          <feature type="DAC"           n="3"       m="12"/>
+          <feature type="AnalogOther"   n="1"                   name="Operational Amplifier"/>
+          <feature type="SPI"           n="1"/>
+          <feature type="I2C"           n="1"/>
+          <feature type="USART"         n="3"/>
+          <feature type="CAN"           n="1"/>
+          <feature type="VCC"           n="2.00"    m="3.60"/>
+          <feature type="Temp"          n="-40"     m="85"/>
+        </device>
+
+        <!-- *************************  Device 'STM32F303C8'  ************************** -->
+        <device Dname="STM32F303C8">
+          <compile header="Device\Include\stm32f3xx.h" define="STM32F303x8"/>
+          <debug svd="SVD\STM32F303x.svd"/>
+          <memory id="IROM1"                        start="0x08000000" size="0x00010000" startup="1" default="1"/>
+          <memory id="IRAM1"                        start="0x20000000" size="0x00003000" init   ="0" default="1"/>
+          <algorithm name="Flash\STM32F3xx_256.FLM" start="0x08000000" size="0x00010000"             default="1"/>
+          <algorithm name="Flash\STM32F3xx_OPT.FLM" start="0x1FFFF800" size="0x00000010"             default="0"/>
+
+          <book name="Documents\DM00092070.pdf" title="STM32F303x6/x8 Datasheet"/>
+          <book name="Documents\DM00109011.pdf" title="STM32F303x6/x8 Errata Sheet"/>
+
+          <feature type="QFP"           n="48"/>
+          <feature type="Timer"         n="7"       m="16"      name="IC/OC/PWM"/>
+          <feature type="Timer"         n="1"       m="32"      name="IC/OC/PWM"/>
+          <feature type="WDT"           n="2"/>
+          <feature type="RTC"           n="32768"/>
+          <feature type="ADC"           n="15"      m="12"/>
+          <feature type="IOs"           n="37"/>
+          <feature type="DAC"           n="3"       m="12"/>
+          <feature type="AnalogOther"   n="1"                   name="Operational Amplifier"/>
+          <feature type="SPI"           n="1"/>
+          <feature type="I2C"           n="1"/>
+          <feature type="USART"         n="3"/>
+          <feature type="CAN"           n="1"/>
+          <feature type="VCC"           n="2.00"    m="3.60"/>
+          <feature type="Temp"          n="-40"     m="85"/>
+        </device>
+
+        <!-- *************************  Device 'STM32F303CB'  ************************** -->
+        <device Dname="STM32F303CB">
+          <compile header="Device\Include\stm32f3xx.h" define="STM32F303xC"/>
+          <debug svd="SVD\STM32F30x.svd"/>
+          <memory id="IROM1"                        start="0x08000000" size="0x00020000" startup="1" default="1"/>
+          <memory id="IRAM1"                        start="0x20000000" size="0x0000A000" init   ="0" default="1"/>
+          <memory id="IRAM2"                        start="0x10000000" size="0x00002000" init   ="0" default="1"/>
+          <algorithm name="Flash\STM32F3xx_256.FLM" start="0x08000000" size="0x00020000"             default="1"/>
+          <algorithm name="Flash\STM32F3xx_OPT.FLM" start="0x1FFFF800" size="0x00000010"             default="0"/>
+
+          <book name="Documents\DM00058181.pdf" title="STM32F303xB STM32F303xC Datasheet"/>
+          <book name="Documents\DM00063985.pdf" title="STM32F303xB/C Errata Sheet"/>
+
+          <feature type="QFP"           n="48"/>
+          <feature type="Timer"         n="9"       m="16"      name="IC/OC/PWM"/>
+          <feature type="Timer"         n="1"       m="32"      name="IC/OC/PWM"/>
+          <feature type="WDT"           n="2"/>
+          <feature type="RTC"           n="32768"/>
+          <feature type="ADC"           n="15"      m="12"/>
+          <feature type="IOs"           n="37"/>
+          <feature type="DAC"           n="2"       m="12"/>
+          <feature type="AnalogOther"   n="4"                   name="Operational Amplifier"/>
+          <feature type="SPI"           n="3"/>
+          <feature type="I2S"           n="2"/>
+          <feature type="USART"         n="3"/>
+          <feature type="USBD"          n="1"/>
+          <feature type="CAN"           n="1"/>
+          <feature type="VCC"           n="2.00"    m="3.60"/>
+          <feature type="Temp"          n="-40"     m="105"/>
+        </device>
+
+        <!-- *************************  Device 'STM32F303CC'  ************************** -->
+        <device Dname="STM32F303CC">
+          <compile header="Device\Include\stm32f3xx.h" define="STM32F303xC"/>
+          <debug svd="SVD\STM32F30x.svd"/>
+          <memory id="IROM1"                        start="0x08000000" size="0x00040000" startup="1" default="1"/>
+          <memory id="IRAM1"                        start="0x20000000" size="0x0000C000" init   ="0" default="1"/>
+          <memory id="IRAM2"                        start="0x10000000" size="0x00002000" init   ="0" default="1"/>
+          <algorithm name="Flash\STM32F3xx_256.FLM" start="0x08000000" size="0x00040000"             default="1"/>
+          <algorithm name="Flash\STM32F3xx_OPT.FLM" start="0x1FFFF800" size="0x00000010"             default="0"/>
+
+          <book name="Documents\DM00058181.pdf" title="STM32F303xB STM32F303xC Datasheet"/>
+          <book name="Documents\DM00063985.pdf" title="STM32F303xB/C Errata Sheet"/>
+
+          <feature type="QFP"           n="48"/>
+          <feature type="Timer"         n="9"       m="16"      name="IC/OC/PWM"/>
+          <feature type="Timer"         n="1"       m="32"      name="IC/OC/PWM"/>
+          <feature type="WDT"           n="2"/>
+          <feature type="RTC"           n="32768"/>
+          <feature type="ADC"           n="15"      m="12"/>
+          <feature type="IOs"           n="37"/>
+          <feature type="DAC"           n="2"       m="12"/>
+          <feature type="AnalogOther"   n="4"                   name="Operational Amplifier"/>
+          <feature type="SPI"           n="3"/>
+          <feature type="I2C"           n="2"/>
+          <feature type="USART"         n="3"/>
+          <feature type="USBD"          n="1"/>
+          <feature type="CAN"           n="1"/>
+          <feature type="VCC"           n="2.00"    m="3.60"/>
+          <feature type="Temp"          n="-40"     m="85"/>
+        </device>
+
+        <!-- *************************  Device 'STM32F303K6'  ************************** -->
+        <device Dname="STM32F303K6">
+          <compile header="Device\Include\stm32f3xx.h" define="STM32F303x8"/>
+          <debug svd="SVD\STM32F303x.svd"/>
+          <memory id="IROM1"                         start="0x08000000" size="0x00008000" startup="1" default="1"/>
+          <memory id="IRAM1"                         start="0x20000000" size="0x00003000" init   ="0" default="1"/>
+          <algorithm name="Flash\STM32F3xx_256.FLM" start="0x08000000" size="0x00008000"              default="1"/>
+          <algorithm name="Flash\STM32F3xx_OPT.FLM" start="0x1FFFF800" size="0x00000010"              default="0"/>
+
+          <book name="Documents\DM00092070.pdf" title="STM32F303x6/x8 Datasheet"/>
+          <book name="Documents\DM00109011.pdf" title="STM32F303x6/x8 Errata Sheet"/>
+
+          <feature type="QFP"           n="32"/>
+          <feature type="Timer"         n="7"       m="16"      name="IC/OC/PWM"/>
+          <feature type="Timer"         n="1"       m="32"      name="IC/OC/PWM"/>
+          <feature type="WDT"           n="2"/>
+          <feature type="RTC"           n="32768"/>
+          <feature type="ADC"           n="9"       m="12"/>
+          <feature type="IOs"           n="25"/>
+          <feature type="DAC"           n="3"       m="12"/>
+          <feature type="AnalogOther"   n="1"                   name="Operational Amplifier"/>
+          <feature type="SPI"           n="1"/>
+          <feature type="I2C"           n="1"/>
+          <feature type="USART"         n="2"/>
+          <feature type="CAN"           n="1"/>
+          <feature type="VCC"           n="2.00"    m="3.60"/>
+          <feature type="Temp"          n="-40"     m="85"/>
+        </device>
+
+        <!-- *************************  Device 'STM32F303K8'  ************************** -->
+        <device Dname="STM32F303K8">
+          <compile header="Device\Include\stm32f3xx.h"  define="STM32F303x8"/>
+          <debug svd="SVD\STM32F303x.svd"/>
+          <memory id="IROM1"                        start="0x08000000" size="0x00010000" startup="1" default="1"/>
+          <memory id="IRAM1"                        start="0x20000000" size="0x00003000" init   ="0" default="1"/>
+          <algorithm name="Flash\STM32F3xx_256.FLM" start="0x08000000" size="0x00010000"             default="1"/>
+          <algorithm name="Flash\STM32F3xx_OPT.FLM" start="0x1FFFF800" size="0x00000010"             default="0"/>
+
+          <book name="Documents\DM00092070.pdf" title="STM32F303x6/x8 Datasheet"/>
+          <book name="Documents\DM00109011.pdf" title="STM32F303x6/x8 Errata Sheet"/>
+
+          <feature type="QFP"           n="32"/>
+          <feature type="Timer"         n="7"       m="16"      name="IC/OC/PWM"/>
+          <feature type="Timer"         n="1"       m="32"      name="IC/OC/PWM"/>
+          <feature type="WDT"           n="2"/>
+          <feature type="RTC"           n="32768"/>
+          <feature type="ADC"           n="9"       m="12"/>
+          <feature type="IOs"           n="24"/>
+          <feature type="DAC"           n="3"       m="12"/>
+          <feature type="AnalogOther"   n="1"                   name="Operational Amplifier"/>
+          <feature type="SPI"           n="1"/>
+          <feature type="I2C"           n="1"/>
+          <feature type="USART"         n="2"/>
+          <feature type="CAN"           n="1"/>
+          <feature type="VCC"           n="2.00"    m="3.60"/>
+          <feature type="Temp"          n="-40"     m="85"/>
+        </device>
+
+        <!-- *************************  Device 'STM32F303R6'  ************************** -->
+        <device Dname="STM32F303R6">
+          <compile header="Device\Include\stm32f3xx.h" define="STM32F303x8"/>
+          <debug svd="SVD\STM32F303x.svd"/>
+          <memory id="IROM1"                        start="0x08000000" size="0x00008000" startup="1" default="1"/>
+          <memory id="IRAM1"                        start="0x20000000" size="0x00003000" init   ="0" default="1"/>
+          <algorithm name="Flash\STM32F3xx_256.FLM" start="0x08000000" size="0x00008000"             default="1"/>
+          <algorithm name="Flash\STM32F3xx_OPT.FLM" start="0x1FFFF800" size="0x00000010"             default="0"/>
+
+          <book name="Documents\DM00092070.pdf" title="STM32F303x6/x8 Datasheet"/>
+          <book name="Documents\DM00109011.pdf" title="STM32F303x6/x8 Errata Sheet"/>
+
+          <feature type="QFP"           n="64"/>
+          <feature type="Timer"         n="7"       m="16"      name="IC/OC/PWM"/>
+          <feature type="Timer"         n="1"       m="32"      name="IC/OC/PWM"/>
+          <feature type="WDT"           n="2"/>
+          <feature type="RTC"           n="32768"/>
+          <feature type="ADC"           n="21"      m="12"/>
+          <feature type="IOs"           n="51"/>
+          <feature type="DAC"           n="3"       m="12"/>
+          <feature type="AnalogOther"   n="1"                   name="Operational Amplifier"/>
+          <feature type="SPI"           n="1"/>
+          <feature type="I2C"           n="1"/>
+          <feature type="USART"         n="2"/>
+          <feature type="CAN"           n="1"/>
+          <feature type="VCC"           n="2.00"    m="3.60"/>
+          <feature type="Temp"          n="-40"     m="85"/>
+        </device>
+
+        <!-- *************************  Device 'STM32F303R8'  ************************** -->
+        <device Dname="STM32F303R8">
+          <compile header="Device\Include\stm32f3xx.h" define="STM32F303x8"/>
+          <debug svd="SVD\STM32F303x.svd"/>
+          <memory id="IROM1"                        start="0x08000000" size="0x00010000" startup="1" default="1"/>
+          <memory id="IRAM1"                        start="0x20000000" size="0x00003000" init   ="0" default="1"/>
+          <algorithm name="Flash\STM32F3xx_256.FLM" start="0x08000000" size="0x00010000"             default="1"/>
+          <algorithm name="Flash\STM32F3xx_OPT.FLM" start="0x1FFFF800" size="0x00000010"             default="0"/>
+
+          <book name="Documents\DM00092070.pdf" title="STM32F303x6/x8 Datasheet"/>
+          <book name="Documents\DM00109011.pdf" title="STM32F303x6/x8 Errata Sheet"/>
+
+          <feature type="QFP"           n="64"/>
+          <feature type="Timer"         n="7"       m="16"      name="IC/OC/PWM"/>
+          <feature type="Timer"         n="1"       m="32"      name="IC/OC/PWM"/>
+          <feature type="WDT"           n="2"/>
+          <feature type="RTC"           n="32768"/>
+          <feature type="ADC"           n="21"      m="12"/>
+          <feature type="IOs"           n="51"/>
+          <feature type="DAC"           n="3"       m="12"/>
+          <feature type="AnalogOther"   n="1"                   name="Operational Amplifier"/>
+          <feature type="SPI"           n="1"/>
+          <feature type="I2C"           n="1"/>
+          <feature type="USART"         n="2"/>
+          <feature type="CAN"           n="1"/>
+          <feature type="VCC"           n="2.00"    m="3.60"/>
+          <feature type="Temp"          n="-40"     m="85"/>
+        </device>
+
+        <!-- *************************  Device 'STM32F303RB'  ************************** -->
+        <device Dname="STM32F303RB">
+          <compile header="Device\Include\stm32f3xx.h" define="STM32F303xC"/>
+          <debug svd="SVD\STM32F30x.svd"/>
+          <memory id="IROM1"                        start="0x08000000" size="0x00020000" startup="1" default="1"/>
+          <memory id="IRAM1"                        start="0x20000000" size="0x0000A000" init   ="0" default="1"/>
+          <memory id="IRAM2"                        start="0x10000000" size="0x00002000" init   ="0" default="1"/>
+          <algorithm name="Flash\STM32F3xx_256.FLM" start="0x08000000" size="0x00020000"             default="1"/>
+          <algorithm name="Flash\STM32F3xx_OPT.FLM" start="0x1FFFF800" size="0x00000010"             default="0"/>
+
+          <book name="Documents\DM00058181.pdf" title="STM32F303xB STM32F303xC Datasheet"/>
+          <book name="Documents\DM00063985.pdf" title="STM32F303xB/C Errata Sheet"/>
+
+          <feature type="QFP"           n="64"/>
+          <feature type="Timer"         n="9"       m="16"      name="IC/OC/PWM"/>
+          <feature type="Timer"         n="1"       m="32"      name="IC/OC/PWM"/>
+          <feature type="WDT"           n="2"/>
+          <feature type="RTC"           n="32768"/>
+          <feature type="ADC"           n="22"      m="12"/>
+          <feature type="IOs"           n="52"/>
+          <feature type="DAC"           n="2"       m="12"/>
+          <feature type="AnalogOther"   n="4"                   name="Operational Amplifier"/>
+          <feature type="SPI"           n="3"/>
+          <feature type="I2C"           n="2"/>
+          <feature type="UART"          n="2"/>
+          <feature type="USART"         n="3"/>
+          <feature type="USBD"          n="1"/>
+          <feature type="CAN"           n="1"/>
+          <feature type="VCC"           n="2.00"    m="3.60"/>
+          <feature type="Temp"          n="-40"     m="105"/>
+        </device>
+
+        <!-- *************************  Device 'STM32F303RC'  ************************** -->
+        <device Dname="STM32F303RC">
+          <compile header="Device\Include\stm32f3xx.h" define="STM32F303xC"/>
+          <debug svd="SVD\STM32F30x.svd"/>
+          <memory id="IROM1"                        start="0x08000000" size="0x00040000" startup="1" default="1"/>
+          <memory id="IRAM1"                        start="0x20000000" size="0x0000C000" init   ="0" default="1"/>
+          <memory id="IRAM2"                        start="0x10000000" size="0x00002000" init   ="0" default="1"/>
+          <algorithm name="Flash\STM32F3xx_256.FLM" start="0x08000000" size="0x00040000"             default="1"/>
+          <algorithm name="Flash\STM32F3xx_OPT.FLM" start="0x1FFFF800" size="0x00000010"             default="0"/>
+
+          <book name="Documents\DM00058181.pdf" title="STM32F303xB STM32F303xC Datasheet"/>
+          <book name="Documents\DM00063985.pdf" title="STM32F303xB/C Errata Sheet"/>
+
+          <feature type="QFP"           n="64"/>
+          <feature type="Timer"         n="9"       m="16"      name="IC/OC/PWM"/>
+          <feature type="Timer"         n="1"       m="32"      name="IC/OC/PWM"/>
+          <feature type="WDT"           n="2"/>
+          <feature type="RTC"           n="32768"/>
+          <feature type="ADC"           n="22"      m="12"/>
+          <feature type="IOs"           n="52"/>
+          <feature type="DAC"           n="2"       m="12"/>
+          <feature type="AnalogOther"   n="4"                   name="Operational Amplifier"/>
+          <feature type="SPI"           n="3"/>
+          <feature type="I2C"           n="2"/>
+          <feature type="UART"          n="2"/>
+          <feature type="USART"         n="3"/>
+          <feature type="USBD"          n="1"/>
+          <feature type="CAN"           n="1"/>
+          <feature type="VCC"           n="2.00"    m="3.60"/>
+          <feature type="Temp"          n="-40"     m="105"/>
+        </device>
+
+		<!-- *************************  Device 'STM32F303RD'  ************************** -->
+        <device Dname="STM32F303RD">
+          <compile header="Device\Include\stm32f3xx.h" define="STM32F303xE"/>
+          <debug svd="SVD\STM32F303xE.svd"/>
+          <memory id="IROM1"                        start="0x08000000" size="0x00060000" startup="1" default="1"/>
+          <memory id="IRAM1"                        start="0x20000000" size="0x00010000" init   ="0" default="1"/>
+          <algorithm name="Flash\STM32F3xx_512.FLM" start="0x08000000" size="0x00060000"             default="1"/>
+          <algorithm name="Flash\STM32F3xx_OPT.FLM" start="0x1FFFF800" size="0x00000010"             default="0"/>
+
+          <book name="Documents\DM00118585.pdf" title="STM32F303xD STM32F303xE Datasheet"/>
+          <book name="Documents\DM00118589.pdf" title="STM32F303xD STM32F303xE Errata Sheet"/>
+
+          <feature type="QFP"           n="64"/>
+          <feature type="Timer"         n="10"      m="16"      name="IC/OC/PWM"/>
+          <feature type="Timer"         n="1"       m="32"      name="IC/OC/PWM"/>
+          <feature type="WDT"           n="2"/>
+          <feature type="RTC"           n="32768"/>
+          <feature type="ADC"           n="22"      m="12"/>
+          <feature type="IOs"           n="53"/>
+          <feature type="DAC"           n="2"       m="12"/>
+          <feature type="AnalogOther"   n="4"                   name="Operational Amplifier"/>
+          <feature type="SPI"           n="4"/>
+          <feature type="I2C"           n="3"/>
+          <feature type="UART"          n="3"/>
+          <feature type="USART"         n="5"/>
+          <feature type="USBD"          n="1"/>
+          <feature type="CAN"           n="1"/>
+          <feature type="VCC"           n="2.00"    m="3.60"/>
+          <feature type="Temp"          n="-40"     m="105"/>
+        </device>
+
+		<!-- *************************  Device 'STM32F303RE'  ************************** -->
+        <device Dname="STM32F303RE">
+          <compile header="Device\Include\stm32f3xx.h" define="STM32F303xE"/>
+          <debug svd="SVD\STM32F303xE.svd"/>
+          <memory id="IROM1"                        start="0x08000000" size="0x00080000" startup="1" default="1"/>
+          <memory id="IRAM1"                        start="0x20000000" size="0x00010000" init   ="0" default="1"/>
+          <algorithm name="Flash\STM32F3xx_512.FLM" start="0x08000000" size="0x00080000"             default="1"/>
+          <algorithm name="Flash\STM32F3xx_OPT.FLM" start="0x1FFFF800" size="0x00000010"             default="0"/>
+
+          <book name="Documents\DM00118585.pdf" title="STM32F303xD STM32F303xE Datasheet"/>
+          <book name="Documents\DM00118589.pdf" title="STM32F303xD STM32F303xE Errata Sheet"/>
+
+          <feature type="QFP"           n="64"/>
+          <feature type="Timer"         n="10"      m="16"      name="IC/OC/PWM"/>
+          <feature type="Timer"         n="1"       m="32"      name="IC/OC/PWM"/>
+          <feature type="WDT"           n="2"/>
+          <feature type="RTC"           n="32768"/>
+          <feature type="ADC"           n="22"      m="12"/>
+          <feature type="IOs"           n="53"/>
+          <feature type="DAC"           n="2"       m="12"/>
+          <feature type="AnalogOther"   n="4"                   name="Operational Amplifier"/>
+          <feature type="SPI"           n="4"/>
+          <feature type="I2C"           n="3"/>
+          <feature type="USART"         n="3"/>
+          <feature type="USBD"          n="1"/>
+          <feature type="CAN"           n="1"/>
+          <feature type="VCC"           n="2.00"    m="3.60"/>
+          <feature type="Temp"          n="-40"     m="105"/>
+        </device>
+
+        <!-- *************************  Device 'STM32F303VB'  ************************** -->
+        <device Dname="STM32F303VB">
+          <compile header="Device\Include\stm32f3xx.h" define="STM32F303xC"/>
+          <debug svd="SVD\STM32F30x.svd"/>
+          <memory id="IROM1"                        start="0x08000000" size="0x00020000" startup="1" default="1"/>
+          <memory id="IRAM1"                        start="0x20000000" size="0x0000A000" init   ="0" default="1"/>
+          <memory id="IRAM2"                        start="0x10000000" size="0x00002000" init   ="0" default="1"/>
+          <algorithm name="Flash\STM32F3xx_256.FLM" start="0x08000000" size="0x00020000"             default="1"/>
+          <algorithm name="Flash\STM32F3xx_OPT.FLM" start="0x1FFFF800" size="0x00000010"             default="0"/>
+
+          <book name="Documents\DM00058181.pdf" title="STM32F303xB STM32F303xC Datasheet"/>
+          <book name="Documents\DM00063985.pdf" title="STM32F303xB/C Errata Sheet"/>
+
+          <feature type="QFP"           n="100"/>
+          <feature type="Timer"         n="9"       m="16"      name="IC/OC/PWM"/>
+          <feature type="Timer"         n="1"       m="32"      name="IC/OC/PWM"/>
+          <feature type="WDT"           n="2"/>
+          <feature type="RTC"           n="32768"/>
+          <feature type="ADC"           n="39"      m="12"/>
+          <feature type="IOs"           n="87"/>
+          <feature type="DAC"           n="2"       m="12"/>
+          <feature type="AnalogOther"   n="4"                   name="Operational Amplifier"/>
+          <feature type="SPI"           n="3"/>
+          <feature type="I2C"           n="2"/>
+          <feature type="UART"          n="2"/>
+          <feature type="USART"         n="3"/>
+          <feature type="USBD"          n="1"/>
+          <feature type="CAN"           n="1"/>
+          <feature type="VCC"           n="2.00"    m="3.60"/>
+          <feature type="Temp"          n="-40"     m="85"/>
+        </device>
+
+        <!-- *************************  Device 'STM32F303VC'  ************************** -->
+        <device Dname="STM32F303VC">
+          <compile header="Device\Include\stm32f3xx.h" define="STM32F303xC"/>
+          <debug svd="SVD\STM32F30x.svd"/>
+          <memory id="IROM1"                        start="0x08000000" size="0x00040000" startup="1" default="1"/>
+          <memory id="IRAM1"                        start="0x20000000" size="0x0000C000" init   ="0" default="1"/>
+          <memory id="IRAM2"                        start="0x10000000" size="0x00002000" init   ="0" default="1"/>
+          <algorithm name="Flash\STM32F3xx_256.FLM" start="0x08000000" size="0x00040000"             default="1"/>
+          <algorithm name="Flash\STM32F3xx_OPT.FLM" start="0x1FFFF800" size="0x00000010"             default="0"/>
+
+          <book name="Documents\DM00058181.pdf" title="STM32F303xB STM32F303xC Datasheet"/>
+          <book name="Documents\DM00063985.pdf" title="STM32F303xB/C Errata Sheet"/>
+
+          <feature type="QFP"           n="100"/>
+          <feature type="Timer"         n="9"       m="16"      name="IC/OC/PWM"/>
+          <feature type="Timer"         n="1"       m="32"      name="IC/OC/PWM"/>
+          <feature type="WDT"           n="2"/>
+          <feature type="RTC"           n="32768"/>
+          <feature type="ADC"           n="39"      m="12"/>
+          <feature type="IOs"           n="87"/>
+          <feature type="DAC"           n="2"       m="12"/>
+          <feature type="AnalogOther"   n="4"                   name="Operational Amplifier"/>
+          <feature type="SPI"           n="3"/>
+          <feature type="I2C"           n="2"/>
+          <feature type="UART"          n="2"/>
+          <feature type="USART"         n="3"/>
+          <feature type="USBD"          n="1"/>
+          <feature type="CAN"           n="1"/>
+          <feature type="VCC"           n="2.00"    m="3.60"/>
+          <feature type="Temp"          n="-40"     m="105"/>
+        </device>
+
+		<!-- *************************  Device 'STM32F303VD'  ************************** -->
+        <device Dname="STM32F303VD">
+          <compile header="Device\Include\stm32f3xx.h" define="STM32F303xE"/>
+          <debug svd="SVD\STM32F303xE.svd"/>
+          <memory id="IROM1"                        start="0x08000000" size="0x00060000" startup="1" default="1"/>
+          <memory id="IRAM1"                        start="0x20000000" size="0x00010000" init   ="0" default="1"/>
+          <algorithm name="Flash\STM32F3xx_512.FLM" start="0x08000000" size="0x00060000"             default="1"/>
+          <algorithm name="Flash\STM32F3xx_OPT.FLM" start="0x1FFFF800" size="0x00000010"             default="0"/>
+
+          <book name="Documents\DM00118585.pdf" title="STM32F303xD STM32F303xE Datasheet"/>
+          <book name="Documents\DM00118589.pdf" title="STM32F303xD STM32F303xE Errata Sheet"/>
+
+          <feature type="QFP"           n="100"/>
+          <feature type="Timer"         n="9"       m="16"      name="IC/OC/PWM"/>
+          <feature type="Timer"         n="1"       m="32"      name="IC/OC/PWM"/>
+          <feature type="WDT"           n="2"/>
+          <feature type="RTC"           n="32768"/>
+          <feature type="ADC"           n="39"      m="12"/>
+          <feature type="IOs"           n="86"/>
+          <feature type="DAC"           n="2"       m="12"/>
+          <feature type="AnalogOther"   n="4"                   name="Operational Amplifier"/>
+          <feature type="SPI"           n="4"/>
+          <feature type="I2C"           n="3"/>
+          <feature type="UART"          n="2"/>
+          <feature type="USART"         n="3"/>
+          <feature type="USBD"          n="1"/>
+          <feature type="CAN"           n="1"/>
+          <feature type="VCC"           n="2.00"    m="3.60"/>
+          <feature type="Temp"          n="-40"     m="85"/>
+        </device>
+
+		<!-- *************************  Device 'STM32F303VE'  ************************** -->
+        <device Dname="STM32F303VE">
+          <compile header="Device\Include\stm32f3xx.h" define="STM32F303xE"/>
+          <debug svd="SVD\STM32F303xE.svd"/>
+          <memory id="IROM1"                        start="0x08000000" size="0x00080000" startup="1" default="1"/>
+          <memory id="IRAM1"                        start="0x20000000" size="0x00010000" init   ="0" default="1"/>
+          <algorithm name="Flash\STM32F3xx_512.FLM" start="0x08000000" size="0x00080000"             default="1"/>
+          <algorithm name="Flash\STM32F3xx_OPT.FLM" start="0x1FFFF800" size="0x00000010"             default="0"/>
+
+          <book name="Documents\DM00118585.pdf" title="STM32F303xD STM32F303xE Datasheet"/>
+          <book name="Documents\DM00118589.pdf" title="STM32F303xD STM32F303xE Errata Sheet"/>
+
+          <feature type="QFP"           n="100"/>
+          <feature type="BGA"           n="100"/>
+          <feature type="Timer"         n="10"      m="16"      name="IC/OC/PWM"/>
+          <feature type="Timer"         n="1"       m="32"      name="IC/OC/PWM"/>
+          <feature type="WDT"           n="2"/>
+          <feature type="RTC"           n="32768"/>
+          <feature type="ADC"           n="39"      m="12"/>
+          <feature type="IOs"           n="86"/>
+          <feature type="DAC"           n="2"       m="12"/>
+          <feature type="AnalogOther"   n="4"                   name="Operational Amplifier"/>
+          <feature type="SPI"           n="4"/>
+          <feature type="I2C"           n="3"/>
+          <feature type="USART"         n="5"/>
+          <feature type="USBD"          n="1"/>
+          <feature type="CAN"           n="1"/>
+          <feature type="VCC"           n="2.00"    m="3.60"/>
+          <feature type="Temp"          n="-40"     m="105"/>
+        </device>
+
+		<!-- *************************  Device 'STM32F303ZD'  ************************** -->
+        <device Dname="STM32F303ZD">
+          <compile header="Device\Include\stm32f3xx.h" define="STM32F303xE"/>
+          <debug svd="SVD\STM32F303xE.svd"/>
+          <memory id="IROM1"                        start="0x08000000" size="0x00060000" startup="1" default="1"/>
+          <memory id="IRAM1"                        start="0x20000000" size="0x00010000" init   ="0" default="1"/>
+          <algorithm name="Flash\STM32F3xx_512.FLM" start="0x08000000" size="0x00060000"             default="1"/>
+          <algorithm name="Flash\STM32F3xx_OPT.FLM" start="0x1FFFF800" size="0x00000010"             default="0"/>
+
+          <book name="Documents\DM00118585.pdf" title="STM32F303xD STM32F303xE Datasheet"/>
+          <book name="Documents\DM00118589.pdf" title="STM32F303xD STM32F303xE Errata Sheet"/>
+
+          <feature type="QFP"           n="144"/>
+          <feature type="Timer"         n="10"      m="16"      name="IC/OC/PWM"/>
+          <feature type="Timer"         n="1"       m="32"      name="IC/OC/PWM"/>
+          <feature type="WDT"           n="2"/>
+          <feature type="RTC"           n="32768"/>
+          <feature type="ADC"           n="40"      m="12"/>
+          <feature type="IOs"           n="115"/>
+          <feature type="DAC"           n="2"       m="12"/>
+          <feature type="AnalogOther"   n="4"                   name="Operational Amplifier"/>
+          <feature type="SPI"           n="4"/>
+          <feature type="I2C"           n="3"/>
+          <feature type="UART"          n="2"/>
+          <feature type="USART"         n="3"/>
+          <feature type="USBD"          n="1"/>
+          <feature type="CAN"           n="1"/>
+          <feature type="VCC"           n="2.00"    m="3.60"/>
+          <feature type="Temp"          n="-40"     m="85"/>
+        </device>
+
+		<!-- *************************  Device 'STM32F303ZE'  ************************** -->
+        <device Dname="STM32F303ZE">
+          <compile header="Device\Include\stm32f3xx.h" define="STM32F303xE"/>
+          <debug svd="SVD\STM32F303xE.svd"/>
+          <memory id="IROM1"                        start="0x08000000" size="0x00080000" startup="1" default="1"/>
+          <memory id="IRAM1"                        start="0x20000000" size="0x00010000" init   ="0" default="1"/>
+          <algorithm name="Flash\STM32F3xx_512.FLM" start="0x08000000" size="0x00080000"             default="1"/>
+          <algorithm name="Flash\STM32F3xx_OPT.FLM" start="0x1FFFF800" size="0x00000010"             default="0"/>
+
+          <book name="Documents\DM00118585.pdf" title="STM32F303xD STM32F303xE Datasheet"/>
+          <book name="Documents\DM00118589.pdf" title="STM32F303xD STM32F303xE Errata Sheet"/>
+
+          <feature type="QFP"           n="144"/>
+          <feature type="Timer"         n="10"      m="16"      name="IC/OC/PWM"/>
+          <feature type="Timer"         n="1"       m="32"      name="IC/OC/PWM"/>
+          <feature type="WDT"           n="2"/>
+          <feature type="RTC"           n="32768"/>
+          <feature type="ADC"           n="40"      m="12"/>
+          <feature type="IOs"           n="116"/>
+          <feature type="DAC"           n="2"       m="12"/>
+          <feature type="AnalogOther"   n="4"                   name="Operational Amplifier"/>
+          <feature type="SPI"           n="4"/>
+          <feature type="I2C"           n="3"/>
+          <feature type="USART"         n="5"/>
+          <feature type="USBD"          n="1"/>
+          <feature type="CAN"           n="1"/>
+          <feature type="VCC"           n="2.00"    m="3.60"/>
+          <feature type="Temp"          n="-40"     m="105"/>
+        </device>
+	  </subFamily>
+
+      <!-- ************************  Subfamily 'STM32F373'  **************************** -->
+      <subFamily DsubFamily="STM32F373">
+        <processor Dclock="72000000"/>
+
+        <book name="Documents\DM00041563.pdf" title="STM32F37xx Reference Manual"/>
+        <book name="Documents\DM00046749.pdf" title="STM32F373xx Datasheet"/>
+        <book name="Documents\DM00047037.pdf" title="STM32F373xx Errata Sheet"/>
+
+        <!-- *************************  Device 'STM32F373C8'  ************************** -->
+        <device Dname="STM32F373C8">
+          <compile header="Device\Include\stm32f3xx.h" define="STM32F373xC"/>
+          <debug svd="SVD\STM32F37x.svd"/>
+          <memory id="IROM1"                        start="0x08000000" size="0x00010000" startup="1" default="1"/>
+          <memory id="IRAM1"                        start="0x20000000" size="0x00004000" init   ="0" default="1"/>
+          <algorithm name="Flash\STM32F3xx_256.FLM" start="0x08000000" size="0x00010000"             default="1"/>
+          <algorithm name="Flash\STM32F3xx_OPT.FLM" start="0x1FFFF800" size="0x00000010"             default="0"/>
+
+          <feature type="QFP"           n="48"/>
+          <feature type="Timer"         n="9"       m="16"      name="IC/OC/PWM"/>
+          <feature type="Timer"         n="2"       m="32"      name="IC/OC/PWM"/>
+          <feature type="WDT"           n="2"/>
+          <feature type="RTC"           n="32768"/>
+          <feature type="ADC"           n="3"      m="16"/>
+          <feature type="ADC"           n="1"      m="12"/>
+          <feature type="IOs"           n="36"/>
+          <feature type="DAC"           n="3"       m="12"/>
+          <feature type="SPI"           n="3"/>
+          <feature type="I2C"           n="2"/>
+          <feature type="I2S"           n="3"/>
+          <feature type="USART"         n="3"/>
+          <feature type="USBD"          n="1"/>
+          <feature type="CAN"           n="1"/>
+          <feature type="VCC"           n="2.00"    m="3.60"/>
+          <feature type="Temp"          n="-40"     m="85"/>
+        </device>
+
+        <!-- *************************  Device 'STM32F373CB'  ************************** -->
+        <device Dname="STM32F373CB">
+          <compile header="Device\Include\stm32f3xx.h" define="STM32F373xC"/>
+          <debug svd="SVD\STM32F37x.svd"/>
+          <memory id="IROM1"                        start="0x08000000" size="0x00020000" startup="1" default="1"/>
+          <memory id="IRAM1"                        start="0x20000000" size="0x00006000" init   ="0" default="1"/>
+          <algorithm name="Flash\STM32F3xx_256.FLM" start="0x08000000" size="0x00020000"             default="1"/>
+          <algorithm name="Flash\STM32F3xx_OPT.FLM" start="0x1FFFF800" size="0x00000010"             default="0"/>
+
+          <feature type="QFP"           n="48"/>
+          <feature type="Timer"         n="9"       m="16"      name="IC/OC/PWM"/>
+          <feature type="Timer"         n="2"       m="32"      name="IC/OC/PWM"/>
+          <feature type="WDT"           n="2"/>
+          <feature type="RTC"           n="32768"/>
+          <feature type="ADC"           n="3"      m="16"/>
+          <feature type="ADC"           n="1"      m="12"/>
+          <feature type="IOs"           n="36"/>
+          <feature type="DAC"           n="3"       m="12"/>
+          <feature type="SPI"           n="3"/>
+          <feature type="I2C"           n="2"/>
+          <feature type="I2S"           n="3"/>
+          <feature type="USART"         n="3"/>
+          <feature type="USBD"          n="1"/>
+          <feature type="CAN"           n="1"/>
+          <feature type="VCC"           n="2.00"    m="3.60"/>
+          <feature type="Temp"          n="-40"     m="85"/>
+        </device>
+
+        <!-- *************************  Device 'STM32F373CC'  ************************** -->
+        <device Dname="STM32F373CC">
+          <compile header="Device\Include\stm32f3xx.h" define="STM32F373xC"/>
+          <debug svd="SVD\STM32F37x.svd"/>
+          <memory id="IROM1"                        start="0x08000000" size="0x00040000" startup="1" default="1"/>
+          <memory id="IRAM1"                        start="0x20000000" size="0x00008000" init   ="0" default="1"/>
+          <algorithm name="Flash\STM32F3xx_256.FLM" start="0x08000000" size="0x00040000"             default="1"/>
+          <algorithm name="Flash\STM32F3xx_OPT.FLM" start="0x1FFFF800" size="0x00000010"             default="0"/>
+
+          <feature type="QFP"           n="48"/>
+          <feature type="Timer"         n="9"       m="16"      name="IC/OC/PWM"/>
+          <feature type="Timer"         n="2"       m="32"      name="IC/OC/PWM"/>
+          <feature type="WDT"           n="2"/>
+          <feature type="RTC"           n="32768"/>
+          <feature type="ADC"           n="3"      m="16"/>
+          <feature type="ADC"           n="1"      m="12"/>
+          <feature type="IOs"           n="36"/>
+          <feature type="DAC"           n="3"       m="12"/>
+          <feature type="SPI"           n="3"/>
+          <feature type="I2C"           n="2"/>
+          <feature type="I2S"           n="3"/>
+          <feature type="USART"         n="3"/>
+          <feature type="USBD"          n="1"/>
+          <feature type="CAN"           n="1"/>
+          <feature type="VCC"           n="2.00"    m="3.60"/>
+          <feature type="Temp"          n="-40"     m="85"/>
+        </device>
+
+        <!-- *************************  Device 'STM32F373R8'  ************************** -->
+        <device Dname="STM32F373R8">
+          <compile header="Device\Include\stm32f3xx.h" define="STM32F373xC"/>
+          <debug svd="SVD\STM32F37x.svd"/>
+          <memory id="IROM1"                        start="0x08000000" size="0x00010000" startup="1" default="1"/>
+          <memory id="IRAM1"                        start="0x20000000" size="0x00004000" init   ="0" default="1"/>
+          <algorithm name="Flash\STM32F3xx_256.FLM" start="0x08000000" size="0x00010000"             default="1"/>
+          <algorithm name="Flash\STM32F3xx_OPT.FLM" start="0x1FFFF800" size="0x00000010"             default="0"/>
+
+          <feature type="QFP"           n="64"/>
+          <feature type="Timer"         n="9"       m="16"      name="IC/OC/PWM"/>
+          <feature type="Timer"         n="2"       m="32"      name="IC/OC/PWM"/>
+          <feature type="WDT"           n="2"/>
+          <feature type="RTC"           n="32768"/>
+          <feature type="ADC"           n="3"      m="16"/>
+          <feature type="ADC"           n="1"      m="12"/>
+          <feature type="IOs"           n="52"/>
+          <feature type="DAC"           n="3"       m="12"/>
+          <feature type="SPI"           n="3"/>
+          <feature type="I2C"           n="2"/>
+          <feature type="I2S"           n="3"/>
+          <feature type="USART"         n="3"/>
+          <feature type="USBD"          n="1"/>
+          <feature type="CAN"           n="1"/>
+          <feature type="VCC"           n="2.00"    m="3.60"/>
+          <feature type="Temp"          n="-40"     m="85"/>
+        </device>
+
+        <!-- *************************  Device 'STM32F373RB'  ************************** -->
+        <device Dname="STM32F373RB">
+          <compile header="Device\Include\stm32f3xx.h" define="STM32F373xC"/>
+          <debug svd="SVD\STM32F37x.svd"/>
+          <memory id="IROM1"                        start="0x08000000" size="0x00020000" startup="1" default="1"/>
+          <memory id="IRAM1"                        start="0x20000000" size="0x00006000" init   ="0" default="1"/>
+          <algorithm name="Flash\STM32F3xx_256.FLM" start="0x08000000" size="0x00020000"             default="1"/>
+          <algorithm name="Flash\STM32F3xx_OPT.FLM" start="0x1FFFF800" size="0x00000010"             default="0"/>
+
+          <feature type="QFP"           n="64"/>
+          <feature type="Timer"         n="9"       m="16"      name="IC/OC/PWM"/>
+          <feature type="Timer"         n="2"       m="32"      name="IC/OC/PWM"/>
+          <feature type="WDT"           n="2"/>
+          <feature type="RTC"           n="32768"/>
+          <feature type="ADC"           n="3"      m="16"/>
+          <feature type="ADC"           n="1"      m="12"/>
+          <feature type="IOs"           n="52"/>
+          <feature type="DAC"           n="3"       m="12"/>
+          <feature type="SPI"           n="3"/>
+          <feature type="I2C"           n="2"/>
+          <feature type="I2S"           n="3"/>
+          <feature type="USART"         n="3"/>
+          <feature type="USBD"          n="1"/>
+          <feature type="CAN"           n="1"/>
+          <feature type="VCC"           n="2.00"    m="3.60"/>
+          <feature type="Temp"          n="-40"     m="85"/>
+        </device>
+
+        <!-- *************************  Device 'STM32F373RC'  ************************** -->
+        <device Dname="STM32F373RC">
+          <compile header="Device\Include\stm32f3xx.h" define="STM32F373xC"/>
+          <debug svd="SVD\STM32F37x.svd"/>
+          <memory id="IROM1"                        start="0x08000000" size="0x00040000" startup="1" default="1"/>
+          <memory id="IRAM1"                        start="0x20000000" size="0x00008000" init   ="0" default="1"/>
+          <algorithm name="Flash\STM32F3xx_256.FLM" start="0x08000000" size="0x00040000"             default="1"/>
+          <algorithm name="Flash\STM32F3xx_OPT.FLM" start="0x1FFFF800" size="0x00000010"             default="0"/>
+
+          <feature type="QFP"           n="64"/>
+          <feature type="Timer"         n="9"       m="16"      name="IC/OC/PWM"/>
+          <feature type="Timer"         n="2"       m="32"      name="IC/OC/PWM"/>
+          <feature type="WDT"           n="2"/>
+          <feature type="RTC"           n="32768"/>
+          <feature type="ADC"           n="3"      m="16"/>
+          <feature type="ADC"           n="1"      m="12"/>
+          <feature type="IOs"           n="52"/>
+          <feature type="DAC"           n="3"       m="12"/>
+          <feature type="SPI"           n="3"/>
+          <feature type="I2C"           n="2"/>
+          <feature type="I2S"           n="3"/>
+          <feature type="USART"         n="3"/>
+          <feature type="USBD"          n="1"/>
+          <feature type="CAN"           n="1"/>
+          <feature type="VCC"           n="2.00"    m="3.60"/>
+          <feature type="Temp"          n="-40"     m="85"/>
+        </device>
+
+        <!-- *************************  Device 'STM32F373V8'  ************************** -->
+        <device Dname="STM32F373V8">
+          <compile header="Device\Include\stm32f3xx.h" define="STM32F373xC"/>
+          <debug svd="SVD\STM32F37x.svd"/>
+          <memory id="IROM1"                        start="0x08000000" size="0x00010000" startup="1" default="1"/>
+          <memory id="IRAM1"                        start="0x20000000" size="0x00004000" init   ="0" default="1"/>
+          <algorithm name="Flash\STM32F3xx_256.FLM" start="0x08000000" size="0x00010000"             default="1"/>
+          <algorithm name="Flash\STM32F3xx_OPT.FLM" start="0x1FFFF800" size="0x00000010"             default="0"/>
+
+          <feature type="QFP"           n="100"/>
+          <feature type="BGA"           n="100"/>
+          <feature type="Timer"         n="9"       m="16"      name="IC/OC/PWM"/>
+          <feature type="Timer"         n="2"       m="32"      name="IC/OC/PWM"/>
+          <feature type="WDT"           n="2"/>
+          <feature type="RTC"           n="32768"/>
+          <feature type="ADC"           n="3"      m="16"/>
+          <feature type="ADC"           n="1"      m="12"/>
+          <feature type="IOs"           n="84"/>
+          <feature type="DAC"           n="3"       m="12"/>
+          <feature type="SPI"           n="3"/>
+          <feature type="I2C"           n="2"/>
+          <feature type="I2S"           n="3"/>
+          <feature type="USART"         n="3"/>
+          <feature type="USBD"          n="1"/>
+          <feature type="CAN"           n="1"/>
+          <feature type="VCC"           n="2.00"    m="3.60"/>
+          <feature type="Temp"          n="-40"     m="85"/>
+        </device>
+
+        <!-- *************************  Device 'STM32F373VB'  ************************** -->
+        <device Dname="STM32F373VB">
+          <compile header="Device\Include\stm32f3xx.h" define="STM32F373xC"/>
+          <debug svd="SVD\STM32F37x.svd"/>
+          <memory id="IROM1"                        start="0x08000000" size="0x00020000" startup="1" default="1"/>
+          <memory id="IRAM1"                        start="0x20000000" size="0x00006000" init   ="0" default="1"/>
+          <algorithm name="Flash\STM32F3xx_256.FLM" start="0x08000000" size="0x00020000"             default="1"/>
+          <algorithm name="Flash\STM32F3xx_OPT.FLM" start="0x1FFFF800" size="0x00000010"             default="0"/>
+
+          <feature type="QFP"           n="100"/>
+          <feature type="BGA"           n="100"/>
+          <feature type="Timer"         n="9"       m="16"      name="IC/OC/PWM"/>
+          <feature type="Timer"         n="2"       m="32"      name="IC/OC/PWM"/>
+          <feature type="WDT"           n="2"/>
+          <feature type="RTC"           n="32768"/>
+          <feature type="ADC"           n="3"      m="16"/>
+          <feature type="ADC"           n="1"      m="12"/>
+          <feature type="IOs"           n="84"/>
+          <feature type="DAC"           n="3"       m="12"/>
+          <feature type="SPI"           n="3"/>
+          <feature type="I2C"           n="2"/>
+          <feature type="I2S"           n="3"/>
+          <feature type="USART"         n="3"/>
+          <feature type="USBD"          n="1"/>
+          <feature type="CAN"           n="1"/>
+          <feature type="VCC"           n="2.00"    m="3.60"/>
+          <feature type="Temp"          n="-40"     m="105"/>
+        </device>
+
+        <!-- *************************  Device 'STM32F373VC'  ************************** -->
+        <device Dname="STM32F373VC">
+          <compile header="Device\Include\stm32f3xx.h" define="STM32F373xC"/>
+          <debug svd="SVD\STM32F37x.svd"/>
+          <memory id="IROM1"                        start="0x08000000" size="0x00040000" startup="1" default="1"/>
+          <memory id="IRAM1"                        start="0x20000000" size="0x00008000" init   ="0" default="1"/>
+          <algorithm name="Flash\STM32F3xx_256.FLM" start="0x08000000" size="0x00040000"             default="1"/>
+          <algorithm name="Flash\STM32F3xx_OPT.FLM" start="0x1FFFF800" size="0x00000010"             default="0"/>
+
+          <feature type="QFP"           n="100"/>
+          <feature type="BGA"           n="100"/>
+          <feature type="Timer"         n="9"       m="16"      name="IC/OC/PWM"/>
+          <feature type="Timer"         n="2"       m="32"      name="IC/OC/PWM"/>
+          <feature type="WDT"           n="2"/>
+          <feature type="RTC"           n="32768"/>
+          <feature type="ADC"           n="3"      m="16"/>
+          <feature type="ADC"           n="1"      m="12"/>
+          <feature type="IOs"           n="84"/>
+          <feature type="DAC"           n="3"       m="12"/>
+          <feature type="SPI"           n="3"/>
+          <feature type="I2C"           n="2"/>
+          <feature type="I2S"           n="3"/>
+          <feature type="USART"         n="3"/>
+          <feature type="USBD"          n="1"/>
+          <feature type="CAN"           n="1"/>
+          <feature type="VCC"           n="2.00"    m="3.60"/>
+          <feature type="Temp"          n="-40"     m="105"/>
+        </device>
+      </subFamily>
+
+      <!-- ************************  Subfamily 'STM32F3x4'  **************************** -->
+      <subFamily DsubFamily="STM32F3x4">
+        <processor Dclock="72000000"/>
+
+        <book name="Documents\DM00093941.pdf" title="STM32F334xx Reference Manual"/>
+        <book name="Documents\DM00097745.pdf" title="STM32F334x4 STM32F334x6 STM32F334x8 Datasheet"/>
+        <book name="Documents\DM00115957.pdf" title="STM32F334x4/x6/x8 Errata Sheet"/>
+
+        <!-- *************************  Device 'STM32F334C4'  ************************** -->
+        <device Dname="STM32F334C4">
+          <compile header="Device\Include\stm32f3xx.h" define="STM32F334x8"/>
+          <debug svd="SVD\STM32F334x.svd"/>
+          <memory id="IROM1"                        start="0x08000000" size="0x00004000" startup="1" default="1"/>
+          <memory id="IRAM1"                        start="0x20000000" size="0x00002000" init   ="0" default="1"/>
+          <algorithm name="Flash\STM32F3xx_256.FLM" start="0x08000000" size="0x00004000"             default="1"/>
+          <algorithm name="Flash\STM32F3xx_OPT.FLM" start="0x1FFFF800" size="0x00000010"             default="0"/>
+
+          <feature type="QFP"           n="48"/>
+          <feature type="Timer"         n="7"       m="16"      name="IC/OC/PWM"/>
+          <feature type="Timer"         n="1"       m="32"      name="IC/OC/PWM"/>
+          <feature type="WDT"           n="2"/>
+          <feature type="RTC"           n="32768"/>
+          <feature type="ADC"           n="2"       m="12"/>
+          <feature type="IOs"           n="37"/>
+          <feature type="DAC"           n="3"       m="12"/>
+          <feature type="AnalogOther"   n="1"                   name="Operational Amplifier"/>
+          <feature type="SPI"           n="1"/>
+          <feature type="I2C"           n="1"/>
+          <feature type="USART"         n="3"/>
+          <feature type="CAN"           n="1"/>
+          <feature type="VCC"           n="2.00"    m="3.60"/>
+          <feature type="Temp"          n="-40"     m="85"/>
+        </device>
+
+        <!-- *************************  Device 'STM32F334C6'  ************************** -->
+        <device Dname="STM32F334C6">
+          <compile header="Device\Include\stm32f3xx.h" define="STM32F334x8"/>
+          <debug svd="SVD\STM32F334x.svd"/>
+          <memory id="IROM1"                        start="0x08000000" size="0x00010000" startup="1" default="1"/>
+          <memory id="IRAM1"                        start="0x20000000" size="0x00002800" init   ="0" default="1"/>
+          <algorithm name="Flash\STM32F3xx_256.FLM" start="0x08000000" size="0x00010000"             default="1"/>
+          <algorithm name="Flash\STM32F3xx_OPT.FLM" start="0x1FFFF800" size="0x00000010"             default="0"/>
+
+          <feature type="QFP"           n="48"/>
+          <feature type="Timer"         n="7"       m="16"      name="IC/OC/PWM"/>
+          <feature type="Timer"         n="1"       m="32"      name="IC/OC/PWM"/>
+          <feature type="WDT"           n="2"/>
+          <feature type="RTC"           n="32768"/>
+          <feature type="Timer"         n="1"                   name="High Resolution Timer"/>
+          <feature type="ADC"           n="15"      m="12"/>
+          <feature type="IOs"           n="37"/>
+          <feature type="DAC"           n="3"       m="12"/>
+          <feature type="AnalogOther"   n="1"                   name="Operational Amplifier"/>
+          <feature type="SPI"           n="1"/>
+          <feature type="I2C"           n="1"/>
+          <feature type="USART"         n="3"/>
+          <feature type="CAN"           n="1"/>
+          <feature type="VCC"           n="2.00"    m="3.60"/>
+          <feature type="Temp"          n="-40"     m="85"/>
+        </device>
+
+        <!-- *************************  Device 'STM32F334C8'  ************************** -->
+        <device Dname="STM32F334C8">
+          <compile header="Device\Include\stm32f3xx.h" define="STM32F334x8"/>
+          <debug svd="SVD\STM32F334x.svd"/>
+          <memory id="IROM1"                        start="0x08000000" size="0x00008000" startup="1" default="1"/>
+          <memory id="IRAM1"                        start="0x20000000" size="0x00030000" init   ="0" default="1"/>
+          <algorithm name="Flash\STM32F3xx_256.FLM" start="0x08000000" size="0x00008000"             default="1"/>
+          <algorithm name="Flash\STM32F3xx_OPT.FLM" start="0x1FFFF800" size="0x00000010"             default="0"/>
+
+          <feature type="QFP"           n="48"/>
+          <feature type="Timer"         n="7"       m="16"      name="IC/OC/PWM"/>
+          <feature type="Timer"         n="1"       m="32"      name="IC/OC/PWM"/>
+          <feature type="WDT"           n="2"/>
+          <feature type="RTC"           n="32768"/>
+          <feature type="Timer"         n="1"                   name="High Resolution Timer"/>
+          <feature type="ADC"           n="2"       m="12"/>
+          <feature type="IOs"           n="37"/>
+          <feature type="DAC"           n="3"       m="12"/>
+          <feature type="AnalogOther"   n="1"                   name="Operational Amplifier"/>
+          <feature type="SPI"           n="1"/>
+          <feature type="I2C"           n="1"/>
+          <feature type="USART"         n="3"/>
+          <feature type="CAN"           n="1"/>
+          <feature type="VCC"           n="2.00"    m="3.60"/>
+          <feature type="Temp"          n="-40"     m="105"/>
+        </device>
+
+        <!-- *************************  Device 'STM32F334K4'  ************************** -->
+        <device Dname="STM32F334K4">
+          <compile header="Device\Include\stm32f3xx.h" define="STM32F334x8"/>
+          <debug svd="SVD\STM32F334x.svd"/>
+          <memory id="IROM1"                        start="0x08000000" size="0x00004000" startup="1" default="1"/>
+          <memory id="IRAM1"                        start="0x20000000" size="0x00002000" init   ="0" default="1"/>
+          <algorithm name="Flash\STM32F3xx_256.FLM" start="0x08000000" size="0x00004000"             default="1"/>
+          <algorithm name="Flash\STM32F3xx_OPT.FLM" start="0x1FFFF800" size="0x00000010"             default="0"/>
+
+          <feature type="QFP"           n="32"/>
+          <feature type="Timer"         n="7"       m="16"      name="IC/OC/PWM"/>
+          <feature type="Timer"         n="1"       m="32"      name="IC/OC/PWM"/>
+          <feature type="WDT"           n="2"/>
+          <feature type="RTC"           n="32768"/>
+          <feature type="ADC"           n="2"       m="12"/>
+          <feature type="IOs"           n="24"/>
+          <feature type="DAC"           n="3"       m="12"/>
+          <feature type="AnalogOther"   n="1"                   name="Operational Amplifier"/>
+          <feature type="SPI"           n="1"/>
+          <feature type="I2C"           n="1"/>
+          <feature type="USART"         n="2"/>
+          <feature type="CAN"           n="1"/>
+          <feature type="VCC"           n="2.00"    m="3.60"/>
+          <feature type="Temp"          n="-40"     m="1055"/>
+        </device>
+
+        <!-- *************************  Device 'STM32F334K6'  ************************** -->
+        <device Dname="STM32F334K6">
+          <compile header="Device\Include\stm32f3xx.h" define="STM32F334x8"/>
+          <debug svd="SVD\STM32F334x.svd"/>
+          <memory id="IROM1"                        start="0x08000000" size="0x00008000" startup="1" default="1"/>
+          <memory id="IRAM1"                        start="0x20000000" size="0x00002800" init   ="0" default="1"/>
+          <algorithm name="Flash\STM32F3xx_256.FLM" start="0x08000000" size="0x00008000"             default="1"/>
+          <algorithm name="Flash\STM32F3xx_OPT.FLM" start="0x1FFFF800" size="0x00000010"             default="0"/>
+
+          <feature type="QFP"           n="32"/>
+          <feature type="Timer"         n="7"       m="16"      name="IC/OC/PWM"/>
+          <feature type="Timer"         n="1"       m="32"      name="IC/OC/PWM"/>
+          <feature type="WDT"           n="2"/>
+          <feature type="RTC"           n="32768"/>
+          <feature type="Timer"         n="1"                   name="High Resolution Timer"/>
+          <feature type="ADC"           n="2"      m="12"/>
+          <feature type="IOs"           n="25"/>
+          <feature type="DAC"           n="3"       m="12"/>
+          <feature type="AnalogOther"   n="1"                   name="Operational Amplifier"/>
+          <feature type="SPI"           n="1"/>
+          <feature type="I2C"           n="1"/>
+          <feature type="USART"         n="2"/>
+          <feature type="CAN"           n="1"/>
+          <feature type="VCC"           n="2.00"    m="3.60"/>
+          <feature type="Temp"          n="-40"     m="85"/>
+        </device>
+
+        <!-- *************************  Device 'STM32F334K8'  ************************** -->
+        <device Dname="STM32F334K8">
+          <compile header="Device\Include\stm32f3xx.h" define="STM32F334x8"/>
+          <debug svd="SVD\STM32F334x.svd"/>
+          <memory id="IROM1"                        start="0x08000000" size="0x00010000" startup="1" default="1"/>
+          <memory id="IRAM1"                        start="0x20000000" size="0x30000000" init   ="0" default="1"/>
+          <algorithm name="Flash\STM32F3xx_256.FLM" start="0x08000000" size="0x00010000"             default="1"/>
+          <algorithm name="Flash\STM32F3xx_OPT.FLM" start="0x1FFFF800" size="0x00000010"             default="0"/>
+
+          <feature type="QFP"           n="32"/>
+          <feature type="Timer"         n="7"       m="16"      name="IC/OC/PWM"/>
+          <feature type="Timer"         n="1"       m="32"      name="IC/OC/PWM"/>
+          <feature type="WDT"           n="2"/>
+          <feature type="RTC"           n="32768"/>
+          <feature type="Timer"         n="1"                   name="High Resolution Timer"/>
+          <feature type="ADC"           n="2"      m="12"/>
+          <feature type="IOs"           n="25"/>
+          <feature type="DAC"           n="3"       m="12"/>
+          <feature type="AnalogOther"   n="1"                   name="Operational Amplifier"/>
+          <feature type="SPI"           n="1"/>
+          <feature type="I2C"           n="1"/>
+          <feature type="USART"         n="2"/>
+          <feature type="CAN"           n="1"/>
+          <feature type="VCC"           n="2.00"    m="3.60"/>
+          <feature type="Temp"          n="-40"     m="105"/>
+        </device>
+
+        <!-- *************************  Device 'STM32F334R4'  ************************** -->
+        <device Dname="STM32F334R4">
+          <compile header="Device\Include\stm32f3xx.h" define="STM32F334x8"/>
+          <debug svd="SVD\STM32F334x.svd"/>
+          <memory id="IROM1"                        start="0x08000000" size="0x00004000" startup="1" default="1"/>
+          <memory id="IRAM1"                        start="0x20000000" size="0x00002000" init   ="0" default="1"/>
+          <algorithm name="Flash\STM32F3xx_256.FLM" start="0x08000000" size="0x00004000"             default="1"/>
+          <algorithm name="Flash\STM32F3xx_OPT.FLM" start="0x1FFFF800" size="0x00000010"             default="0"/>
+
+          <feature type="QFP"           n="64"/>
+          <feature type="Timer"         n="7"       m="16"      name="IC/OC/PWM"/>
+          <feature type="Timer"         n="1"       m="32"      name="IC/OC/PWM"/>
+          <feature type="WDT"           n="2"/>
+          <feature type="RTC"           n="32768"/>
+          <feature type="Timer"         n="1"                   name="High Resolution Timer"/>
+          <feature type="ADC"           n="4"      m="12"/>
+          <feature type="IOs"           n="51"/>
+          <feature type="DAC"           n="3"       m="12"/>
+          <feature type="AnalogOther"   n="1"                   name="Operational Amplifier"/>
+          <feature type="SPI"           n="1"/>
+          <feature type="I2C"           n="1"/>
+          <feature type="USART"         n="3"/>
+          <feature type="CAN"           n="1"/>
+          <feature type="VCC"           n="2.00"    m="3.60"/>
+          <feature type="Temp"          n="-40"     m="105"/>
+        </device>
+
+        <!-- *************************  Device 'STM32F334R6'  ************************** -->
+        <device Dname="STM32F334R6">
+          <compile header="Device\Include\stm32f3xx.h" define="STM32F334x8"/>
+          <debug svd="SVD\STM32F334x.svd"/>
+          <memory id="IROM1"                        start="0x08000000" size="0x00008000" startup="1" default="1"/>
+          <memory id="IRAM1"                        start="0x20000000" size="0x00002800" init   ="0" default="1"/>
+          <algorithm name="Flash\STM32F3xx_256.FLM" start="0x08000000" size="0x00008000"             default="1"/>
+          <algorithm name="Flash\STM32F3xx_OPT.FLM" start="0x1FFFF800" size="0x00000010"             default="0"/>
+
+          <feature type="QFP"           n="64"/>
+          <feature type="Timer"         n="7"       m="16"      name="IC/OC/PWM"/>
+          <feature type="Timer"         n="1"       m="32"      name="IC/OC/PWM"/>
+          <feature type="WDT"           n="2"/>
+          <feature type="RTC"           n="32768"/>
+          <feature type="Timer"         n="1"                   name="High Resolution Timer"/>
+          <feature type="ADC"           n="4"      m="12"/>
+          <feature type="IOs"           n="51"/>
+          <feature type="DAC"           n="3"       m="12"/>
+          <feature type="AnalogOther"   n="1"                   name="Operational Amplifier"/>
+          <feature type="SPI"           n="1"/>
+          <feature type="I2C"           n="1"/>
+          <feature type="USART"         n="3"/>
+          <feature type="CAN"           n="1"/>
+          <feature type="VCC"           n="2.00"    m="3.60"/>
+          <feature type="Temp"          n="-40"     m="85"/>
+        </device>
+
+        <!-- *************************  Device 'STM32F334R8'  ************************** -->
+        <device Dname="STM32F334R8">
+          <compile header="Device\Include\stm32f3xx.h" define="STM32F334x8"/>
+          <debug svd="SVD\STM32F334x.svd"/>
+          <memory id="IROM1"                        start="0x08000000" size="0x00010000" startup="1" default="1"/>
+          <memory id="IRAM1"                        start="0x20000000" size="0x00003000" init   ="0" default="1"/>
+          <algorithm name="Flash\STM32F3xx_256.FLM" start="0x08000000" size="0x00010000"             default="1"/>
+          <algorithm name="Flash\STM32F3xx_OPT.FLM" start="0x1FFFF800" size="0x00000010"             default="0"/>
+
+          <feature type="QFP"           n="64"/>
+          <feature type="Timer"         n="7"       m="16"      name="IC/OC/PWM"/>
+          <feature type="Timer"         n="1"       m="32"      name="IC/OC/PWM"/>
+          <feature type="WDT"           n="2"/>
+          <feature type="RTC"           n="32768"/>
+          <feature type="Timer"         n="1"                   name="High Resolution Timer"/>
+          <feature type="ADC"           n="4"      m="12"/>
+          <feature type="IOs"           n="51"/>
+          <feature type="DAC"           n="3"       m="12"/>
+          <feature type="AnalogOther"   n="1"                   name="Operational Amplifier"/>
+          <feature type="SPI"           n="1"/>
+          <feature type="I2C"           n="1"/>
+          <feature type="USART"         n="3"/>
+          <feature type="CAN"           n="1"/>
+          <feature type="VCC"           n="2.00"    m="3.60"/>
+          <feature type="Temp"          n="-40"     m="105"/>
+        </device>
+      </subFamily>
+
+      <!-- ************************  Subfamily 'STM32F3x8'  **************************** -->
+      <subFamily DsubFamily="STM32F3x8">
+        <processor Dclock="72000000"/>
+
+        <!-- *************************  Device 'STM32F318C8'  ************************** -->
+        <device Dname="STM32F318C8">
+          <compile header="Device\Include\stm32f3xx.h" define="STM32F318xx"/>
+          <debug svd="SVD\STM32F301x.svd"/>
+          <memory id="IROM1"                        start="0x08000000" size="0x00010000" startup="1" default="1"/>
+          <memory id="IRAM1"                        start="0x20000000" size="0x00004000" startup="0" default="1"/>
+          <algorithm name="Flash\STM32F3xx_256.FLM" start="0x08000000" size="0x00010000"             default="1"/>
+          <algorithm name="Flash\STM32F3xx_OPT.FLM" start="0x1FFFF800" size="0x00000010"             default="0"/>
+
+          <book name="Documents\DM00094350.pdf" title="STM32F301x6/8 and STM32F318x8 Reference Manual"/>
+          <book name="Documents\DM00115350.pdf" title="STM32F318C8 STM32F318K8 Datasheet"/>
+          <book name="Documents\DM00115238.pdf" title="STM32F318C8 STM32F318K8 Errata Sheet"/>
+
+          <feature type="QFP"           n="48"/>
+          <feature type="CSP"           n="49"/>
+          <feature type="Timer"         n="5"       m="16"      name="IC/OC/PWM"/>
+          <feature type="Timer"         n="1"       m="32"      name="IC/OC/PWM"/>
+          <feature type="WDT"           n="2"/>
+          <feature type="RTC"           n="32768"/>
+          <feature type="ADC"           n="1"       m="12"/>
+          <feature type="IOs"           n="37"/>
+          <feature type="DAC"           n="1"       m="12"/>
+          <feature type="AnalogOther"   n="1"                   name="Operational Amplifier"/>
+          <feature type="SPI"           n="2"/>
+          <feature type="I2C"           n="3"/>
+          <feature type="USART"         n="3"/>
+          <feature type="CAN"           n="1"/>
+          <feature type="VCC"           n="2.00"    m="3.60"/>
+          <feature type="Temp"          n="-40"     m="85"/>
+        </device>
+
+        <!-- *************************  Device 'STM32F318K8'  ************************** -->
+        <device Dname="STM32F318K8">
+          <compile header="Device\Include\stm32f3xx.h" define="STM32F318xx"/>
+          <debug svd="SVD\STM32F301x.svd"/>
+          <memory id="IROM1"                        start="0x08000000" size="0x00010000" startup="1" default="1"/>
+          <memory id="IRAM1"                        start="0x20000000" size="0x00004000" startup="0" default="1"/>
+          <algorithm name="Flash\STM32F3xx_256.FLM" start="0x08000000" size="0x00010000"             default="1"/>
+          <algorithm name="Flash\STM32F3xx_OPT.FLM" start="0x1FFFF800" size="0x00000010"             default="0"/>
+
+          <book name="Documents\DM00094350.pdf" title="STM32F301x6/8 and STM32F318x8 Reference Manual"/>
+          <book name="Documents\DM00115350.pdf" title="STM32F318C8 STM32F318K8 Datasheet"/>
+          <book name="Documents\DM00115238.pdf" title="STM32F318C8 STM32F318K8 Errata Sheet"/>
+
+          <feature type="QFP"           n="32"/>
+          <feature type="Timer"         n="5"       m="16"      name="IC/OC/PWM"/>
+          <feature type="Timer"         n="1"       m="32"      name="IC/OC/PWM"/>
+          <feature type="WDT"           n="2"/>
+          <feature type="RTC"           n="32768"/>
+          <feature type="ADC"           n="1"       m="12"/>
+          <feature type="IOs"           n="24"/>
+          <feature type="DAC"           n="1"       m="12"/>
+          <feature type="AnalogOther"   n="1"                   name="Operational Amplifier"/>
+          <feature type="SPI"           n="2"/>
+          <feature type="I2C"           n="3"/>
+          <feature type="USART"         n="3"/>
+          <feature type="CAN"           n="1"/>
+          <feature type="VCC"           n="2.00"    m="3.60"/>
+          <feature type="Temp"          n="-40"     m="85"/>
+        </device>
+
+        <!-- *************************  Device 'STM32F328C8'  ************************** -->
+        <device Dname="STM32F328C8">
+          <compile header="Device\Include\stm32f3xx.h" define="STM32F328xx"/>
+          <debug svd="SVD\STM32F301x.svd"/>
+          <memory id="IROM1"                        start="0x08000000" size="0x00010000" startup="1" default="1"/>
+          <memory id="IRAM1"                        start="0x20000000" size="0x00004000" startup="0" default="1"/>
+          <algorithm name="Flash\STM32F3xx_256.FLM" start="0x08000000" size="0x00010000"             default="1"/>
+          <algorithm name="Flash\STM32F3xx_OPT.FLM" start="0x1FFFF800" size="0x00000010"             default="0"/>
+
+          <book name="Documents\DM00043574.pdf" title="STM32F303xB/C/D/E, STM32F303x6/8, STM32F328x8, STM32F358xC, STM32F398xE Reference Manual"/>
+          <book name="Documents\DM00116561.pdf" title="STM32F328C8 Datasheet"/>
+          <book name="Documents\DM00117837.pdf" title="STM32F328C8 Errata Sheet"/>
+
+          <feature type="QFP"           n="48"/>
+          <feature type="Timer"         n="7"       m="16"      name="IC/OC/PWM"/>
+          <feature type="Timer"         n="1"       m="32"      name="IC/OC/PWM"/>
+          <feature type="WDT"           n="2"/>
+          <feature type="RTC"           n="32768"/>
+          <feature type="ADC"           n="2"       m="12"/>
+          <feature type="IOs"           n="37"/>
+          <feature type="DAC"           n="3"       m="12"/>
+          <feature type="AnalogOther"   n="1"                   name="Operational Amplifier"/>
+          <feature type="SPI"           n="1"/>
+          <feature type="I2C"           n="1"/>
+          <feature type="USART"         n="3"/>
+          <feature type="CAN"           n="1"/>
+          <feature type="VCC"           n="2.00"    m="3.60"/>
+          <feature type="Temp"          n="-40"     m="85"/>
+        </device>
+
+        <!-- *************************  Device 'STM32F358CC'  ************************** -->
+        <device Dname="STM32F358CC">
+          <compile header="Device\Include\stm32f3xx.h" define="STM32F358xx"/>
+          <debug svd="SVD\STM32F30x.svd"/>
+          <memory id="IROM1"                        start="0x08000000" size="0x00040000" startup="1" default="1"/>
+          <memory id="IRAM1"                        start="0x20000000" size="0x0000A000" init   ="0" default="1"/>
+          <algorithm name="Flash\STM32F3xx_256.FLM" start="0x08000000" size="0x00040000"             default="1"/>
+          <algorithm name="Flash\STM32F3xx_OPT.FLM" start="0x1FFFF800" size="0x00000010"             default="0"/>
+
+          <book name="Documents\DM00043574.pdf" title="STM32F303xB/C/D/E, STM32F303x6/8, STM32F328x8, STM32F358xC, STM32F398xE Reference Manual"/>
+          <book name="Documents\DM00100431.pdf" title="STM32F358xC Datasheet"/>
+          <book name="Documents\DM00099979.pdf" title="STM32F358xC Errata Sheet"/>
+
+          <feature type="QFP"           n="48"/>
+          <feature type="Timer"         n="9"       m="16"      name="IC/OC/PWM"/>
+          <feature type="Timer"         n="1"       m="32"      name="IC/OC/PWM"/>
+          <feature type="WDT"           n="2"/>
+          <feature type="RTC"           n="32768"/>
+          <feature type="ADC"           n="4"      m="12"/>
+          <feature type="IOs"           n="37"/>
+          <feature type="DAC"           n="2"       m="12"/>
+          <feature type="AnalogOther"   n="4"                   name="Operational Amplifier"/>
+          <feature type="SPI"           n="3"/>
+          <feature type="I2C"           n="2"/>
+          <feature type="USART"         n="5"/>
+          <feature type="CAN"           n="1"/>
+          <feature type="VCC"           n="2.00"    m="3.60"/>
+          <feature type="Temp"          n="-40"     m="85"/>
+        </device>
+
+        <!-- *************************  Device 'STM32F358RC'  ************************** -->
+        <device Dname="STM32F358RC">
+          <compile header="Device\Include\stm32f3xx.h" define="STM32F358xx"/>
+          <debug svd="SVD\STM32F30x.svd"/>
+          <memory id="IROM1"                        start="0x08000000" size="0x00040000" startup="1" default="1"/>
+          <memory id="IRAM1"                        start="0x20000000" size="0x0000A000" init   ="0" default="1"/>
+          <algorithm name="Flash\STM32F3xx_256.FLM" start="0x08000000" size="0x00040000"             default="1"/>
+          <algorithm name="Flash\STM32F3xx_OPT.FLM" start="0x1FFFF800" size="0x00000010"             default="0"/>
+
+          <book name="Documents\DM00043574.pdf" title="STM32F303xB/C/D/E, STM32F303x6/8, STM32F328x8, STM32F358xC, STM32F398xE Reference Manual"/>
+          <book name="Documents\DM00100431.pdf" title="STM32F358xC Datasheet"/>
+          <book name="Documents\DM00099979.pdf" title="STM32F358xC Errata Sheet"/>
+
+          <feature type="QFP"           n="64"/>
+          <feature type="Timer"         n="9"       m="16"      name="IC/OC/PWM"/>
+          <feature type="Timer"         n="1"       m="32"      name="IC/OC/PWM"/>
+          <feature type="WDT"           n="2"/>
+          <feature type="RTC"           n="32768"/>
+          <feature type="ADC"           n="4"      m="12"/>
+          <feature type="IOs"           n="53"/>
+          <feature type="DAC"           n="2"       m="12"/>
+          <feature type="AnalogOther"   n="4"                   name="Operational Amplifier"/>
+          <feature type="SPI"           n="3"/>
+          <feature type="I2C"           n="2"/>
+          <feature type="USART"         n="5"/>
+          <feature type="CAN"           n="1"/>
+          <feature type="VCC"           n="2.00"    m="3.60"/>
+          <feature type="Temp"          n="-40"     m="85"/>
+        </device>
+
+        <!-- *************************  Device 'STM32F358VC'  ************************** -->
+        <device Dname="STM32F358VC">
+          <compile header="Device\Include\stm32f3xx.h" define="STM32F358xx"/>
+          <debug svd="SVD\STM32F30x.svd"/>
+          <memory id="IROM1"                        start="0x08000000" size="0x00040000" startup="1" default="1"/>
+          <memory id="IRAM1"                        start="0x20000000" size="0x0000A000" init   ="0" default="1"/>
+          <algorithm name="Flash\STM32F3xx_256.FLM" start="0x08000000" size="0x00040000"             default="1"/>
+          <algorithm name="Flash\STM32F3xx_OPT.FLM" start="0x1FFFF800" size="0x00000010"             default="0"/>
+
+          <book name="Documents\DM00043574.pdf" title="STM32F303xB/C/D/E, STM32F303x6/8, STM32F328x8, STM32F358xC, STM32F398xE Reference Manual"/>
+          <book name="Documents\DM00100431.pdf" title="STM32F358xC Datasheet"/>
+          <book name="Documents\DM00099979.pdf" title="STM32F358xC Errata Sheet"/>
+
+          <feature type="QFP"           n="100"/>
+          <feature type="Timer"         n="9"       m="16"      name="IC/OC/PWM"/>
+          <feature type="Timer"         n="1"       m="32"      name="IC/OC/PWM"/>
+          <feature type="WDT"           n="2"/>
+          <feature type="RTC"           n="32768"/>
+          <feature type="ADC"           n="4"      m="12"/>
+          <feature type="IOs"           n="88"/>
+          <feature type="DAC"           n="2"       m="12"/>
+          <feature type="AnalogOther"   n="4"                   name="Operational Amplifier"/>
+          <feature type="SPI"           n="3"/>
+          <feature type="I2C"           n="2"/>
+          <feature type="I2S"           n="2"/>
+          <feature type="USART"         n="5"/>
+          <feature type="CAN"           n="1"/>
+          <feature type="VCC"           n="2.00"    m="3.60"/>
+          <feature type="Temp"          n="-40"     m="85"/>
+        </device>
+
+        <!-- *************************  Device 'STM32F378CC'  ************************** -->
+        <device Dname="STM32F378CC">
+          <compile header="Device\Include\stm32f3xx.h" define="STM32F378xx"/>
+          <debug svd="SVD\STM32F37x.svd"/>
+          <memory id="IROM1"                        start="0x08000000" size="0x00040000" startup="1" default="1"/>
+          <memory id="IRAM1"                        start="0x20000000" size="0x00008000" init   ="0" default="1"/>
+          <algorithm name="Flash\STM32F3xx_256.FLM" start="0x08000000" size="0x00040000"             default="1"/>
+          <algorithm name="Flash\STM32F3xx_OPT.FLM" start="0x1FFFF800" size="0x00000010"             default="0"/>
+
+          <book name="Documents\DM00041563.pdf" title="STM32F37xx Reference Manual"/>
+          <book name="Documents\DM00101621.pdf" title="STM32F378xx Datasheet"/>
+          <book name="Documents\DM00099952.pdf" title="STM32F378xx Errata Sheet"/>
+
+          <feature type="QFP"           n="48"/>
+          <feature type="Timer"         n="9"       m="16"      name="IC/OC/PWM"/>
+          <feature type="Timer"         n="2"       m="32"      name="IC/OC/PWM"/>
+          <feature type="WDT"           n="2"/>
+          <feature type="RTC"           n="32768"/>
+          <feature type="ADC"           n="3"      m="16"/>
+          <feature type="ADC"           n="1"      m="12"/>
+          <feature type="IOs"           n="36"/>
+          <feature type="DAC"           n="3"       m="12"/>
+          <feature type="SPI"           n="3"/>
+          <feature type="I2C"           n="2"/>
+          <feature type="I2S"           n="2"/>
+          <feature type="USART"         n="3"/>
+          <feature type="CAN"           n="1"/>
+          <feature type="VCC"           n="2.00"    m="3.60"/>
+          <feature type="Temp"          n="-40"     m="85"/>
+        </device>
+
+        <!-- *************************  Device 'STM32F378RC'  ************************** -->
+        <device Dname="STM32F378RC">
+          <compile header="Device\Include\stm32f3xx.h" define="STM32F378xx"/>
+          <debug svd="SVD\STM32F37x.svd"/>
+          <memory id="IROM1"                        start="0x08000000" size="0x00040000" startup="1" default="1"/>
+          <memory id="IRAM1"                        start="0x20000000" size="0x00008000" init   ="0" default="1"/>
+          <algorithm name="Flash\STM32F3xx_256.FLM" start="0x08000000" size="0x00040000"             default="1"/>
+          <algorithm name="Flash\STM32F3xx_OPT.FLM" start="0x1FFFF800" size="0x00000010"             default="0"/>
+
+          <book name="Documents\DM00041563.pdf" title="STM32F37xx Reference Manual"/>
+          <book name="Documents\DM00101621.pdf" title="STM32F378xx Datasheet"/>
+          <book name="Documents\DM00099952.pdf" title="STM32F378xx Errata Sheet"/>
+
+          <feature type="QFP"           n="64"/>
+          <feature type="CSP"           n="66"/>
+          <feature type="Timer"         n="9"       m="16"      name="IC/OC/PWM"/>
+          <feature type="Timer"         n="2"       m="32"      name="IC/OC/PWM"/>
+          <feature type="WDT"           n="2"/>
+          <feature type="RTC"           n="32768"/>
+          <feature type="ADC"           n="3"      m="16"/>
+          <feature type="ADC"           n="1"      m="12"/>
+          <feature type="IOs"           n="52"/>
+          <feature type="DAC"           n="3"       m="12"/>
+          <feature type="SPI"           n="3"/>
+          <feature type="I2C"           n="2"/>
+          <feature type="I2S"           n="2"/>
+          <feature type="USART"         n="3"/>
+          <feature type="CAN"           n="1"/>
+          <feature type="VCC"           n="2.00"    m="3.60"/>
+          <feature type="Temp"          n="-40"     m="85"/>
+        </device>
+
+        <!-- *************************  Device 'STM32F378VC'  ************************** -->
+        <device Dname="STM32F378VC">
+          <compile header="Device\Include\stm32f3xx.h" define="STM32F378xx"/>
+          <debug svd="SVD\STM32F37x.svd"/>
+          <memory id="IROM1"                        start="0x08000000" size="0x00040000" startup="1" default="1"/>
+          <memory id="IRAM1"                        start="0x20000000" size="0x00008000" init   ="0" default="1"/>
+          <algorithm name="Flash\STM32F3xx_256.FLM" start="0x08000000" size="0x00040000"             default="1"/>
+          <algorithm name="Flash\STM32F3xx_OPT.FLM" start="0x1FFFF800" size="0x00000010"             default="0"/>
+
+          <book name="Documents\DM00041563.pdf" title="STM32F37xx Reference Manual"/>
+          <book name="Documents\DM00101621.pdf" title="STM32F378xx Datasheet"/>
+          <book name="Documents\DM00099952.pdf" title="STM32F378xx Errata Sheet"/>
+
+          <feature type="QFP"           n="100"/>
+          <feature type="Timer"         n="9"       m="16"      name="IC/OC/PWM"/>
+          <feature type="Timer"         n="2"       m="32"      name="IC/OC/PWM"/>
+          <feature type="WDT"           n="2"/>
+          <feature type="RTC"           n="32768"/>
+          <feature type="ADC"           n="3"      m="16"/>
+          <feature type="ADC"           n="1"      m="12"/>
+          <feature type="IOs"           n="84"/>
+          <feature type="DAC"           n="3"       m="12"/>
+          <feature type="SPI"           n="3"/>
+          <feature type="I2C"           n="2"/>
+          <feature type="I2S"           n="2"/>
+          <feature type="USART"         n="3"/>
+          <feature type="CAN"           n="1"/>
+          <feature type="VCC"           n="2.00"    m="3.60"/>
+          <feature type="Temp"          n="-40"     m="85"/>
+        </device>
+
+        <!-- *************************  Device 'STM32F398VE'  ************************** -->
+        <device Dname="STM32F398VE">
+          <compile header="Device\Include\stm32f3xx.h" define="STM32F398xx"/>
+          <debug svd="SVD\STM32F37x.svd"/>
+          <memory id="IROM1"                        start="0x08000000" size="0x00080000" startup="1" default="1"/>
+          <memory id="IRAM1"                        start="0x20000000" size="0x00010000" init   ="0" default="1"/>
+          <algorithm name="Flash\STM32F3xx_512.FLM" start="0x08000000" size="0x00080000"             default="1"/>
+          <algorithm name="Flash\STM32F3xx_OPT.FLM" start="0x1FFFF800" size="0x00000010"             default="0"/>
+
+          <book name="Documents\DM00043574.pdf" title="STM32F303xB/C/D/E, STM32F303x6/8, STM32F328x8, STM32F358xC, STM32F398xE Reference Manual"/>
+          <book name="Documents\DM00149412.pdf" title="STM32F398VE Datasheet"/>
+          <book name="Documents\DM00150605.pdf" title="STM32F398VE Errata Sheet"/>
+
+          <feature type="QFP"           n="100"/>
+          <feature type="Timer"         n="9"       m="16"      name="IC/OC/PWM"/>
+          <feature type="Timer"         n="1"       m="32"      name="IC/OC/PWM"/>
+          <feature type="WDT"           n="2"/>
+          <feature type="RTC"           n="32768"/>
+          <feature type="ADC"           n="39"     m="12"/>
+          <feature type="IOs"           n="88"/>
+          <feature type="DAC"           n="2"       m="12"/>
+          <feature type="AnalogOther"   n="4"                   name="Operational Amplifier"/>
+          <feature type="SPI"           n="4"/>
+          <feature type="I2C"           n="3"/>
+          <feature type="USART"         n="5"/>
+          <feature type="USBD"          n="1"/>
+          <feature type="CAN"           n="1"/>
+          <feature type="VCC"           n="2.00"    m="3.60"/>
+          <feature type="Temp"          n="-40"     m="85"/>
+        </device>
+      </subFamily>
+
+    </family>
+  </devices>
+
+  <conditions>
+    <!-- Compiler Conditions -->
+    <condition id="Compiler ARMCC">
+      <require Tcompiler="ARMCC"/>
+    </condition>
+
+    <!-- Device + CMSIS Conditions -->
+    <condition id="STM32F301x8 CMSIS">
+      <description>STMicroelectronics STM32F301x8 Devices and CMSIS-Core</description>
+      <require Dvendor="STMicroelectronics:13"  Dname="STM32F301[CKR][68]"/>
+      <require Cclass="CMSIS" Cgroup="CORE"/>
+    </condition>
+
+    <condition id="STM32F302x8 CMSIS">
+      <description>STMicroelectronics STM32F302x8 Devices and CMSIS-Core</description>
+      <require Dvendor="STMicroelectronics:13"  Dname="STM32F302[CKR][68]"/>
+      <require Cclass="CMSIS" Cgroup="CORE"/>
+    </condition>
+
+    <condition id="STM32F302xC CMSIS">
+      <description>STMicroelectronics STM32F302xC Devices and CMSIS-Core</description>
+      <require Dvendor="STMicroelectronics:13"  Dname="STM32F302[CRV][BC]"/>
+      <require Cclass="CMSIS" Cgroup="CORE"/>
+    </condition>
+
+    <condition id="STM32F302xE CMSIS">
+      <description>STMicroelectronics STM32F302xE Devices and CMSIS-Core</description>
+      <require Dvendor="STMicroelectronics:13"  Dname="STM32F302[RVZ][DE]"/>
+      <require Cclass="CMSIS" Cgroup="CORE"/>
+    </condition>
+
+    <condition id="STM32F303x8 CMSIS">
+      <description>STMicroelectronics STM32F303x8 Devices and CMSIS-Core</description>
+      <require Dvendor="STMicroelectronics:13"  Dname="STM32F303[CKR][68]"/>
+      <require Cclass="CMSIS" Cgroup="CORE"/>
+    </condition>
+
+    <condition id="STM32F303xC CMSIS">
+      <description>STMicroelectronics STM32F303xC Devices and CMSIS-Core</description>
+      <require Dvendor="STMicroelectronics:13"  Dname="STM32F303[CRV][BC]"/>
+      <require Cclass="CMSIS" Cgroup="CORE"/>
+    </condition>
+
+    <condition id="STM32F303xE CMSIS">
+      <description>STMicroelectronics STM32F303xE Devices and CMSIS-Core</description>
+      <require Dvendor="STMicroelectronics:13"  Dname="STM32F303[RVZ][DE]"/>
+      <require Cclass="CMSIS" Cgroup="CORE"/>
+    </condition>
+
+    <condition id="STM32F373xC CMSIS">
+      <description>STMicroelectronics STM32F373xC Devices and CMSIS-Core</description>
+      <require Dvendor="STMicroelectronics:13"  Dname="STM32F373[CRV][8BC]"/>
+      <require Cclass="CMSIS" Cgroup="CORE"/>
+    </condition>
+
+    <condition id="STM32F334x8 CMSIS">
+      <description>STMicroelectronics STM32F334x8 Devices and CMSIS-Core</description>
+      <require Dvendor="STMicroelectronics:13"  Dname="STM32F334[CKR][468]"/>
+      <require Cclass="CMSIS" Cgroup="CORE"/>
+    </condition>
+
+    <condition id="STM32F318xx CMSIS">
+      <description>STMicroelectronics STM32F318xx Devices and CMSIS-Core</description>
+      <require Dvendor="STMicroelectronics:13"  Dname="STM32F318[CK][8]"/>
+      <require Cclass="CMSIS" Cgroup="CORE"/>
+    </condition>
+
+    <condition id="STM32F328xx CMSIS">
+      <description>STMicroelectronics STM32F328xx Devices and CMSIS-Core</description>
+      <require Dvendor="STMicroelectronics:13"  Dname="STM32F328[C][8]"/>
+      <require Cclass="CMSIS" Cgroup="CORE"/>
+    </condition>
+
+    <condition id="STM32F358xx CMSIS">
+      <description>STMicroelectronics STM32F358xx Devices and CMSIS-Core</description>
+      <require Dvendor="STMicroelectronics:13"  Dname="STM32F358[CRV][C]"/>
+      <require Cclass="CMSIS" Cgroup="CORE"/>
+    </condition>
+
+    <condition id="STM32F378xx CMSIS">
+      <description>STMicroelectronics STM32F378xx Devices and CMSIS-Core</description>
+      <require Dvendor="STMicroelectronics:13"  Dname="STM32F378[CRV][C]"/>
+      <require Cclass="CMSIS" Cgroup="CORE"/>
+    </condition>
+
+    <condition id="STM32F398xx CMSIS">
+      <description>STMicroelectronics STM32F398xx Devices and CMSIS-Core</description>
+      <require Dvendor="STMicroelectronics:13"  Dname="STM32F398[V][E]"/>
+      <require Cclass="CMSIS" Cgroup="CORE"/>
+    </condition>
+
+  </conditions>
+
+  <components>
+    <!-- Startup STM32F301x8 -->
+    <component Cclass="Device" Cgroup="Startup" Cversion="1.3.0" condition="STM32F301x8 CMSIS">
+      <description>System Startup for STMicroelectronics STM32F301x8 Devices</description>
+      <files>
+        <file category="include" name="Device\Include\"/>
+        <file category="source"  name="Device\Source\ARM\startup_stm32f301x8.s" attr="config"   version="1.3.0" condition="Compiler ARMCC"/>
+        <file category="source"  name="Device\Source\system_stm32f3xx.c"        attr="config"   version="1.1.0"/>
+        <!-- Flash Option Bytes templates -->
+        <file category="source" name="Device\Source\ARM\STM32F3xx_OPT.s"        attr="template" version="1.0.0" condition="Compiler ARMCC" select="Flash Option Bytes Template"/>
+      </files>
+    </component>
+
+    <!-- Startup STM32F302x8 -->
+    <component Cclass="Device" Cgroup="Startup" Cversion="1.3.0" condition="STM32F302x8 CMSIS">
+      <description>System Startup for STMicroelectronics STM32F302x8 Devices</description>
+      <files>
+        <file category="include" name="Device\Include\"/>
+        <file category="source"  name="Device\Source\ARM\startup_stm32f302x8.s" attr="config"   version="1.3.0" condition="Compiler ARMCC"/>
+        <file category="source"  name="Device\Source\system_stm32f3xx.c"        attr="config"   version="1.1.0"/>
+        <!-- Flash Option Bytes templates -->
+        <file category="source" name="Device\Source\ARM\STM32F3xx_OPT.s"        attr="template" version="1.0.0" condition="Compiler ARMCC" select="Flash Option Bytes Template"/>
+      </files>
+    </component>
+
+    <!-- Startup STM32F302xC -->
+    <component Cclass="Device" Cgroup="Startup" Cversion="1.3.0" condition="STM32F302xC CMSIS">
+      <description>System Startup for STMicroelectronics STM32F302xC Devices</description>
+      <files>
+        <file category="include" name="Device\Include\"/>
+        <file category="source"  name="Device\Source\ARM\startup_stm32f302xc.s" attr="config"   version="1.3.0" condition="Compiler ARMCC"/>
+        <file category="source"  name="Device\Source\system_stm32f3xx.c"        attr="config"   version="1.1.0"/>
+        <!-- Flash Option Bytes templates -->
+        <file category="source" name="Device\Source\ARM\STM32F3xx_OPT.s"        attr="template" version="1.0.0" condition="Compiler ARMCC" select="Flash Option Bytes Template"/>
+      </files>
+    </component>
+
+    <!-- Startup STM32F302xE -->
+    <component Cclass="Device" Cgroup="Startup" Cversion="1.3.0" condition="STM32F302xE CMSIS">
+      <description>System Startup for STMicroelectronics STM32F302xE Devices</description>
+      <files>
+        <file category="include" name="Device\Include\"/>
+        <file category="source"  name="Device\Source\ARM\startup_stm32f302xe.s" attr="config"   version="1.3.0" condition="Compiler ARMCC"/>
+        <file category="source"  name="Device\Source\system_stm32f3xx.c"        attr="config"   version="1.1.0"/>
+        <!-- Flash Option Bytes templates -->
+        <file category="source" name="Device\Source\ARM\STM32F3xx_OPT.s"        attr="template" version="1.0.0" condition="Compiler ARMCC" select="Flash Option Bytes Template"/>
+      </files>
+    </component>
+
+    <!-- Startup STM32F303x8 -->
+    <component Cclass="Device" Cgroup="Startup" Cversion="1.3.0" condition="STM32F303x8 CMSIS">
+      <description>System Startup for STMicroelectronics STM32F303x8 Devices</description>
+      <files>
+        <file category="include" name="Device\Include\"/>
+        <file category="source"  name="Device\Source\ARM\startup_stm32f303x8.s" attr="config"   version="1.3.0" condition="Compiler ARMCC"/>
+        <file category="source"  name="Device\Source\system_stm32f3xx.c"        attr="config"   version="1.1.0"/>
+        <!-- Flash Option Bytes templates -->
+        <file category="source" name="Device\Source\ARM\STM32F3xx_OPT.s"        attr="template" version="1.0.0" condition="Compiler ARMCC" select="Flash Option Bytes Template"/>
+      </files>
+    </component>
+
+    <!-- Startup STM32F303xC -->
+    <component Cclass="Device" Cgroup="Startup" Cversion="1.3.0" condition="STM32F303xC CMSIS">
+      <description>System Startup for STMicroelectronics STM32F303xC Devices</description>
+      <files>
+        <file category="include" name="Device\Include\"/>
+        <file category="source"  name="Device\Source\ARM\startup_stm32f303xc.s" attr="config"   version="1.3.0" condition="Compiler ARMCC"/>
+        <file category="source"  name="Device\Source\system_stm32f3xx.c"        attr="config"   version="1.1.0"/>
+        <!-- Flash Option Bytes templates -->
+        <file category="source" name="Device\Source\ARM\STM32F3xx_OPT.s"        attr="template" version="1.0.0" condition="Compiler ARMCC" select="Flash Option Bytes Template"/>
+      </files>
+    </component>
+
+    <!-- Startup STM32F303xE -->
+    <component Cclass="Device" Cgroup="Startup" Cversion="1.3.0" condition="STM32F303xE CMSIS">
+      <description>System Startup for STMicroelectronics STM32F303xE Devices</description>
+      <files>
+        <file category="include" name="Device\Include\"/>
+        <file category="source"  name="Device\Source\ARM\startup_stm32f303xe.s" attr="config"   version="1.3.0" condition="Compiler ARMCC"/>
+        <file category="source"  name="Device\Source\system_stm32f3xx.c"        attr="config"   version="1.1.0"/>
+        <!-- Flash Option Bytes templates -->
+        <file category="source" name="Device\Source\ARM\STM32F3xx_OPT.s"        attr="template" version="1.0.0" condition="Compiler ARMCC" select="Flash Option Bytes Template"/>
+      </files>
+    </component>
+
+    <!-- Startup STM32F373xC -->
+    <component Cclass="Device" Cgroup="Startup" Cversion="1.3.0" condition="STM32F373xC CMSIS">
+      <description>System Startup for STMicroelectronics STM32F373xC Devices</description>
+      <files>
+        <file category="include" name="Device\Include\"/>
+        <file category="source"  name="Device\Source\ARM\startup_stm32f373xc.s" attr="config"   version="1.3.0" condition="Compiler ARMCC"/>
+        <file category="source"  name="Device\Source\system_stm32f3xx.c"        attr="config"   version="1.1.0"/>
+        <!-- Flash Option Bytes templates -->
+        <file category="source" name="Device\Source\ARM\STM32F3xx_OPT.s"        attr="template" version="1.0.0" condition="Compiler ARMCC" select="Flash Option Bytes Template"/>
+      </files>
+    </component>
+
+    <!-- Startup STM32F334x8 -->
+    <component Cclass="Device" Cgroup="Startup" Cversion="1.3.0" condition="STM32F334x8 CMSIS">
+      <description>System Startup for STMicroelectronics STM32F334x8 Devices</description>
+      <files>
+        <file category="include" name="Device\Include\"/>
+        <file category="source"  name="Device\Source\ARM\startup_stm32f334x8.s" attr="config"   version="1.3.0" condition="Compiler ARMCC"/>
+        <file category="source"  name="Device\Source\system_stm32f3xx.c"        attr="config"   version="1.1.0"/>
+        <!-- Flash Option Bytes templates -->
+        <file category="source" name="Device\Source\ARM\STM32F3xx_OPT.s"        attr="template" version="1.0.0" condition="Compiler ARMCC" select="Flash Option Bytes Template"/>
+      </files>
+    </component>
+
+    <!-- Startup STM32F318xx -->
+    <component Cclass="Device" Cgroup="Startup" Cversion="1.3.0" condition="STM32F318xx CMSIS">
+      <description>System Startup for STMicroelectronics STM32F318xx Devices</description>
+      <files>
+        <file category="include" name="Device\Include\"/>
+        <file category="source"  name="Device\Source\ARM\startup_stm32f318xx.s" attr="config"   version="1.3.0" condition="Compiler ARMCC"/>
+        <file category="source"  name="Device\Source\system_stm32f3xx.c"        attr="config"   version="1.1.0"/>
+        <!-- Flash Option Bytes templates -->
+        <file category="source" name="Device\Source\ARM\STM32F3xx_OPT.s"        attr="template" version="1.0.0" condition="Compiler ARMCC" select="Flash Option Bytes Template"/>
+      </files>
+    </component>
+
+    <!-- Startup STM32F328xx -->
+    <component Cclass="Device" Cgroup="Startup" Cversion="1.3.0" condition="STM32F328xx CMSIS">
+      <description>System Startup for STMicroelectronics STM32F328xx Devices</description>
+      <files>
+        <file category="include" name="Device\Include\"/>
+        <file category="source"  name="Device\Source\ARM\startup_stm32f328xx.s" attr="config"   version="1.3.0" condition="Compiler ARMCC"/>
+        <file category="source"  name="Device\Source\system_stm32f3xx.c"        attr="config"   version="1.1.0"/>
+        <!-- Flash Option Bytes templates -->
+        <file category="source" name="Device\Source\ARM\STM32F3xx_OPT.s"        attr="template" version="1.0.0" condition="Compiler ARMCC" select="Flash Option Bytes Template"/>
+      </files>
+    </component>
+
+    <!-- Startup STM32F358xx -->
+    <component Cclass="Device" Cgroup="Startup" Cversion="1.3.0" condition="STM32F358xx CMSIS">
+      <description>System Startup for STMicroelectronics STM32F358xx Devices</description>
+      <files>
+        <file category="include" name="Device\Include\"/>
+        <file category="source"  name="Device\Source\ARM\startup_stm32f358xx.s" attr="config"   version="1.3.0" condition="Compiler ARMCC"/>
+        <file category="source"  name="Device\Source\system_stm32f3xx.c"        attr="config"   version="1.1.0"/>
+        <!-- Flash Option Bytes templates -->
+        <file category="source" name="Device\Source\ARM\STM32F3xx_OPT.s"        attr="template" version="1.0.0" condition="Compiler ARMCC" select="Flash Option Bytes Template"/>
+      </files>
+    </component>
+
+    <!-- Startup STM32F378xx -->
+    <component Cclass="Device" Cgroup="Startup" Cversion="1.3.0" condition="STM32F378xx CMSIS">
+      <description>System Startup for STMicroelectronics STM32F378xx Devices</description>
+      <files>
+        <file category="include" name="Device\Include\"/>
+        <file category="source"  name="Device\Source\ARM\startup_stm32f378xx.s" attr="config"   version="1.3.0" condition="Compiler ARMCC"/>
+        <file category="source"  name="Device\Source\system_stm32f3xx.c"        attr="config"   version="1.1.0"/>
+        <!-- Flash Option Bytes templates -->
+        <file category="source" name="Device\Source\ARM\STM32F3xx_OPT.s"        attr="template" version="1.0.0" condition="Compiler ARMCC" select="Flash Option Bytes Template"/>
+      </files>
+    </component>
+
+    <!-- Startup STM32F398xx -->
+    <component Cclass="Device" Cgroup="Startup" Cversion="1.3.0" condition="STM32F398xx CMSIS">
+      <description>System Startup for STMicroelectronics STM32F398xx Devices</description>
+      <files>
+        <file category="include" name="Device\Include\"/>
+        <file category="source"  name="Device\Source\ARM\startup_stm32f398xx.s" attr="config"   version="1.3.0" condition="Compiler ARMCC"/>
+        <file category="source"  name="Device\Source\system_stm32f3xx.c"        attr="config"   version="1.1.0"/>
+        <!-- Flash Option Bytes templates -->
+        <file category="source" name="Device\Source\ARM\STM32F3xx_OPT.s"        attr="template" version="1.0.0" condition="Compiler ARMCC" select="Flash Option Bytes Template"/>
+      </files>
+    </component>
+
+    <!-- STM32F3-Discovery Board Support -->
+    <bundle Cbundle="STM32F3-Discovery" Cclass="Board Support" Cversion="1.0.1">
+      <description>STMicroelectronics STM32F3-Discovery Board</description>
+      <doc></doc>
+      <component Cgroup="LED" condition="STM32F303xC CMSIS">
+      <description>LED driver for STMicroelectronics STM32F3-Discovery Board</description>
+        <files>
+          <file category="source" name="Boards\ST\STM32F3-Discovery\Common\LED_STM32F3-Discovery.c"/>
+        </files>
+      </component>
+      <component Cgroup="Buttons" condition="STM32F303xC CMSIS">
+      <description>Button driver for STMicroelectronics STM32F3-Discovery Board</description>
+        <files>
+        <file category="source" name="Boards\ST\STM32F3-Discovery\Common\Buttons_STM32F3-Discovery.c"/>
+        </files>
+      </component>
+    </bundle>
+
+    <!-- STM32373C-EVAL Board Support -->
+    <bundle Cbundle="STM32373C-EVAL" Cclass="Board Support" Cversion="1.0.1">
+      <description>STMicroelectronics STM32373C-EVAL Board</description>
+      <doc></doc>
+      <component Cgroup="A/D Converter" condition="STM32F373xC CMSIS">
+        <description>A/D Converter driver for STMicroelectronics STM32373C-EVAL Board</description>
+        <files>
+          <file category="source" name="Boards\ST\STM32373C-EVAL\Common\SADC_STM32373C-EVAL.c"/>
+        </files>
+      </component>
+      <component Cgroup="Graphic LCD" condition="STM32F373xC CMSIS">
+        <description>Graphic LCD driver for STMicroelectronics STM32373C-EVAL Board</description>
+        <files>
+          <file category="header" name="Boards\ST\STM32373C-EVAL\Common\GLCD_Config.h"/>
+          <file category="source" name="Boards\ST\STM32373C-EVAL\Common\GLCD_Fonts.c"/>
+          <file category="source" name="Boards\ST\STM32373C-EVAL\Common\GLCD_SPI_STM32373C-EVAL.c"/>
+        </files>
+      </component>
+      <component Cgroup="Buttons" condition="STM32F373xC CMSIS">
+      <description>Button driver for STMicroelectronics STM32373C-EVAL Board</description>
+        <files>
+          <file category="source" name="Boards\ST\STM32373C-EVAL\Common\Buttons_STM32373C-EVAL.c"/>
+        </files>
+      </component>
+      <component Cgroup="LED" condition="STM32F373xC CMSIS">
+        <description>LED driver for STMicroelectronics STM32373C-EVAL Board</description>
+        <files>
+          <file category="source" name="Boards\ST\STM32373C-EVAL\Common\LED_STM32373C-EVAL.c"/>
+        </files>
+      </component>
+    </bundle>
+
+    <!-- STM32303C-EVAL Board Support -->
+    <bundle Cbundle="STM32303C-EVAL" Cclass="Board Support" Cversion="1.0.1">
+      <description>STMicroelectronics STM32303C-EVAL Board</description>
+      <doc></doc>
+      <component Cgroup="A/D Converter" condition="STM32F303xC CMSIS">
+        <description>A/D Converter driver for STMicroelectronics STM32303C-EVAL Board</description>
+        <files>
+          <file category="source" name="Boards\ST\STM32303C-EVAL\Common\ADC_STM32303C-EVAL.c"/>
+        </files>
+      </component>
+      <component Cgroup="Graphic LCD" condition="STM32F303xC CMSIS">
+        <description>Graphic LCD driver for STMicroelectronics STM32303C-EVAL Board</description>
+        <files>
+          <file category="header"  name="Boards\ST\STM32303C-EVAL\Common\GLCD_Config.h"/>
+          <file category="source"  name="Boards\ST\STM32303C-EVAL\Common\GLCD_Fonts.c"/>
+          <file category="source" name="Boards\ST\STM32303C-EVAL\Common\GLCD_SPI_STM32303C-EVAL.c"/>
+        </files>
+      </component>
+      <component Cgroup="Buttons" condition="STM32F303xC CMSIS">
+      <description>Button driver for STMicroelectronics STM32303C-EVAL Board</description>
+        <files>
+          <file category="source" name="Boards\ST\STM32303C-EVAL\Common\Buttons_STM32303C-EVAL.c"/>
+        </files>
+      </component>
+      <component Cgroup="LED" condition="STM32F303xC CMSIS">
+        <description>LED driver for STMicroelectronics STM32303C-EVAL Board</description>
+        <files>
+          <file category="source" name="Boards\ST\STM32303C-EVAL\Common\LED_STM32303C-EVAL.c"/>
+        </files>
+      </component>
+    </bundle>
+  </components>
+
+  <boards>
+    <board vendor="STMicroelectronics" name="STM32F3-Discovery" revision="Rev.B.0" salesContact="http://www.st.com/stonline/contactus/contacts/index.php" orderForm="https://my.st.com/esample/app?page=basket&amp;pn=STM32F3DISCOVERY">
+      <description>STMicroelectronics STM32F3-Discovery Board</description>
+      <book category="overview"  name="http://www.st.com/web/catalog/tools/FM116/SC959/SS1532/PF254044" title="STM32F3-Discovery Web Page"/>
+      <mountedDevice    deviceIndex="0" Dvendor="STMicroelectronics:13" Dname="STM32F303VC"/>
+      <compatibleDevice deviceIndex="0" Dvendor="STMicroelectronics:13" DsubFamily="STM32F303"/>
+      <feature type="ODbg"      n="1"              name="On-board ST-LINK/V2"/>
+      <feature type="XTAL"      n="8000000"/>
+      <feature type="PWR"       n="5"              name="USB Powered"/>
+      <feature type="PWR"       n="3"  m="5"       name="External Supply"/>
+      <feature type="Button"    n="2"              name="Push-buttons: User and Reset"/>
+      <feature type="LED"       n="10"              name="LEDs: USB COM, 3.3 V Power, 8 user"/>
+      <debugInterface adapter="ST-Link" connector="Mini-USB"/>
+    </board>
+
+    <board vendor="STMicroelectronics" name="STM32373C-EVAL" revision="Rev.B" salesContact="http://www.st.com/stonline/contactus/contacts/index.php">
+      <description>STMicroelectronics STM32373C-EVAL Board</description>
+      <book category="overview"  name="http://www.st.com/web/en/catalog/tools/PF252995" title="STM32373C-EVAL Web Page"/>
+      <mountedDevice    deviceIndex="0" Dvendor="STMicroelectronics:13" Dname="STM32F373VC"/>
+      <compatibleDevice deviceIndex="0" Dvendor="STMicroelectronics:13" DsubFamily="STM32F373"/>
+      <feature type="XTAL"            n="8000000"/>
+      <feature type="PWR"             n="5"              name="USB Powered"/>
+      <feature type="USB"             n="1"              name="USB 2.0 Full Speed"/>
+      <feature type="CAN"             n="2"/>
+      <feature type="RS232"           n="1"/>
+      <feature type="GLCD"            n="1"  m="240.320" name="2.4 inch Color QVGA TFT LCD with resistive touchscreen"/>
+      <feature type="Joystick"        n="1"              name="5-position Joystick"/>
+      <feature type="Poti"            n="1"              name="Analog Voltage Control for ADC Input (potentiometer)"/>
+      <feature type="Button"          n="4"              name="Push-Buttons for Reset, Tamper and User"/>
+      <feature type="LED"             n="4"              name="LEDs directly connected to port pins"/>
+      <debugInterface adapter="JTAG/SW" connector="20 pin JTAG (0.1 inch connector)"/>
+      <debugInterface adapter="JTAG/SW" connector="20-pin Cortex debug + ETM Trace (0.05 inch connector)"/>
+    </board>
+
+    <board vendor="STMicroelectronics" name="STM32303C-EVAL" revision="Rev.A" salesContact="http://www.st.com/stonline/contactus/contacts/index.php">
+      <description>STMicroelectronics STM32303C-EVAL Board</description>
+      <book category="overview"  name="http://www.st.com/web/en/catalog/tools/PF252996" title="STM32303C-EVAL Web Page"/>
+      <mountedDevice    deviceIndex="0" Dvendor="STMicroelectronics:13" Dname="STM32F303VC"/>
+      <compatibleDevice deviceIndex="0" Dvendor="STMicroelectronics:13" DsubFamily="STM32F303"/>
+      <feature type="XTAL"            n="8000000"/>
+      <feature type="PWR"             n="5"              name="USB Powered"/>
+      <feature type="USB"             n="1"              name="USB 2.0 Full Speed"/>
+      <feature type="CAN"             n="2"/>
+      <feature type="RS232"           n="1"/>
+      <feature type="GLCD"            n="1"  m="240.320" name="2.4 inch Color QVGA TFT LCD with resistive touchscreen"/>
+      <feature type="Joystick"        n="1"              name="5-position Joystick"/>
+      <feature type="Poti"            n="1"              name="Analog Voltage Control for ADC Input (potentiometer)"/>
+      <feature type="Button"          n="4"              name="Push-Buttons for Reset, Tamper and User"/>
+      <feature type="LED"             n="4"              name="LEDs directly connected to port pins"/>
+      <debugInterface adapter="JTAG/SW" connector="20 pin JTAG (0.1 inch connector)"/>
+      <debugInterface adapter="JTAG/SW" connector="20-pin Cortex debug + ETM Trace (0.05 inch connector)"/>
+    </board>
+  </boards>
+
+  <examples>
+    <!-- STM32F3-Discovery Board -->
+    <example name="Blinky" doc="Abstract.txt" folder="Boards\ST\STM32F3-Discovery\Blinky">
+      <description>Blinky example</description>
+      <board name="STM32F3-Discovery" vendor="STMicroelectronics"/>
+      <project>
+        <environment name="uv" load="Blinky.uvprojx"/>
+      </project>
+      <attributes>
+        <component Cclass="CMSIS" Cgroup="CORE"/>
+        <component Cclass="Device" Cgroup="Startup"/>
+        <category>Getting Started</category>
+      </attributes>
+    </example>
+
+    <example name="CMSIS-RTOS Blinky" doc="Abstract.txt" folder="Boards\ST\STM32F3-Discovery\RTX_Blinky">
+      <description>CMSIS-RTOS based Blinky example</description>
+      <board name="STM32F3-Discovery" vendor="STMicroelectronics"/>
+      <project>
+        <environment name="uv" load="Blinky.uvprojx"/>
+      </project>
+      <attributes>
+        <component Cclass="CMSIS" Cgroup="CORE"/>
+        <component Cclass="Device" Cgroup="Startup"/>
+        <component Cclass="CMSIS" Cgroup="RTOS"/>
+        <category>Getting Started</category>
+        <category>CMSIS-RTX</category>
+      </attributes>
+    </example>
+
+    <!-- STM32373C-EVAL Board -->
+    <example name="Blinky" doc="Abstract.txt" folder="Boards\ST\STM32373C-EVAL\Blinky">
+      <description>Blinky example</description>
+      <board name="STM32373C-EVAL" vendor="STMicroelectronics"/>
+      <project>
+        <environment name="uv" load="Blinky.uvprojx"/>
+      </project>
+      <attributes>
+        <component Cclass="CMSIS" Cgroup="CORE"/>
+        <component Cclass="Device" Cgroup="Startup"/>
+        <category>Getting Started</category>
+      </attributes>
+    </example>
+
+    <example name="CMSIS-RTOS Blinky" doc="Abstract.txt" folder="Boards\ST\STM32373C-EVAL\RTX_Blinky">
+      <description>CMSIS-RTOS based Blinky example</description>
+      <board name="STM32373C-EVAL" vendor="STMicroelectronics"/>
+      <project>
+        <environment name="uv" load="Blinky.uvprojx"/>
+      </project>
+      <attributes>
+        <component Cclass="CMSIS" Cgroup="CORE"/>
+        <component Cclass="Device" Cgroup="Startup"/>
+        <component Cclass="CMSIS" Cgroup="RTOS"/>
+        <category>Getting Started</category>
+        <category>CMSIS-RTX</category>
+      </attributes>
+    </example>
+
+    <!-- STM32303C-EVAL Board -->
+    <example name="Blinky" doc="Abstract.txt" folder="Boards\ST\STM32303C-EVAL\Blinky">
+      <description>Blinky example</description>
+      <board name="STM32303C-EVAL" vendor="STMicroelectronics"/>
+      <project>
+        <environment name="uv" load="Blinky.uvprojx"/>
+      </project>
+      <attributes>
+        <component Cclass="CMSIS" Cgroup="CORE"/>
+        <component Cclass="Device" Cgroup="Startup"/>
+        <category>Getting Started</category>
+      </attributes>
+    </example>
+
+    <example name="CMSIS-RTOS Blinky" doc="Abstract.txt" folder="Boards\ST\STM32303C-EVAL\RTX_Blinky">
+      <description>CMSIS-RTOS based Blinky example</description>
+      <board name="STM32303C-EVAL" vendor="STMicroelectronics"/>
+      <project>
+        <environment name="uv" load="Blinky.uvprojx"/>
+      </project>
+      <attributes>
+        <component Cclass="CMSIS" Cgroup="CORE"/>
+        <component Cclass="Device" Cgroup="Startup"/>
+        <component Cclass="CMSIS" Cgroup="RTOS"/>
+        <category>Getting Started</category>
+        <category>CMSIS-RTX</category>
+      </attributes>
+    </example>
+  </examples>
+
+</package>

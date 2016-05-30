@@ -1,0 +1,398 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<package schemaVersion="1.2" xmlns:xs="http://www.w3.org/2001/XMLSchema-instance" xs:noNamespaceSchemaLocation="PACK.xsd">
+  <vendor>Keil</vendor>
+  <url>http://www.keil.com/pack/</url>
+  <name>CM4xx_DFP</name>
+  <description>Analog Devices ARM Cortex-M4 CM4xx Family Device Support</description>
+
+  <releases>
+    <release version="1.0.1">
+      added SVD file.
+    </release>
+    <release version="1.0.0">
+      First Release version of CM4xx Device Family Pack.
+    </release>
+  </releases>
+
+  <keywords>
+    <!-- keywords for indexing -->
+    <keyword>Analog Devices</keyword>
+    <keyword>Device Support</keyword>
+    <keyword>Device Family Package Analog Devices</keyword>
+    <keyword>CM4xx</keyword>
+  </keywords>
+
+  <devices>
+    <!-- generated, do not modify this section! -->
+
+    <family Dfamily="CM4xx Mixed Signal Control Processors" Dvendor="Analog Devices:1">
+      <processor Dcore="Cortex-M4" DcoreVersion="r0p1" Dfpu="1" Dmpu="1" Dendian="Little-endian"/>
+      <book name="Documents\dui0553a_cortex_m4_dgug.pdf" title="Cortex-M4 Generic User Guide"/>
+      <book name="http://www.analog.com/en/technical-documentation/data-sheets-subcat/data-sheets/resources/processors-dsp/cm4xx/listing.html" title="Datasheets"/>
+      <book name="http://www.analog.com/en/processors-dsp/cm4xx/products/manuals/resources/index.html" title="Manuals"/>
+      <description>
+The ADSP-CM4xx Mixed Signal Control Processors utilize the ARM Cortex M4 processor core
+integrated with high precision ADCs, digital accelerators and filters, SRAM and flash
+memories and a rich set of peripherals.
+
+       </description>
+      <environment name="uv">
+        <CMisc>--C99</CMisc>
+      </environment>
+
+      <!-- ************************  Subfamily 'CM40x'  **************************** -->
+      <subFamily DsubFamily="CM40x">
+	    <description>
+The ADSP-CM40x family of mixed-signal control processors is based
+on the ARM Cortex-M4TM processor core with floatingpoint unit 
+operating at frequencies up to 240 MHz and integrating up to 
+384KB of SRAM memory, 2MB of flash memory, accelerators and peripherals 
+optimized for motor control and photo-voltaic (PV) inverter control 
+and an analog module consisting of two 16-bit SAR-type ADCs and two 12-bit DACs.
+The ADSP-CM40x family operates from a single voltage supply (VDD_EXT/VDD_ANA), 
+generating its own internal voltage supplies using internal voltage regulators 
+and an external pass transistor.
+This family of mixed-signal control processors offers low static power consumption 
+and is produced with a low-power and lowvoltage design methodology, delivering 
+world class processor and ADC performance with lower power consumption.
+
+		</description>
+        <compile    header="Device\inc\device.h"/>
+        <debug      svd="SVD\CM40x.svd"/>
+
+        <feature type="Timer"        n="8"      m="32"         name="General-Purpose Timer"/>
+        <feature type="PWM"          n="2"      m="16"         name="3-Phase PWM unit"/>
+        <feature type="UART"         n="3"                     name="UART Interface"/>
+        <feature type="CAN"          n="2"                     name="CAN module"/>
+        <feature type="ComOther"     n="1"                     name="two-wire interface (TWI)"/>
+        <feature type="VCC"          n="3.13"   m="3.47"/>
+        <feature type="Temp"         n="-40"    m="105"        name="Extended Operating Temperature Range"/>
+
+		 <!-- *************************  Device 'ADSP-CM402BSWZ-EF'  ***************************** -->
+          <device Dname="ADSP-CM402BSWZ-EF">
+          <processor  Dclock="150000000"/>
+          <memory     id    ="IROM1"                    start="0x18000000"  size="0x00080000"                             startup="1"   default="1"/>
+          <memory     id    ="IRAM1"                    start="0x20010000"  size="0x00010000"                             init   ="0"   default="1"/>
+          <algorithm  name  ="Flash\CM40x_512.FLM"      start="0x18000000"  size="0x00080000"  RAMstart="0x10000000"  RAMsize="0x1000"  default="1"/>
+
+          <feature type="ExtBus"       n="16"                    name="External Bus Interface"/>
+          <feature type="ADC"          n="24"     m="16"         name="SAR-type ADC"/>
+          <feature type="DAC"          n="2"      m="12"         name="DAC"/>
+          <feature type="ComOther"     n="3"                     name="Serial Port"/>
+          <feature type="SPI"          n="1"                     name="SPI Interface"/>
+          <feature type="TimerOther"   n="2"                     name="General-Purpose Counter"/>
+          <feature type="IOs"          n="40"                    name="General Purpose I/Os"/>
+          <feature type="QFP"          n="120"                   name="Low-Profile QFP Package"/>
+        </device>
+
+		 <!-- *************************  Device 'ADSP-CM402BSWZ-FF'  ***************************** -->
+          <device Dname="ADSP-CM402BSWZ-FF">
+          <processor  Dclock="100000000"/>
+          <memory     id    ="IROM1"                    start="0x18000000"  size="0x00040000"                             startup="1"   default="1"/>
+          <memory     id    ="IRAM1"                    start="0x20010000"  size="0x00010000"                             init   ="0"   default="1"/>
+          <algorithm  name  ="Flash\CM40x_256.FLM"      start="0x18000000"  size="0x00040000"  RAMstart="0x10000000"  RAMsize="0x1000"  default="1"/>
+
+          <feature type="ExtBus"       n="16"                    name="External Bus Interface"/>
+          <feature type="ADC"          n="24"     m="16"         name="SAR-type ADC"/>
+          <feature type="DAC"          n="2"      m="12"         name="DAC"/>
+          <feature type="ComOther"     n="3"                     name="Serial Port"/>
+          <feature type="SPI"          n="1"                     name="SPI Interface"/>
+          <feature type="TimerOther"   n="2"                     name="General-Purpose Counter"/>
+          <feature type="IOs"          n="40"                    name="General Purpose I/Os"/>
+          <feature type="QFP"          n="120"                   name="Low-Profile QFP Package"/>
+        </device>
+
+		 <!-- *************************  Device 'ADSP-CM403BSWZ-CF'  ***************************** -->
+          <device Dname="ADSP-CM403BSWZ-CF">
+          <processor  Dclock="240000000"/>
+          <memory     id    ="IROM1"                    start="0x18000000"  size="0x00200000"                             startup="1"   default="1"/>
+          <memory     id    ="IRAM1"                    start="0x20030000"  size="0x00030000"                             init   ="0"   default="1"/>
+          <algorithm  name  ="Flash\CM40x_2048.FLM"     start="0x18000000"  size="0x00200000"  RAMstart="0x10000000"  RAMsize="0x1000"  default="1"/>
+
+          <feature type="ExtBus"       n="16"                    name="External Bus Interface"/>
+          <feature type="ADC"          n="24"     m="16"         name="SAR-type ADC"/>
+          <feature type="DAC"          n="2"      m="12"         name="DAC"/>
+          <feature type="ComOther"     n="3"                     name="Serial Port"/>
+          <feature type="SPI"          n="1"                     name="SPI Interface"/>
+          <feature type="TimerOther"   n="2"                     name="General-Purpose Counter"/>
+          <feature type="IOs"          n="40"                    name="General Purpose I/Os"/>
+          <feature type="QFP"          n="120"                   name="Low-Profile QFP Package"/>
+        </device>
+
+		 <!-- *************************  Device 'ADSP-CM403BSWZ-EF'  ***************************** -->
+          <device Dname="ADSP-CM403BSWZ-EF">
+          <processor  Dclock="150000000"/>
+          <memory     id    ="IROM1"                    start="0x18000000"  size="0x00080000"                             startup="1"   default="1"/>
+          <memory     id    ="IRAM1"                    start="0x20010000"  size="0x00010000"                             init   ="0"   default="1"/>
+          <algorithm  name  ="Flash\CM40x_512.FLM"      start="0x18000000"  size="0x00080000"  RAMstart="0x10000000"  RAMsize="0x1000"  default="1"/>
+
+          <feature type="ExtBus"       n="16"                    name="External Bus Interface"/>
+          <feature type="ADC"          n="24"     m="16"         name="SAR-type ADC"/>
+          <feature type="DAC"          n="2"      m="12"         name="DAC"/>
+          <feature type="ComOther"     n="3"                     name="Serial Port"/>
+          <feature type="SPI"          n="1"                     name="SPI Interface"/>
+          <feature type="TimerOther"   n="2"                     name="General-Purpose Counter"/>
+          <feature type="IOs"          n="40"                    name="General Purpose I/Os"/>
+          <feature type="QFP"          n="120"                   name="Low-Profile QFP Package"/>
+        </device>
+
+		 <!-- *************************  Device 'ADSP-CM403BSWZ-FF'  ***************************** -->
+          <device Dname="ADSP-CM403BSWZ-FF">
+          <processor  Dclock="100000000"/>
+          <memory     id    ="IROM1"                    start="0x18000000"  size="0x00040000"                             startup="1"   default="1"/>
+          <memory     id    ="IRAM1"                    start="0x20010000"  size="0x00010000"                             init   ="0"   default="1"/>
+          <algorithm  name  ="Flash\CM40x_256.FLM"      start="0x18000000"  size="0x00040000"  RAMstart="0x10000000"  RAMsize="0x1000"  default="1"/>
+
+          <feature type="ExtBus"       n="16"                    name="External Bus Interface"/>
+          <feature type="ADC"          n="24"     m="16"         name="SAR-type ADC"/>
+          <feature type="DAC"          n="2"      m="12"         name="DAC"/>
+          <feature type="ComOther"     n="3"                     name="Serial Port"/>
+          <feature type="SPI"          n="1"                     name="SPI Interface"/>
+          <feature type="TimerOther"   n="2"                     name="General-Purpose Counter"/>
+          <feature type="IOs"          n="40"                    name="General Purpose I/Os"/>
+          <feature type="QFP"          n="120"                   name="Low-Profile QFP Package"/>
+        </device>
+
+		 <!-- *************************  Device 'ADSP-CM407BSWZ-AF'  ***************************** -->
+          <device Dname="ADSP-CM407BSWZ-AF">
+          <processor  Dclock="240000000"/>
+          <memory     id    ="IROM1"                    start="0x18000000"  size="0x00200000"                             startup="1"   default="1"/>
+          <memory     id    ="IRAM1"                    start="0x20030000"  size="0x00030000"                             init   ="0"   default="1"/>
+          <algorithm  name  ="Flash\CM40x_2048.FLM"     start="0x18000000"  size="0x00200000"  RAMstart="0x10000000"  RAMsize="0x1000"  default="1"/>
+
+          <feature type="ExtBus"       n="16"                    name="External Bus Interface"/>
+          <feature type="ADC"          n="16"     m="16"         name="SAR-type ADC"/>
+          <feature type="ComOther"     n="4"                     name="Serial Port"/>
+          <feature type="ETH"          n="1"      m="10000000"   name="Ethernet MAC"/>
+          <feature type="USBOTG"       n="1"                     name="USB OTG"/>
+          <feature type="SPI"          n="2"                     name="SPI Interface"/>
+          <feature type="TimerOther"   n="4"                     name="General-Purpose Counter"/>
+          <feature type="IOs"          n="91"                    name="General Purpose I/Os"/>
+          <feature type="QFP"          n="176"                   name="Low-Profile QFP Package"/>
+        </device>
+
+		 <!-- *************************  Device 'ADSP-CM407BSWZ-BF'  ***************************** -->
+          <device Dname="ADSP-CM407BSWZ-BF">
+          <processor  Dclock="240000000"/>
+          <memory     id    ="IROM1"                    start="0x18000000"  size="0x00200000"                             startup="1"   default="1"/>
+          <memory     id    ="IRAM1"                    start="0x20030000"  size="0x00030000"                             init   ="0"   default="1"/>
+          <algorithm  name  ="Flash\CM40x_2048.FLM"     start="0x18000000"  size="0x00200000"  RAMstart="0x10000000"  RAMsize="0x1000"  default="1"/>
+
+          <feature type="ExtBus"       n="16"                    name="External Bus Interface"/>
+          <feature type="ADC"          n="16"     m="16"         name="SAR-type ADC"/>
+          <feature type="ComOther"     n="4"                     name="Serial Port"/>
+          <feature type="USBOTG"       n="1"                     name="USB OTG"/>
+          <feature type="SPI"          n="2"                     name="SPI Interface"/>
+          <feature type="TimerOther"   n="4"                     name="General-Purpose Counter"/>
+          <feature type="IOs"          n="91"                    name="General Purpose I/Os"/>
+          <feature type="QFP"          n="176"                   name="Low-Profile QFP Package"/>
+        </device>
+
+		 <!-- *************************  Device 'ADSP-CM407BSWZ-DF'  ***************************** -->
+          <device Dname="ADSP-CM407BSWZ-DF">
+          <processor  Dclock="150000000"/>
+          <memory     id    ="IROM1"                    start="0x18000000"  size="0x00100000"                             startup="1"   default="1"/>
+          <memory     id    ="IRAM1"                    start="0x20010000"  size="0x00010000"                             init   ="0"   default="1"/>
+          <algorithm  name  ="Flash\CM40x_1024.FLM"     start="0x18000000"  size="0x00100000"  RAMstart="0x10000000"  RAMsize="0x1000"  default="1"/>
+
+          <feature type="ExtBus"       n="16"                    name="External Bus Interface"/>
+          <feature type="ADC"          n="16"     m="16"         name="SAR-type ADC"/>
+          <feature type="ComOther"     n="4"                     name="Serial Port"/>
+          <feature type="SPI"          n="2"                     name="SPI Interface"/>
+          <feature type="TimerOther"   n="4"                     name="General-Purpose Counter"/>
+          <feature type="IOs"          n="91"                    name="General Purpose I/Os"/>
+          <feature type="QFP"          n="176"                   name="Low-Profile QFP Package"/>
+        </device>
+
+		 <!-- *************************  Device 'ADSP-CM408BSWZ-AF'  ***************************** -->
+          <device Dname="ADSP-CM408BSWZ-AF">
+          <processor  Dclock="240000000"/>
+          <memory     id    ="IROM1"                    start="0x18000000"  size="0x00200000"                             startup="1"   default="1"/>
+          <memory     id    ="IRAM1"                    start="0x20030000"  size="0x00030000"                             init   ="0"   default="1"/>
+          <algorithm  name  ="Flash\CM40x_2048.FLM"     start="0x18000000"  size="0x00200000"  RAMstart="0x10000000"  RAMsize="0x1000"  default="1"/>
+
+          <feature type="ExtBus"       n="16"                    name="External Bus Interface"/>
+          <feature type="ADC"          n="16"     m="16"         name="SAR-type ADC"/>
+          <feature type="ComOther"     n="4"                     name="Serial Port"/>
+          <feature type="ETH"          n="1"      m="10000000"   name="Ethernet MAC"/>
+          <feature type="USBOTG"       n="1"                     name="USB OTG"/>
+          <feature type="SPI"          n="2"                     name="SPI Interface"/>
+          <feature type="TimerOther"   n="4"                     name="General-Purpose Counter"/>
+          <feature type="IOs"          n="91"                    name="General Purpose I/Os"/>
+          <feature type="QFP"          n="176"                   name="Low-Profile QFP Package"/>
+        </device>
+
+		 <!-- *************************  Device 'ADSP-CM408BSWZ-BF'  ***************************** -->
+          <device Dname="ADSP-CM408BSWZ-BF">
+          <processor  Dclock="240000000"/>
+          <memory     id    ="IROM1"                    start="0x18000000"  size="0x00200000"                             startup="1"   default="1"/>
+          <memory     id    ="IRAM1"                    start="0x20030000"  size="0x00030000"                             init   ="0"   default="1"/>
+          <algorithm  name  ="Flash\CM40x_2048.FLM"     start="0x18000000"  size="0x00200000"  RAMstart="0x10000000"  RAMsize="0x1000"  default="1"/>
+
+          <feature type="ExtBus"       n="16"                    name="External Bus Interface"/>
+          <feature type="ADC"          n="16"     m="16"         name="SAR-type ADC"/>
+          <feature type="ComOther"     n="4"                     name="Serial Port"/>
+          <feature type="USBOTG"       n="1"                     name="USB OTG"/>
+          <feature type="SPI"          n="2"                     name="SPI Interface"/>
+          <feature type="TimerOther"   n="4"                     name="General-Purpose Counter"/>
+          <feature type="IOs"          n="91"                    name="General Purpose I/Os"/>
+          <feature type="QFP"          n="176"                   name="Low-Profile QFP Package"/>
+        </device>
+
+      </subFamily>
+
+    </family>
+
+  </devices>
+
+  <conditions>
+    <!-- conditions are dependecy rules that can apply to a component or an individual file -->
+    <condition id="Compiler ARM">
+      <!-- conditions selecting ARM Compiler -->
+      <require Tcompiler="ARMCC"/>
+    </condition>
+
+    <condition id="CM40x Device">
+      <description>Analog Devices CM40x devices</description>
+      <require Dvendor="Analog Devices:1"  Dname="ADSP-CM40*"/>
+    </condition>
+
+    <condition id="CM4xx CMSIS Device">
+      <!-- conditions selecting Devices -->
+      <description>Analog Devices CM4xx devices and CMSIS-CORE</description>
+      <require Cclass="CMSIS" Cgroup="CORE"/>
+      <accept condition="CM40x Device"/>
+    </condition>
+
+	<condition id="CM40x Device + OS">
+	  <require condition="CM4xx CMSIS Device"/>
+	  <require Cclass="Device" Cgroup="RTOS" Csub="no OS"/>
+	</condition>
+	
+	<condition id="CM40x Device + Services">
+	  <require condition="CM4xx CMSIS Device"/>
+	  <require Cclass="Device" Cgroup="Services Library"/>
+	</condition>
+	
+  </conditions>
+
+  <components>
+    <component Cclass="Device" Cgroup="Startup" Cversion="1.0.0" condition="CM4xx CMSIS Device">
+      <!-- Cversion is necessary -->
+      <description>System Startup for Analog Devices CM4xx device series</description>
+      <RTE_Components_h>
+        <!-- the following content goes into file 'RTE_Components.h' -->
+      </RTE_Components_h>
+
+      <files>
+        <!-- header path -->
+        <file category="include" name="Device\inc\"                                          condition="CM40x Device"     />
+        <file category="header"  name="Device\inc\device.h"                                  condition="CM40x Device"     />
+
+        <!-- startup/system files -->
+        <file category="source"  name="Device\src\startup_CM40x.s"            attr="config"  condition="CM40x Device"     />
+        <file category="source"  name="Device\src\system_CM40x.c"             attr="config"  condition="CM40x Device"     />
+      </files>
+    </component>
+
+    <component Cclass="Device" Cgroup="Retarget" Cversion="1.0.0" condition="CM40x Device">
+      <description>Retargeting for CM40x Devices</description>
+      <files>
+        <file category="source" name="Device\src\Retarget.c"/>
+      </files>
+    </component>
+
+    <component Cclass="Device" Cgroup="Drivers Library" Cversion="1.0.0" condition="CM40x Device + Services">
+      <description>Analog Devices Driver Library for CM40x Devices</description>
+      <files>
+        <file category="library" name="Device\lib\libdrv40z.lib"/>
+      </files>
+    </component>
+
+    <component Cclass="Device" Cgroup="Services Library" Cversion="1.0.0" condition="CM40x Device + OS">
+      <description>Analog Devices Services Library for CM40x Devices</description>
+      <files>
+        <file category="library" name="Device\lib\libssl40z.lib"/>
+      </files>
+    </component>
+
+    <component Cclass="Device" Cgroup="RTOS" Csub="no OS" Cversion="1.0.0" condition="CM40x Device">
+      <description>Analog Devices OS Library (no OS)  for CM40x Devices</description>
+      <files>
+        <file category="library" name="Device\lib\libosal40z_noos.lib"/>
+      </files>
+    </component>
+  </components>
+
+  <boards>
+    <board vendor="Analog Devices" name="ADZS-CM408F EZ-Board" revision="Ver 1.1" salesContact="http://www.analog.com/en/content/contact_customer_service/fca.html" orderForm="http://www.analog.com/en/evaluation/cm40x-ez/eb.html#buy">
+      <description>Analog Devices CM408F_EZ-KIT Evaluation Board</description>
+      <image small="Images\ADSP-CM408F_ez-kit_small.jpg" large="Images\ADSP-CM408F_ez-kit.jpg"/>
+      <book category="overview"  name="http://www.analog.com/en/evaluation/cm40x-ez/eb.html#DOCUMENTATION" title="ADZS-CM408F EZ-Board Documentation"/>
+      <mountedDevice    deviceIndex="0" Dvendor="Analog Devices:1" Dname="ADSP-CM408BSWZ-BF"/>
+      <compatibleDevice deviceIndex="0" Dvendor="Analog Devices:1" DsubFamily="CM40x"/>
+      <feature type="PWR"             n="5"              name="External 5.0VDC/3.6A power supply"/>
+      <feature type="RAM"             n="1"              name="4 Mb asynchronous SRAM"/>
+      <feature type="LCD"             n="1"              name="IDC 5x2 SMT"/>
+      <feature type="USB"             n="1"              name="USB mini-B"/>
+      <feature type="CAN"             n="2"              name="RJ11 vertical Connector"/>
+      <feature type="RS485"           n="1"              name="DB9 Female Connector"/>
+      <feature type="RS232"           n="1"              name="DB9 Female Connector"/>
+      <feature type="ETH"             n="1"              name="10/100 Ethernet Port"/>
+      <feature type="Button"          n="4"              name="Push-Buttons for Reset, Wakeup and User"/>
+      <feature type="LED"             n="4"              name="LEDs directly connected to port pins"/>      
+      <feature type="ConnOther"       n="1"              name="PWM Connector (180-pin high speed socket)"/>
+      <feature type="ConnOther"       n="1"              name="Analog Connector (120-pin high speed socket)"/>
+      <feature type="ConnOther"       n="1"              name="Asynch or Memory Connector (180-pin high speed socket)"/>
+      <debugInterface adapter="JTAG/SW" connector="20 pin JTAG (0.1 inch connector)"/>
+      <debugInterface adapter="JTAG/SW" connector="20-pin Cortex debug + ETM Trace (0.05 inch connector)"/>
+    </board>
+  </boards>
+
+
+  <examples>
+    <!-- ADZS-CM408F EZ-Board -->
+    <example name="Button_LED_GPIO" doc="Readme_Button_LED_GPIO.txt" folder="Boards\AnalogDevices\CM408F_EZ-KIT\Button_LED_GPIO">
+      <description>Blinky example using buttons and interrupts</description>
+      <board name="ADZS-CM408F EZ-Board" vendor="Analog Devices"/>
+      <project>
+        <environment name="uv" load="Button_LED_GPIO.uvprojx"/>
+      </project>
+      <attributes>
+        <component Cclass="CMSIS" Cgroup="CORE"/>
+        <component Cclass="Device" Cgroup="Startup"/>
+        <category>Getting Started</category>
+      </attributes>
+    </example>
+
+    <example name="Boot_Optimization_Single_App" doc="Readme_Boot_Optimization_Single_App.txt" folder="Boards\AnalogDevices\CM408F_EZ-KIT\Boot_Optimization_Single_App">
+      <description>Boot Optimization example Single Application</description>
+      <board name="ADZS-CM408F EZ-Board" vendor="Analog Devices"/>
+      <project>
+        <environment name="uv" load="blink.uvprojx"/>
+      </project>
+      <attributes>
+        <component Cclass="CMSIS" Cgroup="CORE"/>
+        <component Cclass="Device" Cgroup="Startup"/>
+        <category>Getting Started</category>
+      </attributes>
+    </example>
+
+    <example name="Boot_Optimization_Multi_App" doc="blink\Readme_Boot_Optimization_Multi_App.txt" folder="Boards\AnalogDevices\CM408F_EZ-KIT\Boot_Optimization_Multi_App">
+      <description>Boot Optimization example Multiple Applications</description>
+      <board name="ADZS-CM408F EZ-Board" vendor="Analog Devices"/>
+      <project>
+        <environment name="uv" load="blink\blink.uvprojx"/>
+      </project>
+      <attributes>
+        <component Cclass="CMSIS" Cgroup="CORE"/>
+        <component Cclass="Device" Cgroup="Startup"/>
+        <category>Getting Started</category>
+      </attributes>
+    </example>
+
+  </examples>
+
+</package>
+

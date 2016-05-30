@@ -1,0 +1,17 @@
+The 'RTX_Blinky' project is a simple CMSIS RTOS Kernel based example for
+ST 'STM32F051R8' microcontroller using ST 'STM32F051-Discovery' Evaluation Board.
+Compliant to Cortex Microcontroller Software Interface Standard (CMSIS).
+
+Example functionality:
+ - Clock Settings:
+   - XTAL    = HSI     =  8.00 MHz
+   - SYSCLK  =           48.00 MHz
+
+ - 2 LEDs blink.
+ - blinking is paused while holding down the USER button.
+
+
+The Blinky example is available in different targets:
+
+  STM32F051 Flash:    configured for on-chip Flash
+                      (used for production or target debugging)

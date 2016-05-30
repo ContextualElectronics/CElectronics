@@ -1,0 +1,1866 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<package schemaVersion="1.2" xmlns:xs="http://www.w3.org/2001/XMLSchema-instance" xs:noNamespaceSchemaLocation="PACK.xsd">
+  <vendor>Keil</vendor>
+  <url>http://www.keil.com/pack/</url>
+  <name>Kinetis_K60_DFP</name>
+  <description>Freescale Kinetis K60 Series Device Support and Examples</description>
+
+  <releases>
+    <release version="1.4.0" date="2015-06-03">
+      Updated MK65F18, MK66F18 device support and documentation.
+    </release>
+    <release version="1.3.0" date="2015-01-12">
+      CMSIS-Core files updated for MK65F18 and MK66F18 device support
+    </release>
+    <release version="1.2.0" date="2014-09-04">
+      CMSIS-Core files updated for MK63F12 and MK64F12 devices
+    </release>
+    <release version="1.1.0">
+      Added FRDM-K64F development board examples
+      Added TWR-K64F120M development board examples
+    </release>
+    <release version="1.0.2">
+      Added TWR-K60D100M development boards
+    </release>
+    <release version="1.0.1">
+      New devices: MK63FN1M0xxx12, MK64FN1M0xxx12, MK64FX512xxx12
+    </release>
+    <release version="1.0.0">
+      First Release version of K60 Device Family Pack.
+    </release>
+  </releases>
+
+  <keywords>
+  <!-- keywords for indexing -->
+    <keyword>Freescale</keyword>
+    <keyword>Device Support</keyword>
+    <keyword>Device Family Package Freescale</keyword>
+    <keyword>K60</keyword>
+  </keywords>
+
+  <devices>
+    <family Dfamily="K60 Series" Dvendor="Freescale:78">
+      <processor Dcore="Cortex-M4" DcoreVersion="r0p1"/>
+      <book name="Documents\dui0553a_cortex_m4_dgug.pdf"           title="Cortex-M4 Generic User Guide"/>
+
+
+      <!-- ******************************  MK60DN512xxx10  ****************************** -->
+      <device Dname="MK60DN512xxx10">
+        <processor Dfpu="0" Dmpu="0" Dendian="Little-endian" Dclock="100000000"/>
+        <compile header="Device\Include\MK60D10.h"  define="MK60DN512xxx10"/>
+        <debug      svd="SVD\MK60D10.svd"/>
+        <memory     id="IROM1"                      start="0x00000000"  size="0x80000"    startup="1"   default="1"/>
+        <memory     id="IRAM1"                      start="0x20000000"  size="0x10000"    init   ="0"   default="1"/>
+        <memory     id="IRAM2"                      start="0x1FFF0000"  size="0x10000"    init   ="0"   default="0"/>
+        <algorithm  name="Flash\MK_P512.FLM"        start="0x00000000"  size="0x80000"                  default="1"/>
+
+        <book name="Documents\K60P144M100SF2V2RM.pdf" title="MK60 100MHz Reference Manual"/>
+        <book name="Documents\K60P144M100SF2V2.pdf"   title="MK60 100MHz Data Sheet"/>
+        <description>
+Core features
+ - 32-bit ARM Cortex-M4 core (up to 100MHz CPU Clock)
+ - DSP Support, MPU
+ - Nested vectored interrupt contr. (NVIC)
+ - Async. wake-up interrupt contr. (AWIC)
+ - Debug and trace capability
+ - 2-pin serial wire debug (SWD)
+ - IEEE 1149.1 Joint Test Action Group (JTAG)
+ - IEEE 1149.7 compact JTAG (cJTAG)
+ - Trace port interface unit (TPIU)
+ - Flash patch and breakpoint (FPB)
+ - Data watchpoint and trace (DWT)
+ - Instrumentation trace macrocell (ITM)
+
+ System and power management
+ - SW/HW watchdog with external monitor pin
+ - DMA contr. with 16 channels
+ - Low-leakage wake-up unit (LLWU)
+ - Power management contr. with 10 different power modes
+ - Non-maskable interrupt (NMI)
+ - 128-bit unique identification (ID) number per chip
+
+ Clocks
+ - Multi-purpose clock generator
+ - PLL and FLL operation
+ - Internal reference clocks (32kHz or 2MHz)
+ - 12MHz to 32MHz crystal osc.
+ - 32kHz to 40kHz crystal osc.
+ - Internal 1kHz low power osc.
+ - DC to 50MHz external square wave input clock
+
+ Memories and Memory Interfaces
+ - Up to 512 KB program flash
+ - Up to 128 KB RAM
+ - Up to 256 KB FlexNVM on FlexMemory devices
+ - Flash security and protection features
+ - Serial flash programming interface (EzPort)
+
+ Security and integrity
+ - Cyclic redundancy check (CRC)
+
+ Analog
+ - 16-bit SAR ADC
+ - Programmable voltage reference (VREF)
+ - High-speed Analog comparator (CMP) with 6-bit DAC
+
+ Timers
+ - 1x8ch motor control/general purpose/PWM flex. timer (FTM)
+ - 1x2ch quadrature decoder/general purpose/PWM flex. timer (FTM)
+ - Carrier modulator timer (CMT)
+ - Prog. delay block (PDB)
+ - 1x4ch prog. interrupt timer (PIT)
+ - Low-power timer (LPT)
+
+ Communications
+ - USB FS/LS OTG/Host/Device
+ - SPI
+ - CAN
+ - I2C with SMBUS support
+ - UART (w/ ISO7816, IrDA and HW flow control)
+
+ Human-machine interface
+ - up to 100 GPIO (pin interrupt, DMA request)
+ - 5V tolerant inputs
+ - Capacitive touch sensing inputs
+        </description>
+      </device>
+
+      <!-- ******************************  MK60DN256xxx10  ****************************** -->
+      <device Dname="MK60DN256xxx10">
+        <processor Dfpu="0" Dmpu="0" Dendian="Little-endian" Dclock="100000000"/>
+        <compile header="Device\Include\MK60D10.h"  define="MK60DN256xxx10"/>
+        <debug      svd="SVD\MK60D10.svd"/>
+        <memory     id="IROM1"                      start="0x00000000"  size="0x40000"    startup="1"   default="1"/>
+        <memory     id="IRAM1"                      start="0x20000000"  size="0x8000"     init   ="0"   default="1"/>
+        <memory     id="IRAM2"                      start="0x1FFF8000"  size="0x8000"     init   ="0"   default="0"/>
+        <algorithm  name="Flash\MK_P256.FLM"        start="0x00000000"  size="0x40000"                  default="1"/>
+
+        <book name="Documents\K60P144M100SF2V2RM.pdf" title="MK60 100MHz Reference Manual"/>
+        <book name="Documents\K60P144M100SF2V2.pdf"   title="MK60 100MHz Data Sheet"/>
+        <description>
+Core features
+ - 32-bit ARM Cortex-M4 core (up to 100MHz CPU Clock)
+ - DSP Support, MPU
+ - Nested vectored interrupt contr. (NVIC)
+ - Async. wake-up interrupt contr. (AWIC)
+ - Debug and trace capability
+ - 2-pin serial wire debug (SWD)
+ - IEEE 1149.1 Joint Test Action Group (JTAG)
+ - IEEE 1149.7 compact JTAG (cJTAG)
+ - Trace port interface unit (TPIU)
+ - Flash patch and breakpoint (FPB)
+ - Data watchpoint and trace (DWT)
+ - Instrumentation trace macrocell (ITM)
+
+ System and power management
+ - SW/HW watchdog with external monitor pin
+ - DMA contr. with 16 channels
+ - Low-leakage wake-up unit (LLWU)
+ - Power management contr. with 10 different power modes
+ - Non-maskable interrupt (NMI)
+ - 128-bit unique identification (ID) number per chip
+
+ Clocks
+ - Multi-purpose clock generator
+ - PLL and FLL operation
+ - Internal reference clocks (32kHz or 2MHz)
+ - 12MHz to 32MHz crystal osc.
+ - 32kHz to 40kHz crystal osc.
+ - Internal 1kHz low power osc.
+ - DC to 50MHz external square wave input clock
+
+ Memories and Memory Interfaces
+ - Up to 512 KB program flash
+ - Up to 128 KB RAM
+ - Up to 256 KB FlexNVM on FlexMemory devices
+ - Flash security and protection features
+ - Serial flash programming interface (EzPort)
+
+ Security and integrity
+ - Cyclic redundancy check (CRC)
+
+ Analog
+ - 16-bit SAR ADC
+ - Programmable voltage reference (VREF)
+ - High-speed Analog comparator (CMP) with 6-bit DAC
+
+ Timers
+ - 1x8ch motor control/general purpose/PWM flex. timer (FTM)
+ - 1x2ch quadrature decoder/general purpose/PWM flex. timer (FTM)
+ - Carrier modulator timer (CMT)
+ - Prog. delay block (PDB)
+ - 1x4ch prog. interrupt timer (PIT)
+ - Low-power timer (LPT)
+
+ Communications
+ - USB FS/LS OTG/Host/Device
+ - SPI
+ - CAN
+ - I2C with SMBUS support
+ - UART (w/ ISO7816, IrDA and HW flow control)
+
+ Human-machine interface
+ - up to 100 GPIO (pin interrupt, DMA request)
+ - 5V tolerant inputs
+ - Capacitive touch sensing inputs
+        </description>
+      </device>
+
+      <!-- ******************************  MK60DX256xxx10  ****************************** -->
+      <device Dname="MK60DX256xxx10">
+        <processor Dfpu="0" Dmpu="0" Dendian="Little-endian" Dclock="100000000"/>
+        <compile header="Device\Include\MK60D10.h"  define="MK60DX256xxx10"/>
+        <debug      svd="SVD\MK60D10.svd"/>
+        <memory     id="IROM1"                      start="0x00000000"  size="0x40000"    startup="1"   default="1"/>
+        <memory     id="IROM2"                      start="0x10000000"  size="0x40000"    startup="0"   default="0"/>
+        <memory     id="IRAM1"                      start="0x20000000"  size="0x8000"     init   ="0"   default="1"/>
+        <memory     id="IRAM2"                      start="0x1FFF8000"  size="0x8000"     init   ="0"   default="0"/>
+        <algorithm  name="Flash\MK_P256.FLM"        start="0x00000000"  size="0x40000"                  default="1"/>
+        <algorithm  name="Flash\MK_D256.FLM"        start="0x10000000"  size="0x40000"                  default="1"/>
+
+        <book name="Documents\K60P144M100SF2V2RM.pdf" title="MK60 100MHz Reference Manual"/>
+        <book name="Documents\K60P144M100SF2V2.pdf"   title="MK60 100MHz Data Sheet"/>
+        <description>
+Core features
+ - 32-bit ARM Cortex-M4 core (up to 100MHz CPU Clock)
+ - DSP Support, MPU
+ - Nested vectored interrupt contr. (NVIC)
+ - Async. wake-up interrupt contr. (AWIC)
+ - Debug and trace capability
+ - 2-pin serial wire debug (SWD)
+ - IEEE 1149.1 Joint Test Action Group (JTAG)
+ - IEEE 1149.7 compact JTAG (cJTAG)
+ - Trace port interface unit (TPIU)
+ - Flash patch and breakpoint (FPB)
+ - Data watchpoint and trace (DWT)
+ - Instrumentation trace macrocell (ITM)
+
+ System and power management
+ - SW/HW watchdog with external monitor pin
+ - DMA contr. with 16 channels
+ - Low-leakage wake-up unit (LLWU)
+ - Power management contr. with 10 different power modes
+ - Non-maskable interrupt (NMI)
+ - 128-bit unique identification (ID) number per chip
+
+ Clocks
+ - Multi-purpose clock generator
+ - PLL and FLL operation
+ - Internal reference clocks (32kHz or 2MHz)
+ - 12MHz to 32MHz crystal osc.
+ - 32kHz to 40kHz crystal osc.
+ - Internal 1kHz low power osc.
+ - DC to 50MHz external square wave input clock
+
+ Memories and Memory Interfaces
+ - Up to 512 KB program flash
+ - Up to 128 KB RAM
+ - Up to 256 KB FlexNVM on FlexMemory devices
+ - Flash security and protection features
+ - Serial flash programming interface (EzPort)
+
+ Security and integrity
+ - Cyclic redundancy check (CRC)
+
+ Analog
+ - 16-bit SAR ADC
+ - Programmable voltage reference (VREF)
+ - High-speed Analog comparator (CMP) with 6-bit DAC
+
+ Timers
+ - 1x8ch motor control/general purpose/PWM flex. timer (FTM)
+ - 1x2ch quadrature decoder/general purpose/PWM flex. timer (FTM)
+ - Carrier modulator timer (CMT)
+ - Prog. delay block (PDB)
+ - 1x4ch prog. interrupt timer (PIT)
+ - Low-power timer (LPT)
+
+ Communications
+ - USB FS/LS OTG/Host/Device
+ - SPI
+ - CAN
+ - I2C with SMBUS support
+ - UART (w/ ISO7816, IrDA and HW flow control)
+
+ Human-machine interface
+ - up to 100 GPIO (pin interrupt, DMA request)
+ - 5V tolerant inputs
+ - Capacitive touch sensing inputs
+        </description>
+      </device>
+
+      <!-- ******************************  MK60FN1M0xxx12  ****************************** -->
+      <device Dname="MK60FN1M0xxx12">
+        <processor Dfpu="1" Dmpu="0" Dendian="Little-endian" Dclock="120000000"/>
+        <compile header="Device\Include\MK60F12.h"  define="MK60FN1M0xxx12"/>
+        <debug      svd="SVD\MK60F12.svd"/>
+        <memory     id="IROM1"                      start="0x00000000"  size="0x100000"   startup="1"   default="1"/>
+        <memory     id="IRAM1"                      start="0x20000000"  size="0x10000"    init   ="0"   default="1"/>
+        <memory     id="IRAM2"                      start="0x1FFF0000"  size="0x10000"    init   ="0"   default="0"/>
+        <algorithm  name="Flash\MK_P1M0.FLM"        start="0x00000000"  size="0x100000"                 default="1"/>
+
+        <book name="Documents\K60P144M150SF3RM.pdf" title="MK60 120/150 MHz Reference Manual"/>
+        <book name="Documents\K60P144M120SF3.pdf"   title="MK60 120MHz Data Sheet"/>
+        <description>
+Core features
+ - 32-bit ARM Cortex-M4 core with FPU (up to 120MHz CPU Clock)
+ - MPU
+ - Nested vectored interrupt contr. (NVIC)
+ - Async. wake-up interrupt contr. (AWIC)
+ - Debug and trace capability
+ - 2-pin serial wire debug (SWD)
+ - IEEE 1149.1 Joint Test Action Group (JTAG)
+ - IEEE 1149.7 compact JTAG (cJTAG)
+ - Trace port interface unit (TPIU)
+ - Flash patch and breakpoint (FPB)
+ - Data watchpoint and trace (DWT)
+ - Instrumentation trace macrocell (ITM)
+
+ System and power management
+ - SW/HW watchdog with external monitor pin
+ - DMA contr. with 16 channels
+ - Low-leakage wake-up unit (LLWU)
+ - Power management contr. with 10 different power modes
+ - Non-maskable interrupt (NMI)
+ - 128-bit unique identification (ID) number per chip
+
+ Clocks
+ - Multi-purpose clock generator
+ - PLL and FLL operation
+ - Internal reference clocks (32kHz or 2MHz)
+ - 12MHz to 32MHz crystal osc.
+ - 32kHz to 40kHz crystal osc.
+ - Internal 1kHz low power osc.
+ - DC to 50MHz external square wave input clock
+
+ Memories and Memory Interfaces
+ - Up to 1024 KB program flash memory on non-
+   FlexMemory devices
+ - Up to 512 KB program flash memory on
+   FlexMemory devices
+ - Up to 128KB  SRAM
+ - Flash security and protection features
+ - Serial flash programming interface (EzPort)
+
+ Security and integrity
+ - Cyclic redundancy check (CRC)
+
+ Analog
+ - 16-bit SAR ADC
+ - Programmable voltage reference (VREF)
+ - High-speed Analog comparator (CMP) with 6-bit DAC
+
+ Timers
+ - 1x8ch motor control/general purpose/PWM flex. timer (FTM)
+ - 1x2ch quadrature decoder/general purpose/PWM flex. timer (FTM)
+ - Carrier modulator timer (CMT)
+ - Prog. delay block (PDB)
+ - 1x4ch prog. interrupt timer (PIT)
+ - Low-power timer (LPT)
+
+ Communications
+ - USB FS/LS OTG/Host/Device
+ - SPI
+ - CAN
+ - I2C with SMBUS support
+ - UART (w/ ISO7816, IrDA and HW flow control)
+
+ Human-machine interface
+ - up to 100 GPIO (pin interrupt, DMA request)
+ - 5V tolerant inputs
+ - Capacitive touch sensing inputs
+        </description>
+      </device>
+
+      <!-- ******************************  MK60FX512xxx12  ****************************** -->
+      <device Dname="MK60FX512xxx12">
+        <processor Dfpu="1" Dmpu="0" Dendian="Little-endian" Dclock="120000000"/>
+        <compile header="Device\Include\MK60F12.h"  define="MK60FX512xxx12"/>
+        <debug      svd="SVD\MK60F12.svd"/>
+        <memory     id="IROM1"                      start="0x00000000"  size="0x80000"    startup="1"   default="1"/>
+        <memory     id="IROM2"                      start="0x10000000"  size="0x80000"    startup="0"   default="0"/>
+        <memory     id="IRAM1"                      start="0x20000000"  size="0x10000"    init   ="0"   default="1"/>
+        <memory     id="IRAM2"                      start="0x1FFF0000"  size="0x10000"    init   ="0"   default="0"/>
+        <algorithm  name="Flash\MK_P512X.FLM"       start="0x00000000"  size="0x80000"                  default="1"/>
+        <algorithm  name="Flash\MK_D512.FLM"        start="0x10000000"  size="0x80000"                  default="1"/>
+
+        <book name="Documents\K60P144M150SF3RM.pdf" title="MK60 120/150 MHz Reference Manual"/>
+        <book name="Documents\K60P144M120SF3.pdf"   title="MK60 120MHz Data Sheet"/>
+        <description>
+Core features
+ - 32-bit ARM Cortex-M4 core with FPU (up to 120MHz CPU Clock)
+ - MPU
+ - Nested vectored interrupt contr. (NVIC)
+ - Async. wake-up interrupt contr. (AWIC)
+ - Debug and trace capability
+ - 2-pin serial wire debug (SWD)
+ - IEEE 1149.1 Joint Test Action Group (JTAG)
+ - IEEE 1149.7 compact JTAG (cJTAG)
+ - Trace port interface unit (TPIU)
+ - Flash patch and breakpoint (FPB)
+ - Data watchpoint and trace (DWT)
+ - Instrumentation trace macrocell (ITM)
+
+ System and power management
+ - SW/HW watchdog with external monitor pin
+ - DMA contr. with 16 channels
+ - Low-leakage wake-up unit (LLWU)
+ - Power management contr. with 10 different power modes
+ - Non-maskable interrupt (NMI)
+ - 128-bit unique identification (ID) number per chip
+
+ Clocks
+ - Multi-purpose clock generator
+ - PLL and FLL operation
+ - Internal reference clocks (32kHz or 2MHz)
+ - 12MHz to 32MHz crystal osc.
+ - 32kHz to 40kHz crystal osc.
+ - Internal 1kHz low power osc.
+ - DC to 50MHz external square wave input clock
+
+ Memories and Memory Interfaces
+ - Up to 1024 KB program flash memory on non-
+   FlexMemory devices
+ - Up to 512 KB program flash memory on
+   FlexMemory devices
+ - Up to 128KB  SRAM
+ - Flash security and protection features
+ - Serial flash programming interface (EzPort)
+
+ Security and integrity
+ - Cyclic redundancy check (CRC)
+
+ Analog
+ - 16-bit SAR ADC
+ - Programmable voltage reference (VREF)
+ - High-speed Analog comparator (CMP) with 6-bit DAC
+
+ Timers
+ - 1x8ch motor control/general purpose/PWM flex. timer (FTM)
+ - 1x2ch quadrature decoder/general purpose/PWM flex. timer (FTM)
+ - Carrier modulator timer (CMT)
+ - Prog. delay block (PDB)
+ - 1x4ch prog. interrupt timer (PIT)
+ - Low-power timer (LPT)
+
+ Communications
+ - USB FS/LS OTG/Host/Device
+ - SPI
+ - CAN
+ - I2C with SMBUS support
+ - UART (w/ ISO7816, IrDA and HW flow control)
+
+ Human-machine interface
+ - up to 100 GPIO (pin interrupt, DMA request)
+ - 5V tolerant inputs
+ - Capacitive touch sensing inputs
+        </description>
+      </device>
+
+      <!-- ******************************  MK60FN1M0xxx15  ****************************** -->
+      <device Dname="MK60FN1M0xxx15">
+        <processor Dfpu="1" Dmpu="0" Dendian="Little-endian" Dclock="150000000"/>
+        <compile header="Device\Include\MK60F15.h"  define="MK60FN1M0xxx15"/>
+        <debug      svd="SVD\MK60F15.svd"/>
+        <memory     id="IROM1"                      start="0x00000000"  size="0x100000"   startup="1"   default="1"/>
+        <memory     id="IRAM1"                      start="0x20000000"  size="0x10000"    init   ="0"   default="1"/>
+        <memory     id="IRAM2"                      start="0x1FFF0000"  size="0x10000"    init   ="0"   default="0"/>
+        <algorithm  name="Flash\MK_P1M0.FLM"        start="0x00000000"  size="0x100000"                 default="1"/>
+
+        <book name="Documents\K60P144M150SF3RM.pdf" title="MK60 120/150 MHz Reference Manual"/>
+        <book name="Documents\K60P144M150SF3.pdf"   title="MK60 150MHz Data Sheet"/>
+        <description>
+Core features
+ - 32-bit ARM Cortex-M4 core with FPU (up to 150MHz CPU Clock)
+ - MPU
+ - Nested vectored interrupt contr. (NVIC)
+ - Async. wake-up interrupt contr. (AWIC)
+ - Debug and trace capability
+  - 2-pin serial wire debug (SWD)
+  - IEEE 1149.1 Joint Test Action Group (JTAG)
+  - IEEE 1149.7 compact JTAG (cJTAG)
+  - Trace port interface unit (TPIU)
+  - Flash patch and breakpoint (FPB)
+  - Data watchpoint and trace (DWT)
+  - Instrumentation trace macrocell (ITM)
+
+ System and power management
+ - SW/HW watchdog with external monitor pin
+ - DMA contr. with 16 channels
+ - Low-leakage wake-up unit (LLWU)
+ - Power management contr. with 10 different power modes
+ - Non-maskable interrupt (NMI)
+ - 128-bit unique identification (ID) number per chip
+
+ Clocks
+ - Multi-purpose clock generator
+  - PLL and FLL operation
+  - Internal reference clocks (32kHz or 2MHz)
+ - 12MHz to 32MHz crystal osc.
+ - 32kHz to 40kHz crystal osc.
+ - Internal 1kHz low power osc.
+ - DC to 50MHz external square wave input clock
+
+ Memories and Memory Interfaces
+ - Up to 1024 KB program flash memory on non-
+   FlexMemory devices
+ - Up to 512 KB program flash memory on
+   FlexMemory devices
+ - Up to 128KB  SRAM
+ - Flash security and protection features
+ - Serial flash programming interface (EzPort)
+
+ Security and integrity
+ - Cyclic redundancy check (CRC)
+
+ Analog
+ - 16-bit SAR ADC
+ - Programmable voltage reference (VREF)
+ - High-speed Analog comparator (CMP) with 6-bit DAC
+
+ Timers
+ - 1x8ch motor control/general purpose/PWM flex. timer (FTM)
+ - 1x2ch quadrature decoder/general purpose/PWM flex. timer (FTM)
+ - Carrier modulator timer (CMT)
+ - Prog. delay block (PDB)
+ - 1x4ch prog. interrupt timer (PIT)
+ - Low-power timer (LPT)
+
+ Communications
+ - USB FS/LS OTG/Host/Device
+ - SPI
+ - CAN
+ - I2C with SMBUS support
+ - UART (w/ ISO7816, IrDA and HW flow control)
+
+ Human-machine interface
+ - up to 100 GPIO (pin interrupt, DMA request)
+ - 5V tolerant inputs
+ - Capacitive touch sensing inputs
+        </description>
+      </device>
+
+      <!-- ******************************  MK60FX512xxx15  ****************************** -->
+      <device Dname="MK60FX512xxx15">
+        <processor Dfpu="1" Dmpu="0" Dendian="Little-endian" Dclock="150000000"/>
+        <compile header="Device\Include\MK60F15.h"  define="MK60FX512xxx15"/>
+        <debug      svd="SVD\MK60F15.svd"/>
+        <memory     id="IROM1"                      start="0x00000000"  size="0x80000"    startup="1"   default="1"/>
+        <memory     id="IROM2"                      start="0x10000000"  size="0x80000"    startup="0"   default="0"/>
+        <memory     id="IRAM1"                      start="0x20000000"  size="0x10000"    init   ="0"   default="1"/>
+        <memory     id="IRAM2"                      start="0x1FFF0000"  size="0x10000"    init   ="0"   default="0"/>
+        <algorithm  name="Flash\MK_P512X.FLM"       start="0x00000000"  size="0x80000"                  default="1"/>
+        <algorithm  name="Flash\MK_D512.FLM"        start="0x10000000"  size="0x80000"                  default="1"/>
+
+        <book name="Documents\K60P144M150SF3RM.pdf" title="MK60 120/150 MHz Reference Manual"/>
+        <book name="Documents\K60P144M150SF3.pdf"   title="MK60 150MHz Data Sheet"/>
+        <description>
+Core features
+ - 32-bit ARM Cortex-M4 core with FPU (up to 150MHz CPU Clock)
+ - MPU
+ - Nested vectored interrupt contr. (NVIC)
+ - Async. wake-up interrupt contr. (AWIC)
+ - Debug and trace capability
+  - 2-pin serial wire debug (SWD)
+  - IEEE 1149.1 Joint Test Action Group (JTAG)
+  - IEEE 1149.7 compact JTAG (cJTAG)
+  - Trace port interface unit (TPIU)
+  - Flash patch and breakpoint (FPB)
+  - Data watchpoint and trace (DWT)
+  - Instrumentation trace macrocell (ITM)
+
+ System and power management
+ - SW/HW watchdog with external monitor pin
+ - DMA contr. with 16 channels
+ - Low-leakage wake-up unit (LLWU)
+ - Power management contr. with 10 different power modes
+ - Non-maskable interrupt (NMI)
+ - 128-bit unique identification (ID) number per chip
+
+ Clocks
+ - Multi-purpose clock generator
+  - PLL and FLL operation
+  - Internal reference clocks (32kHz or 2MHz)
+ - 12MHz to 32MHz crystal osc.
+ - 32kHz to 40kHz crystal osc.
+ - Internal 1kHz low power osc.
+ - DC to 50MHz external square wave input clock
+
+ Memories and Memory Interfaces
+ - Up to 1024 KB program flash memory on non-
+   FlexMemory devices
+ - Up to 512 KB program flash memory on
+   FlexMemory devices
+ - Up to 128KB  SRAM
+ - Flash security and protection features
+ - Serial flash programming interface (EzPort)
+
+ Security and integrity
+ - Cyclic redundancy check (CRC)
+
+ Analog
+ - 16-bit SAR ADC
+ - Programmable voltage reference (VREF)
+ - High-speed Analog comparator (CMP) with 6-bit DAC
+
+ Timers
+ - 1x8ch motor control/general purpose/PWM flex. timer (FTM)
+ - 1x2ch quadrature decoder/general purpose/PWM flex. timer (FTM)
+ - Carrier modulator timer (CMT)
+ - Prog. delay block (PDB)
+ - 1x4ch prog. interrupt timer (PIT)
+ - Low-power timer (LPT)
+
+ Communications
+ - USB FS/LS OTG/Host/Device
+ - SPI
+ - CAN
+ - I2C with SMBUS support
+ - UART (w/ ISO7816, IrDA and HW flow control)
+
+ Human-machine interface
+ - up to 100 GPIO (pin interrupt, DMA request)
+ - 5V tolerant inputs
+ - Capacitive touch sensing inputs
+        </description>
+      </device>
+
+      <!-- ******************************  MK61FN1M0xxx12  ****************************** -->
+      <device Dname="MK61FN1M0xxx12">
+        <processor Dfpu="1" Dmpu="0" Dendian="Little-endian" Dclock="120000000"/>
+        <compile header="Device\Include\MK61F12.h"  define="MK61FN1M0xxx12"/>
+        <debug      svd="SVD\MK61F12.svd"/>
+        <memory     id="IROM1"                      start="0x00000000"  size="0x100000"   startup="1"   default="1"/>
+        <memory     id="IRAM1"                      start="0x20000000"  size="0x10000"    init   ="0"   default="1"/>
+        <memory     id="IRAM2"                      start="0x1FFF0000"  size="0x10000"    init   ="0"   default="0"/>
+        <algorithm  name="Flash\MK_P1M0.FLM"        start="0x00000000"  size="0x100000"                 default="1"/>
+
+        <book name="Documents\K61P256M150SF3RM.pdf" title="MK61 120/150 MHz Reference Manual"/>
+        <book name="Documents\K61P256M120SF3.pdf"   title="MK61 120MHz Data Sheet"/>
+        <description>
+Core features
+ - 32-bit ARM Cortex-M4 core with FPU (up to 120MHz CPU Clock)
+ - MPU
+ - Nested vectored interrupt contr. (NVIC)
+ - Async. wake-up interrupt contr. (AWIC)
+ - Debug and trace capability
+  - 2-pin serial wire debug (SWD)
+  - IEEE 1149.1 Joint Test Action Group (JTAG)
+  - IEEE 1149.7 compact JTAG (cJTAG)
+  - Trace port interface unit (TPIU)
+  - Flash patch and breakpoint (FPB)
+  - Data watchpoint and trace (DWT)
+  - Instrumentation trace macrocell (ITM)
+
+ System and power management
+ - SW/HW watchdog with external monitor pin
+ - DMA contr. with 16 channels
+ - Low-leakage wake-up unit (LLWU)
+ - Power management contr. with 10 different power modes
+ - Non-maskable interrupt (NMI)
+ - 128-bit unique identification (ID) number per chip
+
+ Clocks
+ - Multi-purpose clock generator
+  - PLL and FLL operation
+  - Internal reference clocks (32kHz or 2MHz)
+ - 12MHz to 32MHz crystal osc.
+ - 32kHz to 40kHz crystal osc.
+ - Internal 1kHz low power osc.
+ - DC to 50MHz external square wave input clock
+
+ Memories and Memory Interfaces
+ - Up to 1024 KB program flash memory on non-
+   FlexMemory devices
+ - Up to 512 KB program flash memory on
+   FlexMemory devices
+ - Up to 512 KB FlexNVM on FlexMemory devices
+ - Up to 128KB  SRAM
+ - Flash security and protection features
+ - Serial flash programming interface (EzPort)
+
+ Security and integrity
+ - Cyclic redundancy check (CRC)
+
+ Analog
+ - 16-bit SAR ADC
+ - Programmable voltage reference (VREF)
+ - High-speed Analog comparator (CMP) with 6-bit DAC
+
+ Timers
+ - 1x8ch motor control/general purpose/PWM flex. timer (FTM)
+ - 1x2ch quadrature decoder/general purpose/PWM flex. timer (FTM)
+ - Carrier modulator timer (CMT)
+ - Prog. delay block (PDB)
+ - 1x4ch prog. interrupt timer (PIT)
+ - Low-power timer (LPT)
+
+ Communications
+ - USB FS/LS OTG/Host/Device
+ - SPI
+ - CAN
+ - I2C with SMBUS support
+ - UART (w/ ISO7816, IrDA and HW flow control)
+
+ Human-machine interface
+ - up to 100 GPIO (pin interrupt, DMA request)
+ - 5V tolerant inputs
+ - Capacitive touch sensing inputs
+        </description>
+      </device>
+
+      <!-- ******************************  MK61FX512xxx12  ****************************** -->
+      <device Dname="MK61FX512xxx12">
+        <processor Dfpu="1" Dmpu="0" Dendian="Little-endian" Dclock="120000000"/>
+        <compile header="Device\Include\MK61F12.h"  define="MK61FX512xxx12"/>
+        <debug      svd="SVD\MK61F12.svd"/>
+        <memory     id="IROM1"                      start="0x00000000"  size="0x80000"    startup="1"   default="1"/>
+        <memory     id="IROM2"                      start="0x10000000"  size="0x80000"    startup="0"   default="0"/>
+        <memory     id="IRAM1"                      start="0x20000000"  size="0x10000"    init   ="0"   default="1"/>
+        <memory     id="IRAM2"                      start="0x1FFF0000"  size="0x10000"    init   ="0"   default="0"/>
+        <algorithm  name="Flash\MK_P512X.FLM"       start="0x00000000"  size="0x80000"                  default="1"/>
+        <algorithm  name="Flash\MK_D512.FLM"        start="0x10000000"  size="0x80000"                  default="1"/>
+
+        <book name="Documents\K61P256M150SF3RM.pdf" title="MK61 120/150 MHz Reference Manual"/>
+        <book name="Documents\K61P256M120SF3.pdf"   title="MK61 120MHz Data Sheet"/>
+        <description>
+Core features
+ - 32-bit ARM Cortex-M4 core with FPU (up to 120MHz CPU Clock)
+ - MPU
+ - Nested vectored interrupt contr. (NVIC)
+ - Async. wake-up interrupt contr. (AWIC)
+ - Debug and trace capability
+  - 2-pin serial wire debug (SWD)
+  - IEEE 1149.1 Joint Test Action Group (JTAG)
+  - IEEE 1149.7 compact JTAG (cJTAG)
+  - Trace port interface unit (TPIU)
+  - Flash patch and breakpoint (FPB)
+  - Data watchpoint and trace (DWT)
+  - Instrumentation trace macrocell (ITM)
+
+ System and power management
+ - SW/HW watchdog with external monitor pin
+ - DMA contr. with 16 channels
+ - Low-leakage wake-up unit (LLWU)
+ - Power management contr. with 10 different power modes
+ - Non-maskable interrupt (NMI)
+ - 128-bit unique identification (ID) number per chip
+
+ Clocks
+ - Multi-purpose clock generator
+  - PLL and FLL operation
+  - Internal reference clocks (32kHz or 2MHz)
+ - 12MHz to 32MHz crystal osc.
+ - 32kHz to 40kHz crystal osc.
+ - Internal 1kHz low power osc.
+ - DC to 50MHz external square wave input clock
+
+ Memories and Memory Interfaces
+ - Up to 1024 KB program flash memory on non-
+   FlexMemory devices
+ - Up to 512 KB program flash memory on
+   FlexMemory devices
+ - Up to 512 KB FlexNVM on FlexMemory devices
+ - Up to 128KB  SRAM
+ - Flash security and protection features
+ - Serial flash programming interface (EzPort)
+
+ Security and integrity
+ - Cyclic redundancy check (CRC)
+
+ Analog
+ - 16-bit SAR ADC
+ - Programmable voltage reference (VREF)
+ - High-speed Analog comparator (CMP) with 6-bit DAC
+
+ Timers
+ - 1x8ch motor control/general purpose/PWM flex. timer (FTM)
+ - 1x2ch quadrature decoder/general purpose/PWM flex. timer (FTM)
+ - Carrier modulator timer (CMT)
+ - Prog. delay block (PDB)
+ - 1x4ch prog. interrupt timer (PIT)
+ - Low-power timer (LPT)
+
+ Communications
+ - USB FS/LS OTG/Host/Device
+ - SPI
+ - CAN
+ - I2C with SMBUS support
+ - UART (w/ ISO7816, IrDA and HW flow control)
+
+ Human-machine interface
+ - up to 100 GPIO (pin interrupt, DMA request)
+ - 5V tolerant inputs
+ - Capacitive touch sensing inputs
+        </description>
+      </device>
+
+      <!-- ******************************  MK61FN1M0xxx15  ****************************** -->
+      <device Dname="MK61FN1M0xxx15">
+        <processor Dfpu="1" Dmpu="0" Dendian="Little-endian" Dclock="150000000"/>
+        <compile header="Device\Include\MK61F15.h"  define="MK61FN1M0xxx15"/>
+        <debug      svd="SVD\MK61F15.svd"/>
+        <memory     id="IROM1"                      start="0x00000000"  size="0x100000"   startup="1"   default="1"/>
+        <memory     id="IRAM1"                      start="0x20000000"  size="0x10000"    init   ="0"   default="1"/>
+        <memory     id="IRAM2"                      start="0x1FFF0000"  size="0x10000"    init   ="0"   default="0"/>
+        <algorithm  name="Flash\MK_P1M0.FLM"        start="0x00000000"  size="0x100000"                 default="1"/>
+
+        <book name="Documents\K61P256M150SF3RM.pdf" title="MK61 120/150 MHz Reference Manual"/>
+        <book name="Documents\K61P256M150SF3.pdf"   title="MK61 150MHz Data Sheet"/>
+        <description>
+Core features
+ - 32-bit ARM Cortex-M4 core with FPU (up to 150MHz CPU Clock)
+ - MPU
+ - Nested vectored interrupt contr. (NVIC)
+ - Async. wake-up interrupt contr. (AWIC)
+ - Debug and trace capability
+  - 2-pin serial wire debug (SWD)
+  - IEEE 1149.1 Joint Test Action Group (JTAG)
+  - IEEE 1149.7 compact JTAG (cJTAG)
+  - Trace port interface unit (TPIU)
+  - Flash patch and breakpoint (FPB)
+  - Data watchpoint and trace (DWT)
+  - Instrumentation trace macrocell (ITM)
+
+ System and power management
+ - SW/HW watchdog with external monitor pin
+ - DMA contr. with 16 channels
+ - Low-leakage wake-up unit (LLWU)
+ - Power management contr. with 10 different power modes
+ - Non-maskable interrupt (NMI)
+ - 128-bit unique identification (ID) number per chip
+
+ Clocks
+ - Multi-purpose clock generator
+  - PLL and FLL operation
+  - Internal reference clocks (32kHz or 2MHz)
+ - 12MHz to 32MHz crystal osc.
+ - 32kHz to 40kHz crystal osc.
+ - Internal 1kHz low power osc.
+ - DC to 50MHz external square wave input clock
+
+ Memories and Memory Interfaces
+ - Up to 1024 KB program flash memory on non-
+   FlexMemory devices
+ - Up to 512 KB program flash memory on
+   FlexMemory devices
+ - Up to 512 KB FlexNVM on FlexMemory devices
+ - Up to 128KB  SRAM
+ - Flash security and protection features
+ - Serial flash programming interface (EzPort)
+
+ Security and integrity
+ - Cyclic redundancy check (CRC)
+
+ Analog
+ - 16-bit SAR ADC
+ - Programmable voltage reference (VREF)
+ - High-speed Analog comparator (CMP) with 6-bit DAC
+
+ Timers
+ - 1x8ch motor control/general purpose/PWM flex. timer (FTM)
+ - 1x2ch quadrature decoder/general purpose/PWM flex. timer (FTM)
+ - Carrier modulator timer (CMT)
+ - Prog. delay block (PDB)
+ - 1x4ch prog. interrupt timer (PIT)
+ - Low-power timer (LPT)
+
+ Communications
+ - USB FS/LS OTG/Host/Device
+ - SPI
+ - CAN
+ - I2C with SMBUS support
+ - UART (w/ ISO7816, IrDA and HW flow control)
+
+ Human-machine interface
+ - up to 100 GPIO (pin interrupt, DMA request)
+ - 5V tolerant inputs
+ - Capacitive touch sensing inputs
+        </description>
+      </device>
+
+      <!-- ******************************  MK61FX512xxx15  ****************************** -->
+      <device Dname="MK61FX512xxx15">
+        <processor Dfpu="1" Dmpu="0" Dendian="Little-endian" Dclock="150000000"/>
+        <compile header="Device\Include\MK61F15.h"  define="MK61FX512xxx15"/>
+        <debug      svd="SVD\MK61F15.svd"/>
+        <memory     id="IROM1"                      start="0x00000000"  size="0x80000"    startup="1"   default="1"/>
+        <memory     id="IROM2"                      start="0x10000000"  size="0x80000"    startup="0"   default="0"/>
+        <memory     id="IRAM1"                      start="0x20000000"  size="0x10000"    init   ="0"   default="1"/>
+        <memory     id="IRAM2"                      start="0x1FFF0000"  size="0x10000"    init   ="0"   default="0"/>
+        <algorithm  name="Flash\MK_P512X.FLM"       start="0x00000000"  size="0x80000"                  default="1"/>
+        <algorithm  name="Flash\MK_D512.FLM"        start="0x10000000"  size="0x80000"                  default="1"/>
+
+        <book name="Documents\K61P256M150SF3RM.pdf" title="MK61 120/150 MHz Reference Manual"/>
+        <book name="Documents\K61P256M150SF3.pdf"   title="MK61 150MHz Data Sheet"/>
+        <description>
+Core features
+ - 32-bit ARM Cortex-M4 core with FPU (up to 150MHz CPU Clock)
+ - MPU
+ - Nested vectored interrupt contr. (NVIC)
+ - Async. wake-up interrupt contr. (AWIC)
+ - Debug and trace capability
+  - 2-pin serial wire debug (SWD)
+  - IEEE 1149.1 Joint Test Action Group (JTAG)
+  - IEEE 1149.7 compact JTAG (cJTAG)
+  - Trace port interface unit (TPIU)
+  - Flash patch and breakpoint (FPB)
+  - Data watchpoint and trace (DWT)
+  - Instrumentation trace macrocell (ITM)
+
+ System and power management
+ - SW/HW watchdog with external monitor pin
+ - DMA contr. with 16 channels
+ - Low-leakage wake-up unit (LLWU)
+ - Power management contr. with 10 different power modes
+ - Non-maskable interrupt (NMI)
+ - 128-bit unique identification (ID) number per chip
+
+ Clocks
+ - Multi-purpose clock generator
+  - PLL and FLL operation
+  - Internal reference clocks (32kHz or 2MHz)
+ - 12MHz to 32MHz crystal osc.
+ - 32kHz to 40kHz crystal osc.
+ - Internal 1kHz low power osc.
+ - DC to 50MHz external square wave input clock
+
+ Memories and Memory Interfaces
+ - Up to 1024 KB program flash memory on non-
+   FlexMemory devices
+ - Up to 512 KB program flash memory on
+   FlexMemory devices
+ - Up to 512 KB FlexNVM on FlexMemory devices
+ - Up to 128KB  SRAM
+ - Flash security and protection features
+ - Serial flash programming interface (EzPort)
+
+ Security and integrity
+ - Cyclic redundancy check (CRC)
+
+ Analog
+ - 16-bit SAR ADC
+ - Programmable voltage reference (VREF)
+ - High-speed Analog comparator (CMP) with 6-bit DAC
+
+ Timers
+ - 1x8ch motor control/general purpose/PWM flex. timer (FTM)
+ - 1x2ch quadrature decoder/general purpose/PWM flex. timer (FTM)
+ - Carrier modulator timer (CMT)
+ - Prog. delay block (PDB)
+ - 1x4ch prog. interrupt timer (PIT)
+ - Low-power timer (LPT)
+
+ Communications
+ - USB FS/LS OTG/Host/Device
+ - SPI
+ - CAN
+ - I2C with SMBUS support
+ - UART (w/ ISO7816, IrDA and HW flow control)
+
+ Human-machine interface
+ - up to 100 GPIO (pin interrupt, DMA request)
+ - 5V tolerant inputs
+ - Capacitive touch sensing inputs
+        </description>
+      </device>
+
+      <!-- ******************************  MK63FN1M0xxx12  ****************************** -->
+      <device Dname="MK63FN1M0xxx12">
+        <processor Dfpu="1" Dmpu="0" Dendian="Little-endian" Dclock="120000000"/>
+        <compile header="Device\Include\MK63F12.h"  define="MK63FN1M0xxx12"/>
+        <debug      svd="SVD\MK63F12.svd"/>
+        <memory     id="IROM1"                      start="0x00000000"  size="0x100000"   startup="1"   default="1"/>
+        <memory     id="IRAM1"                      start="0x20000000"  size="0x30000"    init   ="0"   default="1"/>
+        <memory     id="IRAM2"                      start="0x1FFF0000"  size="0x10000"    init   ="0"   default="0"/>
+        <algorithm  name="Flash\MK_P1M0.FLM"        start="0x00000000"  size="0x100000"                 default="1"/>
+
+        <book name="Documents\K63P144M120SF5RM.pdf" title="MK63FN1M0xxx12 Reference Manual"/>
+        <book name="Documents\K63P144M120SF5.pdf"   title="MK63FN1M0xxx12 Data Sheet"/>
+        <description>
+Core features
+ - 32-bit ARM Cortex-M4 core with FPU (up to 120MHz CPU Clock)
+ - MPU
+ - Nested vectored interrupt contr. (NVIC)
+ - Async. wake-up interrupt contr. (AWIC)
+ - Debug and trace capability
+ - 2-pin serial wire debug (SWD)
+ - IEEE 1149.1 Joint Test Action Group (JTAG)
+ - IEEE 1149.7 compact JTAG (cJTAG)
+ - Trace port interface unit (TPIU)
+ - Flash patch and breakpoint (FPB)
+ - Data watchpoint and trace (DWT)
+ - Instrumentation trace macrocell (ITM)
+
+Memories and memory interfaces
+ - Up to 1 MB program flash memory on non-FlexMemory devices
+ - Up to 260 KB RAM
+ - Serial programming interface (EzPort)
+ - FlexBus external bus interface
+
+Clocks
+ - 3 to 32 MHz crystal oscillator
+ - 32 kHz crystal oscillator
+ - Multi-purpose clock generator
+ - 1 kHz, 32 kHz, and 4 Mhz internal reference clock
+
+System peripherals
+ - Multiple low-power modes to provide power
+   optimization based on application requirements
+ - Memory protection unit with multi-master
+   protection
+ - 16-channel DMA controller, supporting up to 63
+   request sources
+ - External watchdog monitor
+ - Software watchdog
+ - Low-leakage wakeup unit
+
+Security and integrity modules
+ - Hardware CRC module to support fast cyclic
+   redundancy checks
+ - Hardware random-number generator
+ - Hardware encryption supporting DES, 3DES, AES,
+   MD5, SHA-1, and SHA-256 algorithms
+ - 128-bit unique identification (ID) number per chip
+
+Human-machine interface
+ - General-purpose input/output
+
+Analog modules
+ - Two 16-bit SAR ADCs
+ - Two 12-bit DACs
+ - Three analog comparators (CMP) containing a 6-bit
+   DAC and programmable reference input
+ - Voltage reference
+
+Timers
+ - Programmable delay block
+ - Two 8-channel motor control/general purpose/PWM
+   timers
+ - Two 2-channel quadrature decoder/general purpose
+   timers
+ - IEEE 1588 timers
+ - Periodic interrupt timers
+ - 16-bit low-power timer
+ - Carrier modulator transmitter
+ - Real-time clock
+       </description>
+      </device>
+
+      <!-- ******************************  MK64FN1M0xxx12  ****************************** -->
+      <device Dname="MK64FN1M0xxx12">
+        <processor Dfpu="1" Dmpu="0" Dendian="Little-endian" Dclock="120000000"/>
+        <compile header="Device\Include\MK64F12.h"  define="MK64FN1M0xxx12"/>
+        <debug      svd="SVD\MK64F12.svd"/>
+        <memory     id="IROM1"                      start="0x00000000"  size="0x100000"   startup="1"   default="1"/>
+        <memory     id="IRAM1"                      start="0x20000000"  size="0x30000"    init   ="0"   default="1"/>
+        <memory     id="IRAM2"                      start="0x1FFF0000"  size="0x10000"    init   ="0"   default="0"/>
+        <algorithm  name="Flash\MK_P1M0.FLM"        start="0x00000000"  size="0x100000"                 default="1"/>
+
+        <book name="Documents\K64P144M120SF5RM.pdf" title="MK64 120 MHz Reference Manual"/>
+        <book name="Documents\K64P144M120SF5.pdf"   title="MK64 120 MHz Data Sheet"/>
+        <description>
+Core features
+ - 32-bit ARM Cortex-M4 core with FPU (up to 120MHz CPU Clock)
+ - MPU
+ - Nested vectored interrupt contr. (NVIC)
+ - Async. wake-up interrupt contr. (AWIC)
+ - Debug and trace capability
+  - 2-pin serial wire debug (SWD)
+  - IEEE 1149.1 Joint Test Action Group (JTAG)
+  - IEEE 1149.7 compact JTAG (cJTAG)
+  - Trace port interface unit (TPIU)
+  - Flash patch and breakpoint (FPB)
+  - Data watchpoint and trace (DWT)
+  - Instrumentation trace macrocell (ITM)
+
+ Memories and memory interfaces
+ - Up to 1 MB program flash memory on non-
+   FlexMemory devices
+ - Up to 640 KB program flash memory on
+   FlexMemory devices
+ - Up to 128 KB FlexNVM on FlexMemory devices
+ - 4 KB FlexRAM on FlexMemory devices
+ - Up to 260 KB RAM
+ - Serial programming interface (EzPort)
+ - FlexBus external bus interface
+
+Clocks
+ - 3 to 32 MHz crystal oscillator
+ - 32 kHz crystal oscillator
+ - Multi-purpose clock generator
+ - 1 kHz, 32 kHz, and 4 Mhz internal reference clock
+
+System peripherals
+ - Multiple low-power modes to provide power
+   optimization based on application requirements
+ - Memory protection unit with multi-master
+   protection
+ - 16-channel DMA controller, supporting up to 63
+   request sources
+ - External watchdog monitor
+ - Software watchdog
+ - Low-leakage wakeup unit
+
+Security and integrity modules
+ - Hardware CRC module to support fast cyclic
+   redundancy checks
+ - Hardware random-number generator
+ - Hardware encryption supporting DES, 3DES, AES,
+   MD5, SHA-1, and SHA-256 algorithms
+ - 128-bit unique identification (ID) number per chip
+
+Human-machine interface
+ - General-purpose input/output
+
+Analog modules
+ - Two 16-bit SAR ADCs
+ - Two 12-bit DACs
+ - Three analog comparators (CMP) containing a 6-bit
+   DAC and programmable reference input
+ - Voltage reference
+
+Timers
+ - Programmable delay block
+ - Two 8-channel motor control/general purpose/PWM timers
+ - Two 2-channel quadrature decoder/general purpose timers
+ - IEEE 1588 timers
+ - Periodic interrupt timers
+ - 16-bit low-power timer
+ - Carrier modulator transmitter
+ - Real-time clock
+        </description>
+      </device>
+
+      <!-- ******************************  MK64FX512xxx12  ****************************** -->
+      <device Dname="MK64FX512xxx12">
+        <processor Dfpu="1" Dmpu="0" Dendian="Little-endian" Dclock="120000000"/>
+        <compile header="Device\Include\MK64F12.h"  define="MK64FX512xxx12"/>
+        <debug      svd="SVD\MK64F12.svd"/>
+        <memory     id="IROM1"                      start="0x00000000"  size="0x80000"    startup="1"   default="1"/>
+        <memory     id="IROM2"                      start="0x10000000"  size="0x20000"    startup="0"   default="0"/>
+        <memory     id="IRAM1"                      start="0x20000000"  size="0x20000"    init   ="0"   default="1"/>
+        <memory     id="IRAM2"                      start="0x1FFF0000"  size="0x10000"    init   ="0"   default="0"/>
+        <algorithm  name="Flash\MK_P512X.FLM"       start="0x00000000"  size="0x80000"                  default="1"/>
+        <algorithm  name="Flash\MKD128_4KB_SECTOR.FLM"        start="0x10000000"  size="0x20000"                  default="1"/>
+
+        <book name="Documents\K64P144M120SF5RM.pdf" title="MK64 120 MHz Reference Manual"/>
+        <book name="Documents\K64P144M120SF5.pdf"   title="MK64 120 MHz Data Sheet"/>
+        <description>
+Core features
+ - 32-bit ARM Cortex-M4 core with FPU (up to 120MHz CPU Clock)
+ - MPU
+ - Nested vectored interrupt contr. (NVIC)
+ - Async. wake-up interrupt contr. (AWIC)
+ - Debug and trace capability
+  - 2-pin serial wire debug (SWD)
+  - IEEE 1149.1 Joint Test Action Group (JTAG)
+  - IEEE 1149.7 compact JTAG (cJTAG)
+  - Trace port interface unit (TPIU)
+  - Flash patch and breakpoint (FPB)
+  - Data watchpoint and trace (DWT)
+  - Instrumentation trace macrocell (ITM)
+
+ Memories and memory interfaces
+ - Up to 1 MB program flash memory on non-
+   FlexMemory devices
+ - Up to 640 KB program flash memory on
+   FlexMemory devices
+ - Up to 128 KB FlexNVM on FlexMemory devices
+ - 4 KB FlexRAM on FlexMemory devices
+ - Up to 260 KB RAM
+ - Serial programming interface (EzPort)
+ - FlexBus external bus interface
+
+Clocks
+ - 3 to 32 MHz crystal oscillator
+ - 32 kHz crystal oscillator
+ - Multi-purpose clock generator
+ - 1 kHz, 32 kHz, and 4 Mhz internal reference clock
+
+System peripherals
+ - Multiple low-power modes to provide power
+   optimization based on application requirements
+ - Memory protection unit with multi-master
+   protection
+ - 16-channel DMA controller, supporting up to 63
+   request sources
+ - External watchdog monitor
+ - Software watchdog
+ - Low-leakage wakeup unit
+
+Security and integrity modules
+ - Hardware CRC module to support fast cyclic
+   redundancy checks
+ - Hardware random-number generator
+ - Hardware encryption supporting DES, 3DES, AES,
+   MD5, SHA-1, and SHA-256 algorithms
+ - 128-bit unique identification (ID) number per chip
+
+Human-machine interface
+ - General-purpose input/output
+
+Analog modules
+ - Two 16-bit SAR ADCs
+ - Two 12-bit DACs
+ - Three analog comparators (CMP) containing a 6-bit
+   DAC and programmable reference input
+ - Voltage reference
+
+Timers
+ - Programmable delay block
+ - Two 8-channel motor control/general purpose/PWM timers
+ - Two 2-channel quadrature decoder/general purpose timers
+ - IEEE 1588 timers
+ - Periodic interrupt timers
+ - 16-bit low-power timer
+ - Carrier modulator transmitter
+ - Real-time clock
+        </description>
+      </device>
+
+      <!-- ******************************  MK65FN2M0xxx18  ****************************** -->
+      <device Dname="MK65FN2M0xxx18">
+        <processor Dfpu="1" Dmpu="0" Dendian="Little-endian" Dclock="180000000"/>
+        <compile header="Device\Include\MK65F18.h"  define="MK65FN2M0xxx18"/>
+        <debug      svd="SVD\MK65F18.svd"/>
+        <memory     id="IROM1"                      start="0x00000000"  size="0x200000"   startup="1"   default="1"/>
+        <memory     id="IRAM1"                      start="0x20000000"  size="0x30000"    init   ="0"   default="1"/>
+        <memory     id="IRAM2"                      start="0x1FFF0000"  size="0x10000"    init   ="0"   default="0"/>
+        <algorithm  name="Flash\MK_P2M0.FLM"        start="0x00000000"  size="0x200000"                 default="1"/>
+
+        <book name="Documents\K65P169M180SF5RMV2.pdf" title="MK65FN2M0xxx18 Reference Manual"/>
+        <book name="Documents\K65P169M180SF5V2.pdf"   title="MK65FN2M0xxx18 Data Sheet"/>
+        <description>
+ARM Cortex-M4 with FPU running at up to 180 MHz
+System
+- System integration module
+- Power management and mode controllers
+- Multiple power modes available based on high speed run, run, wait, stop, and power-down modes
+- Low-leakage wakeup unit
+- Miscellaneous control module
+- Crossbar switch
+- Memory protection unit
+- Peripheral bridge
+- Direct memory access (DMA) controller with multiplexer
+- External watchdog monitor
+- Watchdog
+
+Clocks
+- Multiple clock generation options
+- System oscillator to provide clock source for the MCU
+- RTC oscillator to provide clock source for the RTC
+- Crystal-less USB internal clock for USB device operation.
+
+Security
+- Cyclic Redundancy Check module for error detection
+- Hardware encryption, along with a random number generator
+- Tamper detect and secure storage
+
+Analog
+- High speed analog-to-digital converter
+- Comparator
+- Digital-to-analog converter
+- Internal voltage reference
+- Bandgap voltage reference
+
+Timers
+- Programmable delay block
+- FlexTimers
+- Low Power Timer/PWM
+- Periodic interrupt timer
+- Low power timer
+- Carrier modulator transmitter
+- Independent real time clock
+
+Communications
+- Ethernet MAC with IEEE 1588 capability
+- USB OTG controller (USB0) with built-in FS/LS transceiver
+- USB device charger detect
+- USB voltage regulator
+- HS USB OTG controller (USB1) with built-in HS/FS/LS physical layer
+- CAN
+- Serial peripheral interface
+- Inter-integrated circuit (I2C)
+- UART
+- Secured Digital host controller
+- Integrated interchip sound (I2S)
+
+Human-Machine Interfaces (HMI)
+- General purpose input/output controller
+- Capacitive touch sense input interface enabled in hardware
+        </description>
+      </device>
+
+      <!-- ******************************  MK65FX1M0xxx18  ****************************** -->
+      <device Dname="MK65FX1M0xxx18">
+        <processor Dfpu="1" Dmpu="0" Dendian="Little-endian" Dclock="180000000"/>
+        <compile header="Device\Include\MK65F18.h"  define="MK65FX1M0xxx18"/>
+        <debug      svd="SVD\MK65F18.svd"/>
+        <memory     id="IROM1"                                start="0x00000000"  size="0x100000"   startup="1"   default="1"/>
+        <memory     id="IROM2"                                start="0x10000000"  size="0x40000"    startup="0"   default="0"/>
+        <memory     id="IRAM1"                                start="0x20000000"  size="0x30000"    init   ="0"   default="1"/>
+        <memory     id="IRAM2"                                start="0x1FFF0000"  size="0x10000"    init   ="0"   default="0"/>
+        <algorithm  name="Flash\MK_P1M0.FLM"                  start="0x00000000"  size="0x100000"                 default="1"/>
+        <algorithm  name="Flash\MKD256_4KB_SECTOR.FLM"        start="0x10000000"  size="0x40000"                  default="1"/>
+
+        <book name="Documents\K65P169M180SF5RMV2.pdf" title="MK65FX1M0xxx18 Reference Manual"/>
+        <book name="Documents\K65P169M180SF5V2.pdf"   title="MK65FX1M0xxx18 Data Sheet"/>
+        <description>
+ARM Cortex-M4 with FPU running at up to 180 MHz
+System
+- System integration module
+- Power management and mode controllers
+- Multiple power modes available based on high speed run, run, wait, stop, and power-down modes
+- Low-leakage wakeup unit
+- Miscellaneous control module
+- Crossbar switch
+- Memory protection unit
+- Peripheral bridge
+- Direct memory access (DMA) controller with multiplexer
+- External watchdog monitor
+- Watchdog
+
+Clocks
+- Multiple clock generation options
+- System oscillator to provide clock source for the MCU
+- RTC oscillator to provide clock source for the RTC
+- Crystal-less USB internal clock for USB device operation.
+
+Security
+- Cyclic Redundancy Check module for error detection
+- Hardware encryption, along with a random number generator
+- Tamper detect and secure storage
+
+Analog
+- High speed analog-to-digital converter
+- Comparator
+- Digital-to-analog converter
+- Internal voltage reference
+- Bandgap voltage reference
+
+Timers
+- Programmable delay block
+- FlexTimers
+- Low Power Timer/PWM
+- Periodic interrupt timer
+- Low power timer
+- Carrier modulator transmitter
+- Independent real time clock
+
+Communications
+- Ethernet MAC with IEEE 1588 capability
+- USB OTG controller (USB0) with built-in FS/LS transceiver
+- USB device charger detect
+- USB voltage regulator
+- HS USB OTG controller (USB1) with built-in HS/FS/LS physical layer
+- CAN
+- Serial peripheral interface
+- Inter-integrated circuit (I2C)
+- UART
+- Secured Digital host controller
+- Integrated interchip sound (I2S)
+
+Human-Machine Interfaces (HMI)
+- General purpose input/output controller
+- Capacitive touch sense input interface enabled in hardware
+        </description>
+      </device>
+
+      <!-- ******************************  MK66FN2M0xxx18  ****************************** -->
+      <device Dname="MK66FN2M0xxx18">
+        <processor Dfpu="1" Dmpu="0" Dendian="Little-endian" Dclock="180000000"/>
+        <compile header="Device\Include\MK66F18.h"  define="MK66FN2M0xxx18"/>
+        <debug      svd="SVD\MK66F18.svd"/>
+        <memory     id="IROM1"                      start="0x00000000"  size="0x200000"   startup="1"   default="1"/>
+        <memory     id="IRAM1"                      start="0x20000000"  size="0x30000"    init   ="0"   default="1"/>
+        <memory     id="IRAM2"                      start="0x1FFF0000"  size="0x10000"    init   ="0"   default="0"/>
+        <algorithm  name="Flash\MK_P2M0.FLM"        start="0x00000000"  size="0x200000"                 default="1"/>
+
+        <book name="Documents\K66P144M180SF5RMV2.pdf" title="MK66FN2M0xxx18 Reference Manual"/>
+        <book name="Documents\K66P144M180SF5V2.pdf"   title="MK66FN2M0xxx18 Data Sheet"/>
+        <description>
+ARM Cortex-M4 with FPU running at up to 180 MHz
+System
+- System integration module
+- Power management and mode controllers
+- Multiple power modes available based on high speed run, run, wait, stop, and power-down modes
+- Low-leakage wakeup unit
+- Miscellaneous control module
+- Crossbar switch
+- Memory protection unit
+- Peripheral bridge
+- Direct memory access (DMA) controller with multiplexer
+- External watchdog monitor
+- Watchdog
+
+Clocks
+- Multiple clock generation options
+- System oscillator to provide clock source for the MCU
+- RTC oscillator to provide clock source for the RTC
+- Crystal-less USB internal clock for USB device operation.
+
+Security
+- Cyclic Redundancy Check module for error detection
+- Hardware encryption, along with a random number generator
+
+Analog
+- High speed analog-to-digital converter
+- Comparator
+- Digital-to-analog converter
+- Internal voltage reference
+- Bandgap voltage reference
+
+Timers
+- Programmable delay block
+- FlexTimers
+- Low Power Timer/PWM
+- Periodic interrupt timer
+- Low power timer
+- Carrier modulator transmitter
+- Independent real time clock
+
+Communications
+- Ethernet MAC with IEEE 1588 capability
+- USB OTG controller (USB0) with built-in FS/LS transceiver
+- USB device charger detect
+- USB voltage regulator
+- HS USB OTG controller (USB1) with built-in HS/FS/LS physical layer
+- CAN
+- Serial peripheral interface
+- Inter-integrated circuit (I2C)
+- UART
+- Secured Digital host controller
+- Integrated interchip sound (I2S)
+
+Human-Machine Interfaces (HMI)
+- General purpose input/output controller
+- Capacitive touch sense input interface enabled in hardware
+        </description>
+      </device>
+
+      <!-- ******************************  MK66FX1M0xxx18  ****************************** -->
+      <device Dname="MK66FX1M0xxx18">
+        <processor Dfpu="1" Dmpu="0" Dendian="Little-endian" Dclock="180000000"/>
+        <compile header="Device\Include\MK66F18.h"  define="MK66FX1M0xxx18"/>
+        <debug      svd="SVD\MK66F18.svd"/>
+        <memory     id="IROM1"                                start="0x00000000"  size="0x100000"   startup="1"   default="1"/>
+        <memory     id="IROM2"                                start="0x10000000"  size="0x40000"    startup="0"   default="0"/>
+        <memory     id="IRAM1"                                start="0x20000000"  size="0x30000"    init   ="0"   default="1"/>
+        <memory     id="IRAM2"                                start="0x1FFF0000"  size="0x10000"    init   ="0"   default="0"/>
+        <algorithm  name="Flash\MK_P1M0.FLM"                  start="0x00000000"  size="0x100000"                 default="1"/>
+        <algorithm  name="Flash\MKD256_4KB_SECTOR.FLM"        start="0x10000000"  size="0x40000"                  default="1"/>
+
+        <book name="Documents\K66P144M180SF5RMV2.pdf" title="MK66FX1M0xxx18 Reference Manual"/>
+        <book name="Documents\K66P144M180SF5V2.pdf"   title="MK66FX1M0xxx18 Data Sheet"/>
+        <description>
+ARM Cortex-M4 with FPU running at up to 180 MHz
+System
+- System integration module
+- Power management and mode controllers
+- Multiple power modes available based on high speed run, run, wait, stop, and power-down modes
+- Low-leakage wakeup unit
+- Miscellaneous control module
+- Crossbar switch
+- Memory protection unit
+- Peripheral bridge
+- Direct memory access (DMA) controller with multiplexer
+- External watchdog monitor
+- Watchdog
+
+Clocks
+- Multiple clock generation options
+- System oscillator to provide clock source for the MCU
+- RTC oscillator to provide clock source for the RTC
+- Crystal-less USB internal clock for USB device operation.
+
+Security
+- Cyclic Redundancy Check module for error detection
+- Hardware encryption, along with a random number generator
+
+Analog
+- High speed analog-to-digital converter
+- Comparator
+- Digital-to-analog converter
+- Internal voltage reference
+- Bandgap voltage reference
+
+Timers
+- Programmable delay block
+- FlexTimers
+- Low Power Timer/PWM
+- Periodic interrupt timer
+- Low power timer
+- Carrier modulator transmitter
+- Independent real time clock
+
+Communications
+- Ethernet MAC with IEEE 1588 capability
+- USB OTG controller (USB0) with built-in FS/LS transceiver
+- USB device charger detect
+- USB voltage regulator
+- HS USB OTG controller (USB1) with built-in HS/FS/LS physical layer
+- CAN
+- Serial peripheral interface
+- Inter-integrated circuit (I2C)
+- UART
+- Secured Digital host controller
+- Integrated interchip sound (I2S)
+
+Human-Machine Interfaces (HMI)
+- General purpose input/output controller
+- Capacitive touch sense input interface enabled in hardware
+        </description>
+      </device>
+
+    </family>
+  </devices>
+
+  <conditions>
+    <!-- Compiler Conditions -->
+    <condition id="Compiler ARMCC">
+      <require Tcompiler="ARMCC"/>
+    </condition>
+
+    <condition id="MK60D10 CMSIS">
+      <description>Freescale Kinetis K60D 100MHz devices and CMSIS-CORE</description>
+      <require Cclass="CMSIS" Cgroup="CORE"/>
+      <require Dvendor="Freescale:78"/>
+      <accept  Dname="MK60DN512xxx10"/>
+      <accept  Dname="MK60DN256xxx10"/>
+      <accept  Dname="MK60DX256xxx10"/>
+      </condition>
+    <condition id="MK60F12 CMSIS">
+      <description>Freescale Kinetis K60F 120MHz devices and CMSIS-CORE</description>
+      <require Cclass="CMSIS" Cgroup="CORE"/>
+      <require Dvendor="Freescale:78"/>
+      <accept  Dname="MK60FN1M0xxx12"/>
+      <accept  Dname="MK60FX512xxx12"/>
+    </condition>
+    <condition id="MK61F12 CMSIS">
+      <description>Freescale Kinetis K61F 120MHz devices and CMSIS-CORE</description>
+      <require Cclass="CMSIS" Cgroup="CORE"/>
+      <require Dvendor="Freescale:78"/>
+      <accept  Dname="MK61FN1M0xxx12"/>
+      <accept  Dname="MK61FX512xxx12"/>
+    </condition>
+    <condition id="MK60F15 CMSIS">
+      <description>Freescale Kinetis K60F 150MHz devices and CMSIS-CORE</description>
+      <require Cclass="CMSIS" Cgroup="CORE"/>
+      <require Dvendor="Freescale:78"/>
+      <accept  Dname="MK60FN1M0xxx15"/>
+      <accept  Dname="MK60FX512xxx15"/>
+    </condition>
+    <condition id="MK61F15 CMSIS">
+      <description>Freescale Kinetis K61F 150MHz devices and CMSIS-CORE</description>
+      <require Cclass="CMSIS" Cgroup="CORE"/>
+      <require Dvendor="Freescale:78"/>
+      <accept  Dname="MK61FN1M0xxx15"/>
+      <accept  Dname="MK61FX512xxx15"/>
+    </condition>
+    <condition id="MK63F12 CMSIS">
+      <description>Freescale Kinetis K63F 120MHz devices and CMSIS-CORE</description>
+      <require Cclass="CMSIS" Cgroup="CORE"/>
+      <require Dvendor="Freescale:78"/>
+      <accept  Dname="MK63FN1M0xxx12"/>
+    </condition>
+    <condition id="MK64F12 CMSIS">
+      <description>Freescale Kinetis K64F 120MHz devices and CMSIS-CORE</description>
+      <require Cclass="CMSIS" Cgroup="CORE"/>
+      <require Dvendor="Freescale:78"/>
+      <accept  Dname="MK64FN1M0xxx12"/>
+      <accept  Dname="MK64FX512xxx12"/>
+    </condition>
+    <condition id="MK65F18 CMSIS">
+      <description>Freescale Kinetis K65F 180MHz devices and CMSIS-CORE</description>
+      <require Cclass="CMSIS" Cgroup="CORE"/>
+      <require Dvendor="Freescale:78"/>
+      <accept  Dname="MK65FN2M0xxx18"/>
+      <accept  Dname="MK65FX1M0xxx18"/>
+    </condition>
+    <condition id="MK66F18 CMSIS">
+      <description>Freescale Kinetis K66F 180MHz devices and CMSIS-CORE</description>
+      <require Cclass="CMSIS" Cgroup="CORE"/>
+      <require Dvendor="Freescale:78"/>
+      <accept  Dname="MK66FN2M0xxx18"/>
+      <accept  Dname="MK66FX1M0xxx18"/>
+    </condition>
+  </conditions>
+
+  <components>
+    <!-- Startup MK60D10 -->
+    <component Cclass="Device" Cgroup="Startup" Cversion="1.0.0" condition="MK60D10 CMSIS">
+      <description>System Startup for Freescale MK60D10 Devices</description>
+      <files>
+        <file category="include" name="Device\Include\"/>
+        <file category="source"  name="Device\Source\ARM\startup_MK60D10.s" attr="config" version="1.0.0" condition="Compiler ARMCC"/>
+        <file category="source"  name="Device\Source\system_MK60D10.c"      attr="config" version="1.0.0"/>
+      </files>
+    </component>
+    <!-- Startup MK60F12 -->
+    <component Cclass="Device" Cgroup="Startup" Cversion="1.0.0" condition="MK60F12 CMSIS">
+      <description>System Startup for Freescale MK60F12 Devices</description>
+      <files>
+        <file category="include" name="Device\Include\"/>
+        <file category="source"  name="Device\Source\ARM\startup_MK60F12.s" attr="config" version="1.0.0" condition="Compiler ARMCC"/>
+        <file category="source"  name="Device\Source\system_MK60F12.c"      attr="config" version="1.0.0"/>
+      </files>
+    </component>
+    <!-- Startup MK61F12 -->
+    <component Cclass="Device" Cgroup="Startup" Cversion="1.0.0" condition="MK61F12 CMSIS">
+      <description>System Startup for Freescale MK61F12 Devices</description>
+      <files>
+        <file category="include" name="Device\Include\"/>
+        <file category="source"  name="Device\Source\ARM\startup_MK61F12.s" attr="config" version="1.0.0" condition="Compiler ARMCC"/>
+        <file category="source"  name="Device\Source\system_MK61F12.c"      attr="config" version="1.0.0"/>
+      </files>
+    </component>
+    <!-- Startup MK60F15 -->
+    <component Cclass="Device" Cgroup="Startup" Cversion="1.0.0" condition="MK60F15 CMSIS">
+      <description>System Startup for Freescale MK60F15 Devices</description>
+      <files>
+        <file category="include" name="Device\Include\"/>
+        <file category="source"  name="Device\Source\ARM\startup_MK60F15.s" attr="config" version="1.0.0" condition="Compiler ARMCC"/>
+        <file category="source"  name="Device\Source\system_MK60F15.c"      attr="config" version="1.0.0"/>
+      </files>
+    </component>
+    <!-- Startup MK61F15 -->
+    <component Cclass="Device" Cgroup="Startup" Cversion="1.0.0" condition="MK61F15 CMSIS">
+      <description>System Startup for Freescale MK61F15 Devices</description>
+      <files>
+        <file category="include" name="Device\Include\"/>
+        <file category="source"  name="Device\Source\ARM\startup_MK61F15.s" attr="config" version="1.0.0" condition="Compiler ARMCC"/>
+        <file category="source"  name="Device\Source\system_MK61F15.c"      attr="config" version="1.0.0"/>
+      </files>
+    </component>
+    <!-- Startup MK63F12 -->
+    <component Cclass="Device" Cgroup="Startup" Cversion="1.0.0" condition="MK63F12 CMSIS">
+      <description>System Startup for Freescale MK63F12 Devices</description>
+      <files>
+        <file category="include" name="Device\Include\"/>
+        <file category="source"  name="Device\Source\ARM\startup_MK63F12.s" attr="config" version="2.3.0" condition="Compiler ARMCC"/>
+        <file category="source"  name="Device\Source\system_MK63F12.c"      attr="config" version="2.3.0"/>
+      </files>
+    </component>
+    <!-- Startup MK64F12 -->
+    <component Cclass="Device" Cgroup="Startup" Cversion="1.0.0" condition="MK64F12 CMSIS">
+      <description>System Startup for Freescale MK64F12 Devices</description>
+      <files>
+        <file category="include" name="Device\Include\"/>
+        <file category="source"  name="Device\Source\ARM\startup_MK64F12.s" attr="config" version="2.3.0" condition="Compiler ARMCC"/>
+        <file category="source"  name="Device\Source\system_MK64F12.c"      attr="config" version="2.3.0"/>
+      </files>
+    </component>
+    <!-- Startup MK65F18 -->
+    <component Cclass="Device" Cgroup="Startup" Cversion="3.0.0" condition="MK65F18 CMSIS">
+      <description>System Startup for Freescale MK65F18 Devices</description>
+      <files>
+        <file category="include" name="Device\Include\"/>
+        <file category="source"  name="Device\Source\ARM\startup_MK65F18.s" attr="config" version="3.0.0" condition="Compiler ARMCC"/>
+        <file category="source"  name="Device\Source\system_MK65F18.c"      attr="config" version="3.0.0"/>
+        <file category="header"  name="Device\Source\system_MK65F18.h"      attr="config" version="3.0.0"/>
+      </files>
+    </component>
+    <!-- Startup MK66F18 -->
+    <component Cclass="Device" Cgroup="Startup" Cversion="3.0.0" condition="MK66F18 CMSIS">
+      <description>System Startup for Freescale MK66F18 Devices</description>
+      <files>
+        <file category="include" name="Device\Include\"/>
+        <file category="source"  name="Device\Source\ARM\startup_MK66F18.s" attr="config" version="3.0.0" condition="Compiler ARMCC"/>
+        <file category="source"  name="Device\Source\system_MK66F18.c"      attr="config" version="3.0.0"/>
+        <file category="header"  name="Device\Source\system_MK66F18.h"      attr="config" version="3.0.0"/>
+      </files>
+    </component>
+  </components>
+
+  <boards>
+    <board name="TWR-K60D100M" vendor="Freescale" revision="Rev. A" orderForm="http://www.freescale.com/webapp/sps/site/prod_summary.jsp?code=TWR-K60D100M" salesContact="https://www.freescale.com/webapp/servicerequest.create_SR.framework">
+      <description>The TWR-K60D100M is a development tool for the 100 MHz K60, K20, and K10 families of Kinetis microcontrollers.</description>
+      <book category="overview"  name="http://www.freescale.com/webapp/sps/site/prod_summary.jsp?code=TWR-K60D100M" title="TWR-K60D100M Web Page"/>
+      <book category="setup"     name="Documents\TWR-K60D100MQSG.pdf"  title="Quick Start Guide"/>
+      <book category="schematic" name="Documents\TWR-K60D100M_SCH.pdf" title="Schematic"/>
+      <book category="manual"    name="Documents\TWRK60D100MUM.pdf"    title="User Manual"/>
+      <mountedDevice    deviceIndex="0" Dvendor="Freescale:78" Dname="MK60DN512xxx10"/>
+      <compatibleDevice deviceIndex="0" Dvendor="Freescale:78" Dfamily="K60 Series"/>
+      <image small="Images\TWR-K60D100M_small.PNG" large="Images\TWR-K60D100M_large.PNG"/>
+      <feature type="ODbg"      n="1"              name="Integrated open-source JTAG via USB"/>
+      <feature type="PWR"       n="5"              name="USB Powered"/>
+      <feature type="Batt"      n="1"              name="Battery holder for 20mm lithium battery (e.g. 2032, 2025)"/>
+      <feature type="MemCard"   n="1"              name="SD Card holder"/>
+      <feature type="USB"       n="1"              name="High-Speed USB Mini-B Connector"/>
+      <feature type="ConnOther" n="1"              name="Touch Tower Plug-in Socket"/>
+      <feature type="ConnOther" n="1"              name="General purpose Tower Plug-in (TWRPI) socket"/>
+      <feature type="ConnOther" n="2"              name="Tower connectivity for access to USB, Ethernet, RS232/RS485, CAN, SPI, I²C, Flexbus, etc."/>
+      <feature type="Poti"      n="1"/>
+      <feature type="Button"    n="2"/>
+      <feature type="Touch"     n="4"/>
+      <feature type="Accelerometer" n="1"          name="Three axis accelerometer (MMA78451Q)"/>
+      <feature type="LED"       n="4"              name="Four user-controlled status LEDs"/>
+      <feature type="TowerFF"   n="1"/>
+    </board>
+    <board name="TWR-K64F120M" vendor="Freescale" revision="Rev. A" orderForm="http://www.freescale.com/webapp/sps/site/prod_summary.jsp?code=TWR-K64F120M" salesContact="https://www.freescale.com/webapp/servicerequest.create_SR.framework">
+      <mountedDevice deviceIndex="0" Dvendor="Freescale:78" Dname="MK64FN1M0xxx12"/>
+      <compatibleDevice deviceIndex="0" Dvendor="Freescale:78" Dname="MK64FX512xxx12"/>
+      <description>The TWR-K64F120M is a development board for the Kinetis K24, K63 and K64 120 MHz 32-bit ARM® Cortex™-M4 MCUs.
+      It features the Kinetis MK64FN1M0VMD12 low-power MCU with 1MB Flash, 256 KB SRAM, USB USB and Ethernet MAC.
+      </description>
+      <image small="Images\TWR-K64F120M_small.png" large="Images\TWR-K64F120M_large.png"/>
+      <book category="overview"  name="http://www.freescale.com/webapp/sps/site/prod_summary.jsp?code=TWR-K64F120M" title="TWR-K64F120M Web Page"/>
+      <book category="setup"     name="Documents\TWRK64FQSG.pdf" title="Quick Start Guide"/>
+      <feature type="ODbg"      n="1"              name="Onboard open-standard serial and debug adaptor (OpenSDA)"/>
+      <feature type="PWR"       n="5"              name="USB Powered"/>
+      <feature type="Batt"      n="1"              name="Battery holder for 20mm lithium battery (e.g. 2032, 2025)"/>
+      <feature type="MemCard"   n="1"              name="SD Card holder"/>
+      <feature type="USB"       n="1"              name="Dual-role USB interface with Micro-AB USB connector"/>
+      <feature type="ConnOther" n="1"              name="General purpose Tower Plug-in (TWRPI) socket"/>
+      <feature type="ConnOther" n="2"              name="Tower connectivity for access to USB, Ethernet, RS232/RS485, CAN, SPI, I²C, Flexbus, etc."/>
+      <feature type="Poti"      n="1"/>
+      <feature type="Button"    n="2"/>
+      <feature type="Touch"     n="4"/>
+      <feature type="Accelerometer" n="1"          name="Three axis accelerometer (MMA78451Q)"/>
+      <feature type="LED"       n="4"              name="Four user-controlled status LEDs"/>
+      <feature type="TowerFF"   n="1"/>
+    </board>
+    <board name="FRDM-K64F" vendor="Freescale" revision="Rev. A" orderForm="http://www.freescale.com/webapp/sps/site/prod_summary.jsp?code=FRDM-K64F" salesContact="https://www.freescale.com/webapp/servicerequest.create_SR.framework">
+      <mountedDevice deviceIndex="0" Dvendor="Freescale:78" Dname="MK64FN1M0xxx12"/>
+      <compatibleDevice deviceIndex="0" Dvendor="Freescale:78" Dname="MK64FX512xxx12"/>
+      <description>
+        The FRDM-K64F is a development board for the Kinetis K24, K63 and K64 120 MHz 32-bit ARM® Cortex™-M4 MCUs.
+        It features the Kinetis MK64FN1M0VMD12 low-power MCU with 1MB Flash, 256 KB SRAM, USB USB and Ethernet MAC.
+      </description>
+      <book category="overview"  name="http://www.freescale.com/webapp/sps/site/prod_summary.jsp?code=FRDM-K64F" title="FRDM-K64F Web Page"/>
+      <book category="setup"     name="Documents\FRDMK64QSG.pdf" title="Quick Start Guide"/>
+      <book category="schematic" name="Documents\FRDM-K64F_SCH.pdf" title="FRDM-K64F Schematics"/>
+      <book category="manual"    name="Documents\FRDMK64FUG.pdf" title="User Manual"/>
+      <feature type="ODbg"          n="1"              name="Onboard open-standard serial and debug adaptor (OpenSDA)"/>
+      <feature type="PWR"           n="5"              name="USB Powered"/>
+      <feature type="MemCard"       n="1"              name="Micro SD Card holder"/>
+      <feature type="USB"           n="1"              name="Micro-AB USB connector"/>
+      <feature type="USB"           n="1"              name="OpenSDAv2 Micro USB connector"/>
+      <feature type="ETH"           n="1"              name="10/100 Ethernet Port"/>
+      <feature type="Button"        n="3"/>
+      <feature type="Accelerometer" n="1"              name="Freescale FXOS8700CQ low-power, six-axis Xtrinsic sensor"/>
+      <feature type="DIO"           n="8"              name="nRF24L01+ Nordic 2.4G Radio module expansion pins"/>
+      <feature type="DIO"           n="4"              name="JY-MCU BT board V1.05 BT module expansion pins"/>
+      <feature type="DIO"           n="33"             name="Digital IOs"/>
+      <feature type="AIO"           n="9"              name="Analog IOs"/>
+      <feature type="LED"           n="1"              name="RGB LED"/>
+      <debugInterface adapter="JTAG/SW" connector="10 pin Cortex debug (0.05 inch connector)"/>
+      <debugInterface adapter="JTAG/SW" connector="SDA 10 pin Cortex debug (0.05 inch connector)"/>
+    </board>
+    <board name="TWR-K65F180M" vendor="Freescale" revision="Rev. A" orderForm="http://www.freescale.com/webapp/sps/site/prod_summary.jsp?code=TWR-K65F180M" salesContact="https://www.freescale.com/webapp/servicerequest.create_SR.framework">
+      <mountedDevice deviceIndex="0" Dvendor="Freescale:78" Dname="MK65FN2M0xxx18"/>
+      <compatibleDevice deviceIndex="0" Dvendor="Freescale:78" Dname="MK65FX1M0xxx18"/>
+      <description>
+        The TWR-K65F is a development board for the Kinetis K65 180 MHz 32-bit ARM® Cortex™-M4 MCUs.
+        It features the Kinetis MK65FN2M0xxx18 MCU with MB Flash, 256 KB SRAM, USB USB and Ethernet MAC.
+      </description>
+      <feature type="ODbg"          n="1"              name="Onboard open-standard serial and debug adaptor (OpenSDA)"/>
+      <feature type="PWR"           n="5"              name="USB Powered"/>
+      <debugInterface adapter="JTAG/SW" connector="10 pin Cortex debug (0.05 inch connector)"/>
+      <debugInterface adapter="JTAG/SW" connector="SDA 10 pin Cortex debug (0.05 inch connector)"/>
+    </board>
+
+  </boards>
+
+  <examples>
+    <example name="CMSIS-RTOS Blinky" doc="Abstract.txt" folder="Boards\Freescale\TWR-K60D100M\RTX_Blinky">
+      <description>CMSIS-RTOS based Blinky example</description>
+      <board name="TWR-K60D100M" vendor="Freescale"/>
+      <project>
+        <environment name="uv" load="Blinky.uvprojx"/>
+      </project>
+      <attributes>
+        <component Cclass="CMSIS" Cgroup="CORE"/>
+        <component Cclass="Device" Cgroup="Startup"/>
+        <component Cclass="CMSIS" Cgroup="RTOS"/>
+        <category>Getting Started</category>
+        <category>CMSIS-RTX</category>
+      </attributes>
+    </example>
+    <!-- TWR-K64F120M Development Board -->
+    <example name="Blinky" doc="Abstract.txt" folder="Boards\Freescale\TWR-K64F120M\Blinky">
+      <description>Blinky example</description>
+      <board name="TWR-K64F120M" vendor="Freescale"/>
+      <project>
+        <environment name="uv" load="Blinky.uvprojx"/>
+      </project>
+      <attributes>
+        <component Cclass="CMSIS" Cgroup="CORE"/>
+        <component Cclass="Device" Cgroup="Startup"/>
+        <category>Getting Started</category>
+      </attributes>
+    </example>
+    <example name="CMSIS-RTOS Blinky" doc="Abstract.txt" folder="Boards\Freescale\TWR-K64F120M\RTX_Blinky">
+      <description>CMSIS-RTOS based Blinky example</description>
+      <board name="TWR-K64F120M" vendor="Freescale"/>
+      <project>
+        <environment name="uv" load="Blinky.uvprojx"/>
+      </project>
+      <attributes>
+        <component Cclass="CMSIS" Cgroup="CORE"/>
+        <component Cclass="Device" Cgroup="Startup"/>
+        <component Cclass="CMSIS" Cgroup="RTOS"/>
+        <category>Getting Started</category>
+        <category>CMSIS-RTX</category>
+      </attributes>
+    </example>
+    <!-- FRDM-K64F Development Board -->
+    <example name="Blinky" doc="Abstract.txt" folder="Boards\Freescale\FRDM-K64F\Blinky">
+      <description>Blinky example</description>
+      <board name="FRDM-K64F" vendor="Freescale"/>
+      <project>
+        <environment name="uv" load="Blinky.uvprojx"/>
+      </project>
+      <attributes>
+        <component Cclass="CMSIS" Cgroup="CORE"/>
+        <component Cclass="Device" Cgroup="Startup"/>
+        <category>Getting Started</category>
+      </attributes>
+    </example>
+    <example name="CMSIS-RTOS Blinky" doc="Abstract.txt" folder="Boards\Freescale\FRDM-K64F\RTX_Blinky">
+      <description>CMSIS-RTOS based Blinky example</description>
+      <board name="FRDM-K64F" vendor="Freescale"/>
+      <project>
+        <environment name="uv" load="Blinky.uvprojx"/>
+      </project>
+      <attributes>
+        <component Cclass="CMSIS" Cgroup="CORE"/>
+        <component Cclass="Device" Cgroup="Startup"/>
+        <component Cclass="CMSIS" Cgroup="RTOS"/>
+        <category>Getting Started</category>
+        <category>CMSIS-RTX</category>
+      </attributes>
+    </example>
+    <!-- TWR-K65F180M Development Board -->
+    <example name="Blinky" doc="Abstract.txt" folder="Boards\Freescale\TWR-K65F180M\Blinky">
+      <description>Blinky example</description>
+      <board name="TWR-K65F180M" vendor="Freescale"/>
+      <project>
+        <environment name="uv" load="Blinky.uvprojx"/>
+      </project>
+      <attributes>
+        <component Cclass="CMSIS" Cgroup="CORE"/>
+        <component Cclass="Device" Cgroup="Startup"/>
+        <category>Getting Started</category>
+      </attributes>
+    </example>
+    <example name="CMSIS-RTOS Blinky" doc="Abstract.txt" folder="Boards\Freescale\TWR-K65F180M\RTX_Blinky">
+      <description>CMSIS-RTOS based Blinky example</description>
+      <board name="TWR-K65F180M" vendor="Freescale"/>
+      <project>
+        <environment name="uv" load="Blinky.uvprojx"/>
+      </project>
+      <attributes>
+        <component Cclass="CMSIS" Cgroup="CORE"/>
+        <component Cclass="Device" Cgroup="Startup"/>
+        <component Cclass="CMSIS" Cgroup="RTOS"/>
+        <category>Getting Started</category>
+        <category>CMSIS-RTX</category>
+      </attributes>
+    </example>
+
+  </examples>
+
+</package>

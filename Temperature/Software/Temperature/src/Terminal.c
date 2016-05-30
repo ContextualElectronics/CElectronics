@@ -234,6 +234,7 @@ static int_fast8_t ProcessData(uint8_t *source, uint32_t length, ListOfParameter
 static int_fast8_t RunCommand(ListOfParameterStructureType *source)
 {
 	uint_fast16_t ADCSample;
+	uint8_t Message[25];
 
 	enum{
 		Command_LEDControl = 1,
@@ -275,6 +276,10 @@ static int_fast8_t RunCommand(ListOfParameterStructureType *source)
 			if ( source->NumberOfParameter > 1 && source->List[1].Type == 'u')
 			{
 				ADC_Read(source->List[1].Value.ui32_t[0] , &ADCSample);
+				snprintf(&Message[0], 25, "%d", ADCSample );
+				// Send new line feed and prompt
+				SerialPort2.SendString(&Message[0]);
+
 			}
 			break;
 		default:

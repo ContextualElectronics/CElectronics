@@ -119,7 +119,9 @@ static uint_fast8_t Open(const uint32_t baudrate)
 		// reset the FIFO
 	    FIFO_Initialiser();
 
-	    RCC->APB1RSTR |= RCC_APB1RSTR_USART2RST; // make sure that the USART resets to default
+	    // make sure that the USART resets to default
+	    RCC->APB1RSTR |= RCC_APB1RSTR_USART2RST;
+	    RCC->APB1RSTR &= ~RCC_APB1RSTR_USART2RST;
 
 		RCC->APB1ENR |= RCC_APB1ENR_USART2EN; // en USART clock
 

@@ -1,0 +1,1101 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<package schemaVersion="1.2" xmlns:xs="http://www.w3.org/2001/XMLSchema-instance" xs:noNamespaceSchemaLocation="PACK.xsd">
+  <vendor>Keil</vendor>
+  <name>STM32L4xx_DFP</name>
+  <description>STMicroelectronics STM32L4 Series Device Support, Drivers and Examples</description>
+  <url>http://www.keil.com/pack</url>
+
+  <releases>
+    <release version="1.2.0" date="2016-03-03">
+        Added device support for subfamilies STM32L431, STM32L432, STM32L433, STM32L443
+        Updated documentation.
+    </release>
+    <release version="1.1.0" date="2016-02-19">
+      Updated device support files and documentation
+    </release>
+    <release version="1.0.0" date="2015-07-28">
+      Initial version of STM32L4 Device Family Pack.
+    </release>
+  </releases>
+
+  <keywords>                                                                  <!-- keywords for indexing -->
+    <keyword>ST</keyword>
+    <keyword>Device Support</keyword>
+    <keyword>Device Family Package STMicroelectronics</keyword>
+    <keyword>STM32L4</keyword>
+    <keyword>STM32L4xx</keyword>
+  </keywords>
+
+  <devices>
+    <family Dfamily="STM32L4 Series" Dvendor="STMicroelectronics:13">
+      <processor Dcore="Cortex-M4" DcoreVersion="r0p1" Dclock="80000000" Dfpu="1" Dmpu="1" Dendian="Little-endian"/>
+      <book name="Documents/dui0553a_cortex_m4_dgug.pdf" title="Cortex-M4 Generic User Guide"/>
+      <description>
+ST has built a new architecture to reach best-in-class ultra-low-power figures thanks to its high flexibility.
+STM32L4 MCUs have scored 176.7 in the standardized EEMBC ULPBench tests that compare the efficiency of ultra-low-power microcontrollers.
+Moreover, the STM32L4 series shatters performance limits in the ultra-low-power world.
+It delivers 100 DMIPS based on its ARM Cortex-M4 core with FPU and ST ART Accelerator at 80 MHz.
+
+STM32L4 microcontrollers offer dynamic voltage scaling to balance power consumption with processing demand, low-power peripherals (LP UART, LP timers) available in Stop mode, safety and security features, smart and numerous peripherals, advanced and low-power analog peripherals such as op amps, comparators, LCD, 12-bit DACs and 16-bit ADCs (hardware oversampling).
+      </description>
+
+      <environment name="uv">
+        <LMisc>--branchpatch=sdcomp-29491-629360</LMisc>
+      </environment>
+
+      <!-- device features -->
+      <feature type="WDT"           n="2"/>
+      <feature type="RTC"           n="32768"/>
+      <feature type="I2S"           n="2"/>
+      <feature type="Temp"          n="-40"     m="85"/>
+
+      <!-- ************************  Subfamily 'STM32L431'  **************************** -->
+      <subFamily DsubFamily="STM32L431">
+        <debug svd="SVD/STM32L4x1.svd"/>
+        <compile header="Device/Include/stm32l4xx.h"  define="STM32L431xx"/>
+
+        <feature type="Timer"    n="10"   m="16"/>
+        <feature type="Timer"    n="1"    m="32"/>
+        <feature type="ADC"      n="1"    m="12"/>
+        <feature type="DAC"      n="2"    m="12"/>
+        <feature type="SPI"      n="3"/>
+        <feature type="ComOther" n="1"                  name="SAI Interface"/>
+        <feature type="I2C"      n="3"/>
+        <feature type="USART"    n="4"    m="11250000"/>
+        <feature type="CAN"      n="1"/>
+        <feature type="VCC"      n="1.71" m="3.60"/>
+
+        <!-- *************************  Device 'STM32L431CC'  ***************************** -->
+        <device Dname="STM32L431CC">
+          <memory id="IROM1"                        start="0x08000000" size="0x00040000" startup="1" default="1" />
+          <memory id="IRAM1"                        start="0x20000000" size="0x00010000" init="0"    default="1" />
+          <algorithm name="Flash/STM32L4xx_256.FLM" start="0x08000000" size="0x00040000"             default="1" />
+
+          <variant Dvariant="STM32L431CCTx"> <feature type="QFP" n="48"/> </variant>
+          <variant Dvariant="STM32L431CCUx"> <feature type="QFN" n="48"/> </variant>
+          <variant Dvariant="STM32L431CCYx"> <feature type="CSP" n="48"/> </variant>
+        </device>
+
+        <!-- *************************  Device 'STM32L431KC'  ***************************** -->
+        <device Dname="STM32L431KC">
+          <memory id="IROM1"                        start="0x08000000" size="0x00040000" startup="1" default="1" />
+          <memory id="IRAM1"                        start="0x20000000" size="0x00010000" init="0"    default="1" />
+          <algorithm name="Flash/STM32L4xx_256.FLM" start="0x08000000" size="0x00040000"             default="1" />
+
+          <variant Dvariant="STM32L431KCUx"> <feature type="QFN" n="32"/> </variant>
+        </device>
+
+        <!-- *************************  Device 'STM32L431RC'  ***************************** -->
+        <device Dname="STM32L431RC">
+          <memory id="IROM1"                        start="0x08000000" size="0x00040000" startup="1" default="1" />
+          <memory id="IRAM1"                        start="0x20000000" size="0x00010000" init="0"    default="1" />
+          <algorithm name="Flash/STM32L4xx_256.FLM" start="0x08000000" size="0x00040000"             default="1" />
+
+          <variant Dvariant="STM32L431RCTx"> <feature type="QFP" n="64"/> </variant>
+          <variant Dvariant="STM32L431RCYx"> <feature type="CSP" n="64"/> </variant>
+          <variant Dvariant="STM32L431RCIx"> <feature type="BGA" n="64"/> </variant>
+        </device>
+
+        <!-- *************************  Device 'STM32L431VC'  ***************************** -->
+        <device Dname="STM32L431VC">
+          <memory id="IROM1"                        start="0x08000000" size="0x00040000" startup="1" default="1" />
+          <memory id="IRAM1"                        start="0x20000000" size="0x00010000" init="0"    default="1" />
+          <algorithm name="Flash/STM32L4xx_256.FLM" start="0x08000000" size="0x00040000"             default="1" />
+
+          <variant Dvariant="STM32L431VCTx"> <feature type="QFP" n="100"/> </variant>
+          <variant Dvariant="STM32L431VCIx"> <feature type="BGA" n="100"/> </variant>
+        </device>
+
+        <!-- *************************  Device 'STM32L431CB'  ***************************** -->
+        <device Dname="STM32L431CB">
+          <memory id="IROM1"                        start="0x08000000" size="0x00020000" startup="1" default="1" />
+          <memory id="IRAM1"                        start="0x20000000" size="0x00010000" init="0"    default="1" />
+          <algorithm name="Flash/STM32L4xx_256.FLM" start="0x08000000" size="0x00020000"             default="1" />
+
+          <variant Dvariant="STM32L431CBTx"> <feature type="QFP" n="48"/> </variant>
+          <variant Dvariant="STM32L431CBUx"> <feature type="QFN" n="48"/> </variant>
+          <variant Dvariant="STM32L431CBYx"> <feature type="CSP" n="48"/> </variant>
+        </device>
+
+        <!-- *************************  Device 'STM32L431KB'  ***************************** -->
+        <device Dname="STM32L431KB">
+          <memory id="IROM1"                        start="0x08000000" size="0x00020000" startup="1" default="1" />
+          <memory id="IRAM1"                        start="0x20000000" size="0x00010000" init="0"    default="1" />
+          <algorithm name="Flash/STM32L4xx_256.FLM" start="0x08000000" size="0x00020000"             default="1" />
+
+          <variant Dvariant="STM32L431KBUx"> <feature type="QFN" n="32"/> </variant>
+        </device>
+
+        <!-- *************************  Device 'STM32L431RB'  ***************************** -->
+        <device Dname="STM32L431RB">
+          <memory id="IROM1"                        start="0x08000000" size="0x00020000" startup="1" default="1" />
+          <memory id="IRAM1"                        start="0x20000000" size="0x00010000" init="0"    default="1" />
+          <algorithm name="Flash/STM32L4xx_256.FLM" start="0x08000000" size="0x00020000"             default="1" />
+
+          <variant Dvariant="STM32L431RBTx"> <feature type="QFP" n="64"/> </variant>
+          <variant Dvariant="STM32L431RBYx"> <feature type="CSP" n="64"/> </variant>
+          <variant Dvariant="STM32L431RBIx"> <feature type="BGA" n="64"/> </variant>
+        </device>
+        </subFamily>
+
+      <!-- ************************  Subfamily 'STM32L432'  **************************** -->
+      <subFamily DsubFamily="STM32L432">
+        <debug svd="SVD/STM32L4x2.svd"/>
+        <compile header="Device/Include/stm32l4xx.h"  define="STM32L432xx"/>
+
+        <feature type="Timer"    n="10"   m="16"/>
+        <feature type="Timer"    n="1"    m="32"/>
+        <feature type="ADC"      n="1"    m="12"/>
+        <feature type="DAC"      n="2"    m="12"/>
+        <feature type="SPI"      n="2"/>
+        <feature type="ComOther" n="1"                  name="SAI Interface"/>
+        <feature type="I2C"      n="2"/>
+        <feature type="USART"    n="3"    m="11250000"/>
+        <feature type="CAN"      n="1"/>
+        <feature type="VCC"      n="1.71" m="3.60"/>
+
+        <!-- *************************  Device 'STM32L432KC'  ***************************** -->
+        <device Dname="STM32L432KC">
+          <memory id="IROM1"                        start="0x08000000" size="0x00040000" startup="1" default="1" />
+          <memory id="IRAM1"                        start="0x20000000" size="0x00010000" init="0"    default="1" />
+          <algorithm name="Flash/STM32L4xx_256.FLM" start="0x08000000" size="0x00040000"             default="1" />
+
+          <variant Dvariant="STM32L432KCUx"> <feature type="QFN" n="32"/> </variant>
+        </device>
+
+        <!-- *************************  Device 'STM32L432KB'  ***************************** -->
+        <device Dname="STM32L432KB">
+          <memory id="IROM1"                        start="0x08000000" size="0x00020000" startup="1" default="1" />
+          <memory id="IRAM1"                        start="0x20000000" size="0x00010000" init="0"    default="1" />
+          <algorithm name="Flash/STM32L4xx_256.FLM" start="0x08000000" size="0x00020000"             default="1" />
+
+          <variant Dvariant="STM32L432KBUx"> <feature type="QFN" n="32"/> </variant>
+        </device>
+      </subFamily>
+
+      <!-- ************************  Subfamily 'STM32L433'  **************************** -->
+      <subFamily DsubFamily="STM32L433">
+        <debug svd="SVD/STM32L4x3.svd"/>
+        <compile header="Device/Include/stm32l4xx.h"  define="STM32L433xx"/>
+
+        <!--book name="Documents/DM00083560.pdf" title="STM32L4x3 Reference Manual"/-->
+        <book name="Documents/DM00257192.pdf" title="STM32L433xx Data Sheet"/>
+
+        <feature type="Timer"    n="10"   m="16"/>
+        <feature type="Timer"    n="1"    m="32"/>
+        <feature type="ADC"      n="1"    m="12"/>
+        <feature type="DAC"      n="2"    m="12"/>
+        <feature type="SPI"      n="3"/>
+        <feature type="ComOther" n="2"                  name="SAI Interface"/>
+        <feature type="I2C"      n="3"/>
+        <feature type="USART"    n="4"    m="11250000"/>
+        <feature type="CAN"      n="1"/>
+        <feature type="VCC"      n="1.71" m="3.60"/>
+
+        <!-- *************************  Device 'STM32L433CC'  ***************************** -->
+        <device Dname="STM32L433CC">
+          <memory id="IROM1"                        start="0x08000000" size="0x00040000" startup="1" default="1" />
+          <memory id="IRAM1"                        start="0x20000000" size="0x00010000" init="0"    default="1" />
+          <algorithm name="Flash/STM32L4xx_256.FLM" start="0x08000000" size="0x00040000"             default="1" />
+
+          <variant Dvariant="STM32L433CCTx"> <feature type="QFP" n="48"/> </variant>
+          <variant Dvariant="STM32L433CCUx"> <feature type="QFN" n="48"/> </variant>
+          <variant Dvariant="STM32L433CCYx"> <feature type="CSP" n="48"/> </variant>
+        </device>
+
+        <!-- *************************  Device 'STM32L433RC'  ***************************** -->
+        <device Dname="STM32L433RC">
+          <memory id="IROM1"                        start="0x08000000" size="0x00040000" startup="1" default="1" />
+          <memory id="IRAM1"                        start="0x20000000" size="0x00010000" init="0"    default="1" />
+          <algorithm name="Flash/STM32L4xx_256.FLM" start="0x08000000" size="0x00040000"             default="1" />
+
+          <variant Dvariant="STM32L433RCTx"> <feature type="QFP" n="64"/> </variant>
+          <variant Dvariant="STM32L433RCYx"> <feature type="CSP" n="64"/> </variant>
+          <variant Dvariant="STM32L433RCIx"> <feature type="BGA" n="64"/> </variant>
+        </device>
+
+        <!-- *************************  Device 'STM32L433VC'  ***************************** -->
+        <device Dname="STM32L433VC">
+          <memory id="IROM1"                        start="0x08000000" size="0x00040000" startup="1" default="1" />
+          <memory id="IRAM1"                        start="0x20000000" size="0x00010000" init="0"    default="1" />
+          <algorithm name="Flash/STM32L4xx_256.FLM" start="0x08000000" size="0x00040000"             default="1" />
+
+          <variant Dvariant="STM32L433VCTx"> <feature type="QFP" n="100"/> </variant>
+          <variant Dvariant="STM32L433VCIx"> <feature type="BGA" n="100"/> </variant>
+        </device>
+
+        <!-- *************************  Device 'STM32L433CB'  ***************************** -->
+        <device Dname="STM32L433CB">
+          <memory id="IROM1"                        start="0x08000000" size="0x00020000" startup="1" default="1" />
+          <memory id="IRAM1"                        start="0x20000000" size="0x00010000" init="0"    default="1" />
+          <algorithm name="Flash/STM32L4xx_256.FLM" start="0x08000000" size="0x00020000"             default="1" />
+
+          <variant Dvariant="STM32L433CBTx"> <feature type="QFP" n="48"/> </variant>
+          <variant Dvariant="STM32L433CBUx"> <feature type="QFN" n="48"/> </variant>
+          <variant Dvariant="STM32L433CBYx"> <feature type="CSP" n="48"/> </variant>
+        </device>
+
+        <!-- *************************  Device 'STM32L433RB'  ***************************** -->
+        <device Dname="STM32L433RB">
+          <memory id="IROM1"                        start="0x08000000" size="0x00020000" startup="1" default="1" />
+          <memory id="IRAM1"                        start="0x20000000" size="0x00010000" init="0"    default="1" />
+          <algorithm name="Flash/STM32L4xx_256.FLM" start="0x08000000" size="0x00020000"             default="1" />
+
+          <variant Dvariant="STM32L433RBTx"> <feature type="QFP" n="64"/> </variant>
+          <variant Dvariant="STM32L433RBYx"> <feature type="CSP" n="64"/> </variant>
+          <variant Dvariant="STM32L433RBIx"> <feature type="BGA" n="64"/> </variant>
+        </device>
+      </subFamily>
+
+      <!-- ************************  Subfamily 'STM32L443'  **************************** -->
+      <subFamily DsubFamily="STM32L443">
+        <debug svd="SVD/STM32L4x3.svd"/>
+        <compile header="Device/Include/stm32l4xx.h"  define="STM32L443xx"/>
+
+        <!--book name="Documents/DM00083560.pdf" title="STM32L4x3 Reference Manual"/-->
+        <book name="Documents/DM00254865.pdf" title="STM32L443xx Data Sheet"/>
+
+        <feature type="Timer"    n="10"   m="16"/>
+        <feature type="Timer"    n="1"    m="32"/>
+        <feature type="ADC"      n="1"    m="12"/>
+        <feature type="DAC"      n="2"    m="12"/>
+        <feature type="SPI"      n="3"/>
+        <feature type="ComOther" n="2"                  name="SAI Interface"/>
+        <feature type="I2C"      n="3"/>
+        <feature type="USART"    n="4"    m="11250000"/>
+        <feature type="CAN"      n="1"/>
+        <feature type="VCC"      n="1.71" m="3.60"/>
+
+        <!-- *************************  Device 'STM32L443CC'  ***************************** -->
+        <device Dname="STM32L443CC">
+          <memory id="IROM1"                        start="0x08000000" size="0x00040000" startup="1" default="1" />
+          <memory id="IRAM1"                        start="0x20000000" size="0x00010000" init="0"    default="1" />
+          <algorithm name="Flash/STM32L4xx_256.FLM" start="0x08000000" size="0x00040000"             default="1" />
+
+          <variant Dvariant="STM32L443CCTx"> <feature type="QFP" n="48"/> </variant>
+          <variant Dvariant="STM32L443CCUx"> <feature type="QFN" n="48"/> </variant>
+          <variant Dvariant="STM32L443CCYx"> <feature type="CSP" n="48"/> </variant>
+        </device>
+
+        <!-- *************************  Device 'STM32L443RC'  ***************************** -->
+        <device Dname="STM32L443RC">
+          <memory id="IROM1"                        start="0x08000000" size="0x00040000" startup="1" default="1" />
+          <memory id="IRAM1"                        start="0x20000000" size="0x00010000" init="0"    default="1" />
+          <algorithm name="Flash/STM32L4xx_256.FLM" start="0x08000000" size="0x00040000"             default="1" />
+
+          <variant Dvariant="STM32L443RCTx"> <feature type="QFP" n="64"/> </variant>
+          <variant Dvariant="STM32L443RCYx"> <feature type="CSP" n="64"/> </variant>
+          <variant Dvariant="STM32L443RCIx"> <feature type="BGA" n="64"/> </variant>
+        </device>
+
+        <!-- *************************  Device 'STM32L443VC'  ***************************** -->
+        <device Dname="STM32L443VC">
+          <memory id="IROM1"                        start="0x08000000" size="0x00040000" startup="1" default="1" />
+          <memory id="IRAM1"                        start="0x20000000" size="0x00010000" init="0"    default="1" />
+          <algorithm name="Flash/STM32L4xx_256.FLM" start="0x08000000" size="0x00040000"             default="1" />
+
+          <variant Dvariant="STM32L443VCTx"> <feature type="QFP" n="100"/> </variant>
+          <variant Dvariant="STM32L443VCIx"> <feature type="BGA" n="100"/> </variant>
+        </device>
+      </subFamily>
+
+      <!-- ************************  Subfamily 'STM32L471'  **************************** -->
+      <subFamily DsubFamily="STM32L471">
+        <debug svd="SVD/STM32L4x1.svd"/>
+        <compile header="Device/Include/stm32l4xx.h"  define="STM32L471xx"/>
+
+        <book name="Documents/DM00149427.pdf" title="STM32L4x1 Reference Manual"/>
+        <book name="Documents/DM00149404.pdf" title="STM32L471xx Data Sheet"/>
+
+        <feature type="Timer"    n="14"   m="16"/>
+        <feature type="Timer"    n="2"    m="32"/>
+        <feature type="ADC"      n="2"    m="12"/>
+        <feature type="DAC"      n="2"    m="12"/>
+        <feature type="SPI"      n="3"/>
+        <feature type="ComOther" n="2"                   name="SAI Interface"/>
+        <feature type="I2C"      n="3"/>
+        <feature type="USART"    n="6"    m="11250000"/>
+        <feature type="USBOTG"   n="2"/>
+        <feature type="CAN"      n="1"/>
+        <feature type="VCC"      n="1.80" m="3.60"/>
+
+        <!-- *************************  Device 'STM32L471RC'  ***************************** -->
+        <device Dname="STM32L471RC">
+          <memory id="IROM1"                         start="0x08000000" size="0x00040000" startup="1" default="1"/>
+          <memory id="IRAM1"                         start="0x20000000" size="0x00018000" init="0"    default="1"/>
+          <memory id="IRAM2"                         start="0x10000000" size="0x00008000" init="0"    default="0"/>
+          <algorithm name="Flash/STM32L4xx_256.FLM"  start="0x08000000" size="0x00040000"             default="1"/>
+
+          <variant Dvariant="STM32L471RCTx"> <feature type="QFP" n="64"/> </variant>
+          <variant Dvariant="STM32L471RCYx"> <feature type="CSP" n="64"/> </variant>
+        </device>
+
+        <!-- *************************  Device 'STM32L471VC'  ***************************** -->
+        <device Dname="STM32L471VC">
+          <memory id="IROM1"                         start="0x08000000" size="0x00040000" startup="1" default="1"/>
+          <memory id="IRAM1"                         start="0x20000000" size="0x00018000" init="0"    default="1"/>
+          <memory id="IRAM2"                         start="0x10000000" size="0x00008000" init="0"    default="0"/>
+          <algorithm name="Flash/STM32L4xx_256.FLM"  start="0x08000000" size="0x00040000"             default="1"/>
+
+          <variant Dvariant="STM32L471VCTx"> <feature type="QFP" n="100"/> </variant>
+        </device>
+
+        <!-- *************************  Device 'STM32L471RE'  ***************************** -->
+        <device Dname="STM32L471RE">
+          <memory id="IROM1"                         start="0x08000000" size="0x00080000" startup="1" default="1"/>
+          <memory id="IRAM1"                         start="0x20000000" size="0x00018000" init="0"    default="1"/>
+          <memory id="IRAM2"                         start="0x10000000" size="0x00008000" init="0"    default="0"/>
+          <algorithm name="Flash/STM32L4xx_512.FLM"  start="0x08000000" size="0x00080000"             default="1"/>
+
+          <variant Dvariant="STM32L471RETx"> <feature type="QFP" n="64"/> </variant>
+       </device>
+
+       <!-- *************************  Device 'STM32L471JE'  ***************************** -->
+        <device Dname="STM32L471JE">
+          <memory id="IROM1"                         start="0x08000000" size="0x00080000" startup="1" default="1"/>
+          <memory id="IRAM1"                         start="0x20000000" size="0x00018000" init="0"    default="1"/>
+          <memory id="IRAM2"                         start="0x10000000" size="0x00008000" init="0"    default="0"/>
+          <algorithm name="Flash/STM32L4xx_512.FLM"  start="0x08000000" size="0x00080000"             default="1"/>
+
+          <variant Dvariant="STM32L471JEYx"> <feature type="CSP" n="72"/> </variant>
+       </device>
+
+       <!-- *************************  Device 'STM32L471VE'  ***************************** -->
+        <device Dname="STM32L471VE">
+          <memory id="IROM1"                         start="0x08000000" size="0x00080000" startup="1" default="1"/>
+          <memory id="IRAM1"                         start="0x20000000" size="0x00018000" init="0"    default="1"/>
+          <memory id="IRAM2"                         start="0x10000000" size="0x00008000" init="0"    default="0"/>
+          <algorithm name="Flash/STM32L4xx_512.FLM"  start="0x08000000" size="0x00080000"             default="1"/>
+
+          <variant Dvariant="STM32L471VETx"> <feature type="QFP" n="100"/> </variant>
+        </device>
+
+         <!-- *************************  Device 'STM32L471QE'  ***************************** -->
+        <device Dname="STM32L471QE">
+          <memory id="IROM1"                         start="0x08000000" size="0x00080000" startup="1" default="1"/>
+          <memory id="IRAM1"                         start="0x20000000" size="0x00018000" init="0"    default="1"/>
+          <memory id="IRAM2"                         start="0x10000000" size="0x00008000" init="0"    default="0"/>
+          <algorithm name="Flash/STM32L4xx_512.FLM"  start="0x08000000" size="0x00080000"             default="1"/>
+
+          <variant Dvariant="STM32L471QEIx"> <feature type="BGA" n="132"/> </variant>
+        </device>
+
+        <!-- *************************  Device 'STM32L471ZE'  ***************************** -->
+        <device Dname="STM32L471ZE">
+          <memory id="IROM1"                         start="0x08000000" size="0x00080000" startup="1" default="1"/>
+          <memory id="IRAM1"                         start="0x20000000" size="0x00018000" init="0"    default="1"/>
+          <memory id="IRAM2"                         start="0x10000000" size="0x00008000" init="0"    default="0"/>
+          <algorithm name="Flash/STM32L4xx_512.FLM"  start="0x08000000" size="0x00080000"             default="1"/>
+
+          <variant Dvariant="STM32L471ZETx"> <feature type="QFP" n="144"/> </variant>
+        </device>
+
+        <!-- *************************  Device 'STM32L471RG'  ***************************** -->
+        <device Dname="STM32L471RG">
+          <memory id="IROM1"                         start="0x08000000" size="0x00100000" startup="1" default="1"/>
+          <memory id="IRAM1"                         start="0x20000000" size="0x00018000" init="0"    default="1"/>
+          <memory id="IRAM2"                         start="0x10000000" size="0x00008000" init="0"    default="0"/>
+          <algorithm name="Flash/STM32L4xx_1024.FLM" start="0x08000000" size="0x00100000"             default="1"/>
+
+          <variant Dvariant="STM32L471RGTx"> <feature type="QFP" n="64"/> </variant>
+          <variant Dvariant="STM32L471RGYx"> <feature type="CSP" n="64"/> </variant>
+        </device>
+
+        <!-- *************************  Device 'STM32L471JG'  ***************************** -->
+        <device Dname="STM32L471JG">
+          <memory id="IROM1"                         start="0x08000000" size="0x00100000" startup="1" default="1"/>
+          <memory id="IRAM1"                         start="0x20000000" size="0x00018000" init="0"    default="1"/>
+          <memory id="IRAM2"                         start="0x10000000" size="0x00008000" init="0"    default="0"/>
+          <algorithm name="Flash/STM32L4xx_1024.FLM" start="0x08000000" size="0x00100000"             default="1"/>
+
+          <variant Dvariant="STM32L471JGYx"> <feature type="CSP" n="72"/> </variant>
+        </device>
+
+        <!-- *************************  Device 'STM32L471VG'  ***************************** -->
+        <device Dname="STM32L471VG">
+          <memory id="IROM1"                         start="0x08000000" size="0x00100000" startup="1" default="1"/>
+          <memory id="IRAM1"                         start="0x20000000" size="0x00018000" init="0"    default="1"/>
+          <memory id="IRAM2"                         start="0x10000000" size="0x00008000" init="0"    default="0"/>
+          <algorithm name="Flash/STM32L4xx_1024.FLM" start="0x08000000" size="0x00100000"             default="1"/>
+
+          <variant Dvariant="STM32L471VGTx"> <feature type="QFP" n="100"/> </variant>
+        </device>
+
+        <!-- *************************  Device 'STM32L471QG'  ***************************** -->
+        <device Dname="STM32L471QG">
+          <memory id="IROM1"                         start="0x08000000" size="0x00100000" startup="1" default="1"/>
+          <memory id="IRAM1"                         start="0x20000000" size="0x00018000" init="0"    default="1"/>
+          <memory id="IRAM2"                         start="0x10000000" size="0x00008000" init="0"    default="0"/>
+          <algorithm name="Flash/STM32L4xx_1024.FLM" start="0x08000000" size="0x00100000"             default="1"/>
+
+          <variant Dvariant="STM32L471QGIx"> <feature type="BGA" n="132"/> </variant>
+        </device>
+
+        <!-- *************************  Device 'STM32L471ZG'  ***************************** -->
+        <device Dname="STM32L471ZG">
+          <memory id="IROM1"                         start="0x08000000" size="0x00100000" startup="1" default="1"/>
+          <memory id="IRAM1"                         start="0x20000000" size="0x00018000" init="0"    default="1"/>
+          <memory id="IRAM2"                         start="0x10000000" size="0x00008000" init="0"    default="0"/>
+          <algorithm name="Flash/STM32L4xx_1024.FLM" start="0x08000000" size="0x00100000"             default="1"/>
+
+          <variant Dvariant="STM32L471ZGTx"> <feature type="QFP" n="144"/> </variant>
+        </device>
+      </subFamily>
+
+      <!-- ************************  Subfamily 'STM32L475'  **************************** -->
+      <subFamily DsubFamily="STM32L475">
+        <debug svd="SVD/STM32L4x5.svd"/>
+        <compile header="Device/Include/stm32l4xx.h"  define="STM32L475xx"/>
+
+        <book name="Documents/DM00151945.pdf" title="STM32L4x5 Reference Manual"/>
+        <book name="Documents/DM00172872.pdf" title="STM32L475xx Data Sheet"/>
+
+        <feature type="Timer"    n="14"   m="16"/>
+        <feature type="Timer"    n="2"    m="32"/>
+        <feature type="ADC"      n="2"    m="12"/>
+        <feature type="DAC"      n="2"    m="12"/>
+        <feature type="SPI"      n="3"/>
+        <feature type="ComOther" n="2"               name="SAI Interface"/>
+        <feature type="I2C"      n="3"/>
+        <feature type="USART"    n="6"    m="11250000"/>
+        <feature type="USBOTG"   n="2"/>
+        <feature type="CAN"      n="1"/>
+        <feature type="VCC"      n="1.80" m="3.60"/>
+
+        <!-- *************************  Device 'STM32L475RC'  ***************************** -->
+        <device Dname="STM32L475RC">
+          <memory id="IROM1"                         start="0x08000000" size="0x00040000" startup="1" default="1"/>
+          <memory id="IRAM1"                         start="0x20000000" size="0x00018000" init="0"    default="1"/>
+          <memory id="IRAM2"                         start="0x10000000" size="0x00008000" init="0"    default="0"/>
+          <algorithm name="Flash/STM32L4xx_256.FLM"  start="0x08000000" size="0x00040000"             default="1"/>
+
+          <variant Dvariant="STM32L475RCTx"> <feature type="QFP" n="64"/> </variant>
+        </device>
+
+        <!-- *************************  Device 'STM32L475VC'  ***************************** -->
+        <device Dname="STM32L475VC">
+          <memory id="IROM1"                         start="0x08000000" size="0x00040000" startup="1" default="1"/>
+          <memory id="IRAM1"                         start="0x20000000" size="0x00018000" init="0"    default="1"/>
+          <memory id="IRAM2"                         start="0x10000000" size="0x00008000" init="0"    default="0"/>
+          <algorithm name="Flash/STM32L4xx_256.FLM"  start="0x08000000" size="0x00040000"             default="1"/>
+
+          <variant Dvariant="STM32L475VCTx"> <feature type="QFP" n="100"/> </variant>
+        </device>
+
+        <!-- *************************  Device 'STM32L475RE'  ***************************** -->
+        <device Dname="STM32L475RE">
+          <memory id="IROM1"                         start="0x08000000" size="0x00080000" startup="1" default="1"/>
+          <memory id="IRAM1"                         start="0x20000000" size="0x00018000" init="0"    default="1"/>
+          <memory id="IRAM2"                         start="0x10000000" size="0x00008000" init="0"    default="0"/>
+          <algorithm name="Flash/STM32L4xx_512.FLM"  start="0x08000000" size="0x00080000"             default="1"/>
+
+          <variant Dvariant="STM32L475RETx"> <feature type="QFP" n="64"/> </variant>
+        </device>
+
+        <!-- *************************  Device 'STM32L475JE'  ***************************** -->
+        <device Dname="STM32L475JE">
+          <memory id="IROM1"                         start="0x08000000" size="0x00080000" startup="1" default="1"/>
+          <memory id="IRAM1"                         start="0x20000000" size="0x00018000" init="0"    default="1"/>
+          <memory id="IRAM2"                         start="0x10000000" size="0x00008000" init="0"    default="0"/>
+          <algorithm name="Flash/STM32L4xx_512.FLM"  start="0x08000000" size="0x00080000"             default="1"/>
+
+          <variant Dvariant="STM32L475JEYx"> <feature type="CSP" n="72"/> </variant>
+        </device>
+
+        <!-- *************************  Device 'STM32L475VE'  ***************************** -->
+        <device Dname="STM32L475VE">
+          <memory id="IROM1"                         start="0x08000000" size="0x00080000" startup="1" default="1"/>
+          <memory id="IRAM1"                         start="0x20000000" size="0x00018000" init="0"    default="1"/>
+          <memory id="IRAM2"                         start="0x10000000" size="0x00008000" init="0"    default="0"/>
+          <algorithm name="Flash/STM32L4xx_512.FLM"  start="0x08000000" size="0x00080000"             default="1"/>
+
+          <variant Dvariant="STM32L475VETx"> <feature type="QFP" n="100"/> </variant>
+        </device>
+
+        <!-- *************************  Device 'STM32L475QE'  ***************************** -->
+        <device Dname="STM32L475QE">
+          <memory id="IROM1"                         start="0x08000000" size="0x00080000" startup="1" default="1"/>
+          <memory id="IRAM1"                         start="0x20000000" size="0x00018000" init="0"    default="1"/>
+          <memory id="IRAM2"                         start="0x10000000" size="0x00008000" init="0"    default="0"/>
+          <algorithm name="Flash/STM32L4xx_512.FLM"  start="0x08000000" size="0x00080000"             default="1"/>
+
+          <variant Dvariant="STM32L475QEIx"> <feature type="BGA" n="132"/> </variant>
+        </device>
+
+        <!-- *************************  Device 'STM32L475ZE'  ***************************** -->
+        <device Dname="STM32L475ZE">
+          <memory id="IROM1"                         start="0x08000000" size="0x00080000" startup="1" default="1"/>
+          <memory id="IRAM1"                         start="0x20000000" size="0x00018000" init="0"    default="1"/>
+          <memory id="IRAM2"                         start="0x10000000" size="0x00008000" init="0"    default="0"/>
+          <algorithm name="Flash/STM32L4xx_512.FLM"  start="0x08000000" size="0x00080000"             default="1"/>
+
+          <variant Dvariant="STM32L475ZETx"> <feature type="QFP" n="144"/> </variant>
+        </device>
+
+        <!-- *************************  Device 'STM32L475RG'  ***************************** -->
+        <device Dname="STM32L475RG">
+          <memory id="IROM1"                         start="0x08000000" size="0x00100000" startup="1" default="1"/>
+          <memory id="IRAM1"                         start="0x20000000" size="0x00018000" init="0"    default="1"/>
+          <memory id="IRAM2"                         start="0x10000000" size="0x00008000" init="0"    default="0"/>
+          <algorithm name="Flash/STM32L4xx_1024.FLM" start="0x08000000" size="0x00100000"             default="1"/>
+
+          <variant Dvariant="STM32L475RGTx"> <feature type="QFP" n="64"/> </variant>
+        </device>
+
+        <!-- *************************  Device 'STM32L475JG'  ***************************** -->
+        <device Dname="STM32L475JG">
+          <memory id="IROM1"                         start="0x08000000" size="0x00100000" startup="1" default="1"/>
+          <memory id="IRAM1"                         start="0x20000000" size="0x00018000" init="0"    default="1"/>
+          <memory id="IRAM2"                         start="0x10000000" size="0x00008000" init="0"    default="0"/>
+          <algorithm name="Flash/STM32L4xx_1024.FLM" start="0x08000000" size="0x00100000"             default="1"/>
+
+          <variant Dvariant="STM32L475JGYx"> <feature type="CSP" n="72"/> </variant>
+        </device>
+
+        <!-- *************************  Device 'STM32L475VG'  ***************************** -->
+        <device Dname="STM32L475VG">
+          <memory id="IROM1"                         start="0x08000000" size="0x00100000" startup="1" default="1"/>
+          <memory id="IRAM1"                         start="0x20000000" size="0x00018000" init="0"    default="1"/>
+          <memory id="IRAM2"                         start="0x10000000" size="0x00008000" init="0"    default="0"/>
+          <algorithm name="Flash/STM32L4xx_1024.FLM" start="0x08000000" size="0x00100000"             default="1"/>
+
+          <variant Dvariant="STM32L475VGTx"> <feature type="QFP" n="100"/> </variant>
+        </device>
+
+        <!-- *************************  Device 'STM32L475QG'  ***************************** -->
+        <device Dname="STM32L475QG">
+          <memory id="IROM1"                         start="0x08000000" size="0x00100000" startup="1" default="1"/>
+          <memory id="IRAM2"                         start="0x10000000" size="0x00008000" init="0"    default="0"/>
+          <memory id="IRAM1"                         start="0x20000000" size="0x00018000" init="0"    default="1"/>
+          <algorithm name="Flash/STM32L4xx_1024.FLM" start="0x08000000" size="0x00100000"             default="1"/>
+
+          <variant Dvariant="STM32L475QGIx"> <feature type="BGA" n="132"/> </variant>
+        </device>
+
+        <!-- *************************  Device 'STM32L475ZG'  ***************************** -->
+        <device Dname="STM32L475ZG">
+          <memory id="IROM1"                         start="0x08000000" size="0x00100000" startup="1" default="1"/>
+          <memory id="IRAM1"                         start="0x20000000" size="0x00018000" init="0"    default="1"/>
+          <memory id="IRAM2"                         start="0x10000000" size="0x00008000" init="0"    default="0"/>
+          <algorithm name="Flash/STM32L4xx_1024.FLM" start="0x08000000" size="0x00100000"             default="1"/>
+
+          <variant Dvariant="STM32L475ZGTx"> <feature type="QFP" n="144"/> </variant>
+        </device>
+      </subFamily>
+
+      <!-- ************************  Subfamily 'STM32L476'  **************************** -->
+      <subFamily DsubFamily="STM32L476">
+        <debug svd="SVD/STM32L4x6.svd"/>
+        <compile header="Device/Include/stm32l4xx.h"  define="STM32L476xx"/>
+
+        <book name="Documents/DM00083560.pdf" title="STM32L4x6 Reference Manual"/>
+        <book name="Documents/DM00108832.pdf" title="STM32L476xx Data Sheet"/>
+
+        <feature type="Timer"    n="14"   m="16"/>
+        <feature type="Timer"    n="2"    m="32"/>
+        <feature type="ADC"      n="3"    m="12"/>
+        <feature type="DAC"      n="2"    m="12"/>
+        <feature type="SPI"      n="3"/>
+        <feature type="ComOther" n="2"                  name="SAI Interface"/>
+        <feature type="I2C"      n="3"/>
+        <feature type="USART"    n="6"    m="11250000"/>
+        <feature type="USBOTG"   n="1"/>
+        <feature type="CAN"      n="1"/>
+        <feature type="VCC"      n="1.80" m="3.60"/>
+
+        <!-- *************************  Device 'STM32L476RC'  ***************************** -->
+        <device Dname="STM32L476RC">
+          <memory id="IROM1"                         start="0x08000000" size="0x00040000" startup="1" default="1"/>
+          <memory id="IRAM1"                         start="0x20000000" size="0x00018000" init="0"    default="1"/>
+          <memory id="IRAM2"                         start="0x10000000" size="0x00008000" init="0"    default="0"/>
+          <algorithm name="Flash/STM32L4xx_256.FLM"  start="0x08000000" size="0x00040000"             default="1"/>
+
+          <variant Dvariant="STM32L476RCTx"> <feature type="QFP" n="64"/> </variant>
+        </device>
+
+        <!-- *************************  Device 'STM32L476VC'  ***************************** -->
+        <device Dname="STM32L476VC">
+          <memory id="IROM1"                         start="0x08000000" size="0x00040000" startup="1" default="1"/>
+          <memory id="IRAM1"                         start="0x20000000" size="0x00018000" init="0"    default="1"/>
+          <memory id="IRAM2"                         start="0x10000000" size="0x00008000" init="0"    default="0"/>
+          <algorithm name="Flash/STM32L4xx_256.FLM"  start="0x08000000" size="0x00040000"             default="1"/>
+
+          <variant Dvariant="STM32L476VCTx"> <feature type="QFP" n="100"/> </variant>
+        </device>
+
+        <!-- *************************  Device 'STM32L476RE'  ***************************** -->
+        <device Dname="STM32L476RE">
+          <memory id="IROM1"                         start="0x08000000" size="0x00080000" startup="1" default="1"/>
+          <memory id="IRAM1"                         start="0x20000000" size="0x00018000" init="0"    default="1"/>
+          <memory id="IRAM2"                         start="0x10000000" size="0x00008000" init="0"    default="0"/>
+          <algorithm name="Flash/STM32L4xx_512.FLM"  start="0x08000000" size="0x00080000"             default="1"/>
+
+          <variant Dvariant="STM32L476RETx"> <feature type="QFP" n="64"/> </variant>
+        </device>
+
+        <!-- *************************  Device 'STM32L476JE'  ***************************** -->
+        <device Dname="STM32L476JE">
+          <memory id="IROM1"                         start="0x08000000" size="0x00080000" startup="1" default="1"/>
+          <memory id="IRAM1"                         start="0x20000000" size="0x00018000" init="0"    default="1"/>
+          <memory id="IRAM2"                         start="0x10000000" size="0x00008000" init="0"    default="0"/>
+          <algorithm name="Flash/STM32L4xx_512.FLM"  start="0x08000000" size="0x00080000"             default="1"/>
+
+          <variant Dvariant="STM32L476JEYx"> <feature type="CSP" n="72"/> </variant>
+        </device>
+
+        <!-- *************************  Device 'STM32L476ME'  ***************************** -->
+        <device Dname="STM32L476ME">
+          <memory id="IROM1"                         start="0x08000000" size="0x00080000" startup="1" default="1"/>
+          <memory id="IRAM1"                         start="0x20000000" size="0x00018000" init="0"    default="1"/>
+          <memory id="IRAM2"                         start="0x10000000" size="0x00008000" init="0"    default="0"/>
+          <algorithm name="Flash/STM32L4xx_512.FLM"  start="0x08000000" size="0x00080000"             default="1"/>
+
+          <variant Dvariant="STM32L476MEYx"> <feature type="CSP" n="81"/> </variant>
+        </device>
+
+        <!-- *************************  Device 'STM32L476VE'  ***************************** -->
+        <device Dname="STM32L476VE">
+          <memory id="IROM1"                         start="0x08000000" size="0x00080000" startup="1" default="1"/>
+          <memory id="IRAM1"                         start="0x20000000" size="0x00018000" init="0"    default="1"/>
+          <memory id="IRAM2"                         start="0x10000000" size="0x00008000" init="0"    default="0"/>
+          <algorithm name="Flash/STM32L4xx_512.FLM"  start="0x08000000" size="0x00080000"             default="1"/>
+
+          <variant Dvariant="STM32L476VETx"> <feature type="QFP" n="100"/> </variant>
+        </device>
+
+        <!-- *************************  Device 'STM32L476QE'  ***************************** -->
+        <device Dname="STM32L476QE">
+          <memory id="IROM1"                         start="0x08000000" size="0x00080000" startup="1" default="1"/>
+          <memory id="IRAM1"                         start="0x20000000" size="0x00018000" init="0"    default="1"/>
+          <memory id="IRAM2"                         start="0x10000000" size="0x00008000" init="0"    default="0"/>
+          <algorithm name="Flash/STM32L4xx_512.FLM"  start="0x08000000" size="0x00080000"             default="1"/>
+
+          <variant Dvariant="STM32L476QEIx"> <feature type="BGA" n="132"/> </variant>
+        </device>
+
+        <!-- *************************  Device 'STM32L476ZE'  ***************************** -->
+        <device Dname="STM32L476ZE">
+          <memory id="IROM1"                         start="0x08000000" size="0x00080000" startup="1" default="1"/>
+          <memory id="IRAM1"                         start="0x20000000" size="0x00018000" init="0"    default="1"/>
+          <memory id="IRAM2"                         start="0x10000000" size="0x00008000" init="0"    default="0"/>
+          <algorithm name="Flash/STM32L4xx_512.FLM"  start="0x08000000" size="0x00080000"             default="1"/>
+
+          <variant Dvariant="STM32L476ZETx"> <feature type="QFP" n="144"/> </variant>
+        </device>
+
+        <!-- *************************  Device 'STM32L476RG'  ***************************** -->
+        <device Dname="STM32L476RG">
+          <memory id="IROM1"                         start="0x08000000" size="0x00100000" startup="1" default="1"/>
+          <memory id="IRAM1"                         start="0x20000000" size="0x00018000" init="0"    default="1"/>
+          <memory id="IRAM2"                         start="0x10000000" size="0x00008000" init="0"    default="0"/>
+          <algorithm name="Flash/STM32L4xx_1024.FLM" start="0x08000000" size="0x00100000"             default="1"/>
+
+          <variant Dvariant="STM32L476RGTx"> <feature type="QFP" n="64"/> </variant>
+        </device>
+
+        <!-- *************************  Device 'STM32L476ZG'  ***************************** -->
+        <device Dname="STM32L476ZG">
+          <memory id="IROM1"                         start="0x08000000" size="0x00100000" startup="1" default="1"/>
+          <memory id="IRAM1"                         start="0x20000000" size="0x00018000" init="0"    default="1"/>
+          <memory id="IRAM2"                         start="0x10000000" size="0x00008000" init="0"    default="0"/>
+          <algorithm name="Flash/STM32L4xx_1024.FLM" start="0x08000000" size="0x00100000"             default="1"/>
+
+          <variant Dvariant="STM32L476ZGTx"> <feature type="QFP" n="144"/> </variant>
+        </device>
+
+        <!-- *************************  Device 'STM32L476JG'  ***************************** -->
+        <device Dname="STM32L476JG">
+          <memory id="IROM1"                         start="0x08000000" size="0x00100000" startup="1" default="1"/>
+          <memory id="IRAM1"                         start="0x20000000" size="0x00018000" init="0"    default="1"/>
+          <memory id="IRAM2"                         start="0x10000000" size="0x00008000" init="0"    default="0"/>
+          <algorithm name="Flash/STM32L4xx_1024.FLM" start="0x08000000" size="0x00100000"             default="1"/>
+
+          <variant Dvariant="STM32L476JGYx"> <feature type="CSP" n="72"/> </variant>
+        </device>
+
+        <!-- *************************  Device 'STM32L476MG'  ***************************** -->
+        <device Dname="STM32L476MG">
+          <memory id="IROM1"                         start="0x08000000" size="0x00100000" startup="1" default="1"/>
+          <memory id="IRAM1"                         start="0x20000000" size="0x00018000" init="0"    default="1"/>
+          <memory id="IRAM2"                         start="0x10000000" size="0x00008000" init="0"    default="0"/>
+          <algorithm name="Flash/STM32L4xx_1024.FLM" start="0x08000000" size="0x00100000"             default="1"/>
+
+          <variant Dvariant="STM32L476MGYx"> <feature type="CSP" n="81"/> </variant>
+        </device>
+
+        <!-- *************************  Device 'STM32L476VG'  ***************************** -->
+        <device Dname="STM32L476VG">
+          <memory id="IROM1"                         start="0x08000000" size="0x00100000" startup="1" default="1"/>
+          <memory id="IRAM1"                         start="0x20000000" size="0x00018000" init="0"    default="1"/>
+          <memory id="IRAM2"                         start="0x10000000" size="0x00008000" init="0"    default="0"/>
+          <algorithm name="Flash/STM32L4xx_1024.FLM" start="0x08000000" size="0x00100000"             default="1"/>
+
+          <variant Dvariant="STM32L476VGTx"> <feature type="QFP" n="100"/> </variant>
+        </device>
+
+        <!-- *************************  Device 'STM32L476QG'  ***************************** -->
+        <device Dname="STM32L476QG">
+          <memory id="IROM1"                         start="0x08000000" size="0x00100000" startup="1" default="1"/>
+          <memory id="IRAM1"                         start="0x20000000" size="0x00018000" init="0"    default="1"/>
+          <memory id="IRAM2"                         start="0x10000000" size="0x00008000" init="0"    default="0"/>
+          <algorithm name="Flash/STM32L4xx_1024.FLM" start="0x08000000" size="0x00100000"             default="1"/>
+
+          <variant Dvariant="STM32L476QGIx"> <feature type="BGA" n="132"/> </variant>
+        </device>
+
+      </subFamily>
+
+      <!-- ************************  Subfamily 'STM32L485'  **************************** -->
+      <subFamily DsubFamily="STM32L485">
+        <debug svd="SVD/STM32L4x5.svd"/>
+        <compile header="Device/Include/stm32l4xx.h"  define="STM32L485xx"/>
+
+        <book name="Documents/DM00151945.pdf" title="STM32L4x5 Reference Manual"/>
+        <!--book name="Documents/DM00108833.pdf" title="STM32L486xx Data Sheet"/-->
+
+        <feature type="Timer"    n="14"   m="16"/>
+        <feature type="Timer"    n="2"    m="32"/>
+        <feature type="ADC"      n="2"    m="12"/>
+        <feature type="DAC"      n="2"    m="12"/>
+        <feature type="SPI"      n="3"/>
+        <feature type="ComOther" n="2"               name="SAI Interface"/>
+        <feature type="I2C"      n="3"/>
+        <feature type="USART"    n="6"    m="11250000"/>
+        <feature type="USBOTG"   n="2"/>
+        <feature type="CAN"      n="1"/>
+        <feature type="VCC"      n="1.80" m="3.60"/>
+
+        <!-- *************************  Device 'STM32L485JG'  ***************************** -->
+        <device Dname="STM32L485JG">
+          <memory id="IROM1"                         start="0x08000000" size="0x00100000" startup="1" default="1"/>
+          <memory id="IRAM1"                         start="0x20000000" size="0x00018000" init="0"    default="1"/>
+          <memory id="IRAM2"                         start="0x10000000" size="0x00008000" init="0"    default="0"/>
+          <algorithm name="Flash/STM32L4xx_1024.FLM" start="0x08000000" size="0x00100000"             default="1"/>
+
+          <variant Dvariant="STM32L485JCYx"> <feature type="CSP" n="72"/> </variant>
+        </device>
+
+      </subFamily>
+
+      <!-- ************************  Subfamily 'STM32L486'  **************************** -->
+      <subFamily DsubFamily="STM32L486">
+        <debug svd="SVD/STM32L4x6.svd"/>
+        <compile header="Device/Include/stm32l4xx.h"  define="STM32L486xx"/>
+
+        <book name="Documents/DM00083560.pdf" title="STM32L4x6 Reference Manual"/>
+        <book name="Documents/DM00108833.pdf" title="STM32L486xx Data Sheet"/>
+
+        <feature type="Timer"    n="14"   m="16"/>
+        <feature type="Timer"    n="2"    m="32"/>
+        <feature type="ADC"      n="3"    m="12"/>
+        <feature type="DAC"      n="2"    m="12"/>
+        <feature type="SPI"      n="3"/>
+        <feature type="ComOther" n="2"               name="SAI Interface"/>
+        <feature type="I2C"      n="3"/>
+        <feature type="USART"    n="6"    m="11250000"/>
+        <feature type="USBOTG"   n="1"/>
+        <feature type="CAN"      n="1"/>
+        <feature type="VCC"      n="1.80" m="3.60"/>
+
+        <!-- *************************  Device 'STM32L486RG'  ***************************** -->
+        <device Dname="STM32L486RG">
+          <memory id="IROM1"                         start="0x08000000" size="0x00100000" startup="1" default="1"/>
+          <memory id="IRAM1"                         start="0x20000000" size="0x00018000" init="0"    default="1"/>
+          <memory id="IRAM2"                         start="0x10000000" size="0x00008000" init="0"    default="0"/>
+          <algorithm name="Flash/STM32L4xx_1024.FLM" start="0x08000000" size="0x00100000"             default="1"/>
+
+          <variant Dvariant="STM32L486RGTx"> <feature type="QFP" n="64"/> </variant>
+        </device>
+
+        <!-- *************************  Device 'STM32L486JG'  ***************************** -->
+        <device Dname="STM32L486JG">
+          <memory id="IROM1"                         start="0x08000000" size="0x00100000" startup="1" default="1"/>
+          <memory id="IRAM1"                         start="0x20000000" size="0x00018000" init="0"    default="1"/>
+          <memory id="IRAM2"                         start="0x10000000" size="0x00008000" init="0"    default="0"/>
+          <algorithm name="Flash/STM32L4xx_1024.FLM" start="0x08000000" size="0x00100000"             default="1"/>
+
+          <variant Dvariant="STM32L486JGYx"> <feature type="CSP" n="72"/> </variant>
+        </device>
+
+        <!-- *************************  Device 'STM32L486VG'  ***************************** -->
+        <device Dname="STM32L486VG">
+          <memory id="IROM1"                         start="0x08000000" size="0x00100000" startup="1" default="1"/>
+          <memory id="IRAM1"                         start="0x20000000" size="0x00018000" init="0"    default="1"/>
+          <memory id="IRAM2"                         start="0x10000000" size="0x00008000" init="0"    default="0"/>
+          <algorithm name="Flash/STM32L4xx_1024.FLM" start="0x08000000" size="0x00100000"             default="1"/>
+
+          <variant Dvariant="STM32L486VGTx"> <feature type="QFP" n="100"/> </variant>
+        </device>
+
+        <!-- *************************  Device 'STM32L486QG'  ***************************** -->
+        <device Dname="STM32L486QG">
+          <memory id="IROM1"                         start="0x08000000" size="0x00100000" startup="1" default="1"/>
+          <memory id="IRAM1"                         start="0x20000000" size="0x00018000" init="0"    default="1"/>
+          <memory id="IRAM2"                         start="0x10000000" size="0x00008000" init="0"    default="0"/>
+          <algorithm name="Flash/STM32L4xx_1024.FLM" start="0x08000000" size="0x00100000"             default="1"/>
+
+          <variant Dvariant="STM32L486QGIx"> <feature type="BGA" n="132"/> </variant>
+        </device>
+
+        <!-- *************************  Device 'STM32L486ZG'  ***************************** -->
+        <device Dname="STM32L486ZG">
+          <memory id="IROM1"                         start="0x08000000" size="0x00100000" startup="1" default="1"/>
+          <memory id="IRAM1"                         start="0x20000000" size="0x00018000" init="0"    default="1"/>
+          <memory id="IRAM2"                         start="0x10000000" size="0x00008000" init="0"    default="0"/>
+          <algorithm name="Flash/STM32L4xx_1024.FLM" start="0x08000000" size="0x00100000"             default="1"/>
+
+          <variant Dvariant="STM32L486ZGTx"> <feature type="QFP" n="144"/> </variant>
+        </device>
+      </subFamily>
+
+    </family>
+  </devices>
+
+  <conditions>
+    <!-- Compiler Conditions -->
+    <condition id="Compiler ARMCC">
+      <require Tcompiler="ARMCC"/>
+    </condition>
+
+    <!-- Device Conditions -->
+    <condition id="STM32L431">
+      <description>STMicroelectronics STM32L431 Devices</description>
+      <accept  Dvendor="STMicroelectronics:13" Dname="STM32L431*"/>
+    </condition>
+    <condition id="STM32L432">
+      <description>STMicroelectronics STM32L432 Devices</description>
+      <accept  Dvendor="STMicroelectronics:13" Dname="STM32L432*"/>
+    </condition>
+    <condition id="STM32L433">
+      <description>STMicroelectronics STM32L433 Devices</description>
+      <accept  Dvendor="STMicroelectronics:13" Dname="STM32L433*"/>
+    </condition>
+    <condition id="STM32L443">
+      <description>STMicroelectronics STM32L443 Devices</description>
+      <accept  Dvendor="STMicroelectronics:13" Dname="STM32L443*"/>
+    </condition>
+    <condition id="STM32L471">
+      <description>STMicroelectronics STM32L471 Devices</description>
+      <accept  Dvendor="STMicroelectronics:13" Dname="STM32L471*"/>
+    </condition>
+    <condition id="STM32L475">
+      <description>STMicroelectronics STM32L475 Devices</description>
+      <accept  Dvendor="STMicroelectronics:13" Dname="STM32L475*"/>
+    </condition>
+    <condition id="STM32L476">
+      <description>STMicroelectronics STM32L476 Devices</description>
+      <accept  Dvendor="STMicroelectronics:13" Dname="STM32L476*"/>
+    </condition>
+    <condition id="STM32L485">
+      <description>STMicroelectronics STM32L485 Devices</description>
+      <accept  Dvendor="STMicroelectronics:13" Dname="STM32L485*"/>
+    </condition>
+    <condition id="STM32L486">
+      <description>STMicroelectronics STM32L486 Devices</description>
+      <accept  Dvendor="STMicroelectronics:13" Dname="STM32L486*"/>
+    </condition>
+
+    <!-- Device + CMSIS Conditions -->
+    <condition id="STM32L431 CMSIS">
+      <description>STMicroelectronics STM32L431 Devices and CMSIS-Core</description>
+      <require condition="STM32L431"/>
+      <require Cclass="CMSIS" Cgroup="CORE"/>
+    </condition>
+    <condition id="STM32L432 CMSIS">
+      <description>STMicroelectronics STM32L432 Devices and CMSIS-Core</description>
+      <require condition="STM32L432"/>
+      <require Cclass="CMSIS" Cgroup="CORE"/>
+    </condition>
+    <condition id="STM32L433 CMSIS">
+      <description>STMicroelectronics STM32L433 Devices and CMSIS-Core</description>
+      <require condition="STM32L433"/>
+      <require Cclass="CMSIS" Cgroup="CORE"/>
+    </condition>
+    <condition id="STM32L443 CMSIS">
+      <description>STMicroelectronics STM32L443 Devices and CMSIS-Core</description>
+      <require condition="STM32L443"/>
+      <require Cclass="CMSIS" Cgroup="CORE"/>
+    </condition>
+    <condition id="STM32L471 CMSIS">
+      <description>STMicroelectronics STM32L471 Devices and CMSIS-Core</description>
+      <require condition="STM32L471"/>
+      <require Cclass="CMSIS" Cgroup="CORE"/>
+    </condition>
+    <condition id="STM32L475 CMSIS">
+      <description>STMicroelectronics STM32L475 Devices and CMSIS-Core</description>
+      <require condition="STM32L475"/>
+      <require Cclass="CMSIS" Cgroup="CORE"/>
+    </condition>
+    <condition id="STM32L476 CMSIS">
+      <description>STMicroelectronics STM32L476 Devices and CMSIS-Core</description>
+      <require condition="STM32L476"/>
+      <require Cclass="CMSIS" Cgroup="CORE"/>
+    </condition>
+    <condition id="STM32L485 CMSIS">
+      <description>STMicroelectronics STM32L485 Devices and CMSIS-Core</description>
+      <require condition="STM32L485"/>
+      <require Cclass="CMSIS" Cgroup="CORE"/>
+    </condition>
+    <condition id="STM32L486 CMSIS">
+      <description>STMicroelectronics STM32L486 Devices and CMSIS-Core</description>
+      <require condition="STM32L486"/>
+      <require Cclass="CMSIS" Cgroup="CORE"/>
+    </condition>
+  </conditions>
+
+  <components>
+    <!-- Startup startup_stm32l431 -->
+    <component  Cclass="Device" Cgroup="Startup" Cversion="1.1.0" condition="STM32L431 CMSIS">
+      <description>System Startup for STMicroelectronics STM32L431 Devices</description>
+      <files>
+        <file category="include"   name="Device/Include/"/>
+        <file category="sourceAsm" name="Device/Source/ARM/startup_stm32l431xx.s" attr="config" version="1.1.0" condition="Compiler ARMCC"/>
+        <file category="sourceC"   name="Device/Source/system_stm32l4xx.c"        attr="config" version="1.1.0"/>
+      </files>
+    </component>
+
+    <!-- Startup startup_stm32l432 -->
+    <component  Cclass="Device" Cgroup="Startup" Cversion="1.1.0" condition="STM32L432 CMSIS">
+      <description>System Startup for STMicroelectronics STM32L432 Devices</description>
+      <files>
+        <file category="include"   name="Device/Include/"/>
+        <file category="sourceAsm" name="Device/Source/ARM/startup_stm32l432xx.s" attr="config" version="1.1.0" condition="Compiler ARMCC"/>
+        <file category="sourceC"   name="Device/Source/system_stm32l4xx.c"        attr="config" version="1.1.0"/>
+      </files>
+    </component>
+
+    <!-- Startup startup_stm32l433 -->
+    <component  Cclass="Device" Cgroup="Startup" Cversion="1.1.0" condition="STM32L433 CMSIS">
+      <description>System Startup for STMicroelectronics STM32L433 Devices</description>
+      <files>
+        <file category="include"   name="Device/Include/"/>
+        <file category="sourceAsm" name="Device/Source/ARM/startup_stm32l433xx.s" attr="config" version="1.1.0" condition="Compiler ARMCC"/>
+        <file category="sourceC"   name="Device/Source/system_stm32l4xx.c"        attr="config" version="1.1.0"/>
+      </files>
+    </component>
+
+    <!-- Startup startup_stm32l443 -->
+    <component  Cclass="Device" Cgroup="Startup" Cversion="1.1.0" condition="STM32L443 CMSIS">
+      <description>System Startup for STMicroelectronics STM32L443 Devices</description>
+      <files>
+        <file category="include"   name="Device/Include/"/>
+        <file category="sourceAsm" name="Device/Source/ARM/startup_stm32l443xx.s" attr="config" version="1.1.0" condition="Compiler ARMCC"/>
+        <file category="sourceC"   name="Device/Source/system_stm32l4xx.c"        attr="config" version="1.1.0"/>
+      </files>
+    </component>
+
+    <!-- Startup startup_stm32l471 -->
+    <component  Cclass="Device" Cgroup="Startup" Cversion="1.0.3" condition="STM32L471 CMSIS">
+      <description>System Startup for STMicroelectronics STM32L471 Devices</description>
+      <files>
+        <file category="include"   name="Device/Include/"/>
+        <file category="sourceAsm" name="Device/Source/ARM/startup_stm32l471xx.s" attr="config" version="1.0.3" condition="Compiler ARMCC"/>
+        <file category="sourceC"   name="Device/Source/system_stm32l4xx.c"        attr="config" version="1.0.3"/>
+      </files>
+    </component>
+
+    <!-- Startup startup_stm32l475 -->
+    <component  Cclass="Device" Cgroup="Startup" Cversion="1.0.3" condition="STM32L475 CMSIS">
+      <description>System Startup for STMicroelectronics STM32L475 Devices</description>
+      <files>
+        <file category="include"   name="Device/Include/"/>
+        <file category="sourceAsm" name="Device/Source/ARM/startup_stm32l475xx.s" attr="config" version="1.0.3" condition="Compiler ARMCC"/>
+        <file category="sourceC"   name="Device/Source/system_stm32l4xx.c"        attr="config" version="1.0.3"/>
+      </files>
+    </component>
+
+    <!-- Startup startup_stm32l476 -->
+    <component  Cclass="Device" Cgroup="Startup" Cversion="1.0.3" condition="STM32L476 CMSIS">
+      <description>System Startup for STMicroelectronics STM32L476 Devices</description>
+      <files>
+        <file category="include"   name="Device/Include/"/>
+        <file category="sourceAsm" name="Device/Source/ARM/startup_stm32l476xx.s" attr="config" version="1.0.3" condition="Compiler ARMCC"/>
+        <file category="sourceC"   name="Device/Source/system_stm32l4xx.c"        attr="config" version="1.0.3"/>
+      </files>
+    </component>
+
+    <!-- Startup startup_stm32l485 -->
+    <component  Cclass="Device" Cgroup="Startup" Cversion="1.0.3" condition="STM32L485 CMSIS">
+      <description>System Startup for STMicroelectronics STM32L485 Devices</description>
+      <files>
+        <file category="include"   name="Device/Include/"/>
+        <file category="sourceAsm" name="Device/Source/ARM/startup_stm32l485xx.s" attr="config" version="1.0.3" condition="Compiler ARMCC"/>
+        <file category="sourceC"   name="Device/Source/system_stm32l4xx.c"        attr="config" version="1.0.3"/>
+      </files>
+    </component>
+
+    <!-- Startup startup_stm32l486 -->
+    <component  Cclass="Device" Cgroup="Startup" Cversion="1.0.3" condition="STM32L486 CMSIS">
+      <description>System Startup for STMicroelectronics STM32L486 Devices</description>
+      <files>
+        <file category="include"   name="Device/Include/"/>
+        <file category="sourceAsm" name="Device/Source/ARM/startup_stm32l486xx.s" attr="config" version="1.0.3" condition="Compiler ARMCC"/>
+        <file category="sourceC"   name="Device/Source/system_stm32l4xx.c"        attr="config" version="1.0.3"/>
+      </files>
+    </component>
+
+    <!-- STM32L476G-EVAL Board Support -->
+    <bundle Cbundle="STM32L476G-EVAL" Cclass="Board Support" Cversion="1.0.0">
+      <description>STMicroelectronics STM32L476G-EVAL Board</description>
+      <doc></doc>
+      <component Cgroup="LED" Capiversion="1.00" condition="STM32L476 CMSIS">
+      <description>LED driver for STMicroelectronics STM32L476G-EVAL Board</description>
+        <files>
+          <file category="source" name="Boards/ST/STM32L476G-EVAL/Common/LED_STM32L476G-EVAL.c"/>
+        </files>
+      </component>
+      <component Cgroup="Buttons" Capiversion="1.00" condition="STM32L476 CMSIS">
+      <description>Button driver for STMicroelectronics STM32L476G-EVAL Board</description>
+        <files>
+        <file category="sourceC" name="Boards/ST/STM32L476G-EVAL/Common/Buttons_STM32L476G-EVAL.c"/>
+        </files>
+      </component>
+    </bundle>
+  </components>
+
+  <boards>
+    <!-- STM32L476G-EVAL Board Support -->
+    <board vendor="STMicroelectronics" name="STM32L476G-EVAL" revision="Rev.A" salesContact="http://www.st.com/stonline/contactus/contacts/index.php">
+      <description>STMicroelectronics STM32L476G-EVAL</description>
+      <image small="Boards/ST/STM32L476G-EVAL/Documentation/stm32l476g-eval_small.jpg"
+             large="Boards/ST/STM32L476G-EVAL/Documentation/stm32l476g-eval_large.jpg"/>
+      <book category="overview"  name="http://www.st.com/web/en/catalog/tools/PF261634" title="Web Page"/>
+      <book category="schematic" name="Boards/ST/STM32L476G-EVAL/Documentation/MB1144B.pdf" title="Schematics"/>
+      <book category="manual"    name="Boards/ST/STM32L476G-EVAL/Documentation/DM00155732.pdf" title="User Manual"/>
+      <mountedDevice    deviceIndex="0" Dvendor="STMicroelectronics:13" Dname="STM32L476ZG"/>
+      <compatibleDevice deviceIndex="0" Dvendor="STMicroelectronics:13" DsubFamily="STM32L476"/>
+      <feature type="XTAL"            n="8000000"/>
+      <feature type="PWR"             n="5"              name="USB Powered"/>
+      <feature type="USB"             n="1"              name="USB 2.0 Full Speed"/>
+      <feature type="CAN"             n="1"/>
+      <feature type="RS232"           n="1"/>
+      <feature type="GLCD"            n="1"  m="240.320" name="2.4 inch Color QVGA TFT LCD with resistive touchscreen"/>
+      <feature type="Joystick"        n="1"              name="5-position Joystick"/>
+      <feature type="Poti"            n="1"              name="Analog Voltage Control for ADC Input (potentiometer)"/>
+      <feature type="Button"          n="4"              name="Push-Buttons for Reset, Tamper and User"/>
+      <feature type="LED"             n="4"              name="LEDs directly connected to port pins"/>
+      <debugInterface adapter="JTAG/SW" connector="20 pin JTAG (0.1 inch connector)"/>
+      <debugInterface adapter="JTAG/SW" connector="20-pin Cortex debug + ETM Trace (0.05 inch connector)"/>
+    </board>
+  </boards>
+
+  <examples>
+    <!-- STM32L476G-EVAL Board -->
+    <example name="CMSIS-RTOS Blinky" doc="Abstract.txt" folder="Boards/ST/STM32L476G-EVAL/Blinky">
+      <description>CMSIS-RTOS based Blinky example</description>
+      <board name="STM32L476G-EVAL" vendor="STMicroelectronics"/>
+      <project>
+        <environment name="uv" load="Blinky.uvprojx"/>
+      </project>
+      <attributes>
+        <component Cclass="CMSIS" Cgroup="CORE"/>
+        <component Cclass="Device" Cgroup="Startup"/>
+        <component Cclass="CMSIS" Cgroup="RTOS"/>
+        <category>Getting Started</category>
+        <category>CMSIS-RTX</category>
+      </attributes>
+    </example>
+  </examples>
+
+</package>

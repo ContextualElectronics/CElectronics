@@ -1,0 +1,722 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<package schemaVersion="1.2" xmlns:xs="http://www.w3.org/2001/XMLSchema-instance" xs:noNamespaceSchemaLocation="PACK.xsd">
+  <vendor>Holtek</vendor>
+  <name>HT32_DFP</name>
+  <description>Holtek HT32 Family Support</description>
+  <url>http://mcu.holtek.com.tw/pack</url>
+  <!-- optional license file -->
+  <!--
+  <license>
+  </license>
+  -->
+
+  <releases>
+    <release version="1.0.3" date="2016-04-14">
+      1. Update HT32F52220/52230 document.
+      2. Add 33QFN package information for HT32F52220/52230.
+    </release>
+    <release version="1.0.2" date="2016-03-03">
+      Fix SVD error.
+    </release>
+    <release version="1.0.1" date="2016-02-16">
+      Added: HT32F52331, HT32F52341, HT32F52342, HT32F52352 devices.
+    </release>
+    <release version="1.0.0" date="2015-03-23">
+      First Release version of HT32 Device Family Pack.
+      Contains the following Devices:HT32F1251,HT32F1253,HT32F1252,HT32F1251,HT32F1251B
+                                     HT32F1755,HT32F1765,HT32F2755
+                                     HT32F1655,HT32F1656,HT32F1653,HT32F1654
+    </release>
+  </releases>
+
+  <keywords>
+    <!-- keywords for indexing -->
+    <keyword>HOLTEK</keyword>
+    <keyword>Device Support</keyword>
+    <keyword>Device Family Package Holtek</keyword>
+    <keyword>HT32 Family</keyword>
+    <keyword>HT32</keyword>
+  </keywords>
+
+  <devices>
+  <!-- ************************  Series 'HT32F125x'  **************************** -->
+    <family Dfamily="HT32F125x Series" Dvendor="Holtek:106">
+      <processor Dcore="Cortex-M3" DcoreVersion="r2p0" Dfpu="0" Dmpu="0" Dendian="Little-endian" Dclock="72000000"/>
+      <description>
+      Holtek HT32F125x series
+      - ARM Cortex-M3 running at 72 MHz
+      - From 8 to 31 Kbytes embedded Flash
+      - From 2 to 8 Kbytes embedded SRAM
+      - Almost all I/O pins are 5 V-tolerant
+      - Up to 32 I/O lines
+      Peripherals
+      - Timer: RTC, 2 GPTM
+      - Communication: SPI, USART, I2C
+      - ADC: 12-bit ADC up to 8 channels
+      Packages
+      - 48pin LQFP
+      </description>
+
+      <feature type="XTAL"          n="4000000" m="16000000"/>
+      <feature type="IntRC"         n="8000000"/>
+      <feature type="RTC"           n="32768"/>
+      <feature type="VCC"           n="2.70"    m="3.60"/>
+      <feature type="Temp"          n="-40"     m="85"/>
+      <feature type="PowerMode"     n="5"                     name="Run,Sleep,Deep-Sleep1,Deep-Sleep2,Power-Down"/>
+      <feature type="ExtInt"        n="16"/>
+      <feature type="WDT"           n="1"/>
+      <feature type="Timer"         n="2"       m="16"        name="GPTM with Quadrature Decoder"/>
+      <feature type="I2C"           n="1"/>
+      <feature type="SPI"           n="1"/>
+      <feature type="USART"         n="1"/>
+      <feature type="ADC"           n="8"       m="12"/>
+      <feature type="AnalogOther"   n="2"                     name="OPA/Comparator"/>
+      <feature type="QFP"           n="48"                    name="LQFP"/>
+
+      <book    name="Documents/HT32F125x/HT32F125x_UserManualv130.pdf"            title="HT32F125x_UserManual"/>
+      <book    name="Documents/HT32F125x/HT32F125xv120.pdf"                       title="HT32F125x Datasheet"/>
+
+      <!-- *************************  Device 'HT32F1251B'  ***************************** -->
+      <device Dname="HT32F1251B">
+        <compile header="ARM/INC/Holtek/HT32F125x/ht32f125x.h"/>
+        <debug      svd="SVD/HT32F125x.svd"/>
+        <memory     id="IROM1"                      start="0x00000000"  size="0x2000"     startup="1"   default="1"/>
+        <memory     id="IRAM1"                      start="0x20000000"  size="0x0800"     init   ="0"   default="1"/>
+        <algorithm  name="ARM/Flash/HT32F.FLM"      start="0x00000000"  size="0x2000"                   default="1"/>
+        <algorithm  name="ARM/Flash/HT32F_OPT.FLM"  start="0x1FF00000"  size="0x0400"                   default="0"/>
+        <feature type="IOs"         n="30"/>
+      </device>
+
+      <!-- *************************  Device 'HT32F1251'  ***************************** -->
+      <device Dname="HT32F1251">
+        <compile header="ARM/INC/Holtek/HT32F125x/ht32f125x.h"/>
+        <debug      svd="SVD/HT32F125x.svd"/>
+        <memory     id="IROM1"                      start="0x00000000"  size="0x2000"     startup="1"   default="1"/>
+        <memory     id="IRAM1"                      start="0x20000000"  size="0x0800"     init   ="0"   default="1"/>
+        <algorithm  name="ARM/Flash/HT32F.FLM"   	  start="0x00000000"  size="0x2000"                   default="1"/>
+        <algorithm  name="ARM/Flash/HT32F_OPT.FLM"  start="0x1FF00000"  size="0x0400"                   default="0"/>
+        <feature type="IOs"         n="32"/>
+       </device>
+
+      <!-- *************************  Device 'HT32F1252'  ***************************** -->
+      <device Dname="HT32F1252">
+        <compile header="ARM/INC/Holtek/HT32F125x/ht32f125x.h"/>
+        <debug      svd="SVD/HT32F125x.svd"/>
+        <memory     id="IROM1"                      start="0x00000000"  size="0x4000"     startup="1"   default="1"/>
+        <memory     id="IRAM1"                      start="0x20000000"  size="0x1000"     init   ="0"   default="1"/>
+        <algorithm  name="ARM/Flash/HT32F.FLM"      start="0x00000000"  size="0x4000"                   default="1"/>
+        <algorithm  name="ARM/Flash/HT32F_OPT.FLM"  start="0x1FF00000"  size="0x0400"                   default="0"/>
+        <feature type="IOs"         n="32"/>
+      </device>
+
+      <!-- *************************  Device 'HT32F1253'  ***************************** -->
+      <device Dname="HT32F1253">
+        <compile header="ARM/INC/Holtek/HT32F125x/ht32f125x.h"/>
+        <debug      svd="SVD/HT32F125x.svd"/>
+        <memory     id="IROM1"                      start="0x00000000"  size="0x7C00"     startup="1"   default="1"/>
+        <memory     id="IRAM1"                      start="0x20000000"  size="0x2000"     init   ="0"   default="1"/>
+        <algorithm  name="ARM/Flash/HT32F.FLM"      start="0x00000000"  size="0x7C00"                   default="1"/>
+        <algorithm  name="ARM/Flash/HT32F_OPT.FLM"  start="0x1FF00000"  size="0x0400"                   default="0"/>
+        <feature type="IOs"         n="32"/>
+      </device>
+    </family>
+
+  <!-- ************************  Series 'HT32F165x'  **************************** -->
+    <family Dfamily="HT32F165x Series" Dvendor="Holtek:106">
+      <processor Dcore="Cortex-M3" DcoreVersion="r2p0" Dfpu="0" Dmpu="0" Dendian="Little-endian" Dclock="72000000"/>
+      <description>
+      Holtek HT32F165x series
+      - ARM Cortex-M3 running at 72 MHz
+      - From 32 to 255 Kbytes embedded Flash
+      - From 8 to 32 Kbytes embedded SRAM
+      - Almost all I/O pins are 5 V-tolerant
+      - Up to 80 I/O lines
+      Peripherals
+      - Timer: RTC, 2 BFTM, 2 GPTM, 2 MCTM
+      - Communication: USB, I2S, SCI, 2 SPI, 2 UART, 2 USART, 2 I2C
+      - Extend Bus Interface(EBI)
+      - Cyclic Redundancy Check(CRC-16/32)
+      - ADC: 12-bit ADC up to 16 channels
+      Packages
+      - 48/64/100-pin LQFP
+      </description>
+
+      <feature type="XTAL"          n="4000000" m="16000000"/>
+      <feature type="IntRC"         n="8000000"/>
+      <feature type="RTC"           n="32768"/>
+      <feature type="VCC"           n="2.70"    m="3.60"/>
+      <feature type="Temp"          n="-40"     m="85"/>
+      <feature type="PowerMode"     n="5"                     name="Run,Sleep,Deep-Sleep1,Deep-Sleep2,Power-Down"/>
+      <feature type="ExtInt"        n="16"/>
+      <feature type="WDT"           n="1"/>
+      <feature type="DMA"           n="8"                     name="High-Speed DMA"/>
+      <feature type="Timer"         n="2"     m="16"          name="GPTM with Quadrature Decoder"/>
+      <feature type="Timer"         n="2"     m="16"          name="MCTM with Complementary Outputs"/>
+      <feature type="Timer"         n="2"     m="32"          name="BFTM"/>
+      <feature type="I2C"           n="2"/>
+      <feature type="I2S"           n="1"/>
+      <feature type="SPI"           n="2"/>
+      <feature type="UART"          n="2"/>
+      <feature type="USART"         n="2"/>
+      <feature type="USBD"          n="1"/>
+      <feature type="ComOther"      n="1"                     name="SCI"/>
+      <feature type="ExtBus"        n="16"                    name="EBI"/>
+      <feature type="Other"         n="1"                     name="CRC"/>
+
+      <!-- *************************  Device 'HT32F1653'  ***************************** -->
+      <device Dname="HT32F1653">
+        <compile header="ARM/INC/Holtek/HT32F1653_54/ht32f1653_54.h"/>
+        <debug      svd="SVD/HT32F1653_54.svd"/>
+        <memory     id="IROM1"                      start="0x00000000"  size="0x8000"     startup="1"   default="1"/>
+        <memory     id="IRAM1"                      start="0x20000000"  size="0x2000"     init   ="0"   default="1"/>
+        <algorithm  name="ARM/Flash/HT32F.FLM"      start="0x00000000"  size="0x8000"                   default="1"/>
+        <algorithm  name="ARM/Flash/HT32F_OPT.FLM"  start="0x1FF00000"  size="0x0400"                   default="0"/>
+        <book    name="Documents/HT32F1653_54/HT32F1653-1654_UserManualv100.pdf"            title="HT32F1653-54_UserManual"/>
+        <book    name="Documents/HT32F1653_54/HT32F1653_1654_DataSheetv100.pdf"             title="HT32F1653-54 Datasheet"/>
+        <feature type="QFP"         n="64"                    name="LQFP"/>
+        <feature type="QFP"         n="48"                    name="LQFP"/>
+        <feature type="ADC"         n="12"  m="12"/>
+        <feature type="IOs"         n="51"/>
+        <feature type="AnalogOther" n="2"                     name="Comparator"/>
+      </device>
+
+      <!-- *************************  Device 'HT32F1654'  ***************************** -->
+      <device Dname="HT32F1654">
+        <compile header="ARM/INC/Holtek/HT32F1653_54/ht32f1653_54.h"/>
+        <debug      svd="SVD/HT32F1653_54.svd"/>
+        <memory     id="IROM1"                      start="0x00000000"  size="0xFC00"     startup="1"   default="1"/>
+        <memory     id="IRAM1"                      start="0x20000000"  size="0x4000"     init   ="0"   default="1"/>
+        <algorithm  name="ARM/Flash/HT32F.FLM"      start="0x00000000"  size="0xFC00"                   default="1"/>
+        <algorithm  name="ARM/Flash/HT32F_OPT.FLM"  start="0x1FF00000"  size="0x0400"                   default="0"/>
+        <book    name="Documents/HT32F1653_54/HT32F1653-1654_UserManualv100.pdf"            title="HT32F1653-54_UserManual"/>
+        <book    name="Documents/HT32F1653_54/HT32F1653_1654_DataSheetv100.pdf"             title="HT32F1653-54 Datasheet"/>
+        <feature type="QFP"         n="64"                    name="LQFP"/>
+        <feature type="QFP"         n="48"                    name="LQFP"/>
+        <feature type="ADC"         n="12"  m="12"/>
+        <feature type="IOs"         n="51"/>
+        <feature type="AnalogOther" n="2"                     name="Comparator"/>
+      </device>
+
+      <!-- *************************  Device 'HT32F1655'  ***************************** -->
+      <device Dname="HT32F1655">
+        <compile header="ARM/INC/Holtek/HT32F1655_56/ht32f1655_56.h"/>
+        <debug      svd="SVD/HT32F1655_56.svd"/>
+        <memory     id="IROM1"                      start="0x00000000"  size="0x20000"    startup="1"   default="1"/>
+        <memory     id="IRAM1"                      start="0x20000000"  size="0x8000"     init   ="0"   default="1"/>
+        <algorithm  name="ARM/Flash/HT32F.FLM"      start="0x00000000"  size="0x20000"                  default="1"/>
+        <algorithm  name="ARM/Flash/HT32F_OPT.FLM"  start="0x1FF00000"  size="0x0400"                   default="0"/>
+        <book    name="Documents/HT32F1655_56/HT32F1655-1656_UserManualv100.pdf"            title="HT32F1655_56 UserManual"/>
+        <book    name="Documents/HT32F1655_56/HT32F1655-1656_Datasheetv100.pdf"             title="HT32F1655_56 Datasheet"/>
+        <feature type="QFP"         n="64"                    name="LQFP"/>
+        <feature type="QFP"         n="48"                    name="LQFP"/>
+        <feature type="QFP"         n="100"                   name="LQFP"/>
+        <feature type="ADC"         n="16"  m="12"/>
+        <feature type="IOs"         n="80"/>
+        <feature type="AnalogOther" n="2"                     name="OPA/Comparator"/>
+      </device>
+
+      <!-- *************************  Device 'HT32F1656'  ***************************** -->
+      <device Dname="HT32F1656">
+        <compile header="ARM/INC/Holtek/HT32F1655_56/ht32f1655_56.h"/>
+        <debug      svd="SVD/HT32F1655_56.svd"/>
+        <memory     id="IROM1"                      start="0x00000000"  size="0x3FC00"    startup="1"   default="1"/>
+        <memory     id="IRAM1"                      start="0x20000000"  size="0x8000"     init   ="0"   default="1"/>
+        <algorithm  name="ARM/Flash/HT32F.FLM"      start="0x00000000"  size="0x3FC00"                  default="1"/>
+        <algorithm  name="ARM/Flash/HT32F_OPT.FLM"  start="0x1FF00000"  size="0x0400"                   default="0"/>
+        <book    name="Documents/HT32F1655_56/HT32F1655-1656_UserManualv100.pdf"            title="HT32F1655_56 UserManual"/>
+        <book    name="Documents/HT32F1655_56/HT32F1655-1656_Datasheetv100.pdf"             title="HT32F1655_56 Datasheet"/>
+        <feature type="QFP"         n="64"                    name="LQFP"/>
+        <feature type="QFP"         n="48"                    name="LQFP"/>
+        <feature type="QFP"         n="100"                   name="LQFP"/>
+        <feature type="ADC"         n="16"  m="12"/>
+        <feature type="IOs"         n="80"/>
+        <feature type="AnalogOther" n="2"                     name="OPA/Comparator"/>
+      </device>
+    </family>
+
+  <!-- ************************  Series 'HT32F175x'  **************************** -->
+    <family Dfamily="HT32F175x Series" Dvendor="Holtek:106">
+      <processor Dcore="Cortex-M3" DcoreVersion="r2p0" Dfpu="0" Dmpu="0" Dendian="Little-endian" Dclock="72000000"/>
+      <description>
+      Holtek HT32 175x series
+      - ARM Cortex-M3 running at 72 MHz
+      - 127 Kbytes embedded Flash
+      - From 32 to 64 Kbytes embedded SRAM
+      - Almost all I/O pins are 5 V-tolerant
+      - Up to 80 I/O lines
+      Peripherals
+      - Timer: RTC, 2 BFTM, 2 GPTM, 1 MCTM
+      - Communication: USB, SCI, 2 SPI, 2 USART, 2 I2C
+      - ADC: 12-bit ADC up to 8 channels
+      Packages
+      - 48/64/100-pin LQFP
+      </description>
+
+      <feature type="XTAL"          n="4000000" m="16000000"/>
+      <feature type="IntRC"         n="8000000"/>
+      <feature type="RTC"           n="32768"/>
+      <feature type="VCC"           n="2.70"    m="3.60"/>
+      <feature type="Temp"          n="-40"     m="85"/>
+      <feature type="PowerMode"     n="5"                     name="Run,Sleep,Deep-Sleep1,Deep-Sleep2,Power-Down"/>
+      <feature type="ExtInt"        n="16"/>
+      <feature type="WDT"           n="1"/>
+      <feature type="DMA"           n="12"                    name="High-Speed DMA"/>
+      <feature type="Timer"         n="2"     m="16"          name="GPTM with Quadrature Decoder"/>
+      <feature type="Timer"         n="1"     m="16"          name="MCTM with Complementary Outputs"/>
+      <feature type="Timer"         n="2"     m="32"          name="BFTM"/>
+      <feature type="I2C"           n="2"/>
+      <feature type="SPI"           n="2"/>
+      <feature type="USART"         n="2"/>
+      <feature type="USBD"          n="1"/>
+      <feature type="ComOther"      n="1"                     name="SCI"/>
+      <feature type="ADC"           n="8"     m="12"/>
+      <feature type="AnalogOther"   n="2"                     name="OPA/Comparator"/>
+      <feature type="IOs"           n="80"/>
+      <feature type="QFP"           n="100"                   name="LQFP"/>
+      <feature type="QFP"           n="64"                    name="LQFP"/>
+      <feature type="QFP"           n="48"                    name="LQFP"/>
+
+      <book    name="Documents/HT32F175x_275x/HT32F1755-1765-2755_UserManualv110.pdf"            title="HT32F175x_UserManual"/>
+      <book    name="Documents/HT32F175x_275x/HT32F1755-1765-2755_Datasheetv120.pdf"             title="HT32F175x Datasheet"/>
+
+      <!-- *************************  Device 'HT32F1755'  ***************************** -->
+      <device Dname="HT32F1755">
+        <compile    header="ARM/INC/Holtek/HT32F175x_275x/ht32f175x_275x.h"/>
+        <debug      svd="SVD/HT32F175x.svd"/>
+        <memory     id="IROM1"                      start="0x00000000"  size="0x20000"    startup="1"   default="1"/>
+        <memory     id="IRAM1"                      start="0x20000000"  size="0x8000"     init   ="0"   default="1"/>
+        <algorithm  name="ARM/Flash/HT32F.FLM"      start="0x00000000"  size="0x20000"                  default="1"/>
+        <algorithm  name="ARM/Flash/HT32F_OPT.FLM"  start="0x1FF00000"  size="0x0400"                   default="0"/>
+      </device>
+
+      <!-- *************************  Device 'HT32F1765'  ***************************** -->
+      <device Dname="HT32F1765">
+        <compile    header="ARM/INC/Holtek/HT32F175x_275x/ht32f175x_275x.h"/>
+        <debug      svd="SVD/HT32F175x.svd"/>
+        <memory     id="IROM1"                      start="0x00000000"  size="0x20000"    startup="1"   default="1"/>
+        <memory     id="IRAM1"                      start="0x20000000"  size="0x10000"    init   ="0"   default="1"/>
+        <algorithm  name="ARM/Flash/HT32F.FLM"      start="0x00000000"  size="0x20000"                  default="1"/>
+        <algorithm  name="ARM/Flash/HT32F_OPT.FLM"  start="0x1FF00000"  size="0x0400"                   default="0"/>
+      </device>
+    </family>
+
+  <!-- ************************  Series 'HT32F2755'  **************************** -->
+    <family Dfamily="HT32F2755 Series" Dvendor="Holtek:106">
+      <processor Dcore="Cortex-M3" DcoreVersion="r2p0" Dfpu="0" Dmpu="0" Dendian="Little-endian" Dclock="72000000"/>
+      <description>
+      Holtek HT32 2755 ASSP MCU
+      - ARM Cortex-M3 running at 72 MHz
+      - 127 Kbytes embedded Flash
+      - 32  Kbytes embedded SRAM
+      - Almost all I/O pins are 5 V-tolerant
+      - Up to 80 I/O lines
+      Peripherals
+      - CMOS Sensor Interface(CSIF)
+      - Timer: RTC, 2 BFTM, 2 GPTM, 1 MCTM
+      - Communication: USB, SCI, 2 SPI, 2 USART, 2 I2C
+      - ADC: 12-bit ADC up to 8 channels
+      Packages
+      - 48/64/100-pin LQFP
+      </description>
+
+      <feature type="XTAL"          n="4000000"	m="16000000"/>
+      <feature type="IntRC"         n="8000000"/>
+      <feature type="RTC"           n="32768"/>
+      <feature type="VCC"           n="2.70"    m="3.60"/>
+      <feature type="Temp"          n="-40"     m="85"/>
+      <feature type="PowerMode"     n="5"                   name="Run,Sleep,Deep-Sleep1,Deep-Sleep2,Power-Down"/>
+      <feature type="ExtInt"        n="16"/>
+      <feature type="WDT"           n="1"/>
+      <feature type="DMA"           n="12"                  name="High-Speed DMA"/>
+      <feature type="Timer"         n="2"       m="16"      name="GPTM with Quadrature Decoder"/>
+      <feature type="Timer"         n="1"       m="16"      name="MCTM with Complementary Outputs"/>
+      <feature type="Timer"         n="2"       m="32"      name="BFTM"/>
+      <feature type="I2C"           n="2"/>
+      <feature type="SPI"           n="2"/>
+      <feature type="USART"         n="2"/>
+      <feature type="USBD"          n="1"/>
+      <feature type="ComOther"      n="1"                   name="SCI"/>
+      <feature type="ComOther"      n="1"                   name="CSIF"/>
+      <feature type="ADC"           n="8"      m="12"/>
+      <feature type="AnalogOther"   n="2"                   name="OPA/Comparator"/>
+      <feature type="IOs"           n="80"/>
+      <feature type="QFP"           n="100"                 name="LQFP"/>
+      <feature type="QFP"           n="64"                  name="LQFP"/>
+      <feature type="QFP"           n="48"                  name="LQFP"/>
+
+      <book    name="Documents/HT32F175x_275x/HT32F1755-1765-2755_UserManualv110.pdf"            title="HT32F275x_UserManual"/>
+      <book    name="Documents/HT32F175x_275x/HT32F1755-1765-2755_Datasheetv120.pdf"             title="HT32F275x Datasheet"/>
+
+      <!-- *************************  Device 'HT32F2755'  ***************************** -->
+      <device Dname="HT32F2755">
+        <compile    header="ARM/INC/Holtek/HT32F175x_275x/ht32f175x_275x.h"/>
+        <debug      svd="SVD/HT32F175x.svd"/>
+        <memory     id="IROM1"                      start="0x00000000"  size="0x20000"    startup="1"   default="1"/>
+        <memory     id="IRAM1"                      start="0x20000000"  size="0x8000"     init   ="0"   default="1"/>
+        <algorithm  name="ARM/Flash/HT32F.FLM"      start="0x00000000"  size="0x20000"                  default="1"/>
+        <algorithm  name="ARM/Flash/HT32F_OPT.FLM"  start="0x1FF00000"  size="0x0400"                   default="0"/>
+      </device>
+    </family>
+
+  <!-- ************************  Series 'HT32F522xx'  **************************** -->
+    <family Dfamily="HT32F522xx Series" Dvendor="Holtek:106">
+      <processor Dcore="Cortex-M0+" DcoreVersion="r0p1" Dfpu="0" Dmpu="0" Dendian="Little-endian" Dclock="40000000"/>
+      <description>
+      Holtek HT32F522xx series
+      - ARM Cortex-M0+ running at 40 MHz
+      - From 16 to 64 Kbytes embedded Flash
+      - From 2 to 8 Kbytes embedded SRAM
+      - Up to 40 I/O lines
+      Peripherals
+      - Timer: RTC, 2 BFTM, 4 SCTM, 1 GPTM, 1 MCTM
+      - Communication: 2 SPI, 2 UART, 1 USART, 2 I2C
+      - Cyclic Redundancy Check(CRC-16/32)
+      - ADC: 12-bit ADC up to 12 channels
+      Packages
+      - 24/28-pin SSOP
+      - 33-pin QFN
+      - 48-pin LQFP
+      </description>
+
+      <feature type="XTAL"        n="4000000" m="16000000"/>
+      <feature type="IntRC"       n="8000000"/>
+      <feature type="RTC"         n="32768"/>
+      <feature type="VCC"         n="2.00"    m="3.60"/>
+      <feature type="Temp"        n="-40"     m="85"/>
+      <feature type="PowerMode"   n="5"                     name="Run,Sleep,Deep-Sleep1,Deep-Sleep2,Power-Down"/>
+      <feature type="ExtInt"      n="16"/>
+      <feature type="WDT"         n="1"/>
+      <feature type="USART"       n="1"/>
+
+      <!-- *************************  Device 'HT32F52220'  ***************************** -->
+      <device Dname="HT32F52220">
+        <compile header="ARM/INC/Holtek/HT32F520xx/ht32f520xx_01.h"/>
+        <debug      svd="SVD/HT32F52220_30.svd"/>
+        <memory     id="IROM1"                      start="0x00000000"  size="0x4000"     startup="1"   default="1"/>
+        <memory     id="IRAM1"                      start="0x20000000"  size="0x800"      init   ="0"   default="1"/>
+        <algorithm  name="ARM/Flash/HT32F.FLM"      start="0x00000000"  size="0x4000"                   default="1"/>
+        <algorithm  name="ARM/Flash/HT32F_OPT.FLM"  start="0x1FF00000"  size="0x0400"                   default="0"/>
+        <book    name="Documents/HT32F520xx/HT32F52220-30_UserManualv000_Preliminary_20160307.pdf"    title="HT32F52220/30 UserManual"/>
+        <book    name="Documents/HT32F520xx/HT32F52220-30_Datasheetv000_Preliminary_20160129.pdf"     title="HT32F52220/30 Datasheet"/>
+        <feature type="Timer"       n="1"     m="32"          name="BFTM"/>
+        <feature type="Timer"       n="2"     m="16"          name="SCTM with single PWM"/>
+        <feature type="Timer"       n="1"     m="16"          name="GPTM with Quadrature Decoder"/>
+        <feature type="I2C"         n="1"/>
+        <feature type="SPI"         n="1"/>
+        <feature type="UART"        n="1"/>
+        <feature type="ADC"         n="8"  m="12"/>
+        <feature type="SOP"         n="24"                    name="SSOP"/>
+        <feature type="SOP"         n="28"                    name="SSOP"/>
+        <feature type="QFN"         n="33"                    name="QFN"/>
+        <feature type="IOs"         n="23"/>
+      </device>
+
+      <!-- *************************  Device 'HT32F52230'  ***************************** -->
+      <device Dname="HT32F52230">
+        <compile header="ARM/INC/Holtek/HT32F520xx/ht32f520xx_01.h"/>
+        <debug      svd="SVD/HT32F52220_30.svd"/>
+        <memory     id="IROM1"                      start="0x00000000"  size="0x8000"     startup="1"   default="1"/>
+        <memory     id="IRAM1"                      start="0x20000000"  size="0x1000"     init   ="0"   default="1"/>
+        <algorithm  name="ARM/Flash/HT32F.FLM"      start="0x00000000"  size="0x8000"                   default="1"/>
+        <algorithm  name="ARM/Flash/HT32F_OPT.FLM"  start="0x1FF00000"  size="0x0400"                   default="0"/>
+        <book    name="Documents/HT32F520xx/HT32F52220-30_UserManualv000_Preliminary_20160307.pdf"    title="HT32F52220/30 UserManual"/>
+        <book    name="Documents/HT32F520xx/HT32F52220-30_Datasheetv000_Preliminary_20160129.pdf"     title="HT32F52220/30 Datasheet"/>
+        <feature type="Timer"       n="1"     m="32"          name="BFTM"/>
+        <feature type="Timer"       n="2"     m="16"          name="SCTM with single PWM"/>
+        <feature type="Timer"       n="1"     m="16"          name="GPTM with Quadrature Decoder"/>
+        <feature type="I2C"         n="1"/>
+        <feature type="SPI"         n="1"/>
+        <feature type="UART"        n="1"/>
+        <feature type="ADC"         n="8"  m="12"/>
+        <feature type="SOP"         n="24"                    name="SSOP"/>
+        <feature type="SOP"         n="28"                    name="SSOP"/>
+        <feature type="QFN"         n="33"                    name="QFN"/>
+        <feature type="IOs"         n="23"/>
+      </device>
+
+      <!-- *************************  Device 'HT32F52231'  ***************************** -->
+      <device Dname="HT32F52231">
+        <compile header="ARM/INC/Holtek/HT32F520xx/ht32f520xx_01.h"/>
+        <debug      svd="SVD/HT32F52231_41.svd"/>
+        <memory     id="IROM1"                      start="0x00000000"  size="0x8000"     startup="1"   default="1"/>
+        <memory     id="IRAM1"                      start="0x20000000"  size="0x1000"     init   ="0"   default="1"/>
+        <algorithm  name="ARM/Flash/HT32F.FLM"      start="0x00000000"  size="0x8000"                   default="1"/>
+        <algorithm  name="ARM/Flash/HT32F_OPT.FLM"  start="0x1FF00000"  size="0x0400"                   default="0"/>
+        <book    name="Documents/HT32F520xx/HT32F52231-41_HT32F52331-41_UserManualv100.pdf"    title="HT32F52231/41 UserManual"/>
+        <book    name="Documents/HT32F520xx/HT32F52231-41_HT32F52331-41_Datasheetv101.pdf"     title="HT32F52231/41 Datasheet"/>
+        <feature type="Timer"       n="2"     m="32"          name="BFTM"/>
+        <feature type="Timer"       n="4"     m="16"          name="SCTM with single PWM"/>
+        <feature type="Timer"       n="1"     m="16"          name="GPTM with Quadrature Decoder"/>
+        <feature type="Timer"       n="1"     m="16"          name="MCTM with Complementary Outputs"/>
+        <feature type="I2C"         n="2"/>
+        <feature type="SPI"         n="2"/>
+        <feature type="UART"        n="2"/>
+        <feature type="ADC"         n="12"  m="12"/>
+        <feature type="Other"       n="1"                     name="CRC"/>
+        <feature type="SOP"         n="24"                    name="SSOP"/>
+        <feature type="SOP"         n="28"                    name="SSOP"/>
+        <feature type="QFN"         n="33"                    name="QFN"/>
+        <feature type="QFP"         n="48"                    name="LQFP"/>
+        <feature type="IOs"         n="40"/>
+      </device>
+
+      <!-- *************************  Device 'HT32F52241'  ***************************** -->
+      <device Dname="HT32F52241">
+        <compile header="ARM/INC/Holtek/HT32F520xx/ht32f520xx_01.h"/>
+        <debug      svd="SVD/HT32F52231_41.svd"/>
+        <memory     id="IROM1"                      start="0x00000000"  size="0x10000"     startup="1"   default="1"/>
+        <memory     id="IRAM1"                      start="0x20000000"  size="0x2000"      init   ="0"   default="1"/>
+        <algorithm  name="ARM/Flash/HT32F.FLM"      start="0x00000000"  size="0x10000"                   default="1"/>
+        <algorithm  name="ARM/Flash/HT32F_OPT.FLM"  start="0x1FF00000"  size="0x0400"                   default="0"/>
+        <book    name="Documents/HT32F520xx/HT32F52231-41_HT32F52331-41_UserManualv100.pdf"    title="HT32F52231/41 UserManual"/>
+        <book    name="Documents/HT32F520xx/HT32F52231-41_HT32F52331-41_Datasheetv101.pdf"     title="HT32F52231/41 Datasheet"/>
+        <feature type="Timer"       n="2"     m="32"          name="BFTM"/>
+        <feature type="Timer"       n="4"     m="16"          name="SCTM with single PWM"/>
+        <feature type="Timer"       n="1"     m="16"          name="GPTM with Quadrature Decoder"/>
+        <feature type="Timer"       n="1"     m="16"          name="MCTM with Complementary Outputs"/>
+        <feature type="I2C"         n="2"/>
+        <feature type="SPI"         n="2"/>
+        <feature type="UART"        n="2"/>
+        <feature type="ADC"         n="12"  m="12"/>
+        <feature type="Other"       n="1"                     name="CRC"/>
+        <feature type="SOP"         n="24"                    name="SSOP"/>
+        <feature type="SOP"         n="28"                    name="SSOP"/>
+        <feature type="QFN"         n="33"                    name="QFN"/>
+        <feature type="QFP"         n="48"                    name="LQFP"/>
+        <feature type="IOs"         n="40"/>
+      </device>
+    </family>
+
+  <!-- ************************  Series 'HT32F523xx'  **************************** -->
+    <family Dfamily="HT32F523xx Series" Dvendor="Holtek:106">
+      <processor Dcore="Cortex-M0+" DcoreVersion="r0p1" Dfpu="0" Dmpu="0" Dendian="Little-endian" Dclock="48000000"/>
+      <description>
+      Holtek HT32F523xx series
+      - ARM Cortex-M0+ running at 48 MHz
+      - From 32 to 128 Kbytes embedded Flash
+      - From 4 to 16 Kbytes embedded SRAM
+      - Up to 51 I/O lines
+      Peripherals
+      - Timer: RTC, 2 BFTM, 4 SCTM, 2 GPTM, 1 MCTM
+      - Communication: USB, I2S, 2 SCI, 2 SPI, 2 UART, 2 USART, 2 I2C
+      - Extend Bus Interface(EBI)
+      - Cyclic Redundancy Check(CRC-16/32)
+      - ADC: 12-bit ADC up to 12 channels
+      Packages
+      - 33-pin QFN
+      - 48/64-pin LQFP
+      </description>
+
+      <feature type="XTAL"        n="4000000" m="16000000"/>
+      <feature type="IntRC"       n="8000000"/>
+      <feature type="RTC"         n="32768"/>
+      <feature type="VCC"         n="2.00"    m="3.60"/>
+      <feature type="Temp"        n="-40"     m="85"/>
+      <feature type="PowerMode"   n="5"                     name="Run,Sleep,Deep-Sleep1,Deep-Sleep2,Power-Down"/>
+      <feature type="ExtInt"      n="16"/>
+      <feature type="WDT"         n="1"/>
+      <feature type="Timer"       n="2"     m="32"          name="BFTM"/>
+      <feature type="Timer"       n="1"     m="16"          name="MCTM with Complementary Outputs"/>
+      <feature type="I2C"         n="2"/>
+      <feature type="SPI"         n="2"/>
+      <feature type="UART"        n="2"/>
+      <feature type="USBD"        n="1"/>
+      <feature type="ADC"         n="12"  m="12"/>
+      <feature type="Other"       n="1"                     name="CRC"/>
+
+      <!-- *************************  Device 'HT32F52331'  ***************************** -->
+      <device Dname="HT32F52331">
+        <compile header="ARM/INC/Holtek/HT32F520xx/ht32f520xx_01.h"/>
+        <debug      svd="SVD/HT32F52331_41.svd"/>
+        <memory     id="IROM1"                      start="0x00000000"  size="0x8000"     startup="1"   default="1"/>
+        <memory     id="IRAM1"                      start="0x20000000"  size="0x1000"     init   ="0"   default="1"/>
+        <algorithm  name="ARM/Flash/HT32F.FLM"      start="0x00000000"  size="0x8000"                   default="1"/>
+        <algorithm  name="ARM/Flash/HT32F_OPT.FLM"  start="0x1FF00000"  size="0x0200"                   default="0"/>
+        <book    name="Documents/HT32F520xx/HT32F52231-41_HT32F52331-41_UserManualv100.pdf"    title="HT32F52331/41 UserManual"/>
+        <book    name="Documents/HT32F520xx/HT32F52231-41_HT32F52331-41_Datasheetv101.pdf"     title="HT32F52331/41 Datasheet"/>
+        <feature type="Timer"       n="4"     m="16"          name="SCTM with single PWM"/>
+        <feature type="Timer"       n="1"     m="16"          name="GPTM with Quadrature Decoder"/>
+        <feature type="USART"       n="1"/>
+        <feature type="ComOther"    n="1"                     name="SCI"/>
+        <feature type="QFN"         n="33"                    name="QFN"/>
+        <feature type="QFP"         n="48"                    name="LQFP"/>
+        <feature type="IOs"         n="38"/>
+      </device>
+
+      <!-- *************************  Device 'HT32F52341'  ***************************** -->
+      <device Dname="HT32F52341">
+        <compile header="ARM/INC/Holtek/HT32F520xx/ht32f520xx_01.h"/>
+        <debug      svd="SVD/HT32F52331_41.svd"/>
+        <memory     id="IROM1"                      start="0x00000000"  size="0x10000"    startup="1"   default="1"/>
+        <memory     id="IRAM1"                      start="0x20000000"  size="0x2000"     init   ="0"   default="1"/>
+        <algorithm  name="ARM/Flash/HT32F.FLM"      start="0x00000000"  size="0x10000"                  default="1"/>
+        <algorithm  name="ARM/Flash/HT32F_OPT.FLM"  start="0x1FF00000"  size="0x0200"                   default="0"/>
+        <book    name="Documents/HT32F520xx/HT32F52231-41_HT32F52331-41_UserManualv100.pdf"    title="HT32F52331/41 UserManual"/>
+        <book    name="Documents/HT32F520xx/HT32F52231-41_HT32F52331-41_Datasheetv101.pdf"     title="HT32F52331/41 Datasheet"/>
+        <feature type="Timer"       n="4"     m="16"          name="SCTM with single PWM"/>
+        <feature type="Timer"       n="1"     m="16"          name="GPTM with Quadrature Decoder"/>
+        <feature type="USART"       n="1"/>
+        <feature type="ComOther"    n="1"                     name="SCI"/>
+        <feature type="QFN"         n="33"                    name="QFN"/>
+        <feature type="QFP"         n="48"                    name="LQFP"/>
+        <feature type="IOs"         n="38"/>
+      </device>
+
+      <!-- *************************  Device 'HT32F52342'  ***************************** -->
+      <device Dname="HT32F52342">
+        <compile header="ARM/INC/Holtek/HT32F520xx/ht32f520xx_01.h"/>
+        <debug      svd="SVD/HT32F52342_52.svd"/>
+        <memory     id="IROM1"                      start="0x00000000"  size="0x10000"    startup="1"   default="1"/>
+        <memory     id="IRAM1"                      start="0x20000000"  size="0x2000"     init   ="0"   default="1"/>
+        <algorithm  name="ARM/Flash/HT32F.FLM"      start="0x00000000"  size="0x10000"                  default="1"/>
+        <algorithm  name="ARM/Flash/HT32F_OPT.FLM"  start="0x1FF00000"  size="0x0200"                   default="0"/>
+        <book    name="Documents/HT32F520xx/HT32F52342-52_UserManualv100.pdf"             title="HT32F52342/52 UserManual"/>
+        <book    name="Documents/HT32F520xx/HT32F52342-52_Datasheetv100.pdf"              title="HT32F52342/52 Datasheet"/>
+        <feature type="Timer"       n="2"     m="16"          name="SCTM with single PWM"/>
+        <feature type="Timer"       n="2"     m="16"          name="GPTM with Quadrature Decoder"/>
+        <feature type="USART"       n="2"/>
+        <feature type="ComOther"    n="2"                     name="SCI"/>
+        <feature type="DMA"         n="6"                     name="High-Speed DMA"/>
+        <feature type="ExtBus"      n="16"                    name="EBI"/>
+        <feature type="I2S"         n="1"/>
+        <feature type="AnalogOther" n="2"                     name="Comparator"/>
+        <feature type="QFP"         n="48"                    name="LQFP"/>
+        <feature type="QFP"         n="64"                    name="LQFP"/>
+        <feature type="IOs"         n="51"/>
+      </device>
+
+      <!-- *************************  Device 'HT32F52352'  ***************************** -->
+      <device Dname="HT32F52352">
+        <compile header="ARM/INC/Holtek/HT32F520xx/ht32f520xx_01.h"/>
+        <debug      svd="SVD/HT32F52342_52.svd"/>
+        <memory     id="IROM1"                      start="0x00000000"  size="0x20000"    startup="1"   default="1"/>
+        <memory     id="IRAM1"                      start="0x20000000"  size="0x4000"     init   ="0"   default="1"/>
+        <algorithm  name="ARM/Flash/HT32F.FLM"      start="0x00000000"  size="0x20000"                  default="1"/>
+        <algorithm  name="ARM/Flash/HT32F_OPT.FLM"  start="0x1FF00000"  size="0x0200"                   default="0"/>
+        <book    name="Documents/HT32F520xx/HT32F52342-52_UserManualv100.pdf"             title="HT32F52342/52 UserManual"/>
+        <book    name="Documents/HT32F520xx/HT32F52342-52_Datasheetv100.pdf"              title="HT32F52342/52 Datasheet"/>
+        <feature type="Timer"       n="2"     m="16"          name="SCTM with single PWM"/>
+        <feature type="Timer"       n="2"     m="16"          name="GPTM with Quadrature Decoder"/>
+        <feature type="USART"       n="2"/>
+        <feature type="ComOther"    n="2"                     name="SCI"/>
+        <feature type="DMA"         n="6"                     name="High-Speed DMA"/>
+        <feature type="ExtBus"      n="16"                    name="EBI"/>
+        <feature type="I2S"         n="1"/>
+        <feature type="AnalogOther" n="2"                     name="Comparator"/>
+        <feature type="QFP"         n="48"                    name="LQFP"/>
+        <feature type="QFP"         n="64"                    name="LQFP"/>
+        <feature type="IOs"         n="51"/>
+      </device>
+    </family>
+
+  </devices>
+
+  <conditions>
+    <condition id="Compiler ARM">                                             <!-- conditions selecting ARM Compiler -->
+      <require Tcompiler="ARMCC"/>
+    </condition>
+  
+    <condition id="HT32Fxxxx CMSIS Device">                                   <!-- conditions selecting Devices -->
+      <description>Holtek HT32F1xxx device series, CMSIS-CORE, and ARMCC compiler</description>
+      <require Cclass ="CMSIS" Cgroup="CORE"/>
+      <require Dvendor="Holtek:106" Dname="HT32F[1256]*"/>
+    </condition>
+
+    <condition id="HT32F125x">
+      <description>Holtek Cortex-M3 Standard MCU Low Density Device</description>
+      <accept Dname="HT32F125[123]*"/>
+      <require condition="Compiler ARM"/>
+    </condition>
+
+    <condition id="HT32F175x">
+      <description>Holtek Cortex-M3 Standard MCU Mid Density Device</description>
+      <accept Dname="HT32F17[56]5"/>
+      <require condition="Compiler ARM"/>
+    </condition>
+
+    <condition id="HT32F1653_54">
+      <description>Holtek Cortex-M3 Standard MCU Mid Density Device</description>
+      <accept Dname="HT32F165[34]"/>
+      <require condition="Compiler ARM"/>
+    </condition>
+
+    <condition id="HT32F1655_56">
+      <description>Holtek Cortex-M3 Standard MCU High Density Device</description>
+      <accept Dname="HT32F165[56]"/>
+      <require condition="Compiler ARM"/>
+    </condition>
+
+    <condition id="HT32F2755">
+      <description>Holtek Cortex-M3 ASSP Device</description>
+      <accept Dname="HT32F2755"/>
+      <require condition="Compiler ARM"/>
+    </condition>
+
+    <condition id="HT32F52220_30">
+      <description>Holtek Cortex-M0+ Standard MCU Value Line</description>
+      <accept Dname="HT32F522[23]0"/>
+      <require condition="Compiler ARM"/>
+    </condition>
+
+    <condition id="HT32F52231_41">
+      <description>Holtek Cortex-M0+ Standard MCU Value Line</description>
+      <accept Dname="HT32F522[34]1"/>
+      <require condition="Compiler ARM"/>
+    </condition>
+
+    <condition id="HT32F52331_41">
+      <description>Holtek Cortex-M0+ Standard MCU USB Line</description>
+      <accept Dname="HT32F523[34]1"/>
+      <require condition="Compiler ARM"/>
+    </condition>
+
+    <condition id="HT32F52342_52">
+      <description>Holtek Cortex-M0+ Standard MCU USB Line</description>
+      <accept Dname="HT32F523[45]2"/>
+      <require condition="Compiler ARM"/>
+    </condition>
+
+
+  </conditions>
+
+
+  <components>
+    <component Cclass="Device" Cgroup="Startup" Cversion="1.0.1" condition="HT32Fxxxx CMSIS Device">  <!-- Cversion is necessary -->
+      <description>System Startup for Holtek HT32 Family device</description>
+      <files>
+        <!--  include folder -->
+        <file category="include" name="ARM/INC/Holtek/HT32F125x/"/>
+        <file category="include" name="ARM/INC/Holtek/HT32F175x_275x/"/>
+        <file category="include" name="ARM/INC/Holtek/HT32F1653_54/"/>
+        <file category="include" name="ARM/INC/Holtek/HT32F1655_56/"/>
+        <file category="include" name="ARM/INC/Holtek/HT32F520xx/"/>
+
+        <!-- startup files -->
+        <file category="source" name="ARM/Startup/Holtek/HT32F125x/startup_ht32f125x.s"           attr="config"    condition="HT32F125x" version="1.0.0"/>
+        <file category="source" name="ARM/Startup/Holtek/HT32F175x_275x/startup_ht32f175x_275x.s" attr="config"    condition="HT32F175x" version="1.0.0"/>
+        <file category="source" name="ARM/Startup/Holtek/HT32F175x_275x/startup_ht32f175x_275x.s" attr="config"    condition="HT32F2755" version="1.0.0"/>
+        <file category="source" name="ARM/Startup/Holtek/HT32F165x/startup_ht32f165x.s"           attr="config"    condition="HT32F1653_54" version="1.0.0"/>
+        <file category="source" name="ARM/Startup/Holtek/HT32F165x/startup_ht32f165x.s"           attr="config"    condition="HT32F1655_56" version="1.0.0"/>
+        <file category="source" name="ARM/Startup/Holtek/HT32F520xx/startup_ht32f52220_30.s"      attr="config"    condition="HT32F52220_30" version="1.0.0"/>
+        <file category="source" name="ARM/Startup/Holtek/HT32F520xx/startup_ht32f52231_41.s"      attr="config"    condition="HT32F52231_41" version="1.0.0"/>
+        <file category="source" name="ARM/Startup/Holtek/HT32F520xx/startup_ht32f52331_41.s"      attr="config"    condition="HT32F52331_41" version="1.0.0"/>
+        <file category="source" name="ARM/Startup/Holtek/HT32F520xx/startup_ht32f52342_52.s"      attr="config"    condition="HT32F52342_52" version="1.0.0"/>
+
+        <!-- system file -->
+        <file category="source" name="ARM/Startup/Holtek/HT32F125x/system_ht32f125x.c"            attr="config"    condition="HT32F125x" version="1.0.0"/>
+        <file category="source" name="ARM/Startup/Holtek/HT32F175x_275x/system_ht32f175x_275x.c"  attr="config"    condition="HT32F175x" version="1.0.1"/>
+        <file category="source" name="ARM/Startup/Holtek/HT32F175x_275x/system_ht32f175x_275x.c"  attr="config"    condition="HT32F2755" version="1.0.1"/>
+        <file category="source" name="ARM/Startup/Holtek/HT32F165x/system_ht32f1653_54.c"         attr="config"    condition="HT32F1653_54" version="1.0.1"/>
+        <file category="source" name="ARM/Startup/Holtek/HT32F165x/system_ht32f1655_56.c"         attr="config"    condition="HT32F1655_56" version="1.0.1"/>
+        <file category="source" name="ARM/Startup/Holtek/HT32F520xx/system_ht32f520xx_01.c"       attr="config"    condition="HT32F52331_41" version="1.0.0"/>
+        <file category="source" name="ARM/Startup/Holtek/HT32F520xx/system_ht32f520xx_01.c"       attr="config"    condition="HT32F52342_52" version="1.0.0"/>
+        <file category="source" name="ARM/Startup/Holtek/HT32F520xx/system_ht32f520xx_02.c"       attr="config"    condition="HT32F52220_30" version="1.0.0"/>
+        <file category="source" name="ARM/Startup/Holtek/HT32F520xx/system_ht32f520xx_02.c"       attr="config"    condition="HT32F52231_41" version="1.0.0"/>
+
+        <!-- device configuration required by drivers at the moment -->
+      </files>
+    </component>
+  </components>
+
+</package>

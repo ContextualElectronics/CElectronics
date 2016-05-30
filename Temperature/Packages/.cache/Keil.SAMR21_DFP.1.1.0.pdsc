@@ -1,0 +1,166 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<package schemaVersion="1.3" xmlns:xs="http://www.w3.org/2001/XMLSchema-instance" xs:noNamespaceSchemaLocation="PACK.xsd">
+  <vendor>Keil</vendor>
+  <url>http://www.keil.com/pack/</url>
+  <name>SAMR21_DFP</name>
+  <description>Atmel SAM R21 Series Device Support and Examples</description>
+
+  <releases>
+    <release version="1.1.0" date="2015-09-18">
+      Added SAMR21E19 device support.
+      Added SAMR21 datasheet.
+      Updated SAMR21 Device support files.
+    </release>
+    <release version="1.0.0">
+      First Release version of SAMR21 Device Family Pack.
+    </release>
+  </releases>
+
+  <keywords>
+  <!-- keywords for indexing -->
+    <keyword>Atmel</keyword>
+    <keyword>SAM R</keyword>
+    <keyword>SAM R21</keyword>
+  </keywords>
+
+  <devices>
+    <family Dfamily="SAMR21 Series" Dvendor="Atmel:3">
+      <processor Dcore="Cortex-M0+" DcoreVersion="r0p0"/>
+
+      <book name="Documents\dui0662a_cortex_m0p_r0p0_dgug.pdf" title="Cortex-M0+ Generic User Guide"/>
+      <book name="Documents\Atmel-42223-SAM-R21_Datasheet.pdf" title="SAM R21 Datasheet"/>
+      <description>
+The Atmel SAM R21 is a series of feature-rich, extremely low-power 2.4GHz wireless Cortex M0+MCUs that are designed for industrial and consumer wireless applications, either running proprietary communication stacks or solutions compliant to the IEEE 802.15.4 standard.
+      </description>
+
+      <feature type="Touch"         n="1"                           name="Capacitive Touch Inputs"/>
+      <feature type="AnalogOther"   n="2"                           name="Analog Comparator"/>
+      <feature type="Temp"          n="-40"     m="125"             name="Operating Temperature Range"/>
+      <feature type="VCC"           n="1.8"     m="3.6"/>
+      <feature type="RTC"           n="32768"                       name="RTC"/>
+      <feature type="WDT"           n="1"                           name="Watchdog"/>
+      <feature type="DMA"           n="12"                          name="DMA channel"/>
+      <feature type="ComOther"      n="1"                           name="USB (host/device)"/>
+      <feature type="ComOther"      n="1"                           name="Transceiver for 2.4GHz ISM Band"/>
+      <feature type="Timer"         n="6"       m="32"              name="Timer/Counter Module"/>
+
+      <!-- ************************  Subfamily 'ATSAMR21E'  **************************** -->
+      <subFamily DsubFamily="ATSAMR21E">
+        <feature type="ExtInt"        n="14"                          name="External Interrupts"/>
+        <feature type="IOs"           n="16"                          name="Inputs/Outputs"/>
+		<feature type="MPSerial"      n="4"                           name="Multi-Purpose Serial Interface Module: I2C, SPI, USART, LIN slave"/>
+        <feature type="ADC"           n="4"       m="12"              name="ADC"/>
+        <feature type="QFN"           n="32"                          name="QFN Package"/>
+
+        <!-- *************************  Device 'ATSAMR21E16'  ***************************** -->
+        <device Dname="ATSAMR21E16A">
+          <processor Dfpu="0" Dmpu="0" Dendian="Little-endian" Dclock="48000000"/>
+          <compile header="Device\SAMR21\Include\samr21.h"  define="__SAMR21E16A__"/>
+          <debug svd="SVD\SAMR21\ATSAMR21E16A.svd"/>
+          <memory id="IROM1"                       start="0x00000000" size="0x00010000" startup="1" default="1"/>
+          <memory id="IRAM1"                       start="0x20000000" size="0x00002000" init   ="0" default="1"/>
+          <algorithm name="Flash\ATSAMR21_64.FLM"  start="0x00000000" size="0x00010000"             default="1"/>
+        </device>
+
+        <!-- *************************  Device 'ATSAMR21E17'  ***************************** -->
+        <device Dname="ATSAMR21E17A">
+          <processor Dfpu="0" Dmpu="0" Dendian="Little-endian" Dclock="48000000"/>
+          <compile header="Device\SAMR21\Include\samr21.h"  define="__SAMR21E17A__"/>
+          <debug svd="SVD\SAMR21\ATSAMR21E17A.svd"/>
+          <memory id="IROM1"                       start="0x00000000" size="0x00020000" startup="1" default="1"/>
+          <memory id="IRAM1"                       start="0x20000000" size="0x00004000" init   ="0" default="1"/>
+          <algorithm name="Flash\ATSAMR21_128.FLM" start="0x00000000" size="0x00020000"             default="1"/>
+        </device>
+
+        <!-- *************************  Device 'ATSAMR21E18'  ***************************** -->
+        <device Dname="ATSAMR21E18A">
+          <processor Dfpu="0" Dmpu="0" Dendian="Little-endian" Dclock="48000000"/>
+          <compile header="Device\SAMR21\Include\samr21.h" define="__SAMR21E18A__"/>
+          <debug svd="SVD\SAMR21\ATSAMR21E18A.svd"/>
+          <memory id="IROM1"                       start="0x00000000" size="0x00040000" startup="1" default="1"/>
+          <memory id="IRAM1"                       start="0x20000000" size="0x00008000" init   ="0" default="1"/>
+          <algorithm name="Flash\ATSAMR21_256.FLM" start="0x00000000" size="0x00040000"             default="1"/>
+        </device>
+
+        <!-- *************************  Device 'ATSAMR21E19'  ***************************** -->
+        <device Dname="ATSAMR21E19A">
+          <processor Dfpu="0" Dmpu="0" Dendian="Little-endian" Dclock="48000000"/>
+          <compile header="Device\SAMR21\Include\samr21.h" define="__SAMR21E19A__"/>
+          <debug svd="SVD\SAMR21\ATSAMR21E19A.svd"/>
+          <memory id="IROM1"                       start="0x00000000" size="0x00040000" startup="1" default="1"/>
+          <memory id="IRAM1"                       start="0x20000000" size="0x00008000" init   ="0" default="1"/>
+          <algorithm name="Flash\ATSAMR21_256.FLM" start="0x00000000" size="0x00040000"             default="1"/>
+        </device>
+      </subFamily>
+
+      <!-- ************************  Subfamily 'ATSAMR21G'  **************************** -->
+      <subFamily DsubFamily="ATSAMR21G">
+        <feature type="ExtInt"        n="15"                          name="External Interrupts"/>
+        <feature type="IOs"           n="28"                          name="Inputs/Outputs"/>
+		<feature type="MPSerial"      n="5"                           name="Multi-Purpose Serial Interface Module: I2C, SPI, USART, LIN slave"/>
+        <feature type="ADC"           n="8"       m="12"              name="ADC"/>
+        <feature type="QFN"           n="48"                          name="QFN Package"/>
+
+        <!-- *************************  Device 'ATSAMR21G16'  ***************************** -->
+        <device Dname="ATSAMR21G16A">
+          <processor Dfpu="0" Dmpu="0" Dendian="Little-endian" Dclock="48000000"/>
+          <compile header="Device\SAMR21\Include\samr21.h" define="__SAMR21G16A__"/>
+          <debug svd="SVD\SAMR21\ATSAMR21G16A.svd"/>
+          <memory id="IROM1"                       start="0x00000000" size="0x00010000" startup="1" default="1"/>
+          <memory id="IRAM1"                       start="0x20000000" size="0x00002000" init   ="0" default="1"/>
+          <algorithm name="Flash\ATSAMR21_64.FLM"  start="0x00000000" size="0x00010000"             default="1"/>
+        </device>
+
+        <!-- *************************  Device 'ATSAMR21G17'  ***************************** -->
+        <device Dname="ATSAMR21G17A">
+          <processor Dfpu="0" Dmpu="0" Dendian="Little-endian" Dclock="48000000"/>
+          <compile header="Device\SAMR21\Include\samr21.h" define="__SAMR21G17A__"/>
+          <debug svd="SVD\SAMR21\ATSAMR21G17A.svd"/>
+          <memory id="IROM1"                       start="0x00000000" size="0x00020000" startup="1" default="1"/>
+          <memory id="IRAM1"                       start="0x20000000" size="0x00004000" init   ="0" default="1"/>
+          <algorithm name="Flash\ATSAMR21_128.FLM" start="0x00000000" size="0x00020000"             default="1"/>
+        </device>
+
+        <!-- *************************  Device 'ATSAMR21G18'  ***************************** -->
+        <device Dname="ATSAMR21G18A">
+          <processor Dfpu="0" Dmpu="0" Dendian="Little-endian" Dclock="48000000"/>
+          <compile header="Device\SAMR21\Include\samr21.h" define="__SAMR21G18A__"/>
+          <debug svd="SVD\SAMR21\ATSAMR21G18A.svd"/>
+          <memory id="IROM1"                       start="0x00000000" size="0x00040000" startup="1" default="1"/>
+          <memory id="IRAM1"                       start="0x20000000" size="0x00008000" init   ="0" default="1"/>
+          <algorithm name="Flash\ATSAMR21_256.FLM" start="0x00000000" size="0x00040000"             default="1"/>
+        </device>
+      </subFamily>
+
+    </family>
+  </devices>
+
+  <conditions>
+    <!-- Compiler Conditions -->
+    <condition id="Compiler ARMCC">
+      <require Tcompiler="ARMCC"/>
+    </condition>
+
+    <!-- Device + CMSIS Conditions -->
+    <condition id="SAMR21 CMSIS">
+      <description>Atmel SAM R21 devices and CMSIS-CORE</description>
+      <require Dvendor="Atmel:3"  Dname="ATSAMR21*"/>
+      <require Cclass="CMSIS" Cgroup="CORE"/>
+    </condition>
+  </conditions>
+
+  <components>
+    <!-- Startup SAMR21 -->
+    <component Cclass="Device" Cgroup="Startup" Cversion="1.0.1" condition="SAMR21 CMSIS">
+      <description>System Startup for Atmel SAM R21 Devices</description>
+      <files>
+        <file category="include"   name="Device\SAMR21\Include\"/>
+        <file category="source"    name="Device\SAMR21\Source\ARM\startup_SAMR21.s" attr="config"   version="1.0.1" condition="Compiler ARMCC"/>
+        <file category="source"    name="Device\SAMR21\Source\system_samr21.c"      attr="config"   version="1.0.0"/>
+      </files>
+    </component>
+
+  </components>
+
+</package>

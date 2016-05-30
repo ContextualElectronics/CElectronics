@@ -1,0 +1,587 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<package schemaVersion="1.2" xmlns:xs="http://www.w3.org/2001/XMLSchema-instance" xs:noNamespaceSchemaLocation="PACK.xsd">
+  <vendor>Keil</vendor>
+  <url>http://www.keil.com/pack/</url>
+  <name>SN32F7_DFP</name>
+  <description>SONiX SN32F7 Series Device Support and Examples</description>
+
+  <releases>
+    <release version="1.0.0">
+      First Release version of SN32F7 Device Family Pack.
+    </release>
+  </releases>
+
+  <keywords>
+    <!-- keywords for indexing -->
+    <keyword>SONiX</keyword>
+    <keyword>Device Support</keyword>
+    <keyword>Device Family Package SONiX</keyword>
+    <keyword>SN32F7</keyword>
+    <keyword>SN32</keyword>
+  </keywords>
+
+  <devices>
+    <!-- generated, do not modify this section! -->
+
+    <family Dfamily="SN32F7 Series" Dvendor="SONiX:110">
+      <processor Dcore="Cortex-M0" DcoreVersion="r0p0" Dfpu="0" Dmpu="0" Dendian="Little-endian"/>
+      <book    name="Documents\dui0497a_cortex_m0_r0p0_generic_ug.pdf" title="Cortex-M0 Generic User Guide"/>
+        <description>
+SN32F7 series 32-bit micro-controller is a new series of extremely Low Power Consumption and High Performance MCU powered by ARM Cortex M0 processor with Flash ROM architecture.
+        </description>
+
+        <feature type="ExtInt"        n="4"/>
+        <feature type="Other"         n="1"                           name="Boot Loader"/>
+        <feature type="USART"         n="1"/>
+        <feature type="I2C"           n="1"/>
+        <feature type="I2S"           n="1"/>
+        <feature type="RTC"           n="1"/>
+        <feature type="Other"         n="1"                           name="HW divider"/>
+        <feature type="VCC"           n="1.80"    m="3.60"/>
+
+
+      <!-- ************************  Subfamily 'SN32F700'  **************************** -->
+      <subFamily DsubFamily="SN32F700">
+        <feature type="Timer"         n="2"       m="32"/>
+      
+      <!-- *************************  Device 'SN32F705J'  ***************************** -->
+      <device Dname="SN32F705J">
+        <processor Dclock="50000000"/>
+        <compile header="Device\Include\SN32F700.h"  define="SN32F700"/>
+        <debug      svd="SVD\SN32F700.svd"/>
+        <memory     id="IROM1"                      start="0x00000000"  size="0x8000"     startup="1"   default="1"/>
+        <memory     id="IRAM1"                      start="0x20000000"  size="0x2000"     init   ="0"   default="1"/>
+        <algorithm  name="Flash\SN32F700_32.FLM"    start="0x00000000"  size="0x8000"                   default="1"/>
+        <book    name="Documents\SN32F705_V2.1R_UM.PDF"                     title="SN32F700/710/720 Series User Manual"/>
+        <feature type="IOs"           n="27"/>
+        <feature type="ADC"           n="5"       m="12"/>
+        <feature type="Timer"         n="1"       m="16"/>
+        <feature type="PWM"           n="11"/>
+        <feature type="QFN"           n="33"/>
+      </device>
+      
+      <!-- *************************  Device 'SN32F706J'  ***************************** -->
+      <device Dname="SN32F706J">
+        <processor Dclock="50000000"/>
+        <compile header="Device\Include\SN32F700.h"  define="SN32F700"/>
+        <debug      svd="SVD\SN32F700.svd"/>
+        <memory     id="IROM1"                      start="0x00000000"  size="0x8000"     startup="1"   default="1"/>
+        <memory     id="IRAM1"                      start="0x20000000"  size="0x2000"     init   ="0"   default="1"/>
+        <algorithm  name="Flash\SN32F700_32.FLM"    start="0x00000000"  size="0x8000"                   default="1"/>
+        <book    name="Documents\SN32F705_V2.1R_UM.PDF"                     title="SN32F700/710/720 Series User Manual"/>
+        <feature type="IOs"           n="41"/>
+        <feature type="ADC"           n="10"      m="12"/>
+        <feature type="Timer"         n="2"       m="16"/>
+        <feature type="PWM"           n="13"/>
+        <feature type="QFN"           n="46"/>
+      </device>
+      
+      <!-- *************************  Device 'SN32F707F'  ***************************** -->
+      <device Dname="SN32F707F">
+        <processor Dclock="50000000"/>
+        <compile header="Device\Include\SN32F700.h"  define="SN32F700"/>
+        <debug      svd="SVD\SN32F700.svd"/>
+        <memory     id="IROM1"                      start="0x00000000"  size="0x8000"     startup="1"   default="1"/>
+        <memory     id="IRAM1"                      start="0x20000000"  size="0x2000"     init   ="0"   default="1"/>
+        <algorithm  name="Flash\SN32F700_32.FLM"    start="0x00000000"  size="0x8000"                   default="1"/>
+        <book    name="Documents\SN32F705_V2.1R_UM.PDF"                     title="SN32F700/710/720 Series User Manual"/>
+        <feature type="IOs"           n="43"/>
+        <feature type="ADC"           n="10"      m="12"/>
+        <feature type="Timer"         n="2"       m="16"/>
+        <feature type="PWM"           n="13"/>
+        <feature type="QFP"           n="48"/>
+      </device>
+      </subFamily>
+
+      <!-- ************************  Subfamily 'SN32F710'  **************************** -->
+      <subFamily DsubFamily="SN32F710">
+        <feature type="Timer"         n="2"       m="32"/>
+      
+      <!-- *************************  Device 'SN32F715J'  ***************************** -->
+      <device Dname="SN32F715J">
+        <processor Dclock="50000000"/>
+        <compile header="Device\Include\SN32F710.h"  define="SN32F710"/>
+        <debug      svd="SVD\SN32F710.svd"/>
+        <memory     id="IROM1"                      start="0x00000000"  size="0x4000"     startup="1"   default="1"/>
+        <memory     id="IRAM1"                      start="0x20000000"  size="0x1000"     init   ="0"   default="1"/>
+        <algorithm  name="Flash\SN32F710_16.FLM"    start="0x00000000"  size="0x4000"                   default="1"/>
+        <book    name="Documents\SN32F705_V2.1R_UM.PDF"                     title="SN32F700/710/720 Series User Manual"/>
+        <feature type="IOs"           n="27"/>
+        <feature type="ADC"           n="5"       m="12"/>
+        <feature type="Timer"         n="1"       m="16"/>
+        <feature type="PWM"           n="11"/>
+        <feature type="QFN"           n="33"/>
+      </device>
+      
+      <!-- *************************  Device 'SN32F716J'  ***************************** -->
+      <device Dname="SN32F716J">
+        <processor Dclock="50000000"/>
+        <compile header="Device\Include\SN32F710.h"  define="SN32F710"/>
+        <debug      svd="SVD\SN32F710.svd"/>
+        <memory     id="IROM1"                      start="0x00000000"  size="0x4000"     startup="1"   default="1"/>
+        <memory     id="IRAM1"                      start="0x20000000"  size="0x1000"     init   ="0"   default="1"/>
+        <algorithm  name="Flash\SN32F710_16.FLM"    start="0x00000000"  size="0x4000"                   default="1"/>
+        <book    name="Documents\SN32F705_V2.1R_UM.PDF"                     title="SN32F700/710/720 Series User Manual"/>
+        <feature type="IOs"           n="41"/>
+        <feature type="ADC"           n="10"      m="12"/>
+        <feature type="Timer"         n="2"       m="16"/>
+        <feature type="PWM"           n="13"/>
+        <feature type="QFN"           n="46"/>
+      </device>
+      
+      <!-- *************************  Device 'SN32F717F'  ***************************** -->
+      <device Dname="SN32F717F">
+        <processor Dclock="50000000"/>
+        <compile header="Device\Include\SN32F710.h"  define="SN32F710"/>
+        <debug      svd="SVD\SN32F710.svd"/>
+        <memory     id="IROM1"                      start="0x00000000"  size="0x4000"     startup="1"   default="1"/>
+        <memory     id="IRAM1"                      start="0x20000000"  size="0x1000"     init   ="0"   default="1"/>
+        <algorithm  name="Flash\SN32F710_16.FLM"    start="0x00000000"  size="0x4000"                   default="1"/>
+        <book    name="Documents\SN32F705_V2.1R_UM.PDF"                     title="SN32F700/710/720 Series User Manual"/>
+        <feature type="IOs"           n="43"/>
+        <feature type="ADC"           n="10"      m="12"/>
+        <feature type="Timer"         n="2"       m="16"/>
+        <feature type="PWM"           n="13"/>
+        <feature type="QFP"           n="48"/>
+      </device>
+      </subFamily>
+
+      <!-- ************************  Subfamily 'SN32F720'  **************************** -->
+      <subFamily DsubFamily="SN32F720">
+        <feature type="Timer"         n="2"       m="16"/>
+        <feature type="Timer"         n="2"       m="32"/>
+      
+      <!-- *************************  Device 'SN32F725J'  ***************************** -->
+      <device Dname="SN32F725J">
+        <processor Dclock="50000000"/>
+        <compile header="Device\Include\SN32F720.h"  define="SN32F720"/>
+        <debug      svd="SVD\SN32F720.svd"/>
+        <memory     id="IROM1"                      start="0x00000000"  size="0x2000"     startup="1"   default="1"/>
+        <memory     id="IRAM1"                      start="0x20000000"  size="0x0800"     init   ="0"   default="1"/>
+        <algorithm  name="Flash\SN32F720_8.FLM"     start="0x00000000"  size="0x2000"                   default="1"/>
+        <book    name="Documents\SN32F705_V2.1R_UM.PDF"                     title="SN32F700/710/720 Series User Manual"/>
+        <feature type="IOs"           n="27"/>
+        <feature type="ADC"           n="5"       m="12"/>
+        <feature type="PWM"           n="11"/>
+        <feature type="QFN"           n="33"/>
+      </device>
+      
+      <!-- *************************  Device 'SN32F726J'  ***************************** -->
+      <device Dname="SN32F726J">
+        <processor Dclock="50000000"/>
+        <compile header="Device\Include\SN32F720.h"  define="SN32F720"/>
+        <debug      svd="SVD\SN32F720.svd"/>
+        <memory     id="IROM1"                      start="0x00000000"  size="0x2000"     startup="1"   default="1"/>
+        <memory     id="IRAM1"                      start="0x20000000"  size="0x0800"     init   ="0"   default="1"/>
+        <algorithm  name="Flash\SN32F720_8.FLM"     start="0x00000000"  size="0x2000"                   default="1"/>
+        <book    name="Documents\SN32F705_V2.1R_UM.PDF"                     title="SN32F700/710/720 Series User Manual"/>
+        <feature type="IOs"           n="41"/>
+        <feature type="ADC"           n="10"      m="12"/>
+        <feature type="PWM"           n="13"/>
+        <feature type="QFN"           n="46"/>
+      </device>
+      
+      <!-- *************************  Device 'SN32F727F'  ***************************** -->
+      <device Dname="SN32F727F">
+        <processor Dclock="50000000"/>
+        <compile header="Device\Include\SN32F720.h"  define="SN32F720"/>
+        <debug      svd="SVD\SN32F720.svd"/>
+        <memory     id="IROM1"                      start="0x00000000"  size="0x2000"     startup="1"   default="1"/>
+        <memory     id="IRAM1"                      start="0x20000000"  size="0x0800"     init   ="0"   default="1"/>
+        <algorithm  name="Flash\SN32F720_8.FLM"     start="0x00000000"  size="0x2000"                   default="1"/>
+        <book    name="Documents\SN32F705_V2.1R_UM.PDF"                     title="SN32F700/710/720 Series User Manual"/>
+        <feature type="IOs"           n="43"/>
+        <feature type="ADC"           n="10"      m="12"/>
+        <feature type="PWM"           n="13"/>
+        <feature type="QFP"           n="48"/>
+      </device>
+      </subFamily>
+
+      <!-- ************************  Subfamily 'SN32F730'  **************************** -->
+      <subFamily DsubFamily="SN32F730">
+        <feature type="Timer"         n="3"       m="16"/>
+        <feature type="Timer"         n="3"       m="32"/>
+        <feature type="PWM"           n="21"/>
+      
+      <!-- *************************  Device 'SN32F735J'  ***************************** -->
+      <device Dname="SN32F735J">
+        <processor Dclock="50000000"/>
+        <compile header="Device\Include\SN32F760.h"  define="SN32F730"/>
+        <debug      svd="SVD\SN32F760.svd"/>
+        <memory     id="IROM1"                      start="0x00000000"  size="0x2000"     startup="1"   default="1"/>
+        <memory     id="IRAM1"                      start="0x20000000"  size="0x0400"     init   ="0"   default="1"/>
+        <algorithm  name="Flash\SN32F730_8.FLM"     start="0x00000000"  size="0x2000"                   default="1"/>
+        <book    name="Documents\SN32F760_V1.0R_UM.PDF"                     title="SN32F760/750/740/730 Series User Manual"/>
+        <feature type="IOs"           n="26"/>
+        <feature type="ADC"           n="4"       m="12"/>
+        <feature type="QFN"           n="33"/>
+      </device>
+      
+      <!-- *************************  Device 'SN32F736J'  ***************************** -->
+      <device Dname="SN32F736J">
+        <processor Dclock="50000000"/>
+        <compile header="Device\Include\SN32F760.h"  define="SN32F730"/>
+        <debug      svd="SVD\SN32F760.svd"/>
+        <memory     id="IROM1"                      start="0x00000000"  size="0x2000"     startup="1"   default="1"/>
+        <memory     id="IRAM1"                      start="0x20000000"  size="0x0400"     init   ="0"   default="1"/>
+        <algorithm  name="Flash\SN32F730_8.FLM"     start="0x00000000"  size="0x2000"                   default="1"/>
+        <book    name="Documents\SN32F760_V1.0R_UM.PDF"                     title="SN32F760/750/740/730 Series User Manual"/>
+        <feature type="IOs"           n="40"/>
+        <feature type="ADC"           n="7"       m="12"/>
+        <feature type="LCD"           n="17"      m="4"/>
+        <feature type="QFN"           n="46"/>
+      </device>
+      
+      <!-- *************************  Device 'SN32F737F'  ***************************** -->
+      <device Dname="SN32F737F">
+        <processor Dclock="50000000"/>
+        <compile header="Device\Include\SN32F760.h"  define="SN32F730"/>
+        <debug      svd="SVD\SN32F760.svd"/>
+        <memory     id="IROM1"                      start="0x00000000"  size="0x2000"     startup="1"   default="1"/>
+        <memory     id="IRAM1"                      start="0x20000000"  size="0x0400"     init   ="0"   default="1"/>
+        <algorithm  name="Flash\SN32F730_8.FLM"     start="0x00000000"  size="0x2000"                   default="1"/>
+        <book    name="Documents\SN32F760_V1.0R_UM.PDF"                     title="SN32F760/750/740/730 Series User Manual"/>
+        <feature type="IOs"           n="42"/>
+        <feature type="ADC"           n="8"       m="12"/>
+        <feature type="LCD"           n="18"      m="4"/>
+        <feature type="QFP"           n="48"/>
+      </device>
+      </subFamily>
+
+      <!-- ************************  Subfamily 'SN32F740'  **************************** -->
+      <subFamily DsubFamily="SN32F740">
+        <feature type="Timer"         n="3"       m="16"/>
+        <feature type="Timer"         n="3"       m="32"/>
+        <feature type="PWM"           n="21"/>
+      
+      <!-- *************************  Device 'SN32F745J'  ***************************** -->
+      <device Dname="SN32F745J">
+        <processor Dclock="50000000"/>
+        <compile header="Device\Include\SN32F760.h"  define="SN32F740"/>
+        <debug      svd="SVD\SN32F760.svd"/>
+        <memory     id="IROM1"                      start="0x00000000"  size="0x4000"     startup="1"   default="1"/>
+        <memory     id="IRAM1"                      start="0x20000000"  size="0x0800"     init   ="0"   default="1"/>
+        <algorithm  name="Flash\SN32F740_16.FLM"    start="0x00000000"  size="0x4000"                   default="1"/>
+        <book    name="Documents\SN32F760_V1.0R_UM.PDF"                     title="SN32F760/750/740/730 Series User Manual"/>
+        <feature type="IOs"           n="26"/>
+        <feature type="ADC"           n="4"       m="12"/>
+        <feature type="QFN"           n="33"/>
+      </device>
+      
+      <!-- *************************  Device 'SN32F746J'  ***************************** -->
+      <device Dname="SN32F746J">
+        <processor Dclock="50000000"/>
+        <compile header="Device\Include\SN32F760.h"  define="SN32F740"/>
+        <debug      svd="SVD\SN32F760.svd"/>
+        <memory     id="IROM1"                      start="0x00000000"  size="0x4000"     startup="1"   default="1"/>
+        <memory     id="IRAM1"                      start="0x20000000"  size="0x0800"     init   ="0"   default="1"/>
+        <algorithm  name="Flash\SN32F740_16.FLM"    start="0x00000000"  size="0x4000"                   default="1"/>
+        <book    name="Documents\SN32F760_V1.0R_UM.PDF"                     title="SN32F760/750/740/730 Series User Manual"/>
+        <feature type="IOs"           n="40"/>
+        <feature type="ADC"           n="7"       m="12"/>
+        <feature type="LCD"           n="17"      m="4"/>
+        <feature type="QFN"           n="46"/>
+      </device>
+      
+      <!-- *************************  Device 'SN32F747F'  ***************************** -->
+      <device Dname="SN32F747F">
+        <processor Dclock="50000000"/>
+        <compile header="Device\Include\SN32F760.h"  define="SN32F740"/>
+        <debug      svd="SVD\SN32F760.svd"/>
+        <memory     id="IROM1"                      start="0x00000000"  size="0x4000"     startup="1"   default="1"/>
+        <memory     id="IRAM1"                      start="0x20000000"  size="0x0800"     init   ="0"   default="1"/>
+        <algorithm  name="Flash\SN32F740_16.FLM"    start="0x00000000"  size="0x4000"                   default="1"/>
+        <book    name="Documents\SN32F760_V1.0R_UM.PDF"                     title="SN32F760/750/740/730 Series User Manual"/>
+        <feature type="IOs"           n="42"/>
+        <feature type="ADC"           n="8"       m="12"/>
+        <feature type="LCD"           n="18"      m="4"/>
+        <feature type="QFP"           n="48"/>
+      </device>
+      </subFamily>
+
+      <!-- ************************  Subfamily 'SN32F750'  **************************** -->
+      <subFamily DsubFamily="SN32F750">
+        <feature type="Timer"         n="3"       m="16"/>
+        <feature type="Timer"         n="3"       m="32"/>
+        <feature type="PWM"           n="21"/>
+      
+      <!-- *************************  Device 'SN32F755J'  ***************************** -->
+      <device Dname="SN32F755J">
+        <processor Dclock="50000000"/>
+        <compile header="Device\Include\SN32F760.h"  define="SN32F750"/>
+        <debug      svd="SVD\SN32F760.svd"/>
+        <memory     id="IROM1"                      start="0x00000000"  size="0x8000"     startup="1"   default="1"/>
+        <memory     id="IRAM1"                      start="0x20000000"  size="0x1000"     init   ="0"   default="1"/>
+        <algorithm  name="Flash\SN32F750_32.FLM"    start="0x00000000"  size="0x8000"                   default="1"/>
+        <book    name="Documents\SN32F760_V1.0R_UM.PDF"                     title="SN32F760/750/740/730 Series User Manual"/>
+        <feature type="IOs"           n="26"/>
+        <feature type="ADC"           n="4"       m="12"/>
+        <feature type="QFN"           n="33"/>
+      </device>
+      
+      <!-- *************************  Device 'SN32F756J'  ***************************** -->
+      <device Dname="SN32F756J">
+        <processor Dclock="50000000"/>
+        <compile header="Device\Include\SN32F760.h"  define="SN32F750"/>
+        <debug      svd="SVD\SN32F760.svd"/>
+        <memory     id="IROM1"                      start="0x00000000"  size="0x8000"     startup="1"   default="1"/>
+        <memory     id="IRAM1"                      start="0x20000000"  size="0x1000"     init   ="0"   default="1"/>
+        <algorithm  name="Flash\SN32F750_32.FLM"    start="0x00000000"  size="0x8000"                   default="1"/>
+        <book    name="Documents\SN32F760_V1.0R_UM.PDF"                     title="SN32F760/750/740/730 Series User Manual"/>
+        <feature type="IOs"           n="40"/>
+        <feature type="ADC"           n="7"       m="12"/>
+        <feature type="LCD"           n="17"      m="4"/>
+        <feature type="QFN"           n="46"/>
+      </device>
+      
+      <!-- *************************  Device 'SN32F757F'  ***************************** -->
+      <device Dname="SN32F757F">
+        <processor Dclock="50000000"/>
+        <compile header="Device\Include\SN32F760.h"  define="SN32F750"/>
+        <debug      svd="SVD\SN32F760.svd"/>
+        <memory     id="IROM1"                      start="0x00000000"  size="0x8000"     startup="1"   default="1"/>
+        <memory     id="IRAM1"                      start="0x20000000"  size="0x1000"     init   ="0"   default="1"/>
+        <algorithm  name="Flash\SN32F750_32.FLM"    start="0x00000000"  size="0x8000"                   default="1"/>
+        <book    name="Documents\SN32F760_V1.0R_UM.PDF"                     title="SN32F760/750/740/730 Series User Manual"/>
+        <feature type="IOs"           n="42"/>
+        <feature type="ADC"           n="8"       m="12"/>
+        <feature type="LCD"           n="18"      m="4"/>
+        <feature type="QFP"           n="48"/>
+      </device>
+      
+      <!-- *************************  Device 'SN32F758F'  ***************************** -->
+      <device Dname="SN32F758F">
+        <processor Dclock="50000000"/>
+        <compile header="Device\Include\SN32F760.h"  define="SN32F750"/>
+        <debug      svd="SVD\SN32F760.svd"/>
+        <memory     id="IROM1"                      start="0x00000000"  size="0x8000"     startup="1"   default="1"/>
+        <memory     id="IRAM1"                      start="0x20000000"  size="0x1000"     init   ="0"   default="1"/>
+        <algorithm  name="Flash\SN32F750_32.FLM"    start="0x00000000"  size="0x8000"                   default="1"/>
+        <book    name="Documents\SN32F760_V1.0R_UM.PDF"                     title="SN32F760/750/740/730 Series User Manual"/>
+        <feature type="IOs"           n="57"/>
+        <feature type="ADC"           n="11"      m="12"/>
+        <feature type="LCD"           n="28"      m="4"/>
+        <feature type="QFP"           n="64"/>
+      </device>
+      
+      <!-- *************************  Device 'SN32F759F'  ***************************** -->
+      <device Dname="SN32F759F">
+        <processor Dclock="50000000"/>
+        <compile header="Device\Include\SN32F760.h"  define="SN32F750"/>
+        <debug      svd="SVD\SN32F760.svd"/>
+        <memory     id="IROM1"                      start="0x00000000"  size="0x8000"     startup="1"   default="1"/>
+        <memory     id="IRAM1"                      start="0x20000000"  size="0x1000"     init   ="0"   default="1"/>
+        <algorithm  name="Flash\SN32F750_32.FLM"    start="0x00000000"  size="0x8000"                   default="1"/>
+        <book    name="Documents\SN32F760_V1.0R_UM.PDF"                     title="SN32F760/750/740/730 Series User Manual"/>
+        <feature type="IOs"           n="64"/>
+        <feature type="ADC"           n="14"      m="12"/>
+        <feature type="LCD"           n="32"      m="4"/>
+        <feature type="QFP"           n="80"/>
+      </device>
+      </subFamily>
+
+      <!-- ************************  Subfamily 'SN32F760'  **************************** -->
+      <subFamily DsubFamily="SN32F760">
+        <feature type="Timer"         n="3"       m="16"/>
+        <feature type="Timer"         n="3"       m="32"/>
+        <feature type="PWM"           n="21"/>
+      
+      <!-- *************************  Device 'SN32F765J'  ***************************** -->
+      <device Dname="SN32F765J">
+        <processor Dclock="50000000"/>
+        <compile header="Device\Include\SN32F760.h"  define="SN32F760"/>
+        <debug      svd="SVD\SN32F760.svd"/>
+        <memory     id="IROM1"                      start="0x00000000"  size="0x10000"    startup="1"   default="1"/>
+        <memory     id="IRAM1"                      start="0x20000000"  size="0x2000"     init   ="0"   default="1"/>
+        <algorithm  name="Flash\SN32F760_64.FLM"    start="0x00000000"  size="0x10000"                  default="1"/>
+        <book    name="Documents\SN32F760_V1.0R_UM.PDF"                     title="SN32F760/750/740/730 Series User Manual"/>
+        <feature type="IOs"           n="26"/>
+        <feature type="ADC"           n="4"       m="12"/>
+        <feature type="QFN"           n="33"/>
+      </device>
+      
+      <!-- *************************  Device 'SN32F766J'  ***************************** -->
+      <device Dname="SN32F766J">
+        <processor Dclock="50000000"/>
+        <compile header="Device\Include\SN32F760.h"  define="SN32F760"/>
+        <debug      svd="SVD\SN32F760.svd"/>
+        <memory     id="IROM1"                      start="0x00000000"  size="0x10000"    startup="1"   default="1"/>
+        <memory     id="IRAM1"                      start="0x20000000"  size="0x2000"     init   ="0"   default="1"/>
+        <algorithm  name="Flash\SN32F760_64.FLM"    start="0x00000000"  size="0x10000"                  default="1"/>
+        <book    name="Documents\SN32F760_V1.0R_UM.PDF"                     title="SN32F760/750/740/730 Series User Manual"/>
+        <feature type="IOs"           n="40"/>
+        <feature type="ADC"           n="7"       m="12"/>
+        <feature type="LCD"           n="17"      m="4"/>
+        <feature type="QFN"           n="46"/>
+      </device>
+      
+      <!-- *************************  Device 'SN32F767F'  ***************************** -->
+      <device Dname="SN32F767F">
+        <processor Dclock="50000000"/>
+        <compile header="Device\Include\SN32F760.h"  define="SN32F760"/>
+        <debug      svd="SVD\SN32F760.svd"/>
+        <memory     id="IROM1"                      start="0x00000000"  size="0x10000"    startup="1"   default="1"/>
+        <memory     id="IRAM1"                      start="0x20000000"  size="0x2000"     init   ="0"   default="1"/>
+        <algorithm  name="Flash\SN32F760_64.FLM"    start="0x00000000"  size="0x10000"                  default="1"/>
+        <book    name="Documents\SN32F760_V1.0R_UM.PDF"                     title="SN32F760/750/740/730 Series User Manual"/>
+        <feature type="IOs"           n="42"/>
+        <feature type="ADC"           n="8"       m="12"/>
+        <feature type="LCD"           n="18"      m="4"/>
+        <feature type="QFP"           n="48"/>
+      </device>
+      
+      <!-- *************************  Device 'SN32F768F'  ***************************** -->
+      <device Dname="SN32F768F">
+        <processor Dclock="50000000"/>
+        <compile header="Device\Include\SN32F760.h"  define="SN32F760"/>
+        <debug      svd="SVD\SN32F760.svd"/>
+        <memory     id="IROM1"                      start="0x00000000"  size="0x10000"    startup="1"   default="1"/>
+        <memory     id="IRAM1"                      start="0x20000000"  size="0x2000"     init   ="0"   default="1"/>
+        <algorithm  name="Flash\SN32F760_64.FLM"    start="0x00000000"  size="0x10000"                  default="1"/>
+        <book    name="Documents\SN32F760_V1.0R_UM.PDF"                     title="SN32F760/750/740/730 Series User Manual"/>
+        <feature type="IOs"           n="57"/>
+        <feature type="ADC"           n="11"      m="12"/>
+        <feature type="LCD"           n="28"      m="4"/>
+        <feature type="QFP"           n="64"/>
+      </device>
+      
+      <!-- *************************  Device 'SN32F769F'  ***************************** -->
+      <device Dname="SN32F769F">
+        <processor Dclock="50000000"/>
+        <compile header="Device\Include\SN32F760.h"  define="SN32F760"/>
+        <debug      svd="SVD\SN32F760.svd"/>
+        <memory     id="IROM1"                      start="0x00000000"  size="0x10000"    startup="1"   default="1"/>
+        <memory     id="IRAM1"                      start="0x20000000"  size="0x2000"     init   ="0"   default="1"/>
+        <algorithm  name="Flash\SN32F760_64.FLM"    start="0x00000000"  size="0x10000"                  default="1"/>
+        <book    name="Documents\SN32F760_V1.0R_UM.PDF"                     title="SN32F760/750/740/730 Series User Manual"/>
+        <feature type="IOs"           n="64"/>
+        <feature type="ADC"           n="14"      m="12"/>
+        <feature type="LCD"           n="32"      m="4"/>
+        <feature type="QFP"           n="80"/>
+      </device>
+      </subFamily>
+
+    </family>
+  </devices>
+
+  <conditions>
+    <!-- conditions are dependecy rules that can apply to a component or an individual file -->
+    <condition id="Compiler ARM">
+      <!-- conditions selecting ARM Compiler -->
+      <require Tcompiler="ARMCC"/>
+    </condition>
+
+    <condition id="SN32F7">
+      <description>SONiX SN32F7 Series devices</description>
+      <require Dname="SN32F7*"/>
+    </condition>
+
+    <condition id="SN32F70">
+      <description>SONiX SN32F700 Series devices</description>
+      <require Dname="SN32F70*"/>
+    </condition>
+    <condition id="SN32F71">
+      <description>SONiX SN32F710 Series devices</description>
+      <require Dname="SN32F71*"/>
+    </condition>
+    <condition id="SN32F72">
+      <description>SONiX SN32F720 Series devices</description>
+      <require Dname="SN32F72*"/>
+    </condition>
+    <condition id="SN32F73">
+      <description>SONiX SN32F730 Series devices</description>
+      <require Dname="SN32F73*"/>
+    </condition>
+    <condition id="SN32F74">
+      <description>SONiX SN32F740 Series devices</description>
+      <require Dname="SN32F74*"/>
+    </condition>
+    <condition id="SN32F75">
+      <description>SONiX SN32F750 Series devices</description>
+      <require Dname="SN32F75*"/>
+    </condition>
+    <condition id="SN32F76">
+      <description>SONiX SN32F760 Series devices</description>
+      <require Dname="SN32F76*"/>
+    </condition>
+    <condition id="SN32F73_4_5_6">
+      <description>SONiX SN32F730/40/50/60 Series devices</description>
+      <accept condition="SN32F73"/>
+      <accept condition="SN32F74"/>
+      <accept condition="SN32F75"/>
+      <accept condition="SN32F76"/>
+    </condition>
+
+    <condition id="SN32F7 CMSIS Device">
+      <!-- conditions selecting Devices -->
+      <description>SONiX SN32F7 Series devices and CMSIS-CORE</description>
+      <require Cclass="CMSIS" Cgroup="CORE"/>
+      <require Dvendor="SONiX:110" Dname="SN32F7*"/>
+    </condition>
+
+  </conditions>
+
+  <boards>
+    <board vendor="SONiX" name="SN32F760 Starter Kit" revision="v1.1" salesContact="sales@sonix.com.tw" orderForm="http://www.sonix.com.tw/sonix/product.do?p=SN32F706">
+      <description>SONiX SN32F760 Starter Kit</description>
+      <book category="schematic" name="Documents\SN32F760_STARTKIT_V1.1.pdf" title="Schematics"/>
+      <mountedDevice    deviceIndex="0" Dvendor="SONiX:110" Dname="SN32F769"/>
+      <compatibleDevice deviceIndex="0" Dvendor="SONiX:110" Dfamily="SN32F760"/>
+      <feature type="PWR"       n="5"              name="USB Powered"/>
+      <feature type="Button"    n="3"              name="Push-buttons: User and Reset"/>
+      <feature type="USB"       n="1"              name="USB device with USB Standard-B Connector"/>
+      <feature type="RS232"     n="1"              name="DB9 Female Connector"/>
+      <feature type="DIO"       n="41"             name="Digital IOs (shared with Analog IOs)"/>
+      <feature type="LED"       n="2"              name="LEDs: One user, one PWR LED"/>
+      <feature type="ConnOther" n="1"              name="JTAG Interface"/>
+    </board>
+  </boards>
+
+  <examples>
+    <example name="CMSIS-RTOS Blinky" doc="Abstract.txt" folder="Boards\SONiX\SN32F760 Starter Kit Rev1_1\RTX_Blinky">
+      <description>CMSIS-RTOS based Blinky example</description>
+      <board name="SN32F760 Starter Kit Rev1_1" vendor="SONiX" Dvendor="SONiX:110" Dname="SN32F769"/>
+      <project>
+        <environment name="uv" load="Blinky.uvprojx"/>
+      </project>
+      <attributes>
+        <component Cclass="CMSIS" Cgroup="CORE"/>
+        <component Cclass="Device" Cgroup="Startup"/>
+        <component Cclass="CMSIS" Cgroup="RTOS"/>
+        <category>Getting Started</category>
+        <category>CMSIS-RTX</category>
+      </attributes>
+    </example>
+  </examples>
+
+
+  <components>
+    <component Cclass="Device" Cgroup="Startup" Cversion="1.0.0" condition="SN32F7 CMSIS Device">
+      <!-- Cversion is necessary -->
+      <description>System Startup for SONiX SN32F7 Series</description>
+      <RTE_Components_h>
+        <!-- the following content goes into file 'RTE_Components.h' -->
+      </RTE_Components_h>
+
+      <files>
+        <!--  include folder -->
+        <file category="include" name="Device\Include\"/>
+              
+        <!-- startup files -->
+        <file category="source" name="Device\Source\ARM\startup_SN32F700.s"   attr="config"    condition="SN32F70"/>
+        <file category="source" name="Device\Source\ARM\startup_SN32F710.s"   attr="config"    condition="SN32F71"/>
+        <file category="source" name="Device\Source\ARM\startup_SN32F720.s"   attr="config"    condition="SN32F72"/>
+        <file category="source" name="Device\Source\ARM\startup_SN32F760.s"   attr="config"    condition="SN32F73_4_5_6"/>
+
+        <!-- system file -->
+        <file category="source" name="Device\Source\system_SN32F700.c"        attr="config"    condition="SN32F70"/>
+        <file category="source" name="Device\Source\system_SN32F710.c"        attr="config"    condition="SN32F71"/>
+        <file category="source" name="Device\Source\system_SN32F720.c"        attr="config"    condition="SN32F72"/>
+        <file category="source" name="Device\Source\system_SN32F760.c"        attr="config"    condition="SN32F73_4_5_6"/>
+
+      </files>
+    </component>
+    
+  </components>
+</package>

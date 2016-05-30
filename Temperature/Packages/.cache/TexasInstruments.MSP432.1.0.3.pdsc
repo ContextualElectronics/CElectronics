@@ -1,0 +1,177 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<package schemaVersion="1.2" xmlns:xs="http://www.w3.org/2001/XMLSchema-instance" xs:noNamespaceSchemaLocation="PACK.xsd">
+  <vendor>TexasInstruments</vendor>
+  <name>MSP432</name>
+  <description>Device Family Pack for Texas Instruments MSP432 Series</description>
+  <url>http://software-dl.ti.com/msp430/msp430_public_sw/mcu/msp430/mspkeil/latest/exports</url>
+  <supportContact></supportContact>
+  <license>license.txt</license>
+
+  <releases>
+    <release version="1.0.3" deprecated="2016-02-15" replacement="TexasInstruments.MSP432P4xx_DFP">
+This pack is superseded by TexasInstruments.MSP432P4xx_DFP and no longer maintained.
+    </release>
+    <release version="1.0.2">
+- Added a warning in device header file to indicate CMSIS update of headers in March 2016
+    </release>
+    <release version="1.0.1">
+- Improved device description
+- Added board descriptions to package
+- Enhanced SVD contents
+    </release>
+    <release version="1.0.0">
+First release
+    </release>
+  </releases>
+
+
+  <!-- devices section (mandatory for Device Family Packs) -->
+    <devices>
+    <family Dfamily="MSP432P4xx Series" Dvendor="Texas Instruments:16">
+	  <processor Dcore="Cortex-M4" DcoreVersion="r0p1" Dfpu="1" Dmpu="1" Dendian="Little-endian"/>
+	  <book name="http://infocenter.arm.com/help/topic/com.arm.doc.dui0553a/DUI0553A_cortex_m4_dgug.pdf" title="Cortex-M4 Generic User Guide"/>
+	  <book name="http://www.ti.com/lit/ug/slau356a/slau356a.pdf" title="MSP432P4xx Family Technical Reference Manual"/>
+	  <description>
+MSP432P4x microcontrollers are the ideal combination of 
+TI's MSP430 low-power DNA, advanced mixed-signal features, 
+and the high performance processing capabilities of 
+ARM®'s 32-bit Cortex™ M4F RISC engine. 
+MSP432P4x MCUs cater to a large number of embedded applications 
+where both efficient data processing and enhanced low-power 
+operation are paramount.
+      </description>
+	   
+	  <!-- features common for the whole family -->
+	  <feature type="ADC" n="24" m="14"/>
+	  <feature type="VCC" n="1.62" m="3.7"/>
+	  <feature type="AnalogOther" n="2" name="Analog Comparator"/>
+	  <feature type="Crypto" n="128.256" name="HW accelerated AES Encryption Engine"/>
+	  <feature type="TempSens" n="1"/>
+	  <feature type="Timer" n="4" m="16" name="Up to 4 timers/PWM/CCP"/>
+	  <feature type="Timer" n="2" m="32" name="GP Timers"/>
+	  <feature type="ComOther" n="4" name="UART or SPI"/>
+	  <feature type="ComOther" n="4" name="I2C or SPI"/>
+    	
+      <sequences>
+        <sequence name="DebugDeviceUnlock">
+          <block>
+		    __var securityIsEnabled = 0;
+            __var unlockDevice = 0;
+            DAP_Delay(100000);
+			Write32(0xE0044000, 0x0000695A);
+			securityIsEnabled = Read32(0xE0044020);
+		  </block>
+		  <control if="securityIsEnabled &amp; 0x38">
+		    <block>
+			  unlockDevice = Query(1, "Device is locked. Erase all memory and unlock device?", 1);
+		    </block>
+		    <control if="unlockDevice">
+			  <block>
+			    // Write reboot sequence to SYSCTL registers
+			    Write32(0xE0044000, 0x0000695A);
+			    Write32(0xE0044004, 0x00000001);
+			    Write32(0xE0044008, 0x00000000);
+			    Write32(0xE0044010, 0x00006902);
+			    Sequence("DebugDeviceUnlock");
+			  </block>
+		    </control>
+		  </control>
+		  <control if="!(securityIsEnabled &amp; 0x38)">
+		    <block>
+			  __var outdated = 0;
+            outdated = Read32(0x00201010);
+          </block>
+
+          <!-- Check if the device is old material -->
+          <control if="outdated &lt; 0x42">
+            <block>
+              Query(0, "Warning: Your MSP432P401R material is out of date. For the latest device with additional functionality, please order new samples from www.ti.com/product/msp432p401r", 0);
+            </block>
+            </control>
+          </control>
+        </sequence>
+      </sequences>
+
+      <!-- ************************  Subfamily MSP432P401x  **************************** -->
+      <subFamily DsubFamily="MSP432P401x">
+        <processor  Dclock="48000000"/>
+		<book name="http://www.ti.com/lit/ds/slas826a/slas826a.pdf" title="MSP432P401x Datasheet"/>
+		
+		<!-- features common for the sub family -->
+		<feature type="PowerOther" n="1" name="Active Mode 90 µA/MHz"/>
+		<feature type="PowerOther" n="1" name="Low-Frequency Active: 90 µA (at 128 kHz)"/>
+		<feature type="PowerOther" n="1" name="LPM3 (With RTC): 850 nA"/>
+		<feature type="PowerOther" n="1" name="LPM3.5 (With RTC): 800 nA"/>
+		<feature type="PowerOther" n="1" name="LPM4.5: 25 nA"/>
+
+        <compile    header="Device\Include\msp.h"/>
+        <compile    header="Device\Include\msp_compatibility.h"/>
+
+        <!-- *************************  Device MSP432P401R  ***************************** -->
+        <device Dname="MSP432P401R">
+          <memory      id="IROM1"                  start="0x00000000" size="0x00040000"    startup="1"   default="1"/>
+          <memory      id="IROM2"                  start="0x00200000" size="0x00004000"    startup="0"   default="1"/>
+          <memory      id="IRAM1"                  start="0x20000000" size="0x00010000"    init   ="0"   default="1"/>
+          <algorithm  name="Flash\MSP432P4xx_MainFlash256kB.FLM" start="0x00000000" size="0x00040000" RAMstart="0x01000000" RAMsize="0xE000" default="1"/>
+          <algorithm  name="Flash\MSP432P4xx_InfoFlash.FLM"      start="0x00200000" size="0x00004000" RAMstart="0x01000000" RAMsize="0xE000" default="1"/>
+          <compile    define="__MSP432P401R__"/>
+          <debug      svd="SVD\MSP432P401R.svd"/>
+        </device>
+
+      </subFamily>
+    </family>
+  </devices>
+
+  <conditions>
+    <condition id="MSP432 CMSIS-CORE">
+      <!-- conditions selecting Devices -->
+      <description>Texas Instruments MSP432 Family devices and CMSIS-CORE</description>
+      <require Cclass="CMSIS" Cgroup="CORE"/>
+      <require Dvendor="TI:16" Dname="MSP432*"/>
+    </condition>
+  </conditions>
+
+  <components>
+    <component Cclass="Device" Cgroup="Startup" Cversion="1.0.2" condition="MSP432 CMSIS-CORE">
+      <description>System Startup for MSP432 Family</description>
+      <files>
+        <file category="include" name="Device\Include\"/>
+        <file category="source"  name="Device\Source\startup_msp432.s" attr="config" />
+        <file category="source"  name="Device\Source\system_msp432.c" attr="config" />
+        <file category="source"  name="Templates\main.c" attr="template" select="Empty C main"/>
+        <file category="source"  name="Templates\blinkLED.c" attr="template" select="BlinkLED example"/>
+      </files>
+    </component>
+  </components>
+  
+  <boards>
+	<board vendor="TexasInstruments" name="MSP-EXP432P401R" salesContact="http://www.ti.com/general/docs/contact.tsp" orderForm="https://store.ti.com/msp-exp432p401r.aspx">
+		<description>MSP432P401R LaunchPad</description>
+		<image small="Images\MSP-EXP432P401R_small.jpg" large="Images\MSP-EXP432P401R_large.jpg"/>
+		<book category="overview"  name="http://www.ti.com/tool/msp-exp432p401r" title="MSP432P401R LaunchPad Web page"/>
+		<book category="setup"     name="http://www.ti.com/lit/pdf/slau596" title="MSP432 Quick Start Guide"/>
+		<book category="manual"    name="http://www.ti.com/lit/pdf/slau597" title="LaunchPad Development Kit User's Guide"/>
+		<mountedDevice    deviceIndex="0" Dvendor="Texas Instruments:16" Dname="MSP432P401R"/>
+        <compatibleDevice deviceIndex="0" Dvendor="Texas Instruments:16" Dfamily="MSP432P4xx Series" DsubFamily="MSP432P401x"/>	
+		<debugInterface adapter="XDS110-ET" connector="XDS110-ET Onboard Emulator"/>	
+		<debugInterface adapter="JTAG/SW" connector="10-pin Cortex Debug Connector (0.05 inch connector)"/>
+		<feature type="USB" n="1" name="USB Device,  Micro-B receptacle"/>
+		<feature type="Button" n="3" name="reset and tow user push-buttons"/>
+		<feature type="LED" n="2" name="LEDs for user interaction"/>		
+		<feature type="ConnOther" n="1" name="40 pin BoosterPack Connector and support for 20 pin BoosterPacks"/>
+		<feature type="Other" n="1" name="Back-channel UART via USB to PC"/>
+		<feature type="ODbg" n="1" name="Onboard XDS-110ET emulator featuring EnergyTrace+ Technology"/>
+	</board>
+	<board vendor="TexasInstruments" name="MSP-TS432PZ100" salesContact="http://www.ti.com/general/docs/contact.tsp" orderForm="https://store.ti.com/msp-ts432pz100.aspx">
+		<description>MSP432 100-Pin Target board</description>
+		<image small="Images\MSP-TS432PZ100_small.jpg" large="Images\MSP-TS432PZ100_large.jpg"/>
+		<book category="manual" name="http://www.ti.com/lit/pdf/slau571" title="MSP432 Hardware Tools User's Guide"/>
+        <compatibleDevice deviceIndex="0" Dvendor="Texas Instruments:16" Dfamily="MSP432P4xx Series" DsubFamily="MSP432P401x"/>	
+		<debugInterface adapter="JTAG/SW" connector="20-pin ARM Standard JTAG Connector (0.1 inch connector)"/>
+		<feature type="ConnOther" n="1" name="BSL programming connector"/>	
+		<feature type="Button" n="2" name="reset and user"/>
+	</board>
+  </boards>
+</package>
+

@@ -1,0 +1,1280 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<package schemaVersion="1.2" xmlns:xs="http://www.w3.org/2001/XMLSchema-instance" xs:noNamespaceSchemaLocation="PACK.xsd">
+    <vendor>ABOV</vendor>
+    <name>CM3_DFP</name>
+    <description>ABOV Semiconductor CM3 Device Support, Drivers and Examples</description>
+    <url>http://www.abov.co.kr/data/mds/PACK/</url>
+    <supportContact>seungduk.ha@abov.co.kr</supportContact>
+
+    <releases>
+        <release version="1.0.0" date="2015-04-29">
+            First Release version of ABOV CM3 Device Family Pack.
+            - Added device : AC33M8128, AC33M6128
+        </release>
+        <release version="1.0.1" date="2015-05-29">
+            - Added device : AC33M4064, AC33M3064
+        </release>
+        <release version="1.1.0" date="2015-12-30">
+            - Added device : AC33GA256
+            - Modified system and SCU file : AC33M8128/6128, AC33M4064/3064
+        </release>
+    </releases>
+
+    <keywords>
+        <keyword>ABOV</keyword>
+        <keyword>AC3</keyword>
+    </keywords>
+
+    <devices>
+        <family Dfamily="AC33x Series" Dvendor="ABOV Semiconductor:126">
+            <processor Dcore="Cortex-M3" DcoreVersion="r1p0" Dfpu="0" Dmpu = "0" Dendian="Little-endian"/>
+            <description>The ABOV AC33x device family contains an ARM Cortex-M3 processor with a versatile set of on-chip peripherals
+            </description>
+            
+            <!-- Subfamily : AC33Mx128 *********************************************************-->
+            <subFamily DsubFamily="AC33Mx128">
+                <processor  Dclock="20000000"/>
+
+                <compile header="AC33Mx128\Core\include\AC33Mx128.h"/>
+                <debug      svd="AC33Mx128\SVD\AC33Mx128.svd"/>
+                <book       name="AC33Mx128\Doc\AC33M8128_UG_ver0.7_150206.pdf" title="AC33Mx128 Series Data Sheet"/>
+                <algorithm  name="AC33Mx128\Flashloader\ac33m8128_PFLASH.FLM"   start="0x00000000"  size="0x20000"  default="1"/>
+
+                <feature    type="VCC"      n="3.00"    m="5.50"/>
+                <feature    type="Temp"     n="-40"     m="85"/>
+
+                <memory     id="IROM1"      start="0x00000000"  size="0x20000"  startup="1"     default="1"/>
+                <memory     id="IRAM1"      start="0x20000000"  size="0x3000"   init   ="0"     default="1"/>
+                <feature    type="WDT"      n="1"       m="32"  name="Watchdog Timer"/>
+                <feature    type="Timer"    n="6"       m="16"  name="Timer"/>
+                <feature    type="PWM"      n="2"       m="16"  name="PWM"/>
+                <feature    type="SPI"      n="2"               name="SPI"/>
+                <feature    type="ADC"      n="3"       m="12"  name="ADC"/>
+                <feature    type="AnalogOther"  n="4"           name="OPAMP"/>
+                <feature    type="AnalogOther"  n="4"           name="COMP"/>
+
+                <!-- Device : AC33M8128 -->
+                <device Dname="AC33M8128">
+                    <description>Package type 80LQFP, 80MQFP</description>
+                    <feature    type="I2C"      n="2"           name="I2C"/>
+                    <feature    type="UART"     n="4"           name="UART"/>
+                    <feature    type="IOs"      n="68"          name="Inputs/Outputs"/>
+                    <feature    type="QFP"      n="80"          name="MQFP"/>
+                    <feature    type="QFP"      n="80"          name="LQFP"/>
+                </device>
+
+                <!-- Device : AC33M6128 -->
+                <device Dname="AC33M6128">
+                    <description>Package type 64LQFP</description>
+                    <feature    type="I2C"      n="1"           name="I2C"/>
+                    <feature    type="UART"     n="2"           name="UART"/>
+                    <feature    type="IOs"      n="48"          name="Inputs/Outputs"/>
+                    <feature    type="QFP"      n="64"          name="LQFP"/>    
+                </device>
+            </subFamily>
+
+            <!-- Subfamily : AC33Mx064 *********************************************************-->
+            <subFamily DsubFamily="AC33Mx064">
+                <processor  Dclock="20000000"/>
+
+                <compile header="AC33Mx064\Core\include\AC33Mx064.h"/>
+                <debug      svd="AC33Mx064\SVD\AC33Mx064.svd"/>
+                <book       name="AC33Mx064\Doc\AC33M4064_UG_ver0.1.11_150309.pdf"  title="AC33Mx064 Series Data Sheet"/>
+                <algorithm  name="AC33Mx064\Flashloader\AC33Mx064_64.FLM"   start="0x00000000"  size="0x10000"  default="1"/>
+
+                <feature    type="VCC"      n="3.00"    m="5.50"/>
+                <feature    type="Temp"     n="-40"     m="85"/>
+
+                <memory     id="IROM1"      start="0x00000000"  size="0x10000"  startup="1"     default="1"/>
+                <memory     id="IRAM1"      start="0x20000000"  size="0x2000"   init   ="0"     default="1"/>
+                <feature    type="WDT"      n="1"       m="32"  name="Watchdog Timer"/>
+                <feature    type="Timer"    n="6"       m="16"  name="Timer"/>
+                <feature    type="PWM"      n="1"       m="16"  name="PWM"/>
+                <feature    type="UART"     n="2"               name="UART"/>
+                <feature    type="SPI"      n="1"               name="SPI"/>
+                <feature    type="I2C"      n="1"               name="I2C"/>
+
+                <!-- Device : AC33M4064 -->
+                <device Dname="AC33M4064">
+                    <description>Package type 44LQFP</description>
+                    <feature    type="IOs"      n="44"          name="Inputs/Outputs"/>
+                    <feature    type="QFP"      n="44"          name="LQFP"/>
+                    <feature    type="ADC"      n="2"   m="11"  name="ADC"/>
+                </device>
+
+                <!-- Device : AC33M3064 -->
+                <device Dname="AC33M3064">
+                    <description>Package type 32LQFP</description>
+                    <feature    type="IOs"      n="30"          name="Inputs/Outputs"/>
+                    <feature    type="QFP"      n="32"          name="LQFP"/>    
+                    <feature    type="ADC"      n="2"   m="8"   name="ADC"/>
+                </device>
+            </subFamily>
+
+            <!-- Subfamily : AC33GA256 *********************************************************-->
+            <subFamily DsubFamily="AC33GA256">
+                <processor  Dclock="16000000"/>
+
+                <compile header="AC33GA256\Core\include\AC33GA256.h"/>
+                <debug      svd="AC33GA256\SVD\AC33GA256.svd"/>
+                <book       name="AC33GA256\Doc\DS_AC33GA256_V1.0_EN.pdf" title="AC33GA256 Data Sheet"/>
+                <book       name="AC33GA256\Doc\UM_AC33GA256_V1.0_EN.pdf" title="AC33GA256 User Manual"/>
+                <algorithm  name="AC33GA256\Flashloader\AC33GA256_CDFLASH.FLM"   start="0x00000000"  size="0x40000"  default="1"/>
+
+                <feature    type="VCC"      n="2.70"    m="5.50"/>
+                <feature    type="Temp"     n="-40"     m="85"/>
+
+                <memory     id="IROM1"      start="0x00000000"  size="0x40000"  startup="1"     default="1"/>
+                <memory     id="IRAM1"      start="0x20000000"  size="0x6000"   init   ="0"     default="1"/>
+
+                <!-- Device : AC33GA256 -->
+                <device Dname="AC33GA256">
+                    <feature    type="WDT"      n="1"       m="32"  name="Watchdog Timer"/>
+                    <feature    type="Timer"    n="10"      m="16"  name="Timer"/>
+                    <feature    type="Timer"    n="1"       m="32"  name="Free-run Timer"/>
+                    <feature    type="PWM"      n="8"       m="16"  name="PWM"/>
+                    <feature    type="SPI"      n="2"               name="SPI"/>
+                    <feature    type="I2C"      n="2"               name="I2C"/>
+                    <feature    type="UART"     n="4"               name="UART"/>
+                    <feature    type="ADC"      n="1"       m="12"  name="ADC"/>
+
+                    <description>Package type 100LQFP</description>
+                    <feature    type="IOs"      n="86"              name="Inputs/Outputs"/>
+                    <feature    type="QFP"      n="100"             name="LQFP"/>
+                </device>
+            </subFamily>
+        </family>
+    </devices>
+    
+    <conditions>
+        <!-- condition : AC33M8128/6128 ********************************************************-->
+        <condition id="AC33Mx128 CMSIS">
+            <description>AC33M8128, AC33M6128 device and CMSIS-Core</description>
+            <require Tcompiler="ARMCC"/>
+            <require Cclass="CMSIS" Cgroup="CORE"/>
+            <accept Dvendor="ABOV Semiconductor:126" Dname="AC33M8128"/>
+            <accept Dvendor="ABOV Semiconductor:126" Dname="AC33M6128"/>
+        </condition>
+
+        <!-- condition : AC33M4064/3064 ********************************************************-->
+        <condition id="AC33Mx064 CMSIS">
+            <description>AC33M4064, AC33M3064 device and CMSIS-Core</description>
+            <require Tcompiler="ARMCC"/>
+            <require Cclass="CMSIS" Cgroup="CORE"/>
+            <accept Dvendor="ABOV Semiconductor:126" Dname="AC33M4064"/>
+            <accept Dvendor="ABOV Semiconductor:126" Dname="AC33M3064"/>
+        </condition>
+
+        <!-- Subfamily : AC33GA256 *************************************************************-->
+        <condition id="AC33GA256 CMSIS">
+            <description>AC33GA256, AC33GA256 device and CMSIS-Core</description>
+            <require Tcompiler="ARMCC"/>
+            <require Cclass="CMSIS" Cgroup="CORE"/>
+            <accept Dvendor="ABOV Semiconductor:126" Dname="AC33GA256"/>
+        </condition>
+    </conditions>
+
+    <components>
+        <!-- component : AC33M8128/6128 ********************************************************-->
+        <component Cclass="Device" Cgroup="Startup" Cversion="1.1.0" condition="AC33Mx128 CMSIS">
+            <description>System Startup for ABOV AC33M8128/6128 devices</description>
+            <files>
+                <file category="include"    name="AC33Mx128\Core\include\"/>
+                <file category="include"    name="AC33Mx128\Drivers\include\"/>
+
+                <file category="header"     version= "1.0.0"    name="AC33Mx128\Core\include\AC33Mx128.h"   attr="config"/>
+                <file category="source"     version= "1.0.0"    name="AC33Mx128\Core\source\ARM\startup_AC33Mx128.s"    attr="config"/>
+                <file category="source"     version= "1.1.0"    name="AC33Mx128\Core\source\system_AC33Mx128.c" attr="config"/>
+            </files>
+        </component>
+        <component Cclass="Device" Cgroup="Drivers" Csub="Debug_frameWork" Cversion="1.0.0" condition="AC33Mx128 CMSIS">
+            <description>AC33Mx128 debug framework</description>
+            <files>
+                <file category="header" name="AC33Mx128\Drivers\include\slib.h"/>
+                <file category="header" name="AC33Mx128\Drivers\include\debug_frmwrk.h"/>
+                <file category="source" name="AC33Mx128\Drivers\source\slib.c"/>
+                <file category="source" name="AC33Mx128\Drivers\source\debug_frmwrk.c"/>
+            </files>
+        </component>
+        <component Cclass="Device" Cgroup="Drivers" Csub="ADC" Cversion="1.0.0" condition="AC33Mx128 CMSIS">
+            <description>AC33Mx128 ADC control</description>
+            <files>
+                <file category="header" name="AC33Mx128\Drivers\include\ac33mx128_adc.h"/>
+                <file category="source" name="AC33Mx128\Drivers\source\ac33mx128_adc.c"/>
+            </files>
+        </component>
+        <component Cclass="Device" Cgroup="Drivers" Csub="AFE" Cversion="1.0.0" condition="AC33Mx128 CMSIS">
+            <description>AC33Mx128 AFE control</description>
+            <files>
+                <file category="header" name="AC33Mx128\Drivers\include\ac33mx128_afe.h"/>
+                <file category="source" name="AC33Mx128\Drivers\source\ac33mx128_afe.c"/>
+            </files>
+        </component>
+        <component Cclass="Device" Cgroup="Drivers" Csub="DMA" Cversion="1.0.0" condition="AC33Mx128 CMSIS">
+            <description>AC33Mx128 DMA control</description>
+            <files>
+                <file category="header" name="AC33Mx128\Drivers\include\ac33mx128_dmac.h"/>
+                <file category="source" name="AC33Mx128\Drivers\source\ac33mx128_dmac.c"/>
+            </files>
+        </component>
+        <component Cclass="Device" Cgroup="Drivers" Csub="GPIO" Cversion="1.0.0" condition="AC33Mx128 CMSIS">
+            <description>AC33Mx128 GPIO control</description>
+            <files>
+                <file category="header" name="AC33Mx128\Drivers\include\ac33mx128_gpio.h"/>
+                <file category="source" name="AC33Mx128\Drivers\source\ac33mx128_gpio.c"/>
+            </files>
+        </component>
+        <component Cclass="Device" Cgroup="Drivers" Csub="I2C" Cversion="1.0.0" condition="AC33Mx128 CMSIS">
+            <description>AC33Mx128 I2C control</description>
+            <files>
+                <file category="header" name="AC33Mx128\Drivers\include\ac33mx128_i2c.h"/>
+                <file category="source" name="AC33Mx128\Drivers\source\ac33mx128_i2c.c"/>
+            </files>
+        </component>
+        <component Cclass="Device" Cgroup="Drivers" Csub="MPWM" Cversion="1.0.0" condition="AC33Mx128 CMSIS">
+            <description>AC33Mx128 MPWM control</description>
+            <files>
+                <file category="header" name="AC33Mx128\Drivers\include\ac33mx128_mpwm.h"/>
+                <file category="source" name="AC33Mx128\Drivers\source\ac33mx128_mpwm.c"/>
+            </files>
+        </component>
+        <component Cclass="Device" Cgroup="Drivers" Csub="PCU" Cversion="1.0.0" condition="AC33Mx128 CMSIS">
+            <description>AC33Mx128 PCU control</description>
+            <files>
+                <file category="header" name="AC33Mx128\Drivers\include\ac33mx128_pcu.h"/>
+                <file category="source" name="AC33Mx128\Drivers\source\ac33mx128_pcu.c"/>
+            </files>
+        </component>
+        <component Cclass="Device" Cgroup="Drivers" Csub="Power" Cversion="1.0.0" condition="AC33Mx128 CMSIS">
+            <description>AC33Mx128 Power control</description>
+            <files>
+                <file category="header" name="AC33Mx128\Drivers\include\ac33mx128_pwr.h"/>
+                <file category="source" name="AC33Mx128\Drivers\source\ac33mx128_pwr.c"/>
+            </files>
+        </component>
+        <component Cclass="Device" Cgroup="Drivers" Csub="SCU" Cversion="1.1.0" condition="AC33Mx128 CMSIS">
+            <description>AC33Mx128 SCU control</description>
+            <files>
+                <file category="header" name="AC33Mx128\Drivers\include\ac33mx128_scu.h"/>
+                <file category="source" name="AC33Mx128\Drivers\source\ac33mx128_scu.c"/>
+            </files>
+        </component>
+        <component Cclass="Device" Cgroup="Drivers" Csub="SPI" Cversion="1.0.0" condition="AC33Mx128 CMSIS">
+            <description>AC33Mx128 SPI control</description>
+            <files>
+                <file category="header" name="AC33Mx128\Drivers\include\ac33mx128_spi.h"/>
+                <file category="source" name="AC33Mx128\Drivers\source\ac33mx128_spi.c"/>
+            </files>
+        </component>
+        <component Cclass="Device" Cgroup="Drivers" Csub="Timer" Cversion="1.0.0" condition="AC33Mx128 CMSIS">
+            <description>AC33Mx128 Timer control</description>
+            <files>
+                <file category="header" name="AC33Mx128\Drivers\include\ac33mx128_timer.h"/>
+                <file category="source" name="AC33Mx128\Drivers\source\ac33mx128_timer.c"/>
+            </files>
+        </component>
+        <component Cclass="Device" Cgroup="Drivers" Csub="UART" Cversion="1.0.0" condition="AC33Mx128 CMSIS">
+            <description>AC33Mx128 UART control</description>
+            <files>
+                <file category="header" name="AC33Mx128\Drivers\include\ac33mx128_uart.h"/>
+                <file category="source" name="AC33Mx128\Drivers\source\ac33mx128_uart.c"/>
+            </files>
+        </component>
+        <component Cclass="Device" Cgroup="Drivers" Csub="WDT" Cversion="1.0.0" condition="AC33Mx128 CMSIS">
+            <description>AC33Mx128 WDT control</description>
+            <files>
+                <file category="header" name="AC33Mx128\Drivers\include\ac33mx128_wdt.h"/>
+                <file category="source" name="AC33Mx128\Drivers\source\ac33mx128_wdt.c"/>
+            </files>
+        </component>
+
+        <!-- component : AC33M4064/3064 ********************************************************-->
+        <component Cclass="Device" Cgroup="Startup" Cversion="1.1.0" condition="AC33Mx064 CMSIS">
+            <description>System Startup for ABOV AC33M4064/3064 devices</description>
+            <files>
+                <file category="include"    name="AC33Mx064\Core\include\"/>
+                <file category="include"    name="AC33Mx064\Drivers\include\"/>
+
+                <file category="header"     version= "1.0.0"    name="AC33Mx064\Core\include\AC33Mx064.h"   attr="config"/>
+                <file category="source"     version= "1.0.0"    name="AC33Mx064\Core\source\ARM\startup_AC33Mx064.s"    attr="config"/>
+                <file category="source"     version= "1.1.0"    name="AC33Mx064\Core\source\system_AC33Mx064.c" attr="config"/>
+            </files>
+        </component>
+        <component Cclass="Device" Cgroup="Drivers" Csub="Debug_frameWork" Cversion="1.0.0" condition="AC33Mx064 CMSIS">
+            <description>AC33Mx064 debug framework</description>
+            <files>
+                <file category="header" name="AC33Mx064\Drivers\include\slib.h"/>
+                <file category="header" name="AC33Mx064\Drivers\include\debug_frmwrk.h"/>
+                <file category="source" name="AC33Mx064\Drivers\source\slib.c"/>
+                <file category="source" name="AC33Mx064\Drivers\source\debug_frmwrk.c"/>
+            </files>
+        </component>
+        <component Cclass="Device" Cgroup="Drivers" Csub="ADC" Cversion="1.0.0" condition="AC33Mx064 CMSIS">
+            <description>AC33Mx064 ADC control</description>
+            <files>
+                <file category="header" name="AC33Mx064\Drivers\include\ac33mx064_adc.h"/>
+                <file category="source" name="AC33Mx064\Drivers\source\ac33mx064_adc.c"/>
+            </files>
+        </component>
+        <component Cclass="Device" Cgroup="Drivers" Csub="DMA" Cversion="1.0.0" condition="AC33Mx064 CMSIS">
+            <description>AC33Mx064 DMA control</description>
+            <files>
+                <file category="header" name="AC33Mx064\Drivers\include\ac33mx064_dmac.h"/>
+                <file category="source" name="AC33Mx064\Drivers\source\ac33mx064_dmac.c"/>
+            </files>
+        </component>
+        <component Cclass="Device" Cgroup="Drivers" Csub="GPIO" Cversion="1.0.0" condition="AC33Mx064 CMSIS">
+            <description>AC33Mx064 GPIO control</description>
+            <files>
+                <file category="header" name="AC33Mx064\Drivers\include\ac33mx064_gpio.h"/>
+                <file category="source" name="AC33Mx064\Drivers\source\ac33mx064_gpio.c"/>
+            </files>
+        </component>
+        <component Cclass="Device" Cgroup="Drivers" Csub="I2C" Cversion="1.0.0" condition="AC33Mx064 CMSIS">
+            <description>AC33Mx064 I2C control</description>
+            <files>
+                <file category="header" name="AC33Mx064\Drivers\include\ac33mx064_i2c.h"/>
+                <file category="source" name="AC33Mx064\Drivers\source\ac33mx064_i2c.c"/>
+            </files>
+        </component>
+        <component Cclass="Device" Cgroup="Drivers" Csub="MPWM" Cversion="1.0.0" condition="AC33Mx064 CMSIS">
+            <description>AC33Mx064 MPWM control</description>
+            <files>
+                <file category="header" name="AC33Mx064\Drivers\include\ac33mx064_mpwm.h"/>
+                <file category="source" name="AC33Mx064\Drivers\source\ac33mx064_mpwm.c"/>
+            </files>
+        </component>
+        <component Cclass="Device" Cgroup="Drivers" Csub="PCU" Cversion="1.0.0" condition="AC33Mx064 CMSIS">
+            <description>AC33Mx064 PCU control</description>
+            <files>
+                <file category="header" name="AC33Mx064\Drivers\include\ac33mx064_pcu.h"/>
+                <file category="source" name="AC33Mx064\Drivers\source\ac33mx064_pcu.c"/>
+            </files>
+        </component>
+        <component Cclass="Device" Cgroup="Drivers" Csub="Power" Cversion="1.0.0" condition="AC33Mx064 CMSIS">
+            <description>AC33Mx064 Power control</description>
+            <files>
+                <file category="header" name="AC33Mx064\Drivers\include\ac33mx064_pwr.h"/>
+                <file category="source" name="AC33Mx064\Drivers\source\ac33mx064_pwr.c"/>
+            </files>
+        </component>
+        <component Cclass="Device" Cgroup="Drivers" Csub="SCU" Cversion="1.1.0" condition="AC33Mx064 CMSIS">
+            <description>AC33Mx064 SCU control</description>
+            <files>
+                <file category="header" name="AC33Mx064\Drivers\include\ac33mx064_scu.h"/>
+                <file category="source" name="AC33Mx064\Drivers\source\ac33mx064_scu.c"/>
+            </files>
+        </component>
+        <component Cclass="Device" Cgroup="Drivers" Csub="SPI" Cversion="1.0.0" condition="AC33Mx064 CMSIS">
+            <description>AC33Mx064 SPI control</description>
+            <files>
+                <file category="header" name="AC33Mx064\Drivers\include\ac33mx064_spi.h"/>
+                <file category="source" name="AC33Mx064\Drivers\source\ac33mx064_spi.c"/>
+            </files>
+        </component>
+        <component Cclass="Device" Cgroup="Drivers" Csub="Timer" Cversion="1.0.0" condition="AC33Mx064 CMSIS">
+            <description>AC33Mx064 Timer control</description>
+            <files>
+                <file category="header" name="AC33Mx064\Drivers\include\ac33mx064_timer.h"/>
+                <file category="source" name="AC33Mx064\Drivers\source\ac33mx064_timer.c"/>
+            </files>
+        </component>
+        <component Cclass="Device" Cgroup="Drivers" Csub="UART" Cversion="1.0.0" condition="AC33Mx064 CMSIS">
+            <description>AC33Mx064 UART control</description>
+            <files>
+                <file category="header" name="AC33Mx064\Drivers\include\ac33mx064_uart.h"/>
+                <file category="source" name="AC33Mx064\Drivers\source\ac33mx064_uart.c"/>
+            </files>
+        </component>
+        <component Cclass="Device" Cgroup="Drivers" Csub="WDT" Cversion="1.0.0" condition="AC33Mx064 CMSIS">
+            <description>AC33Mx064 WDT control</description>
+            <files>
+                <file category="header" name="AC33Mx064\Drivers\include\ac33mx064_wdt.h"/>
+                <file category="source" name="AC33Mx064\Drivers\source\ac33mx064_wdt.c"/>
+            </files>
+        </component>
+ 
+        <!-- component : AC33GA256 *************************************************************-->
+        <component Cclass="Device" Cgroup="Startup" Cversion="1.0.0" condition="AC33GA256 CMSIS">
+            <description>System Startup for ABOV AC33GA256 devices</description>
+            <files>
+                <file category="include"    name="AC33GA256\Core\include\"/>
+                <file category="include"    name="AC33GA256\Drivers\include\"/>
+
+                <file category="header"     version= "1.0.0"    name="AC33GA256\Core\include\AC33GA256.h"   attr="config"/>
+                <file category="source"     version= "1.0.0"    name="AC33GA256\Core\source\ARM\startup_AC33GA256.s"    attr="config"/>
+                <file category="source"     version= "1.0.0"    name="AC33GA256\Core\source\system_AC33GA256.c" attr="config"/>
+            </files>
+        </component>
+        <component Cclass="Device" Cgroup="Drivers" Csub="Debug_frameWork" Cversion="1.0.0" condition="AC33GA256 CMSIS">
+            <description>AC33GA256 debug framework</description>
+            <files>
+                <file category="header" name="AC33GA256\Drivers\include\slib.h"/>
+                <file category="header" name="AC33GA256\Drivers\include\console.h"/>
+
+                <file category="source" name="AC33GA256\Drivers\source\slib.c"/>
+                <file category="source" name="AC33GA256\Drivers\source\console.c"/>
+            </files>
+        </component>
+        <component Cclass="Device" Cgroup="Drivers" Csub="ADC" Cversion="1.0.0" condition="AC33GA256 CMSIS">
+            <description>AC33GA256 ADC control</description>
+            <files>
+                <file category="header" name="AC33GA256\Drivers\include\ac33ga256_adc.h"/>
+                <file category="source" name="AC33GA256\Drivers\source\ac33ga256_adc.c"/>
+            </files>
+        </component>
+        <component Cclass="Device" Cgroup="Drivers" Csub="DataFlash" Cversion="1.0.0" condition="AC33GA256 CMSIS">
+            <description>AC33GA256 Data Flash Control</description>
+            <files>
+                <file category="header" name="AC33GA256\Drivers\include\ac33ga256_dfc.h"/>
+                <file category="source" name="AC33GA256\Drivers\source\ac33ga256_dfc.c"/>
+            </files>
+        </component>
+        <component Cclass="Device" Cgroup="Drivers" Csub="FreeRunTimer" Cversion="1.0.0" condition="AC33GA256 CMSIS">
+            <description>AC33GA256 Free-Run Timer control</description>
+            <files>
+                <file category="header" name="AC33GA256\Drivers\include\ac33ga256_frt.h"/>
+                <file category="source" name="AC33GA256\Drivers\source\ac33ga256_frt.c"/>
+            </files>
+        </component>
+        <component Cclass="Device" Cgroup="Drivers" Csub="GPIO" Cversion="1.0.0" condition="AC33GA256 CMSIS">
+            <description>AC33GA256 GPIO control</description>
+            <files>
+                <file category="header" name="AC33GA256\Drivers\include\ac33ga256_gpio.h"/>
+                <file category="source" name="AC33GA256\Drivers\source\ac33ga256_gpio.c"/>
+            </files>
+        </component>
+        <component Cclass="Device" Cgroup="Drivers" Csub="I2C" Cversion="1.0.0" condition="AC33GA256 CMSIS">
+            <description>AC33GA256 I2C control</description>
+            <files>
+                <file category="header" name="AC33GA256\Drivers\include\ac33ga256_i2c.h"/>
+                <file category="source" name="AC33GA256\Drivers\source\ac33ga256_i2c.c"/>
+            </files>
+        </component>
+        <component Cclass="Device" Cgroup="Drivers" Csub="PortMode" Cversion="1.0.0" condition="AC33GA256 CMSIS">
+            <description>AC33GA256 Port Mode control</description>
+            <files>
+                <file category="header" name="AC33GA256\Drivers\include\ac33ga256_pmc.h"/>
+                <file category="source" name="AC33GA256\Drivers\source\ac33ga256_pmc.c"/>
+            </files>
+        </component>
+        <component Cclass="Device" Cgroup="Drivers" Csub="PWM" Cversion="1.0.0" condition="AC33GA256 CMSIS">
+            <description>AC33GA256 PWM control</description>
+            <files>
+                <file category="header" name="AC33GA256\Drivers\include\ac33ga256_pwm.h"/>
+                <file category="source" name="AC33GA256\Drivers\source\ac33ga256_pwm.c"/>
+            </files>
+        </component>
+        <component Cclass="Device" Cgroup="Drivers" Csub="SPI" Cversion="1.0.0" condition="AC33GA256 CMSIS">
+            <description>AC33GA256 SPI control</description>
+            <files>
+                <file category="header" name="AC33GA256\Drivers\include\ac33ga256_spi.h"/>
+                <file category="source" name="AC33GA256\Drivers\source\ac33ga256_spi.c"/>
+            </files>
+        </component>
+        <component Cclass="Device" Cgroup="Drivers" Csub="Timer" Cversion="1.0.0" condition="AC33GA256 CMSIS">
+            <description>AC33GA256 Timer control</description>
+            <files>
+                <file category="header" name="AC33GA256\Drivers\include\ac33ga256_timer.h"/>
+                <file category="source" name="AC33GA256\Drivers\source\ac33ga256_timer.c"/>
+            </files>
+        </component>
+        <component Cclass="Device" Cgroup="Drivers" Csub="UART" Cversion="1.0.0" condition="AC33GA256 CMSIS">
+            <description>AC33GA256 UART control</description>
+            <files>
+                <file category="header" name="AC33GA256\Drivers\include\ac33ga256_uart.h"/>
+                <file category="source" name="AC33GA256\Drivers\source\ac33ga256_uart.c"/>
+            </files>
+        </component>
+        <component Cclass="Device" Cgroup="Drivers" Csub="WDT" Cversion="1.0.0" condition="AC33GA256 CMSIS">
+            <description>AC33GA256 WDT control</description>
+            <files>
+                <file category="header" name="AC33GA256\Drivers\include\ac33ga256_wdt.h"/>
+                <file category="source" name="AC33GA256\Drivers\source\ac33ga256_wdt.c"/>
+            </files>
+        </component>
+    </components>
+
+    <boards>
+        <!-- board : AC33M8128/6128 ************************************************************-->
+        <board vendor="ABOV" name="AC33M8128/6128 MINI B/D" revision="V1.0">
+            <description>ABOV AC33M8128/6128 mini board</description>
+            <mountedDevice    deviceIndex="0" Dvendor="ABOV Semiconductor:126" Dname="AC33M8128"/>
+            <compatibleDevice deviceIndex="0" Dvendor="ABOV Semiconductor:126" DsubFamily="AC33M6128"/>
+            <book category="schematic" name="AC33Mx128\Doc\AC33M8128L_MINI_BD_140226.pdf" title="AC33M8128 MINI B/D Schematics"/>
+            <book category="schematic" name="AC33Mx128\Doc\AC33M6128_MINI_BD_140226.pdf" title="AC33M6128 MINI B/D Schematics"/>
+            <feature type="XTAL"      n="8000000"/>
+            <feature type="PWR"       n="5"              name="USB Powered"/>
+            <feature type="PWR"       n="3"  m="5"       name="External Supply"/>
+            <feature type="Button"    n="2"              name="Push-buttons: User and Reset"/>
+            <feature type="LED"       n="3"              name="LEDs: Power, Two user"/>
+        </board>
+
+        <!-- board : AC33M4064/3064 ************************************************************-->
+        <board vendor="ABOV" name="AC33M4064/3064 MINI B/D" revision="V1.0">
+            <description>ABOV AC33M4064/3064 mini board</description>
+            <mountedDevice    deviceIndex="0" Dvendor="ABOV Semiconductor:126" Dname="AC33M4064"/>
+            <compatibleDevice deviceIndex="0" Dvendor="ABOV Semiconductor:126" DsubFamily="AC33M3064"/>
+            <book category="schematic" name="AC33Mx064\Doc\AC33M4064_MINI_BD_Circuit_V01.pdf" title="AC33M4064 MINI B/D Schematics"/>
+            <book category="schematic" name="AC33Mx064\Doc\AC33M4064_MINI_BD_layout_V01.pdf" title="AC33M4064 MINI B/D Layout"/>
+            <feature type="XTAL"      n="8000000"/>
+            <feature type="PWR"       n="5"              name="USB Powered"/>
+            <feature type="PWR"       n="3"  m="5"       name="External Supply"/>
+            <feature type="Button"    n="2"              name="Push-buttons: User and Reset"/>
+            <feature type="LED"       n="8"              name="LEDs: 2 for UART, 6 for user port"/>
+        </board>
+        <!-- component : AC33GA256 *************************************************************-->
+        <board vendor="ABOV" name="AC33GA256 MINI B/D" revision="V1.0">
+            <description>ABOV AC33GA256 mini board</description>
+            <mountedDevice    deviceIndex="0" Dvendor="ABOV Semiconductor:126" Dname="AC33GA256"/>
+            <book category="schematic" name="AC33GA256\Doc\AC33GA256_MINI_BD_Circuit_V01.pdf" title="AC33GA256 MINI B/D Schematics"/>
+            <book category="schematic" name="AC33GA256\Doc\AC33GA256_Demo_board_manual_V01.pdf" title="AC33GA256 MINI B/D Manual"/>
+            <feature type="XTAL"      n="8000000"/>
+            <feature type="PWR"       n="5"              name="USB Powered"/>
+            <feature type="PWR"       n="3"  m="5"       name="External Supply"/>
+            <feature type="Button"    n="2"              name="Push-buttons: User and Reset"/>
+            <feature type="LED"       n="8"              name="LEDs: 2 for UART, 6 for user port"/>
+        </board>
+    </boards>
+
+    <examples>
+        <!-- example : AC33M8128/6128 **********************************************************-->
+        <example name="ABOV ADC burst" doc="Abstract.txt" folder="AC33Mx128\Examples\ADC\Adc_Burst">
+            <description>ADC burst example (AC33M8128/6128)</description>
+            <board name="AC33M8128/6128 MINI B/D" vendor="ABOV"/>
+            <project>
+                <environment name="uv" load="Keil\Adc_Burst.uvprojx"/>
+            </project>
+            <attributes>
+                <component Cclass="CMSIS"     Cgroup="CORE"/>
+                <component Cclass="Device"    Cgroup="Startup"/>
+                <category>Getting Started</category>
+            </attributes>
+        </example>
+        <example name="ABOV ADC continuous" doc="Abstract.txt" folder="AC33Mx128\Examples\ADC\Adc_Continuous">
+            <description>ADC continuous example (AC33M8128/6128)</description>
+            <board name="AC33M8128/6128 MINI B/D" vendor="ABOV"/>
+            <project>
+                <environment name="uv" load="Keil\Adc_Continuous.uvprojx"/>
+            </project>
+            <attributes>
+                <component Cclass="CMSIS"     Cgroup="CORE"/>
+                <component Cclass="Device"    Cgroup="Startup"/>
+                <category>Getting Started</category>
+            </attributes>
+        </example>
+        <example name="ABOV ADC interrupt" doc="Abstract.txt" folder="AC33Mx128\Examples\ADC\Adc_Interrupt">
+            <description>ADC interrupt example (AC33M8128/6128)</description>
+            <board name="AC33M8128/6128 MINI B/D" vendor="ABOV"/>
+            <project>
+                <environment name="uv" load="Keil\Adc_Interrupt.uvprojx"/>
+            </project>
+            <attributes>
+                <component Cclass="CMSIS"     Cgroup="CORE"/>
+                <component Cclass="Device"    Cgroup="Startup"/>
+                <category>Getting Started</category>
+            </attributes>
+        </example>
+        <example name="ABOV ADC polling" doc="Abstract.txt" folder="AC33Mx128\Examples\ADC\Adc_Polling">
+            <description>ADC polling example (AC33M8128/6128)</description>
+            <board name="AC33M8128/6128 MINI B/D" vendor="ABOV"/>
+            <project>
+                <environment name="uv" load="Keil\Adc_Polling.uvprojx"/>
+            </project>
+            <attributes>
+                <component Cclass="CMSIS"     Cgroup="CORE"/>
+                <component Cclass="Device"    Cgroup="Startup"/>
+                <category>Getting Started</category>
+            </attributes>
+        </example>
+        <example name="ABOV bit band" doc="Abstract.txt" folder="AC33Mx128\Examples\Cortex-M3\CortexM3_Bitband">
+            <description>bit band example (AC33M8128/6128)</description>
+            <board name="AC33M8128/6128 MINI B/D" vendor="ABOV"/>
+            <project>
+                <environment name="uv" load="Keil\CortexM3_Bitband.uvprojx"/>
+            </project>
+            <attributes>
+                <component Cclass="CMSIS"     Cgroup="CORE"/>
+                <component Cclass="Device"    Cgroup="Startup"/>
+                <category>Getting Started</category>
+            </attributes>
+        </example>
+        <example name="ABOV privilege" doc="Abstract.txt" folder="AC33Mx128\Examples\Cortex-M3\CortexM3_Privilege">
+            <description>Privilege example (AC33M8128/6128)</description>
+            <board name="AC33M8128/6128 MINI B/D" vendor="ABOV"/>
+            <project>
+                <environment name="uv" load="Keil\CortexM3_Privilege.uvprojx"/>
+            </project>
+            <attributes>
+                <component Cclass="CMSIS"     Cgroup="CORE"/>
+                <component Cclass="Device"    Cgroup="Startup"/>
+                <category>Getting Started</category>
+            </attributes>
+        </example>
+        <example name="ABOV Flash memory control" doc="Abstract.txt" folder="AC33Mx128\Examples\FMC\FMC_WriteErase">
+            <description>Flash memory write/erase example (AC33M8128/6128)</description>
+            <board name="AC33M8128/6128 MINI B/D" vendor="ABOV"/>
+            <project>
+                <environment name="uv" load="Keil\FMC_WriteErase.uvprojx"/>
+            </project>
+            <attributes>
+                <component Cclass="CMSIS"     Cgroup="CORE"/>
+                <component Cclass="Device"    Cgroup="Startup"/>
+                <category>Getting Started</category>
+            </attributes>
+        </example>
+        <example name="ABOV GPIO Ext. INT." doc="Abstract.txt" folder="AC33Mx128\Examples\GPIO\Gpio_ExtInt">
+            <description>GPIO external interrupt example (AC33M8128/6128)</description>
+            <board name="AC33M8128/6128 MINI B/D" vendor="ABOV"/>
+            <project>
+                <environment name="uv" load="Keil\Gpio_ExtInt.uvprojx"/>
+            </project>
+            <attributes>
+                <component Cclass="CMSIS"     Cgroup="CORE"/>
+                <component Cclass="Device"    Cgroup="Startup"/>
+                <category>Getting Started</category>
+            </attributes>
+        </example>
+        <example name="ABOV GPIO input" doc="Abstract.txt" folder="AC33Mx128\Examples\GPIO\Gpio_Input">
+            <description>GPIO input example (AC33M8128/6128)</description>
+            <board name="AC33M8128/6128 MINI B/D" vendor="ABOV"/>
+            <project>
+                <environment name="uv" load="Keil\Gpio_Input.uvprojx"/>
+            </project>
+            <attributes>
+                <component Cclass="CMSIS"     Cgroup="CORE"/>
+                <component Cclass="Device"    Cgroup="Startup"/>
+                <category>Getting Started</category>
+            </attributes>
+        </example>
+        <example name="ABOV GPIO LED blinky" doc="Abstract.txt" folder="AC33Mx128\Examples\GPIO\Gpio_LedBlinky">
+            <description>GPIO LED blinky example (AC33M8128/6128)</description>
+            <board name="AC33M8128/6128 MINI B/D" vendor="ABOV"/>
+            <project>
+                <environment name="uv" load="Keil\Gpio_LedBlinky.uvprojx"/>
+            </project>
+            <attributes>
+                <component Cclass="CMSIS"     Cgroup="CORE"/>
+                <component Cclass="Device"    Cgroup="Startup"/>
+                <category>Getting Started</category>
+            </attributes>
+        </example>
+        <example name="ABOV I2C" doc="Abstract.txt" folder="AC33Mx128\Examples\I2C\I2c_MasterSlave">
+            <description>I2C example (AC33M8128/6128)</description>
+            <board name="AC33M8128/6128 MINI B/D" vendor="ABOV"/>
+            <project>
+                <environment name="uv" load="Keil\I2c_MasterSlave.uvprojx"/>
+            </project>
+            <attributes>
+                <component Cclass="CMSIS"     Cgroup="CORE"/>
+                <component Cclass="Device"    Cgroup="Startup"/>
+                <category>Getting Started</category>
+            </attributes>
+        </example>
+        <example name="ABOV MPWM" doc="Abstract.txt" folder="AC33Mx128\Examples\MPWM\Mpwm_Interrupt">
+            <description>MPWM example (AC33M8128/6128)</description>
+            <board name="AC33M8128/6128 MINI B/D" vendor="ABOV"/>
+            <project>
+                <environment name="uv" load="Keil\Mpwm_Interrupt.uvprojx"/>
+            </project>
+            <attributes>
+                <component Cclass="CMSIS"     Cgroup="CORE"/>
+                <component Cclass="Device"    Cgroup="Startup"/>
+                <category>Getting Started</category>
+            </attributes>
+        </example>
+        <example name="ABOV power down" doc="Abstract.txt" folder="AC33Mx128\Examples\PWR\Pwr_PowerDown">
+            <description>Power down example (AC33M8128/6128)</description>
+            <board name="AC33M8128/6128 MINI B/D" vendor="ABOV"/>
+            <project>
+                <environment name="uv" load="Keil\Pwr_PowerDown.uvprojx"/>
+            </project>
+            <attributes>
+                <component Cclass="CMSIS"     Cgroup="CORE"/>
+                <component Cclass="Device"    Cgroup="Startup"/>
+                <category>Getting Started</category>
+            </attributes>
+        </example>
+        <example name="ABOV sleep mode" doc="Abstract.txt" folder="AC33Mx128\Examples\PWR\Pwr_Sleep">
+            <description>Sleep mode example (AC33M8128/6128)</description>
+            <board name="AC33M8128/6128 MINI B/D" vendor="ABOV"/>
+            <project>
+                <environment name="uv" load="Keil\Pwr_Sleep.uvprojx"/>
+            </project>
+            <attributes>
+                <component Cclass="CMSIS"     Cgroup="CORE"/>
+                <component Cclass="Device"    Cgroup="Startup"/>
+                <category>Getting Started</category>
+            </attributes>
+        </example>
+        <example name="ABOV SPI master" doc="Abstract.txt" folder="AC33Mx128\Examples\SPI\Spi_Master">
+            <description>SPI master example (AC33M8128/6128)</description>
+            <board name="AC33M8128/6128 MINI B/D" vendor="ABOV"/>
+            <project>
+                <environment name="uv" load="Keil\Spi_Master.uvprojx"/>
+            </project>
+            <attributes>
+                <component Cclass="CMSIS"     Cgroup="CORE"/>
+                <component Cclass="Device"    Cgroup="Startup"/>
+                <category>Getting Started</category>
+            </attributes>
+        </example>
+        <example name="ABOV SPI slave" doc="Abstract.txt" folder="AC33Mx128\Examples\SPI\Spi_Slave">
+            <description>SPI slave example (AC33M8128/6128)</description>
+            <board name="AC33M8128/6128 MINI B/D" vendor="ABOV"/>
+            <project>
+                <environment name="uv" load="Keil\Spi_Slave.uvprojx"/>
+            </project>
+            <attributes>
+                <component Cclass="CMSIS"     Cgroup="CORE"/>
+                <component Cclass="Device"    Cgroup="Startup"/>
+                <category>Getting Started</category>
+            </attributes>
+        </example>
+        <example name="ABOV timer capture" doc="Abstract.txt" folder="AC33Mx128\Examples\TIMER\Timer_Capture">
+            <description>Timer capture example (AC33M8128/6128)</description>
+            <board name="AC33M8128/6128 MINI B/D" vendor="ABOV"/>
+            <project>
+                <environment name="uv" load="Keil\Timer_Capture.uvprojx"/>
+            </project>
+            <attributes>
+                <component Cclass="CMSIS"     Cgroup="CORE"/>
+                <component Cclass="Device"    Cgroup="Startup"/>
+                <category>Getting Started</category>
+            </attributes>
+        </example>
+        <example name="ABOV timer INT." doc="Abstract.txt" folder="AC33Mx128\Examples\TIMER\Timer_MatchInterrupt">
+            <description>Timer interrupt example (AC33M8128/6128)</description>
+            <board name="AC33M8128/6128 MINI B/D" vendor="ABOV"/>
+            <project>
+                <environment name="uv" load="Keil\Timer_MatchInterrupt.uvprojx"/>
+            </project>
+            <attributes>
+                <component Cclass="CMSIS"     Cgroup="CORE"/>
+                <component Cclass="Device"    Cgroup="Startup"/>
+                <category>Getting Started</category>
+            </attributes>
+        </example>
+        <example name="ABOV timer polling" doc="Abstract.txt" folder="AC33Mx128\Examples\TIMER\Timer_MatchPolling">
+            <description>Timer polling example (AC33M8128/6128)</description>
+            <board name="AC33M8128/6128 MINI B/D" vendor="ABOV"/>
+            <project>
+                <environment name="uv" load="Keil\Timer_MatchPolling.uvprojx"/>
+            </project>
+            <attributes>
+                <component Cclass="CMSIS"     Cgroup="CORE"/>
+                <component Cclass="Device"    Cgroup="Startup"/>
+                <category>Getting Started</category>
+            </attributes>
+        </example>
+        <example name="ABOV timer one shot" doc="Abstract.txt" folder="AC33Mx128\Examples\TIMER\Timer_OneShot">
+            <description>Timer one shot example (AC33M8128/6128)</description>
+            <board name="AC33M8128/6128 MINI B/D" vendor="ABOV"/>
+            <project>
+                <environment name="uv" load="Keil\Timer_OneShot.uvprojx"/>
+            </project>
+            <attributes>
+                <component Cclass="CMSIS"     Cgroup="CORE"/>
+                <component Cclass="Device"    Cgroup="Startup"/>
+                <category>Getting Started</category>
+            </attributes>
+        </example>
+        <example name="ABOV timer PWM" doc="Abstract.txt" folder="AC33Mx128\Examples\TIMER\Timer_PWM">
+            <description>Timer PWM example (AC33M8128/6128)</description>
+            <board name="AC33M8128/6128 MINI B/D" vendor="ABOV"/>
+            <project>
+                <environment name="uv" load="Keil\Timer_PWM.uvprojx"/>
+            </project>
+            <attributes>
+                <component Cclass="CMSIS"     Cgroup="CORE"/>
+                <component Cclass="Device"    Cgroup="Startup"/>
+                <category>Getting Started</category>
+            </attributes>
+        </example>
+        <example name="ABOV UART DMA" doc="Abstract.txt" folder="AC33Mx128\Examples\UART\Uart_Dma">
+            <description>UART DMA example (AC33M8128/6128)</description>
+            <board name="AC33M8128/6128 MINI B/D" vendor="ABOV"/>
+            <project>
+                <environment name="uv" load="Keil\Uart_Dma.uvprojx"/>
+            </project>
+            <attributes>
+                <component Cclass="CMSIS"     Cgroup="CORE"/>
+                <component Cclass="Device"    Cgroup="Startup"/>
+                <category>Getting Started</category>
+            </attributes>
+        </example>
+        <example name="ABOV UART INT." doc="Abstract.txt" folder="AC33Mx128\Examples\UART\Uart_Interrupt">
+            <description>UART interrupt example (AC33M8128/6128)</description>
+            <board name="AC33M8128/6128 MINI B/D" vendor="ABOV"/>
+            <project>
+                <environment name="uv" load="Keil\Uart_Interrupt.uvprojx"/>
+            </project>
+            <attributes>
+                <component Cclass="CMSIS"     Cgroup="CORE"/>
+                <component Cclass="Device"    Cgroup="Startup"/>
+                <category>Getting Started</category>
+            </attributes>
+        </example>
+        <example name="ABOV UART polling" doc="Abstract.txt" folder="AC33Mx128\Examples\UART\Uart_Polling">
+            <description>UART polling example (AC33M8128/6128)</description>
+            <board name="AC33M8128/6128 MINI B/D" vendor="ABOV"/>
+            <project>
+                <environment name="uv" load="Keil\Uart_Polling.uvprojx"/>
+            </project>
+            <attributes>
+                <component Cclass="CMSIS"     Cgroup="CORE"/>
+                <component Cclass="Device"    Cgroup="Startup"/>
+                <category>Getting Started</category>
+            </attributes>
+        </example>
+        <example name="ABOV WDT INT." doc="Abstract.txt" folder="AC33Mx128\Examples\WDT\Wdt_Interrupt">
+            <description>WDT interrupt example (AC33M8128/6128)</description>
+            <board name="AC33M8128/6128 MINI B/D" vendor="ABOV"/>
+            <project>
+                <environment name="uv" load="Keil\Wdt_Interrupt.uvprojx"/>
+            </project>
+            <attributes>
+                <component Cclass="CMSIS"     Cgroup="CORE"/>
+                <component Cclass="Device"    Cgroup="Startup"/>
+                <category>Getting Started</category>
+            </attributes>
+        </example>
+        <example name="ABOV WDT reset" doc="Abstract.txt" folder="AC33Mx128\Examples\WDT\Wdt_Reset">
+            <description>WDT reset example (AC33M8128/6128)</description>
+            <board name="AC33M8128/6128 MINI B/D" vendor="ABOV"/>
+            <project>
+                <environment name="uv" load="Keil\Wdt_Reset.uvprojx"/>
+            </project>
+            <attributes>
+                <component Cclass="CMSIS"     Cgroup="CORE"/>
+                <component Cclass="Device"    Cgroup="Startup"/>
+                <category>Getting Started</category>
+            </attributes>
+        </example>
+
+        <!-- example : AC33M4064/3064 **********************************************************-->
+        <example name="ABOV ADC burst" doc="Abstract.txt" folder="AC33Mx064\Examples\ADC\Adc_Burst">
+            <description>ADC burst example (AC33M4064/3064)</description>
+            <board name="AC33M4064/3064 MINI B/D" vendor="ABOV"/>
+            <project>
+                <environment name="uv" load="Keil\Adc_Burst.uvprojx"/>
+            </project>
+            <attributes>
+                <component Cclass="CMSIS"     Cgroup="CORE"/>
+                <component Cclass="Device"    Cgroup="Startup"/>
+                <category>Getting Started</category>
+            </attributes>
+        </example>
+        <example name="ABOV ADC continuous" doc="Abstract.txt" folder="AC33Mx064\Examples\ADC\Adc_Continuous">
+            <description>ADC continuous example (AC33M4064/3064)</description>
+            <board name="AC33M4064/3064 MINI B/D" vendor="ABOV"/>
+            <project>
+                <environment name="uv" load="Keil\Adc_Continuous.uvprojx"/>
+            </project>
+            <attributes>
+                <component Cclass="CMSIS"     Cgroup="CORE"/>
+                <component Cclass="Device"    Cgroup="Startup"/>
+                <category>Getting Started</category>
+            </attributes>
+        </example>
+        <example name="ABOV ADC interrupt" doc="Abstract.txt" folder="AC33Mx064\Examples\ADC\Adc_Interrupt">
+            <description>ADC interrupt example (AC33M4064/3064)</description>
+            <board name="AC33M4064/3064 MINI B/D" vendor="ABOV"/>
+            <project>
+                <environment name="uv" load="Keil\Adc_Interrupt.uvprojx"/>
+            </project>
+            <attributes>
+                <component Cclass="CMSIS"     Cgroup="CORE"/>
+                <component Cclass="Device"    Cgroup="Startup"/>
+                <category>Getting Started</category>
+            </attributes>
+        </example>
+        <example name="ABOV ADC polling" doc="Abstract.txt" folder="AC33Mx064\Examples\ADC\Adc_Polling">
+            <description>ADC polling example (AC33M4064/3064)</description>
+            <board name="AC33M4064/3064 MINI B/D" vendor="ABOV"/>
+            <project>
+                <environment name="uv" load="Keil\Adc_Polling.uvprojx"/>
+            </project>
+            <attributes>
+                <component Cclass="CMSIS"     Cgroup="CORE"/>
+                <component Cclass="Device"    Cgroup="Startup"/>
+                <category>Getting Started</category>
+            </attributes>
+        </example>
+        <example name="ABOV bit band" doc="Abstract.txt" folder="AC33Mx064\Examples\Cortex-M3\CortexM3_Bitband">
+            <description>bit band example (AC33M4064/3064)</description>
+            <board name="AC33M4064/3064 MINI B/D" vendor="ABOV"/>
+            <project>
+                <environment name="uv" load="Keil\CortexM3_Bitband.uvprojx"/>
+            </project>
+            <attributes>
+                <component Cclass="CMSIS"     Cgroup="CORE"/>
+                <component Cclass="Device"    Cgroup="Startup"/>
+                <category>Getting Started</category>
+            </attributes>
+        </example>
+        <example name="ABOV privilege" doc="Abstract.txt" folder="AC33Mx064\Examples\Cortex-M3\CortexM3_Privilege">
+            <description>Privilege example (AC33M4064/3064)</description>
+            <board name="AC33M4064/3064 MINI B/D" vendor="ABOV"/>
+            <project>
+                <environment name="uv" load="Keil\CortexM3_Privilege.uvprojx"/>
+            </project>
+            <attributes>
+                <component Cclass="CMSIS"     Cgroup="CORE"/>
+                <component Cclass="Device"    Cgroup="Startup"/>
+                <category>Getting Started</category>
+            </attributes>
+        </example>
+        <example name="ABOV GPIO Ext. INT." doc="Abstract.txt" folder="AC33Mx064\Examples\GPIO\Gpio_ExtInt">
+            <description>GPIO external interrupt example (AC33M4064/3064)</description>
+            <board name="AC33M4064/3064 MINI B/D" vendor="ABOV"/>
+            <project>
+                <environment name="uv" load="Keil\Gpio_ExtInt.uvprojx"/>
+            </project>
+            <attributes>
+                <component Cclass="CMSIS"     Cgroup="CORE"/>
+                <component Cclass="Device"    Cgroup="Startup"/>
+                <category>Getting Started</category>
+            </attributes>
+        </example>
+        <example name="ABOV GPIO input" doc="Abstract.txt" folder="AC33Mx064\Examples\GPIO\Gpio_Input">
+            <description>GPIO input example (AC33M4064/3064)</description>
+            <board name="AC33M4064/3064 MINI B/D" vendor="ABOV"/>
+            <project>
+                <environment name="uv" load="Keil\Gpio_Input.uvprojx"/>
+            </project>
+            <attributes>
+                <component Cclass="CMSIS"     Cgroup="CORE"/>
+                <component Cclass="Device"    Cgroup="Startup"/>
+                <category>Getting Started</category>
+            </attributes>
+        </example>
+        <example name="ABOV GPIO LED blinky" doc="Abstract.txt" folder="AC33Mx064\Examples\GPIO\Gpio_LedBlinky">
+            <description>GPIO LED blinky example (AC33M4064/3064)</description>
+            <board name="AC33M4064/3064 MINI B/D" vendor="ABOV"/>
+            <project>
+                <environment name="uv" load="Keil\Gpio_LedBlinky.uvprojx"/>
+            </project>
+            <attributes>
+                <component Cclass="CMSIS"     Cgroup="CORE"/>
+                <component Cclass="Device"    Cgroup="Startup"/>
+                <category>Getting Started</category>
+            </attributes>
+        </example>
+        <example name="ABOV I2C" doc="Abstract.txt" folder="AC33Mx064\Examples\I2C\I2c_MasterSlave">
+            <description>I2C example (AC33M4064/3064)</description>
+            <board name="AC33M4064/3064 MINI B/D" vendor="ABOV"/>
+            <project>
+                <environment name="uv" load="Keil\I2c_MasterSlave.uvprojx"/>
+            </project>
+            <attributes>
+                <component Cclass="CMSIS"     Cgroup="CORE"/>
+                <component Cclass="Device"    Cgroup="Startup"/>
+                <category>Getting Started</category>
+            </attributes>
+        </example>
+        <example name="ABOV MPWM" doc="Abstract.txt" folder="AC33Mx064\Examples\MPWM\Mpwm_Interrupt">
+            <description>MPWM example (AC33M4064/3064)</description>
+            <board name="AC33M4064/3064 MINI B/D" vendor="ABOV"/>
+            <project>
+                <environment name="uv" load="Keil\Mpwm_Interrupt.uvprojx"/>
+            </project>
+            <attributes>
+                <component Cclass="CMSIS"     Cgroup="CORE"/>
+                <component Cclass="Device"    Cgroup="Startup"/>
+                <category>Getting Started</category>
+            </attributes>
+        </example>
+        <example name="ABOV Brown out detection" doc="Abstract.txt" folder="AC33Mx064\Examples\PWR\Pwr_BOD">
+            <description>Brown out detection (BOD) example (AC33M4064/3064)</description>
+            <board name="AC33M4064/3064 MINI B/D" vendor="ABOV"/>
+            <project>
+                <environment name="uv" load="Keil\Pwr_BOD.uvprojx"/>
+            </project>
+            <attributes>
+                <component Cclass="CMSIS"     Cgroup="CORE"/>
+                <component Cclass="Device"    Cgroup="Startup"/>
+                <category>Getting Started</category>
+            </attributes>
+        </example>
+        <example name="ABOV sleep mode" doc="Abstract.txt" folder="AC33Mx064\Examples\PWR\Pwr_Sleep">
+            <description>Sleep mode example (AC33M4064/3064)</description>
+            <board name="AC33M4064/3064 MINI B/D" vendor="ABOV"/>
+            <project>
+                <environment name="uv" load="Keil\Pwr_Sleep.uvprojx"/>
+            </project>
+            <attributes>
+                <component Cclass="CMSIS"     Cgroup="CORE"/>
+                <component Cclass="Device"    Cgroup="Startup"/>
+                <category>Getting Started</category>
+            </attributes>
+        </example>
+        <example name="ABOV SPI master" doc="Abstract.txt" folder="AC33Mx064\Examples\SPI\Spi_Master">
+            <description>SPI master example (AC33M4064/3064)</description>
+            <board name="AC33M4064/3064 MINI B/D" vendor="ABOV"/>
+            <project>
+                <environment name="uv" load="Keil\Spi_Master.uvprojx"/>
+            </project>
+            <attributes>
+                <component Cclass="CMSIS"     Cgroup="CORE"/>
+                <component Cclass="Device"    Cgroup="Startup"/>
+                <category>Getting Started</category>
+            </attributes>
+        </example>
+        <example name="ABOV SPI slave" doc="Abstract.txt" folder="AC33Mx064\Examples\SPI\Spi_Slave">
+            <description>SPI slave example (AC33M4064/3064)</description>
+            <board name="AC33M4064/3064 MINI B/D" vendor="ABOV"/>
+            <project>
+                <environment name="uv" load="Keil\Spi_Slave.uvprojx"/>
+            </project>
+            <attributes>
+                <component Cclass="CMSIS"     Cgroup="CORE"/>
+                <component Cclass="Device"    Cgroup="Startup"/>
+                <category>Getting Started</category>
+            </attributes>
+        </example>
+        <example name="ABOV timer capture" doc="Abstract.txt" folder="AC33Mx064\Examples\TIMER\Timer_Capture">
+            <description>Timer capture example (AC33M4064/3064)</description>
+            <board name="AC33M4064/3064 MINI B/D" vendor="ABOV"/>
+            <project>
+                <environment name="uv" load="Keil\Timer_Capture.uvprojx"/>
+            </project>
+            <attributes>
+                <component Cclass="CMSIS"     Cgroup="CORE"/>
+                <component Cclass="Device"    Cgroup="Startup"/>
+                <category>Getting Started</category>
+            </attributes>
+        </example>
+        <example name="ABOV timer INT." doc="Abstract.txt" folder="AC33Mx064\Examples\TIMER\Timer_MatchInterrupt">
+            <description>Timer interrupt example (AC33M4064/3064)</description>
+            <board name="AC33M4064/3064 MINI B/D" vendor="ABOV"/>
+            <project>
+                <environment name="uv" load="Keil\Timer_MatchInterrupt.uvprojx"/>
+            </project>
+            <attributes>
+                <component Cclass="CMSIS"     Cgroup="CORE"/>
+                <component Cclass="Device"    Cgroup="Startup"/>
+                <category>Getting Started</category>
+            </attributes>
+        </example>
+        <example name="ABOV timer polling" doc="Abstract.txt" folder="AC33Mx064\Examples\TIMER\Timer_MatchPolling">
+            <description>Timer polling example (AC33M4064/3064)</description>
+            <board name="AC33M4064/3064 MINI B/D" vendor="ABOV"/>
+            <project>
+                <environment name="uv" load="Keil\Timer_MatchPolling.uvprojx"/>
+            </project>
+            <attributes>
+                <component Cclass="CMSIS"     Cgroup="CORE"/>
+                <component Cclass="Device"    Cgroup="Startup"/>
+                <category>Getting Started</category>
+            </attributes>
+        </example>
+        <example name="ABOV timer one shot" doc="Abstract.txt" folder="AC33Mx064\Examples\TIMER\Timer_OneShot">
+            <description>Timer one shot example (AC33M4064/3064)</description>
+            <board name="AC33M4064/3064 MINI B/D" vendor="ABOV"/>
+            <project>
+                <environment name="uv" load="Keil\Timer_OneShot.uvprojx"/>
+            </project>
+            <attributes>
+                <component Cclass="CMSIS"     Cgroup="CORE"/>
+                <component Cclass="Device"    Cgroup="Startup"/>
+                <category>Getting Started</category>
+            </attributes>
+        </example>
+        <example name="ABOV timer PWM" doc="Abstract.txt" folder="AC33Mx064\Examples\TIMER\Timer_PWM">
+            <description>Timer PWM example (AC33M4064/3064)</description>
+            <board name="AC33M4064/3064 MINI B/D" vendor="ABOV"/>
+            <project>
+                <environment name="uv" load="Keil\Timer_PWM.uvprojx"/>
+            </project>
+            <attributes>
+                <component Cclass="CMSIS"     Cgroup="CORE"/>
+                <component Cclass="Device"    Cgroup="Startup"/>
+                <category>Getting Started</category>
+            </attributes>
+        </example>
+        <example name="ABOV UART DMA" doc="Abstract.txt" folder="AC33Mx064\Examples\UART\Uart_Dma">
+            <description>UART DMA example (AC33M4064/3064)</description>
+            <board name="AC33M4064/3064 MINI B/D" vendor="ABOV"/>
+            <project>
+                <environment name="uv" load="Keil\Uart_Dma.uvprojx"/>
+            </project>
+            <attributes>
+                <component Cclass="CMSIS"     Cgroup="CORE"/>
+                <component Cclass="Device"    Cgroup="Startup"/>
+                <category>Getting Started</category>
+            </attributes>
+        </example>
+        <example name="ABOV UART INT." doc="Abstract.txt" folder="AC33Mx064\Examples\UART\Uart_Interrupt">
+            <description>UART interrupt example (AC33M4064/3064)</description>
+            <board name="AC33M4064/3064 MINI B/D" vendor="ABOV"/>
+            <project>
+                <environment name="uv" load="Keil\Uart_Interrupt.uvprojx"/>
+            </project>
+            <attributes>
+                <component Cclass="CMSIS"     Cgroup="CORE"/>
+                <component Cclass="Device"    Cgroup="Startup"/>
+                <category>Getting Started</category>
+            </attributes>
+        </example>
+        <example name="ABOV UART polling" doc="Abstract.txt" folder="AC33Mx064\Examples\UART\Uart_Polling">
+            <description>UART polling example (AC33M4064/3064)</description>
+            <board name="AC33M4064/3064 MINI B/D" vendor="ABOV"/>
+            <project>
+                <environment name="uv" load="Keil\Uart_Polling.uvprojx"/>
+            </project>
+            <attributes>
+                <component Cclass="CMSIS"     Cgroup="CORE"/>
+                <component Cclass="Device"    Cgroup="Startup"/>
+                <category>Getting Started</category>
+            </attributes>
+        </example>
+        <example name="ABOV WDT INT." doc="Abstract.txt" folder="AC33Mx064\Examples\WDT\Wdt_Interrupt">
+            <description>WDT interrupt example (AC33M4064/3064)</description>
+            <board name="AC33M4064/3064 MINI B/D" vendor="ABOV"/>
+            <project>
+                <environment name="uv" load="Keil\Wdt_Interrupt.uvprojx"/>
+            </project>
+            <attributes>
+                <component Cclass="CMSIS"     Cgroup="CORE"/>
+                <component Cclass="Device"    Cgroup="Startup"/>
+                <category>Getting Started</category>
+            </attributes>
+        </example>
+        <example name="ABOV WDT reset" doc="Abstract.txt" folder="AC33Mx064\Examples\WDT\Wdt_Reset">
+            <description>WDT reset example (AC33M4064/3064)</description>
+            <board name="AC33M4064/3064 MINI B/D" vendor="ABOV"/>
+            <project>
+                <environment name="uv" load="Keil\Wdt_Reset.uvprojx"/>
+            </project>
+            <attributes>
+                <component Cclass="CMSIS"     Cgroup="CORE"/>
+                <component Cclass="Device"    Cgroup="Startup"/>
+                <category>Getting Started</category>
+            </attributes>
+        </example>
+
+        <!-- example : AC33GA256 ***************************************************************-->
+        <example name="ABOV ADC" doc="Abstract.txt" folder="AC33GA256\Examples\ADC">
+            <description>ADC example (AC33GA256)</description>
+            <board name="AC33GA256 MINI B/D" vendor="ABOV"/>
+            <project>
+                <environment name="uv" load="ac33ga256_adc.uvprojx"/>
+            </project>
+            <attributes>
+                <component Cclass="CMSIS"     Cgroup="CORE"/>
+                <component Cclass="Device"    Cgroup="Startup"/>
+                <category>Getting Started</category>
+            </attributes>
+        </example>
+        <example name="ABOV GPIO LED blinky" doc="Abstract.txt" folder="AC33GA256\Examples\GPIO\GPIO_LEDBlinky">
+            <description>GPIO LED blinky example (AC33GA256)</description>
+            <board name="AC33GA256 MINI B/D" vendor="ABOV"/>
+            <project>
+                <environment name="uv" load="ac33ga256_LEDBlinky.uvprojx"/>
+            </project>
+            <attributes>
+                <component Cclass="CMSIS"     Cgroup="CORE"/>
+                <component Cclass="Device"    Cgroup="Startup"/>
+                <category>Getting Started</category>
+            </attributes>
+        </example>
+        <example name="ABOV GPIO normal" doc="Abstract.txt" folder="AC33GA256\Examples\GPIO\GPIO_normal">
+            <description>GPIO example (AC33GA256)</description>
+            <board name="AC33GA256 MINI B/D" vendor="ABOV"/>
+            <project>
+                <environment name="uv" load="ac33ga256_GPIO_Normal.uvprojx"/>
+            </project>
+            <attributes>
+                <component Cclass="CMSIS"     Cgroup="CORE"/>
+                <component Cclass="Device"    Cgroup="Startup"/>
+                <category>Getting Started</category>
+            </attributes>
+        </example>
+        <example name="ABOV I2C" doc="Abstract.txt" folder="AC33GA256\Examples\I2C">
+            <description>I2C example (AC33GA256)</description>
+            <board name="AC33GA256 MINI B/D" vendor="ABOV"/>
+            <project>
+                <environment name="uv" load="ac33ga256_i2c.uvprojx"/>
+            </project>
+            <attributes>
+                <component Cclass="CMSIS"     Cgroup="CORE"/>
+                <component Cclass="Device"    Cgroup="Startup"/>
+                <category>Getting Started</category>
+            </attributes>
+        </example>
+        <example name="ABOV power management" doc="Abstract.txt" folder="AC33GA256\Examples\PMU">
+            <description>Power management example (AC33GA256)</description>
+            <board name="AC33GA256 MINI B/D" vendor="ABOV"/>
+            <project>
+                <environment name="uv" load="ac33ga256_pmu.uvprojx"/>
+            </project>
+            <attributes>
+                <component Cclass="CMSIS"     Cgroup="CORE"/>
+                <component Cclass="Device"    Cgroup="Startup"/>
+                <category>Getting Started</category>
+            </attributes>
+        </example>
+        <example name="ABOV PWM" doc="Abstract.txt" folder="AC33GA256\Examples\PWM">
+            <description>PWM example (AC33GA256)</description>
+            <board name="AC33GA256 MINI B/D" vendor="ABOV"/>
+            <project>
+                <environment name="uv" load="ac33ga256_pwm.uvprojx"/>
+            </project>
+            <attributes>
+                <component Cclass="CMSIS"     Cgroup="CORE"/>
+                <component Cclass="Device"    Cgroup="Startup"/>
+                <category>Getting Started</category>
+            </attributes>
+        </example>
+        <example name="ABOV SPI" doc="Abstract.txt" folder="AC33GA256\Examples\SPI">
+            <description>SPI example (AC33GA256)</description>
+            <board name="AC33GA256 MINI B/D" vendor="ABOV"/>
+            <project>
+                <environment name="uv" load="ac33ga256_spi.uvprojx"/>
+            </project>
+            <attributes>
+                <component Cclass="CMSIS"     Cgroup="CORE"/>
+                <component Cclass="Device"    Cgroup="Startup"/>
+                <category>Getting Started</category>
+            </attributes>
+        </example>
+        <example name="ABOV Timer" doc="Abstract.txt" folder="AC33GA256\Examples\TIMER">
+            <description>Timer interrupt example (AC33GA256)</description>
+            <board name="AC33GA256 MINI B/D" vendor="ABOV"/>
+            <project>
+                <environment name="uv" load="ac33ga256_timer.uvprojx"/>
+            </project>
+            <attributes>
+                <component Cclass="CMSIS"     Cgroup="CORE"/>
+                <component Cclass="Device"    Cgroup="Startup"/>
+                <category>Getting Started</category>
+            </attributes>
+        </example>
+        <example name="ABOV WDT" doc="Abstract.txt" folder="AC33GA256\Examples\WDT">
+            <description>WDT example (AC33GA256)</description>
+            <board name="AC33GA256 MINI B/D" vendor="ABOV"/>
+            <project>
+                <environment name="uv" load="ac33ga256_wdt.uvprojx"/>
+            </project>
+            <attributes>
+                <component Cclass="CMSIS"     Cgroup="CORE"/>
+                <component Cclass="Device"    Cgroup="Startup"/>
+                <category>Getting Started</category>
+            </attributes>
+        </example>
+        <example name="ABOV all Peri." doc="Abstract.txt" folder="AC33GA256\Examples\TOTAL">
+            <description>ALl Peri. example (AC33GA256)</description>
+            <board name="AC33GA256 MINI B/D" vendor="ABOV"/>
+            <project>
+                <environment name="uv" load="ac33ga256_total.uvprojx"/>
+            </project>
+            <attributes>
+                <component Cclass="CMSIS"     Cgroup="CORE"/>
+                <component Cclass="Device"    Cgroup="Startup"/>
+                <category>Getting Started</category>
+            </attributes>
+        </example>
+    </examples>
+</package>

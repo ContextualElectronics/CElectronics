@@ -1,0 +1,1773 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<package schemaVersion="1.2" xmlns:xs="http://www.w3.org/2001/XMLSchema-instance" xs:noNamespaceSchemaLocation="PACK.xsd">
+  <vendor>Keil</vendor>
+  <url>http://www.keil.com/pack/</url>
+  <name>STM32L1xx_DFP</name>
+  <description>STMicroelectronics STM32L1 Series Device Support and Examples</description>
+
+  <releases>
+    <release version="1.0.2">
+      - added option byte target to STM32L-Discovery Blinky example
+      - added new devices: STM32L151QE STM32L151RE STM32L151VE STM32L151ZE STM32L152QE STM32L152RE STM32L152VE STM32L152ZE
+    </release>
+    <release version="1.0.1">
+      - added new devices
+      - updated Flash Programming Algorithms
+    </release>
+    <release version="1.0.0">
+      First Release version of STM32L1 Device Family Pack.
+    </release>
+  </releases>
+
+  <devices>
+    <!-- generated, do not modify this section! -->
+
+    <family Dfamily="STM32L1 Series" Dvendor="STMicroelectronics:13">
+      <processor Dcore="Cortex-M3" DcoreVersion="r1p1"/>
+      <book    name="Documents\dui0552a_cortex_m3_dgug.pdf"           title="Cortex-M3 Generic User Guide"/>
+        <description>
+STMicroelectronics' STM32L1 series uses ultra-low-leakage process technology with a autonomous dynamic voltage scaling and 5 low-power modes offering unprecedented platform flexibility to fit any application. 
+Typical applications include Medical and handheld equipment, Application control and user interface, PC peripherals, gaming, GPS and sport equipment, Alarm systems, wired and wireless sensors, Video intercom, Utility metering
+        </description>
+
+        <feature type="WDT"           n="2"/>
+        <feature type="RTC"           n="32768"/>
+        <feature type="DAC"           n="2"       m="12"/>
+        <feature type="I2C"           n="2"/>
+        <feature type="USBD"          n="1"/>
+        <feature type="Temp"          n="-40"     m="85"/>
+        <feature type="Temp"          n="-40"     m="105"/>
+
+
+      <!-- ************************  Subfamily 'STM32L100'  **************************** -->
+      <subFamily DsubFamily="STM32L100">
+        <feature type="I2S"           n="2"/>
+        <feature type="USART"         n="3"       m="4000000"/>
+        <feature type="VCC"           n="1.80"    m="3.60"/>
+      
+      <!-- *************************  Device 'STM32L100C6'  ***************************** -->
+      <device Dname="STM32L100C6">
+        <processor Dfpu="0" Dmpu="0" Dendian="Little-endian" Dclock="32000000"/>
+        <compile header="Device\Include\STM32L1xx.h"  define="STM32L1XX_MD"/>
+        <debug      svd="SVD\STM32L100.svd"/>
+        <memory     id="IROM1"                      start="0x08000000"  size="0x8000"     startup="1"   default="1"/>
+        <memory     id="IRAM1"                      start="0x20000000"  size="0x1000"     init   ="0"   default="1"/>
+        <algorithm  name="Flash\STM32L1xx_128.FLM"  start="0x08000000"  size="0x8000"                   default="1"/>
+        <algorithm  name="Flash\STM32L1xx_128_EEPROM.FLM" start="0x08080000" size="0x0800"              default="0"/>
+        <algorithm  name="Flash\STM32L1xx_128_OPT.FLM" start="0x1FF80000" size="0x0010"                 default="0"/>
+        <book    name="Documents\CD00240193.pdf"             title="STM32L1xx Series Reference Manual"/>
+        <book    name="Documents\DM00078075.pdf"             title="STM32L100 C6, R8, RB Data Sheet"/>
+        <feature type="Timer"         n="6"       m="16"/>
+        <feature type="ADC"           n="16"      m="12"/>
+        <feature type="IOs"           n="37"/>
+        <feature type="LCD"           n="1"       m="4.16"/>
+        <feature type="SPI"           n="2"       m="16000000"/>
+        <feature type="QFP"           n="48"/>
+      </device>
+      
+      <!-- *************************  Device 'STM32L100R8'  ***************************** -->
+      <device Dname="STM32L100R8">
+        <processor Dfpu="0" Dmpu="0" Dendian="Little-endian" Dclock="32000000"/>
+        <compile header="Device\Include\STM32L1xx.h"  define="STM32L1XX_MD"/>
+        <debug      svd="SVD\STM32L100.svd"/>
+        <memory     id="IROM1"                      start="0x08000000"  size="0x10000"    startup="1"   default="1"/>
+        <memory     id="IRAM1"                      start="0x20000000"  size="0x2000"     init   ="0"   default="1"/>
+        <algorithm  name="Flash\STM32L1xx_128.FLM"  start="0x08000000"  size="0x10000"                  default="1"/>
+        <algorithm  name="Flash\STM32L1xx_128_EEPROM.FLM" start="0x08080000" size="0x0800"              default="0"/>
+        <algorithm  name="Flash\STM32L1xx_128_OPT.FLM" start="0x1FF80000" size="0x0010"                 default="0"/>
+        <book    name="Documents\CD00240193.pdf"             title="STM32L1xx Series Reference Manual"/>
+        <book    name="Documents\DM00078075.pdf"             title="STM32L100 C6, R8, RB Data Sheet"/>
+        <feature type="Timer"         n="6"       m="16"/>
+        <feature type="ADC"           n="20"      m="12"/>
+        <feature type="IOs"           n="51"/>
+        <feature type="LCD"           n="1"       m="4.32"/>
+        <feature type="LCD"           n="1"       m="8.28"/>
+        <feature type="SPI"           n="2"       m="16000000"/>
+        <feature type="QFP"           n="64"/>
+      </device>
+      
+      <!-- *************************  Device 'STM32L100RB'  ***************************** -->
+      <device Dname="STM32L100RB">
+        <processor Dfpu="0" Dmpu="0" Dendian="Little-endian" Dclock="32000000"/>
+        <compile header="Device\Include\STM32L1xx.h"  define="STM32L1XX_MD"/>
+        <debug      svd="SVD\STM32L100.svd"/>
+        <memory     id="IROM1"                      start="0x08000000"  size="0x20000"    startup="1"   default="1"/>
+        <memory     id="IRAM1"                      start="0x20000000"  size="0x2800"     init   ="0"   default="1"/>
+        <algorithm  name="Flash\STM32L1xx_128.FLM"  start="0x08000000"  size="0x20000"                  default="1"/>
+        <algorithm  name="Flash\STM32L1xx_128_EEPROM.FLM" start="0x08080000" size="0x0800"              default="0"/>
+        <algorithm  name="Flash\STM32L1xx_128_OPT.FLM" start="0x1FF80000" size="0x0010"                 default="0"/>
+        <book    name="Documents\CD00240193.pdf"             title="STM32L1xx Series Reference Manual"/>
+        <book    name="Documents\DM00078075.pdf"             title="STM32L100 C6, R8, RB Data Sheet"/>
+        <feature type="Timer"         n="6"       m="16"/>
+        <feature type="ADC"           n="20"      m="12"/>
+        <feature type="IOs"           n="51"/>
+        <feature type="LCD"           n="1"       m="4.32"/>
+        <feature type="LCD"           n="1"       m="8.28"/>
+        <feature type="SPI"           n="2"       m="16000000"/>
+        <feature type="QFP"           n="64"/>
+      </device>
+      
+      <!-- *************************  Device 'STM32L100RC'  ***************************** -->
+      <device Dname="STM32L100RC">
+        <processor Dfpu="0" Dmpu="1" Dendian="Little-endian" Dclock="32000000"/>
+        <compile header="Device\Include\STM32L1xx.h"  define="STM32L1XX_MDP"/>
+        <debug      svd="SVD\STM32L100.svd"/>
+        <memory     id="IROM1"                      start="0x08000000"  size="0x40000"    startup="1"   default="1"/>
+        <memory     id="IRAM1"                      start="0x20000000"  size="0x4000"     init   ="0"   default="1"/>
+        <algorithm  name="Flash\STM32L1xx_256.FLM"  start="0x08000000"  size="0x40000"                  default="1"/>
+        <algorithm  name="Flash\STM32L1xx_256_EEPROM.FLM" start="0x08080000" size="0x1000"              default="0"/>
+        <algorithm  name="Flash\STM32L1xx_256_OPT.FLM" start="0x1FF80000" size="0x0018"                 default="0"/>
+        <book    name="Documents\CD00240193.pdf"             title="STM32L1xx Series Reference Manual"/>
+        <book    name="Documents\DM00090183.pdf"             title="STM32L100 RC Data Sheet"/>
+        <feature type="Timer"         n="8"       m="16"/>
+        <feature type="ADC"           n="21"      m="12"/>
+        <feature type="IOs"           n="51"/>
+        <feature type="LCD"           n="1"       m="4.32"/>
+        <feature type="LCD"           n="1"       m="8.28"/>
+        <feature type="AnalogOther"   n="2"/>
+        <feature type="SPI"           n="3"       m="16000000"/>
+        <feature type="QFP"           n="64"/>
+      </device>
+      </subFamily>
+
+      <!-- ************************  Subfamily 'STM32L151'  **************************** -->
+      <subFamily DsubFamily="STM32L151">
+        <feature type="VCC"           n="1.65"    m="3.60"/>
+      
+      <!-- *************************  Device 'STM32L151C6'  ***************************** -->
+      <device Dname="STM32L151C6">
+        <processor Dfpu="0" Dmpu="1" Dendian="Little-endian" Dclock="32000000"/>
+        <compile header="Device\Include\STM32L1xx.h"  define="STM32L1XX_MD"/>
+        <debug      svd="SVD\STM32L1xx.svd"/>
+        <memory     id="IROM1"                      start="0x08000000"  size="0x8000"     startup="1"   default="1"/>
+        <memory     id="IRAM1"                      start="0x20000000"  size="0x2800"     init   ="0"   default="1"/>
+        <algorithm  name="Flash\STM32L1xx_128.FLM"  start="0x08000000"  size="0x8000"                   default="1"/>
+        <algorithm  name="Flash\STM32L1xx_128_EEPROM.FLM" start="0x08080000" size="0x1000"              default="0"/>
+        <algorithm  name="Flash\STM32L1xx_128_OPT.FLM" start="0x1FF80000" size="0x0010"                 default="0"/>
+        <book    name="Documents\CD00240193.pdf"             title="STM32L1xx Series Reference Manual"/>
+        <book    name="Documents\CD00277537.pdf"             title="STM32L15xx6/8/B Data Sheet"/>
+        <feature type="Timer"         n="6"       m="16"/>
+        <feature type="ADC"           n="16"      m="12"/>
+        <feature type="IOs"           n="36"/>
+        <feature type="LCD"           n="1"       m="4.16"/>
+        <feature type="SPI"           n="2"       m="16000000"/>
+        <feature type="USART"         n="3"       m="4000000"/>
+        <feature type="QFP"           n="48"/>
+      </device>
+      
+      <!-- *************************  Device 'STM32L151C8'  ***************************** -->
+      <device Dname="STM32L151C8">
+        <processor Dfpu="0" Dmpu="1" Dendian="Little-endian" Dclock="32000000"/>
+        <compile header="Device\Include\STM32L1xx.h"  define="STM32L1XX_MD"/>
+        <debug      svd="SVD\STM32L1xx.svd"/>
+        <memory     id="IROM1"                      start="0x08000000"  size="0x10000"    startup="1"   default="1"/>
+        <memory     id="IRAM1"                      start="0x20000000"  size="0x2800"     init   ="0"   default="1"/>
+        <algorithm  name="Flash\STM32L1xx_128.FLM"  start="0x08000000"  size="0x10000"                  default="1"/>
+        <algorithm  name="Flash\STM32L1xx_128_EEPROM.FLM" start="0x08080000" size="0x1000"              default="0"/>
+        <algorithm  name="Flash\STM32L1xx_128_OPT.FLM" start="0x1FF80000" size="0x0010"                 default="0"/>
+        <book    name="Documents\CD00240193.pdf"             title="STM32L1xx Series Reference Manual"/>
+        <book    name="Documents\CD00277537.pdf"             title="STM32L15xx6/8/B Data Sheet"/>
+        <feature type="Timer"         n="6"       m="16"/>
+        <feature type="ADC"           n="16"      m="12"/>
+        <feature type="IOs"           n="36"/>
+        <feature type="LCD"           n="1"       m="4.16"/>
+        <feature type="SPI"           n="2"       m="16000000"/>
+        <feature type="USART"         n="3"       m="4000000"/>
+        <feature type="QFP"           n="48"/>
+      </device>
+      
+      <!-- *************************  Device 'STM32L151CB'  ***************************** -->
+      <device Dname="STM32L151CB">
+        <processor Dfpu="0" Dmpu="1" Dendian="Little-endian" Dclock="32000000"/>
+        <compile header="Device\Include\STM32L1xx.h"  define="STM32L1XX_MD"/>
+        <debug      svd="SVD\STM32L1xx.svd"/>
+        <memory     id="IROM1"                      start="0x08000000"  size="0x20000"    startup="1"   default="1"/>
+        <memory     id="IRAM1"                      start="0x20000000"  size="0x4000"     init   ="0"   default="1"/>
+        <algorithm  name="Flash\STM32L1xx_128.FLM"  start="0x08000000"  size="0x20000"                  default="1"/>
+        <algorithm  name="Flash\STM32L1xx_128_EEPROM.FLM" start="0x08080000" size="0x1000"              default="0"/>
+        <algorithm  name="Flash\STM32L1xx_128_OPT.FLM" start="0x1FF80000" size="0x0010"                 default="0"/>
+        <book    name="Documents\CD00240193.pdf"             title="STM32L1xx Series Reference Manual"/>
+        <book    name="Documents\CD00277537.pdf"             title="STM32L15xx6/8/B Data Sheet"/>
+        <feature type="Timer"         n="6"       m="16"/>
+        <feature type="ADC"           n="16"      m="12"/>
+        <feature type="IOs"           n="36"/>
+        <feature type="LCD"           n="1"       m="4.16"/>
+        <feature type="SPI"           n="2"       m="16000000"/>
+        <feature type="USART"         n="3"       m="4000000"/>
+        <feature type="QFP"           n="48"/>
+      </device>
+      
+      <!-- *************************  Device 'STM32L151CC'  ***************************** -->
+      <device Dname="STM32L151CC">
+        <processor Dfpu="0" Dmpu="1" Dendian="Little-endian" Dclock="32000000"/>
+        <compile header="Device\Include\STM32L1xx.h"  define="STM32L1XX_MDP"/>
+        <debug      svd="SVD\STM32L1xx.svd"/>
+        <memory     id="IROM1"                      start="0x08000000"  size="0x40000"    startup="1"   default="1"/>
+        <memory     id="IRAM1"                      start="0x20000000"  size="0x8000"     init   ="0"   default="1"/>
+        <algorithm  name="Flash\STM32L1xx_256.FLM"  start="0x08000000"  size="0x40000"                  default="1"/>
+        <algorithm  name="Flash\STM32L1xx_256_EEPROM.FLM" start="0x08080000" size="0x2000"              default="0"/>
+        <algorithm  name="Flash\STM32L1xx_256_OPT.FLM" start="0x1FF80000" size="0x0018"                 default="0"/>
+        <book    name="Documents\CD00240193.pdf"             title="STM32L1xx Series Reference Manual"/>
+        <book    name="Documents\DM00048356.pdf"             title="STM32L151xC, L152xC Data Sheet"/>
+        <feature type="Timer"         n="8"       m="16"/>
+        <feature type="Timer"         n="1"       m="32"/>
+        <feature type="ADC"           n="21"      m="12"/>
+        <feature type="IOs"           n="37"/>
+        <feature type="LCD"           n="1"       m="4.18"/>
+        <feature type="AnalogOther"   n="2"/>
+        <feature type="SPI"           n="3"       m="16000000"/>
+        <feature type="I2S"           n="2"/>
+        <feature type="USART"         n="3"       m="4000000"/>
+        <feature type="QFP"           n="48"/>
+      </device>
+      
+      <!-- *************************  Device 'STM32L151QC'  ***************************** -->
+      <device Dname="STM32L151QC">
+        <processor Dfpu="0" Dmpu="1" Dendian="Little-endian" Dclock="32000000"/>
+        <compile header="Device\Include\STM32L1xx.h"  define="STM32L1XX_MDP"/>
+        <debug      svd="SVD\STM32L15xC.svd"/>
+        <memory     id="IROM1"                      start="0x08000000"  size="0x40000"    startup="1"   default="1"/>
+        <memory     id="IRAM1"                      start="0x20000000"  size="0x8000"     init   ="0"   default="1"/>
+        <algorithm  name="Flash\STM32L1xx_256.FLM"  start="0x08000000"  size="0x40000"                  default="1"/>
+        <algorithm  name="Flash\STM32L1xx_256_EEPROM.FLM" start="0x08080000" size="0x2000"              default="0"/>
+        <algorithm  name="Flash\STM32L1xx_256_OPT.FLM" start="0x1FF80000" size="0x0018"                 default="0"/>
+        <book    name="Documents\CD00240193.pdf"             title="STM32L1xx Series Reference Manual"/>
+        <book    name="Documents\DM00048356.pdf"             title="STM32L151xC, L152xC Data Sheet"/>
+        <feature type="Timer"         n="8"       m="16"/>
+        <feature type="Timer"         n="1"       m="32"/>
+        <feature type="ADC"           n="39"      m="12"/>
+        <feature type="IOs"           n="108"/>
+        <feature type="LCD"           n="1"       m="4.44"/>
+        <feature type="LCD"           n="1"       m="8.40"/>
+        <feature type="AnalogOther"   n="2"/>
+        <feature type="SPI"           n="3"       m="16000000"/>
+        <feature type="I2S"           n="2"/>
+        <feature type="USART"         n="3"       m="4000000"/>
+        <feature type="BGA"           n="132"/>
+      </device>
+      
+      <!-- *************************  Device 'STM32L151QD'  ***************************** -->
+      <device Dname="STM32L151QD">
+        <processor Dfpu="0" Dmpu="1" Dendian="Little-endian" Dclock="32000000"/>
+        <compile header="Device\Include\STM32L1xx.h"  define="STM32L1XX_HD"/>
+        <debug      svd="SVD\STM32L1xx.svd"/>
+        <memory     id="IROM1"                      start="0x08000000"  size="0x60000"    startup="1"   default="1"/>
+        <memory     id="IRAM1"                      start="0x20000000"  size="0xC000"     init   ="0"   default="1"/>
+        <algorithm  name="Flash\STM32L1xx_384.FLM"  start="0x08000000"  size="0x60000"                  default="1"/>
+        <algorithm  name="Flash\STM32L1xx_384_EEPROM.FLM" start="0x08080000" size="0x3000"              default="0"/>
+        <algorithm  name="Flash\STM32L1xx_384_OPT.FLM" start="0x1FF80000" size="0x0020"                 default="0"/>
+        <book    name="Documents\CD00240193.pdf"             title="STM32L1xx Series Reference Manual"/>
+        <book    name="Documents\DM00034689.pdf"             title="STM32L151xD, L152xD Data Sheet"/>
+        <feature type="Timer"         n="8"       m="16"/>
+        <feature type="Timer"         n="1"       m="32"/>
+        <feature type="ADC"           n="39"      m="12"/>
+        <feature type="IOs"           n="108"/>
+        <feature type="LCD"           n="1"       m="4.44"/>
+        <feature type="LCD"           n="1"       m="8.40"/>
+        <feature type="AnalogOther"   n="3"/>
+        <feature type="SPI"           n="3"       m="16000000"/>
+        <feature type="I2S"           n="2"/>
+        <feature type="USART"         n="5"       m="4000000"/>
+        <feature type="SDIO"          n="1"/>
+        <feature type="ExtBus"        n="1"/>
+        <feature type="BGA"           n="132"/>
+      </device>
+      
+      <!-- *************************  Device 'STM32L151R6'  ***************************** -->
+      <device Dname="STM32L151R6">
+        <processor Dfpu="0" Dmpu="1" Dendian="Little-endian" Dclock="32000000"/>
+        <compile header="Device\Include\STM32L1xx.h"  define="STM32L1XX_MD"/>
+        <debug      svd="SVD\STM32L1xx.svd"/>
+        <memory     id="IROM1"                      start="0x08000000"  size="0x8000"     startup="1"   default="1"/>
+        <memory     id="IRAM1"                      start="0x20000000"  size="0x2800"     init   ="0"   default="1"/>
+        <algorithm  name="Flash\STM32L1xx_128.FLM"  start="0x08000000"  size="0x8000"                   default="1"/>
+        <algorithm  name="Flash\STM32L1xx_128_EEPROM.FLM" start="0x08080000" size="0x1000"              default="0"/>
+        <algorithm  name="Flash\STM32L1xx_128_OPT.FLM" start="0x1FF80000" size="0x0010"                 default="0"/>
+        <book    name="Documents\CD00240193.pdf"             title="STM32L1xx Series Reference Manual"/>
+        <book    name="Documents\CD00277537.pdf"             title="STM32L15xx6/8/B Data Sheet"/>
+        <feature type="Timer"         n="6"       m="16"/>
+        <feature type="ADC"           n="20"      m="12"/>
+        <feature type="IOs"           n="50"/>
+        <feature type="LCD"           n="1"       m="4.32"/>
+        <feature type="LCD"           n="1"       m="8.28"/>
+        <feature type="SPI"           n="2"       m="16000000"/>
+        <feature type="USART"         n="3"       m="4000000"/>
+        <feature type="QFP"           n="64"/>
+        <feature type="BGA"           n="64"/>
+      </device>
+      
+      <!-- *************************  Device 'STM32L151R8'  ***************************** -->
+      <device Dname="STM32L151R8">
+        <processor Dfpu="0" Dmpu="1" Dendian="Little-endian" Dclock="32000000"/>
+        <compile header="Device\Include\STM32L1xx.h"  define="STM32L1XX_MD"/>
+        <debug      svd="SVD\STM32L1xx.svd"/>
+        <memory     id="IROM1"                      start="0x08000000"  size="0x10000"    startup="1"   default="1"/>
+        <memory     id="IRAM1"                      start="0x20000000"  size="0x2800"     init   ="0"   default="1"/>
+        <algorithm  name="Flash\STM32L1xx_128.FLM"  start="0x08000000"  size="0x10000"                  default="1"/>
+        <algorithm  name="Flash\STM32L1xx_128_EEPROM.FLM" start="0x08080000" size="0x1000"              default="0"/>
+        <algorithm  name="Flash\STM32L1xx_128_OPT.FLM" start="0x1FF80000" size="0x0010"                 default="0"/>
+        <book    name="Documents\CD00240193.pdf"             title="STM32L1xx Series Reference Manual"/>
+        <book    name="Documents\CD00277537.pdf"             title="STM32L15xx6/8/B Data Sheet"/>
+        <feature type="Timer"         n="6"       m="16"/>
+        <feature type="ADC"           n="20"      m="12"/>
+        <feature type="IOs"           n="50"/>
+        <feature type="LCD"           n="1"       m="4.32"/>
+        <feature type="LCD"           n="1"       m="8.28"/>
+        <feature type="SPI"           n="2"       m="16000000"/>
+        <feature type="USART"         n="3"       m="4000000"/>
+        <feature type="QFP"           n="64"/>
+        <feature type="BGA"           n="64"/>
+      </device>
+      
+      <!-- *************************  Device 'STM32L151RB'  ***************************** -->
+      <device Dname="STM32L151RB">
+        <processor Dfpu="0" Dmpu="1" Dendian="Little-endian" Dclock="32000000"/>
+        <compile header="Device\Include\STM32L1xx.h"  define="STM32L1XX_MD"/>
+        <debug      svd="SVD\STM32L1xx.svd"/>
+        <memory     id="IROM1"                      start="0x08000000"  size="0x20000"    startup="1"   default="1"/>
+        <memory     id="IRAM1"                      start="0x20000000"  size="0x4000"     init   ="0"   default="1"/>
+        <algorithm  name="Flash\STM32L1xx_128.FLM"  start="0x08000000"  size="0x20000"                  default="1"/>
+        <algorithm  name="Flash\STM32L1xx_128_EEPROM.FLM" start="0x08080000" size="0x1000"              default="0"/>
+        <algorithm  name="Flash\STM32L1xx_128_OPT.FLM" start="0x1FF80000" size="0x0010"                 default="0"/>
+        <book    name="Documents\CD00240193.pdf"             title="STM32L1xx Series Reference Manual"/>
+        <book    name="Documents\CD00277537.pdf"             title="STM32L15xx6/8/B Data Sheet"/>
+        <feature type="Timer"         n="6"       m="16"/>
+        <feature type="ADC"           n="20"      m="12"/>
+        <feature type="IOs"           n="50"/>
+        <feature type="LCD"           n="1"       m="4.32"/>
+        <feature type="LCD"           n="1"       m="8.28"/>
+        <feature type="SPI"           n="2"       m="16000000"/>
+        <feature type="USART"         n="3"       m="4000000"/>
+        <feature type="QFP"           n="64"/>
+        <feature type="BGA"           n="64"/>
+      </device>
+      
+      <!-- *************************  Device 'STM32L151RC'  ***************************** -->
+      <device Dname="STM32L151RC">
+        <processor Dfpu="0" Dmpu="1" Dendian="Little-endian" Dclock="32000000"/>
+        <compile header="Device\Include\STM32L1xx.h"  define="STM32L1XX_MDP"/>
+        <debug      svd="SVD\STM32L15xC.svd"/>
+        <memory     id="IROM1"                      start="0x08000000"  size="0x40000"    startup="1"   default="1"/>
+        <memory     id="IRAM1"                      start="0x20000000"  size="0x8000"     init   ="0"   default="1"/>
+        <algorithm  name="Flash\STM32L1xx_256.FLM"  start="0x08000000"  size="0x40000"                  default="1"/>
+        <algorithm  name="Flash\STM32L1xx_256_EEPROM.FLM" start="0x08080000" size="0x2000"              default="0"/>
+        <algorithm  name="Flash\STM32L1xx_256_OPT.FLM" start="0x1FF80000" size="0x0018"                 default="0"/>
+        <book    name="Documents\CD00240193.pdf"             title="STM32L1xx Series Reference Manual"/>
+        <book    name="Documents\DM00048356.pdf"             title="STM32L151xC, L152xC Data Sheet"/>
+        <feature type="Timer"         n="8"       m="16"/>
+        <feature type="Timer"         n="1"       m="32"/>
+        <feature type="ADC"           n="21"      m="12"/>
+        <feature type="IOs"           n="50"/>
+        <feature type="LCD"           n="1"       m="4.32"/>
+        <feature type="LCD"           n="1"       m="8.28"/>
+        <feature type="AnalogOther"   n="2"/>
+        <feature type="SPI"           n="3"       m="16000000"/>
+        <feature type="I2S"           n="2"/>
+        <feature type="USART"         n="3"       m="4000000"/>
+        <feature type="QFP"           n="64"/>
+        <feature type="CSP"           n="63"/>
+        <feature type="CSP"           n="64"/>
+      </device>
+      
+      <!-- *************************  Device 'STM32L151RD'  ***************************** -->
+      <device Dname="STM32L151RD">
+        <processor Dfpu="0" Dmpu="1" Dendian="Little-endian" Dclock="32000000"/>
+        <compile header="Device\Include\STM32L1xx.h"  define="STM32L1XX_HD"/>
+        <debug      svd="SVD\STM32L1xx.svd"/>
+        <memory     id="IROM1"                      start="0x08000000"  size="0x60000"    startup="1"   default="1"/>
+        <memory     id="IRAM1"                      start="0x20000000"  size="0xC000"     init   ="0"   default="1"/>
+        <algorithm  name="Flash\STM32L1xx_384.FLM"  start="0x08000000"  size="0x60000"                  default="1"/>
+        <algorithm  name="Flash\STM32L1xx_384_EEPROM.FLM" start="0x08080000" size="0x3000"              default="0"/>
+        <algorithm  name="Flash\STM32L1xx_384_OPT.FLM" start="0x1FF80000" size="0x0020"                 default="0"/>
+        <book    name="Documents\CD00240193.pdf"             title="STM32L1xx Series Reference Manual"/>
+        <book    name="Documents\DM00034689.pdf"             title="STM32L151xD, L152xD Data Sheet"/>
+        <feature type="Timer"         n="8"       m="16"/>
+        <feature type="Timer"         n="1"       m="32"/>
+        <feature type="ADC"           n="21"      m="12"/>
+        <feature type="IOs"           n="50"/>
+        <feature type="LCD"           n="1"       m="4.32"/>
+        <feature type="LCD"           n="1"       m="8.28"/>
+        <feature type="AnalogOther"   n="3"/>
+        <feature type="SPI"           n="3"       m="16000000"/>
+        <feature type="I2S"           n="2"/>
+        <feature type="USART"         n="5"       m="4000000"/>
+        <feature type="SDIO"          n="1"/>
+        <feature type="ExtBus"        n="1"/>
+        <feature type="QFP"           n="64"/>
+        <feature type="CSP"           n="64"/>
+      </device>
+      
+      <!-- *************************  Device 'STM32L151UC'  ***************************** -->
+      <device Dname="STM32L151UC">
+        <processor Dfpu="0" Dmpu="1" Dendian="Little-endian" Dclock="32000000"/>
+        <compile header="Device\Include\STM32L1xx.h"  define="STM32L1XX_MDP"/>
+        <debug      svd="SVD\STM32L1xx.svd"/>
+        <memory     id="IROM1"                      start="0x08000000"  size="0x40000"    startup="1"   default="1"/>
+        <memory     id="IRAM1"                      start="0x20000000"  size="0x8000"     init   ="0"   default="1"/>
+        <algorithm  name="Flash\STM32L1xx_256.FLM"  start="0x08000000"  size="0x40000"                  default="1"/>
+        <algorithm  name="Flash\STM32L1xx_256_EEPROM.FLM" start="0x08080000" size="0x2000"              default="0"/>
+        <algorithm  name="Flash\STM32L1xx_256_OPT.FLM" start="0x1FF80000" size="0x0018"                 default="0"/>
+        <book    name="Documents\CD00240193.pdf"             title="STM32L1xx Series Reference Manual"/>
+        <book    name="Documents\DM00048356.pdf"             title="STM32L151xC, L152xC Data Sheet"/>
+        <feature type="Timer"         n="8"       m="16"/>
+        <feature type="Timer"         n="1"       m="32"/>
+        <feature type="ADC"           n="21"      m="12"/>
+        <feature type="IOs"           n="51"/>
+        <feature type="LCD"           n="1"       m="4.32"/>
+        <feature type="LCD"           n="1"       m="8.28"/>
+        <feature type="SPI"           n="3"       m="16000000"/>
+        <feature type="I2S"           n="2"/>
+        <feature type="USART"         n="3"       m="4000000"/>
+        <feature type="QFP"           n="64"/>
+        <feature type="CSP"           n="63"/>
+        <feature type="CSP"           n="64"/>
+      </device>
+      
+      <!-- *************************  Device 'STM32L151V8'  ***************************** -->
+      <device Dname="STM32L151V8">
+        <processor Dfpu="0" Dmpu="1" Dendian="Little-endian" Dclock="32000000"/>
+        <compile header="Device\Include\STM32L1xx.h"  define="STM32L1XX_MD"/>
+        <debug      svd="SVD\STM32L1xx.svd"/>
+        <memory     id="IROM1"                      start="0x08000000"  size="0x10000"    startup="1"   default="1"/>
+        <memory     id="IRAM1"                      start="0x20000000"  size="0x2800"     init   ="0"   default="1"/>
+        <algorithm  name="Flash\STM32L1xx_128.FLM"  start="0x08000000"  size="0x10000"                  default="1"/>
+        <algorithm  name="Flash\STM32L1xx_128_EEPROM.FLM" start="0x08080000" size="0x1000"              default="0"/>
+        <algorithm  name="Flash\STM32L1xx_128_OPT.FLM" start="0x1FF80000" size="0x0010"                 default="0"/>
+        <book    name="Documents\CD00240193.pdf"             title="STM32L1xx Series Reference Manual"/>
+        <book    name="Documents\CD00277537.pdf"             title="STM32L15xx6/8/B Data Sheet"/>
+        <feature type="Timer"         n="6"       m="16"/>
+        <feature type="ADC"           n="24"      m="12"/>
+        <feature type="IOs"           n="82"/>
+        <feature type="LCD"           n="1"       m="4.44"/>
+        <feature type="LCD"           n="1"       m="8.40"/>
+        <feature type="SPI"           n="2"       m="16000000"/>
+        <feature type="USART"         n="3"       m="4000000"/>
+        <feature type="QFP"           n="100"/>
+        <feature type="BGA"           n="100"/>
+      </device>
+      
+      <!-- *************************  Device 'STM32L151VB'  ***************************** -->
+      <device Dname="STM32L151VB">
+        <processor Dfpu="0" Dmpu="1" Dendian="Little-endian" Dclock="32000000"/>
+        <compile header="Device\Include\STM32L1xx.h"  define="STM32L1XX_MD"/>
+        <debug      svd="SVD\STM32L1xx.svd"/>
+        <memory     id="IROM1"                      start="0x08000000"  size="0x20000"    startup="1"   default="1"/>
+        <memory     id="IRAM1"                      start="0x20000000"  size="0x4000"     init   ="0"   default="1"/>
+        <algorithm  name="Flash\STM32L1xx_128.FLM"  start="0x08000000"  size="0x20000"                  default="1"/>
+        <algorithm  name="Flash\STM32L1xx_128_EEPROM.FLM" start="0x08080000" size="0x1000"              default="0"/>
+        <algorithm  name="Flash\STM32L1xx_128_OPT.FLM" start="0x1FF80000" size="0x0010"                 default="0"/>
+        <book    name="Documents\CD00240193.pdf"             title="STM32L1xx Series Reference Manual"/>
+        <book    name="Documents\CD00277537.pdf"             title="STM32L15xx6/8/B Data Sheet"/>
+        <feature type="Timer"         n="6"       m="16"/>
+        <feature type="ADC"           n="24"      m="12"/>
+        <feature type="IOs"           n="82"/>
+        <feature type="LCD"           n="1"       m="4.44"/>
+        <feature type="LCD"           n="1"       m="8.40"/>
+        <feature type="SPI"           n="2"       m="16000000"/>
+        <feature type="USART"         n="3"       m="4000000"/>
+        <feature type="QFP"           n="100"/>
+        <feature type="BGA"           n="100"/>
+      </device>
+      
+      <!-- *************************  Device 'STM32L151VC'  ***************************** -->
+      <device Dname="STM32L151VC">
+        <processor Dfpu="0" Dmpu="1" Dendian="Little-endian" Dclock="32000000"/>
+        <compile header="Device\Include\STM32L1xx.h"  define="STM32L1XX_MDP"/>
+        <debug      svd="SVD\STM32L15xC.svd"/>
+        <memory     id="IROM1"                      start="0x08000000"  size="0x40000"    startup="1"   default="1"/>
+        <memory     id="IRAM1"                      start="0x20000000"  size="0x8000"     init   ="0"   default="1"/>
+        <algorithm  name="Flash\STM32L1xx_256.FLM"  start="0x08000000"  size="0x40000"                  default="1"/>
+        <algorithm  name="Flash\STM32L1xx_256_EEPROM.FLM" start="0x08080000" size="0x2000"              default="0"/>
+        <algorithm  name="Flash\STM32L1xx_256_OPT.FLM" start="0x1FF80000" size="0x0018"                 default="0"/>
+        <book    name="Documents\CD00240193.pdf"             title="STM32L1xx Series Reference Manual"/>
+        <book    name="Documents\CD00277537.pdf"             title="STM32L15xx6/8/B Data Sheet"/>
+        <feature type="Timer"         n="8"       m="16"/>
+        <feature type="Timer"         n="1"       m="32"/>
+        <feature type="ADC"           n="25"      m="12"/>
+        <feature type="IOs"           n="82"/>
+        <feature type="LCD"           n="1"       m="4.44"/>
+        <feature type="LCD"           n="1"       m="8.40"/>
+        <feature type="AnalogOther"   n="2"/>
+        <feature type="SPI"           n="3"       m="16000000"/>
+        <feature type="I2S"           n="2"/>
+        <feature type="USART"         n="3"       m="4000000"/>
+        <feature type="QFP"           n="100"/>
+        <feature type="BGA"           n="100"/>
+      </device>
+      
+      <!-- *************************  Device 'STM32L151VD'  ***************************** -->
+      <device Dname="STM32L151VD">
+        <processor Dfpu="0" Dmpu="1" Dendian="Little-endian" Dclock="32000000"/>
+        <compile header="Device\Include\STM32L1xx.h"  define="STM32L1XX_HD"/>
+        <debug      svd="SVD\STM32L1xx.svd"/>
+        <memory     id="IROM1"                      start="0x08000000"  size="0x60000"    startup="1"   default="1"/>
+        <memory     id="IRAM1"                      start="0x20000000"  size="0xC000"     init   ="0"   default="1"/>
+        <algorithm  name="Flash\STM32L1xx_384.FLM"  start="0x08000000"  size="0x60000"                  default="1"/>
+        <algorithm  name="Flash\STM32L1xx_384_EEPROM.FLM" start="0x08080000" size="0x3000"              default="0"/>
+        <algorithm  name="Flash\STM32L1xx_384_OPT.FLM" start="0x1FF80000" size="0x0020"                 default="0"/>
+        <book    name="Documents\CD00240193.pdf"             title="STM32L1xx Series Reference Manual"/>
+        <book    name="Documents\DM00034689.pdf"             title="STM32L151xD, L152xD Data Sheet"/>
+        <feature type="Timer"         n="8"       m="16"/>
+        <feature type="Timer"         n="1"       m="32"/>
+        <feature type="ADC"           n="25"      m="12"/>
+        <feature type="IOs"           n="82"/>
+        <feature type="LCD"           n="1"       m="4.44"/>
+        <feature type="LCD"           n="1"       m="8.40"/>
+        <feature type="AnalogOther"   n="3"/>
+        <feature type="SPI"           n="3"       m="16000000"/>
+        <feature type="I2S"           n="2"/>
+        <feature type="USART"         n="5"       m="4000000"/>
+        <feature type="SDIO"          n="1"/>
+        <feature type="ExtBus"        n="1"/>
+        <feature type="QFP"           n="100"/>
+      </device>
+      
+      <!-- *************************  Device 'STM32L151ZC'  ***************************** -->
+      <device Dname="STM32L151ZC">
+        <processor Dfpu="0" Dmpu="1" Dendian="Little-endian" Dclock="32000000"/>
+        <compile header="Device\Include\STM32L1xx.h"  define="STM32L1XX_MDP"/>
+        <debug      svd="SVD\STM32L15xC.svd"/>
+        <memory     id="IROM1"                      start="0x08000000"  size="0x40000"    startup="1"   default="1"/>
+        <memory     id="IRAM1"                      start="0x20000000"  size="0x8000"     init   ="0"   default="1"/>
+        <algorithm  name="Flash\STM32L1xx_256.FLM"  start="0x08000000"  size="0x40000"                  default="1"/>
+        <algorithm  name="Flash\STM32L1xx_256_EEPROM.FLM" start="0x08080000" size="0x2000"              default="0"/>
+        <algorithm  name="Flash\STM32L1xx_256_OPT.FLM" start="0x1FF80000" size="0x0018"                 default="0"/>
+        <book    name="Documents\CD00240193.pdf"             title="STM32L1xx Series Reference Manual"/>
+        <book    name="Documents\DM00048356.pdf"             title="STM32L151xC, L152xC Data Sheet"/>
+        <feature type="Timer"         n="8"       m="16"/>
+        <feature type="Timer"         n="1"       m="32"/>
+        <feature type="ADC"           n="40"      m="12"/>
+        <feature type="IOs"           n="114"/>
+        <feature type="LCD"           n="1"       m="4.44"/>
+        <feature type="LCD"           n="1"       m="8.40"/>
+        <feature type="AnalogOther"   n="2"/>
+        <feature type="SPI"           n="3"       m="16000000"/>
+        <feature type="I2S"           n="2"/>
+        <feature type="USART"         n="3"       m="4000000"/>
+        <feature type="QFP"           n="144"/>
+      </device>
+      
+      <!-- *************************  Device 'STM32L151ZD'  ***************************** -->
+      <device Dname="STM32L151ZD">
+        <processor Dfpu="0" Dmpu="1" Dendian="Little-endian" Dclock="32000000"/>
+        <compile header="Device\Include\STM32L1xx.h"  define="STM32L1XX_HD"/>
+        <debug      svd="SVD\STM32L1xx.svd"/>
+        <memory     id="IROM1"                      start="0x08000000"  size="0x60000"    startup="1"   default="1"/>
+        <memory     id="IRAM1"                      start="0x20000000"  size="0xC000"     init   ="0"   default="1"/>
+        <algorithm  name="Flash\STM32L1xx_384.FLM"  start="0x08000000"  size="0x60000"                  default="1"/>
+        <algorithm  name="Flash\STM32L1xx_384_EEPROM.FLM" start="0x08080000" size="0x3000"              default="0"/>
+        <algorithm  name="Flash\STM32L1xx_384_OPT.FLM" start="0x1FF80000" size="0x0020"                 default="0"/>
+        <book    name="Documents\CD00240193.pdf"             title="STM32L1xx Series Reference Manual"/>
+        <book    name="Documents\DM00034689.pdf"             title="STM32L151xD, L152xD Data Sheet"/>
+        <feature type="Timer"         n="8"       m="16"/>
+        <feature type="Timer"         n="1"       m="32"/>
+        <feature type="ADC"           n="40"      m="12"/>
+        <feature type="IOs"           n="114"/>
+        <feature type="LCD"           n="1"       m="4.44"/>
+        <feature type="LCD"           n="1"       m="8.40"/>
+        <feature type="AnalogOther"   n="3"/>
+        <feature type="SPI"           n="3"       m="16000000"/>
+        <feature type="I2S"           n="2"/>
+        <feature type="USART"         n="5"       m="4000000"/>
+        <feature type="SDIO"          n="1"/>
+        <feature type="ExtBus"        n="1"/>
+        <feature type="QFP"           n="144"/>
+      </device>
+      
+      <!-- *************************  Device 'STM32L151QE'  ***************************** -->
+      <device Dname="STM32L151QE">
+        <processor Dfpu="0" Dmpu="1" Dendian="Little-endian" Dclock="32000000"/>
+        <compile header="Device\Include\STM32L1xx.h"  define="STM32L1XX_XL"/>
+        <debug      svd="SVD\STM32L1xx.svd"/>
+        <memory     id="IROM1"                      start="0x08000000"  size="0x80000"    startup="1"   default="1"/>
+        <memory     id="IRAM1"                      start="0x20000000"  size="0x14000"    init   ="0"   default="1"/>
+        <algorithm  name="Flash\STM32L1xx_512.FLM"  start="0x08000000"  size="0x80000"                  default="1"/>
+        <algorithm  name="Flash\STM32L1xx_512_EEPROM.FLM" start="0x08080000" size="0x4000"              default="0"/>
+        <algorithm  name="Flash\STM32L1xx_512_OPT.FLM" start="0x1FF80000" size="0x0028"                 default="0"/>
+        <book    name="Documents\CD00240193.pdf"             title="STM32L1xx Series Reference Manual"/>
+        <book    name="Documents\DM00098321.pdf"             title="STM32L15xxE, Data Sheet"/>
+        <feature type="Timer"         n="8"       m="16"/>
+        <feature type="Timer"         n="1"       m="32"/>
+        <feature type="ADC"           n="40"      m="12"/>
+        <feature type="IOs"           n="109"/>
+        <feature type="LCD"           n="1"       m="4.44"/>
+        <feature type="LCD"           n="1"       m="8.40"/>
+        <feature type="AnalogOther"   n="2"/>
+        <feature type="SPI"           n="3"       m="16000000"/>
+        <feature type="I2S"           n="2"/>
+        <feature type="USART"         n="5"       m="4000000"/>
+        <feature type="BGA"           n="132"/>
+      </device>
+      
+      <!-- *************************  Device 'STM32L151RE'  ***************************** -->
+      <device Dname="STM32L151RE">
+        <processor Dfpu="0" Dmpu="1" Dendian="Little-endian" Dclock="32000000"/>
+        <compile header="Device\Include\STM32L1xx.h"  define="STM32L1XX_XL"/>
+        <debug      svd="SVD\STM32L1xx.svd"/>
+        <memory     id="IROM1"                      start="0x08000000"  size="0x80000"    startup="1"   default="1"/>
+        <memory     id="IRAM1"                      start="0x20000000"  size="0x14000"    init   ="0"   default="1"/>
+        <algorithm  name="Flash\STM32L1xx_512.FLM"  start="0x08000000"  size="0x80000"                  default="1"/>
+        <algorithm  name="Flash\STM32L1xx_512_EEPROM.FLM" start="0x08080000" size="0x4000"              default="0"/>
+        <algorithm  name="Flash\STM32L1xx_512_OPT.FLM" start="0x1FF80000" size="0x0028"                 default="0"/>
+        <book    name="Documents\CD00240193.pdf"             title="STM32L1xx Series Reference Manual"/>
+        <book    name="Documents\DM00098321.pdf"             title="STM32L15xxE, Data Sheet"/>
+        <feature type="Timer"         n="8"       m="16"/>
+        <feature type="Timer"         n="1"       m="32"/>
+        <feature type="ADC"           n="21"      m="12"/>
+        <feature type="IOs"           n="51"/>
+        <feature type="LCD"           n="1"       m="4.32"/>
+        <feature type="LCD"           n="1"       m="8.28"/>
+        <feature type="AnalogOther"   n="2"/>
+        <feature type="SPI"           n="3"       m="16000000"/>
+        <feature type="I2S"           n="2"/>
+        <feature type="USART"         n="5"       m="4000000"/>
+        <feature type="QFP"           n="64"/>
+      </device>
+      
+      <!-- *************************  Device 'STM32L151VE'  ***************************** -->
+      <device Dname="STM32L151VE">
+        <processor Dfpu="0" Dmpu="1" Dendian="Little-endian" Dclock="32000000"/>
+        <compile header="Device\Include\STM32L1xx.h"  define="STM32L1XX_XL"/>
+        <debug      svd="SVD\STM32L1xx.svd"/>
+        <memory     id="IROM1"                      start="0x08000000"  size="0x80000"    startup="1"   default="1"/>
+        <memory     id="IRAM1"                      start="0x20000000"  size="0x14000"    init   ="0"   default="1"/>
+        <algorithm  name="Flash\STM32L1xx_512.FLM"  start="0x08000000"  size="0x80000"                  default="1"/>
+        <algorithm  name="Flash\STM32L1xx_512_EEPROM.FLM" start="0x08080000" size="0x4000"              default="0"/>
+        <algorithm  name="Flash\STM32L1xx_512_OPT.FLM" start="0x1FF80000" size="0x0028"                 default="0"/>
+        <book    name="Documents\CD00240193.pdf"             title="STM32L1xx Series Reference Manual"/>
+        <book    name="Documents\DM00098321.pdf"             title="STM32L15xxE, Data Sheet"/>
+        <feature type="Timer"         n="8"       m="16"/>
+        <feature type="Timer"         n="1"       m="32"/>
+        <feature type="ADC"           n="25"      m="12"/>
+        <feature type="IOs"           n="83"/>
+        <feature type="LCD"           n="1"       m="4.44"/>
+        <feature type="LCD"           n="1"       m="8.40"/>
+        <feature type="AnalogOther"   n="2"/>
+        <feature type="SPI"           n="3"       m="16000000"/>
+        <feature type="I2S"           n="2"/>
+        <feature type="USART"         n="5"       m="4000000"/>
+        <feature type="QFP"           n="100"/>
+        <feature type="CSP"           n="104"/>
+      </device>
+      
+      <!-- *************************  Device 'STM32L151ZE'  ***************************** -->
+      <device Dname="STM32L151ZE">
+        <processor Dfpu="0" Dmpu="1" Dendian="Little-endian" Dclock="32000000"/>
+        <compile header="Device\Include\STM32L1xx.h"  define="STM32L1XX_XL"/>
+        <debug      svd="SVD\STM32L1xx.svd"/>
+        <memory     id="IROM1"                      start="0x08000000"  size="0x80000"    startup="1"   default="1"/>
+        <memory     id="IRAM1"                      start="0x20000000"  size="0x14000"    init   ="0"   default="1"/>
+        <algorithm  name="Flash\STM32L1xx_512.FLM"  start="0x08000000"  size="0x80000"                  default="1"/>
+        <algorithm  name="Flash\STM32L1xx_512_EEPROM.FLM" start="0x08080000" size="0x4000"              default="0"/>
+        <algorithm  name="Flash\STM32L1xx_512_OPT.FLM" start="0x1FF80000" size="0x0028"                 default="0"/>
+        <book    name="Documents\CD00240193.pdf"             title="STM32L1xx Series Reference Manual"/>
+        <book    name="Documents\DM00098321.pdf"             title="STM32L15xxE, Data Sheet"/>
+        <feature type="Timer"         n="8"       m="16"/>
+        <feature type="Timer"         n="1"       m="32"/>
+        <feature type="ADC"           n="40"      m="12"/>
+        <feature type="IOs"           n="115"/>
+        <feature type="LCD"           n="1"       m="4.44"/>
+        <feature type="LCD"           n="1"       m="8.40"/>
+        <feature type="AnalogOther"   n="2"/>
+        <feature type="SPI"           n="3"       m="16000000"/>
+        <feature type="I2S"           n="2"/>
+        <feature type="USART"         n="5"       m="4000000"/>
+        <feature type="QFP"           n="144"/>
+      </device>
+      </subFamily>
+
+      <!-- ************************  Subfamily 'STM32L152'  **************************** -->
+      <subFamily DsubFamily="STM32L152">
+        <feature type="VCC"           n="1.65"    m="3.60"/>
+      
+      <!-- *************************  Device 'STM32L152C6'  ***************************** -->
+      <device Dname="STM32L152C6">
+        <processor Dfpu="0" Dmpu="1" Dendian="Little-endian" Dclock="32000000"/>
+        <compile header="Device\Include\STM32L1xx.h"  define="STM32L1XX_MD"/>
+        <debug      svd="SVD\STM32L1xx.svd"/>
+        <memory     id="IROM1"                      start="0x08000000"  size="0x8000"     startup="1"   default="1"/>
+        <memory     id="IRAM1"                      start="0x20000000"  size="0x2800"     init   ="0"   default="1"/>
+        <algorithm  name="Flash\STM32L1xx_128.FLM"  start="0x08000000"  size="0x8000"                   default="1"/>
+        <algorithm  name="Flash\STM32L1xx_128_EEPROM.FLM" start="0x08080000" size="0x1000"              default="0"/>
+        <algorithm  name="Flash\STM32L1xx_128_OPT.FLM" start="0x1FF80000" size="0x0010"                 default="0"/>
+        <book    name="Documents\CD00240193.pdf"             title="STM32L1xx Series Reference Manual"/>
+        <book    name="Documents\CD00277537.pdf"             title="STM32L15xx6/8/B Data Sheet"/>
+        <feature type="Timer"         n="6"       m="16"/>
+        <feature type="ADC"           n="16"      m="12"/>
+        <feature type="IOs"           n="36"/>
+        <feature type="LCD"           n="1"       m="4.16"/>
+        <feature type="SPI"           n="2"       m="16000000"/>
+        <feature type="USART"         n="3"       m="4000000"/>
+        <feature type="QFP"           n="48"/>
+      </device>
+      
+      <!-- *************************  Device 'STM32L152C8'  ***************************** -->
+      <device Dname="STM32L152C8">
+        <processor Dfpu="0" Dmpu="1" Dendian="Little-endian" Dclock="32000000"/>
+        <compile header="Device\Include\STM32L1xx.h"  define="STM32L1XX_MD"/>
+        <debug      svd="SVD\STM32L1xx.svd"/>
+        <memory     id="IROM1"                      start="0x08000000"  size="0x10000"    startup="1"   default="1"/>
+        <memory     id="IRAM1"                      start="0x20000000"  size="0x2800"     init   ="0"   default="1"/>
+        <algorithm  name="Flash\STM32L1xx_128.FLM"  start="0x08000000"  size="0x10000"                  default="1"/>
+        <algorithm  name="Flash\STM32L1xx_128_EEPROM.FLM" start="0x08080000" size="0x1000"              default="0"/>
+        <algorithm  name="Flash\STM32L1xx_128_OPT.FLM" start="0x1FF80000" size="0x0010"                 default="0"/>
+        <book    name="Documents\CD00240193.pdf"             title="STM32L1xx Series Reference Manual"/>
+        <book    name="Documents\CD00277537.pdf"             title="STM32L15xx6/8/B Data Sheet"/>
+        <feature type="Timer"         n="6"       m="16"/>
+        <feature type="ADC"           n="16"      m="12"/>
+        <feature type="IOs"           n="36"/>
+        <feature type="LCD"           n="1"       m="4.16"/>
+        <feature type="SPI"           n="2"       m="16000000"/>
+        <feature type="USART"         n="3"       m="4000000"/>
+        <feature type="QFP"           n="48"/>
+      </device>
+      
+      <!-- *************************  Device 'STM32L152CB'  ***************************** -->
+      <device Dname="STM32L152CB">
+        <processor Dfpu="0" Dmpu="1" Dendian="Little-endian" Dclock="32000000"/>
+        <compile header="Device\Include\STM32L1xx.h"  define="STM32L1XX_MD"/>
+        <debug      svd="SVD\STM32L1xx.svd"/>
+        <memory     id="IROM1"                      start="0x08000000"  size="0x20000"    startup="1"   default="1"/>
+        <memory     id="IRAM1"                      start="0x20000000"  size="0x4000"     init   ="0"   default="1"/>
+        <algorithm  name="Flash\STM32L1xx_128.FLM"  start="0x08000000"  size="0x20000"                  default="1"/>
+        <algorithm  name="Flash\STM32L1xx_128_EEPROM.FLM" start="0x08080000" size="0x1000"              default="0"/>
+        <algorithm  name="Flash\STM32L1xx_128_OPT.FLM" start="0x1FF80000" size="0x0010"                 default="0"/>
+        <book    name="Documents\CD00240193.pdf"             title="STM32L1xx Series Reference Manual"/>
+        <book    name="Documents\CD00277537.pdf"             title="STM32L15xx6/8/B Data Sheet"/>
+        <feature type="Timer"         n="6"       m="16"/>
+        <feature type="ADC"           n="16"      m="12"/>
+        <feature type="IOs"           n="36"/>
+        <feature type="LCD"           n="1"       m="4.16"/>
+        <feature type="SPI"           n="2"       m="16000000"/>
+        <feature type="USART"         n="3"       m="4000000"/>
+        <feature type="QFP"           n="48"/>
+      </device>
+      
+      <!-- *************************  Device 'STM32L152CC'  ***************************** -->
+      <device Dname="STM32L152CC">
+        <processor Dfpu="0" Dmpu="1" Dendian="Little-endian" Dclock="32000000"/>
+        <compile header="Device\Include\STM32L1xx.h"  define="STM32L1XX_MDP"/>
+        <debug      svd="SVD\STM32L1xx.svd"/>
+        <memory     id="IROM1"                      start="0x08000000"  size="0x40000"    startup="1"   default="1"/>
+        <memory     id="IRAM1"                      start="0x20000000"  size="0x8000"     init   ="0"   default="1"/>
+        <algorithm  name="Flash\STM32L1xx_256.FLM"  start="0x08000000"  size="0x40000"                  default="1"/>
+        <algorithm  name="Flash\STM32L1xx_256_EEPROM.FLM" start="0x08080000" size="0x2000"              default="0"/>
+        <algorithm  name="Flash\STM32L1xx_256_OPT.FLM" start="0x1FF80000" size="0x0018"                 default="0"/>
+        <book    name="Documents\CD00240193.pdf"             title="STM32L1xx Series Reference Manual"/>
+        <book    name="Documents\DM00048356.pdf"             title="STM32L151xC, L152xC Data Sheet"/>
+        <feature type="Timer"         n="8"       m="16"/>
+        <feature type="Timer"         n="1"       m="32"/>
+        <feature type="ADC"           n="21"      m="12"/>
+        <feature type="IOs"           n="37"/>
+        <feature type="LCD"           n="1"       m="4.18"/>
+        <feature type="SPI"           n="3"       m="16000000"/>
+        <feature type="I2S"           n="2"/>
+        <feature type="USART"         n="3"       m="4000000"/>
+        <feature type="QFP"           n="48"/>
+      </device>
+      
+      <!-- *************************  Device 'STM32L152QC'  ***************************** -->
+      <device Dname="STM32L152QC">
+        <processor Dfpu="0" Dmpu="1" Dendian="Little-endian" Dclock="32000000"/>
+        <compile header="Device\Include\STM32L1xx.h"  define="STM32L1XX_MDP"/>
+        <debug      svd="SVD\STM32L15xC.svd"/>
+        <memory     id="IROM1"                      start="0x08000000"  size="0x40000"    startup="1"   default="1"/>
+        <memory     id="IRAM1"                      start="0x20000000"  size="0x8000"     init   ="0"   default="1"/>
+        <algorithm  name="Flash\STM32L1xx_256.FLM"  start="0x08000000"  size="0x40000"                  default="1"/>
+        <algorithm  name="Flash\STM32L1xx_256_EEPROM.FLM" start="0x08080000" size="0x2000"              default="0"/>
+        <algorithm  name="Flash\STM32L1xx_256_OPT.FLM" start="0x1FF80000" size="0x0018"                 default="0"/>
+        <book    name="Documents\CD00240193.pdf"             title="STM32L1xx Series Reference Manual"/>
+        <book    name="Documents\DM00048356.pdf"             title="STM32L151xC, L152xC Data Sheet"/>
+        <feature type="Timer"         n="8"       m="16"/>
+        <feature type="Timer"         n="1"       m="32"/>
+        <feature type="ADC"           n="39"      m="12"/>
+        <feature type="IOs"           n="108"/>
+        <feature type="LCD"           n="1"       m="4.44"/>
+        <feature type="LCD"           n="1"       m="8.40"/>
+        <feature type="AnalogOther"   n="2"/>
+        <feature type="SPI"           n="3"       m="16000000"/>
+        <feature type="I2S"           n="2"/>
+        <feature type="USART"         n="3"       m="4000000"/>
+        <feature type="BGA"           n="132"/>
+      </device>
+      
+      <!-- *************************  Device 'STM32L152QD'  ***************************** -->
+      <device Dname="STM32L152QD">
+        <processor Dfpu="0" Dmpu="1" Dendian="Little-endian" Dclock="32000000"/>
+        <compile header="Device\Include\STM32L1xx.h"  define="STM32L1XX_HD"/>
+        <debug      svd="SVD\STM32L1xx.svd"/>
+        <memory     id="IROM1"                      start="0x08000000"  size="0x60000"    startup="1"   default="1"/>
+        <memory     id="IRAM1"                      start="0x20000000"  size="0xC000"     init   ="0"   default="1"/>
+        <algorithm  name="Flash\STM32L1xx_384.FLM"  start="0x08000000"  size="0x60000"                  default="1"/>
+        <algorithm  name="Flash\STM32L1xx_384_EEPROM.FLM" start="0x08080000" size="0x3000"              default="0"/>
+        <algorithm  name="Flash\STM32L1xx_384_OPT.FLM" start="0x1FF80000" size="0x0020"                 default="0"/>
+        <book    name="Documents\CD00240193.pdf"             title="STM32L1xx Series Reference Manual"/>
+        <book    name="Documents\DM00034689.pdf"             title="STM32L151xD, L152xD Data Sheet"/>
+        <feature type="Timer"         n="8"       m="16"/>
+        <feature type="Timer"         n="1"       m="32"/>
+        <feature type="ADC"           n="39"      m="12"/>
+        <feature type="IOs"           n="108"/>
+        <feature type="LCD"           n="1"       m="4.44"/>
+        <feature type="LCD"           n="1"       m="8.40"/>
+        <feature type="AnalogOther"   n="3"/>
+        <feature type="SPI"           n="3"       m="16000000"/>
+        <feature type="I2S"           n="2"/>
+        <feature type="USART"         n="5"       m="4000000"/>
+        <feature type="SDIO"          n="1"/>
+        <feature type="ExtBus"        n="1"/>
+        <feature type="BGA"           n="132"/>
+      </device>
+      
+      <!-- *************************  Device 'STM32L152R6'  ***************************** -->
+      <device Dname="STM32L152R6">
+        <processor Dfpu="0" Dmpu="1" Dendian="Little-endian" Dclock="32000000"/>
+        <compile header="Device\Include\STM32L1xx.h"  define="STM32L1XX_MD"/>
+        <debug      svd="SVD\STM32L1xx.svd"/>
+        <memory     id="IROM1"                      start="0x08000000"  size="0x8000"     startup="1"   default="1"/>
+        <memory     id="IRAM1"                      start="0x20000000"  size="0x2800"     init   ="0"   default="1"/>
+        <algorithm  name="Flash\STM32L1xx_128.FLM"  start="0x08000000"  size="0x8000"                   default="1"/>
+        <algorithm  name="Flash\STM32L1xx_128_EEPROM.FLM" start="0x08080000" size="0x1000"              default="0"/>
+        <algorithm  name="Flash\STM32L1xx_128_OPT.FLM" start="0x1FF80000" size="0x0010"                 default="0"/>
+        <book    name="Documents\CD00240193.pdf"             title="STM32L1xx Series Reference Manual"/>
+        <book    name="Documents\CD00277537.pdf"             title="STM32L15xx6/8/B Data Sheet"/>
+        <feature type="Timer"         n="6"       m="16"/>
+        <feature type="ADC"           n="20"      m="12"/>
+        <feature type="IOs"           n="50"/>
+        <feature type="LCD"           n="1"       m="4.32"/>
+        <feature type="LCD"           n="1"       m="8.28"/>
+        <feature type="SPI"           n="2"       m="16000000"/>
+        <feature type="USART"         n="3"       m="4000000"/>
+        <feature type="QFP"           n="64"/>
+        <feature type="BGA"           n="64"/>
+      </device>
+      
+      <!-- *************************  Device 'STM32L152R8'  ***************************** -->
+      <device Dname="STM32L152R8">
+        <processor Dfpu="0" Dmpu="1" Dendian="Little-endian" Dclock="32000000"/>
+        <compile header="Device\Include\STM32L1xx.h"  define="STM32L1XX_MD"/>
+        <debug      svd="SVD\STM32L1xx.svd"/>
+        <memory     id="IROM1"                      start="0x08000000"  size="0x10000"    startup="1"   default="1"/>
+        <memory     id="IRAM1"                      start="0x20000000"  size="0x2800"     init   ="0"   default="1"/>
+        <algorithm  name="Flash\STM32L1xx_128.FLM"  start="0x08000000"  size="0x10000"                  default="1"/>
+        <algorithm  name="Flash\STM32L1xx_128_EEPROM.FLM" start="0x08080000" size="0x1000"              default="0"/>
+        <algorithm  name="Flash\STM32L1xx_128_OPT.FLM" start="0x1FF80000" size="0x0010"                 default="0"/>
+        <book    name="Documents\CD00240193.pdf"             title="STM32L1xx Series Reference Manual"/>
+        <book    name="Documents\CD00277537.pdf"             title="STM32L15xx6/8/B Data Sheet"/>
+        <feature type="Timer"         n="6"       m="16"/>
+        <feature type="ADC"           n="20"      m="12"/>
+        <feature type="IOs"           n="50"/>
+        <feature type="LCD"           n="1"       m="4.32"/>
+        <feature type="LCD"           n="1"       m="8.28"/>
+        <feature type="SPI"           n="2"       m="16000000"/>
+        <feature type="USART"         n="3"       m="4000000"/>
+        <feature type="QFP"           n="64"/>
+        <feature type="BGA"           n="64"/>
+      </device>
+      
+      <!-- *************************  Device 'STM32L152RB'  ***************************** -->
+      <device Dname="STM32L152RB">
+        <processor Dfpu="0" Dmpu="1" Dendian="Little-endian" Dclock="32000000"/>
+        <compile header="Device\Include\STM32L1xx.h"  define="STM32L1XX_MD"/>
+        <debug      svd="SVD\STM32L1xx.svd"/>
+        <memory     id="IROM1"                      start="0x08000000"  size="0x20000"    startup="1"   default="1"/>
+        <memory     id="IRAM1"                      start="0x20000000"  size="0x4000"     init   ="0"   default="1"/>
+        <algorithm  name="Flash\STM32L1xx_128.FLM"  start="0x08000000"  size="0x20000"                  default="1"/>
+        <algorithm  name="Flash\STM32L1xx_128_EEPROM.FLM" start="0x08080000" size="0x1000"              default="0"/>
+        <algorithm  name="Flash\STM32L1xx_128_OPT.FLM" start="0x1FF80000" size="0x0010"                 default="0"/>
+        <book    name="Documents\CD00240193.pdf"             title="STM32L1xx Series Reference Manual"/>
+        <book    name="Documents\CD00277537.pdf"             title="STM32L15xx6/8/B Data Sheet"/>
+        <feature type="Timer"         n="6"       m="16"/>
+        <feature type="ADC"           n="20"      m="12"/>
+        <feature type="IOs"           n="50"/>
+        <feature type="LCD"           n="1"       m="4.32"/>
+        <feature type="LCD"           n="1"       m="8.28"/>
+        <feature type="SPI"           n="2"       m="16000000"/>
+        <feature type="USART"         n="3"       m="4000000"/>
+        <feature type="QFP"           n="64"/>
+        <feature type="BGA"           n="64"/>
+      </device>
+      
+      <!-- *************************  Device 'STM32L152RC'  ***************************** -->
+      <device Dname="STM32L152RC">
+        <processor Dfpu="0" Dmpu="1" Dendian="Little-endian" Dclock="32000000"/>
+        <compile header="Device\Include\STM32L1xx.h"  define="STM32L1XX_MDP"/>
+        <debug      svd="SVD\STM32L1xx.svd"/>
+        <memory     id="IROM1"                      start="0x08000000"  size="0x40000"    startup="1"   default="1"/>
+        <memory     id="IRAM1"                      start="0x20000000"  size="0x8000"     init   ="0"   default="1"/>
+        <algorithm  name="Flash\STM32L1xx_256.FLM"  start="0x08000000"  size="0x40000"                  default="1"/>
+        <algorithm  name="Flash\STM32L1xx_256_EEPROM.FLM" start="0x08080000" size="0x2000"              default="0"/>
+        <algorithm  name="Flash\STM32L1xx_256_OPT.FLM" start="0x1FF80000" size="0x0018"                 default="0"/>
+        <book    name="Documents\CD00240193.pdf"             title="STM32L1xx Series Reference Manual"/>
+        <book    name="Documents\DM00048356.pdf"             title="STM32L151xC, L152xC Data Sheet"/>
+        <feature type="Timer"         n="8"       m="16"/>
+        <feature type="Timer"         n="1"       m="32"/>
+        <feature type="ADC"           n="21"      m="12"/>
+        <feature type="IOs"           n="50"/>
+        <feature type="LCD"           n="1"       m="4.32"/>
+        <feature type="LCD"           n="1"       m="8.28"/>
+        <feature type="AnalogOther"   n="2"/>
+        <feature type="SPI"           n="3"       m="16000000"/>
+        <feature type="I2S"           n="2"/>
+        <feature type="USART"         n="3"       m="4000000"/>
+        <feature type="QFP"           n="64"/>
+        <feature type="CSP"           n="63"/>
+        <feature type="CSP"           n="64"/>
+      </device>
+      
+      <!-- *************************  Device 'STM32L152RD'  ***************************** -->
+      <device Dname="STM32L152RD">
+        <processor Dfpu="0" Dmpu="1" Dendian="Little-endian" Dclock="32000000"/>
+        <compile header="Device\Include\STM32L1xx.h"  define="STM32L1XX_HD"/>
+        <debug      svd="SVD\STM32L1xx.svd"/>
+        <memory     id="IROM1"                      start="0x08000000"  size="0x60000"    startup="1"   default="1"/>
+        <memory     id="IRAM1"                      start="0x20000000"  size="0xC000"     init   ="0"   default="1"/>
+        <algorithm  name="Flash\STM32L1xx_384.FLM"  start="0x08000000"  size="0x60000"                  default="1"/>
+        <algorithm  name="Flash\STM32L1xx_384_EEPROM.FLM" start="0x08080000" size="0x3000"              default="0"/>
+        <algorithm  name="Flash\STM32L1xx_384_OPT.FLM" start="0x1FF80000" size="0x0020"                 default="0"/>
+        <book    name="Documents\CD00240193.pdf"             title="STM32L1xx Series Reference Manual"/>
+        <book    name="Documents\DM00034689.pdf"             title="STM32L151xD, L152xD Data Sheet"/>
+        <feature type="Timer"         n="8"       m="16"/>
+        <feature type="Timer"         n="1"       m="32"/>
+        <feature type="ADC"           n="21"      m="12"/>
+        <feature type="IOs"           n="50"/>
+        <feature type="LCD"           n="1"       m="4.32"/>
+        <feature type="LCD"           n="1"       m="8.28"/>
+        <feature type="AnalogOther"   n="3"/>
+        <feature type="SPI"           n="3"       m="16000000"/>
+        <feature type="I2S"           n="2"/>
+        <feature type="USART"         n="5"       m="4000000"/>
+        <feature type="SDIO"          n="1"/>
+        <feature type="ExtBus"        n="1"/>
+        <feature type="QFP"           n="64"/>
+        <feature type="CSP"           n="64"/>
+      </device>
+      
+      <!-- *************************  Device 'STM32L152V8'  ***************************** -->
+      <device Dname="STM32L152V8">
+        <processor Dfpu="0" Dmpu="1" Dendian="Little-endian" Dclock="32000000"/>
+        <compile header="Device\Include\STM32L1xx.h"  define="STM32L1XX_MD"/>
+        <debug      svd="SVD\STM32L1xx.svd"/>
+        <memory     id="IROM1"                      start="0x08000000"  size="0x10000"    startup="1"   default="1"/>
+        <memory     id="IRAM1"                      start="0x20000000"  size="0x2800"     init   ="0"   default="1"/>
+        <algorithm  name="Flash\STM32L1xx_128.FLM"  start="0x08000000"  size="0x10000"                  default="1"/>
+        <algorithm  name="Flash\STM32L1xx_128_EEPROM.FLM" start="0x08080000" size="0x1000"              default="0"/>
+        <algorithm  name="Flash\STM32L1xx_128_OPT.FLM" start="0x1FF80000" size="0x0010"                 default="0"/>
+        <book    name="Documents\CD00240193.pdf"             title="STM32L1xx Series Reference Manual"/>
+        <book    name="Documents\CD00277537.pdf"             title="STM32L15xx6/8/B Data Sheet"/>
+        <feature type="Timer"         n="6"       m="16"/>
+        <feature type="ADC"           n="24"      m="12"/>
+        <feature type="IOs"           n="82"/>
+        <feature type="LCD"           n="1"       m="4.44"/>
+        <feature type="LCD"           n="1"       m="8.40"/>
+        <feature type="SPI"           n="2"       m="16000000"/>
+        <feature type="USART"         n="3"       m="4000000"/>
+        <feature type="QFP"           n="100"/>
+        <feature type="BGA"           n="100"/>
+      </device>
+      
+      <!-- *************************  Device 'STM32L152VB'  ***************************** -->
+      <device Dname="STM32L152VB">
+        <processor Dfpu="0" Dmpu="1" Dendian="Little-endian" Dclock="32000000"/>
+        <compile header="Device\Include\STM32L1xx.h"  define="STM32L1XX_MD"/>
+        <debug      svd="SVD\STM32L1xx.svd"/>
+        <memory     id="IROM1"                      start="0x08000000"  size="0x20000"    startup="1"   default="1"/>
+        <memory     id="IRAM1"                      start="0x20000000"  size="0x4000"     init   ="0"   default="1"/>
+        <algorithm  name="Flash\STM32L1xx_128.FLM"  start="0x08000000"  size="0x20000"                  default="1"/>
+        <algorithm  name="Flash\STM32L1xx_128_EEPROM.FLM" start="0x08080000" size="0x1000"              default="0"/>
+        <algorithm  name="Flash\STM32L1xx_128_OPT.FLM" start="0x1FF80000" size="0x0010"                 default="0"/>
+        <book    name="Documents\CD00240193.pdf"             title="STM32L1xx Series Reference Manual"/>
+        <book    name="Documents\CD00277537.pdf"             title="STM32L15xx6/8/B Data Sheet"/>
+        <feature type="Timer"         n="6"       m="16"/>
+        <feature type="ADC"           n="24"      m="12"/>
+        <feature type="IOs"           n="82"/>
+        <feature type="LCD"           n="1"       m="4.44"/>
+        <feature type="LCD"           n="1"       m="8.40"/>
+        <feature type="SPI"           n="2"       m="16000000"/>
+        <feature type="USART"         n="3"       m="4000000"/>
+        <feature type="QFP"           n="100"/>
+        <feature type="BGA"           n="100"/>
+      </device>
+      
+      <!-- *************************  Device 'STM32L152VC'  ***************************** -->
+      <device Dname="STM32L152VC">
+        <processor Dfpu="0" Dmpu="1" Dendian="Little-endian" Dclock="32000000"/>
+        <compile header="Device\Include\STM32L1xx.h"  define="STM32L1XX_MDP"/>
+        <debug      svd="SVD\STM32L1xx.svd"/>
+        <memory     id="IROM1"                      start="0x08000000"  size="0x40000"    startup="1"   default="1"/>
+        <memory     id="IRAM1"                      start="0x20000000"  size="0x8000"     init   ="0"   default="1"/>
+        <algorithm  name="Flash\STM32L1xx_256.FLM"  start="0x08000000"  size="0x40000"                  default="1"/>
+        <algorithm  name="Flash\STM32L1xx_256_EEPROM.FLM" start="0x08080000" size="0x2000"              default="0"/>
+        <algorithm  name="Flash\STM32L1xx_256_OPT.FLM" start="0x1FF80000" size="0x0018"                 default="0"/>
+        <book    name="Documents\CD00240193.pdf"             title="STM32L1xx Series Reference Manual"/>
+        <book    name="Documents\DM00048356.pdf"             title="STM32L151xC, L152xC Data Sheet"/>
+        <feature type="Timer"         n="8"       m="16"/>
+        <feature type="Timer"         n="1"       m="32"/>
+        <feature type="ADC"           n="25"      m="12"/>
+        <feature type="IOs"           n="82"/>
+        <feature type="LCD"           n="1"       m="4.44"/>
+        <feature type="LCD"           n="1"       m="8.40"/>
+        <feature type="AnalogOther"   n="2"/>
+        <feature type="SPI"           n="3"       m="16000000"/>
+        <feature type="I2S"           n="2"/>
+        <feature type="USART"         n="3"       m="4000000"/>
+        <feature type="QFP"           n="100"/>
+        <feature type="BGA"           n="100"/>
+      </device>
+      
+      <!-- *************************  Device 'STM32L152VD'  ***************************** -->
+      <device Dname="STM32L152VD">
+        <processor Dfpu="0" Dmpu="1" Dendian="Little-endian" Dclock="32000000"/>
+        <compile header="Device\Include\STM32L1xx.h"  define="STM32L1XX_HD"/>
+        <debug      svd="SVD\STM32L1xx.svd"/>
+        <memory     id="IROM1"                      start="0x08000000"  size="0x60000"    startup="1"   default="1"/>
+        <memory     id="IRAM1"                      start="0x20000000"  size="0xC000"     init   ="0"   default="1"/>
+        <algorithm  name="Flash\STM32L1xx_384.FLM"  start="0x08000000"  size="0x60000"                  default="1"/>
+        <algorithm  name="Flash\STM32L1xx_384_EEPROM.FLM" start="0x08080000" size="0x3000"              default="0"/>
+        <algorithm  name="Flash\STM32L1xx_384_OPT.FLM" start="0x1FF80000" size="0x0020"                 default="0"/>
+        <book    name="Documents\CD00240193.pdf"             title="STM32L1xx Series Reference Manual"/>
+        <book    name="Documents\DM00034689.pdf"             title="STM32L151xD, L152xD Data Sheet"/>
+        <feature type="Timer"         n="8"       m="16"/>
+        <feature type="Timer"         n="1"       m="32"/>
+        <feature type="ADC"           n="25"      m="12"/>
+        <feature type="IOs"           n="82"/>
+        <feature type="LCD"           n="1"       m="4.44"/>
+        <feature type="LCD"           n="1"       m="8.40"/>
+        <feature type="AnalogOther"   n="3"/>
+        <feature type="SPI"           n="3"       m="16000000"/>
+        <feature type="I2S"           n="2"/>
+        <feature type="USART"         n="5"       m="4000000"/>
+        <feature type="SDIO"          n="1"/>
+        <feature type="ExtBus"        n="1"/>
+        <feature type="QFP"           n="100"/>
+      </device>
+      
+      <!-- *************************  Device 'STM32L152ZC'  ***************************** -->
+      <device Dname="STM32L152ZC">
+        <processor Dfpu="0" Dmpu="1" Dendian="Little-endian" Dclock="32000000"/>
+        <compile header="Device\Include\STM32L1xx.h"  define="STM32L1XX_MDP"/>
+        <debug      svd="SVD\STM32L1xx.svd"/>
+        <memory     id="IROM1"                      start="0x08000000"  size="0x40000"    startup="1"   default="1"/>
+        <memory     id="IRAM1"                      start="0x20000000"  size="0x8000"     init   ="0"   default="1"/>
+        <algorithm  name="Flash\STM32L1xx_256.FLM"  start="0x08000000"  size="0x40000"                  default="1"/>
+        <algorithm  name="Flash\STM32L1xx_256_EEPROM.FLM" start="0x08080000" size="0x2000"              default="0"/>
+        <algorithm  name="Flash\STM32L1xx_256_OPT.FLM" start="0x1FF80000" size="0x0018"                 default="0"/>
+        <book    name="Documents\CD00240193.pdf"             title="STM32L1xx Series Reference Manual"/>
+        <book    name="Documents\DM00048356.pdf"             title="STM32L151xC, L152xC Data Sheet"/>
+        <feature type="Timer"         n="8"       m="16"/>
+        <feature type="Timer"         n="1"       m="32"/>
+        <feature type="ADC"           n="40"      m="12"/>
+        <feature type="IOs"           n="114"/>
+        <feature type="LCD"           n="1"       m="4.44"/>
+        <feature type="LCD"           n="1"       m="8.40"/>
+        <feature type="AnalogOther"   n="2"/>
+        <feature type="SPI"           n="3"       m="16000000"/>
+        <feature type="I2S"           n="2"/>
+        <feature type="USART"         n="3"       m="4000000"/>
+        <feature type="QFP"           n="144"/>
+      </device>
+      
+      <!-- *************************  Device 'STM32L152ZD'  ***************************** -->
+      <device Dname="STM32L152ZD">
+        <processor Dfpu="0" Dmpu="1" Dendian="Little-endian" Dclock="32000000"/>
+        <compile header="Device\Include\STM32L1xx.h"  define="STM32L1XX_HD"/>
+        <debug      svd="SVD\STM32L1xx.svd"/>
+        <memory     id="IROM1"                      start="0x08000000"  size="0x60000"    startup="1"   default="1"/>
+        <memory     id="IRAM1"                      start="0x20000000"  size="0xC000"     init   ="0"   default="1"/>
+        <algorithm  name="Flash\STM32L1xx_384.FLM"  start="0x08000000"  size="0x60000"                  default="1"/>
+        <algorithm  name="Flash\STM32L1xx_384_EEPROM.FLM" start="0x08080000" size="0x3000"              default="0"/>
+        <algorithm  name="Flash\STM32L1xx_384_OPT.FLM" start="0x1FF80000" size="0x0020"                 default="0"/>
+        <book    name="Documents\CD00240193.pdf"             title="STM32L1xx Series Reference Manual"/>
+        <book    name="Documents\DM00034689.pdf"             title="STM32L151xD, L152xD Data Sheet"/>
+        <feature type="Timer"         n="8"       m="16"/>
+        <feature type="Timer"         n="1"       m="32"/>
+        <feature type="ADC"           n="40"      m="12"/>
+        <feature type="IOs"           n="114"/>
+        <feature type="LCD"           n="1"       m="4.44"/>
+        <feature type="LCD"           n="1"       m="8.40"/>
+        <feature type="AnalogOther"   n="3"/>
+        <feature type="SPI"           n="3"       m="16000000"/>
+        <feature type="I2S"           n="2"/>
+        <feature type="USART"         n="5"       m="4000000"/>
+        <feature type="SDIO"          n="1"/>
+        <feature type="ExtBus"        n="1"/>
+        <feature type="QFP"           n="144"/>
+      </device>
+      
+      <!-- *************************  Device 'STM32L152QE'  ***************************** -->
+      <device Dname="STM32L152QE">
+        <processor Dfpu="0" Dmpu="1" Dendian="Little-endian" Dclock="32000000"/>
+        <compile header="Device\Include\STM32L1xx.h"  define="STM32L1XX_XL"/>
+        <debug      svd="SVD\STM32L1xx.svd"/>
+        <memory     id="IROM1"                      start="0x08000000"  size="0x80000"    startup="1"   default="1"/>
+        <memory     id="IRAM1"                      start="0x20000000"  size="0x14000"    init   ="0"   default="1"/>
+        <algorithm  name="Flash\STM32L1xx_512.FLM"  start="0x08000000"  size="0x80000"                  default="1"/>
+        <algorithm  name="Flash\STM32L1xx_512_EEPROM.FLM" start="0x08080000" size="0x4000"              default="0"/>
+        <algorithm  name="Flash\STM32L1xx_512_OPT.FLM" start="0x1FF80000" size="0x0028"                 default="0"/>
+        <book    name="Documents\CD00240193.pdf"             title="STM32L1xx Series Reference Manual"/>
+        <book    name="Documents\DM00098321.pdf"             title="STM32L15xxE, Data Sheet"/>
+        <feature type="Timer"         n="8"       m="16"/>
+        <feature type="Timer"         n="1"       m="32"/>
+        <feature type="ADC"           n="40"      m="12"/>
+        <feature type="IOs"           n="109"/>
+        <feature type="LCD"           n="1"       m="4.44"/>
+        <feature type="LCD"           n="1"       m="8.40"/>
+        <feature type="AnalogOther"   n="2"/>
+        <feature type="SPI"           n="3"       m="16000000"/>
+        <feature type="I2S"           n="2"/>
+        <feature type="USART"         n="5"       m="4000000"/>
+        <feature type="BGA"           n="132"/>
+      </device>
+      
+      <!-- *************************  Device 'STM32L152RE'  ***************************** -->
+      <device Dname="STM32L152RE">
+        <processor Dfpu="0" Dmpu="1" Dendian="Little-endian" Dclock="32000000"/>
+        <compile header="Device\Include\STM32L1xx.h"  define="STM32L1XX_XL"/>
+        <debug      svd="SVD\STM32L1xx.svd"/>
+        <memory     id="IROM1"                      start="0x08000000"  size="0x80000"    startup="1"   default="1"/>
+        <memory     id="IRAM1"                      start="0x20000000"  size="0x14000"    init   ="0"   default="1"/>
+        <algorithm  name="Flash\STM32L1xx_512.FLM"  start="0x08000000"  size="0x80000"                  default="1"/>
+        <algorithm  name="Flash\STM32L1xx_512_EEPROM.FLM" start="0x08080000" size="0x4000"              default="0"/>
+        <algorithm  name="Flash\STM32L1xx_512_OPT.FLM" start="0x1FF80000" size="0x0028"                 default="0"/>
+        <book    name="Documents\CD00240193.pdf"             title="STM32L1xx Series Reference Manual"/>
+        <book    name="Documents\DM00098321.pdf"             title="STM32L15xxE, Data Sheet"/>
+        <feature type="Timer"         n="8"       m="16"/>
+        <feature type="Timer"         n="1"       m="32"/>
+        <feature type="ADC"           n="21"      m="12"/>
+        <feature type="IOs"           n="51"/>
+        <feature type="LCD"           n="1"       m="4.32"/>
+        <feature type="LCD"           n="1"       m="8.28"/>
+        <feature type="AnalogOther"   n="2"/>
+        <feature type="SPI"           n="3"       m="16000000"/>
+        <feature type="I2S"           n="2"/>
+        <feature type="USART"         n="5"       m="4000000"/>
+        <feature type="QFP"           n="64"/>
+      </device>
+      
+      <!-- *************************  Device 'STM32L152VE'  ***************************** -->
+      <device Dname="STM32L152VE">
+        <processor Dfpu="0" Dmpu="1" Dendian="Little-endian" Dclock="32000000"/>
+        <compile header="Device\Include\STM32L1xx.h"  define="STM32L1XX_XL"/>
+        <debug      svd="SVD\STM32L1xx.svd"/>
+        <memory     id="IROM1"                      start="0x08000000"  size="0x80000"    startup="1"   default="1"/>
+        <memory     id="IRAM1"                      start="0x20000000"  size="0x14000"    init   ="0"   default="1"/>
+        <algorithm  name="Flash\STM32L1xx_512.FLM"  start="0x08000000"  size="0x80000"                  default="1"/>
+        <algorithm  name="Flash\STM32L1xx_512_EEPROM.FLM" start="0x08080000" size="0x4000"              default="0"/>
+        <algorithm  name="Flash\STM32L1xx_512_OPT.FLM" start="0x1FF80000" size="0x0028"                 default="0"/>
+        <book    name="Documents\CD00240193.pdf"             title="STM32L1xx Series Reference Manual"/>
+        <book    name="Documents\DM00098321.pdf"             title="STM32L15xxE, Data Sheet"/>
+        <feature type="Timer"         n="8"       m="16"/>
+        <feature type="Timer"         n="1"       m="32"/>
+        <feature type="ADC"           n="25"      m="12"/>
+        <feature type="IOs"           n="83"/>
+        <feature type="LCD"           n="1"       m="4.44"/>
+        <feature type="LCD"           n="1"       m="8.40"/>
+        <feature type="AnalogOther"   n="2"/>
+        <feature type="SPI"           n="3"       m="16000000"/>
+        <feature type="I2S"           n="2"/>
+        <feature type="USART"         n="5"       m="4000000"/>
+        <feature type="QFP"           n="100"/>
+        <feature type="CSP"           n="104"/>
+      </device>
+      
+      <!-- *************************  Device 'STM32L152ZE'  ***************************** -->
+      <device Dname="STM32L152ZE">
+        <processor Dfpu="0" Dmpu="1" Dendian="Little-endian" Dclock="32000000"/>
+        <compile header="Device\Include\STM32L1xx.h"  define="STM32L1XX_XL"/>
+        <debug      svd="SVD\STM32L1xx.svd"/>
+        <memory     id="IROM1"                      start="0x08000000"  size="0x80000"    startup="1"   default="1"/>
+        <memory     id="IRAM1"                      start="0x20000000"  size="0x14000"    init   ="0"   default="1"/>
+        <algorithm  name="Flash\STM32L1xx_512.FLM"  start="0x08000000"  size="0x80000"                  default="1"/>
+        <algorithm  name="Flash\STM32L1xx_512_EEPROM.FLM" start="0x08080000" size="0x4000"              default="0"/>
+        <algorithm  name="Flash\STM32L1xx_512_OPT.FLM" start="0x1FF80000" size="0x0028"                 default="0"/>
+        <book    name="Documents\CD00240193.pdf"             title="STM32L1xx Series Reference Manual"/>
+        <book    name="Documents\DM00098321.pdf"             title="STM32L15xxE, Data Sheet"/>
+        <feature type="Timer"         n="8"       m="16"/>
+        <feature type="Timer"         n="1"       m="32"/>
+        <feature type="ADC"           n="40"      m="12"/>
+        <feature type="IOs"           n="115"/>
+        <feature type="LCD"           n="1"       m="4.44"/>
+        <feature type="LCD"           n="1"       m="8.40"/>
+        <feature type="AnalogOther"   n="2"/>
+        <feature type="SPI"           n="3"       m="16000000"/>
+        <feature type="I2S"           n="2"/>
+        <feature type="USART"         n="5"       m="4000000"/>
+        <feature type="QFP"           n="144"/>
+      </device>
+      </subFamily>
+
+      <!-- ************************  Subfamily 'STM32L162'  **************************** -->
+      <subFamily DsubFamily="STM32L162">
+        <feature type="Timer"         n="8"       m="16"/>
+        <feature type="Timer"         n="1"       m="32"/>
+        <feature type="SPI"           n="3"       m="16000000"/>
+        <feature type="I2S"           n="2"/>
+        <feature type="VCC"           n="2.00"    m="3.60"/>
+      
+      <!-- *************************  Device 'STM32L162QD'  ***************************** -->
+      <device Dname="STM32L162QD">
+        <processor Dfpu="0" Dmpu="1" Dendian="Little-endian" Dclock="32000000"/>
+        <compile header="Device\Include\STM32L1xx.h"  define="STM32L1XX_HD"/>
+        <memory     id="IROM1"                      start="0x08000000"  size="0x60000"    startup="1"   default="1"/>
+        <memory     id="IRAM1"                      start="0x20000000"  size="0xC000"     init   ="0"   default="1"/>
+        <algorithm  name="Flash\STM32L1xx_384.FLM"  start="0x08000000"  size="0x60000"                  default="1"/>
+        <algorithm  name="Flash\STM32L1xx_384_EEPROM.FLM" start="0x08080000" size="0x3000"              default="0"/>
+        <algorithm  name="Flash\STM32L1xx_384_OPT.FLM" start="0x1FF80000" size="0x0020"                 default="0"/>
+        <book    name="Documents\CD00240193.pdf"             title="STM32L1xx Series Reference Manual"/>
+        <book    name="Documents\DM00039232.pdf"             title="STM32L162VD, ZD, QD, RD Data Sheet"/>
+        <feature type="ADC"           n="39"      m="12"/>
+        <feature type="IOs"           n="108"/>
+        <feature type="LCD"           n="1"       m="4.44"/>
+        <feature type="LCD"           n="1"       m="8.40"/>
+        <feature type="AnalogOther"   n="3"/>
+        <feature type="USART"         n="5"       m="4000000"/>
+        <feature type="SDIO"          n="1"/>
+        <feature type="ExtBus"        n="1"/>
+      </device>
+      
+      <!-- *************************  Device 'STM32L162RC'  ***************************** -->
+      <device Dname="STM32L162RC">
+        <processor Dfpu="0" Dmpu="1" Dendian="Little-endian" Dclock="32000000"/>
+        <compile header="Device\Include\STM32L1xx.h"  define="STM32L1XX_MDP"/>
+        <memory     id="IROM1"                      start="0x08000000"  size="0x40000"    startup="1"   default="1"/>
+        <memory     id="IRAM1"                      start="0x20000000"  size="0x8000"     init   ="0"   default="1"/>
+        <algorithm  name="Flash\STM32L1xx_256.FLM"  start="0x08000000"  size="0x40000"                  default="1"/>
+        <algorithm  name="Flash\STM32L1xx_256_EEPROM.FLM" start="0x08080000" size="0x2000"              default="0"/>
+        <algorithm  name="Flash\STM32L1xx_256_OPT.FLM" start="0x1FF80000" size="0x0018"                 default="0"/>
+        <book    name="Documents\CD00240193.pdf"             title="STM32L1xx Series Reference Manual"/>
+        <book    name="Documents\DM00049732.pdf"             title="STM32L162VC, RC Data Sheet"/>
+        <feature type="ADC"           n="21"      m="12"/>
+        <feature type="IOs"           n="51"/>
+        <feature type="LCD"           n="1"       m="4.32"/>
+        <feature type="LCD"           n="1"       m="8.28"/>
+        <feature type="AnalogOther"   n="2"/>
+        <feature type="USART"         n="3"       m="4000000"/>
+        <feature type="QFP"           n="64"/>
+      </device>
+      
+      <!-- *************************  Device 'STM32L162RD'  ***************************** -->
+      <device Dname="STM32L162RD">
+        <processor Dfpu="0" Dmpu="1" Dendian="Little-endian" Dclock="32000000"/>
+        <compile header="Device\Include\STM32L1xx.h"  define="STM32L1XX_HD"/>
+        <memory     id="IROM1"                      start="0x08000000"  size="0x60000"    startup="1"   default="1"/>
+        <memory     id="IRAM1"                      start="0x20000000"  size="0xC000"     init   ="0"   default="1"/>
+        <algorithm  name="Flash\STM32L1xx_384.FLM"  start="0x08000000"  size="0x60000"                  default="1"/>
+        <algorithm  name="Flash\STM32L1xx_384_EEPROM.FLM" start="0x08080000" size="0x3000"              default="0"/>
+        <algorithm  name="Flash\STM32L1xx_384_OPT.FLM" start="0x1FF80000" size="0x0020"                 default="0"/>
+        <book    name="Documents\CD00240193.pdf"             title="STM32L1xx Series Reference Manual"/>
+        <book    name="Documents\DM00039232.pdf"             title="STM32L162VD, ZD, QD, RD Data Sheet"/>
+        <feature type="ADC"           n="21"      m="12"/>
+        <feature type="IOs"           n="50"/>
+        <feature type="LCD"           n="1"       m="4.32"/>
+        <feature type="LCD"           n="1"       m="8.28"/>
+        <feature type="AnalogOther"   n="3"/>
+        <feature type="USART"         n="5"       m="4000000"/>
+        <feature type="SDIO"          n="1"/>
+        <feature type="ExtBus"        n="1"/>
+      </device>
+      
+      <!-- *************************  Device 'STM32L162VC'  ***************************** -->
+      <device Dname="STM32L162VC">
+        <processor Dfpu="0" Dmpu="1" Dendian="Little-endian" Dclock="32000000"/>
+        <compile header="Device\Include\STM32L1xx.h"  define="STM32L1XX_MDP"/>
+        <memory     id="IROM1"                      start="0x08000000"  size="0x40000"    startup="1"   default="1"/>
+        <memory     id="IRAM1"                      start="0x20000000"  size="0x8000"     init   ="0"   default="1"/>
+        <algorithm  name="Flash\STM32L1xx_256.FLM"  start="0x08000000"  size="0x40000"                  default="1"/>
+        <algorithm  name="Flash\STM32L1xx_256_EEPROM.FLM" start="0x08080000" size="0x2000"              default="0"/>
+        <algorithm  name="Flash\STM32L1xx_256_OPT.FLM" start="0x1FF80000" size="0x0018"                 default="0"/>
+        <book    name="Documents\CD00240193.pdf"             title="STM32L1xx Series Reference Manual"/>
+        <book    name="Documents\DM00049732.pdf"             title="STM32L162VC, RC Data Sheet"/>
+        <feature type="ADC"           n="25"      m="12"/>
+        <feature type="IOs"           n="83"/>
+        <feature type="LCD"           n="1"       m="4.44"/>
+        <feature type="LCD"           n="1"       m="8.40"/>
+        <feature type="AnalogOther"   n="2"/>
+        <feature type="USART"         n="3"       m="4000000"/>
+        <feature type="QFP"           n="100"/>
+      </device>
+      
+      <!-- *************************  Device 'STM32L162VD'  ***************************** -->
+      <device Dname="STM32L162VD">
+        <processor Dfpu="0" Dmpu="1" Dendian="Little-endian" Dclock="32000000"/>
+        <compile header="Device\Include\STM32L1xx.h"  define="STM32L1XX_HD"/>
+        <memory     id="IROM1"                      start="0x08000000"  size="0x60000"    startup="1"   default="1"/>
+        <memory     id="IRAM1"                      start="0x20000000"  size="0xC000"     init   ="0"   default="1"/>
+        <algorithm  name="Flash\STM32L1xx_384.FLM"  start="0x08000000"  size="0x60000"                  default="1"/>
+        <algorithm  name="Flash\STM32L1xx_384_EEPROM.FLM" start="0x08080000" size="0x3000"              default="0"/>
+        <algorithm  name="Flash\STM32L1xx_384_OPT.FLM" start="0x1FF80000" size="0x0020"                 default="0"/>
+        <book    name="Documents\CD00240193.pdf"             title="STM32L1xx Series Reference Manual"/>
+        <book    name="Documents\DM00039232.pdf"             title="STM32L162VD, ZD, QD, RD Data Sheet"/>
+        <feature type="ADC"           n="25"      m="12"/>
+        <feature type="IOs"           n="82"/>
+        <feature type="LCD"           n="1"       m="4.44"/>
+        <feature type="LCD"           n="1"       m="8.40"/>
+        <feature type="AnalogOther"   n="3"/>
+        <feature type="USART"         n="5"       m="4000000"/>
+        <feature type="SDIO"          n="1"/>
+        <feature type="ExtBus"        n="1"/>
+      </device>
+      
+      <!-- *************************  Device 'STM32L162ZD'  ***************************** -->
+      <device Dname="STM32L162ZD">
+        <processor Dfpu="0" Dmpu="1" Dendian="Little-endian" Dclock="32000000"/>
+        <compile header="Device\Include\STM32L1xx.h"  define="STM32L1XX_HD"/>
+        <memory     id="IROM1"                      start="0x08000000"  size="0x60000"    startup="1"   default="1"/>
+        <memory     id="IRAM1"                      start="0x20000000"  size="0xC000"     init   ="0"   default="1"/>
+        <algorithm  name="Flash\STM32L1xx_384.FLM"  start="0x08000000"  size="0x60000"                  default="1"/>
+        <algorithm  name="Flash\STM32L1xx_384_EEPROM.FLM" start="0x08080000" size="0x3000"              default="0"/>
+        <algorithm  name="Flash\STM32L1xx_384_OPT.FLM" start="0x1FF80000" size="0x0020"                 default="0"/>
+        <book    name="Documents\CD00240193.pdf"             title="STM32L1xx Series Reference Manual"/>
+        <book    name="Documents\DM00039232.pdf"             title="STM32L162VD, ZD, QD, RD Data Sheet"/>
+        <feature type="ADC"           n="40"      m="12"/>
+        <feature type="IOs"           n="114"/>
+        <feature type="LCD"           n="1"       m="4.44"/>
+        <feature type="LCD"           n="1"       m="8.40"/>
+        <feature type="AnalogOther"   n="3"/>
+        <feature type="USART"         n="5"       m="4000000"/>
+        <feature type="SDIO"          n="1"/>
+        <feature type="ExtBus"        n="1"/>
+      </device>
+      </subFamily>
+
+      <!-- ************************  Subfamily 'STM32L151xxA'  **************************** -->
+      <subFamily DsubFamily="STM32L151xxA">
+        <feature type="Timer"         n="6"       m="16"/>
+        <feature type="Timer"         n="2"       m="32"/>
+        <feature type="SPI"           n="2"       m="16000000"/>
+        <feature type="USART"         n="3"       m="4000000"/>
+        <feature type="VCC"           n="2.00"    m="3.60"/>
+      
+      <!-- *************************  Device 'STM32L151C6xxA'  ***************************** -->
+      <device Dname="STM32L151C6xxA">
+        <processor Dfpu="0" Dmpu="1" Dendian="Little-endian" Dclock="32000000"/>
+        <compile header="Device\Include\STM32L1xx.h"  define="STM32L1XX_MD"/>
+        <debug      svd="SVD\STM32L15xxxA.svd"/>
+        <memory     id="IROM1"                      start="0x08000000"  size="0x8000"     startup="1"   default="1"/>
+        <memory     id="IRAM1"                      start="0x20000000"  size="0x4000"     init   ="0"   default="1"/>
+        <algorithm  name="Flash\STM32L1xx_128.FLM"  start="0x08000000"  size="0x8000"                   default="1"/>
+        <algorithm  name="Flash\STM32L1xx_128_EEPROM.FLM" start="0x08080000" size="0x1000"              default="0"/>
+        <algorithm  name="Flash\STM32L1xx_128_OPT.FLM" start="0x1FF80000" size="0x0010"                 default="0"/>
+        <feature type="ADC"           n="14"      m="12"/>
+        <feature type="IOs"           n="37"/>
+        <feature type="LCD"           n="1"       m="4.18"/>
+      </device>
+      
+      <!-- *************************  Device 'STM32L151C8xxA'  ***************************** -->
+      <device Dname="STM32L151C8xxA">
+        <processor Dfpu="0" Dmpu="1" Dendian="Little-endian" Dclock="32000000"/>
+        <compile header="Device\Include\STM32L1xx.h"  define="STM32L1XX_MD"/>
+        <debug      svd="SVD\STM32L15xxxA.svd"/>
+        <memory     id="IROM1"                      start="0x08000000"  size="0x10000"    startup="1"   default="1"/>
+        <memory     id="IRAM1"                      start="0x20000000"  size="0x8000"     init   ="0"   default="1"/>
+        <algorithm  name="Flash\STM32L1xx_128.FLM"  start="0x08000000"  size="0x10000"                  default="1"/>
+        <algorithm  name="Flash\STM32L1xx_128_EEPROM.FLM" start="0x08080000" size="0x1000"              default="0"/>
+        <algorithm  name="Flash\STM32L1xx_128_OPT.FLM" start="0x1FF80000" size="0x0010"                 default="0"/>
+        <feature type="ADC"           n="14"      m="12"/>
+        <feature type="IOs"           n="37"/>
+        <feature type="LCD"           n="1"       m="4.18"/>
+      </device>
+      
+      <!-- *************************  Device 'STM32L151CBxxA'  ***************************** -->
+      <device Dname="STM32L151CBxxA">
+        <processor Dfpu="0" Dmpu="1" Dendian="Little-endian" Dclock="32000000"/>
+        <compile header="Device\Include\STM32L1xx.h"  define="STM32L1XX_MD"/>
+        <debug      svd="SVD\STM32L15xxxA.svd"/>
+        <memory     id="IROM1"                      start="0x08000000"  size="0x20000"    startup="1"   default="1"/>
+        <memory     id="IRAM1"                      start="0x20000000"  size="0x8000"     init   ="0"   default="1"/>
+        <algorithm  name="Flash\STM32L1xx_128.FLM"  start="0x08000000"  size="0x20000"                  default="1"/>
+        <algorithm  name="Flash\STM32L1xx_128_EEPROM.FLM" start="0x08080000" size="0x1000"              default="0"/>
+        <algorithm  name="Flash\STM32L1xx_128_OPT.FLM" start="0x1FF80000" size="0x0010"                 default="0"/>
+        <feature type="ADC"           n="14"      m="12"/>
+        <feature type="IOs"           n="37"/>
+        <feature type="LCD"           n="1"       m="4.18"/>
+      </device>
+      
+      <!-- *************************  Device 'STM32L151R6xxA'  ***************************** -->
+      <device Dname="STM32L151R6xxA">
+        <processor Dfpu="0" Dmpu="1" Dendian="Little-endian" Dclock="32000000"/>
+        <compile header="Device\Include\STM32L1xx.h"  define="STM32L1XX_MD"/>
+        <debug      svd="SVD\STM32L15xxxA.svd"/>
+        <memory     id="IROM1"                      start="0x08000000"  size="0x8000"     startup="1"   default="1"/>
+        <memory     id="IRAM1"                      start="0x20000000"  size="0x4000"     init   ="0"   default="1"/>
+        <algorithm  name="Flash\STM32L1xx_128.FLM"  start="0x08000000"  size="0x8000"                   default="1"/>
+        <algorithm  name="Flash\STM32L1xx_128_EEPROM.FLM" start="0x08080000" size="0x1000"              default="0"/>
+        <algorithm  name="Flash\STM32L1xx_128_OPT.FLM" start="0x1FF80000" size="0x0010"                 default="0"/>
+        <feature type="ADC"           n="20"      m="12"/>
+        <feature type="IOs"           n="51"/>
+        <feature type="LCD"           n="1"       m="4.32"/>
+        <feature type="LCD"           n="1"       m="8.28"/>
+      </device>
+      
+      <!-- *************************  Device 'STM32L151R8xxA'  ***************************** -->
+      <device Dname="STM32L151R8xxA">
+        <processor Dfpu="0" Dmpu="1" Dendian="Little-endian" Dclock="32000000"/>
+        <compile header="Device\Include\STM32L1xx.h"  define="STM32L1XX_MD"/>
+        <debug      svd="SVD\STM32L15xxxA.svd"/>
+        <memory     id="IROM1"                      start="0x08000000"  size="0x10000"    startup="1"   default="1"/>
+        <memory     id="IRAM1"                      start="0x20000000"  size="0x8000"     init   ="0"   default="1"/>
+        <algorithm  name="Flash\STM32L1xx_128.FLM"  start="0x08000000"  size="0x10000"                  default="1"/>
+        <algorithm  name="Flash\STM32L1xx_128_EEPROM.FLM" start="0x08080000" size="0x1000"              default="0"/>
+        <algorithm  name="Flash\STM32L1xx_128_OPT.FLM" start="0x1FF80000" size="0x0010"                 default="0"/>
+        <feature type="ADC"           n="20"      m="12"/>
+        <feature type="IOs"           n="51"/>
+        <feature type="LCD"           n="1"       m="4.32"/>
+        <feature type="LCD"           n="1"       m="8.28"/>
+      </device>
+      
+      <!-- *************************  Device 'STM32L151RBxxA'  ***************************** -->
+      <device Dname="STM32L151RBxxA">
+        <processor Dfpu="0" Dmpu="1" Dendian="Little-endian" Dclock="32000000"/>
+        <compile header="Device\Include\STM32L1xx.h"  define="STM32L1XX_MD"/>
+        <debug      svd="SVD\STM32L15xxxA.svd"/>
+        <memory     id="IROM1"                      start="0x08000000"  size="0x20000"    startup="1"   default="1"/>
+        <memory     id="IRAM1"                      start="0x20000000"  size="0x8000"     init   ="0"   default="1"/>
+        <algorithm  name="Flash\STM32L1xx_128.FLM"  start="0x08000000"  size="0x20000"                  default="1"/>
+        <algorithm  name="Flash\STM32L1xx_128_EEPROM.FLM" start="0x08080000" size="0x1000"              default="0"/>
+        <algorithm  name="Flash\STM32L1xx_128_OPT.FLM" start="0x1FF80000" size="0x0010"                 default="0"/>
+        <feature type="ADC"           n="20"      m="12"/>
+        <feature type="IOs"           n="51"/>
+        <feature type="LCD"           n="1"       m="4.32"/>
+        <feature type="LCD"           n="1"       m="8.28"/>
+      </device>
+      
+      <!-- *************************  Device 'STM32L151V8xxA'  ***************************** -->
+      <device Dname="STM32L151V8xxA">
+        <processor Dfpu="0" Dmpu="1" Dendian="Little-endian" Dclock="32000000"/>
+        <compile header="Device\Include\STM32L1xx.h"  define="STM32L1XX_MD"/>
+        <debug      svd="SVD\STM32L15xxxA.svd"/>
+        <memory     id="IROM1"                      start="0x08000000"  size="0x10000"    startup="1"   default="1"/>
+        <memory     id="IRAM1"                      start="0x20000000"  size="0x8000"     init   ="0"   default="1"/>
+        <algorithm  name="Flash\STM32L1xx_128.FLM"  start="0x08000000"  size="0x10000"                  default="1"/>
+        <algorithm  name="Flash\STM32L1xx_128_EEPROM.FLM" start="0x08080000" size="0x1000"              default="0"/>
+        <algorithm  name="Flash\STM32L1xx_128_OPT.FLM" start="0x1FF80000" size="0x0010"                 default="0"/>
+        <feature type="ADC"           n="24"      m="12"/>
+        <feature type="IOs"           n="83"/>
+        <feature type="LCD"           n="1"       m="4.44"/>
+        <feature type="LCD"           n="1"       m="8.40"/>
+      </device>
+      
+      <!-- *************************  Device 'STM32L151VBxxA'  ***************************** -->
+      <device Dname="STM32L151VBxxA">
+        <processor Dfpu="0" Dmpu="1" Dendian="Little-endian" Dclock="32000000"/>
+        <compile header="Device\Include\STM32L1xx.h"  define="STM32L1XX_MD"/>
+        <debug      svd="SVD\STM32L15xxxA.svd"/>
+        <memory     id="IROM1"                      start="0x08000000"  size="0x20000"    startup="1"   default="1"/>
+        <memory     id="IRAM1"                      start="0x20000000"  size="0x8000"     init   ="0"   default="1"/>
+        <algorithm  name="Flash\STM32L1xx_128.FLM"  start="0x08000000"  size="0x20000"                  default="1"/>
+        <algorithm  name="Flash\STM32L1xx_128_EEPROM.FLM" start="0x08080000" size="0x1000"              default="0"/>
+        <algorithm  name="Flash\STM32L1xx_128_OPT.FLM" start="0x1FF80000" size="0x0010"                 default="0"/>
+        <feature type="ADC"           n="24"      m="12"/>
+        <feature type="IOs"           n="83"/>
+        <feature type="LCD"           n="1"       m="4.44"/>
+        <feature type="LCD"           n="1"       m="8.40"/>
+      </device>
+      </subFamily>
+
+      <!-- ************************  Subfamily 'STM32L152xxA'  **************************** -->
+      <subFamily DsubFamily="STM32L152xxA">
+        <feature type="Timer"         n="6"       m="16"/>
+        <feature type="Timer"         n="2"       m="32"/>
+        <feature type="SPI"           n="2"       m="16000000"/>
+        <feature type="USART"         n="3"       m="4000000"/>
+        <feature type="VCC"           n="1.65"    m="3.60"/>
+      
+      <!-- *************************  Device 'STM32L152C6xxA'  ***************************** -->
+      <device Dname="STM32L152C6xxA">
+        <processor Dfpu="0" Dmpu="1" Dendian="Little-endian" Dclock="32000000"/>
+        <compile header="Device\Include\STM32L1xx.h"  define="STM32L1XX_MD"/>
+        <debug      svd="SVD\STM32L15xxxA.svd"/>
+        <memory     id="IROM1"                      start="0x08000000"  size="0x8000"     startup="1"   default="1"/>
+        <memory     id="IRAM1"                      start="0x20000000"  size="0x4000"     init   ="0"   default="1"/>
+        <algorithm  name="Flash\STM32L1xx_128.FLM"  start="0x08000000"  size="0x8000"                   default="1"/>
+        <algorithm  name="Flash\STM32L1xx_128_EEPROM.FLM" start="0x08080000" size="0x1000"              default="0"/>
+        <algorithm  name="Flash\STM32L1xx_128_OPT.FLM" start="0x1FF80000" size="0x0010"                 default="0"/>
+        <feature type="ADC"           n="14"      m="12"/>
+        <feature type="IOs"           n="37"/>
+        <feature type="LCD"           n="1"       m="4.18"/>
+        <feature type="QFP"           n="48"/>
+      </device>
+      
+      <!-- *************************  Device 'STM32L152C8xxA'  ***************************** -->
+      <device Dname="STM32L152C8xxA">
+        <processor Dfpu="0" Dmpu="1" Dendian="Little-endian" Dclock="32000000"/>
+        <compile header="Device\Include\STM32L1xx.h"  define="STM32L1XX_MD"/>
+        <debug      svd="SVD\STM32L15xxxA.svd"/>
+        <memory     id="IROM1"                      start="0x08000000"  size="0x10000"    startup="1"   default="1"/>
+        <memory     id="IRAM1"                      start="0x20000000"  size="0x8000"     init   ="0"   default="1"/>
+        <algorithm  name="Flash\STM32L1xx_128.FLM"  start="0x08000000"  size="0x10000"                  default="1"/>
+        <algorithm  name="Flash\STM32L1xx_128_EEPROM.FLM" start="0x08080000" size="0x1000"              default="0"/>
+        <algorithm  name="Flash\STM32L1xx_128_OPT.FLM" start="0x1FF80000" size="0x0010"                 default="0"/>
+        <feature type="ADC"           n="14"      m="12"/>
+        <feature type="IOs"           n="37"/>
+        <feature type="LCD"           n="1"       m="4.18"/>
+        <feature type="QFP"           n="48"/>
+      </device>
+      
+      <!-- *************************  Device 'STM32L152CBxxA'  ***************************** -->
+      <device Dname="STM32L152CBxxA">
+        <processor Dfpu="0" Dmpu="1" Dendian="Little-endian" Dclock="32000000"/>
+        <compile header="Device\Include\STM32L1xx.h"  define="STM32L1XX_MD"/>
+        <debug      svd="SVD\STM32L15xxxA.svd"/>
+        <memory     id="IROM1"                      start="0x08000000"  size="0x20000"    startup="1"   default="1"/>
+        <memory     id="IRAM1"                      start="0x20000000"  size="0x8000"     init   ="0"   default="1"/>
+        <algorithm  name="Flash\STM32L1xx_128.FLM"  start="0x08000000"  size="0x20000"                  default="1"/>
+        <algorithm  name="Flash\STM32L1xx_128_EEPROM.FLM" start="0x08080000" size="0x1000"              default="0"/>
+        <algorithm  name="Flash\STM32L1xx_128_OPT.FLM" start="0x1FF80000" size="0x0010"                 default="0"/>
+        <feature type="ADC"           n="14"      m="12"/>
+        <feature type="IOs"           n="37"/>
+        <feature type="LCD"           n="1"       m="4.18"/>
+        <feature type="QFP"           n="48"/>
+      </device>
+      
+      <!-- *************************  Device 'STM32L152R6xxA'  ***************************** -->
+      <device Dname="STM32L152R6xxA">
+        <processor Dfpu="0" Dmpu="1" Dendian="Little-endian" Dclock="32000000"/>
+        <compile header="Device\Include\STM32L1xx.h"  define="STM32L1XX_MD"/>
+        <debug      svd="SVD\STM32L15xxxA.svd"/>
+        <memory     id="IROM1"                      start="0x08000000"  size="0x8000"     startup="1"   default="1"/>
+        <memory     id="IRAM1"                      start="0x20000000"  size="0x4000"     init   ="0"   default="1"/>
+        <algorithm  name="Flash\STM32L1xx_128.FLM"  start="0x08000000"  size="0x8000"                   default="1"/>
+        <algorithm  name="Flash\STM32L1xx_128_EEPROM.FLM" start="0x08080000" size="0x1000"              default="0"/>
+        <algorithm  name="Flash\STM32L1xx_128_OPT.FLM" start="0x1FF80000" size="0x0010"                 default="0"/>
+        <feature type="ADC"           n="20"      m="12"/>
+        <feature type="IOs"           n="51"/>
+        <feature type="LCD"           n="1"       m="4.32"/>
+        <feature type="LCD"           n="1"       m="8.28"/>
+        <feature type="QFP"           n="64"/>
+        <feature type="BGA"           n="64"/>
+      </device>
+      
+      <!-- *************************  Device 'STM32L152R8xxA'  ***************************** -->
+      <device Dname="STM32L152R8xxA">
+        <processor Dfpu="0" Dmpu="1" Dendian="Little-endian" Dclock="32000000"/>
+        <compile header="Device\Include\STM32L1xx.h"  define="STM32L1XX_MD"/>
+        <debug      svd="SVD\STM32L15xxxA.svd"/>
+        <memory     id="IROM1"                      start="0x08000000"  size="0x10000"    startup="1"   default="1"/>
+        <memory     id="IRAM1"                      start="0x20000000"  size="0x8000"     init   ="0"   default="1"/>
+        <algorithm  name="Flash\STM32L1xx_128.FLM"  start="0x08000000"  size="0x10000"                  default="1"/>
+        <algorithm  name="Flash\STM32L1xx_128_EEPROM.FLM" start="0x08080000" size="0x1000"              default="0"/>
+        <algorithm  name="Flash\STM32L1xx_128_OPT.FLM" start="0x1FF80000" size="0x0010"                 default="0"/>
+        <feature type="ADC"           n="20"      m="12"/>
+        <feature type="IOs"           n="51"/>
+        <feature type="LCD"           n="1"       m="4.32"/>
+        <feature type="LCD"           n="1"       m="8.28"/>
+        <feature type="QFP"           n="64"/>
+        <feature type="BGA"           n="64"/>
+      </device>
+      
+      <!-- *************************  Device 'STM32L152RBxxA'  ***************************** -->
+      <device Dname="STM32L152RBxxA">
+        <processor Dfpu="0" Dmpu="1" Dendian="Little-endian" Dclock="32000000"/>
+        <compile header="Device\Include\STM32L1xx.h"  define="STM32L1XX_MD"/>
+        <debug      svd="SVD\STM32L15xxxA.svd"/>
+        <memory     id="IROM1"                      start="0x08000000"  size="0x20000"    startup="1"   default="1"/>
+        <memory     id="IRAM1"                      start="0x20000000"  size="0x8000"     init   ="0"   default="1"/>
+        <algorithm  name="Flash\STM32L1xx_128.FLM"  start="0x08000000"  size="0x20000"                  default="1"/>
+        <algorithm  name="Flash\STM32L1xx_128_EEPROM.FLM" start="0x08080000" size="0x1000"              default="0"/>
+        <algorithm  name="Flash\STM32L1xx_128_OPT.FLM" start="0x1FF80000" size="0x0010"                 default="0"/>
+        <feature type="ADC"           n="20"      m="12"/>
+        <feature type="IOs"           n="51"/>
+        <feature type="LCD"           n="1"       m="4.32"/>
+        <feature type="LCD"           n="1"       m="8.28"/>
+        <feature type="QFP"           n="64"/>
+        <feature type="BGA"           n="64"/>
+      </device>
+      
+      <!-- *************************  Device 'STM32L152V8xxA'  ***************************** -->
+      <device Dname="STM32L152V8xxA">
+        <processor Dfpu="0" Dmpu="1" Dendian="Little-endian" Dclock="32000000"/>
+        <compile header="Device\Include\STM32L1xx.h"  define="STM32L1XX_MD"/>
+        <debug      svd="SVD\STM32L15xxxA.svd"/>
+        <memory     id="IROM1"                      start="0x08000000"  size="0x10000"    startup="1"   default="1"/>
+        <memory     id="IRAM1"                      start="0x20000000"  size="0x8000"     init   ="0"   default="1"/>
+        <algorithm  name="Flash\STM32L1xx_128.FLM"  start="0x08000000"  size="0x10000"                  default="1"/>
+        <algorithm  name="Flash\STM32L1xx_128_EEPROM.FLM" start="0x08080000" size="0x1000"              default="0"/>
+        <algorithm  name="Flash\STM32L1xx_128_OPT.FLM" start="0x1FF80000" size="0x0010"                 default="0"/>
+        <feature type="ADC"           n="24"      m="12"/>
+        <feature type="IOs"           n="83"/>
+        <feature type="LCD"           n="1"       m="4.44"/>
+        <feature type="LCD"           n="1"       m="8.40"/>
+        <feature type="QFP"           n="100"/>
+        <feature type="BGA"           n="100"/>
+      </device>
+      
+      <!-- *************************  Device 'STM32L152VBxxA'  ***************************** -->
+      <device Dname="STM32L152VBxxA">
+        <processor Dfpu="0" Dmpu="1" Dendian="Little-endian" Dclock="32000000"/>
+        <compile header="Device\Include\STM32L1xx.h"  define="STM32L1XX_MD"/>
+        <debug      svd="SVD\STM32L15xxxA.svd"/>
+        <memory     id="IROM1"                      start="0x08000000"  size="0x20000"    startup="1"   default="1"/>
+        <memory     id="IRAM1"                      start="0x20000000"  size="0x8000"     init   ="0"   default="1"/>
+        <algorithm  name="Flash\STM32L1xx_128.FLM"  start="0x08000000"  size="0x20000"                  default="1"/>
+        <algorithm  name="Flash\STM32L1xx_128_EEPROM.FLM" start="0x08080000" size="0x1000"              default="0"/>
+        <algorithm  name="Flash\STM32L1xx_128_OPT.FLM" start="0x1FF80000" size="0x0010"                 default="0"/>
+        <feature type="ADC"           n="24"      m="12"/>
+        <feature type="IOs"           n="83"/>
+        <feature type="LCD"           n="1"       m="4.44"/>
+        <feature type="LCD"           n="1"       m="8.40"/>
+        <feature type="QFP"           n="100"/>
+        <feature type="BGA"           n="100"/>
+      </device>
+      </subFamily>
+
+    </family>
+  </devices>
+
+  <conditions>
+    <!-- conditions are dependecy rules that can apply to a component or an individual file -->
+    <condition id="Compiler ARM">
+      <!-- conditions selecting ARM Compiler -->
+      <require Tcompiler="ARMCC"/>
+    </condition>
+
+    <condition id="STM32L1">
+      <description>STMicroelectronics STM32L1 Series devices</description>
+      <require Dvendor="STMicroelectronics:13" Dname="STM32L1*"/>
+    </condition>
+
+    <condition id="STM32L1_XL">
+      <description>STMicroelectronics STM32L1 Series devices</description>
+      <accept  Dvendor="STMicroelectronics:13" Dname="STM32L151QE"/>
+      <accept  Dvendor="STMicroelectronics:13" Dname="STM32L151RE"/>
+      <accept  Dvendor="STMicroelectronics:13" Dname="STM32L151VE"/>
+      <accept  Dvendor="STMicroelectronics:13" Dname="STM32L151ZE"/>
+      <accept  Dvendor="STMicroelectronics:13" Dname="STM32L152QE"/>
+      <accept  Dvendor="STMicroelectronics:13" Dname="STM32L152RE"/>
+      <accept  Dvendor="STMicroelectronics:13" Dname="STM32L152VE"/>
+      <accept  Dvendor="STMicroelectronics:13" Dname="STM32L152ZE"/>
+    </condition>
+    
+    <condition id="STM32L1_HD">
+      <description>STMicroelectronics STM32L1 Series devices</description>
+      <accept  Dvendor="STMicroelectronics:13" Dname="STM32L151QD"/>
+      <accept  Dvendor="STMicroelectronics:13" Dname="STM32L151RD"/>
+      <accept  Dvendor="STMicroelectronics:13" Dname="STM32L151VD"/>
+      <accept  Dvendor="STMicroelectronics:13" Dname="STM32L151ZD"/>
+      <accept  Dvendor="STMicroelectronics:13" Dname="STM32L152QD"/>
+      <accept  Dvendor="STMicroelectronics:13" Dname="STM32L152RD"/>
+      <accept  Dvendor="STMicroelectronics:13" Dname="STM32L152VD"/>
+      <accept  Dvendor="STMicroelectronics:13" Dname="STM32L152ZD"/>
+      <accept  Dvendor="STMicroelectronics:13" Dname="STM32L162QD"/>
+      <accept  Dvendor="STMicroelectronics:13" Dname="STM32L162RD"/>
+      <accept  Dvendor="STMicroelectronics:13" Dname="STM32L162VD"/>
+      <accept  Dvendor="STMicroelectronics:13" Dname="STM32L162ZD"/>
+    </condition>
+
+    <condition id="STM32L1_MD">
+      <description>STMicroelectronics STM32L1 Series devices</description>
+      <accept  Dvendor="STMicroelectronics:13" Dname="STM32L100C6"/>
+      <accept  Dvendor="STMicroelectronics:13" Dname="STM32L100R8"/>
+      <accept  Dvendor="STMicroelectronics:13" Dname="STM32L100RB"/>
+      <accept  Dvendor="STMicroelectronics:13" Dname="STM32L151C6"/>
+      <accept  Dvendor="STMicroelectronics:13" Dname="STM32L151C8"/>
+      <accept  Dvendor="STMicroelectronics:13" Dname="STM32L151CB"/>
+      <accept  Dvendor="STMicroelectronics:13" Dname="STM32L151R6"/>
+      <accept  Dvendor="STMicroelectronics:13" Dname="STM32L151R8"/>
+      <accept  Dvendor="STMicroelectronics:13" Dname="STM32L151RB"/>
+      <accept  Dvendor="STMicroelectronics:13" Dname="STM32L151V8"/>
+      <accept  Dvendor="STMicroelectronics:13" Dname="STM32L151VB"/>
+      <accept  Dvendor="STMicroelectronics:13" Dname="STM32L152C6"/>
+      <accept  Dvendor="STMicroelectronics:13" Dname="STM32L152C8"/>
+      <accept  Dvendor="STMicroelectronics:13" Dname="STM32L152CB"/>
+      <accept  Dvendor="STMicroelectronics:13" Dname="STM32L152R6"/>
+      <accept  Dvendor="STMicroelectronics:13" Dname="STM32L152R8"/>
+      <accept  Dvendor="STMicroelectronics:13" Dname="STM32L152RB"/>
+      <accept  Dvendor="STMicroelectronics:13" Dname="STM32L152V8"/>
+      <accept  Dvendor="STMicroelectronics:13" Dname="STM32L152VB"/>
+      <accept  Dvendor="STMicroelectronics:13" Dname="STM32L15???xxA"/>
+    </condition>
+    <condition id="STM32L1_MDP">
+      <description>STMicroelectronics STM32L1 Series devices</description>
+      <accept  Dvendor="STMicroelectronics:13" Dname="STM32L100RC"/>
+      <accept  Dvendor="STMicroelectronics:13" Dname="STM32L151QC"/>
+      <accept  Dvendor="STMicroelectronics:13" Dname="STM32L151RC"/>
+      <accept  Dvendor="STMicroelectronics:13" Dname="STM32L151VC"/>
+      <accept  Dvendor="STMicroelectronics:13" Dname="STM32L151ZC"/>
+      <accept  Dvendor="STMicroelectronics:13" Dname="STM32L152QC"/>
+      <accept  Dvendor="STMicroelectronics:13" Dname="STM32L152RC"/>
+      <accept  Dvendor="STMicroelectronics:13" Dname="STM32L152VC"/>
+      <accept  Dvendor="STMicroelectronics:13" Dname="STM32L152ZC"/>
+      <accept  Dvendor="STMicroelectronics:13" Dname="STM32L151CC"/>
+      <accept  Dvendor="STMicroelectronics:13" Dname="STM32L151UC"/>
+      <accept  Dvendor="STMicroelectronics:13" Dname="STM32L152CC"/>
+      <accept  Dvendor="STMicroelectronics:13" Dname="STM32L162RC"/>
+      <accept  Dvendor="STMicroelectronics:13" Dname="STM32L162VC"/>
+    </condition>
+
+    <condition id="STM32L1_MD_MDP">
+      <description>STMicroelectronics STM32L1 Series devices</description>
+      <accept condition="STM32L1_MD"/>
+      <accept condition="STM32L1_MDP"/>
+    </condition>
+
+    <condition id="STM32L1 CMSIS Device">
+      <!-- conditions selecting Devices -->
+      <description>STMicroelectronics STM32L1 Series devices and CMSIS-CORE</description>
+      <require Cclass="CMSIS" Cgroup="CORE"/>
+      <require Dvendor="STMicroelectronics:13" Dname="STM32L1*"/>
+    </condition>
+
+  </conditions>
+
+  <examples>
+    <example name="Blinky" doc="Abstract.txt" folder="Boards\ST\STM32L-Discovery\Blinky">
+      <description>Blinky example</description>
+      <board name="STM32L-Discovery" vendor="STMicroelectronics"/>
+      <project>
+        <environment name="uv" load="Blinky.uvprojx"/>
+      </project>
+      <attributes>
+        <component Cclass="CMSIS" Cgroup="CORE"/>
+        <component Cclass="Device" Cgroup="Startup"/>
+        <category>Getting Started</category>
+      </attributes>
+    </example>
+    <example name="CMSIS-RTOS Blinky" doc="Abstract.txt" folder="Boards\ST\STM32L-Discovery\RTX_Blinky">
+      <description>CMSIS-RTOS based Blinky example</description>
+      <board name="STM32L-Discovery" vendor="STMicroelectronics"/>
+      <project>
+        <environment name="uv" load="Blinky.uvprojx"/>
+      </project>
+      <attributes>
+        <component Cclass="CMSIS" Cgroup="CORE"/>
+        <component Cclass="Device" Cgroup="Startup"/>
+        <component Cclass="CMSIS" Cgroup="RTOS"/>
+        <category>Getting Started</category>
+        <category>CMSIS-RTX</category>
+      </attributes>
+    </example>
+
+  </examples>
+
+  <components>
+    <component Cclass="Device" Cgroup="Startup" Cversion="1.0.0" condition="STM32L1 CMSIS Device">
+      <!-- Cversion is necessary -->
+      <description>System Startup for STMicroelectronics STM32L1 Series</description>
+
+      <files>
+        <!--  include folder -->
+        <file category="include" name="Device\Include\"/>
+
+        <!-- Flash Option Bytes templates -->
+        <file category="source" name="Device\Source\ARM\STM32L1xx_MD_OPT.s"       attr="template"  select="Flash Option Bytes Template"   condition="STM32L1_MD"/>
+        <file category="source" name="Device\Source\ARM\STM32L1xx_MD+_OPT.s"      attr="template"  select="Flash Option Bytes Template"   condition="STM32L1_MDP"/>
+        <file category="source" name="Device\Source\ARM\STM32L1xx_HD_OPT.s"       attr="template"  select="Flash Option Bytes Template"   condition="STM32L1_HD"/>
+        <file category="source" name="Device\Source\ARM\STM32L1xx_XL_OPT.s"       attr="template"  select="Flash Option Bytes Template"   condition="STM32L1_XL"/>
+
+        <!-- header files -->
+        <file category="header" name="Device\Include\stm32l1xx.h"                                                                         condition="STM32L1" />
+
+        <!-- startup files -->
+        <file category="source" name="Device\Source\ARM\startup_stm32l1xx_xl.s"   attr="config"                                           condition="STM32L1_XL"  />
+        <file category="source" name="Device\Source\ARM\startup_stm32l1xx_hd.s"   attr="config"                                           condition="STM32L1_HD"  />
+        <file category="source" name="Device\Source\ARM\startup_stm32l1xx_md.s"   attr="config"                                           condition="STM32L1_MD"  />
+        <file category="source" name="Device\Source\ARM\startup_stm32l1xx_mdp.s"  attr="config"                                           condition="STM32L1_MDP" />
+
+        <!-- system file -->
+        <file category="source" name="Device\Source\system_stm32l1xx.c"           attr="config"                                           condition="STM32L1"/>
+        
+      </files>
+    </component>
+    
+  </components>
+</package>

@@ -1,0 +1,1059 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<root version="1.1">
+  <node type="boards" name="Boards">
+    <node type="vendor" name="STMicroelectronics">
+      <node type="board" name="STM32F030-Discovery">
+        <property name="board.revision">Rev.B</property>
+        <property name="vendor.name">STMicroelectronics</property>
+        <property name="pack.vendor">Keil</property>
+        <property name="pack.name">STM32F0xx_DFP</property>
+        <property name="pack.version">1.5.0</property>
+        <property name="clock">8000000</property>
+        <node type="book" name="STM32F030-Discovery Web Page">
+          <property name="url">http://www.st.com/web/catalog/tools/FM116/SC959/SS1532/LN1848/PF259100</property>
+          <property name="category">overview</property>
+        </node>
+        <node type="book" name="Quick Start Guide">
+          <property name="file">Boards/ST/STM32F030-Discovery/Documents/32F030DISCOVERY_QSG.pdf</property>
+          <property name="category">setup</property>
+        </node>
+        <node type="book" name="Data Brief">
+          <property name="file">Boards/ST/STM32F030-Discovery/Documents/DM00092305.pdf</property>
+          <property name="category">other</property>
+        </node>
+        <node type="book" name="Schematics">
+          <property name="file">Boards/ST/STM32F030-Discovery/Documents/MB1134.pdf</property>
+          <property name="category">schematic</property>
+        </node>
+        <node type="device" name="STM32F030R8">
+          <property name="vendor.name">STMicroelectronics</property>
+          <property name="vendor.id">13</property>
+        </node>
+      </node>
+      <node type="board" name="STM32F051-Discovery">
+        <property name="board.revision">Rev.B</property>
+        <property name="vendor.name">STMicroelectronics</property>
+        <property name="pack.vendor">Keil</property>
+        <property name="pack.name">STM32F0xx_DFP</property>
+        <property name="pack.version">1.5.0</property>
+        <property name="clock">8000000</property>
+        <node type="book" name="STM32F051-Discovery Web Page">
+          <property name="url">http://www.st.com/web/catalog/tools/FM116/SC959/SS1532/LN1848/PF253215</property>
+          <property name="category">overview</property>
+        </node>
+        <node type="book" name="Data Brief">
+          <property name="file">Boards/ST/STM32F051-Discovery/Documents/DM00050631.pdf</property>
+          <property name="category">other</property>
+        </node>
+        <node type="book" name="Schematics">
+          <property name="file">Boards/ST/STM32F051-Discovery/Documents/MB1034.pdf</property>
+          <property name="category">schematic</property>
+        </node>
+        <node type="device" name="STM32F051R8">
+          <property name="vendor.name">STMicroelectronics</property>
+          <property name="vendor.id">13</property>
+        </node>
+      </node>
+      <node type="board" name="STM32F072-Discovery">
+        <property name="board.revision">Rev.B</property>
+        <property name="vendor.name">STMicroelectronics</property>
+        <property name="pack.vendor">Keil</property>
+        <property name="pack.name">STM32F0xx_DFP</property>
+        <property name="pack.version">1.5.0</property>
+        <property name="clock">8000000</property>
+        <node type="book" name="STM32F072-Discovery Web Page">
+          <property name="url">http://www.st.com/web/catalog/tools/FM116/SC959/SS1532/LN1848/PF259724</property>
+          <property name="category">overview</property>
+        </node>
+        <node type="book" name="Data Brief">
+          <property name="file">Boards/ST/STM32F072-Discovery/Documents/DM00099403.pdf</property>
+          <property name="category">other</property>
+        </node>
+        <node type="book" name="Schematics">
+          <property name="file">Boards/ST/STM32F072-Discovery/Documents/MB1076.pdf</property>
+          <property name="category">schematic</property>
+        </node>
+        <node type="device" name="STM32F072RB">
+          <property name="vendor.name">STMicroelectronics</property>
+          <property name="vendor.id">13</property>
+        </node>
+      </node>
+    </node>
+  </node>
+  <node type="devices" name="Devices">
+    <node type="vendor" name="STMicroelectronics">
+      <property name="vendor.id">13</property>
+      <node type="family" name="STM32F0 Series">
+        <property name="vendor.name">STMicroelectronics</property>
+        <property name="vendor.id">13</property>
+        <property name="pack.vendor">Keil</property>
+        <property name="pack.name">STM32F0xx_DFP</property>
+        <property name="pack.version">1.5.0</property>
+        <property name="core">Cortex-M0</property>
+        <property name="core.version">r0p0</property>
+        <property name="fpu">0</property>
+        <property name="mpu">0</property>
+        <property name="endian">Little-endian</property>
+        <node type="book" name="Cortex-M0 Generic User Guide">
+          <property name="file">Documents/dui0497a_cortex_m0_r0p0_generic_ug.pdf</property>
+        </node>
+        <node type="subfamily" name="STM32F030">
+          <property name="clock">48000000</property>
+          <property name="svd.file">SVD/STM32F0x0.svd</property>
+          <node type="book" name="STM32F030 Series Reference Manual">
+            <property name="file">Documents/DM00091010.pdf</property>
+          </node>
+          <node type="book" name="STM32F030 Data Sheet">
+            <property name="file">Documents/DM00088500.pdf</property>
+          </node>
+          <node type="device" name="STM32F030C6">
+            <property name="define">STM32F030x6</property>
+            <node type="memory" name="IROM1">
+              <property name="start">0x08000000</property>
+              <property name="size">0x8000</property>
+              <property name="startup">1</property>
+            </node>
+            <node type="memory" name="IRAM1">
+              <property name="start">0x20000000</property>
+              <property name="size">0x1000</property>
+            </node>
+          </node>
+          <node type="device" name="STM32F030C8">
+            <property name="define">STM32F030x8</property>
+            <node type="memory" name="IROM1">
+              <property name="start">0x08000000</property>
+              <property name="size">0x10000</property>
+              <property name="startup">1</property>
+            </node>
+            <node type="memory" name="IRAM1">
+              <property name="start">0x20000000</property>
+              <property name="size">0x2000</property>
+            </node>
+          </node>
+          <node type="device" name="STM32F030CC">
+            <property name="define">STM32F030xC</property>
+            <node type="memory" name="IROM1">
+              <property name="start">0x08000000</property>
+              <property name="size">0x40000</property>
+              <property name="startup">1</property>
+            </node>
+            <node type="memory" name="IRAM1">
+              <property name="start">0x20000000</property>
+              <property name="size">0x8000</property>
+            </node>
+          </node>
+          <node type="device" name="STM32F030F4">
+            <property name="define">STM32F030x6</property>
+            <node type="memory" name="IROM1">
+              <property name="start">0x08000000</property>
+              <property name="size">0x4000</property>
+              <property name="startup">1</property>
+            </node>
+            <node type="memory" name="IRAM1">
+              <property name="start">0x20000000</property>
+              <property name="size">0x1000</property>
+            </node>
+          </node>
+          <node type="device" name="STM32F030K6">
+            <property name="define">STM32F030x6</property>
+            <node type="memory" name="IROM1">
+              <property name="start">0x08000000</property>
+              <property name="size">0x8000</property>
+              <property name="startup">1</property>
+            </node>
+            <node type="memory" name="IRAM1">
+              <property name="start">0x20000000</property>
+              <property name="size">0x1000</property>
+            </node>
+          </node>
+          <node type="device" name="STM32F030R8">
+            <property name="define">STM32F030x8</property>
+            <node type="memory" name="IROM1">
+              <property name="start">0x08000000</property>
+              <property name="size">0x10000</property>
+              <property name="startup">1</property>
+            </node>
+            <node type="memory" name="IRAM1">
+              <property name="start">0x20000000</property>
+              <property name="size">0x2000</property>
+            </node>
+          </node>
+          <node type="device" name="STM32F030RC">
+            <property name="define">STM32F030xC</property>
+            <node type="memory" name="IROM1">
+              <property name="start">0x08000000</property>
+              <property name="size">0x40000</property>
+              <property name="startup">1</property>
+            </node>
+            <node type="memory" name="IRAM1">
+              <property name="start">0x20000000</property>
+              <property name="size">0x8000</property>
+            </node>
+          </node>
+        </node>
+        <node type="subfamily" name="STM32F031">
+          <property name="clock">48000000</property>
+          <property name="define">STM32F031x6</property>
+          <property name="svd.file">SVD/STM32F0x1.svd</property>
+          <node type="book" name="STM32F031 Series Reference Manual">
+            <property name="file">Documents/DM00031936.pdf</property>
+          </node>
+          <node type="book" name="STM32F031 Data Sheet">
+            <property name="file">Documents/DM00104043.pdf</property>
+          </node>
+          <node type="device" name="STM32F031C4">
+            <node type="memory" name="IROM1">
+              <property name="start">0x08000000</property>
+              <property name="size">0x4000</property>
+              <property name="startup">1</property>
+            </node>
+            <node type="memory" name="IRAM1">
+              <property name="start">0x20000000</property>
+              <property name="size">0x1000</property>
+            </node>
+          </node>
+          <node type="device" name="STM32F031C6">
+            <node type="memory" name="IROM1">
+              <property name="start">0x08000000</property>
+              <property name="size">0x8000</property>
+              <property name="startup">1</property>
+            </node>
+            <node type="memory" name="IRAM1">
+              <property name="start">0x20000000</property>
+              <property name="size">0x1000</property>
+            </node>
+          </node>
+          <node type="device" name="STM32F031E6">
+            <node type="memory" name="IROM1">
+              <property name="start">0x08000000</property>
+              <property name="size">0x8000</property>
+              <property name="startup">1</property>
+            </node>
+            <node type="memory" name="IRAM1">
+              <property name="start">0x20000000</property>
+              <property name="size">0x1000</property>
+            </node>
+          </node>
+          <node type="device" name="STM32F031F4">
+            <node type="memory" name="IROM1">
+              <property name="start">0x08000000</property>
+              <property name="size">0x4000</property>
+              <property name="startup">1</property>
+            </node>
+            <node type="memory" name="IRAM1">
+              <property name="start">0x20000000</property>
+              <property name="size">0x1000</property>
+            </node>
+          </node>
+          <node type="device" name="STM32F031F6">
+            <node type="memory" name="IROM1">
+              <property name="start">0x08000000</property>
+              <property name="size">0x8000</property>
+              <property name="startup">1</property>
+            </node>
+            <node type="memory" name="IRAM1">
+              <property name="start">0x20000000</property>
+              <property name="size">0x1000</property>
+            </node>
+          </node>
+          <node type="device" name="STM32F031G4">
+            <node type="memory" name="IROM1">
+              <property name="start">0x08000000</property>
+              <property name="size">0x4000</property>
+              <property name="startup">1</property>
+            </node>
+            <node type="memory" name="IRAM1">
+              <property name="start">0x20000000</property>
+              <property name="size">0x1000</property>
+            </node>
+          </node>
+          <node type="device" name="STM32F031G6">
+            <node type="memory" name="IROM1">
+              <property name="start">0x08000000</property>
+              <property name="size">0x8000</property>
+              <property name="startup">1</property>
+            </node>
+            <node type="memory" name="IRAM1">
+              <property name="start">0x20000000</property>
+              <property name="size">0x1000</property>
+            </node>
+          </node>
+          <node type="device" name="STM32F031K4">
+            <node type="memory" name="IROM1">
+              <property name="start">0x08000000</property>
+              <property name="size">0x4000</property>
+              <property name="startup">1</property>
+            </node>
+            <node type="memory" name="IRAM1">
+              <property name="start">0x20000000</property>
+              <property name="size">0x1000</property>
+            </node>
+          </node>
+          <node type="device" name="STM32F031K6">
+            <node type="memory" name="IROM1">
+              <property name="start">0x08000000</property>
+              <property name="size">0x8000</property>
+              <property name="startup">1</property>
+            </node>
+            <node type="memory" name="IRAM1">
+              <property name="start">0x20000000</property>
+              <property name="size">0x1000</property>
+            </node>
+          </node>
+        </node>
+        <node type="subfamily" name="STM32F038">
+          <property name="clock">48000000</property>
+          <property name="define">STM32F038xx</property>
+          <property name="svd.file">SVD/STM32F0x8.svd</property>
+          <node type="book" name="STM32F038 Series Reference Manual">
+            <property name="file">Documents/DM00031936.pdf</property>
+          </node>
+          <node type="book" name="STM32F038 Data Sheet">
+            <property name="file">Documents/DM00110868.pdf</property>
+          </node>
+          <node type="device" name="STM32F038C6">
+            <node type="memory" name="IROM1">
+              <property name="start">0x08000000</property>
+              <property name="size">0x8000</property>
+              <property name="startup">1</property>
+            </node>
+            <node type="memory" name="IRAM1">
+              <property name="start">0x20000000</property>
+              <property name="size">0x1000</property>
+            </node>
+          </node>
+          <node type="device" name="STM32F038E6">
+            <node type="memory" name="IROM1">
+              <property name="start">0x08000000</property>
+              <property name="size">0x8000</property>
+              <property name="startup">1</property>
+            </node>
+            <node type="memory" name="IRAM1">
+              <property name="start">0x20000000</property>
+              <property name="size">0x1000</property>
+            </node>
+          </node>
+          <node type="device" name="STM32F038F6">
+            <node type="memory" name="IROM1">
+              <property name="start">0x08000000</property>
+              <property name="size">0x8000</property>
+              <property name="startup">1</property>
+            </node>
+            <node type="memory" name="IRAM1">
+              <property name="start">0x20000000</property>
+              <property name="size">0x1000</property>
+            </node>
+          </node>
+          <node type="device" name="STM32F038G6">
+            <node type="memory" name="IROM1">
+              <property name="start">0x08000000</property>
+              <property name="size">0x8000</property>
+              <property name="startup">1</property>
+            </node>
+            <node type="memory" name="IRAM1">
+              <property name="start">0x20000000</property>
+              <property name="size">0x1000</property>
+            </node>
+          </node>
+          <node type="device" name="STM32F038K6">
+            <node type="memory" name="IROM1">
+              <property name="start">0x08000000</property>
+              <property name="size">0x8000</property>
+              <property name="startup">1</property>
+            </node>
+            <node type="memory" name="IRAM1">
+              <property name="start">0x20000000</property>
+              <property name="size">0x1000</property>
+            </node>
+          </node>
+        </node>
+        <node type="subfamily" name="STM32F042">
+          <property name="clock">48000000</property>
+          <property name="define">STM32F042x6</property>
+          <property name="svd.file">SVD/STM32F0x2.svd</property>
+          <node type="book" name="STM32F042 Series Reference Manual">
+            <property name="file">Documents/DM00031936.pdf</property>
+          </node>
+          <node type="book" name="STM32F042 Data Sheet">
+            <property name="file">Documents/DM00105814.pdf</property>
+          </node>
+          <node type="device" name="STM32F042C4">
+            <node type="memory" name="IROM1">
+              <property name="start">0x08000000</property>
+              <property name="size">0x4000</property>
+              <property name="startup">1</property>
+            </node>
+            <node type="memory" name="IRAM1">
+              <property name="start">0x20000000</property>
+              <property name="size">0x1800</property>
+            </node>
+          </node>
+          <node type="device" name="STM32F042C6">
+            <node type="memory" name="IROM1">
+              <property name="start">0x08000000</property>
+              <property name="size">0x8000</property>
+              <property name="startup">1</property>
+            </node>
+            <node type="memory" name="IRAM1">
+              <property name="start">0x20000000</property>
+              <property name="size">0x1800</property>
+            </node>
+          </node>
+          <node type="device" name="STM32F042F4">
+            <node type="memory" name="IROM1">
+              <property name="start">0x08000000</property>
+              <property name="size">0x4000</property>
+              <property name="startup">1</property>
+            </node>
+            <node type="memory" name="IRAM1">
+              <property name="start">0x20000000</property>
+              <property name="size">0x1800</property>
+            </node>
+          </node>
+          <node type="device" name="STM32F042F6">
+            <node type="memory" name="IROM1">
+              <property name="start">0x08000000</property>
+              <property name="size">0x8000</property>
+              <property name="startup">1</property>
+            </node>
+            <node type="memory" name="IRAM1">
+              <property name="start">0x20000000</property>
+              <property name="size">0x1800</property>
+            </node>
+          </node>
+          <node type="device" name="STM32F042G4">
+            <node type="memory" name="IROM1">
+              <property name="start">0x08000000</property>
+              <property name="size">0x4000</property>
+              <property name="startup">1</property>
+            </node>
+            <node type="memory" name="IRAM1">
+              <property name="start">0x20000000</property>
+              <property name="size">0x1800</property>
+            </node>
+          </node>
+          <node type="device" name="STM32F042G6">
+            <node type="memory" name="IROM1">
+              <property name="start">0x08000000</property>
+              <property name="size">0x8000</property>
+              <property name="startup">1</property>
+            </node>
+            <node type="memory" name="IRAM1">
+              <property name="start">0x20000000</property>
+              <property name="size">0x1800</property>
+            </node>
+          </node>
+          <node type="device" name="STM32F042K4">
+            <node type="memory" name="IROM1">
+              <property name="start">0x08000000</property>
+              <property name="size">0x4000</property>
+              <property name="startup">1</property>
+            </node>
+            <node type="memory" name="IRAM1">
+              <property name="start">0x20000000</property>
+              <property name="size">0x1800</property>
+            </node>
+          </node>
+          <node type="device" name="STM32F042K6">
+            <node type="memory" name="IROM1">
+              <property name="start">0x08000000</property>
+              <property name="size">0x8000</property>
+              <property name="startup">1</property>
+            </node>
+            <node type="memory" name="IRAM1">
+              <property name="start">0x20000000</property>
+              <property name="size">0x1800</property>
+            </node>
+          </node>
+          <node type="device" name="STM32F042T4">
+            <node type="memory" name="IROM1">
+              <property name="start">0x08000000</property>
+              <property name="size">0x4000</property>
+              <property name="startup">1</property>
+            </node>
+            <node type="memory" name="IRAM1">
+              <property name="start">0x20000000</property>
+              <property name="size">0x1800</property>
+            </node>
+          </node>
+          <node type="device" name="STM32F042T6">
+            <node type="memory" name="IROM1">
+              <property name="start">0x08000000</property>
+              <property name="size">0x8000</property>
+              <property name="startup">1</property>
+            </node>
+            <node type="memory" name="IRAM1">
+              <property name="start">0x20000000</property>
+              <property name="size">0x1800</property>
+            </node>
+          </node>
+        </node>
+        <node type="subfamily" name="STM32F048">
+          <property name="clock">48000000</property>
+          <property name="define">STM32F048xx</property>
+          <property name="svd.file">SVD/STM32F0x8.svd</property>
+          <node type="book" name="STM32F048 Series Reference Manual">
+            <property name="file">Documents/DM00031936.pdf</property>
+          </node>
+          <node type="book" name="STM32F048 Data Sheet">
+            <property name="file">Documents/DM00109264.pdf</property>
+          </node>
+          <node type="device" name="STM32F048C6">
+            <node type="memory" name="IROM1">
+              <property name="start">0x08000000</property>
+              <property name="size">0x8000</property>
+              <property name="startup">1</property>
+            </node>
+            <node type="memory" name="IRAM1">
+              <property name="start">0x20000000</property>
+              <property name="size">0x1800</property>
+            </node>
+          </node>
+          <node type="device" name="STM32F048G6">
+            <node type="memory" name="IROM1">
+              <property name="start">0x08000000</property>
+              <property name="size">0x8000</property>
+              <property name="startup">1</property>
+            </node>
+            <node type="memory" name="IRAM1">
+              <property name="start">0x20000000</property>
+              <property name="size">0x1800</property>
+            </node>
+          </node>
+          <node type="device" name="STM32F048T6">
+            <node type="memory" name="IROM1">
+              <property name="start">0x08000000</property>
+              <property name="size">0x8000</property>
+              <property name="startup">1</property>
+            </node>
+            <node type="memory" name="IRAM1">
+              <property name="start">0x20000000</property>
+              <property name="size">0x1800</property>
+            </node>
+          </node>
+        </node>
+        <node type="subfamily" name="STM32F051">
+          <property name="clock">48000000</property>
+          <property name="define">STM32F051x8</property>
+          <property name="svd.file">SVD/STM32F0x1.svd</property>
+          <node type="book" name="STM32F051 Series Reference Manual">
+            <property name="file">Documents/DM00031936.pdf</property>
+          </node>
+          <node type="book" name="STM32F051 Data Sheet">
+            <property name="file">Documents/DM00039193.pdf</property>
+          </node>
+          <node type="device" name="STM32F051C4">
+            <node type="memory" name="IROM1">
+              <property name="start">0x08000000</property>
+              <property name="size">0x4000</property>
+              <property name="startup">1</property>
+            </node>
+            <node type="memory" name="IRAM1">
+              <property name="start">0x20000000</property>
+              <property name="size">0x2000</property>
+            </node>
+          </node>
+          <node type="device" name="STM32F051C6">
+            <node type="memory" name="IROM1">
+              <property name="start">0x08000000</property>
+              <property name="size">0x8000</property>
+              <property name="startup">1</property>
+            </node>
+            <node type="memory" name="IRAM1">
+              <property name="start">0x20000000</property>
+              <property name="size">0x2000</property>
+            </node>
+          </node>
+          <node type="device" name="STM32F051C8">
+            <node type="memory" name="IROM1">
+              <property name="start">0x08000000</property>
+              <property name="size">0x10000</property>
+              <property name="startup">1</property>
+            </node>
+            <node type="memory" name="IRAM1">
+              <property name="start">0x20000000</property>
+              <property name="size">0x2000</property>
+            </node>
+          </node>
+          <node type="device" name="STM32F051K4">
+            <node type="memory" name="IROM1">
+              <property name="start">0x08000000</property>
+              <property name="size">0x4000</property>
+              <property name="startup">1</property>
+            </node>
+            <node type="memory" name="IRAM1">
+              <property name="start">0x20000000</property>
+              <property name="size">0x2000</property>
+            </node>
+          </node>
+          <node type="device" name="STM32F051K6">
+            <node type="memory" name="IROM1">
+              <property name="start">0x08000000</property>
+              <property name="size">0x8000</property>
+              <property name="startup">1</property>
+            </node>
+            <node type="memory" name="IRAM1">
+              <property name="start">0x20000000</property>
+              <property name="size">0x2000</property>
+            </node>
+          </node>
+          <node type="device" name="STM32F051K8">
+            <node type="memory" name="IROM1">
+              <property name="start">0x08000000</property>
+              <property name="size">0x10000</property>
+              <property name="startup">1</property>
+            </node>
+            <node type="memory" name="IRAM1">
+              <property name="start">0x20000000</property>
+              <property name="size">0x2000</property>
+            </node>
+          </node>
+          <node type="device" name="STM32F051R4">
+            <node type="memory" name="IROM1">
+              <property name="start">0x08000000</property>
+              <property name="size">0x4000</property>
+              <property name="startup">1</property>
+            </node>
+            <node type="memory" name="IRAM1">
+              <property name="start">0x20000000</property>
+              <property name="size">0x2000</property>
+            </node>
+          </node>
+          <node type="device" name="STM32F051R6">
+            <node type="memory" name="IROM1">
+              <property name="start">0x08000000</property>
+              <property name="size">0x8000</property>
+              <property name="startup">1</property>
+            </node>
+            <node type="memory" name="IRAM1">
+              <property name="start">0x20000000</property>
+              <property name="size">0x2000</property>
+            </node>
+          </node>
+          <node type="device" name="STM32F051R8">
+            <node type="memory" name="IROM1">
+              <property name="start">0x08000000</property>
+              <property name="size">0x10000</property>
+              <property name="startup">1</property>
+            </node>
+            <node type="memory" name="IRAM1">
+              <property name="start">0x20000000</property>
+              <property name="size">0x2000</property>
+            </node>
+          </node>
+          <node type="device" name="STM32F051T8">
+            <node type="memory" name="IROM1">
+              <property name="start">0x08000000</property>
+              <property name="size">0x10000</property>
+              <property name="startup">1</property>
+            </node>
+            <node type="memory" name="IRAM1">
+              <property name="start">0x20000000</property>
+              <property name="size">0x2000</property>
+            </node>
+          </node>
+        </node>
+        <node type="subfamily" name="STM32F058">
+          <property name="clock">48000000</property>
+          <property name="define">STM32F058xx</property>
+          <property name="svd.file">SVD/STM32F0x8.svd</property>
+          <node type="book" name="STM32F058 Series Reference Manual">
+            <property name="file">Documents/DM00031936.pdf</property>
+          </node>
+          <node type="book" name="STM32F058 Data Sheet">
+            <property name="file">Documents/DM00059126.pdf</property>
+          </node>
+          <node type="device" name="STM32F058C8">
+            <node type="memory" name="IROM1">
+              <property name="start">0x08000000</property>
+              <property name="size">0x10000</property>
+              <property name="startup">1</property>
+            </node>
+            <node type="memory" name="IRAM1">
+              <property name="start">0x20000000</property>
+              <property name="size">0x2000</property>
+            </node>
+          </node>
+          <node type="device" name="STM32F058R8">
+            <node type="memory" name="IROM1">
+              <property name="start">0x08000000</property>
+              <property name="size">0x10000</property>
+              <property name="startup">1</property>
+            </node>
+            <node type="memory" name="IRAM1">
+              <property name="start">0x20000000</property>
+              <property name="size">0x2000</property>
+            </node>
+          </node>
+          <node type="device" name="STM32F058T8">
+            <node type="memory" name="IROM1">
+              <property name="start">0x08000000</property>
+              <property name="size">0x10000</property>
+              <property name="startup">1</property>
+            </node>
+            <node type="memory" name="IRAM1">
+              <property name="start">0x20000000</property>
+              <property name="size">0x2000</property>
+            </node>
+          </node>
+        </node>
+        <node type="subfamily" name="STM32F070">
+          <property name="clock">48000000</property>
+          <property name="svd.file">SVD/STM32F0x0.svd</property>
+          <node type="book" name="STM32F070 Series Reference Manual">
+            <property name="file">Documents/DM00091010.pdf</property>
+          </node>
+          <node type="book" name="STM32F070 Data Sheet">
+            <property name="file">Documents/DM00141386.pdf</property>
+          </node>
+          <node type="device" name="STM32F070C6">
+            <property name="define">STM32F070x6</property>
+            <node type="memory" name="IROM1">
+              <property name="start">0x08000000</property>
+              <property name="size">0x8000</property>
+              <property name="startup">1</property>
+            </node>
+            <node type="memory" name="IRAM1">
+              <property name="start">0x20000000</property>
+              <property name="size">0x1800</property>
+            </node>
+          </node>
+          <node type="device" name="STM32F070CB">
+            <property name="define">STM32F070xB</property>
+            <node type="memory" name="IROM1">
+              <property name="start">0x08000000</property>
+              <property name="size">0x20000</property>
+              <property name="startup">1</property>
+            </node>
+            <node type="memory" name="IRAM1">
+              <property name="start">0x20000000</property>
+              <property name="size">0x4000</property>
+            </node>
+          </node>
+          <node type="device" name="STM32F070F6">
+            <property name="define">STM32F070x6</property>
+            <node type="memory" name="IROM1">
+              <property name="start">0x08000000</property>
+              <property name="size">0x8000</property>
+              <property name="startup">1</property>
+            </node>
+            <node type="memory" name="IRAM1">
+              <property name="start">0x20000000</property>
+              <property name="size">0x1800</property>
+            </node>
+          </node>
+          <node type="device" name="STM32F070RB">
+            <property name="define">STM32F070xB</property>
+            <node type="memory" name="IROM1">
+              <property name="start">0x08000000</property>
+              <property name="size">0x20000</property>
+              <property name="startup">1</property>
+            </node>
+            <node type="memory" name="IRAM1">
+              <property name="start">0x20000000</property>
+              <property name="size">0x4000</property>
+            </node>
+          </node>
+        </node>
+        <node type="subfamily" name="STM32F071">
+          <property name="clock">48000000</property>
+          <property name="define">STM32F071xB</property>
+          <property name="svd.file">SVD/STM32F0x1.svd</property>
+          <node type="book" name="STM32F071 Series Reference Manual">
+            <property name="file">Documents/DM00031936.pdf</property>
+          </node>
+          <node type="book" name="STM32F071 Data Sheet">
+            <property name="file">Documents/DM00098745.pdf</property>
+          </node>
+          <node type="device" name="STM32F071CB">
+            <node type="memory" name="IROM1">
+              <property name="start">0x08000000</property>
+              <property name="size">0x20000</property>
+              <property name="startup">1</property>
+            </node>
+            <node type="memory" name="IRAM1">
+              <property name="start">0x20000000</property>
+              <property name="size">0x4000</property>
+            </node>
+          </node>
+          <node type="device" name="STM32F071RB">
+            <node type="memory" name="IROM1">
+              <property name="start">0x08000000</property>
+              <property name="size">0x20000</property>
+              <property name="startup">1</property>
+            </node>
+            <node type="memory" name="IRAM1">
+              <property name="start">0x20000000</property>
+              <property name="size">0x4000</property>
+            </node>
+          </node>
+          <node type="device" name="STM32F071V8">
+            <node type="memory" name="IROM1">
+              <property name="start">0x08000000</property>
+              <property name="size">0x10000</property>
+              <property name="startup">1</property>
+            </node>
+            <node type="memory" name="IRAM1">
+              <property name="start">0x20000000</property>
+              <property name="size">0x4000</property>
+            </node>
+          </node>
+          <node type="device" name="STM32F071VB">
+            <node type="memory" name="IROM1">
+              <property name="start">0x08000000</property>
+              <property name="size">0x20000</property>
+              <property name="startup">1</property>
+            </node>
+            <node type="memory" name="IRAM1">
+              <property name="start">0x20000000</property>
+              <property name="size">0x4000</property>
+            </node>
+          </node>
+        </node>
+        <node type="subfamily" name="STM32F072">
+          <property name="clock">48000000</property>
+          <property name="define">STM32F072xB</property>
+          <property name="svd.file">SVD/STM32F0x2.svd</property>
+          <node type="book" name="STM32F072 Series Reference Manual">
+            <property name="file">Documents/DM00031936.pdf</property>
+          </node>
+          <node type="book" name="STM32F072 Data Sheet">
+            <property name="file">Documents/DM00090510.pdf</property>
+          </node>
+          <node type="device" name="STM32F072C8">
+            <node type="memory" name="IROM1">
+              <property name="start">0x08000000</property>
+              <property name="size">0x10000</property>
+              <property name="startup">1</property>
+            </node>
+            <node type="memory" name="IRAM1">
+              <property name="start">0x20000000</property>
+              <property name="size">0x4000</property>
+            </node>
+          </node>
+          <node type="device" name="STM32F072CB">
+            <node type="memory" name="IROM1">
+              <property name="start">0x08000000</property>
+              <property name="size">0x20000</property>
+              <property name="startup">1</property>
+            </node>
+            <node type="memory" name="IRAM1">
+              <property name="start">0x20000000</property>
+              <property name="size">0x4000</property>
+            </node>
+          </node>
+          <node type="device" name="STM32F072R8">
+            <node type="memory" name="IROM1">
+              <property name="start">0x08000000</property>
+              <property name="size">0x10000</property>
+              <property name="startup">1</property>
+            </node>
+            <node type="memory" name="IRAM1">
+              <property name="start">0x20000000</property>
+              <property name="size">0x4000</property>
+            </node>
+          </node>
+          <node type="device" name="STM32F072RB">
+            <node type="memory" name="IROM1">
+              <property name="start">0x08000000</property>
+              <property name="size">0x20000</property>
+              <property name="startup">1</property>
+            </node>
+            <node type="memory" name="IRAM1">
+              <property name="start">0x20000000</property>
+              <property name="size">0x4000</property>
+            </node>
+          </node>
+          <node type="device" name="STM32F072V8">
+            <node type="memory" name="IROM1">
+              <property name="start">0x08000000</property>
+              <property name="size">0x10000</property>
+              <property name="startup">1</property>
+            </node>
+            <node type="memory" name="IRAM1">
+              <property name="start">0x20000000</property>
+              <property name="size">0x4000</property>
+            </node>
+          </node>
+          <node type="device" name="STM32F072VB">
+            <node type="memory" name="IROM1">
+              <property name="start">0x08000000</property>
+              <property name="size">0x20000</property>
+              <property name="startup">1</property>
+            </node>
+            <node type="memory" name="IRAM1">
+              <property name="start">0x20000000</property>
+              <property name="size">0x4000</property>
+            </node>
+          </node>
+        </node>
+        <node type="subfamily" name="STM32F078">
+          <property name="clock">48000000</property>
+          <property name="define">STM32F078xx</property>
+          <property name="svd.file">SVD/STM32F0x8.svd</property>
+          <node type="book" name="STM32F078 Series Reference Manual">
+            <property name="file">Documents/DM00031936.pdf</property>
+          </node>
+          <node type="book" name="STM32F078 Data Sheet">
+            <property name="file">Documents/DM00109263.pdf</property>
+          </node>
+          <node type="device" name="STM32F078CB">
+            <node type="memory" name="IROM1">
+              <property name="start">0x08000000</property>
+              <property name="size">0x20000</property>
+              <property name="startup">1</property>
+            </node>
+            <node type="memory" name="IRAM1">
+              <property name="start">0x20000000</property>
+              <property name="size">0x4000</property>
+            </node>
+          </node>
+          <node type="device" name="STM32F078RB">
+            <node type="memory" name="IROM1">
+              <property name="start">0x08000000</property>
+              <property name="size">0x20000</property>
+              <property name="startup">1</property>
+            </node>
+            <node type="memory" name="IRAM1">
+              <property name="start">0x20000000</property>
+              <property name="size">0x4000</property>
+            </node>
+          </node>
+          <node type="device" name="STM32F078VB">
+            <node type="memory" name="IROM1">
+              <property name="start">0x08000000</property>
+              <property name="size">0x20000</property>
+              <property name="startup">1</property>
+            </node>
+            <node type="memory" name="IRAM1">
+              <property name="start">0x20000000</property>
+              <property name="size">0x4000</property>
+            </node>
+          </node>
+        </node>
+        <node type="subfamily" name="STM32F091">
+          <property name="clock">48000000</property>
+          <property name="define">STM32F091xC</property>
+          <property name="svd.file">SVD/STM32F0x1.svd</property>
+          <node type="book" name="STM32F091 Series Reference Manual">
+            <property name="file">Documents/DM00031936.pdf</property>
+          </node>
+          <node type="book" name="STM32F091 Data Sheet">
+            <property name="file">Documents/DM00115237.pdf</property>
+          </node>
+          <node type="device" name="STM32F091CB">
+            <node type="memory" name="IROM1">
+              <property name="start">0x08000000</property>
+              <property name="size">0x20000</property>
+              <property name="startup">1</property>
+            </node>
+            <node type="memory" name="IRAM1">
+              <property name="start">0x20000000</property>
+              <property name="size">0x8000</property>
+            </node>
+          </node>
+          <node type="device" name="STM32F091CC">
+            <node type="memory" name="IROM1">
+              <property name="start">0x08000000</property>
+              <property name="size">0x40000</property>
+              <property name="startup">1</property>
+            </node>
+            <node type="memory" name="IRAM1">
+              <property name="start">0x20000000</property>
+              <property name="size">0x8000</property>
+            </node>
+          </node>
+          <node type="device" name="STM32F091RB">
+            <node type="memory" name="IROM1">
+              <property name="start">0x08000000</property>
+              <property name="size">0x20000</property>
+              <property name="startup">1</property>
+            </node>
+            <node type="memory" name="IRAM1">
+              <property name="start">0x20000000</property>
+              <property name="size">0x8000</property>
+            </node>
+          </node>
+          <node type="device" name="STM32F091RC">
+            <node type="memory" name="IROM1">
+              <property name="start">0x08000000</property>
+              <property name="size">0x40000</property>
+              <property name="startup">1</property>
+            </node>
+            <node type="memory" name="IRAM1">
+              <property name="start">0x20000000</property>
+              <property name="size">0x8000</property>
+            </node>
+          </node>
+          <node type="device" name="STM32F091VB">
+            <node type="memory" name="IROM1">
+              <property name="start">0x08000000</property>
+              <property name="size">0x20000</property>
+              <property name="startup">1</property>
+            </node>
+            <node type="memory" name="IRAM1">
+              <property name="start">0x20000000</property>
+              <property name="size">0x8000</property>
+            </node>
+          </node>
+          <node type="device" name="STM32F091VC">
+            <node type="memory" name="IROM1">
+              <property name="start">0x08000000</property>
+              <property name="size">0x40000</property>
+              <property name="startup">1</property>
+            </node>
+            <node type="memory" name="IRAM1">
+              <property name="start">0x20000000</property>
+              <property name="size">0x8000</property>
+            </node>
+          </node>
+        </node>
+        <node type="subfamily" name="STM32F098">
+          <property name="clock">48000000</property>
+          <property name="define">STM32F098xx</property>
+          <property name="svd.file">SVD/STM32F0x8.svd</property>
+          <node type="book" name="STM32F098 Series Reference Manual">
+            <property name="file">Documents/DM00031936.pdf</property>
+          </node>
+          <node type="book" name="STM32F098 Data Sheet">
+            <property name="file">Documents/DM00135027.pdf</property>
+          </node>
+          <node type="device" name="STM32F098CC">
+            <node type="memory" name="IROM1">
+              <property name="start">0x08000000</property>
+              <property name="size">0x40000</property>
+              <property name="startup">1</property>
+            </node>
+            <node type="memory" name="IRAM1">
+              <property name="start">0x20000000</property>
+              <property name="size">0x8000</property>
+            </node>
+          </node>
+          <node type="device" name="STM32F098RC">
+            <node type="memory" name="IROM1">
+              <property name="start">0x08000000</property>
+              <property name="size">0x40000</property>
+              <property name="startup">1</property>
+            </node>
+            <node type="memory" name="IRAM1">
+              <property name="start">0x20000000</property>
+              <property name="size">0x8000</property>
+            </node>
+          </node>
+          <node type="device" name="STM32F098VC">
+            <node type="memory" name="IROM1">
+              <property name="start">0x08000000</property>
+              <property name="size">0x40000</property>
+              <property name="startup">1</property>
+            </node>
+            <node type="memory" name="IRAM1">
+              <property name="start">0x20000000</property>
+              <property name="size">0x8000</property>
+            </node>
+          </node>
+        </node>
+      </node>
+    </node>
+  </node>
+</root>

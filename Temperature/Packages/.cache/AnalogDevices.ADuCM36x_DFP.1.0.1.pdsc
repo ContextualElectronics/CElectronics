@@ -1,0 +1,193 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<package schemaVersion="1.2" xmlns:xs="http://www.w3.org/2001/XMLSchema-instance" xs:noNamespaceSchemaLocation="PACK.xsd">
+  <vendor>AnalogDevices</vendor>
+  <name>ADuCM36x_DFP</name>
+  <description>Analog Devices ADuCM36x Device Support and Examples</description>
+  <url>http://www.analog.com/media/en/engineering-tools/design-tools</url>
+  <supportContact>http://www.analog.com/en/content/technical_support_page/fca.html</supportContact>
+  <license>License\License.txt</license>  
+  
+  <releases>
+    <release version="1.0.1">
+      Fixed errors due to new ADI website
+    </release>
+    <release version="1.0.0">
+      Initial Release
+    </release>
+  </releases>
+
+  <keywords>
+    <!-- keywords for indexing -->
+    <keyword>Analog Devices</keyword>
+    <keyword>ADI</keyword>
+    <keyword>Device Support</keyword>
+    <keyword>Board Support</keyword>
+    <keyword>Device Family Package Analog Devices</keyword>
+    <keyword>ADuCM360</keyword>
+    <keyword>ADuCM361</keyword>
+  </keywords>
+  <devices>
+    <family Dfamily="ADuCM36x Series" Dvendor="Analog Devices:1">
+        <processor Dcore="Cortex-M3" DcoreVersion="r2p0" Dfpu="0" Dmpu="0" Dendian="Little-endian" Dclock="16000000"/>
+        <memory     id="IROM1"                      start="0x00000000"  size="0x20000"    startup="1"   default="1"/>
+        <memory     id="IRAM1"                      start="0x20000000"  size="0x2000"     init   ="1"   default="1"/>
+        <algorithm  name="Flash\ADUCMxxx_128.FLM"  start="0x00000000"  size="0x20000"  RAMstart="0x20000000"  RAMsize="0x0800"  default="1"/>
+
+        <book    name="Documents\DUI0552A_cortex_m3_dgug.pdf"           title="Cortex-M3 Generic User Guide"/>
+        <book    name="Documents\ADuCM360_361.pdf"                      title="ADuCM360 Data Sheet"/>
+        <book    name="Documents\ADuCM360_361_silicon_anomaly.pdf"      title="ADuCM360 Silicon Anomaly"/>
+        <book    name="Documents\UG-367.pdf"          title="ADuCM360 User Guide"/>
+        <book    name="Documents\AN-1160.pdf"         title="Cortex-M3 Based ADuCxxx Serial Download Protocol"/>
+        <book    name="Documents\AN-1159.pdf"         title="I2C-Compatible Interface"/>
+        <book    name="Documents\AN-1111.pdf"         title="Options for Minimizing Power Consumption When Using the ADuCM360/ADuCM361"/>
+        <book    name="Documents\CN0221.pdf"          title="USB-Based, Thermocouple Temperature Measurement System"/>
+        <book    name="Documents\CN0267.pdf"          title="Complete 4 mA to 20 mA Loop Powered Field Instrument with HART Interface"/>
+        <book    name="Documents\CN0300.pdf"          title="12-Bit, 4-20mA Loop-Powered Thermocouple Measurement System"/>
+        <book    name="Documents\CN0319.pdf"          title="14-Bit, 4-20 mA, Loop Powered, Thermocouple Temperature Measurement System"/>
+        <book    name="Documents\ADuCM360_361_Digital_Filter_Response_Model.xlsx"      title="ADuCM36x Digital Filter Response Model"/>
+        <book    name="Documents\ADuCM360_361_IDD_calculator_RevD.xlsx"                title="ADuCM36x IDD calculator"/>
+        
+        <feature type="AnalogOther"   n="2"       name="Programmable current source" />        
+        <feature type="AnalogOther"   n="1"       name="Precision voltage reference" />        
+        <feature type="AnalogOther"   n="1"       name="VBias Generator" />        
+        <feature type="AnalogOther"   n="1"       name="Ground Switch" />        
+        <feature type="AnalogOther"   n="1"       name="Diagnostic current sources" />        
+        <feature type="DAC"           n="1"       m="12"/>
+        <feature type="PWM"           n="6"       m="16"/>
+        <feature type="Memory"        n="131072"     name="128kB Flash memory"/>
+        <feature type="Memory"        n="8192"       name="8kB SRAM"/>
+        <feature type="SPI"           n="2"       m="8000000"/>
+        <feature type="I2C"           n="2"/>
+        <feature type="UART"          n="1"       m="500000"/>
+        <feature type="IOs"           n="19"/>
+        <feature type="Timer"         n="2"       m="16"/>
+        <feature type="WDT"           n="1"/>
+        <feature type="TimerOther"    n="1"       name="32 bitWake-up timer"/>
+        <feature type="DMA"           n="12"     />        
+        <feature type="NVIC"          n="39"     />        
+        <feature type="TempSens"      n="1"     />        
+        <feature type="Temp"          n="-40"     m="125"/>
+        <feature type="VCC"           n="1.80"    m="3.60"/>
+        <feature type="CSP"           n="48"/>
+        
+
+      <!-- ******************************  ADuCM360  ****************************** -->
+      <device Dname="ADuCM360">
+        <description>
+The ADuCM360 is a fully integrated, 3.9 kSPS, 24-bit data acquisition system that incorporates dual high performance, multichannel sigma-delta ADCs,a 32-bit ARM Cortex-M3 processor, and Flash/EE memory on a single chip.
+The ADuCM360 is designed for direct interfacing to external precision sensors in both wired and battery-powered applications.
+        </description>
+        <feature type="ADC"           n="15"      m="24"    name="Ultra high precision, Multichannel, Dual 24-bit ADCs"/>
+        <compile header="Device\Include\ADuCM360.h"  define="ADuCM360"/>
+        <debug      svd="SVD\ADuCM360.svd"/>
+      </device>
+      <device Dname="ADuCM361">
+        <description>
+The ADuCM361 is a fully integrated, 3.9 kSPS, 24-bit data acquisition system incorporating high performance multi-channel sigma-delta ADC, 32-bit ARM Cortex-M3 MCU, and Flash/EE memory on a single chip.
+The ADuCM361 is designed for direct interfacing to external precision sensors in both wired and battery-powered applications.
+        </description>
+        <feature type="ADC"           n="15"      m="24"    name="Ultra high precision, Multichannel, 24-bit ADC"/>
+        <compile header="Device\Include\ADuCM361.h"  define="ADuCM361"/>
+        <debug      svd="SVD\ADuCM361.svd"/>
+      </device> 
+    </family>
+  </devices>
+
+  <!-- boards section (mandatory for Board Support Packs) -->
+  <boards>
+      <board vendor="Analog Devices" name="EVAL-ADuCM360MKZ" revision="Rev. B" orderForm="http://www.analog.com/en/processors-dsp/analog-microcontrOLlers/aducm360/products/EVAL-ADUCM360/eb.html">
+      <description>Analog Devices ADuCM360 Evaluation Kit</description>
+      <image small="Images\EVAL-ADuCM360MKZ_small.jpg" large="Images\EVAL-ADuCM360MKZ.jpg"/>
+      <book category="setup"         name="Documents\UG-457.pdf" title="ADuCM360 Development Systems Getting Started Tutorial"/>
+      <book category="schematic"     name="Documents\ADuCM360_361_board_outline.pdf"   title="Layout"/>
+      <book category="schematic"     name="Documents\ADuCM360_361_schematic.PDF"      title="Schematic"/>
+      <mountedDevice    deviceIndex="0" Dvendor="Analog Devices:1" Dname="ADuCM360"/>
+      <debugInterface adapter="J-Link Lite ADI" connector="Mini-USB"/>
+      <feature type="USB"       n="1"              name="Mini-USB connector for Debugger, Power and UART "/>
+      <feature type="XTAL"      n="32768"/>
+      <feature type="DIO"       n="19"             name="Digital IO"/>
+      <feature type="AIO"       n="11"             name="Analog inputs to ADC"/>
+      <feature type="AIO"       n="1"              name="VDAC Outputs"/>
+      <feature type="Button"    n="1"              name="Reset Push-Button"/>
+      <feature type="LED"       n="2"              name="Red Display LED and Green power LED"/>
+    </board>
+  </boards>
+  <!-- examples section (optional for all Software Packs)-->
+
+   <examples>
+    <example name="Blinky" doc="Abstract.txt" folder="Examples\Blinky">
+      <description>Blinky example</description>
+      <board name="EVAL-ADuCM360MKZ" vendor="Analog Devices"/>
+      <project>
+        <environment name="uv" load="Blinky.uvprojx"/>
+      </project>
+      <attributes>
+        <component Cclass="CMSIS" Cgroup="CORE"/>
+        <component Cclass="Device" Cgroup="Startup"/>
+        <category>Getting Started</category>
+      </attributes>
+    </example>
+    <example name="RTX_Blinky" doc="Abstract.txt" folder="Examples\RTX_Blinky">
+      <description>Simple RTX Kernel based example</description>
+      <board name="EVAL-ADuCM360MKZ" vendor="Analog Devices"/>
+      <project>
+        <environment name="uv" load="Blinky.uvprojx"/>
+      </project>
+      <attributes>
+        <component Cclass="CMSIS" Cgroup="CORE"/>
+        <component Cclass="Device" Cgroup="Startup"/>
+        <category>Getting Started</category>
+      </attributes>
+    </example>
+  </examples>
+  <conditions>
+    <condition id="ADuCM360">
+      <description>ADuCM360  device</description>
+      <require Dvendor="Analog Devices:1"/>
+      <require Dname="ADuCM360"/>
+    </condition>
+    <condition id="ADuCM360_ARM">
+      <description>ADuCM360  device</description>
+      <require condition="ADuCM360"/>
+      <require Tcompiler="ARMCC"/>
+    </condition>
+    <condition id="ADuCM361">
+      <description>ADuCM361  device</description>
+      <require Dvendor="Analog Devices:1"/>
+      <require Dname="ADuCM361"/>
+    </condition>
+    <condition id="ADuCM361_ARM">
+      <description>ADuCM361  device</description>
+      <require condition="ADuCM361"/>
+      <require Tcompiler="ARMCC"/>
+    </condition>
+    <condition id="ADuCM36x CMSIS Device">
+      <description>ADuCM36x CMSIS Device</description>
+      <require Cclass ="CMSIS" Cgroup="CORE" Csub=""/>
+      <require Dvendor="Analog Devices:1"/>
+      <accept  condition="ADuCM360"/>
+      <accept  condition="ADuCM361"/>
+    </condition>
+  </conditions>  
+  <components>
+    <component Cclass="Device" Cgroup="Startup" Cversion="1.0.0" condition="ADuCM36x CMSIS Device">
+      <!-- Cversion is necessary -->
+      <description>System Startup for ADuCM36x</description>
+
+      <files>
+        <!-- additional include path -->
+        <file category="include" name="Device\Include\"/>
+
+        <!-- startup files -->
+        <file category="source" name="Device\Source\startup_ADuCM360.s" version="1.0.0" attr="config" condition="ADuCM360_ARM"/>
+        <file category="source" name="Device\Source\startup_ADuCM361.s" version="1.0.0" attr="config" condition="ADuCM361_ARM"/>
+        
+        <!-- system files -->
+        <file category="source" name="Device\Source\system_ADuCM360.c" version="1.0.0" attr="config"      condition="ADuCM360" />
+        <file category="source" name="Device\Source\system_ADuCM361.c" version="1.0.0" attr="config"      condition="ADuCM361" />
+
+      </files>
+    </component>
+  </components>
+</package>

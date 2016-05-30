@@ -1,0 +1,1620 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<package schemaVersion="1.2" xmlns:xs="http://www.w3.org/2001/XMLSchema-instance" xs:noNamespaceSchemaLocation="PACK.xsd">
+  <vendor>Oryx-Embedded</vendor>
+  <name>Middleware</name>
+  <description>Middleware Package (CycloneTCP, CycloneSSL and CycloneCrypto)</description>
+  <url>http://www.oryx-embedded.com/download/pack/</url>
+  <supportContact>support@oryx-embedded.com</supportContact>
+  <license>doc\license.txt</license>
+  
+  <!-- Releases section -->
+  <releases>
+    <release version="1.7.2">
+      - Secure FTPS client (with implicit and explicit security modes)
+      - SNMP agent supports SNMPv3 (MD5/SHA-1 authentication and DES/AES privacy protocols available) 
+      - Full MIB-II implementation (system, interface, IP, ICMP, UDP, TCP and SNMP statistics)
+      - NewReno is now used as default TCP congestion algorithm (as replacement of legacy Reno algorithm)
+      - Added Ethernet driver for Freescale Kinetis KV5x (Cortex-M7)
+      - Added Ethernet driver for Infineon XMC4700 and XMC4800
+    </release>
+    <release version="1.7.0">
+      - Added DHCP server
+      - CycloneTCP complies with TAHI Phase-II conformance test suite (IPv6 hosts and routers)
+      - mDNS/DNS-SD complies with BCT (Bonjour Conformance Test)
+      - PPP authentication (PAP and CHAP)
+      - Support for Cortex-M7 microcontrollers (STM32F746/F756 and SAM V71)
+    </release>
+    <release version="1.6.0">
+      - Added Auto-IP (Dynamic Configuration of IPv4 Link-Local Addresses)
+      - Added DNS-SD (DNS-Based Service Discovery)
+      - Added PPP (Point-to-Point Protocol)
+    </release>
+    <release version="1.5.1">
+      - Software Pack initial release
+    </release>
+  </releases>
+  
+  <!-- Keywords section -->
+  <keywords>
+    <keyword>Network</keyword>
+    <keyword>Ethernet</keyword>
+    <keyword>TCP/IP Stack</keyword>
+    <keyword>IP</keyword>
+    <keyword>IPv4</keyword>
+    <keyword>IPv6</keyword>
+    <keyword>SSL</keyword>
+    <keyword>TLS</keyword>
+  </keywords>
+  
+  <!-- Conditions section -->
+  <conditions>
+    <condition id="Cortex-M">
+      <description>Cortex-M based device</description>
+      <accept Dcore="Cortex-M3"/>
+      <accept Dcore="Cortex-M4"/>
+      <accept Dcore="Cortex-M7"/>
+    </condition>
+    
+    <condition id="ARMCC">
+      <description>ARMCC compiler</description>
+      <require Tcompiler="ARMCC"/>
+    </condition>
+    <condition id="IAR">
+      <description>IAR compiler</description>
+      <require Tcompiler="IAR"/>
+    </condition>
+    <condition id="GCC">
+      <description>GCC compiler</description>
+      <require Tcompiler="GCC"/>
+    </condition>
+    
+    <condition id="Cortex-M ARMCC">
+      <description>Cortex-M based device / ARMCC compiler</description>
+      <require condition="Cortex-M"/>
+      <require condition="ARMCC"/>
+    </condition>
+    <condition id="Cortex-M IAR">
+      <description>Cortex-M based device / IAR compiler</description>
+      <require condition="Cortex-M"/>
+      <require condition="IAR"/>
+    </condition>
+    <condition id="Cortex-M GCC">
+      <description>Cortex-M based device / IAR compiler</description>
+      <require condition="Cortex-M"/>
+      <require condition="GCC"/>
+    </condition>
+    
+    <condition id="CMSIS-RTOS">
+    <description>CMSIS-RTOS support</description>
+      <require Cclass="CMSIS" Cgroup="CORE"/>
+      <require Cclass="CMSIS" Cgroup="RTOS"/>
+    </condition>
+    
+    <condition id="Compiler Support">
+    <description>Compiler support</description>
+      <require Cclass="Oryx Embedded Middleware" Cgroup="Common" Csub="Compiler Support"/>
+    </condition>
+    
+    <condition id="CMSIS-RTOS port dependencies">
+    <description>CMSIS-RTOS port dependencies</description>
+      <require condition="CMSIS-RTOS"/>
+      <require Cclass="Oryx Embedded Middleware" Cgroup="Common" Csub="Compiler Support"/>
+    </condition>
+    
+    <condition id="CycloneCrypto dependencies">
+    <description>CycloneCrypto dependencies</description>
+      <require Cclass="Oryx Embedded Middleware" Cgroup="Common" Csub="Compiler Support"/>
+    </condition>
+    
+    <condition id="CycloneSSL dependencies">
+    <description>CycloneSSL dependencies</description>
+      <require Cclass="Oryx Embedded Middleware" Cgroup="Common" Csub="CMSIS-RTOS Port"/>
+      <require Cclass="Oryx Embedded Middleware" Cgroup="Common" Csub="Date Time Helper Routines"/>
+      <require Cclass="Oryx Embedded Middleware" Cgroup="CycloneCrypto"/>
+    </condition>
+    
+    <condition id="CycloneTCP dependencies">
+    <description>CycloneTCP dependencies</description>
+      <require Cclass="Oryx Embedded Middleware" Cgroup="Common" Csub="CMSIS-RTOS Port"/>
+    </condition>
+    
+    <condition id="CycloneTCP Core">
+    <description>CycloneTCP dependencies</description>
+      <require Cclass="Oryx Embedded Middleware" Cgroup="CycloneTCP" Csub="Core"/>
+    </condition>
+  </conditions>
+  
+  <!-- Taxonomy section -->
+  <taxonomy>
+    <description Cclass="Oryx Embedded Middleware" Cgroup="Common">Common Files</description>
+    <description Cclass="Oryx Embedded Middleware" Cgroup="CycloneTCP">Dual IPv4/IPv6 Stack</description>
+    <description Cclass="Oryx Embedded Middleware" Cgroup="CycloneTCP Drivers">Ethernet Drivers</description>
+    <description Cclass="Oryx Embedded Middleware" Cgroup="CycloneSSL">SSL/TLS Library</description>
+    <description Cclass="Oryx Embedded Middleware" Cgroup="CycloneCrypto">Cryptographic Library</description>
+  </taxonomy>
+  
+  <!-- Components section -->
+  <components>
+    <bundle Cbundle="Oryx Embedded Middleware" Cclass="Oryx Embedded Middleware" Cversion="1.7.2">
+    <description>Middleware package(CycloneTCP, CycloneSSL and CycloneCrypto)</description>
+    <doc></doc>
+      
+      <!-- Common Files -->
+      <component Cgroup="Common" Csub="Compiler Support">
+        <description>Compiler support</description>
+        <files>
+          <file category="include" name="common\"/>
+          <file category="header" name="common\compiler_port.h"/>
+          <file category="header" name="common\endian.h"/>
+          <file category="header" name="common\error.h"/>
+          <file category="header" name="common\debug.h"/>
+          <file category="source" name="common\endian.c"/>
+        </files>
+      </component>
+      
+      <component Cgroup="Common" Csub="CMSIS-RTOS Port" condition="CMSIS-RTOS port dependencies">
+        <description>CMSIS-RTOS port</description>
+        <files>
+          <file category="include" name="common\"/>
+          <file category="header" name="common\os_port.h"/>
+          <file category="header" name="common\os_port_cmsis_rtos.h"/>
+          <file category="source" name="common\os_port_cmsis_rtos.c"/>
+          <file category="header" name="config\os_port_config.h" attr="config" version="1.7.0"/>
+        </files>
+      </component>
+      
+      <component Cgroup="Common" Csub="FatFs Port" condition="Compiler Support">
+        <description>FatFs port</description>
+        <files>
+          <file category="include" name="common\"/>
+          <file category="header" name="common\fs_port.h"/>
+          <file category="source" name="common\fs_port_fatfs.c"/>
+          <file category="header" name="config\fs_port_config.h" attr="config" version="1.7.0"/>
+        </files>
+      </component>
+      
+      <component Cgroup="Common" Csub="Resource Manager" condition="Compiler Support">
+        <description>Embedded resource manager</description>
+        <files>
+          <file category="include" name="common\"/>
+          <file category="header" name="common\resource_manager.h"/>
+          <file category="source" name="common\resource_manager.c"/>
+        </files>
+      </component>
+      
+      <component Cgroup="Common" Csub="Date Time Helper Routines" condition="Compiler Support">
+        <description>Date and time manipulation helper routines</description>
+        <files>
+          <file category="include" name="common\"/>
+          <file category="header" name="common\date_time.h"/>
+          <file category="source" name="common\date_time.c"/>
+        </files>
+      </component>
+      
+      <component Cgroup="Common" Csub="String Helper Routines" condition="Compiler Support">
+        <description>String and path manipulation helper routines</description>
+        <files>
+          <file category="include" name="common\"/>
+          <file category="header" name="common\str.h"/>
+          <file category="header" name="common\path.h"/>
+          <file category="source" name="common\str.c"/>
+          <file category="source" name="common\path.c"/>
+        </files>
+      </component>
+      
+      <!-- CycloneTCP (Core) -->
+      <component Cgroup="CycloneTCP" Csub="Core" condition="CycloneTCP dependencies">
+        <description>TCP/IP stack core</description>
+        <files>
+          <file category="include" name="cyclone_tcp\"/>
+          
+          <file category="header" name="cyclone_tcp\core\net.h"/>
+          <file category="header" name="cyclone_tcp\core\net_legacy.h"/>
+          <file category="header" name="cyclone_tcp\core\net_mem.h"/>
+          <file category="header" name="cyclone_tcp\core\nic.h"/>
+          <file category="header" name="cyclone_tcp\core\ethernet.h"/>
+          <file category="header" name="cyclone_tcp\core\ip.h"/>
+          <file category="header" name="cyclone_tcp\core\tcp.h"/>
+          <file category="header" name="cyclone_tcp\core\tcp_fsm.h"/>
+          <file category="header" name="cyclone_tcp\core\tcp_misc.h"/>
+          <file category="header" name="cyclone_tcp\core\tcp_timer.h"/>
+          <file category="header" name="cyclone_tcp\core\udp.h"/>
+          <file category="header" name="cyclone_tcp\core\socket.h"/>
+          <file category="header" name="cyclone_tcp\core\bsd_socket.h"/>
+          <file category="header" name="cyclone_tcp\core\raw_socket.h"/>
+          
+          <file category="source" name="cyclone_tcp\core\net.c"/>
+          <file category="source" name="cyclone_tcp\core\net_mem.c"/>
+          <file category="source" name="cyclone_tcp\core\nic.c"/>
+          <file category="source" name="cyclone_tcp\core\ethernet.c"/>
+          <file category="source" name="cyclone_tcp\core\ip.c"/>
+          <file category="source" name="cyclone_tcp\core\tcp.c"/>
+          <file category="source" name="cyclone_tcp\core\tcp_fsm.c"/>
+          <file category="source" name="cyclone_tcp\core\tcp_misc.c"/>
+          <file category="source" name="cyclone_tcp\core\tcp_timer.c"/>
+          <file category="source" name="cyclone_tcp\core\udp.c"/>
+          <file category="source" name="cyclone_tcp\core\socket.c"/>
+          <file category="source" name="cyclone_tcp\core\bsd_socket.c"/>
+          <file category="source" name="cyclone_tcp\core\raw_socket.c"/>
+          
+          <file category="header" name="config\net_config.h" attr="config" version="1.7.0"/>
+        </files>
+      </component>
+      
+      <!-- CycloneTCP (IPv4) -->
+      <component Cgroup="CycloneTCP" Csub="IPv4" condition="CycloneTCP Core">
+        <description>IPv4 support</description>
+        <files>
+          <file category="include" name="cyclone_tcp\"/>
+          
+          <file category="header" name="cyclone_tcp\ipv4\arp.h"/>
+          <file category="header" name="cyclone_tcp\core\ip.h"/>
+          <file category="header" name="cyclone_tcp\ipv4\ipv4.h"/>
+          <file category="header" name="cyclone_tcp\ipv4\ipv4_frag.h"/>
+          <file category="header" name="cyclone_tcp\ipv4\icmp.h"/>
+          <file category="header" name="cyclone_tcp\ipv4\igmp.h"/>
+          
+          <file category="source" name="cyclone_tcp\ipv4\arp.c"/>
+          <file category="source" name="cyclone_tcp\core\ip.c"/>
+          <file category="source" name="cyclone_tcp\ipv4\ipv4.c"/>
+          <file category="source" name="cyclone_tcp\ipv4\ipv4_frag.c"/>
+          <file category="source" name="cyclone_tcp\ipv4\icmp.c"/>
+          <file category="source" name="cyclone_tcp\ipv4\igmp.c"/>
+        </files>
+      </component>
+      
+      <!-- CycloneTCP (Auto-IP) -->
+      <component Cgroup="CycloneTCP" Csub="Auto-IP" condition="CycloneTCP Core">
+        <description>Auto-IP support</description>
+        <files>
+          <file category="include" name="cyclone_tcp\"/>
+          <file category="header" name="cyclone_tcp\ipv4\auto_ip.h"/>
+          <file category="source" name="cyclone_tcp\ipv4\auto_ip.c"/>
+        </files>
+      </component>
+      
+      <!-- CycloneTCP (IPv6) -->
+      <component Cgroup="CycloneTCP" Csub="IPv6" condition="CycloneTCP Core">
+        <description>IPv6 support</description>
+        <files>
+          <file category="include" name="cyclone_tcp\"/>
+          
+          <file category="header" name="cyclone_tcp\ipv6\ipv6.h"/>
+          <file category="header" name="cyclone_tcp\ipv6\ipv6_frag.h"/>
+          <file category="header" name="cyclone_tcp\ipv6\ipv6_misc.h"/>
+          <file category="header" name="cyclone_tcp\ipv6\ipv6_pmtu.h"/>
+          <file category="header" name="cyclone_tcp\ipv6\ipv6_routing.h"/>
+          <file category="header" name="cyclone_tcp\ipv6\icmpv6.h"/>
+          <file category="header" name="cyclone_tcp\ipv6\mld.h"/>
+          <file category="header" name="cyclone_tcp\ipv6\ndp.h"/>
+          <file category="header" name="cyclone_tcp\ipv6\ndp_cache.h"/>
+          <file category="header" name="cyclone_tcp\ipv6\ndp_misc.h"/>
+          
+          <file category="source" name="cyclone_tcp\ipv6\ipv6.c"/>
+          <file category="source" name="cyclone_tcp\ipv6\ipv6_frag.c"/>
+          <file category="source" name="cyclone_tcp\ipv6\ipv6_misc.c"/>
+          <file category="source" name="cyclone_tcp\ipv6\ipv6_pmtu.c"/>
+          <file category="source" name="cyclone_tcp\ipv6\ipv6_routing.c"/>
+          <file category="source" name="cyclone_tcp\ipv6\icmpv6.c"/>
+          <file category="source" name="cyclone_tcp\ipv6\mld.c"/>
+          <file category="source" name="cyclone_tcp\ipv6\ndp.c"/>
+          <file category="source" name="cyclone_tcp\ipv6\ndp_cache.c"/>
+          <file category="source" name="cyclone_tcp\ipv6\ndp_misc.c"/>
+        </files>
+      </component>
+      
+      <!-- CycloneTCP (SLAAC) -->
+      <component Cgroup="CycloneTCP" Csub="SLAAC" condition="CycloneTCP Core">
+        <description>SLAAC support</description>
+        <files>
+          <file category="include" name="cyclone_tcp\"/>
+          <file category="header" name="cyclone_tcp\ipv6\slaac.h"/>
+          <file category="source" name="cyclone_tcp\ipv6\slaac.c"/>
+        </files>
+      </component>
+      
+      <!-- CycloneTCP (IPv6 Router Advertisment Service) -->
+      <component Cgroup="CycloneTCP" Csub="IPv6 Router Adv" condition="CycloneTCP Core">
+        <description>IPv6 Router Advertisment support</description>
+        <files>
+          <file category="include" name="cyclone_tcp\"/>
+          <file category="header" name="cyclone_tcp\ipv6\ndp_router_adv.h"/>
+          <file category="source" name="cyclone_tcp\ipv6\ndp_router_adv.c"/>
+        </files>
+      </component>
+      
+      <!-- CycloneTCP (DNS) -->
+      <component Cgroup="CycloneTCP" Csub="DNS" condition="CycloneTCP Core">
+        <description>DNS support</description>
+        <files>
+          <file category="include" name="cyclone_tcp\"/>
+          
+          <file category="header" name="cyclone_tcp\dns\dns_cache.h"/>
+          <file category="header" name="cyclone_tcp\dns\dns_client.h"/>
+          <file category="header" name="cyclone_tcp\dns\dns_common.h"/>
+          <file category="header" name="cyclone_tcp\dns\dns_debug.h"/>
+          
+          <file category="source" name="cyclone_tcp\dns\dns_cache.c"/>
+          <file category="source" name="cyclone_tcp\dns\dns_client.c"/>
+          <file category="source" name="cyclone_tcp\dns\dns_common.c"/>
+          <file category="source" name="cyclone_tcp\dns\dns_debug.c"/>
+        </files>
+      </component>
+      
+      <!-- CycloneTCP (mDNS) -->
+      <component Cgroup="CycloneTCP" Csub="mDNS" condition="CycloneTCP Core">
+        <description>mDNS support</description>
+        <files>
+          <file category="include" name="cyclone_tcp\"/>
+          
+          <file category="header" name="cyclone_tcp\mdns\mdns_client.h"/>
+          <file category="header" name="cyclone_tcp\mdns\mdns_responder.h"/>
+          <file category="header" name="cyclone_tcp\mdns\mdns_common.h"/>
+          
+          <file category="source" name="cyclone_tcp\mdns\mdns_client.c"/>
+          <file category="source" name="cyclone_tcp\mdns\mdns_responder.c"/>
+          <file category="source" name="cyclone_tcp\mdns\mdns_common.c"/>
+        </files>
+      </component>
+      
+      <!-- CycloneTCP (NetBIOS) -->
+      <component Cgroup="CycloneTCP" Csub="NetBIOS" condition="CycloneTCP Core">
+        <description>NetBIOS support</description>
+        <files>
+          <file category="include" name="cyclone_tcp\"/>
+          
+          <file category="header" name="cyclone_tcp\netbios\nbns_client.h"/>
+          <file category="header" name="cyclone_tcp\netbios\nbns_responder.h"/>
+          <file category="header" name="cyclone_tcp\netbios\nbns_common.h"/>
+          
+          <file category="source" name="cyclone_tcp\netbios\nbns_client.c"/>
+          <file category="source" name="cyclone_tcp\netbios\nbns_responder.c"/>
+          <file category="source" name="cyclone_tcp\netbios\nbns_common.c"/>
+        </files>
+      </component>
+      
+      <!-- CycloneTCP (DNS-SD) -->
+      <component Cgroup="CycloneTCP" Csub="DNS-SD" condition="CycloneTCP Core">
+        <description>DNS-SD support</description>
+        <files>
+          <file category="include" name="cyclone_tcp\"/>
+          <file category="header" name="cyclone_tcp\dns_sd\dns_sd.h"/>
+          <file category="source" name="cyclone_tcp\dns_sd\dns_sd.c"/>
+        </files>
+      </component>
+      
+      <!-- CycloneTCP (DHCP Client) -->
+      <component Cgroup="CycloneTCP" Csub="DHCP Client" condition="CycloneTCP Core">
+        <description>DHCP Client support</description>
+        <files>
+          <file category="include" name="cyclone_tcp\"/>
+          
+          <file category="header" name="cyclone_tcp\dhcp\dhcp_client.h"/>
+          <file category="header" name="cyclone_tcp\dhcp\dhcp_common.h"/>
+          <file category="header" name="cyclone_tcp\dhcp\dhcp_debug.h"/>
+          
+          <file category="source" name="cyclone_tcp\dhcp\dhcp_client.c"/>
+          <file category="source" name="cyclone_tcp\dhcp\dhcp_common.c"/>
+          <file category="source" name="cyclone_tcp\dhcp\dhcp_debug.c"/>
+        </files>
+      </component>
+      
+      <!-- CycloneTCP (DHCP Server) -->
+      <component Cgroup="CycloneTCP" Csub="DHCP Server" condition="CycloneTCP Core">
+        <description>DHCP Server support</description>
+        <files>
+          <file category="include" name="cyclone_tcp\"/>
+          <file category="header" name="cyclone_tcp\dhcp\dhcp_server.h"/>
+          <file category="source" name="cyclone_tcp\dhcp\dhcp_server.c"/>
+        </files>
+      </component>
+      
+      <!-- CycloneTCP (DHCPv6 Client) -->
+      <component Cgroup="CycloneTCP" Csub="DHCPv6 Client" condition="CycloneTCP Core">
+        <description>DHCPv6 Client support</description>
+        <files>
+          <file category="include" name="cyclone_tcp\"/>
+          
+          <file category="header" name="cyclone_tcp\dhcpv6\dhcpv6_client.h"/>
+          <file category="header" name="cyclone_tcp\dhcpv6\dhcpv6_common.h"/>
+          <file category="header" name="cyclone_tcp\dhcpv6\dhcpv6_debug.h"/>
+          
+          <file category="source" name="cyclone_tcp\dhcpv6\dhcpv6_client.c"/>
+          <file category="source" name="cyclone_tcp\dhcpv6\dhcpv6_common.c"/>
+          <file category="source" name="cyclone_tcp\dhcpv6\dhcpv6_debug.c"/>
+        </files>
+      </component>
+      
+      <!-- CycloneTCP (FTP Client) -->
+      <component Cgroup="CycloneTCP" Csub="FTP Client" condition="CycloneTCP Core">
+        <description>FTP Client support</description>
+        <files>
+          <file category="include" name="cyclone_tcp\"/>
+          <file category="header" name="cyclone_tcp\ftp\ftp_client.h"/>
+          <file category="source" name="cyclone_tcp\ftp\ftp_client.c"/>
+        </files>
+      </component>
+      
+      <!-- CycloneTCP (FTP Server) -->
+      <component Cgroup="CycloneTCP" Csub="FTP Server" condition="CycloneTCP Core">
+        <description>FTP Server support</description>
+        <files>
+          <file category="include" name="cyclone_tcp\"/>
+          
+          <file category="header" name="cyclone_tcp\ftp\ftp_server.h"/>
+          <file category="header" name="cyclone_tcp\ftp\ftp_server_events.h"/>
+          <file category="header" name="cyclone_tcp\ftp\ftp_server_commands.h"/>
+          <file category="header" name="cyclone_tcp\ftp\ftp_server_misc.h"/>
+          
+          <file category="source" name="cyclone_tcp\ftp\ftp_server.c"/>
+          <file category="source" name="cyclone_tcp\ftp\ftp_server_events.c"/>
+          <file category="source" name="cyclone_tcp\ftp\ftp_server_commands.c"/>
+          <file category="source" name="cyclone_tcp\ftp\ftp_server_misc.c"/>
+        </files>
+      </component>
+      
+      <!-- CycloneTCP (HTTP Server) -->
+      <component Cgroup="CycloneTCP" Csub="HTTP Server" condition="CycloneTCP Core">
+        <description>HTTP Server support</description>
+        <files>
+          <file category="include" name="cyclone_tcp\"/>
+          
+          <file category="header" name="cyclone_tcp\http\http_server.h"/>
+          <file category="header" name="cyclone_tcp\http\http_server_auth.h"/>
+          <file category="header" name="cyclone_tcp\http\http_server_misc.h"/>
+          <file category="header" name="cyclone_tcp\http\mime.h"/>
+          <file category="header" name="cyclone_tcp\http\ssi.h"/>
+          
+          <file category="source" name="cyclone_tcp\http\http_server.c"/>
+          <file category="source" name="cyclone_tcp\http\http_server_auth.c"/>
+          <file category="source" name="cyclone_tcp\http\http_server_misc.c"/>
+          <file category="source" name="cyclone_tcp\http\mime.c"/>
+          <file category="source" name="cyclone_tcp\http\ssi.c"/>
+        </files>
+      </component>
+      
+      <!-- CycloneTCP (SMTP Client) -->
+      <component Cgroup="CycloneTCP" Csub="SMTP Client" condition="CycloneTCP Core">
+        <description>SMTP Client support</description>
+        <files>
+          <file category="include" name="cyclone_tcp\"/>
+          <file category="header" name="cyclone_tcp\smtp\smtp_client.h"/>
+          <file category="source" name="cyclone_tcp\smtp\smtp_client.c"/>
+        </files>
+      </component>
+      
+      <!-- CycloneTCP (SNMP Agent) -->
+      <component Cgroup="CycloneTCP" Csub="SNMP Agent" condition="CycloneTCP Core">
+        <description>SNMP Agent support</description>
+        <files>
+          <file category="include" name="cyclone_tcp\"/>
+          
+          <file category="header" name="cyclone_tcp\snmp\snmp_agent.h"/>
+          <file category="header" name="cyclone_tcp\snmp\snmp_agent_dispatch.h"/>
+          <file category="header" name="cyclone_tcp\snmp\snmp_agent_pdu.h"/>
+          <file category="header" name="cyclone_tcp\snmp\snmp_agent_misc.h"/>
+          <file category="header" name="cyclone_tcp\snmp\snmp_common.h"/>
+          <file category="header" name="cyclone_tcp\snmp\snmp_usm.h"/>
+          <file category="header" name="cyclone_tcp\mibs\mib_common.h"/>
+          <file category="header" name="cyclone_tcp\mibs\mib2_module.h"/>
+          <file category="header" name="cyclone_tcp\mibs\mib2_impl.h"/>
+          
+          <file category="source" name="cyclone_tcp\snmp\snmp_agent.c"/>
+          <file category="source" name="cyclone_tcp\snmp\snmp_agent_dispatch.c"/>
+          <file category="source" name="cyclone_tcp\snmp\snmp_agent_pdu.c"/>
+          <file category="source" name="cyclone_tcp\snmp\snmp_agent_misc.c"/>
+          <file category="source" name="cyclone_tcp\snmp\snmp_common.c"/>
+          <file category="source" name="cyclone_tcp\snmp\snmp_usm.c"/>
+          <file category="source" name="cyclone_tcp\mibs\mib_common.c"/>
+          <file category="source" name="cyclone_tcp\mibs\mib2_module.c"/>
+          <file category="source" name="cyclone_tcp\mibs\mib2_impl.c"/>
+        </files>
+      </component>
+      
+      <!-- CycloneTCP (SNTP Client) -->
+      <component Cgroup="CycloneTCP" Csub="SNTP Client" condition="CycloneTCP Core">
+        <description>SNTP Client support</description>
+        <files>
+          <file category="include" name="cyclone_tcp\"/>
+          <file category="header" name="cyclone_tcp\sntp\sntp_client.h"/>
+          <file category="source" name="cyclone_tcp\sntp\sntp_client.c"/>
+        </files>
+      </component>
+      
+      <!-- CycloneTCP (Icecast Client) -->
+      <component Cgroup="CycloneTCP" Csub="Icecast Client" condition="CycloneTCP Core">
+        <description>Icecast Client support</description>
+        <files>
+          <file category="include" name="cyclone_tcp\"/>
+          <file category="header" name="cyclone_tcp\icecast\icecast_client.h"/>
+          <file category="source" name="cyclone_tcp\icecast\icecast_client.c"/>
+        </files>
+      </component>
+      
+      <!-- CycloneTCP (PPP) -->
+      <component Cgroup="CycloneTCP" Csub="PPP" condition="CycloneTCP Core">
+        <description>PPP support</description>
+        <files>
+          <file category="include" name="cyclone_tcp\"/>
+          
+          <file category="header" name="cyclone_tcp\ppp\ppp.h"/>
+          <file category="header" name="cyclone_tcp\ppp\ppp_fsm.h"/>
+          <file category="header" name="cyclone_tcp\ppp\ppp_hdlc.h"/>
+          <file category="header" name="cyclone_tcp\ppp\ppp_misc.h"/>
+          <file category="header" name="cyclone_tcp\ppp\ppp_debug.h"/>
+          <file category="header" name="cyclone_tcp\ppp\lcp.h"/>
+          <file category="header" name="cyclone_tcp\ppp\ipcp.h"/>
+          <file category="header" name="cyclone_tcp\ppp\pap.h"/>
+          <file category="header" name="cyclone_tcp\ppp\chap.h"/>
+          
+          <file category="source" name="cyclone_tcp\ppp\ppp.c"/>
+          <file category="source" name="cyclone_tcp\ppp\ppp_fsm.c"/>
+          <file category="source" name="cyclone_tcp\ppp\ppp_hdlc.c"/>
+          <file category="source" name="cyclone_tcp\ppp\ppp_misc.c"/>
+          <file category="source" name="cyclone_tcp\ppp\ppp_debug.c"/>
+          <file category="source" name="cyclone_tcp\ppp\lcp.c"/>
+          <file category="source" name="cyclone_tcp\ppp\ipcp.c"/>
+          <file category="source" name="cyclone_tcp\ppp\pap.c"/>
+          <file category="source" name="cyclone_tcp\ppp\chap.c"/>
+        </files>
+      </component>
+      
+      <!-- CycloneTCP Drivers (SmartFusion) -->
+      <component Cgroup="CycloneTCP Drivers" Csub="SmartFusion" condition="CycloneTCP Core">
+        <description>SmartFusion (A2FxxxM3) Ethernet MAC controller</description>
+        <files>
+          <file category="include" name="cyclone_tcp\"/>
+          <file category="header" name="cyclone_tcp\drivers\a2fxxxm3_eth.h"/>
+          <file category="source" name="cyclone_tcp\drivers\a2fxxxm3_eth.c"/>
+        </files>
+      </component>
+      
+      <!-- CycloneTCP Drivers (FM4) -->
+      <component Cgroup="CycloneTCP Drivers" Csub="FM4" condition="CycloneTCP Core">
+        <description>Spansion FM4 Ethernet MAC controller</description>
+        <files>
+          <file category="include" name="cyclone_tcp\"/>
+          <file category="header" name="cyclone_tcp\drivers\fm4_eth.h"/>
+          <file category="source" name="cyclone_tcp\drivers\fm4_eth.c"/>
+        </files>
+      </component>
+      
+      <!-- CycloneTCP Drivers (LM3S) -->
+      <component Cgroup="CycloneTCP Drivers" Csub="LM3S" condition="CycloneTCP Core">
+        <description>Luminary Stellaris LM3S Ethernet controller</description>
+        <files>
+          <file category="include" name="cyclone_tcp\"/>
+          <file category="header" name="cyclone_tcp\drivers\lm3s_eth.h"/>
+          <file category="source" name="cyclone_tcp\drivers\lm3s_eth.c"/>
+        </files>
+      </component>
+      
+      <!-- CycloneTCP Drivers (LPC1750) -->
+      <component Cgroup="CycloneTCP Drivers" Csub="LPC1750" condition="CycloneTCP Core">
+        <description>LPC1750 Ethernet MAC controller</description>
+        <files>
+          <file category="include" name="cyclone_tcp\"/>
+          <file category="header" name="cyclone_tcp\drivers\lpc175x_eth.h"/>
+          <file category="source" name="cyclone_tcp\drivers\lpc175x_eth.c"/>
+        </files>
+      </component>
+      
+      <!-- CycloneTCP Drivers (LPC1760) -->
+      <component Cgroup="CycloneTCP Drivers" Csub="LPC1760" condition="CycloneTCP Core">
+        <description>LPC1760 Ethernet MAC controller</description>
+        <files>
+          <file category="include" name="cyclone_tcp\"/>
+          <file category="header" name="cyclone_tcp\drivers\lpc176x_eth.h"/>
+          <file category="source" name="cyclone_tcp\drivers\lpc176x_eth.c"/>
+        </files>
+      </component>
+      
+      <!-- CycloneTCP Drivers (LPC1800) -->
+      <component Cgroup="CycloneTCP Drivers" Csub="LPC1800" condition="CycloneTCP Core">
+        <description>LPC1800 Ethernet MAC controller</description>
+        <files>
+          <file category="include" name="cyclone_tcp\"/>
+          <file category="header" name="cyclone_tcp\drivers\lpc18xx_eth.h"/>
+          <file category="source" name="cyclone_tcp\drivers\lpc18xx_eth.c"/>
+        </files>
+      </component>
+      
+      <!-- CycloneTCP Drivers (LPC2300) -->
+      <component Cgroup="CycloneTCP Drivers" Csub="LPC2300" condition="CycloneTCP Core">
+        <description>LPC2300 Ethernet MAC controller</description>
+        <files>
+          <file category="include" name="cyclone_tcp\"/>
+          <file category="header" name="cyclone_tcp\drivers\lpc23xx_eth.h"/>
+          <file category="source" name="cyclone_tcp\drivers\lpc23xx_eth.c"/>
+        </files>
+      </component>
+      
+      <!-- CycloneTCP Drivers (LPC4300) -->
+      <component Cgroup="CycloneTCP Drivers" Csub="LPC4300" condition="CycloneTCP Core">
+        <description>LPC4300 Ethernet MAC controller</description>
+        <files>
+          <file category="include" name="cyclone_tcp\"/>
+          <file category="header" name="cyclone_tcp\drivers\lpc43xx_eth.h"/>
+          <file category="source" name="cyclone_tcp\drivers\lpc43xx_eth.c"/>
+        </files>
+      </component>
+      
+      <!-- CycloneTCP Drivers (SmartFusion2) -->
+      <component Cgroup="CycloneTCP Drivers" Csub="SmartFusion2" condition="CycloneTCP Core">
+        <description>SmartFusion2 (M2Sxxx) Ethernet MAC controller</description>
+        <files>
+          <file category="include" name="cyclone_tcp\"/>
+          <file category="header" name="cyclone_tcp\drivers\m2sxxx_eth.h"/>
+          <file category="source" name="cyclone_tcp\drivers\m2sxxx_eth.c"/>
+        </files>
+      </component>
+      
+      <!-- CycloneTCP Drivers (Kinetis K60) -->
+      <component Cgroup="CycloneTCP Drivers" Csub="Kinetis K60" condition="CycloneTCP Core">
+        <description>Freescale Kinetis K60 Ethernet MAC controller</description>
+        <files>
+          <file category="include" name="cyclone_tcp\"/>
+          <file category="header" name="cyclone_tcp\drivers\mk60_eth.h"/>
+          <file category="source" name="cyclone_tcp\drivers\mk60_eth.c"/>
+        </files>
+      </component>
+      
+      <!-- CycloneTCP Drivers (Kinetis K64) -->
+      <component Cgroup="CycloneTCP Drivers" Csub="Kinetis K64" condition="CycloneTCP Core">
+        <description>Freescale Kinetis K64 Ethernet MAC controller</description>
+        <files>
+          <file category="include" name="cyclone_tcp\"/>
+          <file category="header" name="cyclone_tcp\drivers\mk64_eth.h"/>
+          <file category="source" name="cyclone_tcp\drivers\mk64_eth.c"/>
+        </files>
+      </component>
+      
+      <!-- CycloneTCP Drivers (Kinetis K70) -->
+      <component Cgroup="CycloneTCP Drivers" Csub="Kinetis K70" condition="CycloneTCP Core">
+        <description>Freescale Kinetis K70 Ethernet MAC controller</description>
+        <files>
+          <file category="include" name="cyclone_tcp\"/>
+          <file category="header" name="cyclone_tcp\drivers\mk70_eth.h"/>
+          <file category="source" name="cyclone_tcp\drivers\mk70_eth.c"/>
+        </files>
+      </component>
+      
+      <!-- CycloneTCP Drivers (Kinetis KV5x) -->
+      <component Cgroup="CycloneTCP Drivers" Csub="Kinetis KV5x" condition="CycloneTCP Core">
+        <description>Freescale Kinetis KV5x Ethernet MAC controller</description>
+        <files>
+          <file category="include" name="cyclone_tcp\"/>
+          <file category="header" name="cyclone_tcp\drivers\mkv5x_eth.h"/>
+          <file category="source" name="cyclone_tcp\drivers\mkv5x_eth.c"/>
+        </files>
+      </component>
+      
+      <!-- CycloneTCP Drivers (Renesas Synergy S7G2) -->
+      <component Cgroup="CycloneTCP Drivers" Csub="Renesas S7G2" condition="CycloneTCP Core">
+        <description>Renesas Synergy S7G2 Ethernet MAC controller</description>
+        <files>
+          <file category="include" name="cyclone_tcp\"/>
+          <file category="header" name="cyclone_tcp\drivers\s7g2_eth.h"/>
+          <file category="source" name="cyclone_tcp\drivers\s7g2_eth.c"/>
+        </files>
+      </component>
+      
+      <!-- CycloneTCP Drivers (Renesas RZA1) -->
+      <component Cgroup="CycloneTCP Drivers" Csub="Renesas RZA1" condition="CycloneTCP Core">
+        <description>Renesas RZ/A1 Ethernet MAC controller</description>
+        <files>
+          <file category="include" name="cyclone_tcp\"/>
+          <file category="header" name="cyclone_tcp\drivers\rza1_eth.h"/>
+          <file category="source" name="cyclone_tcp\drivers\rza1_eth.c"/>
+        </files>
+      </component>
+      
+      <!-- CycloneTCP Drivers (SAM3X) -->
+      <component Cgroup="CycloneTCP Drivers" Csub="SAM3X" condition="CycloneTCP Core">
+        <description>SAM3X Ethernet MAC controller</description>
+        <files>
+          <file category="include" name="cyclone_tcp\"/>
+          <file category="header" name="cyclone_tcp\drivers\sam3x_eth.h"/>
+          <file category="source" name="cyclone_tcp\drivers\sam3x_eth.c"/>
+        </files>
+      </component>
+      
+      <!-- CycloneTCP Drivers (SAM4E) -->
+      <component Cgroup="CycloneTCP Drivers" Csub="SAM4E" condition="CycloneTCP Core">
+        <description>SAM4E Ethernet MAC controller</description>
+        <files>
+          <file category="include" name="cyclone_tcp\"/>
+          <file category="header" name="cyclone_tcp\drivers\sam4e_eth.h"/>
+          <file category="source" name="cyclone_tcp\drivers\sam4e_eth.c"/>
+        </files>
+      </component>
+      
+      <!-- CycloneTCP Drivers (SAM7X) -->
+      <component Cgroup="CycloneTCP Drivers" Csub="SAM7X" condition="CycloneTCP Core">
+        <description>SAM7X Ethernet MAC controller</description>
+        <files>
+          <file category="include" name="cyclone_tcp\"/>
+          <file category="header" name="cyclone_tcp\drivers\sam7x_eth.h"/>
+          <file category="source" name="cyclone_tcp\drivers\sam7x_eth.c"/>
+        </files>
+      </component>
+      
+      <!-- CycloneTCP Drivers (SAM9263) -->
+      <component Cgroup="CycloneTCP Drivers" Csub="SAM9263" condition="CycloneTCP Core">
+        <description>SAM9263 Ethernet MAC controller</description>
+        <files>
+          <file category="include" name="cyclone_tcp\"/>
+          <file category="header" name="cyclone_tcp\drivers\sam9263_eth.h"/>
+          <file category="source" name="cyclone_tcp\drivers\sam9263_eth.c"/>
+        </files>
+      </component>
+      
+      <!-- CycloneTCP Drivers (SAMA5D2) -->
+      <component Cgroup="CycloneTCP Drivers" Csub="SAMA5D2" condition="CycloneTCP Core">
+        <description>SAMA5D2 Ethernet MAC controller</description>
+        <files>
+          <file category="include" name="cyclone_tcp\"/>
+          <file category="header" name="cyclone_tcp\drivers\sama5d2_eth.h"/>
+          <file category="source" name="cyclone_tcp\drivers\sama5d2_eth.c"/>
+        </files>
+      </component>
+      
+      <!-- CycloneTCP Drivers (SAMA5D3) -->
+      <component Cgroup="CycloneTCP Drivers" Csub="SAMA5D3" condition="CycloneTCP Core">
+        <description>SAMA5D3 Ethernet MAC controller</description>
+        <files>
+          <file category="include" name="cyclone_tcp\"/>
+          <file category="header" name="cyclone_tcp\drivers\sama5d3_eth.h"/>
+          <file category="source" name="cyclone_tcp\drivers\sama5d3_eth.c"/>
+        </files>
+      </component>
+      
+      <!-- CycloneTCP Drivers (SAMA5D3 Gigabit) -->
+      <component Cgroup="CycloneTCP Drivers" Csub="SAMA5D3 Gigabit" condition="CycloneTCP Core">
+        <description>SAMA5D3 Gigabit Ethernet MAC controller</description>
+        <files>
+          <file category="include" name="cyclone_tcp\"/>
+          <file category="header" name="cyclone_tcp\drivers\sama5d3_gigabit_eth.h"/>
+          <file category="source" name="cyclone_tcp\drivers\sama5d3_gigabit_eth.c"/>
+        </files>
+      </component>
+      
+      <!-- CycloneTCP Drivers (SAME70) -->
+      <component Cgroup="CycloneTCP Drivers" Csub="SAME70" condition="CycloneTCP Core">
+        <description>SAME70 Ethernet MAC controller</description>
+        <files>
+          <file category="include" name="cyclone_tcp\"/>
+          <file category="header" name="cyclone_tcp\drivers\same70_eth.h"/>
+          <file category="source" name="cyclone_tcp\drivers\same70_eth.c"/>
+        </files>
+      </component>
+      
+      <!-- CycloneTCP Drivers (SAMV71) -->
+      <component Cgroup="CycloneTCP Drivers" Csub="SAMV71" condition="CycloneTCP Core">
+        <description>SAMV71 Ethernet MAC controller</description>
+        <files>
+          <file category="include" name="cyclone_tcp\"/>
+          <file category="header" name="cyclone_tcp\drivers\samv71_eth.h"/>
+          <file category="source" name="cyclone_tcp\drivers\samv71_eth.c"/>
+        </files>
+      </component>
+      
+      <!-- CycloneTCP Drivers (STM32F107) -->
+      <component Cgroup="CycloneTCP Drivers" Csub="STM32F107" condition="CycloneTCP Core">
+        <description>STM32F107 Ethernet MAC controller</description>
+        <files>
+          <file category="include" name="cyclone_tcp\"/>
+          <file category="header" name="cyclone_tcp\drivers\stm32f107_eth.h"/>
+          <file category="source" name="cyclone_tcp\drivers\stm32f107_eth.c"/>
+        </files>
+      </component>
+      
+      <!-- CycloneTCP Drivers (STM32F2x7) -->
+      <component Cgroup="CycloneTCP Drivers" Csub="STM32F2x7" condition="CycloneTCP Core">
+        <description>STM32F207/217 Ethernet MAC controller</description>
+        <files>
+          <file category="include" name="cyclone_tcp\"/>
+          <file category="header" name="cyclone_tcp\drivers\stm32f2x7_eth.h"/>
+          <file category="source" name="cyclone_tcp\drivers\stm32f2x7_eth.c"/>
+        </files>
+      </component>
+      
+      <!-- CycloneTCP Drivers (STM32F4x7) -->
+      <component Cgroup="CycloneTCP Drivers" Csub="STM32F4x7" condition="CycloneTCP Core">
+        <description>STM32F407/417/427/437 Ethernet MAC controller</description>
+        <files>
+          <file category="include" name="cyclone_tcp\"/>
+          <file category="header" name="cyclone_tcp\drivers\stm32f4x7_eth.h"/>
+          <file category="source" name="cyclone_tcp\drivers\stm32f4x7_eth.c"/>
+        </files>
+      </component>
+      
+      <!-- CycloneTCP Drivers (STM32F4x9) -->
+      <component Cgroup="CycloneTCP Drivers" Csub="STM32F4x9" condition="CycloneTCP Core">
+        <description>STM32F429/439 Ethernet MAC controller</description>
+        <files>
+          <file category="include" name="cyclone_tcp\"/>
+          <file category="header" name="cyclone_tcp\drivers\stm32f4x9_eth.h"/>
+          <file category="source" name="cyclone_tcp\drivers\stm32f4x9_eth.c"/>
+        </files>
+      </component>
+      
+      <!-- CycloneTCP Drivers (STM32F7xx) -->
+      <component Cgroup="CycloneTCP Drivers" Csub="STM32F7xx" condition="CycloneTCP Core">
+        <description>STM32F746/756 Ethernet MAC controller</description>
+        <files>
+          <file category="include" name="cyclone_tcp\"/>
+          <file category="header" name="cyclone_tcp\drivers\stm32f7xx_eth.h"/>
+          <file category="source" name="cyclone_tcp\drivers\stm32f7xx_eth.c"/>
+        </files>
+      </component>
+      
+      <!-- CycloneTCP Drivers (STR912) -->
+      <component Cgroup="CycloneTCP Drivers" Csub="STR912" condition="CycloneTCP Core">
+        <description>STR912 Ethernet MAC controller</description>
+        <files>
+          <file category="include" name="cyclone_tcp\"/>
+          <file category="header" name="cyclone_tcp\drivers\str912_eth.h"/>
+          <file category="source" name="cyclone_tcp\drivers\str912_eth.c"/>
+        </files>
+      </component>
+      
+      <!-- CycloneTCP Drivers (F28M35x) -->
+      <component Cgroup="CycloneTCP Drivers" Csub="F28M35x" condition="CycloneTCP Core">
+        <description>F28M35x Ethernet controller</description>
+        <files>
+          <file category="include" name="cyclone_tcp\"/>
+          <file category="header" name="cyclone_tcp\drivers\f28m35x_eth.h"/>
+          <file category="source" name="cyclone_tcp\drivers\f28m35x_eth.c"/>
+        </files>
+      </component>
+      
+      <!-- CycloneTCP Drivers (OMAP-L138) -->
+      <component Cgroup="CycloneTCP Drivers" Csub="OMAP-L138" condition="CycloneTCP Core">
+        <description>OMAP-L138 Ethernet controller</description>
+        <files>
+          <file category="include" name="cyclone_tcp\"/>
+          <file category="header" name="cyclone_tcp\drivers\omapl138_eth.h"/>
+          <file category="source" name="cyclone_tcp\drivers\omapl138_eth.c"/>
+        </files>
+      </component>
+      
+      <!-- CycloneTCP Drivers (Tiva TM4C129) -->
+      <component Cgroup="CycloneTCP Drivers" Csub="Tiva TM4C129" condition="CycloneTCP Core">
+        <description>Tiva TM4C129 Ethernet controller</description>
+        <files>
+          <file category="include" name="cyclone_tcp\"/>
+          <file category="header" name="cyclone_tcp\drivers\tm4c129_eth.h"/>
+          <file category="source" name="cyclone_tcp\drivers\tm4c129_eth.c"/>
+        </files>
+      </component>
+      
+      <!-- CycloneTCP Drivers (XMC4500) -->
+      <component Cgroup="CycloneTCP Drivers" Csub="XMC4500" condition="CycloneTCP Core">
+        <description>Infineon XMC4500 Ethernet MAC controller</description>
+        <files>
+          <file category="include" name="cyclone_tcp\"/>
+          <file category="header" name="cyclone_tcp\drivers\xmc4500_eth.h"/>
+          <file category="source" name="cyclone_tcp\drivers\xmc4500_eth.c"/>
+        </files>
+      </component>
+      
+      <!-- CycloneTCP Drivers (XMC4700) -->
+      <component Cgroup="CycloneTCP Drivers" Csub="XMC4700" condition="CycloneTCP Core">
+        <description>Infineon XMC4700 Ethernet MAC controller</description>
+        <files>
+          <file category="include" name="cyclone_tcp\"/>
+          <file category="header" name="cyclone_tcp\drivers\xmc4700_eth.h"/>
+          <file category="source" name="cyclone_tcp\drivers\xmc4700_eth.c"/>
+        </files>
+      </component>
+      
+      <!-- CycloneTCP Drivers (XMC4800) -->
+      <component Cgroup="CycloneTCP Drivers" Csub="XMC4800" condition="CycloneTCP Core">
+        <description>Infineon XMC4800 Ethernet MAC controller</description>
+        <files>
+          <file category="include" name="cyclone_tcp\"/>
+          <file category="header" name="cyclone_tcp\drivers\xmc4800_eth.h"/>
+          <file category="source" name="cyclone_tcp\drivers\xmc4800_eth.c"/>
+        </files>
+      </component>
+      
+      <!-- CycloneTCP Drivers (AR8031) -->
+      <component Cgroup="CycloneTCP Drivers" Csub="AR8031" condition="CycloneTCP Core">
+        <description>AR8031 Ethernet PHY transceiver</description>
+        <files>
+          <file category="include" name="cyclone_tcp\"/>
+          <file category="header" name="cyclone_tcp\drivers\ar8031.h"/>
+          <file category="source" name="cyclone_tcp\drivers\ar8031.c"/>
+        </files>
+      </component>
+      
+      <!-- CycloneTCP Drivers (DM9161) -->
+      <component Cgroup="CycloneTCP Drivers" Csub="DM9161" condition="CycloneTCP Core">
+        <description>DM9161 Ethernet PHY transceiver</description>
+        <files>
+          <file category="include" name="cyclone_tcp\"/>
+          <file category="header" name="cyclone_tcp\drivers\dm9161.h"/>
+          <file category="source" name="cyclone_tcp\drivers\dm9161.c"/>
+        </files>
+      </component>
+      
+      <!-- CycloneTCP Drivers (DP83620) -->
+      <component Cgroup="CycloneTCP Drivers" Csub="DP83620" condition="CycloneTCP Core">
+        <description>DP83620 Ethernet PHY transceiver</description>
+        <files>
+          <file category="include" name="cyclone_tcp\"/>
+          <file category="header" name="cyclone_tcp\drivers\dp83620.h"/>
+          <file category="source" name="cyclone_tcp\drivers\dp83620.c"/>
+        </files>
+      </component>
+      
+      <!-- CycloneTCP Drivers (DP83848) -->
+      <component Cgroup="CycloneTCP Drivers" Csub="DP83848" condition="CycloneTCP Core">
+        <description>DP83848 Ethernet PHY transceiver</description>
+        <files>
+          <file category="include" name="cyclone_tcp\"/>
+          <file category="header" name="cyclone_tcp\drivers\dp83848.h"/>
+          <file category="source" name="cyclone_tcp\drivers\dp83848.c"/>
+        </files>
+      </component>
+      
+      <!-- CycloneTCP Drivers (KSZ8031) -->
+      <component Cgroup="CycloneTCP Drivers" Csub="KSZ8031" condition="CycloneTCP Core">
+        <description>KSZ8031 Ethernet PHY transceiver</description>
+        <files>
+          <file category="include" name="cyclone_tcp\"/>
+          <file category="header" name="cyclone_tcp\drivers\ksz8031.h"/>
+          <file category="source" name="cyclone_tcp\drivers\ksz8031.c"/>
+        </files>
+      </component>
+      
+      <!-- CycloneTCP Drivers (KSZ8041) -->
+      <component Cgroup="CycloneTCP Drivers" Csub="KSZ8041" condition="CycloneTCP Core">
+        <description>KSZ8041 Ethernet PHY transceiver</description>
+        <files>
+          <file category="include" name="cyclone_tcp\"/>
+          <file category="header" name="cyclone_tcp\drivers\ksz8041.h"/>
+          <file category="source" name="cyclone_tcp\drivers\ksz8041.c"/>
+        </files>
+      </component>
+      
+      <!-- CycloneTCP Drivers (KSZ8051) -->
+      <component Cgroup="CycloneTCP Drivers" Csub="KSZ8051" condition="CycloneTCP Core">
+        <description>KSZ8051 Ethernet PHY transceiver</description>
+        <files>
+          <file category="include" name="cyclone_tcp\"/>
+          <file category="header" name="cyclone_tcp\drivers\ksz8051.h"/>
+          <file category="source" name="cyclone_tcp\drivers\ksz8051.c"/>
+        </files>
+      </component>
+      
+      <!-- CycloneTCP Drivers (KSZ8061) -->
+      <component Cgroup="CycloneTCP Drivers" Csub="KSZ8061" condition="CycloneTCP Core">
+        <description>KSZ8061 Ethernet PHY transceiver</description>
+        <files>
+          <file category="include" name="cyclone_tcp\"/>
+          <file category="header" name="cyclone_tcp\drivers\ksz8061.h"/>
+          <file category="source" name="cyclone_tcp\drivers\ksz8061.c"/>
+        </files>
+      </component>
+      
+      <!-- CycloneTCP Drivers (KSZ8081) -->
+      <component Cgroup="CycloneTCP Drivers" Csub="KSZ8081" condition="CycloneTCP Core">
+        <description>KSZ8081 Ethernet PHY transceiver</description>
+        <files>
+          <file category="include" name="cyclone_tcp\"/>
+          <file category="header" name="cyclone_tcp\drivers\ksz8081.h"/>
+          <file category="source" name="cyclone_tcp\drivers\ksz8081.c"/>
+        </files>
+      </component>
+      
+      <!-- CycloneTCP Drivers (KSZ8091) -->
+      <component Cgroup="CycloneTCP Drivers" Csub="KSZ8091" condition="CycloneTCP Core">
+        <description>KSZ8091 Ethernet PHY transceiver</description>
+        <files>
+          <file category="include" name="cyclone_tcp\"/>
+          <file category="header" name="cyclone_tcp\drivers\ksz8091.h"/>
+          <file category="source" name="cyclone_tcp\drivers\ksz8091.c"/>
+        </files>
+      </component>
+      
+      <!-- CycloneTCP Drivers (KSZ8721) -->
+      <component Cgroup="CycloneTCP Drivers" Csub="KSZ8721" condition="CycloneTCP Core">
+        <description>KSZ8721 Ethernet PHY transceiver</description>
+        <files>
+          <file category="include" name="cyclone_tcp\"/>
+          <file category="header" name="cyclone_tcp\drivers\ksz8721.h"/>
+          <file category="source" name="cyclone_tcp\drivers\ksz8721.c"/>
+        </files>
+      </component>
+      
+      <!-- CycloneTCP Drivers (KSZ9031) -->
+      <component Cgroup="CycloneTCP Drivers" Csub="KSZ9031" condition="CycloneTCP Core">
+        <description>KSZ9031 Ethernet PHY transceiver</description>
+        <files>
+          <file category="include" name="cyclone_tcp\"/>
+          <file category="header" name="cyclone_tcp\drivers\ksz9031.h"/>
+          <file category="source" name="cyclone_tcp\drivers\ksz9031.c"/>
+        </files>
+      </component>
+      
+      <!-- CycloneTCP Drivers (LAN8710) -->
+      <component Cgroup="CycloneTCP Drivers" Csub="LAN8710" condition="CycloneTCP Core">
+        <description>LAN8710 Ethernet PHY transceiver</description>
+        <files>
+          <file category="include" name="cyclone_tcp\"/>
+          <file category="header" name="cyclone_tcp\drivers\lan8710.h"/>
+          <file category="source" name="cyclone_tcp\drivers\lan8710.c"/>
+        </files>
+      </component>
+      
+      <!-- CycloneTCP Drivers (LAN8720) -->
+      <component Cgroup="CycloneTCP Drivers" Csub="LAN8720" condition="CycloneTCP Core">
+        <description>LAN8720 Ethernet PHY transceiver</description>
+        <files>
+          <file category="include" name="cyclone_tcp\"/>
+          <file category="header" name="cyclone_tcp\drivers\lan8720.h"/>
+          <file category="source" name="cyclone_tcp\drivers\lan8720.c"/>
+        </files>
+      </component>
+      
+      <!-- CycloneTCP Drivers (LAN8740) -->
+      <component Cgroup="CycloneTCP Drivers" Csub="LAN8740" condition="CycloneTCP Core">
+        <description>LAN8740 Ethernet PHY transceiver</description>
+        <files>
+          <file category="include" name="cyclone_tcp\"/>
+          <file category="header" name="cyclone_tcp\drivers\lan8740.h"/>
+          <file category="source" name="cyclone_tcp\drivers\lan8740.c"/>
+        </files>
+      </component>
+      
+      <!-- CycloneTCP Drivers (LAN8742) -->
+      <component Cgroup="CycloneTCP Drivers" Csub="LAN8742" condition="CycloneTCP Core">
+        <description>LAN8742 Ethernet PHY transceiver</description>
+        <files>
+          <file category="include" name="cyclone_tcp\"/>
+          <file category="header" name="cyclone_tcp\drivers\lan8742.h"/>
+          <file category="source" name="cyclone_tcp\drivers\lan8742.c"/>
+        </files>
+      </component>
+      
+      <!-- CycloneTCP Drivers (ST802RT1A) -->
+      <component Cgroup="CycloneTCP Drivers" Csub="ST802RT1A" condition="CycloneTCP Core">
+        <description>ST802RT1A Ethernet PHY transceiver</description>
+        <files>
+          <file category="include" name="cyclone_tcp\"/>
+          <file category="header" name="cyclone_tcp\drivers\st802rt1a.h"/>
+          <file category="source" name="cyclone_tcp\drivers\st802rt1a.c"/>
+        </files>
+      </component>
+      
+      <!-- CycloneTCP Drivers (uPD60611) -->
+      <component Cgroup="CycloneTCP Drivers" Csub="uPD60611" condition="CycloneTCP Core">
+        <description>uPD60611 Ethernet PHY transceiver</description>
+        <files>
+          <file category="include" name="cyclone_tcp\"/>
+          <file category="header" name="cyclone_tcp\drivers\upd60611.h"/>
+          <file category="source" name="cyclone_tcp\drivers\upd60611.c"/>
+        </files>
+      </component>
+      
+      <!-- CycloneTCP Drivers (DM9000) -->
+      <component Cgroup="CycloneTCP Drivers" Csub="DM9000" condition="CycloneTCP Core">
+        <description>DM9000A/B Ethernet controller</description>
+        <files>
+          <file category="include" name="cyclone_tcp\"/>
+          <file category="header" name="cyclone_tcp\drivers\dm9000.h"/>
+          <file category="source" name="cyclone_tcp\drivers\dm9000.c"/>
+        </files>
+      </component>
+      
+      <!-- CycloneTCP Drivers (ENC28J60) -->
+      <component Cgroup="CycloneTCP Drivers" Csub="ENC28J60" condition="CycloneTCP Core">
+        <description>ENC28J60 Ethernet controller</description>
+        <files>
+          <file category="include" name="cyclone_tcp\"/>
+          <file category="header" name="cyclone_tcp\drivers\enc28j60.h"/>
+          <file category="source" name="cyclone_tcp\drivers\enc28j60.c"/>
+        </files>
+      </component>
+      
+      <!-- CycloneTCP Drivers (ENC624J600) -->
+      <component Cgroup="CycloneTCP Drivers" Csub="ENC624J600" condition="CycloneTCP Core">
+        <description>ENC624J600/ENC424J600 Ethernet controller</description>
+        <files>
+          <file category="include" name="cyclone_tcp\"/>
+          <file category="header" name="cyclone_tcp\drivers\enc624j600.h"/>
+          <file category="source" name="cyclone_tcp\drivers\enc624j600.c"/>
+        </files>
+      </component>
+      
+      <!-- CycloneTCP Drivers (KSZ8851) -->
+      <component Cgroup="CycloneTCP Drivers" Csub="KSZ8851" condition="CycloneTCP Core">
+        <description>KSZ8851 Ethernet controller</description>
+        <files>
+          <file category="include" name="cyclone_tcp\"/>
+          <file category="header" name="cyclone_tcp\drivers\ksz8851.h"/>
+          <file category="source" name="cyclone_tcp\drivers\ksz8851.c"/>
+        </files>
+      </component>
+      
+      <!-- CycloneTCP Drivers (WILC1000) -->
+      <component Cgroup="CycloneTCP Drivers" Csub="WILC1000" condition="CycloneTCP Core">
+        <description>WILC1000/WINC1500 Wi-Fi controller</description>
+        <files>
+          <file category="include" name="cyclone_tcp\"/>
+          <file category="header" name="cyclone_tcp\drivers\wilc1000_driver.h"/>
+          <file category="source" name="cyclone_tcp\drivers\wilc1000_driver.c"/>
+        </files>
+      </component>
+      
+      <!-- CycloneTCP Drivers (BCM43362) -->
+      <component Cgroup="CycloneTCP Drivers" Csub="BCM43362" condition="CycloneTCP Core">
+        <description>BCM43362 Wi-Fi controller</description>
+        <files>
+          <file category="include" name="cyclone_tcp\"/>
+          <file category="header" name="cyclone_tcp\drivers\bcm43362_driver.h"/>
+          <file category="source" name="cyclone_tcp\drivers\bcm43362_driver.c"/>
+        </files>
+      </component>
+      
+      <!-- CycloneTCP Drivers (MRF24WG) -->
+      <component Cgroup="CycloneTCP Drivers" Csub="MRF24WG" condition="CycloneTCP Core">
+        <description>MRF24WG0MA/B Wi-Fi controller</description>
+        <files>
+          <file category="include" name="cyclone_tcp\"/>
+          <file category="header" name="cyclone_tcp\drivers\mrf24wg_driver.h"/>
+          <file category="source" name="cyclone_tcp\drivers\mrf24wg_driver.c"/>
+        </files>
+      </component>
+      
+      <!-- CycloneSSL -->
+      <component Cgroup="CycloneSSL" Csub="Core" condition="CycloneSSL dependencies">
+        <description>SSL/TLS library core</description>
+        <files>
+          <file category="include" name="cyclone_ssl\"/>
+          
+          <file category="header" name="cyclone_ssl\tls.h"/>
+          <file category="header" name="cyclone_ssl\tls_cipher_suites.h"/>
+          <file category="header" name="cyclone_ssl\tls_client.h"/>
+          <file category="header" name="cyclone_ssl\tls_server.h"/>
+          <file category="header" name="cyclone_ssl\tls_common.h"/>
+          <file category="header" name="cyclone_ssl\tls_record.h"/>
+          <file category="header" name="cyclone_ssl\tls_io.h"/>
+          <file category="header" name="cyclone_ssl\tls_cache.h"/>
+          <file category="header" name="cyclone_ssl\tls_misc.h"/>
+          <file category="header" name="cyclone_ssl\ssl_common.h"/>
+          
+          <file category="source" name="cyclone_ssl\tls.c"/>
+          <file category="source" name="cyclone_ssl\tls_cipher_suites.c"/>
+          <file category="source" name="cyclone_ssl\tls_client.c"/>
+          <file category="source" name="cyclone_ssl\tls_server.c"/>
+          <file category="source" name="cyclone_ssl\tls_common.c"/>
+          <file category="source" name="cyclone_ssl\tls_record.c"/>
+          <file category="source" name="cyclone_ssl\tls_io.c"/>
+          <file category="source" name="cyclone_ssl\tls_misc.c"/>
+          <file category="source" name="cyclone_ssl\tls_cache.c"/>
+          <file category="source" name="cyclone_ssl\ssl_common.c"/>
+          
+          <file category="header" name="config\tls_config.h" attr="config" version="1.7.0"/>
+        </files>
+      </component>
+      
+      <!-- CycloneCrypto -->
+      <component Cgroup="CycloneCrypto" Csub="Core" condition="CycloneCrypto dependencies">
+        <description>Cryptographic library core</description>
+        <files>
+          <file category="include" name="cyclone_crypto\"/>
+          
+          <file category="header" name="cyclone_crypto\crypto.h"/>
+          <file category="header" name="cyclone_crypto\base64.h"/>
+          <file category="header" name="cyclone_crypto\md2.h"/>
+          <file category="header" name="cyclone_crypto\md4.h"/>
+          <file category="header" name="cyclone_crypto\md5.h"/>
+          <file category="header" name="cyclone_crypto\ripemd128.h"/>
+          <file category="header" name="cyclone_crypto\ripemd160.h"/>
+          <file category="header" name="cyclone_crypto\sha1.h"/>
+          <file category="header" name="cyclone_crypto\sha224.h"/>
+          <file category="header" name="cyclone_crypto\sha256.h"/>
+          <file category="header" name="cyclone_crypto\sha384.h"/>
+          <file category="header" name="cyclone_crypto\sha512.h"/>
+          <file category="header" name="cyclone_crypto\sha512_224.h"/>
+          <file category="header" name="cyclone_crypto\sha512_256.h"/>
+          <file category="header" name="cyclone_crypto\tiger.h"/>
+          <file category="header" name="cyclone_crypto\whirlpool.h"/>
+          <file category="header" name="cyclone_crypto\hmac.h"/>
+          <file category="header" name="cyclone_crypto\rc4.h"/>
+          <file category="header" name="cyclone_crypto\rc6.h"/>
+          <file category="header" name="cyclone_crypto\idea.h"/>
+          <file category="header" name="cyclone_crypto\des.h"/>
+          <file category="header" name="cyclone_crypto\des3.h"/>
+          <file category="header" name="cyclone_crypto\aes.h"/>
+          <file category="header" name="cyclone_crypto\camellia.h"/>
+          <file category="header" name="cyclone_crypto\seed.h"/>
+          <file category="header" name="cyclone_crypto\aria.h"/>
+          <file category="header" name="cyclone_crypto\cipher_mode_ecb.h"/>
+          <file category="header" name="cyclone_crypto\cipher_mode_cbc.h"/>
+          <file category="header" name="cyclone_crypto\cipher_mode_cfb.h"/>
+          <file category="header" name="cyclone_crypto\cipher_mode_ofb.h"/>
+          <file category="header" name="cyclone_crypto\cipher_mode_ctr.h"/>
+          <file category="header" name="cyclone_crypto\cipher_mode_ccm.h"/>
+          <file category="header" name="cyclone_crypto\cipher_mode_gcm.h"/>
+          <file category="header" name="cyclone_crypto\dh.h"/>
+          <file category="header" name="cyclone_crypto\rsa.h"/>
+          <file category="header" name="cyclone_crypto\dsa.h"/>
+          <file category="header" name="cyclone_crypto\ec.h"/>
+          <file category="header" name="cyclone_crypto\ec_curves.h"/>
+          <file category="header" name="cyclone_crypto\ecdh.h"/>
+          <file category="header" name="cyclone_crypto\ecdsa.h"/>
+          <file category="header" name="cyclone_crypto\pkcs5.h"/>
+          <file category="header" name="cyclone_crypto\mpi.h"/>
+          <file category="header" name="cyclone_crypto\asn1.h"/>
+          <file category="header" name="cyclone_crypto\oid.h"/>
+          <file category="header" name="cyclone_crypto\x509.h"/>
+          <file category="header" name="cyclone_crypto\pem.h"/>
+          <file category="header" name="cyclone_crypto\yarrow.h"/>
+          
+          <file category="source" name="cyclone_crypto\base64.c"/>
+          <file category="source" name="cyclone_crypto\md2.c"/>
+          <file category="source" name="cyclone_crypto\md4.c"/>
+          <file category="source" name="cyclone_crypto\md5.c"/>
+          <file category="source" name="cyclone_crypto\ripemd128.c"/>
+          <file category="source" name="cyclone_crypto\ripemd160.c"/>
+          <file category="source" name="cyclone_crypto\sha1.c"/>
+          <file category="source" name="cyclone_crypto\sha224.c"/>
+          <file category="source" name="cyclone_crypto\sha256.c"/>
+          <file category="source" name="cyclone_crypto\sha384.c"/>
+          <file category="source" name="cyclone_crypto\sha512.c"/>
+          <file category="source" name="cyclone_crypto\sha512_224.c"/>
+          <file category="source" name="cyclone_crypto\sha512_256.c"/>
+          <file category="source" name="cyclone_crypto\tiger.c"/>
+          <file category="source" name="cyclone_crypto\whirlpool.c"/>
+          <file category="source" name="cyclone_crypto\hmac.c"/>
+          <file category="source" name="cyclone_crypto\rc4.c"/>
+          <file category="source" name="cyclone_crypto\rc6.c"/>
+          <file category="source" name="cyclone_crypto\idea.c"/>
+          <file category="source" name="cyclone_crypto\des.c"/>
+          <file category="source" name="cyclone_crypto\des3.c"/>
+          <file category="source" name="cyclone_crypto\aes.c"/>
+          <file category="source" name="cyclone_crypto\camellia.c"/>
+          <file category="source" name="cyclone_crypto\seed.c"/>
+          <file category="source" name="cyclone_crypto\aria.c"/>
+          <file category="source" name="cyclone_crypto\cipher_mode_ecb.c"/>
+          <file category="source" name="cyclone_crypto\cipher_mode_cbc.c"/>
+          <file category="source" name="cyclone_crypto\cipher_mode_cfb.c"/>
+          <file category="source" name="cyclone_crypto\cipher_mode_ofb.c"/>
+          <file category="source" name="cyclone_crypto\cipher_mode_ctr.c"/>
+          <file category="source" name="cyclone_crypto\cipher_mode_ccm.c"/>
+          <file category="source" name="cyclone_crypto\cipher_mode_gcm.c"/>
+          <file category="source" name="cyclone_crypto\dh.c"/>
+          <file category="source" name="cyclone_crypto\rsa.c"/>
+          <file category="source" name="cyclone_crypto\dsa.c"/>
+          <file category="source" name="cyclone_crypto\ec.c"/>
+          <file category="source" name="cyclone_crypto\ec_curves.c"/>
+          <file category="source" name="cyclone_crypto\ecdh.c"/>
+          <file category="source" name="cyclone_crypto\ecdsa.c"/>
+          <file category="source" name="cyclone_crypto\pkcs5.c"/>
+          <file category="source" name="cyclone_crypto\mpi.c"/>
+          <file category="sourceAsm" name="cyclone_crypto\mpi_asm_keil_cortex_m3.s" condition="Cortex-M ARMCC"/>
+          <file category="sourceAsm" name="cyclone_crypto\mpi_asm_iar_cortex_m3.s" condition="Cortex-M IAR"/>
+          <file category="sourceAsm" name="cyclone_crypto\mpi_asm_gcc_cortex_m3.S" condition="Cortex-M GCC"/>
+          <file category="source" name="cyclone_crypto\asn1.c"/>
+          <file category="source" name="cyclone_crypto\oid.c"/>
+          <file category="source" name="cyclone_crypto\x509.c"/>
+          <file category="source" name="cyclone_crypto\pem.c"/>
+          <file category="source" name="cyclone_crypto\yarrow.c"/>
+          
+          <file category="header" name="config\crypto_config.h" attr="config" version="1.7.0"/>
+        </files>
+      </component>
+      
+    </bundle>
+  </components>
+  
+  <!-- Examples section -->
+  <examples>
+  
+  <!-- HTTP Server Demo (MCBSTM32F200) -->
+    <example name="CycloneTCP HTTP Server Demo" doc="abstract.txt" folder="demo\mcbstm32f200\http_server_demo">
+      <description>HTTP server demo (CycloneTCP and CMSIS-RTOS)</description>
+      <board name="MCBSTM32F200" vendor="Keil"/>
+      <project>
+        <environment name="uv" load="http_server_demo.uvprojx"/>
+      </project>
+      <attributes>
+        <component Cclass="CMSIS" Cgroup="CORE"/>
+        <component Cclass="CMSIS" Cgroup="RTOS"/>
+        <component Cclass="Oryx Embedded Middleware" Cgroup="CycloneTCP" Csub="Core"/>
+        <component Cclass="Oryx Embedded Middleware" Cgroup="CycloneSSL" Csub="Core"/>
+        <category>Middleware</category>
+        <keyword>TCP/IP stack</keyword>
+        <keyword>TCP</keyword>
+        <keyword>HTTP</keyword>
+        <keyword>Server</keyword>
+        <keyword>Web Server</keyword>
+      </attributes>
+    </example>
+    
+    <!-- HTTP Server Demo (MCBSTM32F400) -->
+    <example name="CycloneTCP HTTP Server Demo" doc="abstract.txt" folder="demo\mcbstm32f400\http_server_demo">
+      <description>HTTP server demo (CycloneTCP and CMSIS-RTOS)</description>
+      <board name="MCBSTM32F400" vendor="Keil"/>
+      <project>
+        <environment name="uv" load="http_server_demo.uvprojx"/>
+      </project>
+      <attributes>
+        <component Cclass="CMSIS" Cgroup="CORE"/>
+        <component Cclass="CMSIS" Cgroup="RTOS"/>
+        <component Cclass="Oryx Embedded Middleware" Cgroup="CycloneTCP" Csub="Core"/>
+        <component Cclass="Oryx Embedded Middleware" Cgroup="CycloneSSL" Csub="Core"/>
+        <category>Middleware</category>
+        <keyword>TCP/IP stack</keyword>
+        <keyword>TCP</keyword>
+        <keyword>HTTP</keyword>
+        <keyword>Server</keyword>
+        <keyword>Web Server</keyword>
+      </attributes>
+    </example>
+    
+    <!-- HTTPS Server Demo (MCBSTM32F400) -->
+    <example name="CycloneTCP HTTPS Server Demo" doc="abstract.txt" folder="demo\mcbstm32f400\https_server_demo">
+      <description>HTTPS server demo (CycloneTCP, CycloneSSL and CMSIS-RTOS)</description>
+      <board name="MCBSTM32F400" vendor="Keil"/>
+      <project>
+        <environment name="uv" load="https_server_demo.uvprojx"/>
+      </project>
+      <attributes>
+        <component Cclass="CMSIS" Cgroup="CORE"/>
+        <component Cclass="CMSIS" Cgroup="RTOS"/>
+        <component Cclass="Oryx Embedded Middleware" Cgroup="CycloneTCP" Csub="Core"/>
+        <component Cclass="Oryx Embedded Middleware" Cgroup="CycloneSSL" Csub="Core"/>
+        <category>Middleware</category>
+        <category>Security</category>
+        <keyword>TCP/IP stack</keyword>
+        <keyword>TCP</keyword>
+        <keyword>HTTP</keyword>
+        <keyword>HTTPS</keyword>
+        <keyword>SSL</keyword>
+        <keyword>TLS</keyword>
+        <keyword>Server</keyword>
+      </attributes>
+    </example>
+    
+    <!-- SMTP Client Demo (MCBSTM32F400) -->
+    <example name="CycloneTCP SMTP Client Demo" doc="abstract.txt" folder="demo\mcbstm32f400\smtp_client_demo">
+      <description>SMTP client with SSL support (CycloneTCP, CycloneSSL and CMSIS-RTOS)</description>
+      <board name="MCBSTM32F400" vendor="Keil"/>
+      <project>
+        <environment name="uv" load="smtp_client_demo.uvprojx"/>
+      </project>
+      <attributes>
+        <component Cclass="CMSIS" Cgroup="CORE"/>
+        <component Cclass="CMSIS" Cgroup="RTOS"/>
+        <component Cclass="Oryx Embedded Middleware" Cgroup="CycloneTCP" Csub="Core"/>
+        <component Cclass="Oryx Embedded Middleware" Cgroup="CycloneSSL" Csub="Core"/>
+        <category>Middleware</category>
+        <category>Security</category>
+        <keyword>TCP/IP stack</keyword>
+        <keyword>TCP</keyword>
+        <keyword>SMTP</keyword>
+        <keyword>SSL</keyword>
+        <keyword>TLS</keyword>
+        <keyword>Client</keyword>
+      </attributes>
+    </example>
+    
+    <!-- SSL Client Demo (MCBSTM32F400) -->
+    <example name="CycloneSSL SSL Client Demo" doc="abstract.txt" folder="demo\mcbstm32f400\ssl_client_demo">
+      <description>SSL client demo (CycloneSSL, CMSIS-RTOS and Keil TCP/IP Networking Suite)</description>
+      <board name="MCBSTM32F400" vendor="Keil"/>
+      <project>
+        <environment name="uv" load="ssl_client_demo.uvprojx"/>
+      </project>
+      <attributes>
+        <component Cclass="CMSIS" Cgroup="CORE"/>
+        <component Cclass="CMSIS" Cgroup="RTOS"/>
+        <component Cclass="Oryx Embedded Middleware" Cgroup="CycloneSSL" Csub="Core"/>
+        <component Cclass="Oryx Embedded Middleware" Cgroup="CycloneCrypto" Csub="Core"/>
+        <category>Middleware</category>
+        <category>Security</category>
+        <keyword>SSL</keyword>
+        <keyword>TLS</keyword>
+        <keyword>Client</keyword>
+      </attributes>
+    </example>
+    
+    <!-- SSL Server Demo (MCBSTM32F400) -->
+    <example name="CycloneSSL SSL Server Demo" doc="abstract.txt" folder="demo\mcbstm32f400\ssl_server_demo">
+      <description>SSL server demo (CycloneSSL, CMSIS-RTOS and Keil TCP/IP Networking Suite)</description>
+      <board name="MCBSTM32F400" vendor="Keil"/>
+      <project>
+        <environment name="uv" load="ssl_server_demo.uvprojx"/>
+      </project>
+      <attributes>
+        <component Cclass="CMSIS" Cgroup="CORE"/>
+        <component Cclass="CMSIS" Cgroup="RTOS"/>
+        <component Cclass="Oryx Embedded Middleware" Cgroup="CycloneSSL" Csub="Core"/>
+        <component Cclass="Oryx Embedded Middleware" Cgroup="CycloneCrypto" Csub="Core"/>
+        <category>Middleware</category>
+        <category>Security</category>
+        <keyword>SSL</keyword>
+        <keyword>TLS</keyword>
+        <keyword>Server</keyword>
+      </attributes>
+    </example>
+    
+    <!-- HTTP Server Demo (STM32F4-Discovery) -->
+    <example name="CycloneTCP HTTP Server Demo" doc="abstract.txt" folder="demo\stm32f4_discovery\http_server_demo">
+      <description>HTTP server demo (CycloneTCP and CMSIS-RTOS)</description>
+      <board name="STM32F4-Discovery" vendor="STMicroelectronics"/>
+      <project>
+        <environment name="uv" load="http_server_demo.uvprojx"/>
+      </project>
+      <attributes>
+        <component Cclass="CMSIS" Cgroup="CORE"/>
+        <component Cclass="CMSIS" Cgroup="RTOS"/>
+        <component Cclass="Oryx Embedded Middleware" Cgroup="CycloneTCP" Csub="Core"/>
+        <component Cclass="Oryx Embedded Middleware" Cgroup="CycloneSSL" Csub="Core"/>
+        <category>Middleware</category>
+        <keyword>TCP/IP stack</keyword>
+        <keyword>TCP</keyword>
+        <keyword>HTTP</keyword>
+        <keyword>Server</keyword>
+        <keyword>Web Server</keyword>
+      </attributes>
+    </example>
+    
+    <!-- HTTP Server Demo (STM32439I-EVAL) -->
+    <example name="CycloneTCP HTTP Server Demo" doc="abstract.txt" folder="demo\stm32439i_eval\http_server_demo">
+      <description>HTTP server demo (CycloneTCP and CMSIS-RTOS)</description>
+      <board name="STM32439I-EVAL" vendor="STMicroelectronics"/>
+      <project>
+        <environment name="uv" load="http_server_demo.uvprojx"/>
+      </project>
+      <attributes>
+        <component Cclass="CMSIS" Cgroup="CORE"/>
+        <component Cclass="CMSIS" Cgroup="RTOS"/>
+        <component Cclass="Oryx Embedded Middleware" Cgroup="CycloneTCP" Csub="Core"/>
+        <component Cclass="Oryx Embedded Middleware" Cgroup="CycloneSSL" Csub="Core"/>
+        <category>Middleware</category>
+        <keyword>TCP/IP stack</keyword>
+        <keyword>TCP</keyword>
+        <keyword>HTTP</keyword>
+        <keyword>Server</keyword>
+        <keyword>Web Server</keyword>
+      </attributes>
+    </example>
+    
+    <!-- HTTPS Server Demo (STM32439I-EVAL) -->
+    <example name="CycloneTCP HTTPS Server Demo" doc="abstract.txt" folder="demo\stm32439i_eval\https_server_demo">
+      <description>HTTPS server demo (CycloneTCP, CycloneSSL and CMSIS-RTOS)</description>
+      <board name="STM32439I-EVAL" vendor="STMicroelectronics"/>
+      <project>
+        <environment name="uv" load="https_server_demo.uvprojx"/>
+      </project>
+      <attributes>
+        <component Cclass="CMSIS" Cgroup="CORE"/>
+        <component Cclass="CMSIS" Cgroup="RTOS"/>
+        <component Cclass="Oryx Embedded Middleware" Cgroup="CycloneTCP" Csub="Core"/>
+        <component Cclass="Oryx Embedded Middleware" Cgroup="CycloneSSL" Csub="Core"/>
+        <category>Middleware</category>
+        <category>Security</category>
+        <keyword>TCP/IP stack</keyword>
+        <keyword>TCP</keyword>
+        <keyword>HTTP</keyword>
+        <keyword>HTTPS</keyword>
+        <keyword>SSL</keyword>
+        <keyword>TLS</keyword>
+        <keyword>Server</keyword>
+      </attributes>
+    </example>
+    
+    <!-- SMTP Client Demo (STM32439I-EVAL) -->
+    <example name="CycloneTCP SMTP Client Demo" doc="abstract.txt" folder="demo\stm32439i_eval\smtp_client_demo">
+      <description>SMTP client with SSL support (CycloneTCP, CycloneSSL and CMSIS-RTOS)</description>
+      <board name="STM32439I-EVAL" vendor="STMicroelectronics"/>
+      <project>
+        <environment name="uv" load="smtp_client_demo.uvprojx"/>
+      </project>
+      <attributes>
+        <component Cclass="CMSIS" Cgroup="CORE"/>
+        <component Cclass="CMSIS" Cgroup="RTOS"/>
+        <component Cclass="Oryx Embedded Middleware" Cgroup="CycloneTCP" Csub="Core"/>
+        <component Cclass="Oryx Embedded Middleware" Cgroup="CycloneSSL" Csub="Core"/>
+        <category>Middleware</category>
+        <category>Security</category>
+        <keyword>TCP/IP stack</keyword>
+        <keyword>TCP</keyword>
+        <keyword>SMTP</keyword>
+        <keyword>SSL</keyword>
+        <keyword>TLS</keyword>
+        <keyword>Client</keyword>
+      </attributes>
+    </example>
+    
+    <!-- SSL Client Demo (STM32439I-EVAL) -->
+    <example name="CycloneSSL SSL Client Demo" doc="abstract.txt" folder="demo\stm32439i_eval\ssl_client_demo">
+      <description>SSL client demo (CycloneSSL, CMSIS-RTOS and Keil TCP/IP Networking Suite)</description>
+      <board name="STM32439I-EVAL" vendor="STMicroelectronics"/>
+      <project>
+        <environment name="uv" load="ssl_client_demo.uvprojx"/>
+      </project>
+      <attributes>
+        <component Cclass="CMSIS" Cgroup="CORE"/>
+        <component Cclass="CMSIS" Cgroup="RTOS"/>
+        <component Cclass="Oryx Embedded Middleware" Cgroup="CycloneSSL" Csub="Core"/>
+        <component Cclass="Oryx Embedded Middleware" Cgroup="CycloneCrypto" Csub="Core"/>
+        <category>Middleware</category>
+        <category>Security</category>
+        <keyword>SSL</keyword>
+        <keyword>TLS</keyword>
+        <keyword>Client</keyword>
+      </attributes>
+    </example>
+    
+    <!-- SSL Server Demo (STM32439I-EVAL) -->
+    <example name="CycloneSSL SSL Server Demo" doc="abstract.txt" folder="demo\stm32439i_eval\ssl_server_demo">
+      <description>SSL server demo (CycloneSSL, CMSIS-RTOS and Keil TCP/IP Networking Suite)</description>
+      <board name="STM32439I-EVAL" vendor="STMicroelectronics"/>
+      <project>
+        <environment name="uv" load="ssl_server_demo.uvprojx"/>
+      </project>
+      <attributes>
+        <component Cclass="CMSIS" Cgroup="CORE"/>
+        <component Cclass="CMSIS" Cgroup="RTOS"/>
+        <component Cclass="Oryx Embedded Middleware" Cgroup="CycloneSSL" Csub="Core"/>
+        <component Cclass="Oryx Embedded Middleware" Cgroup="CycloneCrypto" Csub="Core"/>
+        <category>Middleware</category>
+        <category>Security</category>
+        <keyword>SSL</keyword>
+        <keyword>TLS</keyword>
+        <keyword>Server</keyword>
+      </attributes>
+    </example>
+    
+    <!-- HTTP Server Demo (STM32F746G-Discovery) -->
+    <example name="CycloneTCP HTTP Server Demo" doc="abstract.txt" folder="demo\stm32f746g_discovery\http_server_demo">
+      <description>HTTP server demo (CycloneTCP and CMSIS-RTOS)</description>
+      <board name="STM32F746G-Discovery" vendor="STMicroelectronics"/>
+      <project>
+        <environment name="uv" load="http_server_demo.uvprojx"/>
+      </project>
+      <attributes>
+        <component Cclass="CMSIS" Cgroup="CORE"/>
+        <component Cclass="CMSIS" Cgroup="RTOS"/>
+        <component Cclass="Oryx Embedded Middleware" Cgroup="CycloneTCP" Csub="Core"/>
+        <component Cclass="Oryx Embedded Middleware" Cgroup="CycloneSSL" Csub="Core"/>
+        <category>Middleware</category>
+        <keyword>TCP/IP stack</keyword>
+        <keyword>TCP</keyword>
+        <keyword>HTTP</keyword>
+        <keyword>Server</keyword>
+        <keyword>Web Server</keyword>
+      </attributes>
+    </example>
+    
+    <!-- HTTP Server Demo (STM32756G-EVAL) -->
+    <example name="CycloneTCP HTTP Server Demo" doc="abstract.txt" folder="demo\stm32756g_eval\http_server_demo">
+      <description>HTTP server demo (CycloneTCP and CMSIS-RTOS)</description>
+      <board name="STM32756G-EVAL" vendor="STMicroelectronics"/>
+      <project>
+        <environment name="uv" load="http_server_demo.uvprojx"/>
+      </project>
+      <attributes>
+        <component Cclass="CMSIS" Cgroup="CORE"/>
+        <component Cclass="CMSIS" Cgroup="RTOS"/>
+        <component Cclass="Oryx Embedded Middleware" Cgroup="CycloneTCP" Csub="Core"/>
+        <component Cclass="Oryx Embedded Middleware" Cgroup="CycloneSSL" Csub="Core"/>
+        <category>Middleware</category>
+        <keyword>TCP/IP stack</keyword>
+        <keyword>TCP</keyword>
+        <keyword>HTTP</keyword>
+        <keyword>Server</keyword>
+        <keyword>Web Server</keyword>
+      </attributes>
+    </example>
+  </examples>
+
+</package>

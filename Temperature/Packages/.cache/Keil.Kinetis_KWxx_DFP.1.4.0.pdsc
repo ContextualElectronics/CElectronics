@@ -1,0 +1,582 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<package schemaVersion="1.1" xmlns:xs="http://www.w3.org/2001/XMLSchema-instance" xs:noNamespaceSchemaLocation="PACK.xsd">
+  <vendor>Keil</vendor>
+  <url>http://www.keil.com/pack/</url>
+  <name>Kinetis_KWxx_DFP</name>
+  <description>Freescale Kinetis KWxx Series Device Support</description>
+
+  <releases>
+    <release version="1.4.0" date="2016-04-04">
+      Added KW21Z, KW31Z, KW41Z device support.
+    </release>
+    <release version="1.3.0" date="2015-10-09">
+      Renamed device MKW01Z128xxx5 to MKW01Z128xxx4.
+    </release>
+    <release version="1.2.0" date="2015-07-10">
+      Added FRDM-KW40Z board support.
+      Corrected KW40Z Flash Algorithm.
+    </release>
+    <release version="1.1.0" date="2015-04-29">
+      Changed device names according processor expert.
+      Added KW4x series device support.
+      Updated MKW30Z4, MKW20Z device support
+      Corrected SRAM range
+    </release>
+    <release version="1.0.0">
+      First Release version of KWxx Device Family Pack.
+    </release>
+  </releases>
+
+  <keywords>
+  <!-- keywords for indexing -->
+    <keyword>Freescale</keyword>
+    <keyword>Device Support</keyword>
+    <keyword>Device Family Package Freescale</keyword>
+    <keyword>KWxx</keyword>
+  </keywords>
+
+  <devices>
+    <!-- generated, do not modify this section! -->
+
+    <family Dfamily="KWxx Series" Dvendor="Freescale:78">
+
+      <!-- ******************************  KW0x  ****************************** -->
+      <subFamily DsubFamily="KW0x">
+        <processor Dcore="Cortex-M0+" DcoreVersion="r0p0"/>
+        <book name="Documents/dui0662a_cortex_m0p_r0p0_dgug.pdf" title="Cortex-M0+ Generic User Guide"/>
+        <description>
+The MKW01 device is highly-integrated, cost-effective, smart radio, sub-1 GHz wireless node solution composed
+of a transceiver supporting FSK, GFSK, MSK, or OOK modulations with a low-power ARM® Cortex M0+ CPU. The highly
+integrated RF transceiver operates over a wide frequency range including 315 MHz, 433 MHz, 470 MHz, 868 MHz,
+915 MHz, 928 MHz, and 955 MHz in the license-free Industrial, Scientific and Medical (ISM) frequency bands. This
+configuration allows users to minimize the use of external components.
+        </description>
+
+        <!-- ******************************  MKW01Z128xxx4  ****************************** -->
+        <device Dname="MKW01Z128xxx4">
+          <processor Dfpu="0" Dmpu="0" Dendian="Little-endian" Dclock="48000000"/>
+          <compile header="Device/Include/MKW01Z4.h" define="MKW01Z128xxx4"/>
+          <debug svd="SVD/MKW01Z4.svd"/>
+          <memory id="IROM1"                        start="0x00000000" size="0x00020000" default="1" startup="1"/>
+          <memory id="IRAM1"                        start="0x1FFFF000" size="0x00004000" default="1" init   ="0"/>
+          <algorithm name="Flash/MK_P128_48MHZ.FLM" start="0x00000000" size="0x00020000" default="1" RAMstart="0x20000000" RAMsize="0x1000"/>
+
+          <book name="Documents/MKW01Z128.pdf" title="MKW01Z128xxx4 Data Sheet"/>
+          <book name="Documents/MKW01xxRM.pdf" title="MKW01Z128xxx4 Reference Manual"/>
+        </device>
+      </subFamily>
+
+      <!-- ******************************  KW2x  ****************************** -->
+      <subFamily DsubFamily="KW2x">
+        <processor Dcore="Cortex-M4" DcoreVersion="r0p0"/>
+        <book name="Documents/dui0553a_cortex_m4_dgug.pdf" title="Cortex-M4 Generic User Guide"/>
+        <description>
+The MKW2x is a low power, compact integrated device consisting of a high-performance 2.4 GHz IEEE
+802.15.4 compliant radio transceiver and a powerful ARM Cortex-M4 MCU system with connectivity and
+precision mixed signal analog peripherals.
+        </description>
+
+        <!-- ******************************  MKW21D256xxx5  ****************************** -->
+        <device Dname="MKW21D256xxx5">
+          <processor Dfpu="0" Dmpu="0" Dendian="Little-endian" Dclock="50000000"/>
+          <compile header="Device/Include/MKW21D5.h" define="MKW21D256xxx5"/>
+          <debug svd="SVD/MKW21D5.svd"/>
+          <memory id="IROM1"                        start="0x00000000" size="0x00040000" default="1" startup="1"/>
+          <memory id="IROM2"                        start="0x10000000" size="0x00010000" default="0" startup="0"/>
+          <memory id="IRAM1"                        start="0x1FFFC000" size="0x00008000" default="1" init   ="0"/>
+          <algorithm name="Flash/MK_P256_50MHZ.FLM" start="0x00000000" size="0x00040000" default="1" RAMstart="0x20000000" RAMsize="0x1000"/>
+          <algorithm name="Flash/MK_D64_50MHZ.FLM"  start="0x10000000" size="0x00010000" default="1" RAMstart="0x20000000" RAMsize="0x1000"/>
+
+          <book name="Documents/MKW2xDxxx.pdf"   title="MKW21D256xxx5 Data Sheet"/>
+          <book name="Documents/MKW2xDxxxRM.pdf" title="MKW21D256xxx5 Reference Manual"/>
+        </device>
+
+        <!-- ******************************  MKW21D512xxx5  ****************************** -->
+        <device Dname="MKW21D512xxx5">
+          <processor Dfpu="0" Dmpu="0" Dendian="Little-endian" Dclock="50000000"/>
+          <compile header="Device/Include/MKW21D5.h" define="MKW21D512xxx5"/>
+          <debug svd="SVD/MKW21D5.svd"/>
+          <memory id="IROM1"                        start="0x00000000" size="0x00080000" default="1" startup="1"/>
+          <memory id="IRAM1"                        start="0x1FFF8000" size="0x00010000" default="1" init   ="0"/>
+          <algorithm name="Flash/MK_P512_50MHZ.FLM" start="0x00000000" size="0x00080000" default="1" RAMstart="0x20000000"  RAMsize="0x1000"/>
+
+          <book name="Documents/MKW2xDxxx.pdf"   title="MKW21D512xxx5 Data Sheet"/>
+          <book name="Documents/MKW2xDxxxRM.pdf" title="MKW21D512xxx5 Reference Manual"/>
+        </device>
+
+        <!-- ******************************  MKW22D512xxx5  ****************************** -->
+        <device Dname="MKW22D512xxx5">
+          <processor Dfpu="0" Dmpu="0" Dendian="Little-endian" Dclock="50000000"/>
+          <compile header="Device/Include/MKW22D5.h" define="MKW22D512xxx5"/>
+          <debug svd="SVD/MKW22D5.svd"/>
+          <memory id="IROM1"                        start="0x00000000" size="0x00080000" default="1" startup="1"/>
+          <memory id="IRAM1"                        start="0x1FFF8000" size="0x00010000" default="1" init   ="0"/>
+          <algorithm name="Flash/MK_P512_50MHZ.FLM" start="0x00000000" size="0x00080000" default="1" RAMstart="0x20000000" RAMsize="0x1000"/>
+
+          <book name="Documents/MKW2xDxxx.pdf"   title="MKW22D512xxx5 Data Sheet"/>
+          <book name="Documents/MKW2xDxxxRM.pdf" title="MKW22D512xxx5 Reference Manual"/>
+        </device>
+
+        <!-- ******************************  MKW24D512xxx5  ****************************** -->
+        <device Dname="MKW24D512xxx5">
+          <processor Dfpu="0" Dmpu="0" Dendian="Little-endian" Dclock="50000000"/>
+          <compile header="Device/Include/MKW24D5.h" define="MKW24D512xxx5"/>
+          <debug svd="SVD/MKW24D5.svd"/>
+          <memory id="IROM1"                        start="0x00000000" size="0x00080000" default="1" startup="1"/>
+          <memory id="IRAM1"                        start="0x1FFF8000" size="0x00010000" default="1" init   ="0"/>
+          <algorithm name="Flash/MK_P512_50MHZ.FLM" start="0x00000000" size="0x00080000" default="1" RAMstart="0x20000000" RAMsize="0x1000"/>
+
+          <book name="Documents/MKW2xDxxx.pdf"   title="MKW24D512xxx5 Data Sheet"/>
+          <book name="Documents/MKW2xDxxxRM.pdf" title="MKW24D512xxx5 Reference Manual"/>
+        </device>
+      </subFamily>
+
+      <!-- ******************************  KW4x  ****************************** -->
+      <subFamily DsubFamily="KW4x">
+        <processor Dcore="Cortex-M0+" DcoreVersion="r0p0"/>
+        <book    name="Documents/dui0662a_cortex_m0p_r0p0_dgug.pdf"     title="Cortex-M0+ Generic User Guide"/>
+        <description>
+The KW4x is an ultra low power, highly integrated single-chip device that enables Bluetooth low energy (BLE)
+or IEEE Std. 802.15.4/ZigBee RF connectivity for portable, extremely low-power embedded systems.
+Applications include portable health care devices, wearable sports and fitness devices, AV remote controls,
+computer keyboards and mice, gaming controllers, access control, security systems, smart energy and home
+area networks.
+The KW4x SoC integrates a radio transceiver operating in the 2.36GHz to 2.48GHz range supporting a range of
+FSK/GFSK and O-QPSK modulations, an ARM Cortex-M0+ CPU, 160KB Flash and 20KB SRAM, BLE Link Layer hardware,
+802.15.4 packet processor hardware and peripherals optimized to meet the requirements of the target applications.
+        </description>
+
+        <!-- ******************************  MKW20Z160xxx4  ***************************** -->
+        <device Dname="MKW20Z160xxx4">
+          <processor Dfpu="0" Dmpu="0" Dendian="Little-endian" Dclock="48000000"/>
+          <compile header="Device/Include/MKW20Z4.h" define="MKW20Z160xxx4"/>
+          <debug svd="SVD/MKW20Z4.svd"/>
+          <memory id="IROM1"                        start="0x00000000" size="0x00028000" default="1" startup="1"/>
+          <memory id="IRAM1"                        start="0x1FFFF000" size="0x00005000" default="1" init   ="0"/>
+          <algorithm name="Flash/MK_P160_48MHZ.FLM" start="0x00000000" size="0x00028000" default="1" RAMstart="0x20000000" RAMsize="0x1000"/>
+
+          <book name="Documents/MKW40Z160.pdf"   title="MKW40Z/30Z/20Z Data Sheet"/>
+          <book name="Documents/MKW40Z160RM.pdf" title="MKW40Z/30Z/20Z Reference Manual"/>
+        </device>
+
+        <!-- ******************************  MKW21Z256xxx4  ***************************** -->
+        <device Dname="MKW21Z256xxx4">
+          <processor Dfpu="0" Dmpu="0" Dendian="Little-endian" Dclock="48000000"/>
+          <compile header="Device/Include/MKW21Z4.h" define="MKW21Z256xxx4"/>
+          <debug svd="SVD/MKW21Z4.svd"/>
+          <memory id="IROM1"                              start="0x00000000" size="0x00040000" default="1" startup="1"/>
+          <memory id="IRAM1"                              start="0x1FFF8000" size="0x00020000" default="1" init   ="0"/>
+          <algorithm name="Flash/MKWxxZ_P256_2KB_SEC.FLM" start="0x00000000" size="0x00040000" default="1" RAMstart="0x20000000" RAMsize="0x1000"/>
+
+          <!--book name="Documents/???.pdf"   title="MKW21Z160xxx4 Data Sheet"/-->
+          <!--book name="Documents/???RM.pdf" title="MKW21Z160xxx4 Reference Manual"/-->
+        </device>
+
+        <!-- ******************************  MKW21Z512xxx4  ***************************** -->
+        <device Dname="MKW21Z512xxx4">
+          <processor Dfpu="0" Dmpu="0" Dendian="Little-endian" Dclock="48000000"/>
+          <compile header="Device/Include/MKW21Z4.h" define="MKW21Z512xxx4"/>
+          <debug svd="SVD/MKW21Z4.svd"/>
+          <memory id="IROM1"                              start="0x00000000" size="0x00080000" default="1" startup="1"/>
+          <memory id="IRAM1"                              start="0x1FFF8000" size="0x00020000" default="1" init   ="0"/>
+          <algorithm name="Flash/MKWxxZ_P512_2KB_SEC.FLM" start="0x00000000" size="0x00080000" default="1" RAMstart="0x20000000" RAMsize="0x1000"/>
+
+          <!--book name="Documents/???.pdf"   title="MKW21Z160xxx4 Data Sheet"/-->
+          <!--book name="Documents/???RM.pdf" title="MKW21Z160xxx4 Reference Manual"/-->
+        </device>
+
+        <!-- ******************************  MKW30Z160xxx4  ***************************** -->
+        <device Dname="MKW30Z160xxx4">
+          <processor Dfpu="0" Dmpu="0" Dendian="Little-endian" Dclock="48000000"/>
+          <compile header="Device/Include/MKW30Z4.h" define="MKW30Z160xxx4"/>
+          <debug svd="SVD/MKW30Z4.svd"/>
+          <memory id="IROM1"                        start="0x00000000" size="0x00028000" default="1" startup="1"/>
+          <memory id="IRAM1"                        start="0x1FFFF000" size="0x00005000" default="1" init   ="0"/>
+          <algorithm name="Flash/MK_P160_48MHZ.FLM" start="0x00000000" size="0x00028000" default="1" RAMstart="0x20000000" RAMsize="0x1000"/>
+
+          <book name="Documents/MKW40Z160.pdf"   title="MKW40Z/30Z/20Z Data Sheet"/>
+          <book name="Documents/MKW40Z160RM.pdf" title="MKW40Z/30Z/20Z Reference Manual"/>
+        </device>
+
+        <!-- ******************************  MKW31Z256xxx4  ***************************** -->
+        <device Dname="MKW31Z256xxx4">
+          <processor Dfpu="0" Dmpu="0" Dendian="Little-endian" Dclock="48000000"/>
+          <compile header="Device/Include/MKW31Z4.h" define="MKW31Z256xxx4"/>
+          <debug svd="SVD/MKW31Z4.svd"/>
+          <memory id="IROM1"                              start="0x00000000" size="0x00040000" default="1" startup="1"/>
+          <memory id="IRAM1"                              start="0x1FFF8000" size="0x00020000" default="1" init   ="0"/>
+          <algorithm name="Flash/MKWxxZ_P256_2KB_SEC.FLM" start="0x00000000" size="0x00040000" default="1" RAMstart="0x20000000" RAMsize="0x1000"/>
+
+          <!--book name="Documents/???.pdf"   title="MKW30Z160xxx4 Data Sheet"/-->
+          <!--book name="Documents/???RM.pdf" title="MKW30Z160xxx4 Reference Manual"/-->
+        </device>
+
+        <!-- ******************************  MKW31Z512xxx4  ***************************** -->
+        <device Dname="MKW31Z512xxx4">
+          <processor Dfpu="0" Dmpu="0" Dendian="Little-endian" Dclock="48000000"/>
+          <compile header="Device/Include/MKW31Z4.h" define="MKW31Z512xxx4"/>
+          <debug svd="SVD/MKW31Z4.svd"/>
+          <memory id="IROM1"                              start="0x00000000" size="0x00080000" default="1" startup="1"/>
+          <memory id="IRAM1"                              start="0x1FFF8000" size="0x00020000" default="1" init   ="0"/>
+          <algorithm name="Flash/MKWxxZ_P512_2KB_SEC.FLM" start="0x00000000" size="0x00080000" default="1" RAMstart="0x20000000" RAMsize="0x1000"/>
+
+          <!--book name="Documents/???.pdf"   title="MKW30Z160xxx4 Data Sheet"/-->
+          <!--book name="Documents/???RM.pdf" title="MKW30Z160xxx4 Reference Manual"/-->
+        </device>
+
+        <!-- ******************************  MKW40Z160xxx4  ***************************** -->
+        <device Dname="MKW40Z160xxx4">
+          <processor Dfpu="0" Dmpu="0" Dendian="Little-endian" Dclock="48000000"/>
+          <compile header="Device/Include/MKW40Z4.h" define="MKW40Z160xxx4"/>
+          <debug svd="SVD/MKW40Z4.svd"/>
+          <memory id="IROM1"                        start="0x00000000" size="0x00028000" default="1" startup="1"/>
+          <memory id="IRAM1"                        start="0x1FFFF000" size="0x00005000" default="1" init   ="0"/>
+          <algorithm name="Flash/MK_P160_48MHZ.FLM" start="0x00000000" size="0x00028000" default="1" RAMstart="0x20000000" RAMsize="0x1000"/>
+
+          <book name="Documents/MKW40Z160.pdf"   title="MKW40Z/30Z/20Z Data Sheet"/>
+          <book name="Documents/MKW40Z160RM.pdf" title="MKW40Z/30Z/20Z Reference Manual"/>
+        </device>
+
+        <!-- ******************************  MKW41Z256xxx4  ***************************** -->
+        <device Dname="MKW41Z256xxx4">
+          <processor Dfpu="0" Dmpu="0" Dendian="Little-endian" Dclock="48000000"/>
+          <compile header="Device/Include/MKW41Z4.h" define="MKW41Z256xxx4"/>
+          <debug svd="SVD/MKW41Z4.svd"/>
+          <memory id="IROM1"                              start="0x00000000" size="0x00040000" default="1" startup="1"/>
+          <memory id="IRAM1"                              start="0x1FFF8000" size="0x00020000" default="1" init   ="0"/>
+          <algorithm name="Flash/MKWxxZ_P256_2KB_SEC.FLM" start="0x00000000" size="0x00040000" default="1" RAMstart="0x20000000" RAMsize="0x1000"/>
+
+          <!--book name="Documents/???.pdf"   title="MKW40Z160xxx4 Data Sheet"/-->
+          <!--book name="Documents/???RM.pdf" title="MKW40Z160xxx4 Reference Manual"/-->
+        </device>
+
+        <!-- ******************************  MKW41Z512xxx4  ***************************** -->
+        <device Dname="MKW41Z512xxx4">
+          <processor Dfpu="0" Dmpu="0" Dendian="Little-endian" Dclock="48000000"/>
+          <compile header="Device/Include/MKW41Z4.h" define="MKW41Z512xxx4"/>
+          <debug svd="SVD/MKW41Z4.svd"/>
+          <memory id="IROM1"                              start="0x00000000" size="0x00080000" default="1" startup="1"/>
+          <memory id="IRAM1"                              start="0x1FFF8000" size="0x00020000" default="1" init   ="0"/>
+          <algorithm name="Flash/MKWxxZ_P512_2KB_SEC.FLM" start="0x00000000" size="0x00080000" default="1" RAMstart="0x20000000" RAMsize="0x1000"/>
+
+          <!--book name="Documents/???.pdf"   title="MKW40Z160xxx4 Data Sheet"/-->
+          <!--book name="Documents/???RM.pdf" title="MKW40Z160xxx4 Reference Manual"/-->
+        </device>
+      </subFamily>
+
+    </family>
+  </devices>
+
+  <conditions>
+    <!-- Compiler Conditions -->
+    <condition id="Compiler ARMCC">
+      <require Tcompiler="ARMCC"/>
+    </condition>
+
+    <!-- Device + CMSIS Conditions -->
+    <condition id="MKW01Z4 CMSIS">
+      <description>Freescale Kinetis KW01 48MHz Devices and CMSIS-CORE</description>
+      <require Cclass="CMSIS" Cgroup="CORE"/>
+      <require Dvendor="Freescale:78"/>
+      <accept Dname="MKW01Z128xxx4"/>
+    </condition>
+
+    <condition id="MKW21D5 CMSIS">
+      <description>Freescale Kinetis KW21 50MHz Devices and CMSIS-CORE</description>
+      <require Cclass="CMSIS" Cgroup="CORE"/>
+      <require Dvendor="Freescale:78"/>
+      <accept Dname="MKW21D256xxx5"/>
+      <accept Dname="MKW21D512xxx5"/>
+    </condition>
+
+    <condition id="MKW22D5 CMSIS">
+      <description>Freescale Kinetis KW22 50MHz Devices and CMSIS-CORE</description>
+      <require Cclass="CMSIS" Cgroup="CORE"/>
+      <require Dvendor="Freescale:78"/>
+      <accept Dname="MKW22D512xxx5"/>
+    </condition>
+
+    <condition id="MKW24D5 CMSIS">
+      <description>Freescale Kinetis KW24 50MHz Devices and CMSIS-CORE</description>
+      <require Cclass="CMSIS" Cgroup="CORE"/>
+      <require Dvendor="Freescale:78"/>
+      <accept Dname="MKW24D512xxx5"/>
+    </condition>
+
+    <condition id="MKW20Z4 CMSIS">
+      <description>Freescale Kinetis KW20 48MHz Devices and CMSIS-CORE</description>
+      <require Cclass="CMSIS" Cgroup="CORE"/>
+      <require Dvendor="Freescale:78"/>
+      <accept Dname="MKW20Z160xxx4"/>
+    </condition>
+
+    <condition id="MKW30Z4 CMSIS">
+      <description>Freescale Kinetis KW30 48MHz Devices and CMSIS-CORE</description>
+      <require Cclass="CMSIS" Cgroup="CORE"/>
+      <require Dvendor="Freescale:78"/>
+      <accept Dname="MKW30Z160xxx4"/>
+    </condition>
+
+    <condition id="MKW40Z4 CMSIS">
+      <description>Freescale Kinetis KW40 48MHz Devices and CMSIS-CORE</description>
+      <require Cclass="CMSIS" Cgroup="CORE"/>
+      <require Dvendor="Freescale:78"/>
+      <accept Dname="MKW40Z160xxx4"/>
+    </condition>
+
+    <condition id="MKW21Z4 CMSIS">
+      <description>Freescale Kinetis KW21 48MHz Devices and CMSIS-CORE</description>
+      <require Cclass="CMSIS" Cgroup="CORE"/>
+      <require Dvendor="Freescale:78"/>
+      <accept Dname="MKW21Z256xxx4"/>
+      <accept Dname="MKW21Z512xxx4"/>
+    </condition>
+
+    <condition id="MKW31Z4 CMSIS">
+      <description>Freescale Kinetis KW31 48MHz Devices and CMSIS-CORE</description>
+      <require Cclass="CMSIS" Cgroup="CORE"/>
+      <require Dvendor="Freescale:78"/>
+      <accept Dname="MKW31Z256xxx4"/>
+      <accept Dname="MKW31Z512xxx4"/>
+    </condition>
+
+    <condition id="MKW41Z4 CMSIS">
+      <description>Freescale Kinetis KW41 48MHz Devices and CMSIS-CORE</description>
+      <require Cclass="CMSIS" Cgroup="CORE"/>
+      <require Dvendor="Freescale:78"/>
+      <accept Dname="MKW41Z256xxx4"/>
+      <accept Dname="MKW41Z512xxx4"/>
+    </condition>
+  </conditions>
+
+  <components>
+    <!-- Startup MKW01Z4 -->
+    <component Cclass="Device" Cgroup="Startup" Cversion="1.0.0" condition="MKW01Z4 CMSIS">
+      <description>System Startup for Kinetis KW01 48MHz Devices</description>
+      <files>
+        <!-- include folder / file -->
+        <file category="header"  name="Device/Include/MKW01Z4.h"/>
+        <!-- startup / system file -->
+        <file category="source" name="Device/Source/ARM/startup_MKW01Z4.s"  attr="config" version="1.0.0" condition="Compiler ARMCC"/>
+        <file category="source" name="Device/Source/system_MKW01Z4.c"       attr="config" version="1.0.0"/>
+      </files>
+    </component>
+
+    <!-- Startup MKW21D5 -->
+    <component Cclass="Device" Cgroup="Startup" Cversion="1.0.0" condition="MKW21D5 CMSIS">
+      <description>System Startup for Kinetis KW01 48MHz Devices</description>
+      <files>
+        <!-- include folder / file -->
+        <file category="header"  name="Device/Include/MKW21D5.h"/>
+        <!-- startup / system file -->
+        <file category="source" name="Device/Source/ARM/startup_MKW21D5.s"  attr="config" version="1.0.0" condition="Compiler ARMCC"/>
+        <file category="source" name="Device/Source/system_MKW21D5.c"       attr="config" version="1.0.0"/>
+      </files>
+    </component>
+
+    <!-- Startup MKW22D5 -->
+    <component Cclass="Device" Cgroup="Startup" Cversion="1.0.0" condition="MKW22D5 CMSIS">
+      <description>System Startup for Kinetis KW01 48MHz Devices</description>
+      <files>
+        <!-- include folder / file -->
+        <file category="header"  name="Device/Include/MKW22D5.h"/>
+        <!-- startup / system file -->
+        <file category="source" name="Device/Source/ARM/startup_MKW22D5.s"  attr="config" version="1.0.0" condition="Compiler ARMCC"/>
+        <file category="source" name="Device/Source/system_MKW22D5.c"       attr="config" version="1.0.0"/>
+      </files>
+    </component>
+
+    <!-- Startup MKW24D5 -->
+    <component Cclass="Device" Cgroup="Startup" Cversion="1.0.0" condition="MKW24D5 CMSIS">
+      <description>System Startup for Kinetis KW01 48MHz Devices</description>
+      <files>
+        <!-- include folder / file -->
+        <file category="header"  name="Device/Include/MKW24D5.h"/>
+        <!-- startup / system file -->
+        <file category="source" name="Device/Source/ARM/startup_MKW24D5.s"  attr="config" version="1.0.0" condition="Compiler ARMCC"/>
+        <file category="source" name="Device/Source/system_MKW24D5.c"       attr="config" version="1.0.0"/>
+      </files>
+    </component>
+
+    <!-- Startup MKW20Z4 -->
+    <component Cclass="Device" Cgroup="Startup" Cversion="1.0.0" condition="MKW20Z4 CMSIS">
+      <description>System Startup for Kinetis KW20 48MHz Devices</description>
+      <files>
+        <!-- include folder / file -->
+        <file category="header"  name="Device/Include/MKW20Z4.h"/>
+        <!-- startup / system file -->
+        <file category="source" name="Device/Source/ARM/startup_MKW20Z4.s"  attr="config" version="1.0.0" condition="Compiler ARMCC"/>
+        <file category="source" name="Device/Source/system_MKW20Z4.c"       attr="config" version="1.0.0"/>
+        <file category="header" name="Device/Source/system_MKW20Z4.h"       attr="config" version="1.0.0"/>
+      </files>
+    </component>
+
+    <!-- Startup MKW30Z4 -->
+    <component Cclass="Device" Cgroup="Startup" Cversion="1.0.0" condition="MKW30Z4 CMSIS">
+      <description>System Startup for Kinetis KW30 48MHz Devices</description>
+      <files>
+        <!-- include folder / file -->
+        <file category="header"  name="Device/Include/MKW30Z4.h"/>
+        <!-- startup / system file -->
+        <file category="source" name="Device/Source/ARM/startup_MKW30Z4.s"  attr="config" version="1.0.0" condition="Compiler ARMCC"/>
+        <file category="source" name="Device/Source/system_MKW30Z4.c"       attr="config" version="1.0.0"/>
+        <file category="header" name="Device/Source/system_MKW30Z4.h"       attr="config" version="1.0.0"/>
+      </files>
+    </component>
+
+    <!-- Startup MKW40Z4 -->
+    <component Cclass="Device" Cgroup="Startup" Cversion="1.0.0" condition="MKW40Z4 CMSIS">
+      <description>System Startup for Kinetis KW4x 48MHz Devices</description>
+      <files>
+        <!-- include folder / file -->
+        <file category="header"  name="Device/Include/MKW40Z4.h"/>
+        <!-- startup / system file -->
+        <file category="source" name="Device/Source/ARM/startup_MKW40Z4.s"  attr="config" version="1.0.0" condition="Compiler ARMCC"/>
+        <file category="source" name="Device/Source/system_MKW40Z4.c"       attr="config" version="1.0.0"/>
+        <file category="header" name="Device/Source/system_MKW40Z4.h"       attr="config" version="1.0.0"/>
+      </files>
+    </component>
+
+    <!-- Startup MKW21Z4 -->
+    <component Cclass="Device" Cgroup="Startup" Cversion="1.0.0" condition="MKW21Z4 CMSIS">
+      <description>System Startup for Kinetis KW21 48MHz Devices</description>
+      <files>
+        <!-- include folder / file -->
+        <file category="header"  name="Device/Include/MKW21Z4.h"/>
+        <!-- startup / system file -->
+        <file category="source" name="Device/Source/ARM/startup_MKW21Z4.s"  attr="config" version="1.0.0" condition="Compiler ARMCC"/>
+        <file category="source" name="Device/Source/system_MKW21Z4.c"       attr="config" version="1.0.0"/>
+        <file category="header" name="Device/Source/system_MKW21Z4.h"       attr="config" version="1.0.0"/>
+      </files>
+    </component>
+
+    <!-- Startup MKW31Z4 -->
+    <component Cclass="Device" Cgroup="Startup" Cversion="1.0.0" condition="MKW31Z4 CMSIS">
+      <description>System Startup for Kinetis KW31 48MHz Devices</description>
+      <files>
+        <!-- include folder / file -->
+        <file category="header"  name="Device/Include/MKW31Z4.h"/>
+        <!-- startup / system file -->
+        <file category="source" name="Device/Source/ARM/startup_MKW31Z4.s"  attr="config" version="1.0.0" condition="Compiler ARMCC"/>
+        <file category="source" name="Device/Source/system_MKW31Z4.c"       attr="config" version="1.0.0"/>
+        <file category="header" name="Device/Source/system_MKW31Z4.h"       attr="config" version="1.0.0"/>
+      </files>
+    </component>
+
+    <!-- Startup MKW41Z4 -->
+    <component Cclass="Device" Cgroup="Startup" Cversion="1.0.0" condition="MKW41Z4 CMSIS">
+      <description>System Startup for Kinetis KW41 48MHz Devices</description>
+      <files>
+        <!-- include folder / file -->
+        <file category="header"  name="Device/Include/MKW41Z4.h"/>
+        <!-- startup / system file -->
+        <file category="source" name="Device/Source/ARM/startup_MKW41Z4.s"  attr="config" version="1.0.0" condition="Compiler ARMCC"/>
+        <file category="source" name="Device/Source/system_MKW41Z4.c"       attr="config" version="1.0.0"/>
+        <file category="header" name="Device/Source/system_MKW41Z4.h"       attr="config" version="1.0.0"/>
+      </files>
+    </component>
+
+    <bundle Cbundle="FRDM-KW40Z" Cclass="Board Support" Cversion="1.0.0">
+      <description>FRDM-KW40Z Board Support</description>
+      <doc></doc>
+      <component Cgroup="Buttons" Capiversion="1.00" condition="MKW40Z4 CMSIS">
+      <description>Button driver for Freescale FRDM-KW40Z board</description>
+        <files>
+          <file category="source" name="Boards/Freescale/FRDM-KW40Z/Common/Buttons_FRDM-KW40Z.c"/>
+        </files>
+      </component>
+      <component Cgroup="LED" Capiversion="1.00" condition="MKW40Z4 CMSIS">
+      <description>LED driver for Freescale FRDM-KW40Z board</description>
+        <files>
+          <file category="source" name="Boards/Freescale/FRDM-KW40Z/Common/LED_FRDM-KW40Z.c"/>
+        </files>
+      </component>
+    </bundle>
+  </components>
+
+  <boards>
+    <board name="TWR-KW21D256" vendor="Freescale" revision="Rev. A" salesContact="https://www.freescale.com/webapp/servicerequest.create_SR.framework">
+      <description>TWR-KW2x: Kinetis KW2x Tower System Modules.</description>
+      <image small="Boards/Freescale/TWR-KW21D256/Documents/TWR-KW2x_small.jpg"/>
+      <book category="overview" name="http://www.freescale.com/webapp/sps/site/prod_summary.jsp?code=TWR-KW2x"  title="TWR-KW2x: Kinetis KW2x Tower System Modules"/>
+      <book category="setup"    name="Boards/Freescale/TWR-KW21D256/Documents/TWRMKW2XQSG.pdf"   title="Quick Start Guide"/>
+      <book category="manual"   name="Boards/Freescale/TWR-KW21D256/Documents/TWR-KW2XHWRM.pdf" title="TWR-KW2x Hardware Reference Manual"/>
+      <mountedDevice    deviceIndex="0" Dvendor="Freescale:78" Dname="MKW21D256xxx5"/>
+      <compatibleDevice deviceIndex="0" Dvendor="Freescale:78" Dfamily="KWxx Series" DsubFamily="KW2x"/>
+      <feature type="ODbg"           n="1"              name="Integrated open-source JTAG via USB"/>
+      <feature type="PWR"            n="5"              name="USB Powered"/>
+      <feature type="Button"         n="4"              name="push button switches"/>
+      <feature type="LED"            n="4"              name="blue LED indicators"/>
+    </board>
+
+    <board name="FRDM-KW40Z" vendor="Freescale" revision="Rev. A" salesContact="https://www.freescale.com/webapp/servicerequest.create_SR.framework">
+      <description>FRDM-KW40Z: Freescale Freedom Development Platform for Kinetis KW40Z/30Z/20Z.</description>
+      <image small="Boards/Freescale/FRDM-KW40Z/Documents/FRDM-KW40Z_small.jpg"
+             large="Boards/Freescale/FRDM-KW40Z/Documents/FRDM-KW40Z_large.jpg"/>
+      <book category="overview" name="http://www.freescale.com/webapp/sps/site/prod_summary.jsp?code=FRDM-KW40Z"  title="FRDM-KW40Z: Freescale Freedom Development Platform for Kinetis KW40Z/30Z/20Z"/>
+      <book category="manual" name="Boards/Freescale/FRDM-KW40Z/Documents/FRDMKW40ZUG.pdf"                        title="FRDM-KW40Z Freescale Freedom Development Board User's Guide"/>
+      <mountedDevice    deviceIndex="0" Dvendor="Freescale:78" Dname="MKW40Z160xxx4"/>
+      <compatibleDevice deviceIndex="0" Dvendor="Freescale:78" DsubFamily="KW4x"/>
+      <feature type="ODbg"          n="1"              name="Onboard open-standard serial and debug adaptor (OpenSDA)"/>
+      <feature type="PWR"           n="5"              name="USB Powered"/>
+      <feature type="USB"           n="1"              name="Micro USB type B connector"/>
+      <feature type="Button"        n="3"              name="2x user, Reset"/>
+      <feature type="Button"        n="2"              name="2x capacitive touch"/>
+      <feature type="LED"           n="7"              name="1x blue, 4x red, SDA, Power"/>
+      <feature type="Accelerometer" n="1"              name="FXOS8700CQ low-power 6-axis linear accelerometer and magnetometer"/>
+      <feature type="ArduinoFF"     n="1"              name="Form factor compatible with Arduino"/>
+      <feature type="Batt"          n="1"              name="Battery"/>
+      <feature type="IrDA"          n="1"              name="Diode Transceiver"/>
+      <debugInterface adapter="JTAG/SW" connector="10 pin Cortex debug (0.05 inch connector)"/>
+      <debugInterface adapter="JTAG/SW" connector="SDA 10 pin Cortex debug (0.05 inch connector)"/>
+    </board>
+  </boards>
+
+  <examples>
+    <!-- TWR-KW21D256 Development Board -->
+    <example name="Blinky" doc="Abstract.txt" folder="Boards/Freescale/TWR-KW21D256/Blinky">
+      <description>Blinky example</description>
+      <board name="TWR-KW21D256" vendor="Freescale" Dvendor="Freescale:78" Dname="MKW21D256xxx5"/>
+      <project>
+        <environment name="uv" load="Blinky.uvprojx"/>
+      </project>
+      <attributes>
+        <component Cclass="CMSIS" Cgroup="CORE"/>
+        <component Cclass="Device" Cgroup="Startup"/>
+        <category>Getting Started</category>
+      </attributes>
+    </example>
+    <example name="CMSIS-RTOS Blinky" doc="Abstract.txt" folder="Boards/Freescale/TWR-KW21D256/RTX_Blinky">
+      <description>CMSIS-RTOS based Blinky example</description>
+      <board name="TWR-KW21D256" vendor="Freescale" Dvendor="Freescale:78" Dname="MKW21D256xxx5"/>
+      <project>
+        <environment name="uv" load="Blinky.uvprojx"/>
+      </project>
+      <attributes>
+        <component Cclass="CMSIS" Cgroup="CORE"/>
+        <component Cclass="Device" Cgroup="Startup"/>
+        <component Cclass="CMSIS" Cgroup="RTOS"/>
+        <category>Getting Started</category>
+        <category>CMSIS-RTX</category>
+      </attributes>
+    </example>
+
+    <!-- FRDM-KW40Z Board -->
+    <example name="CMSIS-RTOS Blinky" doc="Abstract.txt" folder="Boards/Freescale/FRDM-KW40Z/Blinky">
+      <description>CMSIS-RTOS based Blinky example</description>
+      <board name="FRDM-KW40Z" vendor="Freescale"/>
+      <project>
+        <environment name="uv" load="Blinky.uvprojx"/>
+      </project>
+      <attributes>
+        <component Cclass="CMSIS" Cgroup="CORE"/>
+        <component Cclass="Device" Cgroup="Startup"/>
+        <component Cclass="CMSIS" Cgroup="RTOS"/>
+        <category>Getting Started</category>
+        <category>CMSIS-RTX</category>
+      </attributes>
+    </example>
+  </examples>
+
+</package>

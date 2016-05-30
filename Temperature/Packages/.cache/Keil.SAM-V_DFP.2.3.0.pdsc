@@ -1,0 +1,2193 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<package schemaVersion="1.3" xmlns:xs="http://www.w3.org/2001/XMLSchema-instance" xs:noNamespaceSchemaLocation="PACK.xsd">
+  <vendor>Keil</vendor>
+  <url>http://www.keil.com/pack/</url>
+   <name>SAM-V_DFP</name>
+   <description>Atmel SAMV7 Series Device Support</description>
+   <releases>
+     <release version="2.3.0" date="2016-04-14">
+       Added debug description for automated trace configuration setup.
+     </release>
+     <release version="2.2.0" date="2015-10-09">
+       Requires Keil.SAM-ESV7_SFP Version 2.2.0 (now providing the HAL and CMSIS Driver for the devices)
+       Updated pack with content from Atmel's SAMV70_DFP Version 1.0.25 and SAMV71_DFP Version 1.0.19.
+       - updated device hierarchy family and subfamily names and directory structure
+       CMSIS-Driver Updates:
+       - all drivers have been moved into Keil.SAM-ESV7_SFP Pack
+       Moved Middleware examples to Keil.SAM-ESV7_SFP Pack
+    </release>
+    <release version="2.0.0" date="2015-07-22">
+      Added CMSIS-Driver:
+      - Ethernet, USART, I2C, USB Device, MCI, Ethernet, SPI
+      Updated board features, added Middleware examples and documentation.
+      Integrated the Chip Library from the SAMV71 Xplained Ultra Software Package Version 1.3
+    </release>
+    <release version="1.0.0" date="2015-01-28">
+      Initial Version of SAM V Device Family Pack.
+    </release>
+   </releases>
+   <keywords>
+      <keyword>Atmel</keyword>
+      <keyword>Device Support</keyword>
+      <keyword>Device Family Package Atmel</keyword>
+      <keyword>SAMV70</keyword>
+      <keyword>SAMV71</keyword>
+    </keywords>
+    <devices>
+      <family Dfamily="SAMV70" Dvendor="Atmel:3">
+         <processor Dcore="Cortex-M7" DcoreVersion="r0p0" Dfpu="DP_FPU" Dmpu="1" Dendian="Little-endian" Dclock="300000000"/>
+         <algorithm name="flash/ATSAMV7x_GPNVM.FLM" start="0x1FFFFFF0" size="0x00000010" default="0"/>
+         <book name="docs/Atmel-11297-32-bit-Cortex-M7-Microcontroller-SAM-V70Q-SAM-V70N-SAM-V70J_Datasheet.pdf" title="SAM V70 Datasheet"/>
+         <book name="docs/DUI0646B_cortex_m7_dgug.pdf" title="Cortex-M7 Generic User Guide"/>
+
+         <debugvars configfile="debug/SAMx7.dbgconf" version="1.0.0">
+           // Debug Access Variables
+           __var TracePCK3 = 0x00000000;                                               // Trace Clock Source Selection and Prescaler
+         </debugvars>
+     
+         <sequences>
+           <!-- Override for Pre-Defined TraceStart Sequence -->
+           <sequence name="TraceStart">
+             <block>
+               __var traceSWO    = (__traceout &amp; 0x1) != 0;                        // SWO Trace Selected?
+               __var traceTPIU   = (__traceout &amp; 0x2) != 0;                        // TPIU Trace Selected?
+             </block>
+             <control if="traceSWO">
+               <block>
+                 Sequence("EnableTraceSWO");                                           // Call SWO Trace Setup
+               </block>
+             </control>
+             <control if="traceTPIU">
+               <block>
+                 Sequence("EnableTraceTPIU");                                          // Call TPIU Trace Setup
+               </block>
+             </control>
+           </sequence>
+     
+           <!-- User-Defined EnableTraceSWO Sequence -->
+           <sequence name="EnableTraceSWO">
+             <block>
+               Write32(0x400E06E4, 0x504D4300);                                        // Disable PMC write protection
+               Write32(0x400E064C, TracePCK3);                                         // Select clock source and prescaler for PCK3
+               Write32(0x400E0600, (1 &lt;&lt; 11));                                   // Enable PCK3
+             </block>
+           </sequence>
+     
+           <!-- User-Defined EnableTraceTPIU Sequence -->
+           <sequence name="EnableTraceTPIU">
+             <block>
+               __var width = (__traceout &amp; 0x003F0000) &gt;&gt; 16;                // TPIU Port Width
+               __var val   = 0;
+             </block>
+             <control if="width == 1">
+               <block>
+                 // 1-Bit TPIU Trace Setup
+                 val = 0x00000010;                                                     // TRACED[0]
+               </block>
+             </control>
+             <control if="width == 2">
+               <block>
+                 // 2-Bit TPIU Trace Setup
+                 val = 0x00000030;                                                     // TRACED[0..1]
+               </block>
+             </control>
+             <control if="width == 4">
+               <block>
+                 // 4-Bit TPIU Trace Setup
+                 val = 0x000000F0;                                                     // TRACED[0..3]
+               </block>
+             </control>
+             <block>
+               // Write Trace Configuration to Target
+               Write32(0x400E06E4, 0x504D4300);                                        // Disable PMC write protection
+               Write32(0x400E064C, TracePCK3);                                         // Select clock source and prescaler for PCK3
+               Write32(0x400E0600, (1 &lt;&lt; 11));                                   // Enable PCK3
+               Write32(0x400E0610, (1 &lt;&lt; 16));                                   // Enable PIOD clock
+     
+               Write32(0x400E14E4, 0x50494F00);                                        // Disable PIOD write protection
+               Write32(0x400E1404, (val | 0x00000100));                                // Disable PIOD PD[4..8]
+               Write32(0x400E1470, ((Read32(0x400E1470) &amp; ~val) | 0x00000100));    // Set Peripheral Select registers
+               Write32(0x400E1474, ((Read32(0x400E1474) |      val) | 0x00000100));    // TRACED[0..3] to alternate peripheral C and TRACECLK to alternate peripheral D
+             </block>
+           </sequence>
+     
+         </sequences>
+        
+         <device Dname="ATSAMV70Q19">
+            <processor Dcore="Cortex-M7" Dendian="Little-endian"/>
+            <compile header="SAMV70/include/sam.h" define="__SAMV70Q19__"/>
+            <debug svd="svd/ATSAMV70Q19.svd"/>
+            <memory id="IROM1" start="0x00400000" size="0x00080000" startup="1" default="1"/>
+            <memory id="IROM2" start="0x00800000" size="0x00004000"/>
+            <memory id="IRAM1" start="0x20400000" size="0x00040000" init="0" default="1"/>
+            <algorithm name="flash/ATSAMV7x_512.FLM"  start="0x00400000"  size="0x00080000"  default="1"/>
+            <environment name="atmel">
+               <at:extension xmlns:at="http://www.atmel.com/schemas/pack-device-atmel-extension"
+                             schemaVersion="1.0">
+                  <at:atdf name="atdf/ATSAMV70Q19.atdf"/>
+                  <at:variant ordercode="ATSAMV70Q19-XX"
+                              vccmin="1.62"
+                              vccmax="3.6"
+                              tempmin="-40"
+                              tempmax="+105"/>
+                  <at:variant ordercode="ATSAMV70Q19-CU"
+                              vccmin="1.62"
+                              vccmax="3.6"
+                              tempmin="-40"
+                              tempmax="+105"/>
+                  <at:memory name="PERIPHERALS"
+                             start="0x40000000"
+                             size="0x20000000"
+                             type="io"
+                             address-space="base"/>
+                  <at:memory name="SYSTEM"
+                             start="0xE0000000"
+                             size="0x10000000"
+                             type="io"
+                             address-space="base"/>
+                  <at:memory name="QSPIMEM"
+                             start="0x80000000"
+                             size="0x20000000"
+                             type="other"
+                             address-space="base"/>
+                  <at:memory name="AXIMX"
+                             start="0xA0000000"
+                             size="0x00100000"
+                             type="other"
+                             address-space="base"/>
+                  <at:memory name="ITCM"
+                             start="0x00000000"
+                             size="0x00200000"
+                             type="other"
+                             address-space="base"/>
+                  <at:memory name="IFLASH"
+                             start="0x00400000"
+                             size="0x00080000"
+                             type="flash"
+                             pagesize="512"
+                             address-space="base"/>
+                  <at:memory name="IROM"
+                             start="0x00800000"
+                             size="0x00004000"
+                             type="rom"
+                             address-space="base"/>
+                  <at:memory name="DTCM"
+                             start="0x20000000"
+                             size="0x00020000"
+                             type="other"
+                             address-space="base"/>
+                  <at:memory name="IRAM"
+                             start="0x20400000"
+                             size="0x00040000"
+                             type="ram"
+                             address-space="base"/>
+                  <at:memory name="EBI_CS0"
+                             start="0x60000000"
+                             size="0x01000000"
+                             type="other"
+                             address-space="base"/>
+                  <at:memory name="EBI_CS1"
+                             start="0x61000000"
+                             size="0x01000000"
+                             type="other"
+                             address-space="base"/>
+                  <at:memory name="EBI_CS2"
+                             start="0x62000000"
+                             size="0x01000000"
+                             type="other"
+                             address-space="base"/>
+                  <at:memory name="EBI_CS3"
+                             start="0x63000000"
+                             size="0x01000000"
+                             type="other"
+                             address-space="base"/>
+                  <at:memory name="SDRAM_CS"
+                             start="0x70000000"
+                             size="0x10000000"
+                             type="other"
+                             address-space="base"/>
+                  <at:interface type="samjtag" name="JTAG"/>
+                  <at:interface type="swd" name="SWD"/>
+                  <at:tool id="com.atmel.avrdbg.tool.atmelice"/>
+                  <at:tool id="com.atmel.avrdbg.tool.edbg"/>
+                  <at:tool id="com.atmel.avrdbg.tool.jtagicemk3"/>
+                  <at:tool id="com.atmel.avrdbg.tool.jtagice3plus"/>
+                  <at:tool id="com.atmel.avrdbg.tool.medbg"/>
+                  <at:tool id="com.atmel.avrdbg.tool.powerdebugger"/>
+                  <at:tool id="com.atmel.avrdbg.tool.samice"/>
+                  <at:project name="Barebone C Project">
+                     <at:component Cvendor="ARM" Cclass="CMSIS" Cgroup="CORE"/>
+                     <at:component Cvendor="Atmel" Cclass="Device" Cgroup="Startup">
+                        <at:template select="Main file (.c)"/>
+                     </at:component>
+                  </at:project>
+                  <at:project name="Barebone Cpp Project">
+                     <at:component Cvendor="ARM" Cclass="CMSIS" Cgroup="CORE"/>
+                     <at:component Cvendor="Atmel" Cclass="Device" Cgroup="Startup">
+                        <at:template select="Main file (.cpp)"/>
+                     </at:component>
+                  </at:project>
+                  <at:prerequisite context="compiling" Tcompiler="GCC" component="ARM-GCC"/>
+                  <at:prerequisite context="compiling" Tcompiler="IAR" component="ARM-IAR"/>
+               </at:extension>
+            </environment>
+            <description>ARM Cortex-M7 microcontroller with 512KB Flash, 256kB multi-port SRAM with Configurable Tightly Coupled Memory, QSPI, MediaLB 3-wire, dual CAN-FD, SD/MMC, High-speed USB host and device with integrated PHY, Serial Synchronous Controller for I2S/TDM, CMOS Camera Interface, Dual ADC, DAC, 1 Analog Comparator, 3 USARTs/SPI, 2 SPI, 3 TWI, 5 UARTs, True random Number Generator, SHA-256, AES-256, low-power backup with 1KB SRAM, External Bus Interface, SDRAM Controller, 144 pins</description>
+            <book name="http://atmel.com/devices/ATSAMV70Q19.aspx" title="Device Page"/>
+         </device>
+         <device Dname="ATSAMV70N20">
+            <processor Dcore="Cortex-M7" Dendian="Little-endian"/>
+            <compile header="SAMV70/include/sam.h" define="__SAMV70N20__"/>
+            <debug svd="svd/ATSAMV70N20.svd"/>
+            <memory id="IROM1" start="0x00400000" size="0x00100000" startup="1" default="1"/>
+            <memory id="IROM2" start="0x00800000" size="0x00004000"/>
+            <memory id="IRAM1" start="0x20400000" size="0x00060000" init="0" default="1"/>
+            <algorithm name="flash/ATSAMV7x_1024.FLM" start="0x00400000"  size="0x00100000"  default="1"/>
+            <environment name="atmel">
+               <at:extension xmlns:at="http://www.atmel.com/schemas/pack-device-atmel-extension"
+                             schemaVersion="1.0">
+                  <at:atdf name="atdf/ATSAMV70N20.atdf"/>
+                  <at:variant ordercode="ATSAMV70N20-XX"
+                              vccmin="1.62"
+                              vccmax="3.6"
+                              tempmin="-40"
+                              tempmax="+105"/>
+                  <at:variant ordercode="ATSAMV70N20-CU"
+                              vccmin="1.62"
+                              vccmax="3.6"
+                              tempmin="-40"
+                              tempmax="+105"/>
+                  <at:memory name="PERIPHERALS"
+                             start="0x40000000"
+                             size="0x20000000"
+                             type="io"
+                             address-space="base"/>
+                  <at:memory name="SYSTEM"
+                             start="0xE0000000"
+                             size="0x10000000"
+                             type="io"
+                             address-space="base"/>
+                  <at:memory name="QSPIMEM"
+                             start="0x80000000"
+                             size="0x20000000"
+                             type="other"
+                             address-space="base"/>
+                  <at:memory name="AXIMX"
+                             start="0xA0000000"
+                             size="0x00100000"
+                             type="other"
+                             address-space="base"/>
+                  <at:memory name="ITCM"
+                             start="0x00000000"
+                             size="0x00200000"
+                             type="other"
+                             address-space="base"/>
+                  <at:memory name="IFLASH"
+                             start="0x00400000"
+                             size="0x00100000"
+                             type="flash"
+                             pagesize="512"
+                             address-space="base"/>
+                  <at:memory name="IROM"
+                             start="0x00800000"
+                             size="0x00004000"
+                             type="rom"
+                             address-space="base"/>
+                  <at:memory name="DTCM"
+                             start="0x20000000"
+                             size="0x00020000"
+                             type="other"
+                             address-space="base"/>
+                  <at:memory name="IRAM"
+                             start="0x20400000"
+                             size="0x00060000"
+                             type="ram"
+                             address-space="base"/>
+                  <at:memory name="EBI_CS0"
+                             start="0x60000000"
+                             size="0x01000000"
+                             type="other"
+                             address-space="base"/>
+                  <at:memory name="EBI_CS1"
+                             start="0x61000000"
+                             size="0x01000000"
+                             type="other"
+                             address-space="base"/>
+                  <at:memory name="EBI_CS2"
+                             start="0x62000000"
+                             size="0x01000000"
+                             type="other"
+                             address-space="base"/>
+                  <at:memory name="EBI_CS3"
+                             start="0x63000000"
+                             size="0x01000000"
+                             type="other"
+                             address-space="base"/>
+                  <at:memory name="SDRAM_CS"
+                             start="0x70000000"
+                             size="0x10000000"
+                             type="other"
+                             address-space="base"/>
+                  <at:interface type="samjtag" name="JTAG"/>
+                  <at:interface type="swd" name="SWD"/>
+                  <at:tool id="com.atmel.avrdbg.tool.atmelice"/>
+                  <at:tool id="com.atmel.avrdbg.tool.edbg"/>
+                  <at:tool id="com.atmel.avrdbg.tool.jtagicemk3"/>
+                  <at:tool id="com.atmel.avrdbg.tool.jtagice3plus"/>
+                  <at:tool id="com.atmel.avrdbg.tool.medbg"/>
+                  <at:tool id="com.atmel.avrdbg.tool.powerdebugger"/>
+                  <at:tool id="com.atmel.avrdbg.tool.samice"/>
+                  <at:project name="Barebone C Project">
+                     <at:component Cvendor="ARM" Cclass="CMSIS" Cgroup="CORE"/>
+                     <at:component Cvendor="Atmel" Cclass="Device" Cgroup="Startup">
+                        <at:template select="Main file (.c)"/>
+                     </at:component>
+                  </at:project>
+                  <at:project name="Barebone Cpp Project">
+                     <at:component Cvendor="ARM" Cclass="CMSIS" Cgroup="CORE"/>
+                     <at:component Cvendor="Atmel" Cclass="Device" Cgroup="Startup">
+                        <at:template select="Main file (.cpp)"/>
+                     </at:component>
+                  </at:project>
+                  <at:prerequisite context="compiling" Tcompiler="GCC" component="ARM-GCC"/>
+                  <at:prerequisite context="compiling" Tcompiler="IAR" component="ARM-IAR"/>
+               </at:extension>
+            </environment>
+            <description>ARM Cortex-M7 microcontroller with 1MB Flash, 384kB multi-port SRAM with Configurable Tightly Coupled Memory, QSPI, MediaLB 3-wire, dual CAN-FD, SD/MMC, High-speed USB host and device with integrated PHY, Serial Synchronous Controller for I2S/TDM, CMOS Camera Interface, Dual ADC, DAC, 1 Analog Comparator, 3 USARTs/SPI, 2 SPI, 3 TWI, 5 UARTs, True random Number Generator, SHA-256, AES-256, low-power backup with 1KB SRAM, External Bus Interface, 100 pins</description>
+            <book name="http://atmel.com/devices/ATSAMV70N20.aspx" title="Device Page"/>
+         </device>
+         <device Dname="ATSAMV70J20">
+            <processor Dcore="Cortex-M7" Dendian="Little-endian"/>
+            <compile header="SAMV70/include/sam.h" define="__SAMV70J20__"/>
+            <debug svd="svd/ATSAMV70J20.svd"/>
+            <memory id="IROM1" start="0x00400000" size="0x00100000" startup="1" default="1"/>
+            <memory id="IROM2" start="0x00800000" size="0x00004000"/>
+            <memory id="IRAM1" start="0x20400000" size="0x00060000" init="0" default="1"/>
+            <algorithm name="flash/ATSAMV7x_1024.FLM" start="0x00400000"  size="0x00100000"  default="1"/>
+            <environment name="atmel">
+               <at:extension xmlns:at="http://www.atmel.com/schemas/pack-device-atmel-extension"
+                             schemaVersion="1.0">
+                  <at:atdf name="atdf/ATSAMV70J20.atdf"/>
+                  <at:variant ordercode="ATSAMV70J20-XX"
+                              vccmin="1.62"
+                              vccmax="3.6"
+                              tempmin="-40"
+                              tempmax="+105"/>
+                  <at:variant ordercode="ATSAMV70J20-MU"
+                              vccmin="1.62"
+                              vccmax="3.6"
+                              tempmin="-40"
+                              tempmax="+105"/>
+                  <at:variant ordercode="ATSAMV70J20-CU"
+                              vccmin="1.62"
+                              vccmax="3.6"
+                              tempmin="-40"
+                              tempmax="+105"/>
+                  <at:memory name="PERIPHERALS"
+                             start="0x40000000"
+                             size="0x20000000"
+                             type="io"
+                             address-space="base"/>
+                  <at:memory name="SYSTEM"
+                             start="0xE0000000"
+                             size="0x10000000"
+                             type="io"
+                             address-space="base"/>
+                  <at:memory name="QSPIMEM"
+                             start="0x80000000"
+                             size="0x20000000"
+                             type="other"
+                             address-space="base"/>
+                  <at:memory name="AXIMX"
+                             start="0xA0000000"
+                             size="0x00100000"
+                             type="other"
+                             address-space="base"/>
+                  <at:memory name="ITCM"
+                             start="0x00000000"
+                             size="0x00200000"
+                             type="other"
+                             address-space="base"/>
+                  <at:memory name="IFLASH"
+                             start="0x00400000"
+                             size="0x00100000"
+                             type="flash"
+                             pagesize="512"
+                             address-space="base"/>
+                  <at:memory name="IROM"
+                             start="0x00800000"
+                             size="0x00004000"
+                             type="rom"
+                             address-space="base"/>
+                  <at:memory name="DTCM"
+                             start="0x20000000"
+                             size="0x00020000"
+                             type="other"
+                             address-space="base"/>
+                  <at:memory name="IRAM"
+                             start="0x20400000"
+                             size="0x00060000"
+                             type="ram"
+                             address-space="base"/>
+                  <at:memory name="EBI_CS0"
+                             start="0x60000000"
+                             size="0x01000000"
+                             type="other"
+                             address-space="base"/>
+                  <at:memory name="EBI_CS1"
+                             start="0x61000000"
+                             size="0x01000000"
+                             type="other"
+                             address-space="base"/>
+                  <at:memory name="EBI_CS2"
+                             start="0x62000000"
+                             size="0x01000000"
+                             type="other"
+                             address-space="base"/>
+                  <at:memory name="EBI_CS3"
+                             start="0x63000000"
+                             size="0x01000000"
+                             type="other"
+                             address-space="base"/>
+                  <at:memory name="SDRAM_CS"
+                             start="0x70000000"
+                             size="0x10000000"
+                             type="other"
+                             address-space="base"/>
+                  <at:interface type="samjtag" name="JTAG"/>
+                  <at:interface type="swd" name="SWD"/>
+                  <at:tool id="com.atmel.avrdbg.tool.atmelice"/>
+                  <at:tool id="com.atmel.avrdbg.tool.edbg"/>
+                  <at:tool id="com.atmel.avrdbg.tool.jtagicemk3"/>
+                  <at:tool id="com.atmel.avrdbg.tool.jtagice3plus"/>
+                  <at:tool id="com.atmel.avrdbg.tool.medbg"/>
+                  <at:tool id="com.atmel.avrdbg.tool.powerdebugger"/>
+                  <at:tool id="com.atmel.avrdbg.tool.samice"/>
+                  <at:project name="Barebone C Project">
+                     <at:component Cvendor="ARM" Cclass="CMSIS" Cgroup="CORE"/>
+                     <at:component Cvendor="Atmel" Cclass="Device" Cgroup="Startup">
+                        <at:template select="Main file (.c)"/>
+                     </at:component>
+                  </at:project>
+                  <at:project name="Barebone Cpp Project">
+                     <at:component Cvendor="ARM" Cclass="CMSIS" Cgroup="CORE"/>
+                     <at:component Cvendor="Atmel" Cclass="Device" Cgroup="Startup">
+                        <at:template select="Main file (.cpp)"/>
+                     </at:component>
+                  </at:project>
+                  <at:prerequisite context="compiling" Tcompiler="GCC" component="ARM-GCC"/>
+                  <at:prerequisite context="compiling" Tcompiler="IAR" component="ARM-IAR"/>
+               </at:extension>
+            </environment>
+            <description>ARM Cortex-M7 microcontroller with 1MB Flash, 384kB multi-port SRAM with Configurable Tightly Coupled Memory, QSPI, MediaLB 3-wire, CAN-FD, Full-speed USB host and device with integrated PHY, Serial Synchronous Controller for I2S/TDM, CMOS Camera Interface, Single ADC and DAC, 1 Analog Comparator, 2 USARTs/SPI, 1 SPI, 2 TWI, 3 UARTs, True random Number Generator, SHA-256, AES-256, low-power backup with 1KB SRAM, 64 pins</description>
+            <book name="http://atmel.com/devices/ATSAMV70J20.aspx" title="Device Page"/>
+         </device>
+         <device Dname="ATSAMV70Q20">
+            <processor Dcore="Cortex-M7" Dendian="Little-endian"/>
+            <compile header="SAMV70/include/sam.h" define="__SAMV70Q20__"/>
+            <debug svd="svd/ATSAMV70Q20.svd"/>
+            <memory id="IROM1" start="0x00400000" size="0x00100000" startup="1" default="1"/>
+            <memory id="IROM2" start="0x00800000" size="0x00004000"/>
+            <memory id="IRAM1" start="0x20400000" size="0x00060000" init="0" default="1"/>
+            <algorithm name="flash/ATSAMV7x_1024.FLM" start="0x00400000"  size="0x00100000"  default="1"/>
+            <environment name="atmel">
+               <at:extension xmlns:at="http://www.atmel.com/schemas/pack-device-atmel-extension"
+                             schemaVersion="1.0">
+                  <at:atdf name="atdf/ATSAMV70Q20.atdf"/>
+                  <at:variant ordercode="ATSAMV70Q20-XX"
+                              vccmin="1.62"
+                              vccmax="3.6"
+                              tempmin="-40"
+                              tempmax="+105"/>
+                  <at:variant ordercode="ATSAMV70Q20-CU"
+                              vccmin="1.62"
+                              vccmax="3.6"
+                              tempmin="-40"
+                              tempmax="+105"/>
+                  <at:memory name="PERIPHERALS"
+                             start="0x40000000"
+                             size="0x20000000"
+                             type="io"
+                             address-space="base"/>
+                  <at:memory name="SYSTEM"
+                             start="0xE0000000"
+                             size="0x10000000"
+                             type="io"
+                             address-space="base"/>
+                  <at:memory name="QSPIMEM"
+                             start="0x80000000"
+                             size="0x20000000"
+                             type="other"
+                             address-space="base"/>
+                  <at:memory name="AXIMX"
+                             start="0xA0000000"
+                             size="0x00100000"
+                             type="other"
+                             address-space="base"/>
+                  <at:memory name="ITCM"
+                             start="0x00000000"
+                             size="0x00200000"
+                             type="other"
+                             address-space="base"/>
+                  <at:memory name="IFLASH"
+                             start="0x00400000"
+                             size="0x00100000"
+                             type="flash"
+                             pagesize="512"
+                             address-space="base"/>
+                  <at:memory name="IROM"
+                             start="0x00800000"
+                             size="0x00004000"
+                             type="rom"
+                             address-space="base"/>
+                  <at:memory name="DTCM"
+                             start="0x20000000"
+                             size="0x00020000"
+                             type="other"
+                             address-space="base"/>
+                  <at:memory name="IRAM"
+                             start="0x20400000"
+                             size="0x00060000"
+                             type="ram"
+                             address-space="base"/>
+                  <at:memory name="EBI_CS0"
+                             start="0x60000000"
+                             size="0x01000000"
+                             type="other"
+                             address-space="base"/>
+                  <at:memory name="EBI_CS1"
+                             start="0x61000000"
+                             size="0x01000000"
+                             type="other"
+                             address-space="base"/>
+                  <at:memory name="EBI_CS2"
+                             start="0x62000000"
+                             size="0x01000000"
+                             type="other"
+                             address-space="base"/>
+                  <at:memory name="EBI_CS3"
+                             start="0x63000000"
+                             size="0x01000000"
+                             type="other"
+                             address-space="base"/>
+                  <at:memory name="SDRAM_CS"
+                             start="0x70000000"
+                             size="0x10000000"
+                             type="other"
+                             address-space="base"/>
+                  <at:interface type="samjtag" name="JTAG"/>
+                  <at:interface type="swd" name="SWD"/>
+                  <at:tool id="com.atmel.avrdbg.tool.atmelice"/>
+                  <at:tool id="com.atmel.avrdbg.tool.edbg"/>
+                  <at:tool id="com.atmel.avrdbg.tool.jtagicemk3"/>
+                  <at:tool id="com.atmel.avrdbg.tool.jtagice3plus"/>
+                  <at:tool id="com.atmel.avrdbg.tool.medbg"/>
+                  <at:tool id="com.atmel.avrdbg.tool.powerdebugger"/>
+                  <at:tool id="com.atmel.avrdbg.tool.samice"/>
+                  <at:project name="Barebone C Project">
+                     <at:component Cvendor="ARM" Cclass="CMSIS" Cgroup="CORE"/>
+                     <at:component Cvendor="Atmel" Cclass="Device" Cgroup="Startup">
+                        <at:template select="Main file (.c)"/>
+                     </at:component>
+                  </at:project>
+                  <at:project name="Barebone Cpp Project">
+                     <at:component Cvendor="ARM" Cclass="CMSIS" Cgroup="CORE"/>
+                     <at:component Cvendor="Atmel" Cclass="Device" Cgroup="Startup">
+                        <at:template select="Main file (.cpp)"/>
+                     </at:component>
+                  </at:project>
+                  <at:prerequisite context="compiling" Tcompiler="GCC" component="ARM-GCC"/>
+                  <at:prerequisite context="compiling" Tcompiler="IAR" component="ARM-IAR"/>
+               </at:extension>
+            </environment>
+            <description>ARM Cortex-M7 microcontroller with 1MB Flash, 384kB multi-port SRAM with Configurable Tightly Coupled Memory, QSPI, MediaLB 3-wire, dual CAN-FD, SD/MMC, High-speed USB host and device with integrated PHY, Serial Synchronous Controller for I2S/TDM, CMOS Camera Interface, Dual ADC, DAC, 1 Analog Comparator, 3 USARTs/SPI, 2 SPI, 3 TWI, 5 UARTs, True random Number Generator, SHA-256, AES-256, low-power backup with 1KB SRAM, External Bus Interface, SDRAM Controller, 144 pins</description>
+            <book name="http://atmel.com/devices/ATSAMV70Q20.aspx" title="Device Page"/>
+         </device>
+         <device Dname="ATSAMV70J19">
+            <processor Dcore="Cortex-M7" Dendian="Little-endian"/>
+            <compile header="SAMV70/include/sam.h" define="__SAMV70J19__"/>
+            <debug svd="svd/ATSAMV70J19.svd"/>
+            <memory id="IROM1" start="0x00400000" size="0x00080000" startup="1" default="1"/>
+            <memory id="IROM2" start="0x00800000" size="0x00004000"/>
+            <memory id="IRAM1" start="0x20400000" size="0x00040000" init="0" default="1"/>
+            <algorithm name="flash/ATSAMV7x_512.FLM"  start="0x00400000"  size="0x00080000"  default="1"/>
+            <environment name="atmel">
+               <at:extension xmlns:at="http://www.atmel.com/schemas/pack-device-atmel-extension"
+                             schemaVersion="1.0">
+                  <at:atdf name="atdf/ATSAMV70J19.atdf"/>
+                  <at:variant ordercode="ATSAMV70J19-XX"
+                              vccmin="1.62"
+                              vccmax="3.6"
+                              tempmin="-40"
+                              tempmax="+105"/>
+                  <at:variant ordercode="ATSAMV70J19-MU"
+                              vccmin="1.62"
+                              vccmax="3.6"
+                              tempmin="-40"
+                              tempmax="+105"/>
+                  <at:variant ordercode="ATSAMV70J19-CU"
+                              vccmin="1.62"
+                              vccmax="3.6"
+                              tempmin="-40"
+                              tempmax="+105"/>
+                  <at:memory name="PERIPHERALS"
+                             start="0x40000000"
+                             size="0x20000000"
+                             type="io"
+                             address-space="base"/>
+                  <at:memory name="SYSTEM"
+                             start="0xE0000000"
+                             size="0x10000000"
+                             type="io"
+                             address-space="base"/>
+                  <at:memory name="QSPIMEM"
+                             start="0x80000000"
+                             size="0x20000000"
+                             type="other"
+                             address-space="base"/>
+                  <at:memory name="AXIMX"
+                             start="0xA0000000"
+                             size="0x00100000"
+                             type="other"
+                             address-space="base"/>
+                  <at:memory name="ITCM"
+                             start="0x00000000"
+                             size="0x00200000"
+                             type="other"
+                             address-space="base"/>
+                  <at:memory name="IFLASH"
+                             start="0x00400000"
+                             size="0x00080000"
+                             type="flash"
+                             pagesize="512"
+                             address-space="base"/>
+                  <at:memory name="IROM"
+                             start="0x00800000"
+                             size="0x00004000"
+                             type="rom"
+                             address-space="base"/>
+                  <at:memory name="DTCM"
+                             start="0x20000000"
+                             size="0x00020000"
+                             type="other"
+                             address-space="base"/>
+                  <at:memory name="IRAM"
+                             start="0x20400000"
+                             size="0x00040000"
+                             type="ram"
+                             address-space="base"/>
+                  <at:memory name="EBI_CS0"
+                             start="0x60000000"
+                             size="0x01000000"
+                             type="other"
+                             address-space="base"/>
+                  <at:memory name="EBI_CS1"
+                             start="0x61000000"
+                             size="0x01000000"
+                             type="other"
+                             address-space="base"/>
+                  <at:memory name="EBI_CS2"
+                             start="0x62000000"
+                             size="0x01000000"
+                             type="other"
+                             address-space="base"/>
+                  <at:memory name="EBI_CS3"
+                             start="0x63000000"
+                             size="0x01000000"
+                             type="other"
+                             address-space="base"/>
+                  <at:memory name="SDRAM_CS"
+                             start="0x70000000"
+                             size="0x10000000"
+                             type="other"
+                             address-space="base"/>
+                  <at:interface type="samjtag" name="JTAG"/>
+                  <at:interface type="swd" name="SWD"/>
+                  <at:tool id="com.atmel.avrdbg.tool.atmelice"/>
+                  <at:tool id="com.atmel.avrdbg.tool.edbg"/>
+                  <at:tool id="com.atmel.avrdbg.tool.jtagicemk3"/>
+                  <at:tool id="com.atmel.avrdbg.tool.jtagice3plus"/>
+                  <at:tool id="com.atmel.avrdbg.tool.medbg"/>
+                  <at:tool id="com.atmel.avrdbg.tool.powerdebugger"/>
+                  <at:tool id="com.atmel.avrdbg.tool.samice"/>
+                  <at:project name="Barebone C Project">
+                     <at:component Cvendor="ARM" Cclass="CMSIS" Cgroup="CORE"/>
+                     <at:component Cvendor="Atmel" Cclass="Device" Cgroup="Startup">
+                        <at:template select="Main file (.c)"/>
+                     </at:component>
+                  </at:project>
+                  <at:project name="Barebone Cpp Project">
+                     <at:component Cvendor="ARM" Cclass="CMSIS" Cgroup="CORE"/>
+                     <at:component Cvendor="Atmel" Cclass="Device" Cgroup="Startup">
+                        <at:template select="Main file (.cpp)"/>
+                     </at:component>
+                  </at:project>
+                  <at:prerequisite context="compiling" Tcompiler="GCC" component="ARM-GCC"/>
+                  <at:prerequisite context="compiling" Tcompiler="IAR" component="ARM-IAR"/>
+               </at:extension>
+            </environment>
+            <description>ARM Cortex-M7 microcontroller with 512KB Flash, 256kB multi-port SRAM with Configurable Tightly Coupled Memory, QSPI, MediaLB 3-wire, CAN-FD, Full-speed USB host and device with integrated PHY, Serial Synchronous Controller for I2S/TDM, CMOS Camera Interface, Single ADC and DAC, 1 Analog Comparator, 2 USARTs/SPI, 1 SPI, 2 TWI, 3 UARTs, True random Number Generator, SHA-256, AES-256, low-power backup with 1KB SRAM, 64 pins</description>
+            <book name="http://atmel.com/devices/ATSAMV70J19.aspx" title="Device Page"/>
+         </device>
+         <device Dname="ATSAMV70N19">
+            <processor Dcore="Cortex-M7" Dendian="Little-endian"/>
+            <compile header="SAMV70/include/sam.h" define="__SAMV70N19__"/>
+            <debug svd="svd/ATSAMV70N19.svd"/>
+            <memory id="IROM1" start="0x00400000" size="0x00080000" startup="1" default="1"/>
+            <memory id="IROM2" start="0x00800000" size="0x00004000"/>
+            <memory id="IRAM1" start="0x20400000" size="0x00040000" init="0" default="1"/>
+            <algorithm name="flash/ATSAMV7x_512.FLM"  start="0x00400000"  size="0x00080000"  default="1"/>
+            <environment name="atmel">
+               <at:extension xmlns:at="http://www.atmel.com/schemas/pack-device-atmel-extension"
+                             schemaVersion="1.0">
+                  <at:atdf name="atdf/ATSAMV70N19.atdf"/>
+                  <at:variant ordercode="ATSAMV70N19-XX"
+                              vccmin="1.62"
+                              vccmax="3.6"
+                              tempmin="-40"
+                              tempmax="+105"/>
+                  <at:variant ordercode="ATSAMV70N19-CU"
+                              vccmin="1.62"
+                              vccmax="3.6"
+                              tempmin="-40"
+                              tempmax="+105"/>
+                  <at:memory name="PERIPHERALS"
+                             start="0x40000000"
+                             size="0x20000000"
+                             type="io"
+                             address-space="base"/>
+                  <at:memory name="SYSTEM"
+                             start="0xE0000000"
+                             size="0x10000000"
+                             type="io"
+                             address-space="base"/>
+                  <at:memory name="QSPIMEM"
+                             start="0x80000000"
+                             size="0x20000000"
+                             type="other"
+                             address-space="base"/>
+                  <at:memory name="AXIMX"
+                             start="0xA0000000"
+                             size="0x00100000"
+                             type="other"
+                             address-space="base"/>
+                  <at:memory name="ITCM"
+                             start="0x00000000"
+                             size="0x00200000"
+                             type="other"
+                             address-space="base"/>
+                  <at:memory name="IFLASH"
+                             start="0x00400000"
+                             size="0x00080000"
+                             type="flash"
+                             pagesize="512"
+                             address-space="base"/>
+                  <at:memory name="IROM"
+                             start="0x00800000"
+                             size="0x00004000"
+                             type="rom"
+                             address-space="base"/>
+                  <at:memory name="DTCM"
+                             start="0x20000000"
+                             size="0x00020000"
+                             type="other"
+                             address-space="base"/>
+                  <at:memory name="IRAM"
+                             start="0x20400000"
+                             size="0x00040000"
+                             type="ram"
+                             address-space="base"/>
+                  <at:memory name="EBI_CS0"
+                             start="0x60000000"
+                             size="0x01000000"
+                             type="other"
+                             address-space="base"/>
+                  <at:memory name="EBI_CS1"
+                             start="0x61000000"
+                             size="0x01000000"
+                             type="other"
+                             address-space="base"/>
+                  <at:memory name="EBI_CS2"
+                             start="0x62000000"
+                             size="0x01000000"
+                             type="other"
+                             address-space="base"/>
+                  <at:memory name="EBI_CS3"
+                             start="0x63000000"
+                             size="0x01000000"
+                             type="other"
+                             address-space="base"/>
+                  <at:memory name="SDRAM_CS"
+                             start="0x70000000"
+                             size="0x10000000"
+                             type="other"
+                             address-space="base"/>
+                  <at:interface type="samjtag" name="JTAG"/>
+                  <at:interface type="swd" name="SWD"/>
+                  <at:tool id="com.atmel.avrdbg.tool.atmelice"/>
+                  <at:tool id="com.atmel.avrdbg.tool.edbg"/>
+                  <at:tool id="com.atmel.avrdbg.tool.jtagicemk3"/>
+                  <at:tool id="com.atmel.avrdbg.tool.jtagice3plus"/>
+                  <at:tool id="com.atmel.avrdbg.tool.medbg"/>
+                  <at:tool id="com.atmel.avrdbg.tool.powerdebugger"/>
+                  <at:tool id="com.atmel.avrdbg.tool.samice"/>
+                  <at:project name="Barebone C Project">
+                     <at:component Cvendor="ARM" Cclass="CMSIS" Cgroup="CORE"/>
+                     <at:component Cvendor="Atmel" Cclass="Device" Cgroup="Startup">
+                        <at:template select="Main file (.c)"/>
+                     </at:component>
+                  </at:project>
+                  <at:project name="Barebone Cpp Project">
+                     <at:component Cvendor="ARM" Cclass="CMSIS" Cgroup="CORE"/>
+                     <at:component Cvendor="Atmel" Cclass="Device" Cgroup="Startup">
+                        <at:template select="Main file (.cpp)"/>
+                     </at:component>
+                  </at:project>
+                  <at:prerequisite context="compiling" Tcompiler="GCC" component="ARM-GCC"/>
+                  <at:prerequisite context="compiling" Tcompiler="IAR" component="ARM-IAR"/>
+               </at:extension>
+            </environment>
+            <description>ARM Cortex-M7 microcontroller with 512KB Flash, 256kB multi-port SRAM with Configurable Tightly Coupled Memory, QSPI, MediaLB 3-wire, dual CAN-FD, SD/MMC, High-speed USB host and device with integrated PHY, Serial Synchronous Controller for I2S/TDM, CMOS Camera Interface, Dual ADC, DAC, 1 Analog Comparator, 3 USARTs/SPI, 2 SPI, 3 TWI, 5 UARTs, True random Number Generator, SHA-256, AES-256, low-power backup with 1KB SRAM, External Bus Interface, 100 pins</description>
+            <book name="http://atmel.com/devices/ATSAMV70N19.aspx" title="Device Page"/>
+         </device>
+      </family>
+      <family Dfamily="SAMV71" Dvendor="Atmel:3">
+         <processor Dcore="Cortex-M7" DcoreVersion="r0p0" Dfpu="DP_FPU" Dmpu="1" Dendian="Little-endian" Dclock="300000000"/>
+         <algorithm name="flash/ATSAMV7x_GPNVM.FLM" start="0x1FFFFFF0" size="0x00000010" default="0"/>
+         <book name="docs/Atmel-44003-32-bit-Cortex-M7-Microcontroller-SAM-V71Q-SAM-V71N-SAM-V71J_Datasheet.pdf" title="SAM V71 Datasheet"/>
+         <book name="docs/DUI0646B_cortex_m7_dgug.pdf" title="Cortex-M7 Generic User Guide"/>
+
+         <debugvars configfile="debug/SAMx7.dbgconf" version="1.0.0">
+           // Debug Access Variables
+           __var TracePCK3 = 0x00000000;                                               // Trace Clock Source Selection and Prescaler
+         </debugvars>
+     
+         <sequences>
+           <!-- Override for Pre-Defined TraceStart Sequence -->
+           <sequence name="TraceStart">
+             <block>
+               __var traceSWO    = (__traceout &amp; 0x1) != 0;                        // SWO Trace Selected?
+               __var traceTPIU   = (__traceout &amp; 0x2) != 0;                        // TPIU Trace Selected?
+             </block>
+             <control if="traceSWO">
+               <block>
+                 Sequence("EnableTraceSWO");                                           // Call SWO Trace Setup
+               </block>
+             </control>
+             <control if="traceTPIU">
+               <block>
+                 Sequence("EnableTraceTPIU");                                          // Call TPIU Trace Setup
+               </block>
+             </control>
+           </sequence>
+     
+           <!-- User-Defined EnableTraceSWO Sequence -->
+           <sequence name="EnableTraceSWO">
+             <block>
+               Write32(0x400E06E4, 0x504D4300);                                        // Disable PMC write protection
+               Write32(0x400E064C, TracePCK3);                                         // Select clock source and prescaler for PCK3
+               Write32(0x400E0600, (1 &lt;&lt; 11));                                   // Enable PCK3
+             </block>
+           </sequence>
+     
+           <!-- User-Defined EnableTraceTPIU Sequence -->
+           <sequence name="EnableTraceTPIU">
+             <block>
+               __var width = (__traceout &amp; 0x003F0000) &gt;&gt; 16;                // TPIU Port Width
+               __var val   = 0;
+             </block>
+             <control if="width == 1">
+               <block>
+                 // 1-Bit TPIU Trace Setup
+                 val = 0x00000010;                                                     // TRACED[0]
+               </block>
+             </control>
+             <control if="width == 2">
+               <block>
+                 // 2-Bit TPIU Trace Setup
+                 val = 0x00000030;                                                     // TRACED[0..1]
+               </block>
+             </control>
+             <control if="width == 4">
+               <block>
+                 // 4-Bit TPIU Trace Setup
+                 val = 0x000000F0;                                                     // TRACED[0..3]
+               </block>
+             </control>
+             <block>
+               // Write Trace Configuration to Target
+               Write32(0x400E06E4, 0x504D4300);                                        // Disable PMC write protection
+               Write32(0x400E064C, TracePCK3);                                         // Select clock source and prescaler for PCK3
+               Write32(0x400E0600, (1 &lt;&lt; 11));                                   // Enable PCK3
+               Write32(0x400E0610, (1 &lt;&lt; 16));                                   // Enable PIOD clock
+     
+               Write32(0x400E14E4, 0x50494F00);                                        // Disable PIOD write protection
+               Write32(0x400E1404, (val | 0x00000100));                                // Disable PIOD PD[4..8]
+               Write32(0x400E1470, ((Read32(0x400E1470) &amp; ~val) | 0x00000100));    // Set Peripheral Select registers
+               Write32(0x400E1474, ((Read32(0x400E1474) |      val) | 0x00000100));    // TRACED[0..3] to alternate peripheral C and TRACECLK to alternate peripheral D
+             </block>
+           </sequence>
+     
+         </sequences>
+
+         <device Dname="ATSAMV71J21">
+            <processor Dcore="Cortex-M7" Dendian="Little-endian"/>
+            <compile header="SAMV71/include/sam.h" define="__SAMV71J21__"/>
+            <debug svd="svd/ATSAMV71J21.svd"/>
+            <memory id="IROM1" start="0x00400000" size="0x00200000" startup="1" default="1"/>
+            <memory id="IROM2" start="0x00800000" size="0x00004000"/>
+            <memory id="IRAM1" start="0x20400000" size="0x00060000" init="0" default="1"/>
+            <algorithm name="flash/ATSAMV7x_2048.FLM" start="0x00400000"  size="0x00200000"  default="1"/>
+            <environment name="atmel">
+               <at:extension xmlns:at="http://www.atmel.com/schemas/pack-device-atmel-extension"
+                             schemaVersion="1.0">
+                  <at:atdf name="atdf/ATSAMV71J21.atdf"/>
+                  <at:variant ordercode="ATSAMV71J21-XX" vccmin="1.62" vccmax="3.6" tempmin="-40"
+                              tempmax="+105"/>
+                  <at:variant ordercode="ATSAMV71J21-MU" vccmin="1.62" vccmax="3.6" tempmin="-40"
+                              tempmax="+105"/>
+                  <at:variant ordercode="ATSAMV71J21-CU" vccmin="1.62" vccmax="3.6" tempmin="-40"
+                              tempmax="+105"/>
+                  <at:memory name="PERIPHERALS" start="0x40000000" size="0x20000000" type="io"
+                             address-space="base"/>
+                  <at:memory name="SYSTEM" start="0xE0000000" size="0x10000000" type="io"
+                             address-space="base"/>
+                  <at:memory name="QSPIMEM" start="0x80000000" size="0x20000000" type="other"
+                             address-space="base"/>
+                  <at:memory name="AXIMX" start="0xA0000000" size="0x00100000" type="other"
+                             address-space="base"/>
+                  <at:memory name="ITCM" start="0x00000000" size="0x00200000" type="other"
+                             address-space="base"/>
+                  <at:memory name="IFLASH" start="0x00400000" size="0x00200000" type="flash" pagesize="512"
+                             address-space="base"/>
+                  <at:memory name="IROM" start="0x00800000" size="0x00004000" type="rom"
+                             address-space="base"/>
+                  <at:memory name="DTCM" start="0x20000000" size="0x00020000" type="other"
+                             address-space="base"/>
+                  <at:memory name="IRAM" start="0x20400000" size="0x00060000" type="ram"
+                             address-space="base"/>
+                  <at:memory name="EBI_CS0" start="0x60000000" size="0x01000000" type="other"
+                             address-space="base"/>
+                  <at:memory name="EBI_CS1" start="0x61000000" size="0x01000000" type="other"
+                             address-space="base"/>
+                  <at:memory name="EBI_CS2" start="0x62000000" size="0x01000000" type="other"
+                             address-space="base"/>
+                  <at:memory name="EBI_CS3" start="0x63000000" size="0x01000000" type="other"
+                             address-space="base"/>
+                  <at:memory name="SDRAM_CS" start="0x70000000" size="0x10000000" type="other"
+                             address-space="base"/>
+                  <at:interface type="samjtag" name="JTAG"/>
+                  <at:interface type="swd" name="SWD"/>
+                  <at:tool id="com.atmel.avrdbg.tool.atmelice"/>
+                  <at:tool id="com.atmel.avrdbg.tool.edbg"/>
+                  <at:tool id="com.atmel.avrdbg.tool.jtagicemk3"/>
+                  <at:tool id="com.atmel.avrdbg.tool.jtagice3plus"/>
+                  <at:tool id="com.atmel.avrdbg.tool.medbg"/>
+                  <at:tool id="com.atmel.avrdbg.tool.powerdebugger"/>
+                  <at:tool id="com.atmel.avrdbg.tool.samice"/>
+                  <at:project name="Barebone C Project">
+                     <at:component Cvendor="ARM" Cclass="CMSIS" Cgroup="CORE"/>
+                     <at:component Cvendor="Atmel" Cclass="Device" Cgroup="Startup">
+                        <at:template select="Main file (.c)"/>
+                     </at:component>
+                  </at:project>
+                  <at:project name="Barebone Cpp Project">
+                     <at:component Cvendor="ARM" Cclass="CMSIS" Cgroup="CORE"/>
+                     <at:component Cvendor="Atmel" Cclass="Device" Cgroup="Startup">
+                        <at:template select="Main file (.cpp)"/>
+                     </at:component>
+                  </at:project>
+                  <at:prerequisite context="compiling" Tcompiler="GCC" component="ARM-GCC"/>
+                  <at:prerequisite context="compiling" Tcompiler="IAR" component="ARM-IAR"/>
+               </at:extension>
+            </environment>
+           <description>ARM Cortex-M7 microcontroller with 2MB Flash, 384kB multi-port SRAM with Configurable Tightly Coupled Memory, QSPI, 10/100Mbps Ethernet MAC with AVB support, MediaLB 3-wire, CAN-FD, Full-speed USB host and device with integrated PHY, Serial Synchronous Controller for I2S/TDM, CMOS Camera Interface, Single ADC and DAC, 1 Analog Comparator, 2 USARTs/SPI, 1 SPI, 2 TWI, 3 UARTs, True random Number Generator, SHA-256, AES-256, low-power backup with 1KB SRAM, 64 pins</description>
+           <book name="http://atmel.com/devices/ATSAMV71J21.aspx" title="Device Page"/>
+         </device>
+         <device Dname="ATSAMV71J20">
+            <processor Dcore="Cortex-M7" Dendian="Little-endian"/>
+            <compile header="SAMV71/include/sam.h" define="__SAMV71J20__"/>
+            <debug svd="svd/ATSAMV71J20.svd"/>
+            <memory id="IROM1" start="0x00400000" size="0x00100000" startup="1" default="1"/>
+            <memory id="IROM2" start="0x00800000" size="0x00004000"/>
+            <memory id="IRAM1" start="0x20400000" size="0x00060000" init="0" default="1"/>
+            <algorithm name="flash/ATSAMV7x_1024.FLM" start="0x00400000"  size="0x00100000"             default="1"/>
+            <environment name="atmel">
+               <at:extension xmlns:at="http://www.atmel.com/schemas/pack-device-atmel-extension"
+                             schemaVersion="1.0">
+                  <at:atdf name="atdf/ATSAMV71J20.atdf"/>
+                  <at:variant ordercode="ATSAMV71J20-XX" vccmin="1.62" vccmax="3.6" tempmin="-40"
+                              tempmax="+105"/>
+                  <at:variant ordercode="ATSAMV71J20-MU" vccmin="1.62" vccmax="3.6" tempmin="-40"
+                              tempmax="+105"/>
+                  <at:variant ordercode="ATSAMV71J20-CU" vccmin="1.62" vccmax="3.6" tempmin="-40"
+                              tempmax="+105"/>
+                  <at:memory name="PERIPHERALS" start="0x40000000" size="0x20000000" type="io"
+                             address-space="base"/>
+                  <at:memory name="SYSTEM" start="0xE0000000" size="0x10000000" type="io"
+                             address-space="base"/>
+                  <at:memory name="QSPIMEM" start="0x80000000" size="0x20000000" type="other"
+                             address-space="base"/>
+                  <at:memory name="AXIMX" start="0xA0000000" size="0x00100000" type="other"
+                             address-space="base"/>
+                  <at:memory name="ITCM" start="0x00000000" size="0x00200000" type="other"
+                             address-space="base"/>
+                  <at:memory name="IFLASH" start="0x00400000" size="0x00100000" type="flash" pagesize="512"
+                             address-space="base"/>
+                  <at:memory name="IROM" start="0x00800000" size="0x00004000" type="rom"
+                             address-space="base"/>
+                  <at:memory name="DTCM" start="0x20000000" size="0x00020000" type="other"
+                             address-space="base"/>
+                  <at:memory name="IRAM" start="0x20400000" size="0x00060000" type="ram"
+                             address-space="base"/>
+                  <at:memory name="EBI_CS0" start="0x60000000" size="0x01000000" type="other"
+                             address-space="base"/>
+                  <at:memory name="EBI_CS1" start="0x61000000" size="0x01000000" type="other"
+                             address-space="base"/>
+                  <at:memory name="EBI_CS2" start="0x62000000" size="0x01000000" type="other"
+                             address-space="base"/>
+                  <at:memory name="EBI_CS3" start="0x63000000" size="0x01000000" type="other"
+                             address-space="base"/>
+                  <at:memory name="SDRAM_CS" start="0x70000000" size="0x10000000" type="other"
+                             address-space="base"/>
+                  <at:interface type="samjtag" name="JTAG"/>
+                  <at:interface type="swd" name="SWD"/>
+                  <at:tool id="com.atmel.avrdbg.tool.atmelice"/>
+                  <at:tool id="com.atmel.avrdbg.tool.edbg"/>
+                  <at:tool id="com.atmel.avrdbg.tool.jtagicemk3"/>
+                  <at:tool id="com.atmel.avrdbg.tool.jtagice3plus"/>
+                  <at:tool id="com.atmel.avrdbg.tool.medbg"/>
+                  <at:tool id="com.atmel.avrdbg.tool.powerdebugger"/>
+                  <at:tool id="com.atmel.avrdbg.tool.samice"/>
+                  <at:project name="Barebone C Project">
+                     <at:component Cvendor="ARM" Cclass="CMSIS" Cgroup="CORE"/>
+                     <at:component Cvendor="Atmel" Cclass="Device" Cgroup="Startup">
+                        <at:template select="Main file (.c)"/>
+                     </at:component>
+                  </at:project>
+                  <at:project name="Barebone Cpp Project">
+                     <at:component Cvendor="ARM" Cclass="CMSIS" Cgroup="CORE"/>
+                     <at:component Cvendor="Atmel" Cclass="Device" Cgroup="Startup">
+                        <at:template select="Main file (.cpp)"/>
+                     </at:component>
+                  </at:project>
+                  <at:prerequisite context="compiling" Tcompiler="GCC" component="ARM-GCC"/>
+                  <at:prerequisite context="compiling" Tcompiler="IAR" component="ARM-IAR"/>
+               </at:extension>
+            </environment>
+           <description>ARM Cortex-M7 microcontroller with 1MB Flash, 384kB multi-port SRAM with Configurable Tightly Coupled Memory, QSPI, 10/100Mbps Ethernet MAC with AVB support, MediaLB 3-wire, CAN-FD, Full-speed USB host and device with integrated PHY, Serial Synchronous Controller for I2S/TDM, CMOS Camera Interface, Single ADC and DAC, 1 Analog Comparator, 2 USARTs/SPI, 1 SPI, 2 TWI, 3 UARTs, True random Number Generator, SHA-256, AES-256, low-power backup with 1KB SRAM, 64 pins</description>
+           <book name="http://atmel.com/devices/ATSAMV71J20.aspx" title="Device Page"/>
+         </device>
+         <device Dname="ATSAMV71J19">
+            <processor Dcore="Cortex-M7" Dendian="Little-endian"/>
+            <compile header="SAMV71/include/sam.h" define="__SAMV71J19__"/>
+            <debug svd="svd/ATSAMV71J19.svd"/>
+            <memory id="IROM1" start="0x00400000" size="0x00080000" startup="1" default="1"/>
+            <memory id="IROM2" start="0x00800000" size="0x00004000"/>
+            <memory id="IRAM1" start="0x20400000" size="0x00040000" init="0" default="1"/>
+            <algorithm name="flash/ATSAMV7x_512.FLM"  start="0x00400000"  size="0x00080000"  default="1"/>
+            <environment name="atmel">
+               <at:extension xmlns:at="http://www.atmel.com/schemas/pack-device-atmel-extension"
+                             schemaVersion="1.0">
+                  <at:atdf name="atdf/ATSAMV71J19.atdf"/>
+                  <at:variant ordercode="ATSAMV71J19-XX" vccmin="1.62" vccmax="3.6" tempmin="-40"
+                              tempmax="+105"/>
+                  <at:variant ordercode="ATSAMV71J19-MU" vccmin="1.62" vccmax="3.6" tempmin="-40"
+                              tempmax="+105"/>
+                  <at:variant ordercode="ATSAMV71J19-CU" vccmin="1.62" vccmax="3.6" tempmin="-40"
+                              tempmax="+105"/>
+                  <at:memory name="PERIPHERALS" start="0x40000000" size="0x20000000" type="io"
+                             address-space="base"/>
+                  <at:memory name="SYSTEM" start="0xE0000000" size="0x10000000" type="io"
+                             address-space="base"/>
+                  <at:memory name="QSPIMEM" start="0x80000000" size="0x20000000" type="other"
+                             address-space="base"/>
+                  <at:memory name="AXIMX" start="0xA0000000" size="0x00100000" type="other"
+                             address-space="base"/>
+                  <at:memory name="ITCM" start="0x00000000" size="0x00200000" type="other"
+                             address-space="base"/>
+                  <at:memory name="IFLASH" start="0x00400000" size="0x00080000" type="flash" pagesize="512"
+                             address-space="base"/>
+                  <at:memory name="IROM" start="0x00800000" size="0x00004000" type="rom"
+                             address-space="base"/>
+                  <at:memory name="DTCM" start="0x20000000" size="0x00020000" type="other"
+                             address-space="base"/>
+                  <at:memory name="IRAM" start="0x20400000" size="0x00040000" type="ram"
+                             address-space="base"/>
+                  <at:memory name="EBI_CS0" start="0x60000000" size="0x01000000" type="other"
+                             address-space="base"/>
+                  <at:memory name="EBI_CS1" start="0x61000000" size="0x01000000" type="other"
+                             address-space="base"/>
+                  <at:memory name="EBI_CS2" start="0x62000000" size="0x01000000" type="other"
+                             address-space="base"/>
+                  <at:memory name="EBI_CS3" start="0x63000000" size="0x01000000" type="other"
+                             address-space="base"/>
+                  <at:memory name="SDRAM_CS" start="0x70000000" size="0x10000000" type="other"
+                             address-space="base"/>
+                  <at:interface type="samjtag" name="JTAG"/>
+                  <at:interface type="swd" name="SWD"/>
+                  <at:tool id="com.atmel.avrdbg.tool.atmelice"/>
+                  <at:tool id="com.atmel.avrdbg.tool.edbg"/>
+                  <at:tool id="com.atmel.avrdbg.tool.jtagicemk3"/>
+                  <at:tool id="com.atmel.avrdbg.tool.jtagice3plus"/>
+                  <at:tool id="com.atmel.avrdbg.tool.medbg"/>
+                  <at:tool id="com.atmel.avrdbg.tool.powerdebugger"/>
+                  <at:tool id="com.atmel.avrdbg.tool.samice"/>
+                  <at:project name="Barebone C Project">
+                     <at:component Cvendor="ARM" Cclass="CMSIS" Cgroup="CORE"/>
+                     <at:component Cvendor="Atmel" Cclass="Device" Cgroup="Startup">
+                        <at:template select="Main file (.c)"/>
+                     </at:component>
+                  </at:project>
+                  <at:project name="Barebone Cpp Project">
+                     <at:component Cvendor="ARM" Cclass="CMSIS" Cgroup="CORE"/>
+                     <at:component Cvendor="Atmel" Cclass="Device" Cgroup="Startup">
+                        <at:template select="Main file (.cpp)"/>
+                     </at:component>
+                  </at:project>
+                  <at:prerequisite context="compiling" Tcompiler="GCC" component="ARM-GCC"/>
+                  <at:prerequisite context="compiling" Tcompiler="IAR" component="ARM-IAR"/>
+               </at:extension>
+            </environment>
+           <description>ARM Cortex-M7 microcontroller with 512KB Flash, 256kB multi-port SRAM with Configurable Tightly Coupled Memory, QSPI, 10/100Mbps Ethernet MAC with AVB support, MediaLB 3-wire, CAN-FD, Full-speed USB host and device with integrated PHY, Serial Synchronous Controller for I2S/TDM, CMOS Camera Interface, Single ADC and DAC, 1 Analog Comparator, 2 USARTs/SPI, 1 SPI, 2 TWI, 3 UARTs, True random Number Generator, SHA-256, AES-256, low-power backup with 1KB SRAM, 64 pins</description>
+           <book name="http://atmel.com/devices/ATSAMV71J19.aspx" title="Device Page"/>
+         </device>
+         <device Dname="ATSAMV71N19">
+            <processor Dcore="Cortex-M7" Dendian="Little-endian"/>
+            <compile header="SAMV71/include/sam.h" define="__SAMV71N19__"/>
+            <debug svd="svd/ATSAMV71N19.svd"/>
+            <memory id="IROM1" start="0x00400000" size="0x00080000" startup="1" default="1"/>
+            <memory id="IROM2" start="0x00800000" size="0x00004000"/>
+            <memory id="IRAM1" start="0x20400000" size="0x00040000" init="0" default="1"/>
+            <algorithm name="flash/ATSAMV7x_512.FLM"  start="0x00400000"  size="0x00080000"  default="1"/>
+            <environment name="atmel">
+               <at:extension xmlns:at="http://www.atmel.com/schemas/pack-device-atmel-extension"
+                             schemaVersion="1.0">
+                  <at:atdf name="atdf/ATSAMV71N19.atdf"/>
+                  <at:variant ordercode="ATSAMV71N19-XX" vccmin="1.62" vccmax="3.6" tempmin="-40"
+                              tempmax="+105"/>
+                  <at:variant ordercode="ATSAMV71N19-CU" vccmin="1.62" vccmax="3.6" tempmin="-40"
+                              tempmax="+105"/>
+                  <at:memory name="PERIPHERALS" start="0x40000000" size="0x20000000" type="io"
+                             address-space="base"/>
+                  <at:memory name="SYSTEM" start="0xE0000000" size="0x10000000" type="io"
+                             address-space="base"/>
+                  <at:memory name="QSPIMEM" start="0x80000000" size="0x20000000" type="other"
+                             address-space="base"/>
+                  <at:memory name="AXIMX" start="0xA0000000" size="0x00100000" type="other"
+                             address-space="base"/>
+                  <at:memory name="ITCM" start="0x00000000" size="0x00200000" type="other"
+                             address-space="base"/>
+                  <at:memory name="IFLASH" start="0x00400000" size="0x00080000" type="flash" pagesize="512"
+                             address-space="base"/>
+                  <at:memory name="IROM" start="0x00800000" size="0x00004000" type="rom"
+                             address-space="base"/>
+                  <at:memory name="DTCM" start="0x20000000" size="0x00020000" type="other"
+                             address-space="base"/>
+                  <at:memory name="IRAM" start="0x20400000" size="0x00040000" type="ram"
+                             address-space="base"/>
+                  <at:memory name="EBI_CS0" start="0x60000000" size="0x01000000" type="other"
+                             address-space="base"/>
+                  <at:memory name="EBI_CS1" start="0x61000000" size="0x01000000" type="other"
+                             address-space="base"/>
+                  <at:memory name="EBI_CS2" start="0x62000000" size="0x01000000" type="other"
+                             address-space="base"/>
+                  <at:memory name="EBI_CS3" start="0x63000000" size="0x01000000" type="other"
+                             address-space="base"/>
+                  <at:memory name="SDRAM_CS" start="0x70000000" size="0x10000000" type="other"
+                             address-space="base"/>
+                  <at:interface type="samjtag" name="JTAG"/>
+                  <at:interface type="swd" name="SWD"/>
+                  <at:tool id="com.atmel.avrdbg.tool.atmelice"/>
+                  <at:tool id="com.atmel.avrdbg.tool.edbg"/>
+                  <at:tool id="com.atmel.avrdbg.tool.jtagicemk3"/>
+                  <at:tool id="com.atmel.avrdbg.tool.jtagice3plus"/>
+                  <at:tool id="com.atmel.avrdbg.tool.medbg"/>
+                  <at:tool id="com.atmel.avrdbg.tool.powerdebugger"/>
+                  <at:tool id="com.atmel.avrdbg.tool.samice"/>
+                  <at:project name="Barebone C Project">
+                     <at:component Cvendor="ARM" Cclass="CMSIS" Cgroup="CORE"/>
+                     <at:component Cvendor="Atmel" Cclass="Device" Cgroup="Startup">
+                        <at:template select="Main file (.c)"/>
+                     </at:component>
+                  </at:project>
+                  <at:project name="Barebone Cpp Project">
+                     <at:component Cvendor="ARM" Cclass="CMSIS" Cgroup="CORE"/>
+                     <at:component Cvendor="Atmel" Cclass="Device" Cgroup="Startup">
+                        <at:template select="Main file (.cpp)"/>
+                     </at:component>
+                  </at:project>
+                  <at:prerequisite context="compiling" Tcompiler="GCC" component="ARM-GCC"/>
+                  <at:prerequisite context="compiling" Tcompiler="IAR" component="ARM-IAR"/>
+               </at:extension>
+            </environment>
+           <description>ARM Cortex-M7 microcontroller with 512KB Flash, 256kB multi-port SRAM with Configurable Tightly Coupled Memory, QSPI, 10/100Mbps Ethernet MAC with AVB support, MediaLB 3-wire, dual CAN-FD, SD/MMC, High-speed USB host and device with integrated PHY, Serial Synchronous Controller for I2S/TDM, CMOS Camera Interface, Dual ADC, DAC, 1 Analog Comparator, 3 USARTs/SPI, 2 SPI, 3 TWI, 5 UARTs, True random Number Generator, SHA-256, AES-256, low-power backup with 1KB SRAM, External Bus Interface, 100 pins</description>
+           <book name="http://atmel.com/devices/ATSAMV71N19.aspx" title="Device Page"/>
+         </device>
+         <device Dname="ATSAMV71N21">
+            <processor Dcore="Cortex-M7" Dendian="Little-endian"/>
+            <compile header="SAMV71/include/sam.h" define="__SAMV71N21__"/>
+            <debug svd="svd/ATSAMV71N21.svd"/>
+            <memory id="IROM1" start="0x00400000" size="0x00200000" startup="1" default="1"/>
+            <memory id="IROM2" start="0x00800000" size="0x00004000"/>
+            <memory id="IRAM1" start="0x20400000" size="0x00060000" init="0" default="1"/>
+             <algorithm name="flash/ATSAMV7x_2048.FLM" start="0x00400000"  size="0x00200000"  default="1"/>
+            <environment name="atmel">
+               <at:extension xmlns:at="http://www.atmel.com/schemas/pack-device-atmel-extension"
+                             schemaVersion="1.0">
+                  <at:atdf name="atdf/ATSAMV71N21.atdf"/>
+                  <at:variant ordercode="ATSAMV71N21-XX" vccmin="1.62" vccmax="3.6" tempmin="-40"
+                              tempmax="+105"/>
+                  <at:variant ordercode="ATSAMV71N21-CU" vccmin="1.62" vccmax="3.6" tempmin="-40"
+                              tempmax="+105"/>
+                  <at:memory name="PERIPHERALS" start="0x40000000" size="0x20000000" type="io"
+                             address-space="base"/>
+                  <at:memory name="SYSTEM" start="0xE0000000" size="0x10000000" type="io"
+                             address-space="base"/>
+                  <at:memory name="QSPIMEM" start="0x80000000" size="0x20000000" type="other"
+                             address-space="base"/>
+                  <at:memory name="AXIMX" start="0xA0000000" size="0x00100000" type="other"
+                             address-space="base"/>
+                  <at:memory name="ITCM" start="0x00000000" size="0x00200000" type="other"
+                             address-space="base"/>
+                  <at:memory name="IFLASH" start="0x00400000" size="0x00200000" type="flash" pagesize="512"
+                             address-space="base"/>
+                  <at:memory name="IROM" start="0x00800000" size="0x00004000" type="rom"
+                             address-space="base"/>
+                  <at:memory name="DTCM" start="0x20000000" size="0x00020000" type="other"
+                             address-space="base"/>
+                  <at:memory name="IRAM" start="0x20400000" size="0x00060000" type="ram"
+                             address-space="base"/>
+                  <at:memory name="EBI_CS0" start="0x60000000" size="0x01000000" type="other"
+                             address-space="base"/>
+                  <at:memory name="EBI_CS1" start="0x61000000" size="0x01000000" type="other"
+                             address-space="base"/>
+                  <at:memory name="EBI_CS2" start="0x62000000" size="0x01000000" type="other"
+                             address-space="base"/>
+                  <at:memory name="EBI_CS3" start="0x63000000" size="0x01000000" type="other"
+                             address-space="base"/>
+                  <at:memory name="SDRAM_CS" start="0x70000000" size="0x10000000" type="other"
+                             address-space="base"/>
+                  <at:interface type="samjtag" name="JTAG"/>
+                  <at:interface type="swd" name="SWD"/>
+                  <at:tool id="com.atmel.avrdbg.tool.atmelice"/>
+                  <at:tool id="com.atmel.avrdbg.tool.edbg"/>
+                  <at:tool id="com.atmel.avrdbg.tool.jtagicemk3"/>
+                  <at:tool id="com.atmel.avrdbg.tool.jtagice3plus"/>
+                  <at:tool id="com.atmel.avrdbg.tool.medbg"/>
+                  <at:tool id="com.atmel.avrdbg.tool.powerdebugger"/>
+                  <at:tool id="com.atmel.avrdbg.tool.samice"/>
+                  <at:project name="Barebone C Project">
+                     <at:component Cvendor="ARM" Cclass="CMSIS" Cgroup="CORE"/>
+                     <at:component Cvendor="Atmel" Cclass="Device" Cgroup="Startup">
+                        <at:template select="Main file (.c)"/>
+                     </at:component>
+                  </at:project>
+                  <at:project name="Barebone Cpp Project">
+                     <at:component Cvendor="ARM" Cclass="CMSIS" Cgroup="CORE"/>
+                     <at:component Cvendor="Atmel" Cclass="Device" Cgroup="Startup">
+                        <at:template select="Main file (.cpp)"/>
+                     </at:component>
+                  </at:project>
+                  <at:prerequisite context="compiling" Tcompiler="GCC" component="ARM-GCC"/>
+                  <at:prerequisite context="compiling" Tcompiler="IAR" component="ARM-IAR"/>
+               </at:extension>
+            </environment>
+           <description>ARM Cortex-M7 microcontroller with 2MB Flash, 384kB multi-port SRAM with Configurable Tightly Coupled Memory, QSPI, 10/100Mbps Ethernet MAC with AVB support, MediaLB 3-wire, dual CAN-FD, SD/MMC, High-speed USB host and device with integrated PHY, Serial Synchronous Controller for I2S/TDM, CMOS Camera Interface, Dual ADC, DAC, 1 Analog Comparator, 3 USARTs/SPI, 2 SPI, 3 TWI, 5 UARTs, True random Number Generator, SHA-256, AES-256, low-power backup with 1KB SRAM, External Bus Interface, 100 pins</description>
+           <book name="http://atmel.com/devices/ATSAMV71N21.aspx" title="Device Page"/>
+         </device>
+         <device Dname="ATSAMV71N20">
+            <processor Dcore="Cortex-M7" Dendian="Little-endian"/>
+            <compile header="SAMV71/include/sam.h" define="__SAMV71N20__"/>
+            <debug svd="svd/ATSAMV71N20.svd"/>
+            <memory id="IROM1" start="0x00400000" size="0x00100000" startup="1" default="1"/>
+            <memory id="IROM2" start="0x00800000" size="0x00004000"/>
+            <memory id="IRAM1" start="0x20400000" size="0x00060000" init="0" default="1"/>
+            <algorithm name="flash/ATSAMV7x_1024.FLM" start="0x00400000"  size="0x00100000"  default="1"/>
+            <environment name="atmel">
+               <at:extension xmlns:at="http://www.atmel.com/schemas/pack-device-atmel-extension"
+                             schemaVersion="1.0">
+                  <at:atdf name="atdf/ATSAMV71N20.atdf"/>
+                  <at:variant ordercode="ATSAMV71N20-XX" vccmin="1.62" vccmax="3.6" tempmin="-40"
+                              tempmax="+105"/>
+                  <at:variant ordercode="ATSAMV71N20-CU" vccmin="1.62" vccmax="3.6" tempmin="-40"
+                              tempmax="+105"/>
+                  <at:memory name="PERIPHERALS" start="0x40000000" size="0x20000000" type="io"
+                             address-space="base"/>
+                  <at:memory name="SYSTEM" start="0xE0000000" size="0x10000000" type="io"
+                             address-space="base"/>
+                  <at:memory name="QSPIMEM" start="0x80000000" size="0x20000000" type="other"
+                             address-space="base"/>
+                  <at:memory name="AXIMX" start="0xA0000000" size="0x00100000" type="other"
+                             address-space="base"/>
+                  <at:memory name="ITCM" start="0x00000000" size="0x00200000" type="other"
+                             address-space="base"/>
+                  <at:memory name="IFLASH" start="0x00400000" size="0x00100000" type="flash" pagesize="512"
+                             address-space="base"/>
+                  <at:memory name="IROM" start="0x00800000" size="0x00004000" type="rom"
+                             address-space="base"/>
+                  <at:memory name="DTCM" start="0x20000000" size="0x00020000" type="other"
+                             address-space="base"/>
+                  <at:memory name="IRAM" start="0x20400000" size="0x00060000" type="ram"
+                             address-space="base"/>
+                  <at:memory name="EBI_CS0" start="0x60000000" size="0x01000000" type="other"
+                             address-space="base"/>
+                  <at:memory name="EBI_CS1" start="0x61000000" size="0x01000000" type="other"
+                             address-space="base"/>
+                  <at:memory name="EBI_CS2" start="0x62000000" size="0x01000000" type="other"
+                             address-space="base"/>
+                  <at:memory name="EBI_CS3" start="0x63000000" size="0x01000000" type="other"
+                             address-space="base"/>
+                  <at:memory name="SDRAM_CS" start="0x70000000" size="0x10000000" type="other"
+                             address-space="base"/>
+                  <at:interface type="samjtag" name="JTAG"/>
+                  <at:interface type="swd" name="SWD"/>
+                  <at:tool id="com.atmel.avrdbg.tool.atmelice"/>
+                  <at:tool id="com.atmel.avrdbg.tool.edbg"/>
+                  <at:tool id="com.atmel.avrdbg.tool.jtagicemk3"/>
+                  <at:tool id="com.atmel.avrdbg.tool.jtagice3plus"/>
+                  <at:tool id="com.atmel.avrdbg.tool.medbg"/>
+                  <at:tool id="com.atmel.avrdbg.tool.powerdebugger"/>
+                  <at:tool id="com.atmel.avrdbg.tool.samice"/>
+                  <at:project name="Barebone C Project">
+                     <at:component Cvendor="ARM" Cclass="CMSIS" Cgroup="CORE"/>
+                     <at:component Cvendor="Atmel" Cclass="Device" Cgroup="Startup">
+                        <at:template select="Main file (.c)"/>
+                     </at:component>
+                  </at:project>
+                  <at:project name="Barebone Cpp Project">
+                     <at:component Cvendor="ARM" Cclass="CMSIS" Cgroup="CORE"/>
+                     <at:component Cvendor="Atmel" Cclass="Device" Cgroup="Startup">
+                        <at:template select="Main file (.cpp)"/>
+                     </at:component>
+                  </at:project>
+                  <at:prerequisite context="compiling" Tcompiler="GCC" component="ARM-GCC"/>
+                  <at:prerequisite context="compiling" Tcompiler="IAR" component="ARM-IAR"/>
+               </at:extension>
+            </environment>
+           <description>ARM Cortex-M7 microcontroller with 1MB Flash, 384kB multi-port SRAM with Configurable Tightly Coupled Memory, QSPI, 10/100Mbps Ethernet MAC with AVB support, MediaLB 3-wire, dual CAN-FD, SD/MMC, High-speed USB host and device with integrated PHY, Serial Synchronous Controller for I2S/TDM, CMOS Camera Interface, Dual ADC, DAC, 1 Analog Comparator, 3 USARTs/SPI, 2 SPI, 3 TWI, 5 UARTs, True random Number Generator, SHA-256, AES-256, low-power backup with 1KB SRAM, External Bus Interface, 100 pins</description>
+           <book name="http://atmel.com/devices/ATSAMV71N20.aspx" title="Device Page"/>
+         </device>
+         <device Dname="ATSAMV71Q19">
+            <processor Dcore="Cortex-M7" Dendian="Little-endian"/>
+            <compile header="SAMV71/include/sam.h" define="__SAMV71Q19__"/>
+            <debug svd="svd/ATSAMV71Q19.svd"/>
+            <memory id="IROM1" start="0x00400000" size="0x00080000" startup="1" default="1"/>
+            <memory id="IROM2" start="0x00800000" size="0x00004000"/>
+            <memory id="IRAM1" start="0x20400000" size="0x00040000" init="0" default="1"/>
+            <algorithm name="flash/ATSAMV7x_512.FLM"  start="0x00400000"  size="0x00080000"  default="1"/>
+            <environment name="atmel">
+               <at:extension xmlns:at="http://www.atmel.com/schemas/pack-device-atmel-extension"
+                             schemaVersion="1.0">
+                  <at:atdf name="atdf/ATSAMV71Q19.atdf"/>
+                  <at:variant ordercode="ATSAMV71Q19-XX" vccmin="1.62" vccmax="3.6" tempmin="-40"
+                              tempmax="+105"/>
+                  <at:variant ordercode="ATSAMV71Q19-CU" vccmin="1.62" vccmax="3.6" tempmin="-40"
+                              tempmax="+105"/>
+                  <at:memory name="PERIPHERALS" start="0x40000000" size="0x20000000" type="io"
+                             address-space="base"/>
+                  <at:memory name="SYSTEM" start="0xE0000000" size="0x10000000" type="io"
+                             address-space="base"/>
+                  <at:memory name="QSPIMEM" start="0x80000000" size="0x20000000" type="other"
+                             address-space="base"/>
+                  <at:memory name="AXIMX" start="0xA0000000" size="0x00100000" type="other"
+                             address-space="base"/>
+                  <at:memory name="ITCM" start="0x00000000" size="0x00200000" type="other"
+                             address-space="base"/>
+                  <at:memory name="IFLASH" start="0x00400000" size="0x00080000" type="flash" pagesize="512"
+                             address-space="base"/>
+                  <at:memory name="IROM" start="0x00800000" size="0x00004000" type="rom"
+                             address-space="base"/>
+                  <at:memory name="DTCM" start="0x20000000" size="0x00020000" type="other"
+                             address-space="base"/>
+                  <at:memory name="IRAM" start="0x20400000" size="0x00040000" type="ram"
+                             address-space="base"/>
+                  <at:memory name="EBI_CS0" start="0x60000000" size="0x01000000" type="other"
+                             address-space="base"/>
+                  <at:memory name="EBI_CS1" start="0x61000000" size="0x01000000" type="other"
+                             address-space="base"/>
+                  <at:memory name="EBI_CS2" start="0x62000000" size="0x01000000" type="other"
+                             address-space="base"/>
+                  <at:memory name="EBI_CS3" start="0x63000000" size="0x01000000" type="other"
+                             address-space="base"/>
+                  <at:memory name="SDRAM_CS" start="0x70000000" size="0x10000000" type="other"
+                             address-space="base"/>
+                  <at:interface type="samjtag" name="JTAG"/>
+                  <at:interface type="swd" name="SWD"/>
+                  <at:tool id="com.atmel.avrdbg.tool.atmelice"/>
+                  <at:tool id="com.atmel.avrdbg.tool.edbg"/>
+                  <at:tool id="com.atmel.avrdbg.tool.jtagicemk3"/>
+                  <at:tool id="com.atmel.avrdbg.tool.jtagice3plus"/>
+                  <at:tool id="com.atmel.avrdbg.tool.medbg"/>
+                  <at:tool id="com.atmel.avrdbg.tool.powerdebugger"/>
+                  <at:tool id="com.atmel.avrdbg.tool.samice"/>
+                  <at:project name="Barebone C Project">
+                     <at:component Cvendor="ARM" Cclass="CMSIS" Cgroup="CORE"/>
+                     <at:component Cvendor="Atmel" Cclass="Device" Cgroup="Startup">
+                        <at:template select="Main file (.c)"/>
+                     </at:component>
+                  </at:project>
+                  <at:project name="Barebone Cpp Project">
+                     <at:component Cvendor="ARM" Cclass="CMSIS" Cgroup="CORE"/>
+                     <at:component Cvendor="Atmel" Cclass="Device" Cgroup="Startup">
+                        <at:template select="Main file (.cpp)"/>
+                     </at:component>
+                  </at:project>
+                  <at:prerequisite context="compiling" Tcompiler="GCC" component="ARM-GCC"/>
+                  <at:prerequisite context="compiling" Tcompiler="IAR" component="ARM-IAR"/>
+               </at:extension>
+            </environment>
+           <description>ARM Cortex-M7 microcontroller with 512KB Flash, 256kB multi-port SRAM with Configurable Tightly Coupled Memory, QSPI, 10/100Mbps Ethernet MAC with AVB support, MediaLB 3-wire, dual CAN-FD, SD/MMC, High-speed USB host and device with integrated PHY, Serial Synchronous Controller for I2S/TDM, CMOS Camera Interface, Dual ADC, DAC, 1 Analog Comparator, 3 USARTs/SPI, 2 SPI, 3 TWI, 5 UARTs, True random Number Generator, SHA-256, AES-256, low-power backup with 1KB SRAM, External Bus Interface, SDRAM Controller, 144 pins</description>
+           <book name="http://atmel.com/devices/ATSAMV71Q19.aspx" title="Device Page"/>
+         </device>
+         <device Dname="ATSAMV71Q21">
+            <processor Dcore="Cortex-M7" Dendian="Little-endian"/>
+            <compile header="SAMV71/include/sam.h" define="__SAMV71Q21__"/>
+            <debug svd="svd/ATSAMV71Q21.svd"/>
+            <memory id="IROM1" start="0x00400000" size="0x00200000" startup="1" default="1"/>
+            <memory id="IROM2" start="0x00800000" size="0x00004000"/>
+            <memory id="IRAM1" start="0x20400000" size="0x00060000" init="0" default="1"/>
+            <algorithm name="flash/ATSAMV7x_2048.FLM" start="0x00400000"  size="0x00200000"  default="1"/>
+            <environment name="atmel">
+               <at:extension xmlns:at="http://www.atmel.com/schemas/pack-device-atmel-extension"
+                             schemaVersion="1.0">
+                  <at:atdf name="atdf/ATSAMV71Q21.atdf"/>
+                  <at:variant ordercode="ATSAMV71Q21-XX" vccmin="1.62" vccmax="3.6" tempmin="-40"
+                              tempmax="+105"/>
+                  <at:variant ordercode="ATSAMV71Q21-CU" vccmin="1.62" vccmax="3.6" tempmin="-40"
+                              tempmax="+105"/>
+                  <at:memory name="PERIPHERALS" start="0x40000000" size="0x20000000" type="io"
+                             address-space="base"/>
+                  <at:memory name="SYSTEM" start="0xE0000000" size="0x10000000" type="io"
+                             address-space="base"/>
+                  <at:memory name="QSPIMEM" start="0x80000000" size="0x20000000" type="other"
+                             address-space="base"/>
+                  <at:memory name="AXIMX" start="0xA0000000" size="0x00100000" type="other"
+                             address-space="base"/>
+                  <at:memory name="ITCM" start="0x00000000" size="0x00200000" type="other"
+                             address-space="base"/>
+                  <at:memory name="IFLASH" start="0x00400000" size="0x00200000" type="flash" pagesize="512"
+                             address-space="base"/>
+                  <at:memory name="IROM" start="0x00800000" size="0x00004000" type="rom"
+                             address-space="base"/>
+                  <at:memory name="DTCM" start="0x20000000" size="0x00020000" type="other"
+                             address-space="base"/>
+                  <at:memory name="IRAM" start="0x20400000" size="0x00060000" type="ram"
+                             address-space="base"/>
+                  <at:memory name="EBI_CS0" start="0x60000000" size="0x01000000" type="other"
+                             address-space="base"/>
+                  <at:memory name="EBI_CS1" start="0x61000000" size="0x01000000" type="other"
+                             address-space="base"/>
+                  <at:memory name="EBI_CS2" start="0x62000000" size="0x01000000" type="other"
+                             address-space="base"/>
+                  <at:memory name="EBI_CS3" start="0x63000000" size="0x01000000" type="other"
+                             address-space="base"/>
+                  <at:memory name="SDRAM_CS" start="0x70000000" size="0x10000000" type="other"
+                             address-space="base"/>
+                  <at:interface type="samjtag" name="JTAG"/>
+                  <at:interface type="swd" name="SWD"/>
+                  <at:tool id="com.atmel.avrdbg.tool.atmelice"/>
+                  <at:tool id="com.atmel.avrdbg.tool.edbg"/>
+                  <at:tool id="com.atmel.avrdbg.tool.jtagicemk3"/>
+                  <at:tool id="com.atmel.avrdbg.tool.jtagice3plus"/>
+                  <at:tool id="com.atmel.avrdbg.tool.medbg"/>
+                  <at:tool id="com.atmel.avrdbg.tool.powerdebugger"/>
+                  <at:tool id="com.atmel.avrdbg.tool.samice"/>
+                  <at:project name="Barebone C Project">
+                     <at:component Cvendor="ARM" Cclass="CMSIS" Cgroup="CORE"/>
+                     <at:component Cvendor="Atmel" Cclass="Device" Cgroup="Startup">
+                        <at:template select="Main file (.c)"/>
+                     </at:component>
+                  </at:project>
+                  <at:project name="Barebone Cpp Project">
+                     <at:component Cvendor="ARM" Cclass="CMSIS" Cgroup="CORE"/>
+                     <at:component Cvendor="Atmel" Cclass="Device" Cgroup="Startup">
+                        <at:template select="Main file (.cpp)"/>
+                     </at:component>
+                  </at:project>
+                  <at:prerequisite context="compiling" Tcompiler="GCC" component="ARM-GCC"/>
+                  <at:prerequisite context="compiling" Tcompiler="IAR" component="ARM-IAR"/>
+               </at:extension>
+            </environment>
+           <description>ARM Cortex-M7 microcontroller with 2MB Flash, 384kB multi-port SRAM with Configurable Tightly Coupled Memory, QSPI, 10/100Mbps Ethernet MAC with AVB support, MediaLB 3-wire, dual CAN-FD, SD/MMC, High-speed USB host and device with integrated PHY, Serial Synchronous Controller for I2S/TDM, CMOS Camera Interface, Dual ADC, DAC, 1 Analog Comparator, 3 USARTs/SPI, 2 SPI, 3 TWI, 5 UARTs, True random Number Generator, SHA-256, AES-256, low-power backup with 1KB SRAM, External Bus Interface, SDRAM Controller, 144 pins</description>
+           <book name="http://atmel.com/devices/ATSAMV71Q21.aspx" title="Device Page"/>
+         </device>
+         <device Dname="ATSAMV71Q20">
+            <processor Dcore="Cortex-M7" Dendian="Little-endian"/>
+            <compile header="SAMV71/include/sam.h" define="__SAMV71Q20__"/>
+            <debug svd="svd/ATSAMV71Q20.svd"/>
+            <memory id="IROM1" start="0x00400000" size="0x00100000" startup="1" default="1"/>
+            <memory id="IROM2" start="0x00800000" size="0x00004000"/>
+            <memory id="IRAM1" start="0x20400000" size="0x00060000" init="0" default="1"/>
+            <algorithm name="flash/ATSAMV7x_1024.FLM" start="0x00400000"  size="0x00100000"  default="1"/>
+            <environment name="atmel">
+               <at:extension xmlns:at="http://www.atmel.com/schemas/pack-device-atmel-extension"
+                             schemaVersion="1.0">
+                  <at:atdf name="atdf/ATSAMV71Q20.atdf"/>
+                  <at:variant ordercode="ATSAMV71Q20-XX" vccmin="1.62" vccmax="3.6" tempmin="-40"
+                              tempmax="+105"/>
+                  <at:variant ordercode="ATSAMV71Q20-CU" vccmin="1.62" vccmax="3.6" tempmin="-40"
+                              tempmax="+105"/>
+                  <at:memory name="PERIPHERALS" start="0x40000000" size="0x20000000" type="io"
+                             address-space="base"/>
+                  <at:memory name="SYSTEM" start="0xE0000000" size="0x10000000" type="io"
+                             address-space="base"/>
+                  <at:memory name="QSPIMEM" start="0x80000000" size="0x20000000" type="other"
+                             address-space="base"/>
+                  <at:memory name="AXIMX" start="0xA0000000" size="0x00100000" type="other"
+                             address-space="base"/>
+                  <at:memory name="ITCM" start="0x00000000" size="0x00200000" type="other"
+                             address-space="base"/>
+                  <at:memory name="IFLASH" start="0x00400000" size="0x00100000" type="flash" pagesize="512"
+                             address-space="base"/>
+                  <at:memory name="IROM" start="0x00800000" size="0x00004000" type="rom"
+                             address-space="base"/>
+                  <at:memory name="DTCM" start="0x20000000" size="0x00020000" type="other"
+                             address-space="base"/>
+                  <at:memory name="IRAM" start="0x20400000" size="0x00060000" type="ram"
+                             address-space="base"/>
+                  <at:memory name="EBI_CS0" start="0x60000000" size="0x01000000" type="other"
+                             address-space="base"/>
+                  <at:memory name="EBI_CS1" start="0x61000000" size="0x01000000" type="other"
+                             address-space="base"/>
+                  <at:memory name="EBI_CS2" start="0x62000000" size="0x01000000" type="other"
+                             address-space="base"/>
+                  <at:memory name="EBI_CS3" start="0x63000000" size="0x01000000" type="other"
+                             address-space="base"/>
+                  <at:memory name="SDRAM_CS" start="0x70000000" size="0x10000000" type="other"
+                             address-space="base"/>
+                  <at:interface type="samjtag" name="JTAG"/>
+                  <at:interface type="swd" name="SWD"/>
+                  <at:tool id="com.atmel.avrdbg.tool.atmelice"/>
+                  <at:tool id="com.atmel.avrdbg.tool.edbg"/>
+                  <at:tool id="com.atmel.avrdbg.tool.jtagicemk3"/>
+                  <at:tool id="com.atmel.avrdbg.tool.jtagice3plus"/>
+                  <at:tool id="com.atmel.avrdbg.tool.medbg"/>
+                  <at:tool id="com.atmel.avrdbg.tool.powerdebugger"/>
+                  <at:tool id="com.atmel.avrdbg.tool.samice"/>
+                  <at:project name="Barebone C Project">
+                     <at:component Cvendor="ARM" Cclass="CMSIS" Cgroup="CORE"/>
+                     <at:component Cvendor="Atmel" Cclass="Device" Cgroup="Startup">
+                        <at:template select="Main file (.c)"/>
+                     </at:component>
+                  </at:project>
+                  <at:project name="Barebone Cpp Project">
+                     <at:component Cvendor="ARM" Cclass="CMSIS" Cgroup="CORE"/>
+                     <at:component Cvendor="Atmel" Cclass="Device" Cgroup="Startup">
+                        <at:template select="Main file (.cpp)"/>
+                     </at:component>
+                  </at:project>
+                  <at:prerequisite context="compiling" Tcompiler="GCC" component="ARM-GCC"/>
+                  <at:prerequisite context="compiling" Tcompiler="IAR" component="ARM-IAR"/>
+               </at:extension>
+            </environment>
+           <description>ARM Cortex-M7 microcontroller with 1MB Flash, 384kB multi-port SRAM with Configurable Tightly Coupled Memory, QSPI, 10/100Mbps Ethernet MAC with AVB support, MediaLB 3-wire, dual CAN-FD, SD/MMC, High-speed USB host and device with integrated PHY, Serial Synchronous Controller for I2S/TDM, CMOS Camera Interface, Dual ADC, DAC, 1 Analog Comparator, 3 USARTs/SPI, 2 SPI, 3 TWI, 5 UARTs, True random Number Generator, SHA-256, AES-256, low-power backup with 1KB SRAM, External Bus Interface, SDRAM Controller, 144 pins</description>
+           <book name="http://atmel.com/devices/ATSAMV71Q20.aspx" title="Device Page"/>
+         </device>
+      </family>
+   </devices>
+   <conditions>
+      <condition id="ARMCC">
+         <accept Tcompiler="ARMCC"/>
+      </condition>
+      <condition id="ARMCC Exe">
+         <accept Tcompiler="ARMCC" Toutput="exe"/>
+      </condition>
+      <condition id="GCC">
+         <accept Tcompiler="GCC"/>
+      </condition>
+      <condition id="GCC Exe">
+         <accept Tcompiler="GCC" Toutput="exe"/>
+      </condition>
+      <condition id="IAR">
+         <accept Tcompiler="IAR"/>
+      </condition>
+      <condition id="IAR Exe">
+         <accept Tcompiler="IAR" Toutput="exe"/>
+      </condition>
+      <condition id="C">
+         <accept Tcompiler="ARMCC"/>
+         <accept Tcompiler="GCC"/>
+         <accept Tcompiler="IAR"/>
+      </condition>
+      <condition id="C Exe">
+         <accept Tcompiler="ARMCC" Toutput="exe"/>
+         <accept Tcompiler="GCC" Toutput="exe"/>
+         <accept Tcompiler="IAR" Toutput="exe"/>
+      </condition>
+      <condition id="C Lib">
+         <accept Tcompiler="ARMCC" Toutput="lib"/>
+         <accept Tcompiler="GCC" Toutput="lib"/>
+         <accept Tcompiler="IAR" Toutput="lib"/>
+      </condition>
+      <condition id="ATSAMV70Q19">
+         <require Dvendor="Atmel:3" Dname="ATSAMV70Q19"/>
+         <require Cclass="CMSIS" Cgroup="CORE"/>
+      </condition>
+      <condition id="ATSAMV70N20">
+         <require Dvendor="Atmel:3" Dname="ATSAMV70N20"/>
+         <require Cclass="CMSIS" Cgroup="CORE"/>
+      </condition>
+      <condition id="ATSAMV70J20">
+         <require Dvendor="Atmel:3" Dname="ATSAMV70J20"/>
+         <require Cclass="CMSIS" Cgroup="CORE"/>
+      </condition>
+      <condition id="ATSAMV70Q20">
+         <require Dvendor="Atmel:3" Dname="ATSAMV70Q20"/>
+         <require Cclass="CMSIS" Cgroup="CORE"/>
+      </condition>
+      <condition id="ATSAMV70J19">
+         <require Dvendor="Atmel:3" Dname="ATSAMV70J19"/>
+         <require Cclass="CMSIS" Cgroup="CORE"/>
+      </condition>
+      <condition id="ATSAMV70N19">
+         <require Dvendor="Atmel:3" Dname="ATSAMV70N19"/>
+         <require Cclass="CMSIS" Cgroup="CORE"/>
+      </condition>
+      <condition id="ATSAMV71J21">
+         <require Dvendor="Atmel:3" Dname="ATSAMV71J21"/>
+      </condition>
+      <condition id="ATSAMV71J20">
+         <require Dvendor="Atmel:3" Dname="ATSAMV71J20"/>
+      </condition>
+      <condition id="ATSAMV71J19">
+         <require Dvendor="Atmel:3" Dname="ATSAMV71J19"/>
+      </condition>
+      <condition id="ATSAMV71N19">
+         <require Dvendor="Atmel:3" Dname="ATSAMV71N19"/>
+      </condition>
+      <condition id="ATSAMV71N21">
+         <require Dvendor="Atmel:3" Dname="ATSAMV71N21"/>
+      </condition>
+      <condition id="ATSAMV71N20">
+         <require Dvendor="Atmel:3" Dname="ATSAMV71N20"/>
+      </condition>
+      <condition id="ATSAMV71Q19">
+         <require Dvendor="Atmel:3" Dname="ATSAMV71Q19"/>
+      </condition>
+      <condition id="ATSAMV71Q21">
+         <require Dvendor="Atmel:3" Dname="ATSAMV71Q21"/>
+      </condition>
+      <condition id="ATSAMV71Q20">
+         <require Dvendor="Atmel:3" Dname="ATSAMV71Q20"/>
+      </condition>
+   </conditions>
+   <components>
+      <component Cvendor="Atmel" Cclass="Device" Cgroup="Startup" Cversion="1.0.0"
+                 condition="ATSAMV70Q19">
+         <description>Headers and startup code for Atmel ATSAMV70Q19</description>
+         <files>
+            <file condition="C" category="header" name="SAMV70/include/sam.h"/>
+            <file condition="C Exe" category="source" name="templates/main.c" attr="template"
+                  select="Main file (.c)"/>
+            <file condition="C Exe" category="source" name="templates/main.cpp" attr="template"
+                  select="Main file (.cpp)"/>
+            <file condition="C Lib" category="source" name="templates/library.c" attr="template"
+                  select="Main file (.c)"/>
+            <file condition="C Lib" category="source" name="templates/library.cpp" attr="template"
+                  select="Main file (.cpp)"/>
+            <file condition="GCC Exe" category="source" name="gcc/system_samv70.c" attr="config"/>
+            <file condition="GCC Exe" category="source" name="gcc/gcc/startup_samv70.c" attr="config"/>
+            <file condition="GCC Exe" category="linkerScript" name="gcc/gcc/samv70q19_flash.ld" attr="config"/>
+            <file condition="GCC Exe" category="other" name="gcc/gcc/samv70q19_sram.ld" attr="config"/>
+            <file condition="GCC Exe" category="other" name="gcc/gcc/samv70_flash.ld" attr="config"/>
+            <file condition="GCC Exe" category="other" name="gcc/gcc/samv70_sram.ld" attr="config"/>
+            <file condition="IAR Exe" category="source" name="iar/system_samv70.c" attr="config"/>
+            <file condition="IAR Exe" category="source" name="iar/iar/startup_samv70.c" attr="config"/>
+            <file condition="IAR Exe" category="linkerScript" name="iar/iar/samv70q19_flash.icf" attr="config"/>
+            <file condition="IAR Exe" category="other" name="iar/iar/samv70q19_sram.icf" attr="config"/>
+            <file condition="ARMCC Exe" category="source" name="arm/system_SAMV70.c" attr="config"/>
+            <file condition="ARMCC Exe" category="source" name="arm/startup_SAMV70.s" attr="config"/>
+         </files>
+      </component>
+
+ <component Cvendor="Atmel" Cclass="Device" Cgroup="Startup" Cversion="1.0.0" condition="ATSAMV70N20">
+         <description>Headers and startup code for Atmel ATSAMV70N20</description>
+         <files>
+           <file condition="C" category="header" name="SAMV70/include/sam.h"/>
+           <file condition="C Exe" category="source" name="templates/main.c" attr="template"
+                 select="Main file (.c)"/>
+           <file condition="C Exe" category="source" name="templates/main.cpp" attr="template"
+                 select="Main file (.cpp)"/>
+           <file condition="C Lib" category="source" name="templates/library.c" attr="template"
+                 select="Main file (.c)"/>
+           <file condition="C Lib" category="source" name="templates/library.cpp" attr="template"
+                 select="Main file (.cpp)"/>
+           <file condition="GCC Exe" category="source" name="gcc/system_samv70.c" attr="config"/>
+           <file condition="GCC Exe" category="source" name="gcc/gcc/startup_samv70.c" attr="config"/>
+           <file condition="GCC Exe" category="linkerScript" name="gcc/gcc/samv70n20_flash.ld" attr="config"/>
+           <file condition="GCC Exe" category="other" name="gcc/gcc/samv70n20_sram.ld" attr="config"/>
+           <file condition="GCC Exe" category="other" name="gcc/gcc/samv70_flash.ld" attr="config"/>
+           <file condition="GCC Exe" category="other" name="gcc/gcc/samv70_sram.ld" attr="config"/>
+           <file condition="IAR Exe" category="source" name="iar/system_samv70.c" attr="config"/>
+           <file condition="IAR Exe" category="source" name="iar/iar/startup_samv70.c" attr="config"/>
+           <file condition="IAR Exe" category="linkerScript" name="iar/iar/samv70n20_flash.icf" attr="config"/>
+           <file condition="IAR Exe" category="other" name="iar/iar/samv70n20_sram.icf" attr="config"/>
+           <file condition="ARMCC Exe" category="source" name="arm/system_SAMV70.c" attr="config"/>
+           <file condition="ARMCC Exe" category="source" name="arm/startup_SAMV70.s" attr="config"/>
+         </files>
+      </component>
+      <component Cvendor="Atmel"
+                 Cclass="Device"
+                 Cgroup="Startup"
+                 Cversion="1.0.0"
+                 condition="ATSAMV70J20">
+         <description>Headers and startup code for Atmel ATSAMV70J20</description>
+         <files>
+           <file condition="C" category="header" name="SAMV70/include/sam.h"/>
+           <file condition="C Exe" category="source" name="templates/main.c" attr="template"
+                 select="Main file (.c)"/>
+           <file condition="C Exe" category="source" name="templates/main.cpp" attr="template"
+                 select="Main file (.cpp)"/>
+           <file condition="C Lib" category="source" name="templates/library.c" attr="template"
+                 select="Main file (.c)"/>
+           <file condition="C Lib" category="source" name="templates/library.cpp" attr="template"
+                 select="Main file (.cpp)"/>
+           <file condition="GCC Exe" category="source" name="gcc/system_samv70.c" attr="config"/>
+           <file condition="GCC Exe" category="source" name="gcc/gcc/startup_samv70.c" attr="config"/>
+           <file condition="GCC Exe" category="linkerScript" name="gcc/gcc/samv70j20_flash.ld" attr="config"/>
+           <file condition="GCC Exe" category="other" name="gcc/gcc/samv70j20_sram.ld" attr="config"/>
+           <file condition="GCC Exe" category="other" name="gcc/gcc/samv70_flash.ld" attr="config"/>
+           <file condition="GCC Exe" category="other" name="gcc/gcc/samv70_sram.ld" attr="config"/>
+           <file condition="IAR Exe" category="source" name="iar/system_samv70.c" attr="config"/>
+           <file condition="IAR Exe" category="source" name="iar/iar/startup_samv70.c" attr="config"/>
+           <file condition="IAR Exe" category="linkerScript" name="iar/iar/samv70j20_flash.icf" attr="config"/>
+           <file condition="IAR Exe" category="other" name="iar/iar/samv70j20_sram.icf" attr="config"/>
+           <file condition="ARMCC Exe" category="source" name="arm/system_SAMV70.c" attr="config"/>
+           <file condition="ARMCC Exe" category="source" name="arm/startup_SAMV70.s" attr="config"/>
+         </files>
+      </component>
+      <component Cvendor="Atmel"
+                 Cclass="Device"
+                 Cgroup="Startup"
+                 Cversion="1.0.0"
+                 condition="ATSAMV70Q20">
+         <description>Headers and startup code for Atmel ATSAMV70Q20</description>
+         <files>
+           <file condition="C" category="header" name="SAMV70/include/sam.h"/>
+           <file condition="C Exe" category="source" name="templates/main.c" attr="template"
+                 select="Main file (.c)"/>
+           <file condition="C Exe" category="source" name="templates/main.cpp" attr="template"
+                 select="Main file (.cpp)"/>
+           <file condition="C Lib" category="source" name="templates/library.c" attr="template"
+                 select="Main file (.c)"/>
+           <file condition="C Lib" category="source" name="templates/library.cpp" attr="template"
+                 select="Main file (.cpp)"/>
+           <file condition="GCC Exe" category="source" name="gcc/system_samv70.c" attr="config"/>
+           <file condition="GCC Exe" category="source" name="gcc/gcc/startup_samv70.c" attr="config"/>
+           <file condition="GCC Exe" category="linkerScript" name="gcc/gcc/samv70q20_flash.ld" attr="config"/>
+           <file condition="GCC Exe" category="other" name="gcc/gcc/samv70q20_sram.ld" attr="config"/>
+           <file condition="GCC Exe" category="other" name="gcc/gcc/samv70_flash.ld" attr="config"/>
+           <file condition="GCC Exe" category="other" name="gcc/gcc/samv70_sram.ld" attr="config"/>
+           <file condition="IAR Exe" category="source" name="iar/system_samv70.c" attr="config"/>
+           <file condition="IAR Exe" category="source" name="iar/iar/startup_samv70.c" attr="config"/>
+           <file condition="IAR Exe" category="linkerScript" name="iar/iar/samv70q20_flash.icf" attr="config"/>
+           <file condition="IAR Exe" category="other" name="iar/iar/samv70q20_sram.icf" attr="config"/>
+           <file condition="ARMCC Exe" category="source" name="arm/system_SAMV70.c" attr="config"/>
+           <file condition="ARMCC Exe" category="source" name="arm/startup_SAMV70.s" attr="config"/>
+         </files>
+      </component>
+      <component Cvendor="Atmel"
+                 Cclass="Device"
+                 Cgroup="Startup"
+                 Cversion="1.0.0"
+                 condition="ATSAMV70J19">
+         <description>Headers and startup code for Atmel ATSAMV70J19</description>
+         <files>
+           <file condition="C" category="header" name="SAMV70/include/sam.h"/>
+           <file condition="C Exe" category="source" name="templates/main.c" attr="template"
+                 select="Main file (.c)"/>
+           <file condition="C Exe" category="source" name="templates/main.cpp" attr="template"
+                 select="Main file (.cpp)"/>
+           <file condition="C Lib" category="source" name="templates/library.c" attr="template"
+                 select="Main file (.c)"/>
+           <file condition="C Lib" category="source" name="templates/library.cpp" attr="template"
+                 select="Main file (.cpp)"/>
+           <file condition="GCC Exe" category="source" name="gcc/system_samv70.c" attr="config"/>
+           <file condition="GCC Exe" category="source" name="gcc/gcc/startup_samv70.c" attr="config"/>
+           <file condition="GCC Exe" category="linkerScript" name="gcc/gcc/samv70j19_flash.ld" attr="config"/>
+           <file condition="GCC Exe" category="other" name="gcc/gcc/samv70j19_sram.ld" attr="config"/>
+           <file condition="GCC Exe" category="other" name="gcc/gcc/samv70_flash.ld" attr="config"/>
+           <file condition="GCC Exe" category="other" name="gcc/gcc/samv70_sram.ld" attr="config"/>
+           <file condition="IAR Exe" category="source" name="iar/system_samv70.c" attr="config"/>
+           <file condition="IAR Exe" category="source" name="iar/iar/startup_samv70.c" attr="config"/>
+           <file condition="IAR Exe" category="linkerScript" name="iar/iar/samv70j19_flash.icf" attr="config"/>
+           <file condition="IAR Exe" category="other" name="iar/iar/samv70j19_sram.icf" attr="config"/>
+           <file condition="ARMCC Exe" category="source" name="arm/system_SAMV70.c" attr="config"/>
+           <file condition="ARMCC Exe" category="source" name="arm/startup_SAMV70.s" attr="config"/>
+         </files>
+      </component>
+      <component Cvendor="Atmel"
+                 Cclass="Device"
+                 Cgroup="Startup"
+                 Cversion="1.0.0"
+                 condition="ATSAMV70N19">
+         <description>Headers and startup code for Atmel ATSAMV70N19</description>
+         <files>
+           <file condition="C" category="header" name="SAMV70/include/sam.h"/>
+           <file condition="C Exe" category="source" name="templates/main.c" attr="template"
+                 select="Main file (.c)"/>
+           <file condition="C Exe" category="source" name="templates/main.cpp" attr="template"
+                 select="Main file (.cpp)"/>
+           <file condition="C Lib" category="source" name="templates/library.c" attr="template"
+                 select="Main file (.c)"/>
+           <file condition="C Lib" category="source" name="templates/library.cpp" attr="template"
+                 select="Main file (.cpp)"/>
+           <file condition="GCC Exe" category="source" name="gcc/system_samv70.c" attr="config"/>
+           <file condition="GCC Exe" category="source" name="gcc/gcc/startup_samv70.c" attr="config"/>
+           <file condition="GCC Exe" category="linkerScript" name="gcc/gcc/samv70n19_flash.ld" attr="config"/>
+           <file condition="GCC Exe" category="other" name="gcc/gcc/samv70n19_sram.ld" attr="config"/>
+           <file condition="GCC Exe" category="other" name="gcc/gcc/samv70_flash.ld" attr="config"/>
+           <file condition="GCC Exe" category="other" name="gcc/gcc/samv70_sram.ld" attr="config"/>
+           <file condition="IAR Exe" category="source" name="iar/system_samv70.c" attr="config"/>
+           <file condition="IAR Exe" category="source" name="iar/iar/startup_samv70.c" attr="config"/>
+           <file condition="IAR Exe" category="linkerScript" name="iar/iar/samv70n19_flash.icf" attr="config"/>
+           <file condition="IAR Exe" category="other" name="iar/iar/samv70n19_sram.icf" attr="config"/>
+           <file condition="ARMCC Exe" category="source" name="arm/system_SAMV70.c" attr="config"/>
+           <file condition="ARMCC Exe" category="source" name="arm/startup_SAMV70.s" attr="config"/>
+         </files>
+      </component>
+      <component Cvendor="Atmel" Cclass="Device" Cgroup="Startup" Cversion="1.0.0"
+                 condition="ATSAMV71J21">
+         <description>Headers and startup code for Atmel ATSAMV71J21</description>
+         <files>
+            <file condition="C" category="header" name="SAMV71/include/sam.h"/>
+            <file condition="C Exe" category="source" name="templates/main.c" attr="template"
+                  select="Main file (.c)"/>
+            <file condition="C Exe" category="source" name="templates/main.cpp" attr="template"
+                  select="Main file (.cpp)"/>
+            <file condition="C Lib" category="source" name="templates/library.c" attr="template"
+                  select="Main file (.c)"/>
+            <file condition="C Lib" category="source" name="templates/library.cpp"
+                  attr="template"
+                  select="Main file (.cpp)"/>
+            <file condition="GCC Exe" category="source" name="gcc/system_samv71.c" attr="config"/>
+            <file condition="GCC Exe" category="source" name="gcc/gcc/startup_samv71.c"
+                  attr="config"/>
+            <file condition="GCC Exe" category="linkerScript" name="gcc/gcc/samv71j21_flash.ld"
+                  attr="config"/>
+            <file condition="GCC Exe" category="other" name="gcc/gcc/samv71j21_sram.ld"
+                  attr="config"/>
+            <file condition="GCC Exe" category="other" name="gcc/gcc/samv71_flash.ld"
+                  attr="config"/>
+            <file condition="GCC Exe" category="other" name="gcc/gcc/samv71_sram.ld"
+                  attr="config"/>
+            <file condition="IAR Exe" category="source" name="iar/system_samv71.c" attr="config"/>
+            <file condition="IAR Exe" category="source" name="iar/iar/startup_samv71.c"
+                  attr="config"/>
+            <file condition="IAR Exe" category="linkerScript" name="iar/iar/samv71j21_flash.icf"
+                  attr="config"/>
+            <file condition="IAR Exe" category="other" name="iar/iar/samv71j21_sram.icf"
+                  attr="config"/>
+            <file condition="ARMCC Exe" category="source" name="arm/system_SAMV71.c" 
+                  attr="config"/>
+            <file condition="ARMCC Exe" category="source" name="arm/startup_SAMV71.s" 
+                  attr="config"/>
+         </files>
+      </component>
+      <component Cvendor="Atmel" Cclass="Device" Cgroup="Startup" Cversion="1.0.0"
+                 condition="ATSAMV71J20">
+         <description>Headers and startup code for Atmel ATSAMV71J20</description>
+         <files>
+            <file condition="C" category="header" name="SAMV71/include/sam.h"/>
+            <file condition="C Exe" category="source" name="templates/main.c" attr="template"
+                  select="Main file (.c)"/>
+            <file condition="C Exe" category="source" name="templates/main.cpp" attr="template"
+                  select="Main file (.cpp)"/>
+            <file condition="C Lib" category="source" name="templates/library.c" attr="template"
+                  select="Main file (.c)"/>
+            <file condition="C Lib" category="source" name="templates/library.cpp"
+                  attr="template"
+                  select="Main file (.cpp)"/>
+            <file condition="GCC Exe" category="source" name="gcc/system_samv71.c" attr="config"/>
+            <file condition="GCC Exe" category="source" name="gcc/gcc/startup_samv71.c"
+                  attr="config"/>
+            <file condition="GCC Exe" category="linkerScript" name="gcc/gcc/samv71j20_flash.ld"
+                  attr="config"/>
+            <file condition="GCC Exe" category="other" name="gcc/gcc/samv71j20_sram.ld"
+                  attr="config"/>
+            <file condition="GCC Exe" category="other" name="gcc/gcc/samv71_flash.ld"
+                  attr="config"/>
+            <file condition="GCC Exe" category="other" name="gcc/gcc/samv71_sram.ld"
+                  attr="config"/>
+            <file condition="IAR Exe" category="source" name="iar/system_samv71.c" attr="config"/>
+            <file condition="IAR Exe" category="source" name="iar/iar/startup_samv71.c"
+                  attr="config"/>
+            <file condition="IAR Exe" category="linkerScript" name="iar/iar/samv71j20_flash.icf"
+                  attr="config"/>
+            <file condition="IAR Exe" category="other" name="iar/iar/samv71j20_sram.icf"
+                  attr="config"/>
+            <file condition="ARMCC Exe" category="source" name="arm/system_SAMV71.c" 
+                  attr="config"/>
+            <file condition="ARMCC Exe" category="source" name="arm/startup_SAMV71.s" 
+                  attr="config"/>
+         </files>
+      </component>
+      <component Cvendor="Atmel" Cclass="Device" Cgroup="Startup" Cversion="1.0.0"
+                 condition="ATSAMV71J19">
+         <description>Headers and startup code for Atmel ATSAMV71J19</description>
+         <files>
+            <file condition="C" category="header" name="SAMV71/include/sam.h"/>
+            <file condition="C Exe" category="source" name="templates/main.c" attr="template"
+                  select="Main file (.c)"/>
+            <file condition="C Exe" category="source" name="templates/main.cpp" attr="template"
+                  select="Main file (.cpp)"/>
+            <file condition="C Lib" category="source" name="templates/library.c" attr="template"
+                  select="Main file (.c)"/>
+            <file condition="C Lib" category="source" name="templates/library.cpp"
+                  attr="template"
+                  select="Main file (.cpp)"/>
+            <file condition="GCC Exe" category="source" name="gcc/system_samv71.c" attr="config"/>
+            <file condition="GCC Exe" category="source" name="gcc/gcc/startup_samv71.c"
+                  attr="config"/>
+            <file condition="GCC Exe" category="linkerScript" name="gcc/gcc/samv71j19_flash.ld"
+                  attr="config"/>
+            <file condition="GCC Exe" category="other" name="gcc/gcc/samv71j19_sram.ld"
+                  attr="config"/>
+            <file condition="GCC Exe" category="other" name="gcc/gcc/samv71_flash.ld"
+                  attr="config"/>
+            <file condition="GCC Exe" category="other" name="gcc/gcc/samv71_sram.ld"
+                  attr="config"/>
+            <file condition="IAR Exe" category="source" name="iar/system_samv71.c" attr="config"/>
+            <file condition="IAR Exe" category="source" name="iar/iar/startup_samv71.c"
+                  attr="config"/>
+            <file condition="IAR Exe" category="linkerScript" name="iar/iar/samv71j19_flash.icf"
+                  attr="config"/>
+            <file condition="IAR Exe" category="other" name="iar/iar/samv71j19_sram.icf"
+                  attr="config"/>
+            <file condition="ARMCC Exe" category="source" name="arm/system_SAMV71.c" 
+                  attr="config"/>
+            <file condition="ARMCC Exe" category="source" name="arm/startup_SAMV71.s" 
+                  attr="config"/>      
+         </files>
+      </component>
+      <component Cvendor="Atmel" Cclass="Device" Cgroup="Startup" Cversion="1.0.0"
+                 condition="ATSAMV71N19">
+         <description>Headers and startup code for Atmel ATSAMV71N19</description>
+         <files>
+            <file condition="C" category="header" name="SAMV71/include/sam.h"/>
+            <file condition="C Exe" category="source" name="templates/main.c" attr="template"
+                  select="Main file (.c)"/>
+            <file condition="C Exe" category="source" name="templates/main.cpp" attr="template"
+                  select="Main file (.cpp)"/>
+            <file condition="C Lib" category="source" name="templates/library.c" attr="template"
+                  select="Main file (.c)"/>
+            <file condition="C Lib" category="source" name="templates/library.cpp"
+                  attr="template"
+                  select="Main file (.cpp)"/>
+            <file condition="GCC Exe" category="source" name="gcc/system_samv71.c" attr="config"/>
+            <file condition="GCC Exe" category="source" name="gcc/gcc/startup_samv71.c"
+                  attr="config"/>
+            <file condition="GCC Exe" category="linkerScript" name="gcc/gcc/samv71n19_flash.ld"
+                  attr="config"/>
+            <file condition="GCC Exe" category="other" name="gcc/gcc/samv71n19_sram.ld"
+                  attr="config"/>
+            <file condition="GCC Exe" category="other" name="gcc/gcc/samv71_flash.ld"
+                  attr="config"/>
+            <file condition="GCC Exe" category="other" name="gcc/gcc/samv71_sram.ld"
+                  attr="config"/>
+            <file condition="IAR Exe" category="source" name="iar/system_samv71.c" attr="config"/>
+            <file condition="IAR Exe" category="source" name="iar/iar/startup_samv71.c"
+                  attr="config"/>
+            <file condition="IAR Exe" category="linkerScript" name="iar/iar/samv71n19_flash.icf"
+                  attr="config"/>
+            <file condition="IAR Exe" category="other" name="iar/iar/samv71n19_sram.icf"
+                  attr="config"/>
+            <file condition="ARMCC Exe" category="source" name="arm/system_SAMV71.c" 
+                  attr="config"/>
+            <file condition="ARMCC Exe" category="source" name="arm/startup_SAMV71.s" 
+                  attr="config"/>
+         </files>
+      </component>
+      <component Cvendor="Atmel" Cclass="Device" Cgroup="Startup" Cversion="1.0.0"
+                 condition="ATSAMV71N21">
+         <description>Headers and startup code for Atmel ATSAMV71N21</description>
+         <files>
+            <file condition="C" category="header" name="SAMV71/include/sam.h"/>
+            <file condition="C Exe" category="source" name="templates/main.c" attr="template"
+                  select="Main file (.c)"/>
+            <file condition="C Exe" category="source" name="templates/main.cpp" attr="template"
+                  select="Main file (.cpp)"/>
+            <file condition="C Lib" category="source" name="templates/library.c" attr="template"
+                  select="Main file (.c)"/>
+            <file condition="C Lib" category="source" name="templates/library.cpp"
+                  attr="template"
+                  select="Main file (.cpp)"/>
+            <file condition="GCC Exe" category="source" name="gcc/system_samv71.c" attr="config"/>
+            <file condition="GCC Exe" category="source" name="gcc/gcc/startup_samv71.c"
+                  attr="config"/>
+            <file condition="GCC Exe" category="linkerScript" name="gcc/gcc/samv71n21_flash.ld"
+                  attr="config"/>
+            <file condition="GCC Exe" category="other" name="gcc/gcc/samv71n21_sram.ld"
+                  attr="config"/>
+            <file condition="GCC Exe" category="other" name="gcc/gcc/samv71_flash.ld"
+                  attr="config"/>
+            <file condition="GCC Exe" category="other" name="gcc/gcc/samv71_sram.ld"
+                  attr="config"/>
+            <file condition="IAR Exe" category="source" name="iar/system_samv71.c" attr="config"/>
+            <file condition="IAR Exe" category="source" name="iar/iar/startup_samv71.c"
+                  attr="config"/>
+            <file condition="IAR Exe" category="linkerScript" name="iar/iar/samv71n21_flash.icf"
+                  attr="config"/>
+            <file condition="IAR Exe" category="other" name="iar/iar/samv71n21_sram.icf"
+                  attr="config"/>
+            <file condition="ARMCC Exe" category="source" name="arm/system_SAMV71.c" 
+                  attr="config"/>
+            <file condition="ARMCC Exe" category="source" name="arm/startup_SAMV71.s" 
+                  attr="config"/>
+         </files>
+      </component>
+      <component Cvendor="Atmel" Cclass="Device" Cgroup="Startup" Cversion="1.0.0"
+                 condition="ATSAMV71N20">
+         <description>Headers and startup code for Atmel ATSAMV71N20</description>
+         <files>
+            <file condition="C" category="header" name="SAMV71/include/sam.h"/>
+            <file condition="C Exe" category="source" name="templates/main.c" attr="template"
+                  select="Main file (.c)"/>
+            <file condition="C Exe" category="source" name="templates/main.cpp" attr="template"
+                  select="Main file (.cpp)"/>
+            <file condition="C Lib" category="source" name="templates/library.c" attr="template"
+                  select="Main file (.c)"/>
+            <file condition="C Lib" category="source" name="templates/library.cpp"
+                  attr="template"
+                  select="Main file (.cpp)"/>
+            <file condition="GCC Exe" category="source" name="gcc/system_samv71.c" attr="config"/>
+            <file condition="GCC Exe" category="source" name="gcc/gcc/startup_samv71.c"
+                  attr="config"/>
+            <file condition="GCC Exe" category="linkerScript" name="gcc/gcc/samv71n20_flash.ld"
+                  attr="config"/>
+            <file condition="GCC Exe" category="other" name="gcc/gcc/samv71n20_sram.ld"
+                  attr="config"/>
+            <file condition="GCC Exe" category="other" name="gcc/gcc/samv71_flash.ld"
+                  attr="config"/>
+            <file condition="GCC Exe" category="other" name="gcc/gcc/samv71_sram.ld"
+                  attr="config"/>
+            <file condition="IAR Exe" category="source" name="iar/system_samv71.c" attr="config"/>
+            <file condition="IAR Exe" category="source" name="iar/iar/startup_samv71.c"
+                  attr="config"/>
+            <file condition="IAR Exe" category="linkerScript" name="iar/iar/samv71n20_flash.icf"
+                  attr="config"/>
+            <file condition="IAR Exe" category="other" name="iar/iar/samv71n20_sram.icf"
+                  attr="config"/>
+            <file condition="ARMCC Exe" category="source" name="arm/system_SAMV71.c" 
+                  attr="config"/>
+            <file condition="ARMCC Exe" category="source" name="arm/startup_SAMV71.s" 
+                  attr="config"/>
+         </files>
+      </component>
+      <component Cvendor="Atmel" Cclass="Device" Cgroup="Startup" Cversion="1.0.0"
+                 condition="ATSAMV71Q19">
+         <description>Headers and startup code for Atmel ATSAMV71Q19</description>
+         <files>
+            <file condition="C" category="header" name="SAMV71/include/sam.h"/>
+            <file condition="C Exe" category="source" name="templates/main.c" attr="template"
+                  select="Main file (.c)"/>
+            <file condition="C Exe" category="source" name="templates/main.cpp" attr="template"
+                  select="Main file (.cpp)"/>
+            <file condition="C Lib" category="source" name="templates/library.c" attr="template"
+                  select="Main file (.c)"/>
+            <file condition="C Lib" category="source" name="templates/library.cpp"
+                  attr="template"
+                  select="Main file (.cpp)"/>
+            <file condition="GCC Exe" category="source" name="gcc/system_samv71.c" attr="config"/>
+            <file condition="GCC Exe" category="source" name="gcc/gcc/startup_samv71.c"
+                  attr="config"/>
+            <file condition="GCC Exe" category="linkerScript" name="gcc/gcc/samv71q19_flash.ld"
+                  attr="config"/>
+            <file condition="GCC Exe" category="other" name="gcc/gcc/samv71q19_sram.ld"
+                  attr="config"/>
+            <file condition="GCC Exe" category="other" name="gcc/gcc/samv71_flash.ld"
+                  attr="config"/>
+            <file condition="GCC Exe" category="other" name="gcc/gcc/samv71_sram.ld"
+                  attr="config"/>
+            <file condition="IAR Exe" category="source" name="iar/system_samv71.c" attr="config"/>
+            <file condition="IAR Exe" category="source" name="iar/iar/startup_samv71.c"
+                  attr="config"/>
+            <file condition="IAR Exe" category="linkerScript" name="iar/iar/samv71q19_flash.icf"
+                  attr="config"/>
+            <file condition="IAR Exe" category="other" name="iar/iar/samv71q19_sram.icf"
+                  attr="config"/>
+            <file condition="ARMCC Exe" category="source" name="arm/system_SAMV71.c" 
+                  attr="config"/>
+            <file condition="ARMCC Exe" category="source" name="arm/startup_SAMV71.s" 
+                  attr="config"/>
+         </files>
+      </component>
+      <component Cvendor="Atmel" Cclass="Device" Cgroup="Startup" Cversion="1.0.0"
+                 condition="ATSAMV71Q21">
+         <description>Headers and startup code for Atmel ATSAMV71Q21</description>
+         <files>
+            <file condition="C" category="header" name="SAMV71/include/sam.h"/>
+            <file condition="C Exe" category="source" name="templates/main.c" attr="template"
+                  select="Main file (.c)"/>
+            <file condition="C Exe" category="source" name="templates/main.cpp" attr="template"
+                  select="Main file (.cpp)"/>
+            <file condition="C Lib" category="source" name="templates/library.c" attr="template"
+                  select="Main file (.c)"/>
+            <file condition="C Lib" category="source" name="templates/library.cpp"
+                  attr="template"
+                  select="Main file (.cpp)"/>
+            <file condition="GCC Exe" category="source" name="gcc/system_samv71.c" attr="config"/>
+            <file condition="GCC Exe" category="source" name="gcc/gcc/startup_samv71.c"
+                  attr="config"/>
+            <file condition="GCC Exe" category="linkerScript" name="gcc/gcc/samv71q21_flash.ld"
+                  attr="config"/>
+            <file condition="GCC Exe" category="other" name="gcc/gcc/samv71q21_sram.ld"
+                  attr="config"/>
+            <file condition="GCC Exe" category="other" name="gcc/gcc/samv71_flash.ld"
+                  attr="config"/>
+            <file condition="GCC Exe" category="other" name="gcc/gcc/samv71_sram.ld"
+                  attr="config"/>
+            <file condition="IAR Exe" category="source" name="iar/system_samv71.c" attr="config"/>
+            <file condition="IAR Exe" category="source" name="iar/iar/startup_samv71.c"
+                  attr="config"/>
+            <file condition="IAR Exe" category="linkerScript" name="iar/iar/samv71q21_flash.icf"
+                  attr="config"/>
+            <file condition="IAR Exe" category="other" name="iar/iar/samv71q21_sram.icf"
+                  attr="config"/>
+            <file condition="ARMCC Exe" category="source" name="arm/system_SAMV71.c" 
+                  attr="config"/>
+            <file condition="ARMCC Exe" category="source" name="arm/startup_SAMV71.s" 
+                  attr="config"/>
+         </files>
+      </component>
+      <component Cvendor="Atmel" Cclass="Device" Cgroup="Startup" Cversion="1.0.0"
+                 condition="ATSAMV71Q20">
+         <description>Headers and startup code for Atmel ATSAMV71Q20</description>
+         <files>
+            <file condition="C" category="header" name="SAMV71/include/sam.h"/>
+            <file condition="C Exe" category="source" name="templates/main.c" attr="template"
+                  select="Main file (.c)"/>
+            <file condition="C Exe" category="source" name="templates/main.cpp" attr="template"
+                  select="Main file (.cpp)"/>
+            <file condition="C Lib" category="source" name="templates/library.c" attr="template"
+                  select="Main file (.c)"/>
+            <file condition="C Lib" category="source" name="templates/library.cpp"
+                  attr="template"
+                  select="Main file (.cpp)"/>
+            <file condition="GCC Exe" category="source" name="gcc/system_samv71.c" attr="config"/>
+            <file condition="GCC Exe" category="source" name="gcc/gcc/startup_samv71.c"
+                  attr="config"/>
+            <file condition="GCC Exe" category="linkerScript" name="gcc/gcc/samv71q20_flash.ld"
+                  attr="config"/>
+            <file condition="GCC Exe" category="other" name="gcc/gcc/samv71q20_sram.ld"
+                  attr="config"/>
+            <file condition="GCC Exe" category="other" name="gcc/gcc/samv71_flash.ld"
+                  attr="config"/>
+            <file condition="GCC Exe" category="other" name="gcc/gcc/samv71_sram.ld"
+                  attr="config"/>
+            <file condition="IAR Exe" category="source" name="iar/system_samv71.c" attr="config"/>
+            <file condition="IAR Exe" category="source" name="iar/iar/startup_samv71.c"
+                  attr="config"/>
+            <file condition="IAR Exe" category="linkerScript" name="iar/iar/samv71q20_flash.icf"
+                  attr="config"/>
+            <file condition="IAR Exe" category="other" name="iar/iar/samv71q20_sram.icf"
+                  attr="config"/>
+            <file condition="ARMCC Exe" category="source" name="arm/system_SAMV71.c" 
+                  attr="config"/>
+            <file condition="ARMCC Exe" category="source" name="arm/startup_SAMV71.s" 
+                  attr="config"/>
+         </files>
+      </component>
+   </components>
+</package>

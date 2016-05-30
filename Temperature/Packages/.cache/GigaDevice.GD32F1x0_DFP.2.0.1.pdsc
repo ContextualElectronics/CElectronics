@@ -1,0 +1,604 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<package schemaVersion="1.1" xmlns:xs="http://www.w3.org/2001/XMLSchema-instance" xs:noNamespaceSchemaLocation="PACK.xsd">
+  <vendor>GigaDevice</vendor>
+  <url>http://gd32mcu.21ic.com/data/documents/yingyongruanjian/</url>
+  <name>GD32F1x0_DFP</name>
+  <description>GigaDevice GD32F1x0 Series Device Support and Examples</description>
+  <releases>
+    <release version="2.0.1" date="2016-04-18">
+       adjust pack material .
+    </release>
+    <release version="2.0.0" date="2016-03-01">
+      Updated version of GD32F1x0 Device Family Pack.
+      Added new devices: GD32F170T4 GD32F170T6 GD32F170T8 GD32F170C4 GD32F170C6 GD32F170C8 GD32F170R8 
+                                      GD32F190T4 GD32F190T6 GD32F190T8 GD32F190C4 GD32F190C6 GD32F190C8 GD32F190R4 GD32F190R6 GD32F190R8 GD32F190RB 
+    </release>
+    <release version="1.0.1">
+     Updated device support files.
+     Added SVD file.
+     Added datasheets, manual.
+     Renamed device names.
+   </release>
+   <release version="1.0.0">
+     First Release version of GD32F1 Device Family Pack.
+   </release>
+  </releases>
+  <keywords>
+  <!-- keywords for indexing -->
+  <keyword>GigaDevice</keyword>
+  <keyword>Device Support</keyword>
+  <keyword>GD32F1x0</keyword>
+  </keywords>
+  <devices>
+    <family Dfamily="GD32F1x0 Series" Dvendor="GigaDevice:123">
+      <processor Dcore="Cortex-M3" DcoreVersion="r2p1" Dfpu="0" Dmpu="0" Dendian="Little-endian"/>
+      <book name="Documents/dui0552a_cortex_m3_dgug.pdf" title="Cortex-M3 Generic User Guide"/>
+      <description>
+GD32 is a new 32-bit high performance, low power consumption universal microcontroller family powered by the ARM Cortex-M3 RISC core,which targeted at various MCU application areas.
+GD32 family integrates features to simplify system design and provide customers wide range of comprehensive and superior cost effective MCU portfolios with proven technology and great innovation.
+GD32 family includes entry line, performance line and connectivity line currently.
+      </description>
+      <!-- ************************  Subfamily 'GD32F130'  **************************** -->
+      <subFamily DsubFamily="GD32F130">
+        <processor Dclock="48000000"/>
+         <compile header="Device/Include/gd32f1x0.h" define="GD32F1x0 GD32F130_150 USE_STDPERIPH_DRIVER"/>
+        <debug svd="SVD/GD32F1x0.svd"/>
+        <book name="Documents/GD32F130xx_Datasheet.pdf" title="GD32F130xx Data Sheet"/>
+        <description>
+        GD32F130 - ARM Cortex-M3 Core
+          Frequency up to 48 MHz
+          Flash access zero wait state
+          Single-cycle multiplier and hardware divider
+          NVIC support 16 internal, 52 external interrupts, each has 16 priority levels
+
+        Memories
+          Flash size from 16KB to 64 KB
+          SRAM size from 4KB to 8 KB with HW parity checking
+          3KB ISP loader ROM
+
+        Low power management
+          Power saving mode: sleep, deep-sleep, standby mode
+          Independent battery supply for real-calendar RTC and backup register
+
+        Advanced analog peripherals
+          1 x 12bit, 1us ADC (up to 16 chs)
+
+        Integrated peripherals interface
+          Up to 2 x USART/UART/Irda/LIN/ISO7816
+          Up to 2 x SPI (18Mbit/s)
+          Up to 2 x I2C (400Kbit/s)
+
+        On-chip resources
+          1 x 16 bit Advanced Timer, 1 x SysTick Timer, 5 x 16 bit GPTM, 1x 32bit GPTM, 2 x WDG
+          5-chs DMA support: Timers, ADC, SPIs, I2Cs, USARTs
+          System supervisor and reset: POR,PDR,LVD
+          80% GPIO available
+          32-bit CRC, 96-bit unique ID
+         On-chip clock: HSI (8MHz), LSI (40KHz)
+        </description>
+
+        <!-- *************************  Device 'GD32F130C4'  ***************************** -->
+        <device Dname="GD32F130C4">
+          <memory    id="IROM1"                   start="0x08000000" size="0x04000" startup="1" default="1"/>
+          <memory    id="IRAM1"                   start="0x20000000" size="0x01000" init   ="0" default="1"/>
+          <algorithm name="Flash/GD32F1x0_16.FLM" start="0x08000000" size="0x04000" default="1"/>
+        </device>
+
+        <!-- *************************  Device 'GD32F130C6'  ***************************** -->
+        <device Dname="GD32F130C6">
+          <memory    id="IROM1"                   start="0x08000000" size="0x08000" startup="1" default="1"/>
+          <memory    id="IRAM1"                   start="0x20000000" size="0x01000" init   ="0" default="1"/>
+          <algorithm name="Flash/GD32F1x0_32.FLM" start="0x08000000" size="0x08000" default="1"/>
+        </device>
+
+        <!-- *************************  Device 'GD32F130C8'  ***************************** -->
+        <device Dname="GD32F130C8">
+          <memory    id="IROM1"                   start="0x08000000" size="0x10000" startup="1" default="1"/>
+          <memory    id="IRAM1"                   start="0x20000000" size="0x02000" init   ="0" default="1"/>
+          <algorithm name="Flash/GD32F1x0_64.FLM" start="0x08000000" size="0x10000" default="1"/>
+        </device>
+
+        <!-- *************************  Device 'GD32F130F4'  ***************************** -->
+        <device Dname="GD32F130F4">
+          <memory    id="IROM1"                   start="0x08000000" size="0x04000" startup="1" default="1"/>
+          <memory    id="IRAM1"                   start="0x20000000" size="0x01000" init   ="0" default="1"/>
+          <algorithm name="Flash/GD32F1x0_16.FLM" start="0x08000000" size="0x04000" default="1"/>
+        </device>
+
+        <!-- *************************  Device 'GD32F130G4'  ***************************** -->
+        <device Dname="GD32F130G4">
+          <memory    id="IROM1"                   start="0x08000000" size="0x04000" startup="1" default="1"/>
+          <memory    id="IRAM1"                   start="0x20000000" size="0x01000" init   ="0" default="1"/>
+          <algorithm name="Flash/GD32F1x0_16.FLM" start="0x08000000" size="0x04000" default="1"/>
+        </device>
+
+        <!-- *************************  Device 'GD32F130G6'  ***************************** -->
+        <device Dname="GD32F130G6">
+          <memory    id="IROM1"                   start="0x08000000" size="0x08000" startup="1" default="1"/>
+          <memory    id="IRAM1"                   start="0x20000000" size="0x01000" init   ="0" default="1"/>
+          <algorithm name="Flash/GD32F1x0_32.FLM" start="0x08000000" size="0x08000" default="1"/>
+        </device>
+
+        <!-- *************************  Device 'GD32F130G8'  ***************************** -->
+        <device Dname="GD32F130G8">
+          <memory    id="IROM1"                   start="0x08000000" size="0x10000" startup="1" default="1"/>
+          <memory    id="IRAM1"                   start="0x20000000" size="0x02000" init   ="0" default="1"/>
+          <algorithm name="Flash/GD32F1x0_64.FLM" start="0x08000000" size="0x10000" default="1"/>
+        </device>
+
+
+        <!-- *************************  Device 'GD32F130K4'  ***************************** -->
+        <device Dname="GD32F130K4">
+          <memory    id="IROM1"                   start="0x08000000" size="0x04000" startup="1" default="1"/>
+          <memory    id="IRAM1"                   start="0x20000000" size="0x01000" init   ="0" default="1"/>
+          <algorithm name="Flash/GD32F1x0_16.FLM" start="0x08000000" size="0x04000" default="1"/>
+        </device>
+
+        <!-- *************************  Device 'GD32F130K6'  ***************************** -->
+        <device Dname="GD32F130K6">
+          <memory    id="IROM1"                   start="0x08000000" size="0x08000" startup="1" default="1"/>
+          <memory    id="IRAM1"                   start="0x20000000" size="0x01000" init   ="0" default="1"/>
+          <algorithm name="Flash/GD32F1x0_32.FLM" start="0x08000000" size="0x08000" default="1"/>
+        </device>
+
+        <!-- *************************  Device 'GD32F130K8'  ***************************** -->
+        <device Dname="GD32F130K8">
+          <memory    id="IROM1"                   start="0x08000000" size="0x10000" startup="1" default="1"/>
+          <memory    id="IRAM1"                   start="0x20000000" size="0x02000" init   ="0" default="1"/>
+          <algorithm name="Flash/GD32F1x0_64.FLM" start="0x08000000" size="0x10000" default="1"/>
+        </device>
+
+        <!-- *************************  Device 'GD32F130R8'  ***************************** -->
+        <device Dname="GD32F130R8">
+          <memory    id="IROM1"                   start="0x08000000" size="0x10000" startup="1" default="1"/>
+          <memory    id="IRAM1"                   start="0x20000000" size="0x02000" init   ="0" default="1"/>
+          <algorithm name="Flash/GD32F1x0_64.FLM" start="0x08000000" size="0x10000" default="1"/>
+        </device>
+      </subFamily>
+
+      <!-- ************************  Subfamily 'GD32F150'  **************************** -->
+      <subFamily DsubFamily="GD32F150">
+        <processor Dclock="72000000"/>
+        <compile header="Device/Include/gd32f1x0.h" define="GD32F1x0 GD32F130_150 USE_STDPERIPH_DRIVER"/>
+        <debug svd="SVD/GD32F1x0.svd"/>
+        <book name="Documents/GD32F150xx_Datasheet.pdf" title="GD32F150xx Data Sheet"/>
+        <description>
+        GD32F150 - ARM Cortex-M3 Core
+           Frequency up to 72 MHz
+           Flash access zero wait state
+           Single-cycle multiplier and hardware divider
+           NVIC support 16 internal, 52 external interrupts, each has 16 priority levels
+
+        Memories
+           Flash size from 16KB to 64 KB
+           SRAM size from 4KB to 8 KB with HW parity checking
+           3KB ISP loader ROM
+
+        Low power management
+          Power saving mode: sleep, deep-sleep, standby mode
+          Independent battery supply for real-calendar RTC and backup register
+
+        Advanced analog peripherals
+          1 x 12bit, 1us ADC (up to 16 chs)
+          2 x 12-bit DAC
+          2 x fast rail-to-rail low-power comparators
+
+        Integrated peripherals interface
+          Up to 2 x USART/UART/Irda/LIN/ISO7816
+          Up to 2 x SPI (18Mbit/s), 1 x I2S multiplexed
+          Up to 2 x I2C (400Kbit/s)
+          USB 2.0 FS (12Mbit/s)
+          HDMI-CEC
+          Touch sensing interface (TSI, supports up to 18 external electrodes)
+
+        On-chip resources
+          1 x 16 bit Advanced Timer, 1 x SysTick Timer, 5 x 16 bit GPTM, 1x 32bit GPTM, 1 x Basic Timer, 2 x WDG
+          5-chs DMA support: Timers, ADC, SPIs, I2Cs, USARTs, DAC and I2Ss
+          System supervisor and reset: POR,PDR,LVD
+          80% GPIO available
+          32-bit CRC, 96-bit unique ID
+          On-chip clock: HSI (8MHz), LSI (40KHz)
+        </description>
+
+        <!-- *************************  Device 'GD32F150C4'  ***************************** -->
+        <device Dname="GD32F150C4">
+          <memory    id="IROM1"                   start="0x08000000" size="0x04000" startup="1" default="1"/>
+          <memory    id="IRAM1"                   start="0x20000000" size="0x01000" init   ="0" default="1"/>
+          <algorithm name="Flash/GD32F1x0_16.FLM" start="0x08000000" size="0x04000" default="1"/>
+        </device>
+
+        <!-- *************************  Device 'GD32F150C6'  ***************************** -->
+        <device Dname="GD32F150C6">
+          <memory    id="IROM1"                   start="0x08000000" size="0x08000" startup="1" default="1"/>
+          <memory    id="IRAM1"                   start="0x20000000" size="0x01800" init   ="0" default="1"/>
+          <algorithm name="Flash/GD32F1x0_32.FLM" start="0x08000000" size="0x08000" default="1"/>
+        </device>
+
+        <!-- *************************  Device 'GD32F150C8'  ***************************** -->
+        <device Dname="GD32F150C8">
+          <memory    id="IROM1"                   start="0x08000000" size="0x10000" startup="1" default="1"/>
+          <memory    id="IRAM1"                   start="0x20000000" size="0x02000" init   ="0" default="1"/>
+          <algorithm name="Flash/GD32F1x0_64.FLM" start="0x08000000" size="0x10000" default="1"/>
+        </device>
+
+        <!-- *************************  Device 'GD32F150G4'  ***************************** -->
+        <device Dname="GD32F150G4">
+          <memory    id="IROM1"                   start="0x08000000" size="0x04000" startup="1" default="1"/>
+          <memory    id="IRAM1"                   start="0x20000000" size="0x01000" init   ="0" default="1"/>
+          <algorithm name="Flash/GD32F1x0_16.FLM" start="0x08000000" size="0x04000" default="1"/>
+        </device>
+
+        <!-- *************************  Device 'GD32F150G6'  ***************************** -->
+        <device Dname="GD32F150G6">
+          <memory    id="IROM1"                   start="0x08000000" size="0x08000" startup="1" default="1"/>
+          <memory    id="IRAM1"                   start="0x20000000" size="0x01800" init   ="0" default="1"/>
+          <algorithm name="Flash/GD32F1x0_32.FLM" start="0x08000000" size="0x08000" default="1"/>
+        </device>
+
+        <!-- *************************  Device 'GD32F150G8'  ***************************** -->
+        <device Dname="GD32F150G8">
+          <memory    id="IROM1"                   start="0x08000000" size="0x10000" startup="1" default="1"/>
+          <memory    id="IRAM1"                   start="0x20000000" size="0x02000" init   ="0" default="1"/>
+          <algorithm name="Flash/GD32F1x0_64.FLM" start="0x08000000" size="0x10000" default="1"/>
+        </device>
+
+        <!-- *************************  Device 'GD32F150K4'  ***************************** -->
+        <device Dname="GD32F150K4">
+          <memory    id="IROM1"                   start="0x08000000" size="0x04000" startup="1" default="1"/>
+          <memory    id="IRAM1"                   start="0x20000000" size="0x01000" init   ="0" default="1"/>
+          <algorithm name="Flash/GD32F1x0_16.FLM" start="0x08000000" size="0x04000" default="1"/>
+        </device>
+
+        <!-- *************************  Device 'GD32F150K6'  ***************************** -->
+        <device Dname="GD32F150K6">
+          <memory    id="IROM1"                   start="0x08000000" size="0x08000" startup="1" default="1"/>
+          <memory    id="IRAM1"                   start="0x20000000" size="0x01800" init   ="0" default="1"/>
+          <algorithm name="Flash/GD32F1x0_32.FLM" start="0x08000000" size="0x08000" default="1"/>
+        </device>
+
+        <!-- *************************  Device 'GD32F150K8'  ***************************** -->
+        <device Dname="GD32F150K8">
+          <memory    id="IROM1"                   start="0x08000000" size="0x10000" startup="1" default="1"/>
+          <memory    id="IRAM1"                   start="0x20000000" size="0x02000" init   ="0" default="1"/>
+          <algorithm name="Flash/GD32F1x0_64.FLM" start="0x08000000" size="0x10000" default="1"/>
+        </device>
+
+        <!-- *************************  Device 'GD32F150R4'  ***************************** -->
+        <device Dname="GD32F150R4">
+          <memory    id="IROM1"                   start="0x08000000" size="0x04000" startup="1" default="1"/>
+          <memory    id="IRAM1"                   start="0x20000000" size="0x01000" init   ="0" default="1"/>
+          <algorithm name="Flash/GD32F1x0_16.FLM" start="0x08000000" size="0x04000" default="1"/>
+        </device>
+
+        <!-- *************************  Device 'GD32F150R6'  ***************************** -->
+        <device Dname="GD32F150R6">
+          <memory    id="IROM1"                   start="0x08000000" size="0x08000" startup="1" default="1"/>
+          <memory    id="IRAM1"                   start="0x20000000" size="0x01800" init   ="0" default="1"/>
+          <algorithm name="Flash/GD32F1x0_32.FLM" start="0x08000000" size="0x08000" default="1"/>
+        </device>
+
+        <!-- *************************  Device 'GD32F150R8'  ***************************** -->
+        <device Dname="GD32F150R8">
+          <memory    id="IROM1"                   start="0x08000000" size="0x10000" startup="1" default="1"/>
+          <memory    id="IRAM1"                   start="0x20000000" size="0x02000" init   ="0" default="1"/>
+          <algorithm name="Flash/GD32F1x0_64.FLM" start="0x08000000" size="0x10000" default="1"/>
+        </device>
+      </subFamily>
+
+      <!-- ************************  Subfamily 'GD32F170'  **************************** -->
+      <subFamily DsubFamily="GD32F170">
+        <processor Dclock="48000000"/>
+         <compile header="Device/Include/gd32f1x0.h" define="GD32F1x0 USE_STDPERIPH_DRIVER GD32F170_190"/>
+        <debug svd="SVD/GD32F1x0.svd"/>
+        <book name="Documents/GD32F170xx_Datasheet.pdf" title="GD32F170xx Data Sheet"/>
+        <description>
+        GD32F170 - ARM Cortex-M3 Core
+          Frequency up to 48 MHz
+          Flash access zero wait state
+          Single-cycle multiplier and hardware divider
+          NVIC support 16 internal, 74 external interrupts, each has 16 priority levels
+
+        Memories
+          Flash size from 16KB to 64 KB
+          SRAM size from 4KB to 8 KB with HW parity checking
+          3KB ISP loader ROM
+
+        Low power management
+          Power saving mode: sleep, deep-sleep, standby mode
+          Independent battery supply for real-calendar RTC and backup register
+
+        Advanced analog peripherals
+          1 x 12bit, 1us ADC (up to 16 chs)
+
+        Integrated peripherals interface
+          Up to 2 x USART/UART/Irda/LIN/ISO7816
+          Up to 3 x SPI (18Mbit/s)
+          Up to 3 x I2C (400Kbit/s)
+
+        On-chip resources
+          1 x 16 bit Advanced Timer, 1 x SysTick Timer, 5 x 16 bit GPTM, 1x 32bit GPTM, 2 x WDG
+          5-chs DMA support: Timers, ADC, SPIs, I2Cs, USARTs
+          System supervisor and reset: POR,PDR,LVD
+          2 x CAN 2.0B
+          80% GPIO available
+          32-bit CRC, 96-bit unique ID
+          On-chip clock: HSI (8MHz), LSI (40KHz)
+        </description>
+
+        <!-- *************************  Device 'GD32F170C4'  ***************************** -->
+        <device Dname="GD32F170C4">
+          <memory id="IROM1"                      start="0x08000000" size="0x00004000"  startup="1" default="1"/>
+          <memory id="IRAM1"                      start="0x20000000" size="0x00001000"  init   ="0" default="1" />
+          <algorithm name="Flash/GD32F1x0_16.FLM" start="0x08000000" size="0x00004000" default="1"/>
+        </device>
+
+        <!-- *************************  Device 'GD32F170C6'  ***************************** -->
+        <device Dname="GD32F170C6">
+          <memory id="IROM1"                      start="0x08000000" size="0x00008000"  startup="1" default="1"/>
+          <memory id="IRAM1"                      start="0x20000000" size="0x00001000"  init   ="0" default="1"/>
+          <algorithm name="Flash/GD32F1x0_32.FLM" start="0x08000000" size="0x00008000" default="1"/>
+        </device>
+
+        <!-- *************************  Device 'GD32F170C8'  ***************************** -->
+        <device Dname="GD32F170C8">
+          <memory id="IROM1"                      start="0x08000000" size="0x00010000"  startup="1" default="1"/>
+          <memory id="IRAM1"                      start="0x20000000" size="0x00002000"  init   ="0" default="1"/>
+          <algorithm name="Flash/GD32F1x0_64.FLM" start="0x08000000" size="0x00010000" default="1"/>
+        </device>
+
+        <!-- *************************  Device 'GD32F170T4'  ***************************** -->
+        <device Dname="GD32F170T4">
+          <memory id="IROM1"                      start="0x08000000" size="0x00004000"  startup="1" default="1"/>
+          <memory id="IRAM1"                      start="0x20000000" size="0x00001000"  init   ="0" default="1"/>
+          <algorithm name="Flash/GD32F1x0_16.FLM" start="0x08000000" size="0x00004000" default="1"/>
+        </device>
+
+        <!-- *************************  Device 'GD32F170T6'  ***************************** -->
+        <device Dname="GD32F170T6">
+          <memory id="IROM1"                      start="0x08000000" size="0x00008000"  startup="1" default="1"/>
+          <memory id="IRAM1"                      start="0x20000000" size="0x00001000"  init   ="0" default="1"/>
+          <algorithm name="Flash/GD32F1x0_32.FLM" start="0x08000000" size="0x00008000" default="1"/>
+        </device>
+
+        <!-- *************************  Device 'GD32F170T8'  ***************************** -->
+        <device Dname="GD32F170T8">
+          <memory id="IROM1"                      start="0x08000000" size="0x00010000"  startup="1" default="1"/>
+          <memory id="IRAM1"                      start="0x20000000" size="0x00002000"  init   ="0" default="1"/>
+          <algorithm name="Flash/GD32F1x0_64.FLM" start="0x08000000" size="0x00010000" default="1"/>
+        </device>
+
+        <!-- *************************  Device 'GD32F170R8'  ***************************** -->
+        <device Dname="GD32F170R8">
+          <memory id="IROM1"                      start="0x08000000" size="0x00010000" startup="1" default="1"/>
+          <memory id="IRAM1"                      start="0x20000000" size="0x00002000"  init   ="0" default="1"/>
+          <algorithm name="Flash/GD32F1x0_64.FLM" start="0x08000000" size="0x00010000" default="1"/>
+        </device>
+      </subFamily>
+
+      <!-- ************************  Subfamily 'GD32F190'  **************************** -->
+      <subFamily DsubFamily="GD32F190">
+        <processor Dclock="72000000"/>
+        <compile header="Device/Include/gd32f1x0.h" define="GD32F1x0 USE_STDPERIPH_DRIVER GD32F170_190"/>
+        <debug svd="SVD/GD32F1x0.svd"/>        
+        <book name="Documents/GD32F190xx_Datasheet.pdf" title="GD32F190xx Data Sheet"/>
+        <description>
+        GD32F190 - ARM Cortex-M3 Core
+           Frequency up to 72 MHz
+           Flash access zero wait state
+           Single-cycle multiplier and hardware divider
+           NVIC support 16 internal, 74 external interrupts, each has 16 priority levels
+
+         Memories
+            Flash size from 16KB to 128 KB
+            SRAM size from 4KB to 8 KB with HW parity checking
+            3KB ISP loader ROM
+
+          Low power management
+            Power saving mode: sleep, deep-sleep, standby mode
+            Independent battery supply for real-calendar RTC and backup register
+
+          Advanced analog peripherals
+            1 x 12bit, 1us ADC (up to 16 chs)
+            2 x 12-bit DAC
+            2 x fast rail-to-rail low-power comparators
+
+          Integrated peripherals interface
+            Up to 2 x USART/UART/Irda/LIN/ISO7816
+            Up to 3 x SPI (18Mbit/s), 2 x I2S multiplexed
+            Up to 3 x I2C (400Kbit/s)
+            Up to 2 x CAN 2.0B
+            HDMI-CEC
+            Touch sensing interface (TSI, supports up to 18 external electrodes)
+
+          On-chip resources
+            1 x 16 bit Advanced Timer, 1 x SysTick Timer, 5 x 16 bit GPTM, 1x 32bit GPTM, 1 x Basic Timer, 2 x WDG
+            5-chs DMA support: Timers, ADC, SPIs, I2Cs, USARTs, DAC and I2Ss
+            System supervisor and reset: POR,PDR,LVD
+            80% GPIO available
+            32-bit CRC, 96-bit unique ID,OPAMP,LCD
+            On-chip clock: HSI (8MHz), LSI (40KHz)
+        </description>
+
+        <!-- *************************  Device 'GD32F190C4'  ***************************** -->
+        <device Dname="GD32F190C4">
+          <memory id="IROM1"                      start="0x08000000" size="0x00004000"  startup="1" default="1"/>
+          <memory id="IRAM1"                      start="0x20000000" size="0x00001000" init   ="0" default="1"/>
+          <algorithm name="Flash/GD32F1x0_16.FLM" start="0x08000000" size="0x00004000" default="1"/>
+        </device>
+
+        <!-- *************************  Device 'GD32F190C6'  ***************************** -->
+        <device Dname="GD32F190C6">
+          <memory id="IROM1"                      start="0x08000000" size="0x00008000" startup="1" default="1"/>
+          <memory id="IRAM1"                      start="0x20000000" size="0x00001800"  init   ="0" default="1"/>
+          <algorithm name="Flash/GD32F1x0_32.FLM" start="0x08000000" size="0x00008000" default="1"/>
+        </device>
+
+        <!-- *************************  Device 'GD32F190C8'  ***************************** -->
+        <device Dname="GD32F190C8">
+          <memory id="IROM1"                      start="0x08000000" size="0x00010000" startup="1" default="1"/>
+          <memory id="IRAM1"                      start="0x20000000" size="0x00002000" init   ="0" default="1"/>
+          <algorithm name="Flash/GD32F1x0_64.FLM" start="0x08000000" size="0x00010000" default="1"/>
+        </device>
+
+       <!-- *************************  Device 'GD32F190R4'  ***************************** -->
+        <device Dname="GD32F190R4">
+          <memory id="IROM1"                      start="0x08000000" size="0x00004000" startup="1" default="1"/>
+          <memory id="IRAM1"                      start="0x20000000" size="0x00001000"  init   ="0" default="1"/>
+          <algorithm name="Flash/GD32F1x0_16.FLM" start="0x08000000" size="0x00004000" default="1"/>
+        </device>
+
+        <!-- *************************  Device 'GD32F190R6'  ***************************** -->
+        <device Dname="GD32F190R6">
+          <memory id="IROM1"                      start="0x08000000" size="0x00008000"  startup="1" default="1"/>
+          <memory id="IRAM1"                      start="0x20000000" size="0x00001800"  init   ="0"/>
+          <algorithm name="Flash/GD32F1x0_32.FLM" start="0x08000000" size="0x00008000" default="1"/>
+        </device>
+
+        <!-- *************************  Device 'GD32F190R8'  ***************************** -->
+        <device Dname="GD32F190R8">
+          <memory id="IROM1"                      start="0x08000000" size="0x00010000"  startup="1" default="1"/>
+          <memory id="IRAM1"                      start="0x20000000" size="0x00002000" init   ="0" default="1"/>
+          <algorithm name="Flash/GD32F1x0_64.FLM" start="0x08000000" size="0x00010000" default="1"/>
+        </device>
+
+        <!-- *************************  Device 'GD32F190RB'  ***************************** -->
+        <device Dname="GD32F190RB">
+          <memory id="IROM1"                      start="0x08000000" size="0x00020000"  startup="1" default="1"/>
+          <memory id="IRAM1"                      start="0x20000000" size="0x00002000" init   ="0" default="1"/>
+          <algorithm name="Flash/GD32F1x0_128.FLM" start="0x08000000" size="0x00020000" default="1"/>   
+        </device>
+
+        <!-- *************************  Device 'GD32F190T4'  ***************************** -->
+        <device Dname="GD32F190T4">
+          <memory id="IROM1"                      start="0x08000000" size="0x00004000"  startup="1" default="1"/>
+          <memory id="IRAM1"                      start="0x20000000" size="0x00001000"  init   ="0" default="1"/>
+          <algorithm name="Flash/GD32F1x0_16.FLM" start="0x08000000" size="0x00004000" default="1"/>
+        </device>
+
+        <!-- *************************  Device 'GD32F190T6'  ***************************** -->
+        <device Dname="GD32F190T6">
+          <memory id="IROM1"                      start="0x08000000" size="0x00008000"  startup="1" default="1"/>
+          <memory id="IRAM1"                      start="0x20000000" size="0x00001800"  init   ="0" default="1"/>
+          <algorithm name="Flash/GD32F1x0_32.FLM" start="0x08000000" size="0x00008000" default="1"/>
+        </device>
+
+        <!-- *************************  Device 'GD32F190T8'  ***************************** -->
+        <device Dname="GD32F190T8">
+          <memory id="IROM1"                      start="0x08000000" size="0x00010000"  startup="1" default="1"/>
+          <memory id="IRAM1"                      start="0x20000000" size="0x00002000"  init   ="0" default="1"/>
+          <algorithm name="Flash/GD32F1x0_64.FLM" start="0x08000000" size="0x00010000" default="1"/>
+        </device>
+     </subFamily>
+    </family>
+  </devices>
+
+  <conditions>
+    <!-- Compiler Conditions -->
+    <condition id="Compiler ARMCC">
+      <require Tcompiler="ARMCC"/>
+    </condition>
+    <!-- Device Conditions -->
+    <condition id="GD32F1x0">
+      <description>GigaDevice GD32F1x0 Devices</description>
+      <require Dvendor="GigaDevice:123" Dname="GD32F1[3579]0*"/>
+      <require Cclass="Device" Cgroup="Startup" />
+      <require Cclass="Device" Cgroup="System_GD32F1x0" />
+    </condition>
+    <!-- Device + CMSIS Conditions -->
+    <condition id="GD32F1x0 CMSIS">
+      <description>GigaDevice GD32F1x0 Devices and CMSIS-CORE</description>
+      <require condition="GD32F1x0"/>
+      <require Cclass="CMSIS" Cgroup="CORE"/>              
+    </condition>
+  </conditions>
+
+  <components>
+    <!-- Startup GD32F1x0 -->
+    <component Cclass="Device" Cgroup="Startup" Cversion="2.0.0" condition="GD32F1x0 CMSIS">
+      <description>System Startup for GigaDevice GD32F1x0 Devices</description>
+      <files>
+        <!-- include folder -->
+        <file category="include" name="Device/Include/"/>
+        <file category="header" name="Device/Include/gd32f1x0.h"/>
+        <!-- startup file -->
+        <file category="source" name="Device/Source/ARM/startup_gd32f1x0.s" attr="config" version="2.0.0" condition="Compiler ARMCC"/>
+        <!-- system file -->
+        <file category="source" name="Device/Source/system_gd32f1x0.c"      attr="config" version="2.0.0"/>
+      </files>
+    </component>
+
+    <!-- System GD32F1x0 -->
+    <component Cclass="Device" Cgroup="System_GD32F1x0" Cversion="2.0.0" condition="GD32F1x0 CMSIS">
+      <description>Cortex-M3 Device Peripheral Access Layer System Source File for GD32F1x0 Devices</description>
+      <files>
+        <!-- include folder -->
+        <file category="include" name="Device/Include/"/>
+        <!-- system file -->
+        <file category="source" name="Device/Source/system_gd32f1x0.c"      attr="config" version="2.0.0"/>
+      </files>
+    </component>
+
+    <!-- GD32150C-START Board Support -->
+    <bundle Cbundle="GD32150C-START" Cclass="Board Support" Cversion="2.0.0">
+      <description>GigaDevice GD32150C-START Board Support</description>
+      <doc></doc>
+      <component Cgroup="LED" condition="GD32F1x0 CMSIS">
+      <description>LED driver for GigaDevice GD32150C-START Board</description>
+        <files>
+          <file category="source" name="Boards/GigaDevice/GD32150C-START/Common/LED.c"/>
+        </files>
+      </component>
+      <component Cgroup="Buttons" condition="GD32F1x0 CMSIS">
+      <description>Button driver for GigaDevice GD32150C-START Board</description>
+        <files>
+          <file category="source" name="Boards/GigaDevice/GD32150C-START/Common/Buttons.c"/>
+        </files>
+      </component>
+    </bundle>
+  </components>
+
+  <boards>
+    <board vendor="GigaDevice" name="GD32150C-START" revision="Rev. A" salesContact="http://www.gigadevice.com/page/id-65.html">
+      <description>GigaDevice GD32150C-START Board</description>
+      <book category="overview"  name="http://www.gigadevice.com"  title="GD32150C -START Board"/>
+      <book category="schematic" name="Boards/GigaDevice/GD32150C-START/Documents/GD32150C-START.pdf" title="GD32150C-START Schematics"/>
+      <mountedDevice    deviceIndex="0" Dvendor="GigaDevice:123" Dname="GD32F150C8"/>
+      <compatibleDevice deviceIndex="0" Dvendor="GigaDevice:123" DsubFamily="GD32F150"/>
+      <feature type="XTAL"       n="8000000"/>
+      <feature type="PWR"         n="2.6" m="3.6"              name="Power Supply"/>
+      <feature type="LED"         n="3"                               name="LEDs: Power, 2 x User"/>
+      <feature type="Button"     n="2"                               name="Push-buttons: User and Reset"/>
+    </board>
+  </boards>
+
+  <examples>
+    <!-- GD32150C-START Board -->
+    <example name="Blinky" doc="Abstract.txt" folder="Boards/GigaDevice/GD32150C-START/Blinky">
+      <description>Blinky example</description>
+      <board name="GD32150C-START" vendor="GigaDevice"/>
+      <project>
+        <environment name="uv" load="Blinky.uvprojx"/>
+      </project>
+      <attributes>
+        <component Cclass="CMSIS" Cgroup="CORE"/>
+        <component Cclass="Device" Cgroup="Startup"/>
+        <category>Getting Started</category>
+      </attributes>
+    </example>
+
+    <example name="CMSIS-RTOS Blinky" doc="Abstract.txt" folder="Boards/GigaDevice/GD32150C-START/RTX_Blinky">
+      <description>CMSIS-RTOS based Blinky example</description>
+      <board name="GD32150C-START" vendor="GigaDevice"/>
+      <project>
+        <environment name="uv" load="Blinky.uvprojx"/>
+      </project>
+      <attributes>
+        <component Cclass="CMSIS" Cgroup="CORE"/>
+        <component Cclass="Device" Cgroup="Startup"/>
+        <component Cclass="CMSIS" Cgroup="RTOS"/>
+        <category>Getting Started</category>
+        <category>CMSIS-RTX</category>
+      </attributes>
+    </example>
+  </examples>
+</package>

@@ -1,0 +1,212 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<package schemaVersion="1.3" xmlns:xs="http://www.w3.org/2001/XMLSchema-instance" xs:noNamespaceSchemaLocation="PACK.xsd">
+  <vendor>Keil</vendor>
+  <name>ARM_Compiler</name>
+  <description>Keil ARM Compiler extensions</description>
+  <!-- web download link -->
+  <url>http://www.keil.com/pack/</url>
+  <releases>
+    <release version="1.1.1" date="2016-05-25">
+      Fixing condition for supporting MDK-Middleware Variant MDK-Plus
+    </release>
+    <release version="1.1.0" date="2016-05-09">
+      Added support for MDK-Plus
+      Added "Event Messaging" component
+      Added support for ARM Compiler 6
+      Enabled support for Dcore ARMV8MBL and ARMV8MML
+    </release>
+    <release version="1.0.0" date="2015-03-18">
+      Initial release
+    </release>
+  </releases>
+  <conditions>
+    <condition id="Cortex-M Device">
+      <description>Cortex-M processor based device: one of CM0, CM0+, CM3, CM4, CM7, SC000, SC3000, ARMv8M Baseline and Mainline</description>
+      <accept Dcore="Cortex-M0"/>
+      <accept Dcore="Cortex-M0+"/>
+      <accept Dcore="Cortex-M3"/>
+      <accept Dcore="Cortex-M4"/>
+      <accept Dcore="Cortex-M7"/>
+      <accept Dcore="SC000"/>
+      <accept Dcore="SC300"/>
+      <accept Dcore="ARMV8MBL"/>
+      <accept Dcore="ARMV8MML"/>
+    </condition>
+    <condition id="ARMCC Cortex-M">
+      <description>ARMCC and Cortex-M</description>
+      <require Tcompiler="ARMCC"/>
+      <require condition="Cortex-M Device"/>
+    </condition>
+    <condition id="ARMCC Cortex-M with ITM">
+      <description>ARMCC and Cortex-M with ITM</description>
+      <require Tcompiler="ARMCC"/>
+      <require condition="Cortex-M Device"/>
+      <deny Dcore="Cortex-M0"/>
+      <deny Dcore="Cortex-M0+"/>
+      <deny Dcore="SC000"/>
+    </condition>
+    <condition id="ARMCC Cortex-M with File System">
+      <description>ARMCC and Cortex-M with File System CORE</description>
+      <require Tcompiler="ARMCC"/>
+      <require condition="Cortex-M Device"/>
+      <accept Cbundle="MDK-Pro"  Cclass="File System" Cgroup="CORE"/>
+      <accept Cbundle="MDK-Plus" Cclass="File System" Cgroup="CORE"/>
+    </condition>
+  </conditions>
+  <taxonomy>
+    <description Cclass="Compiler" Cgroup="I/O" doc="Doc/html/index.html">Retarget Input/Output</description>
+  </taxonomy>
+  <components>
+    <component Cclass="Compiler" Cgroup="I/O" Csub="STDIN" Cvariant="Breakpoint" Cversion="1.1.0" condition="ARMCC Cortex-M">
+      <description>Stop program execution at a breakpoint when using STDIN</description>
+      <RTE_Components_h>
+        #define RTE_Compiler_IO_STDIN           /* Compiler I/O: STDIN */
+        #define RTE_Compiler_IO_STDIN_BKPT      /* Compiler I/O: STDIN Breakpoint */
+      </RTE_Components_h>
+      <files>
+        <file category="source" name="Source/retarget_io.c"/>
+      </files>
+    </component>
+    <component Cclass="Compiler" Cgroup="I/O" Csub="STDIN" Cvariant="ITM" Cversion="1.1.0" condition="ARMCC Cortex-M with ITM">
+      <description>Retrieve STDIN from a debug output window using ITM</description>
+      <RTE_Components_h>
+        #define RTE_Compiler_IO_STDIN           /* Compiler I/O: STDIN */
+        #define RTE_Compiler_IO_STDIN_ITM       /* Compiler I/O: STDIN ITM */
+      </RTE_Components_h>
+      <files>
+        <file category="source" name="Source/retarget_io.c"/>
+      </files>
+    </component>
+    <component Cclass="Compiler" Cgroup="I/O" Csub="STDIN" Cvariant="User" Cversion="1.1.0" condition="ARMCC Cortex-M">
+      <description>Retrieve STDIN from a user specified input source  (USART, Keyboard or other)</description>
+      <RTE_Components_h>
+        #define RTE_Compiler_IO_STDIN           /* Compiler I/O: STDIN */
+        #define RTE_Compiler_IO_STDIN_User      /* Compiler I/O: STDIN User */
+      </RTE_Components_h>
+      <files>
+        <file category="source" name="Source/retarget_io.c"/>
+        <file category="source" name="Template/stdin_user.c"     attr="template" select="STDIN User Template"/>
+        <file category="source" name="Template/stdin_USART.c"    attr="template" select="STDIN via USART"/>
+        <file category="source" name="Template/stdin_keyboard.c" attr="template" select="STDIN via Keyboard"/>
+      </files>
+    </component>
+    <component Cclass="Compiler" Cgroup="I/O" Csub="STDOUT" Cvariant="Breakpoint" Cversion="1.1.0" condition="ARMCC Cortex-M">
+      <description>Stop program execution at a breakpoint when using STDOUT</description>
+      <RTE_Components_h>
+        #define RTE_Compiler_IO_STDOUT          /* Compiler I/O: STDOUT */
+        #define RTE_Compiler_IO_STDOUT_BKPT     /* Compiler I/O: STDOUT Breakpoint */
+      </RTE_Components_h>
+      <files>
+        <file category="source" name="Source/retarget_io.c"/>
+      </files>
+    </component>
+    <component Cclass="Compiler" Cgroup="I/O" Csub="STDOUT" Cvariant="ITM" Cversion="1.1.0" condition="ARMCC Cortex-M with ITM">
+      <description>Redirect STDOUT to a debug output window using ITM</description>
+      <RTE_Components_h>
+        #define RTE_Compiler_IO_STDOUT          /* Compiler I/O: STDOUT */
+        #define RTE_Compiler_IO_STDOUT_ITM      /* Compiler I/O: STDOUT ITM */
+      </RTE_Components_h>
+      <files>
+        <file category="source" name="Source/retarget_io.c"/>
+      </files>
+    </component>
+    <component Cclass="Compiler" Cgroup="I/O" Csub="STDOUT" Cvariant="User" Cversion="1.1.0" condition="ARMCC Cortex-M">
+      <description>Redirect STDOUT to a user defined output target (USART, Graphics Display or other)</description>
+      <RTE_Components_h>
+        #define RTE_Compiler_IO_STDOUT          /* Compiler I/O: STDOUT */
+        #define RTE_Compiler_IO_STDOUT_User     /* Compiler I/O: STDOUT User */
+      </RTE_Components_h>
+      <files>
+        <file category="source" name="Source/retarget_io.c"/>
+        <file category="source" name="Template/stdout_user.c"    attr="template" select="STDOUT User Template"/>
+        <file category="source" name="Template/stdout_USART.c"   attr="template" select="STDOUT via USART"/>
+        <file category="source" name="Template/stdout_display.c" attr="template" select="STDOUT via Display"/>
+      </files>
+    </component>
+    <component Cclass="Compiler" Cgroup="I/O" Csub="STDERR" Cvariant="Breakpoint" Cversion="1.1.0" condition="ARMCC Cortex-M">
+      <description>Stop program execution at a breakpoint when using STDERR</description>
+      <RTE_Components_h>
+        #define RTE_Compiler_IO_STDERR          /* Compiler I/O: STDERR */
+        #define RTE_Compiler_IO_STDERR_BKPT     /* Compiler I/O: STDERR Breakpoint */
+      </RTE_Components_h>
+      <files>
+        <file category="source" name="Source/retarget_io.c"/>
+      </files>
+    </component>
+    <component Cclass="Compiler" Cgroup="I/O" Csub="STDERR" Cvariant="ITM" Cversion="1.1.0" condition="ARMCC Cortex-M with ITM">
+      <description>Redirect STDERR to a debug output window using ITM</description>
+      <RTE_Components_h>
+        #define RTE_Compiler_IO_STDERR          /* Compiler I/O: STDERR */
+        #define RTE_Compiler_IO_STDERR_ITM      /* Compiler I/O: STDERR ITM */
+      </RTE_Components_h>
+      <files>
+        <file category="source" name="Source/retarget_io.c"/>
+      </files>
+    </component>
+    <component Cclass="Compiler" Cgroup="I/O" Csub="STDERR" Cvariant="User" Cversion="1.1.0" condition="ARMCC Cortex-M">
+      <description>Redirect STDERR to a user defined output target (USART, Graphics Display or other)</description>
+      <RTE_Components_h>
+        #define RTE_Compiler_IO_STDERR          /* Compiler I/O: STDERR */
+        #define RTE_Compiler_IO_STDERR_User     /* Compiler I/O: STDERR User */
+      </RTE_Components_h>
+      <files>
+        <file category="source" name="Source/retarget_io.c"/>
+        <file category="source" name="Template/stderr_user.c"    attr="template" select="STDERR User Template"/>
+        <file category="source" name="Template/stderr_USART.c"   attr="template" select="STDERR via USART"/>
+        <file category="source" name="Template/stderr_display.c" attr="template" select="STDERR via Display"/>
+      </files>
+    </component>
+    <component Cclass="Compiler" Cgroup="I/O" Csub="TTY" Cvariant="Breakpoint" Cversion="1.1.0" condition="ARMCC Cortex-M">
+      <description>Stop program execution at a breakpoint when using TTY</description>
+      <RTE_Components_h>
+        #define RTE_Compiler_IO_TTY             /* Compiler I/O: TTY */
+        #define RTE_Compiler_IO_TTY_BKPT        /* Compiler I/O: TTY Breakpoint */
+      </RTE_Components_h>
+      <files>
+        <file category="source" name="Source/retarget_io.c"/>
+      </files>
+    </component>
+    <component Cclass="Compiler" Cgroup="I/O" Csub="TTY" Cvariant="ITM" Cversion="1.1.0" condition="ARMCC Cortex-M with ITM">
+      <description>Redirect TTY to a debug output window using ITM</description>
+      <RTE_Components_h>
+        #define RTE_Compiler_IO_TTY             /* Compiler I/O: TTY */
+        #define RTE_Compiler_IO_TTY_ITM         /* Compiler I/O: TTY ITM */
+      </RTE_Components_h>
+      <files>
+        <file category="source" name="Source/retarget_io.c"/>
+      </files>
+    </component>
+    <component Cclass="Compiler" Cgroup="I/O" Csub="TTY" Cvariant="User" Cversion="1.1.0" condition="ARMCC Cortex-M">
+      <description>Redirect TTY to a user defined output target</description>
+      <RTE_Components_h>
+        #define RTE_Compiler_IO_TTY             /* Compiler I/O: TTY */
+        #define RTE_Compiler_IO_TTY_User        /* Compiler I/O: TTY User */
+      </RTE_Components_h>
+      <files>
+        <file category="source" name="Source/retarget_io.c"/>
+        <file category="source" name="Template/tty_user.c" attr="template" select="TTY User Template"/>
+      </files>
+    </component>
+    <component Cclass="Compiler" Cgroup="I/O" Csub="File" Cvariant="File System" Cversion="1.1.0" condition="ARMCC Cortex-M with File System">
+      <description>Use retargeting together with the File System component</description>
+      <RTE_Components_h>
+        #define RTE_Compiler_IO_File            /* Compiler I/O: File */
+        #define RTE_Compiler_IO_File_FS         /* Compiler I/O: File (File System) */
+      </RTE_Components_h>
+      <files>
+        <file category="source" name="Source/retarget_io.c"/>
+      </files>
+    </component>
+    <component Cclass="Compiler" Cgroup="Event Messaging" Cvariant="DAP" Cversion="1.0.0" condition="Cortex-M Device">
+      <description>Event Messaging using Debug Access Port (DAP)</description>
+      <RTE_Components_h>
+        #define RTE_Compiler_EventMessaging
+        #define RTE_Compiler_EventMessaging_DAP
+      </RTE_Components_h>
+      <files>
+        <file category="header" name="Include/EventRecorder.h"/>
+        <file category="source" name="Source/EventRecorder.c"/>
+      </files>
+    </component>
+  </components>
+</package>

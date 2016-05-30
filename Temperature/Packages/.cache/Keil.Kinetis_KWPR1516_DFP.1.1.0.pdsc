@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<package schemaVersion="1.2" xmlns:xs="http://www.w3.org/2001/XMLSchema-instance" xs:noNamespaceSchemaLocation="PACK.xsd">
+  <vendor>Keil</vendor>
+  <url>http://www.keil.com/pack/</url>
+  <name>Kinetis_KWPR1516_DFP</name>
+  <description>Freescale Kinetis WPR1516 Series Device Support</description>
+
+  <releases>
+    <release version="1.1.0" date="2015-01-08">
+      Corrected Dcore from Cortex-M4 to Cortex-M0+ in device description.
+    </release>
+    <release version="1.0.0" date="2014-11-03">
+      First Release version of WPR1516 Device Family Pack.
+    </release>
+  </releases>
+
+  <keywords>
+    <!-- keywords for indexing -->
+    <keyword>Freescale</keyword>
+    <keyword>Device Support</keyword>
+    <keyword>Device Family Package Freescale</keyword>
+    <keyword>WPR1516</keyword>
+  </keywords>
+
+  <devices>
+
+    <family Dfamily="WPR1516 Series" Dvendor="Freescale:78">
+      <processor Dcore="Cortex-M0+" DcoreVersion="r0p1"/>
+      <book name="Documents\dui0662a_cortex_m0p_r0p0_dgug.pdf" title="Cortex-M0+ Generic User Guide"/>
+
+<!-- MWPR1516xxx Devices -->
+      <!-- ******************************  MWPR1516xxx  ****************************** -->
+      <device Dname="MWPR1516xxx">
+        <processor Dfpu="0" Dmpu="0" Dendian="Little-endian" Dclock="24000000"/>
+        <compile header="Device\Include\MWPR1516.h" define="MWPR1516xxx"/>
+        <debug svd="SVD\MWPR1516.svd"/>
+        <memory id="IROM1"                         start="0x00000000" size="0x4000" startup="1"  default="1"/>
+        <memory id="IRAM1"                         start="0x1FFFFC00" size="0x1000" init   ="0"  default="1"/>
+        <algorithm name="Flash\MKPR1516_P16KB.FLM" start="0x00000000" size="0x4000" RAMstart="0x20000000" RAMsize="0x800" default="1"/>
+        <description>
+ARM Cortex-M0+ running at up to 24 MHz
+
+System
+ - System integration module (SIM)
+ - Power management and mode controllers (PMC)
+ - Miscellaneous control module (MCM)
+ - Peripheral bridge (AIPS)
+ - Watchdog (WDOG)
+
+Clocks
+ - External crystal oscillator or resonator
+ - Low range: 31.25 - 39.0625 kHz
+ - High range: 4 - 24 MHz
+ - External square wave input clock
+ - Internal clock references
+ - 31.25 to 39.0625 kHz oscillator
+ - 20 kHz LPO oscillator
+ - Frequency-locked loop (FLL) range: 40 - 50 MHz
+
+Security
+ - Watchdog (WDOG) with independent clock source
+
+Analog
+ - One 12-bit analog-to-digital converters (ADC) with up to 12 channels
+ - One analog comparators (ACMP) with internal 6-bit digital-to-analog converter (DAC)
+ - One programmable gain amplifier (PGA) with differential input and output
+
+Timers
+ - Two 2-channel FTMs with basic TPM function
+ - One 2-channel periodic interrupt timer (PIT)
+ - One real time clock (RTC)
+ - One FSK demodulation timer (FSKDT)
+ - System tick timer (SysTick)
+
+Communications
+ - One inter-integrated circuit (I2C) module
+ - One universal asynchronous receiver/transmitter (UART) module
+
+Human-Machine Interfaces (HMI)
+ - General purpose input/output (GPIO) controller
+        </description>
+      </device>
+    </family>
+  </devices>
+
+  <conditions>
+    <!-- Compiler Conditions -->
+    <condition id="Compiler ARMCC">
+      <require Tcompiler="ARMCC"/>
+    </condition>
+
+    <!-- Device Conditions -->
+    <condition id="MWPR1516">
+      <description>Freescale Kinetis WPR1516 Device</description>
+      <require Dvendor="Freescale:78" Dname="MWPR1516*"/>
+    </condition>
+
+    <!-- Device + CMSIS Conditions -->
+    <condition id="MWPR1516 CMSIS">
+      <description>Freescale Kinetis WPR1516 Device and CMSIS-CORE</description>
+      <require condition="MWPR1516"/>
+      <require Cclass="CMSIS" Cgroup="CORE"/>
+    </condition>
+  </conditions>
+
+  <components>
+    <!-- Startup MWPR1516 -->
+    <component Cclass="Device" Cgroup="Startup" Cversion="1.0.0" condition="MWPR1516 CMSIS">
+      <description>System Startup for Kinetis WPR1516 Device</description>
+      <files>
+        <!-- include folder / file -->
+        <file category="header"  name="Device\Include\MWPR1516.h"/>
+        <!-- startup / system file -->
+        <file category="source" name="Device\Source\ARM\startup_MWPR1516.s"  attr="config" version="1.0.0" condition="Compiler ARMCC"/>
+        <file category="source" name="Device\Source\system_MWPR1516.c"       attr="config" version="1.0.0"/>
+        <file category="header" name="Device\Source\system_MWPR1516.h"       attr="config" version="1.0.0"/>
+      </files>
+    </component>
+
+  </components>
+
+</package>

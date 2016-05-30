@@ -1,0 +1,783 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<package schemaVersion="1.3" xmlns:xs="http://www.w3.org/2001/XMLSchema-instance" xs:noNamespaceSchemaLocation="PACK.xsd">
+  <vendor>Keil</vendor>
+  <url>http://www.keil.com/pack/</url>
+  <name>Kinetis_KVxx_DFP</name>
+  <description>Freescale Kinetis KVxx Series Device Support</description>
+
+  <releases>
+    <release version="1.6.0" date="2016-04-04">
+      Updated KV56F, KV58F Device Support. 
+    </release>
+    <release version="1.5.0" date="2015-09-30">
+      Updated KV4x Device Support 
+      - KV4x device names updated to reflect new maximum clock frequency of 168 MHz
+      Updated TWR-KV46F150M Blinky example.
+    </release>
+    <release version="1.4.0" date="2015-07-31">
+      Updated Device Support now support KV1x, KV3x, KV4x and KV5x subfamilies
+      Added TWR-KV11Z75M Blinky example.
+      Updated KV11 Flash Algorithms (2KB sector).
+    </release>
+    <release version="1.3.0" date="2014-10-06">
+      Added KV4x sub-family CMSIS Core and CMSIS SVD files.
+      SRAM ranges corrected.
+    </release>
+    <release version="1.2.0" date="2014-06-24">
+      Updated KV3x sub-family CMSIS Core and CMSIS SVD files.
+    </release>
+    <release version="1.1.0" date="2014-06-12">
+      Added KV3x sub-family devices.
+      Added TWR-KV10Z32 board description.
+    </release>
+   <release version="1.0.0">
+      First Release version of KVxx Device Family Pack.
+    </release>
+  </releases>
+
+  <keywords>
+  <!-- keywords for indexing -->
+    <keyword>Freescale</keyword>
+    <keyword>Device Support</keyword>
+    <keyword>Device Family Package Freescale</keyword>
+    <keyword>KVxx</keyword>
+  </keywords>
+
+  <devices>
+    <family Dfamily="KVxx Series" Dvendor="Freescale:78">
+
+      <!-- ******************************  KV1x  ****************************** -->
+      <subFamily DsubFamily="KV1x">
+        <processor Dcore="Cortex-M0+" DcoreVersion="r0p0"/>
+        <book name="Documents/dui0662a_cortex_m0p_r0p0_dgug.pdf" title="Cortex-M0+ Generic User Guide"/>
+        <description>
+The Kinetis KV1x family is the entry point of the V Series.
+Built upon the ARM Cortex-M0+ core running at 75 MHz with hardware square root and divide capability, it delivers a 35% increase in performance in math-intensive applications versus comparable MCUs, allowing it to target BLDC as well as more computationally demanding PMSM motors.
+Additional features include integrated FlexCAN, dual 16-bit analog-to-digital controllers (ADCs) sampling at up to 1.2 mega samples per second (MS/s) in 12-bit mode, multiple motor control timers, up to 128 KB of flash memory and a comprehensive enablement suite from Freescale and third-party resources, including reference designs, software libraries and motor configuration tools. 
+        </description>
+
+        <!-- ******************************  MKV10Z16xxx7  ****************************** -->
+        <device Dname="MKV10Z16xxx7">
+          <processor Dfpu="0" Dmpu="0" Dendian="Little-endian" Dclock="75000000"/>
+          <compile header="Device/Include/MKV10Z7.h"  define="MKV10Z16xxx7"/>
+          <debug svd="SVD/MKV10Z7.svd"/>
+          <memory id="IROM1"                          start="0x00000000" size="0x4000" startup="1" default="1"/>
+          <memory id="IRAM1"                          start="0x1FFFF800" size="0x2000" init   ="0" default="1"/>
+          <algorithm name="Flash/MKV_P16_1KB_SEC.FLM" start="0x00000000" size="0x4000" RAMstart="0x20000000" RAMsize="0x0800" default="1"/>
+
+          <book name="Documents/KV10P48M75RM.pdf" title="MKV10Z16xxx7 Reference Manual"/>
+          <book name="Documents/KV10P48M75.pdf"   title="MKV10Z16xxx7 Data Sheet"/>
+        </device>
+
+        <!-- ******************************  MKV10Z32xxx7  ****************************** -->
+        <device Dname="MKV10Z32xxx7">
+          <processor Dfpu="0" Dmpu="0" Dendian="Little-endian" Dclock="75000000"/>
+          <compile header="Device/Include/MKV10Z7.h"  define="MKV10Z32xxx7"/>
+          <debug svd="SVD/MKV10Z7.svd"/>
+          <memory id="IROM1"                          start="0x00000000" size="0x8000" startup="1" default="1"/>
+          <memory id="IRAM1"                          start="0x1FFFF800" size="0x2000" init   ="0" default="1"/>
+          <algorithm name="Flash/MKV_P32_1KB_SEC.FLM" start="0x00000000" size="0x8000" RAMstart="0x20000000" RAMsize="0x0800" default="1"/>
+
+          <book name="Documents/KV10P48M75RM.pdf" title="MKV10Z32xxx7 Reference Manual"/>
+          <book name="Documents/KV10P48M75.pdf"   title="MKV10Z32xxx7 Data Sheet"/>
+        </device>
+
+        <!-- ******************************  MKV10Z64xxx7  ****************************** -->
+        <device Dname="MKV10Z64xxx7">
+          <processor Dfpu="0" Dmpu="0" Dendian="Little-endian" Dclock="75000000"/>
+          <compile header="Device/Include/MKV10Z1287.h"  define="MKV10Z64xxx7"/>
+          <debug svd="SVD/MKV10Z1287.svd"/>
+          <memory id="IROM1"                          start="0x00000000" size="0x10000" startup="1" default="1"/>
+          <memory id="IRAM1"                          start="0x1FFFF000" size="0x4000"  init   ="0" default="1"/>
+          <algorithm name="Flash/MKV_P64_2KB_SEC.FLM" start="0x00000000" size="0x10000" RAMstart="0x20000000" RAMsize="0x1000" default="1"/>
+
+          <book name="Documents/KV11P64M75RM.pdf" title="MKV10Z64xxx7 Reference Manual"/>
+          <book name="Documents/KV11P64M75.pdf"   title="MKV10Z64xxx7 Data Sheet"/>
+        </device>
+
+        <!-- ******************************  MKV10Z128xxx7  ****************************** -->
+        <device Dname="MKV10Z128xxx7">
+          <processor Dfpu="0" Dmpu="0" Dendian="Little-endian" Dclock="75000000"/>
+          <compile header="Device/Include/MKV10Z1287.h"  define="MKV10Z128xxx7"/>
+          <debug svd="SVD/MKV10Z1287.svd"/>
+          <memory id="IROM1"                           start="0x00000000" size="0x20000" startup="1" default="1"/>
+          <memory id="IRAM1"                           start="0x1FFFF000" size="0x4000"  init   ="0" default="1"/>
+          <algorithm name="Flash/MKV_P128_2KB_SEC.FLM" start="0x00000000" size="0x20000" RAMstart="0x20000000" RAMsize="0x1000" default="1"/>
+
+          <book name="Documents/KV11P64M75RM.pdf" title="MKV10Z128xxx7 Reference Manual"/>
+          <book name="Documents/KV11P64M75.pdf"   title="MKV10Z128xxx7 Data Sheet"/>
+        </device>
+
+        <!-- ******************************  MKV11Z64xxx7  ****************************** -->
+        <device Dname="MKV11Z64xxx7">
+          <processor Dfpu="0" Dmpu="0" Dendian="Little-endian" Dclock="75000000"/>
+          <compile header="Device/Include/MKV11Z7.h"  define="MKV11Z64xxx7"/>
+          <debug svd="SVD/MKV11Z7.svd"/>
+          <memory id="IROM1"                          start="0x00000000" size="0x10000" startup="1" default="1"/>
+          <memory id="IRAM1"                          start="0x1FFFF000" size="0x4000"  init   ="0" default="1"/>
+          <algorithm name="Flash/MKV_P64_2KB_SEC.FLM" start="0x00000000" size="0x10000" RAMstart="0x20000000" RAMsize="0x1000" default="1"/>
+          <book name="Documents/KV11P64M75RM.pdf" title="MKV11Z64xxx7 Reference Manual"/>
+          <book name="Documents/KV11P64M75.pdf"   title="MKV11Z64xxx7 Data Sheet"/>
+        </device>
+
+        <!-- ******************************  MKV11Z128xxx7  ****************************** -->
+        <device Dname="MKV11Z128xxx7">
+          <processor Dfpu="0" Dmpu="0" Dendian="Little-endian" Dclock="75000000"/>
+          <compile header="Device/Include/MKV11Z7.h"  define="MKV11Z128xxx7"/>
+          <debug svd="SVD/MKV11Z7.svd"/>
+          <memory id="IROM1"                           start="0x00000000" size="0x20000" startup="1" default="1"/>
+          <memory id="IRAM1"                           start="0x1FFFF000" size="0x4000"  init   ="0" default="1"/>
+          <algorithm name="Flash/MKV_P128_2KB_SEC.FLM" start="0x00000000" size="0x20000" RAMstart="0x20000000" RAMsize="0x1000" default="1"/>
+
+          <book name="Documents/KV11P64M75RM.pdf" title="MKV11Z128xxx7 Reference Manual"/>
+          <book name="Documents/KV11P64M75.pdf"   title="MKV11Z128xxx7 Data Sheet"/>
+        </device>
+      </subFamily>
+
+      <!-- ******************************  KV3x  ****************************** -->
+      <subFamily DsubFamily="KV3x">
+        <processor Dcore="Cortex-M4" DcoreVersion="r0p1"/>
+        <book name="Documents/dui0553a_cortex_m4_dgug.pdf" title="Cortex-M4 Generic User Guide"/>
+        <description>
+The Kinetis KV3x family of MCUs is a high-performance solution for BLDC, PMSM and ACIM motor control applications.
+Built upon the ARM Cortex-M4 core running at 100/120 MHz with DSP and floating point unit, it features dual 16-bit analog-to-digital converters (ADCs) sampling at up to 1.2 mega samples per second (MSPS), multiple motor control timers, 64 to 512 KB of flash memory and a comprehensive enablement suite from Freescale and its third-party resources including reference designs, software libraries and motor configuration tools.
+        </description>
+
+        <!-- ******************************  MKV30F64xxx10   ******************** -->
+        <device Dname="MKV30F64xxx10">
+          <processor Dfpu="1" Dmpu="0" Dendian="Little-endian" Dclock="100000000"/>
+          <compile header="Device/Include/MKV30F12810.h"  define="MKV30F64xxx10"/>
+          <debug svd="SVD/MKV30F12810.svd"/>
+          <memory id="IROM1"                 start="0x00000000" size="0x10000" startup="1" default="1"/>
+          <memory id="IRAM1"                 start="0x1FFFE000" size="0x4000"  init   ="0" default="1"/>
+          <algorithm name="Flash/MK_P64.FLM" start="0x00000000" size="0x10000" RAMstart="0x20000000" RAMsize="0x0800" default="1"/>
+
+          <book name="Documents/KV30P64M100SFARM.pdf" title="MKV30F64xxx10 Reference Manual"/>
+          <book name="Documents/KV30P64M100SFA.pdf"   title="MKV30F64xxx10 Data Sheet"/>
+        </device>
+
+        <!-- ******************************  MKV30F128xxx10  ******************** -->
+        <device Dname="MKV30F128xxx10">
+          <processor Dfpu="1" Dmpu="0" Dendian="Little-endian" Dclock="100000000"/>
+          <compile header="Device/Include/MKV30F12810.h"  define="MKV30F128xxx10"/>
+          <debug svd="SVD/MKV30F12810.svd"/>
+          <memory id="IROM1"                  start="0x00000000" size="0x20000" startup="1" default="1"/>
+          <memory id="IRAM1"                  start="0x1FFFE000" size="0x4000"  init   ="0" default="1"/>
+          <algorithm name="Flash/MK_P128.FLM" start="0x00000000" size="0x20000" RAMstart="0x20000000" RAMsize="0x0800" default="1"/>
+
+          <book name="Documents/KV30P64M100SFARM.pdf" title="MKV30F128xxx10 Reference Manual"/>
+          <book name="Documents/KV30P64M100SFA.pdf"   title="MKV30F128xxx10 Data Sheet"/>
+        </device>
+
+        <!-- ******************************  MKV31F128xxx10 ********************* -->
+        <device Dname="MKV31F128xxx10">
+          <processor Dfpu="1" Dmpu="0" Dendian="Little-endian" Dclock="100000000"/>
+          <compile header="Device/Include/MKV31F12810.h"  define="MKV31F128xxx10"/>
+          <debug svd="SVD/MKV31F12810.svd"/>
+          <memory id="IROM1"                  start="0x00000000" size="0x20000" startup="1" default="1"/>
+          <memory id="IRAM1"                  start="0x1FFFE000" size="0x6000"  init   ="0" default="1"/>
+          <algorithm name="Flash/MK_P128.FLM" start="0x00000000" size="0x20000" RAMstart="0x20000000" RAMsize="0x0800" default="1"/>
+
+          <book name="Documents/KV31P100M100SF9RM.pdf" title="MKV31F128xxx10 Reference Manual"/>
+          <book name="Documents/KV31P100M100SF9.pdf"   title="MKV31F128xxx10 Data Sheet"/>
+        </device>
+
+        <!-- ******************************  MKV31F256xxx12 ********************* -->
+        <device Dname="MKV31F256xxx12">
+          <processor Dfpu="1" Dmpu="0" Dendian="Little-endian" Dclock="120000000"/>
+          <compile header="Device/Include/MKV31F25612.h"  define="MKV31F256xxx12"/>
+          <debug svd="SVD/MKV31F25612.svd"/>
+          <memory id="IROM1"                  start="0x00000000" size="0x40000" startup="1" default="1"/>
+          <memory id="IRAM1"                  start="0x1FFFC000" size="0xC000"  init   ="0" default="1"/>
+          <algorithm name="Flash/MK_P256.FLM" start="0x00000000" size="0x40000" RAMstart="0x20000000" RAMsize="0x0800" default="1"/>
+
+          <book name="Documents/KV31P100M120SF8RM.pdf" title="MKV31F256xxx12 Reference Manual"/>
+          <book name="Documents/KV31P100M120SF8.pdf"   title="MKV31F256xxx12 Data Sheet"/>
+        </device>
+
+        <!-- ******************************  MKV31F512xxx12 ********************* -->
+        <device Dname="MKV31F512xxx12">
+          <processor Dfpu="1" Dmpu="0" Dendian="Little-endian" Dclock="120000000"/>
+          <compile header="Device/Include/MKV31F51212.h"  define="MKV31F512xxx12"/>
+          <debug svd="SVD/MKV31F51212.svd"/>
+          <memory id="IROM1"                  start="0x00000000" size="0x80000" startup="1" default="1"/>
+          <memory id="IRAM1"                  start="0x1FFF8000" size="0x18000" init   ="0" default="1"/>
+          <algorithm name="Flash/MK_P512.FLM" start="0x00000000" size="0x80000" RAMstart="0x20000000" RAMsize="0x0800" default="1"/>
+
+          <book name="Documents/KV31P100M120SF7RM.pdf" title="MKV31F512xxx12 Reference Manual"/>
+          <book name="Documents/KV31P100M120SF7.pdf"   title="MKV31F512xxx12 Data Sheet"/>
+        </device>
+      </subFamily>
+
+      <!-- ******************************  KV4x  ****************************** -->
+      <subFamily DsubFamily="KV4x">
+        <processor Dcore="Cortex-M4" DcoreVersion="r0p1"/>
+        <book name="Documents/dui0553a_cortex_m4_dgug.pdf" title="Cortex-M4 Generic User Guide"/>
+        <description>
+The Kinetis KV4x family of MCUs is a high-performance solution for offering exceptional precision, sensing and control for the some of the most demanding applications in motor and power control.
+Built upon the ARM Cortex-M4 core running at 168 MHz with DSP and floating point unit, it features dual 12-bit analog-to-digital converters (ADCs) with 240 ns conversion time, eFlexPWM module with 312ps resolution and NanoEdge support, up to 30 PWM channels for support of multi-motor systems and dual FlexCAN modules.
+The Kinetis KV4x family is supported by a comprehensive enablement suite from Freescale and third-party resources including reference designs, software libraries and motor configuration tools.
+        </description>
+
+        <!-- ******************************  MKV42F64xxx16  ******************** -->
+        <device Dname="MKV42F64xxx16">
+          <processor Dfpu="1" Dmpu="0" Dendian="Little-endian" Dclock="168000000"/>
+          <compile header="Device/Include/MKV42F16.h" define="MKV42F64xxx16"/>
+          <debug svd="SVD/MKV42F16.svd"/>
+          <memory id="IROM1"                            start="0x00000000" size="0x00010000" default="1" startup="1"/>
+          <memory id="IRAM1"                            start="0x1FFFE000" size="0x00004000" default="1" init   ="0"/>
+          <algorithm name="Flash/MKP64_4KB_SECTOR.FLM"  start="0x00000000" size="0x00010000" default="1" RAMstart="0x20000000" RAMsize="0x1000"/>
+        </device>
+
+        <!-- ******************************  MKV42F128xxx16  ******************** -->
+        <device Dname="MKV42F128xxx16">
+          <processor Dfpu="1" Dmpu="0" Dendian="Little-endian" Dclock="168000000"/>
+          <compile header="Device/Include/MKV42F16.h" define="MKV42F128xxx16"/>
+          <debug svd="SVD/MKV42F16.svd"/>
+          <memory id="IROM1"                            start="0x00000000" size="0x00020000" default="1" startup="1"/>
+          <memory id="IRAM1"                            start="0x1FFFE000" size="0x00006000" default="1" init   ="0"/>
+          <algorithm name="Flash/MKP128_4KB_SECTOR.FLM" start="0x00000000" size="0x00020000" default="1" RAMstart="0x20000000" RAMsize="0x1000"/>
+        </device>
+
+        <!-- ******************************  MKV42F256xxx16  ******************** -->
+        <device Dname="MKV42F256xxx16">
+          <processor Dfpu="1" Dmpu="0" Dendian="Little-endian" Dclock="168000000"/>
+          <compile header="Device/Include/MKV42F16.h" define="MKV42F256xxx16"/>
+          <debug svd="SVD/MKV42F16.svd"/>
+          <memory id="IROM1"                            start="0x00000000" size="0x00040000" default="1" startup="1"/>
+          <memory id="IRAM1"                            start="0x1FFFC000" size="0x00008000" default="1" init   ="0"/>
+          <algorithm name="Flash/MKP256_4KB_SECTOR.FLM" start="0x00000000" size="0x00040000" default="1" RAMstart="0x20000000" RAMsize="0x1000"/>
+        </device>
+
+        <!-- ******************************  MKV44F64xxx16  ******************** -->
+        <device Dname="MKV44F64xxx16">
+          <processor Dfpu="1" Dmpu="0" Dendian="Little-endian" Dclock="168000000"/>
+          <compile header="Device/Include/MKV44F16.h" define="MKV44F64xxx16"/>
+          <debug svd="SVD/MKV44F16.svd"/>
+          <memory id="IROM1"                            start="0x00000000" size="0x00010000" default="1" startup="1"/>
+          <memory id="IRAM1"                            start="0x1FFFE000" size="0x00004000" default="1" init   ="0"/>
+          <algorithm name="Flash/MKP64_4KB_SECTOR.FLM"  start="0x00000000" size="0x00010000" default="1" RAMstart="0x20000000" RAMsize="0x1000"/>
+        </device>
+
+        <!-- ******************************  MKV44F128xxx16  ******************** -->
+        <device Dname="MKV44F128xxx16">
+          <processor Dfpu="1" Dmpu="0" Dendian="Little-endian" Dclock="168000000"/>
+          <compile header="Device/Include/MKV44F16.h" define="MKV44F128xxx16"/>
+          <debug svd="SVD/MKV44F16.svd"/>
+          <memory id="IROM1"                             start="0x00000000" size="0x00020000" default="1" startup="1"/>
+          <memory id="IRAM1"                             start="0x1FFFE000" size="0x00006000" default="1" init   ="0"/>
+          <algorithm  name="Flash/MKP128_4KB_SECTOR.FLM" start="0x00000000" size="0x00020000" default="1" RAMstart="0x20000000" RAMsize="0x1000"/>
+        </device>
+
+        <!-- ******************************  MKV44F256xxx16  ******************** -->
+        <device Dname="MKV44F256xxx16">
+          <processor Dfpu="1" Dmpu="0" Dendian="Little-endian" Dclock="168000000"/>
+          <compile header="Device/Include/MKV44F16.h" define="MKV44F256xxx16"/>
+          <debug svd="SVD/MKV44F16.svd"/>
+          <memory id="IROM1"                            start="0x00000000" size="0x00040000" default="1" startup="1"/>
+          <memory id="IRAM1"                            start="0x1FFFC000" size="0x00008000" default="1" init   ="0"/>
+          <algorithm name="Flash/MKP256_4KB_SECTOR.FLM" start="0x00000000" size="0x00040000" default="1" RAMstart="0x20000000" RAMsize="0x1000"/>
+        </device>
+
+        <!-- ******************************  MKV46F128xxx16  ******************** -->
+        <device Dname="MKV46F128xxx16">
+          <processor Dfpu="1" Dmpu="0" Dendian="Little-endian" Dclock="168000000"/>
+          <compile header="Device/Include/MKV46F16.h" define="MKV46F128xxx16"/>
+          <debug svd="SVD/MKV46F16.svd"/>
+          <memory id="IROM1"                            start="0x00000000" size="0x00020000" default="1" startup="1"/>
+          <memory id="IRAM1"                            start="0x1FFFE000" size="0x00006000" default="1" init   ="0"/>
+          <algorithm name="Flash/MKP128_4KB_SECTOR.FLM" start="0x00000000" size="0x00020000" default="1" RAMstart="0x20000000" RAMsize="0x1000"/>
+        </device>
+
+        <!-- ******************************  MKV46F256xxx16  ******************** -->
+        <device Dname="MKV46F256xxx16">
+          <processor Dfpu="1" Dmpu="0" Dendian="Little-endian" Dclock="168000000"/>
+          <compile header="Device/Include/MKV46F16.h"  define="MKV46F256xxx16"/>
+          <debug svd="SVD/MKV46F16.svd"/>
+          <memory id="IROM1"                            start="0x00000000" size="0x00040000" default="1" startup="1"/>
+          <memory id="IRAM1"                            start="0x1FFFC000" size="0x00008000" default="1" init   ="0"/>
+          <algorithm name="Flash/MKP256_4KB_SECTOR.FLM" start="0x00000000" size="0x00040000" default="1" RAMstart="0x20000000" RAMsize="0x1000"/>
+        </device>
+      </subFamily>
+
+      <!-- ******************************  KV5x  ****************************** -->
+      <subFamily DsubFamily="KV5x">
+        <processor Dcore="Cortex-M7" DcoreVersion="r0p0"/>
+        <book name="Documents/DUI0646A_cortex_m7_dgug.pdf" title="Cortex-M7 Generic User Guide"/>
+        <description>
+The Kinetis KV5x family of MCU is a high-performance solution offering exceptional precision, sensing and control targeting Industrial Motor Control, Industrial Drives and Automation and Power Conversion applications.
+Built upon the ARM Cortex-M7 core running at 240 MHz with single precision floating point unit.
+It features high resolution pulse-width modulation (PWM) with 312 picosecond resolution, 4x 12-bit analog-to-digital converters (ADCs) sampling at 5 mega samples per second (MS/s), 3 FlexCAN modules, optional Ethernet Communications and comprehensive enablement suite from Freescale and third-party resources including reference designs, software libraries and motor configuration tools.
+        </description>
+
+        <!-- ******************************  MKV56F512xxx24  ******************** -->
+        <device Dname="MKV56F512xxx24">
+          <processor Dfpu="SP_FPU" Dmpu="0" Dendian="Little-endian" Dclock="240000000"/>
+          <compile header="Device/Include/MKV56F24.h"  define="MKV56F512xxx24"/>
+          <debug svd="SVD/MKV56F24.svd"/>
+          <memory id="IROM1"                            start="0x10000000" size="0x00080000" startup="1" default="1"/>
+          <memory id="IRAM1"                            start="0x20000000" size="0x00010000" init   ="0" default="1"/>
+          <algorithm name="Flash/MKV_P512_8KB_SEC.FLM"  start="0x10000000" size="0x00080000"             default="1"/>
+        </device>
+
+        <!-- ******************************  MKV56F1M0xxx24  ******************** -->
+        <device Dname="MKV56F1M0xxx24">
+          <processor Dfpu="SP_FPU" Dmpu="0" Dendian="Little-endian" Dclock="240000000"/>
+          <compile header="Device/Include/MKV56F24.h"  define="MKV56F1M0xxx24"/>
+          <debug svd="SVD/MKV56F24.svd"/>
+          <memory id="IROM1"                            start="0x10000000" size="0x00100000" startup="1" default="1"/>
+          <memory id="IRAM1"                            start="0x20000000" size="0x00020000" init   ="0" default="1"/>
+          <memory id="IRAM2"                            start="0x2F000000" size="0x00010000" init   ="0" default="1"/>
+          <algorithm name="Flash/MKV_P1024_8KB_SEC.FLM" start="0x10000000" size="0x00080000"             default="1"/>
+        </device>
+
+        <!-- ******************************  MKV58F512xxx24  ******************** -->
+        <device Dname="MKV58F512xxx24">
+          <processor Dfpu="SP_FPU" Dmpu="0" Dendian="Little-endian" Dclock="240000000"/>
+          <compile header="Device/Include/MKV58F24.h"  define="MKV58F512xxx24"/>
+          <debug svd="SVD/MKV58F24.svd"/>
+          <memory id="IROM1"                            start="0x10000000" size="0x00080000" startup="1" default="1"/>
+          <memory id="IRAM1"                            start="0x20000000" size="0x00010000" init   ="0" default="1"/>
+          <algorithm name="Flash/MKV_P512_8KB_SEC.FLM"  start="0x10000000" size="0x00080000"             default="1"/>
+        </device>
+
+        <!-- ******************************  MKV58F1M0xxx24  ******************** -->
+        <device Dname="MKV58F1M0xxx24">
+          <processor Dfpu="SP_FPU" Dmpu="0" Dendian="Little-endian" Dclock="240000000"/>
+          <compile header="Device/Include/MKV58F24.h"  define="MKV58F1M0xxx24"/>
+          <debug svd="SVD/MKV58F24.svd"/>
+          <memory id="IROM1"                            start="0x10000000" size="0x00100000" startup="1" default="1"/>
+          <memory id="IRAM1"                            start="0x20000000" size="0x00020000" init   ="0" default="1"/>
+          <memory id="IRAM2"                            start="0x2F000000" size="0x00010000" init   ="0" default="1"/>
+          <algorithm name="Flash/MKV_P1024_8KB_SEC.FLM" start="0x10000000" size="0x00080000"             default="1"/>
+        </device>
+      </subFamily>
+
+    </family>
+  </devices>
+
+  <conditions>
+    <!-- Compiler Conditions -->
+    <condition id="Compiler ARMCC">
+      <require Tcompiler="ARMCC"/>
+    </condition>
+
+    <!-- Device + CMSIS Conditions -->
+    <condition id="KV10Z7 CMSIS">
+      <description>Freescale Kinetis KV10 75MHz devices and CMSIS-CORE</description>
+      <require Cclass="CMSIS" Cgroup="CORE"/>
+      <require Dvendor="Freescale:78"/>
+      <accept Dname="MKV10Z16xxx7"/>
+      <accept Dname="MKV10Z32xxx7"/>
+    </condition>
+
+    <condition id="MKV10Z1287 CMSIS">
+      <description>Freescale Kinetis KV10 64/128 KB 75MHz devices and CMSIS-CORE</description>
+      <require Cclass="CMSIS" Cgroup="CORE"/>
+      <require Dvendor="Freescale:78"/>
+      <accept Dname="MKV10Z64xxx7"/>
+      <accept Dname="MKV10Z128xxx7"/>
+    </condition>
+
+    <condition id="MKV11Z7 CMSIS">
+      <description>Freescale Kinetis KV11 75MHz devices and CMSIS-CORE</description>
+      <require Cclass="CMSIS" Cgroup="CORE"/>
+      <require Dvendor="Freescale:78"/>
+      <accept Dname="MKV11Z64xxx7"/>
+      <accept Dname="MKV11Z128xxx7"/>
+    </condition>
+
+    <condition id="KV30F10 CMSIS">
+      <description>Freescale Kinetis KV30 100MHz devices and CMSIS-CORE</description>
+      <require Cclass="CMSIS" Cgroup="CORE"/>
+      <require Dvendor="Freescale:78"/>
+      <accept Dname="MKV30F128xxx10"/>
+      <accept Dname="MKV30F64xxx10"/>
+    </condition>
+
+    <condition id="KV31F10 CMSIS">
+      <description>Freescale Kinetis KV31 100MHz devices and CMSIS-CORE</description>
+      <require Cclass="CMSIS" Cgroup="CORE"/>
+      <require Dvendor="Freescale:78"/>
+      <accept Dname="MKV31F128xxx10"/>
+    </condition>
+
+    <condition id="KV31F25612 CMSIS">
+      <description>Freescale Kinetis KV31 256 KB 120MHz devices and CMSIS-CORE</description>
+      <require Cclass="CMSIS" Cgroup="CORE"/>
+      <require Dvendor="Freescale:78"/>
+      <accept Dname="MKV31F256xxx12"/>
+    </condition>
+
+    <condition id="KV31F51212 CMSIS">
+      <description>Freescale Kinetis KV31 512 KB 120MHz devices and CMSIS-CORE</description>
+      <require Cclass="CMSIS" Cgroup="CORE"/>
+      <require Dvendor="Freescale:78"/>
+      <accept Dname="MKV31F512xxx12"/>
+    </condition>
+
+    <condition id="KV42F16 CMSIS">
+      <description>Freescale Kinetis KV42 168MHz devices and CMSIS-CORE</description>
+      <require Cclass="CMSIS" Cgroup="CORE"/>
+      <require Dvendor="Freescale:78"/>
+      <accept Dname="MKV42F64xxx16"/>
+      <accept Dname="MKV42F128xxx16"/>
+      <accept Dname="MKV42F256xxx16"/>
+    </condition>
+
+    <condition id="KV44F16 CMSIS">
+      <description>Freescale Kinetis KV44 168MHz devices and CMSIS-CORE</description>
+      <require Cclass="CMSIS" Cgroup="CORE"/>
+      <require Dvendor="Freescale:78"/>
+      <accept Dname="MKV44F64xxx16"/>
+      <accept Dname="MKV44F128xxx16"/>
+      <accept Dname="MKV44F256xxx16"/>
+    </condition>
+
+    <condition id="KV46F16 CMSIS">
+      <description>Freescale Kinetis KV46 168MHz devices and CMSIS-CORE</description>
+      <require Cclass="CMSIS" Cgroup="CORE"/>
+      <require Dvendor="Freescale:78"/>
+      <accept Dname="MKV46F128xxx16"/>
+      <accept Dname="MKV46F256xxx16"/>
+    </condition>
+
+    <condition id="KV56F22 CMSIS">
+      <description>Freescale Kinetis KV56 220MHz devices and CMSIS-CORE</description>
+      <require Cclass="CMSIS" Cgroup="CORE"/>
+      <require Dvendor="Freescale:78"/>
+      <accept Dname="MKV56F512xxx24"/>
+      <accept Dname="MKV56F1M0xxx24"/>
+    </condition>
+
+    <condition id="KV58F22 CMSIS">
+      <description>Freescale Kinetis KV58 220MHz devices and CMSIS-CORE</description>
+      <require Cclass="CMSIS" Cgroup="CORE"/>
+      <require Dvendor="Freescale:78"/>
+      <accept Dname="MKV58F512xxx24"/>
+      <accept Dname="MKV58F1M0xxx24"/>
+    </condition>
+  </conditions>
+
+  <components>
+    <!-- Startup KV10Z7 -->
+    <component Cclass="Device" Cgroup="Startup" Cversion="1.0.0" condition="KV10Z7 CMSIS">
+      <description>System Startup for Kinetis KV10 75MHz devices</description>
+      <files>
+        <!-- include folder -->
+        <file category="include" name="Device/Include/"/>
+        <!-- startup / system file -->
+        <file category="source" name="Device/Source/ARM/startup_MKV10Z7.s" attr="config" version="1.0.0" condition="Compiler ARMCC"/>
+        <file category="source" name="Device/Source/system_MKV10Z7.c"      attr="config" version="1.0.0"/>
+      </files>
+    </component>
+
+    <!-- Startup MKV10Z1287 -->
+    <component Cclass="Device" Cgroup="Startup" Cversion="1.0.0" condition="MKV10Z1287 CMSIS">
+      <description>System Startup for Kinetis KV10 64/128 KB 75MHz devices devices</description>
+      <files>
+        <!-- include folder -->
+        <file category="include" name="Device/Include/"/>
+        <!-- startup / system file -->
+        <file category="source" name="Device/Source/ARM/startup_MKV10Z1287.s" attr="config" version="1.0.0" condition="Compiler ARMCC"/>
+        <file category="source" name="Device/Source/system_MKV10Z1287.c"      attr="config" version="1.0.0"/>
+        <file category="header" name="Device/Source/system_MKV10Z1287.h"      attr="config" version="1.0.0"/>
+      </files>
+    </component>
+
+    <!-- Startup MKV11Z7 -->
+    <component Cclass="Device" Cgroup="Startup" Cversion="1.0.0" condition="MKV11Z7 CMSIS">
+      <description>System Startup for Kinetis KV11 75MHz devices devices</description>
+      <files>
+        <!-- include folder -->
+        <file category="include" name="Device/Include/"/>
+        <!-- startup / system file -->
+        <file category="source" name="Device/Source/ARM/startup_MKV11Z7.s" attr="config" version="1.0.0" condition="Compiler ARMCC"/>
+        <file category="source" name="Device/Source/system_MKV11Z7.c"      attr="config" version="1.0.0"/>
+        <file category="header" name="Device/Source/system_MKV11Z7.h"      attr="config" version="1.0.0"/>
+      </files>
+    </component>
+
+    <!-- Startup KV30F10 -->
+    <component Cclass="Device" Cgroup="Startup" Cversion="1.0.0" condition="KV30F10 CMSIS">
+      <description>System Startup for Kinetis KV30 100MHz devices devices</description>
+      <files>
+        <!-- include folder -->
+        <file category="include" name="Device/Include/"/>
+        <!-- startup / system file -->
+        <file category="source" name="Device/Source/ARM/startup_MKV30F12810.s" attr="config" version="1.0.0" condition="Compiler ARMCC"/>
+        <file category="source" name="Device/Source/system_MKV30F12810.c"      attr="config" version="1.0.0"/>
+        <file category="header" name="Device/Source/system_MKV30F12810.h"      attr="config" version="1.0.0"/>
+      </files>
+    </component>
+
+    <!-- Startup KV31F10 -->
+    <component Cclass="Device" Cgroup="Startup" Cversion="1.0.0" condition="KV31F10 CMSIS">
+      <description>System Startup for Kinetis KV31 100MHz devices devices</description>
+      <files>
+        <!-- include folder -->
+        <file category="include" name="Device/Include/"/>
+        <!-- startup / system file -->
+        <file category="source" name="Device/Source/ARM/startup_MKV31F12810.s" attr="config" version="1.0.0" condition="Compiler ARMCC"/>
+        <file category="source" name="Device/Source/system_MKV31F12810.c"      attr="config" version="1.0.0"/>
+        <file category="header" name="Device/Source/system_MKV31F12810.h"      attr="config" version="1.0.0"/>
+      </files>
+    </component>
+
+    <!-- Startup KV31F25612 -->
+    <component Cclass="Device" Cgroup="Startup" Cversion="1.0.0" condition="KV31F25612 CMSIS">
+      <description>System Startup for Kinetis KV31 256 KB 120MHz devices devices</description>
+      <files>
+        <!-- include folder -->
+        <file category="include" name="Device/Include/"/>
+        <!-- startup / system file -->
+        <file category="source" name="Device/Source/ARM/startup_MKV31F25612.s" attr="config" version="1.0.0" condition="Compiler ARMCC"/>
+        <file category="source" name="Device/Source/system_MKV31F25612.c"      attr="config" version="1.0.0"/>
+        <file category="header" name="Device/Source/system_MKV31F25612.h"      attr="config" version="1.0.0"/>
+      </files>
+    </component>
+
+    <!-- Startup KV31F51212 -->
+    <component Cclass="Device" Cgroup="Startup" Cversion="1.0.0" condition="KV31F51212 CMSIS">
+      <description>System Startup for Kinetis KV31 512 KB 120MHz devices devices</description>
+      <files>
+        <!-- include folder -->
+        <file category="include" name="Device/Include/"/>
+        <!-- startup / system file -->
+        <file category="source" name="Device/Source/ARM/startup_MKV31F51212.s" attr="config" version="1.0.0" condition="Compiler ARMCC"/>
+        <file category="source" name="Device/Source/system_MKV31F51212.c"      attr="config" version="1.0.0"/>
+      </files>
+    </component>
+
+    <!-- Startup KV42F16 -->
+    <component Cclass="Device" Cgroup="Startup" Cversion="1.0.0" condition="KV42F16 CMSIS">
+      <description>System Startup for Kinetis KV42 168MHz devices devices devices</description>
+      <files>
+        <!-- include folder -->
+        <file category="include" name="Device/Include/"/>
+        <!-- startup / system file -->
+        <file category="source" name="Device/Source/ARM/startup_MKV42F16.s" attr="config" version="1.0.0" condition="Compiler ARMCC"/>
+        <file category="source" name="Device/Source/system_MKV42F16.c"      attr="config" version="1.0.0"/>
+        <file category="header" name="Device/Source/system_MKV42F16.h"      attr="config" version="1.0.0"/>
+      </files>
+    </component>
+
+    <!-- Startup KV44F16 -->
+    <component Cclass="Device" Cgroup="Startup" Cversion="1.0.0" condition="KV44F16 CMSIS">
+      <description>System Startup for Kinetis KV44 168MHz devices devices devices</description>
+      <files>
+        <!-- include folder -->
+        <file category="include" name="Device/Include/"/>
+        <!-- startup / system file -->
+        <file category="source" name="Device/Source/ARM/startup_MKV44F16.s" attr="config" version="1.0.0" condition="Compiler ARMCC"/>
+        <file category="source" name="Device/Source/system_MKV44F16.c"      attr="config" version="1.0.0"/>
+        <file category="header" name="Device/Source/system_MKV44F16.h"      attr="config" version="1.0.0"/>
+      </files>
+    </component>
+
+    <!-- Startup KV46F16 -->
+    <component Cclass="Device" Cgroup="Startup" Cversion="1.0.0" condition="KV46F16 CMSIS">
+      <description>System Startup for Kinetis KV46 168MHz devices devices devices</description>
+      <files>
+        <!-- include folder -->
+        <file category="include" name="Device/Include/"/>
+        <!-- startup / system file -->
+        <file category="source" name="Device/Source/ARM/startup_MKV46F16.s" attr="config" version="1.0.0" condition="Compiler ARMCC"/>
+        <file category="source" name="Device/Source/system_MKV46F16.c"      attr="config" version="1.0.0"/>
+        <file category="header" name="Device/Source/system_MKV46F16.h"      attr="config" version="1.0.0"/>
+      </files>
+    </component>
+
+    <!-- Startup KV56F22 -->
+    <component Cclass="Device" Cgroup="Startup" Cversion="1.0.0" condition="KV56F22 CMSIS">
+      <description>System Startup for Kinetis KV56 220MHz devices devices devices</description>
+      <files>
+        <!-- include folder -->
+        <file category="include" name="Device/Include/"/>
+        <!-- startup / system file -->
+        <file category="source" name="Device/Source/ARM/startup_MKV56F24.s" attr="config" version="1.0.0" condition="Compiler ARMCC"/>
+        <file category="source" name="Device/Source/system_MKV56F24.c"      attr="config" version="1.0.0"/>
+        <file category="header" name="Device/Source/system_MKV56F24.h"      attr="config" version="1.0.0"/>
+      </files>
+    </component>
+
+    <!-- Startup KV58F22 -->
+    <component Cclass="Device" Cgroup="Startup" Cversion="1.0.0" condition="KV58F22 CMSIS">
+      <description>System Startup for Kinetis KV58 220MHz devices devices devices</description>
+      <files>
+        <!-- include folder -->
+        <file category="include" name="Device/Include/"/>
+        <!-- startup / system file -->
+        <file category="source" name="Device/Source/ARM/startup_MKV58F24.s" attr="config" version="1.0.0" condition="Compiler ARMCC"/>
+        <file category="source" name="Device/Source/system_MKV58F24.c"      attr="config" version="1.0.0"/>
+        <file category="header" name="Device/Source/system_MKV58F24.h"      attr="config" version="1.0.0"/>
+      </files>
+    </component>
+
+    <bundle Cbundle="TWR-KV11Z75M" Cclass="Board Support" Cversion="1.0.0">
+      <description>TWR-KV11Z75M Board Support</description>
+      <doc></doc>
+      <component Cgroup="Buttons" Capiversion="1.00" condition="MKV11Z7 CMSIS">
+      <description>Button driver for Freescale TWR-KV11Z75M board</description>
+        <files>
+          <file category="source" name="Boards/Freescale/TWR-KV11Z75M/Common/Buttons_TWR-KV11Z75M.c"/>
+        </files>
+      </component>
+      <component Cgroup="LED" Capiversion="1.00" condition="MKV11Z7 CMSIS">
+      <description>LED driver for Freescale TWR-KV11Z75M board</description>
+        <files>
+          <file category="source" name="Boards/Freescale/TWR-KV11Z75M/Common/LED_TWR-KV11Z75M.c"/>
+        </files>
+      </component>
+    </bundle>
+
+    <bundle Cbundle="TWR-KV46F150M" Cclass="Board Support" Cversion="1.0.0">
+      <description>TWR-KV46F150M Board Support</description>
+      <doc></doc>
+      <component Cgroup="Buttons" Capiversion="1.00" condition="KV46F16 CMSIS">
+      <description>Button driver for Freescale TWR-KV46F150M board</description>
+        <files>
+          <file category="source" name="Boards/Freescale/TWR-KV46F150M/Common/Buttons_TWR-KV46F150M.c"/>
+        </files>
+      </component>
+      <component Cgroup="LED" Capiversion="1.00" condition="KV46F16 CMSIS">
+      <description>LED driver for Freescale TWR-KV11Z75M board</description>
+        <files>
+          <file category="source" name="Boards/Freescale/TWR-KV46F150M/Common/LED_TWR-KV46F150M.c"/>
+        </files>
+      </component>
+    </bundle>
+  </components>
+
+  <boards>
+    <board name="TWR-KV10Z32" vendor="Freescale" revision="Rev. A" orderForm="http://www.freescale.com/webapp/sps/site/prod_summary.jsp?code=TWR-KV10Z32" salesContact="https://www.freescale.com/webapp/servicerequest.create_SR.framework">
+      <description>The TWR-KV10Z32 is a development tool for the Kinetis V series KV1x family built on the ARM® Cortex™-M0+ processor.</description>
+      <image small="Boards/Freescale/TWR-KV10Z32/Documents/TWR-KV10Z32_small.jpg"/>
+      <book category="overview"  name="http://www.freescale.com/webapp/sps/site/prod_summary.jsp?code=TWR-KV10Z32" title="TWR-KV10Z32 Web Page"/>
+      <book category="setup"     name="Boards/Freescale/TWR-KV10Z32/Documents/MKV10Z32QSG.pdf"     title="Quick Start Guide"/>
+      <book category="schematic" name="Boards/Freescale/TWR-KV10Z32/Documents/TWR-KV10Z32_SCH.pdf" title="Schematics"/>
+      <book category="manual"    name="Boards/Freescale/TWR-KV10Z32/Documents/TWRKV10Z32UG.pdf"    title="User Manual"/>
+      <mountedDevice    deviceIndex="0" Dvendor="Freescale:78" Dname="MKV10Z32xxx7"/>
+      <compatibleDevice deviceIndex="0" Dvendor="Freescale:78" DsubFamily="KV10"/>
+      <feature type="ODbg"      n="1"              name="Integrated open-source JTAG via USB"/>
+      <feature type="PWR"       n="5"              name="USB Powered"/>
+      <feature type="ConnOther" n="2"              name="Motor Control Auxiliary Connector"/>
+      <feature type="ConnOther" n="2"              name="Tower connectivity for access to USB, Ethernet, RS232/RS485, CAN, SPI, I²C, Flexbus, etc."/>
+      <feature type="Button"    n="2"/>
+      <feature type="Accelerometer" n="1"          name="Three axis accelerometer (MMA78451Q)"/>
+      <feature type="LED"       n="8"              name="Eight user-controlled LEDs with connected buffers to PWM channels for dimming"/>
+      <debugInterface adapter="JTAG/SW"   connector="10 pin Cortex debug (0.05 inch connector)"/>
+      <debugInterface adapter="CMSIS-DAP" connector="USB Mini-B"/>
+      <feature type="TowerFF"   n="1"/>
+    </board>
+
+    <board name="TWR-KV11Z75M" vendor="Freescale" revision="Rev. A" salesContact="https://www.freescale.com/webapp/servicerequest.create_SR.framework">
+      <description>TWR-KV11Z75M: Kinetis V Series Tower System Module.</description>
+      <image small="Boards/Freescale/TWR-KV11Z75M/Documents/TWR-KV11Z75M_small.jpg"
+             large="Boards/Freescale/TWR-KV11Z75M/Documents/TWR-KV11Z75M_large.jpg"/>
+      <book category="overview"  name="http://www.freescale.com/webapp/sps/site/prod_summary.jsp?code=TWR-KV11Z75M"  title="TWR-KV11Z75M: Kinetis V Series Tower System Module"/>
+      <book category="setup"     name="Boards/Freescale/TWR-KV11Z75M/Documents/TWRKV11Z75MQSG.pdf"   title="Quick Start Guide"/>
+      <book category="schematic" name="Boards/Freescale/TWR-KV11Z75M/Documents/TWR-KV11Z75M-SCH.pdf" title="Schematics"/>
+      <book category="manual"    name="Boards/Freescale/TWR-KV11Z75M/Documents/TWRKV11Z75MUG.pdf"    title="TWR-KV11Z75M Tower Module User Manual"/>
+      <mountedDevice    deviceIndex="0" Dvendor="Freescale:78" Dname="MKV11Z128xxx7"/>
+      <compatibleDevice deviceIndex="0" Dvendor="Freescale:78" DsubFamily="KV10"/>
+      <feature type="ODbg"      n="1"              name="Integrated open-source JTAG via USB"/>
+      <feature type="PWR"       n="5"              name="USB Powered"/>
+      <feature type="ConnOther" n="2"              name="Motor Control Auxiliary Connector"/>
+      <feature type="ConnOther" n="2"              name="Tower connectivity for access to USB, Ethernet, RS232/RS485, CAN, SPI, I²C, Flexbus, etc."/>
+      <feature type="Button"    n="2"/>
+      <feature type="Accelerometer" n="1"          name="Three axis accelerometer (MMA78451Q)"/>
+      <feature type="LED"       n="8"              name="Eight user-controlled LEDs with connected buffers to PWM channels for dimming"/>
+      <debugInterface adapter="JTAG/SW"   connector="10 pin Cortex debug (0.05 inch connector)"/>
+      <debugInterface adapter="CMSIS-DAP" connector="USB Mini-B"/>
+      <feature type="TowerFF"   n="1"/>
+    </board>
+
+    <board name="TWR-KV46F150M" vendor="Freescale" revision="Rev. A" salesContact="https://www.freescale.com/webapp/servicerequest.create_SR.framework">
+      <description>The TWR-KV46F150M is a development tool for the 168 MHz KV4x families of Kinetis microcontrollers.</description>
+      <image small="Boards/Freescale/TWR-KV46F150M/Documents/TWR-KV46F150M_small.jpg"
+             large="Boards/Freescale/TWR-KV46F150M/Documents/TWR-KV46F150M_large.jpg"/>
+      <book category="overview"  name="http://www.freescale.com/webapp/sps/site/prod_summary.jsp?code=TWR-KV46F150M"  title="TWR-KV46F150M: Kinetis KV4x Family Tower System Module"/>
+      <book category="setup"     name="Boards/Freescale/TWR-KV46F150M/Documents/TWR-KV46F150MQSG.pdf" title="TWR-KV46F150M Quick Start Guide for Motor Control"/>
+      <book category="schematic" name="Boards/Freescale/TWR-KV46F150M/Documents/TWRKV46F150M_SCH.pdf" title="TWR-KV46F150M Schematics"/>
+      <book category="manual"    name="Boards/Freescale/TWR-KV46F150M/Documents/TWRKV46F150MUG.pdf"   title="TWR-KV46F150M Tower Module User's Guide"/>
+      <mountedDevice     deviceIndex="0" Dvendor="Freescale:78" Dname="MKV46F256xxx16"/>
+      <compatibleDevice  deviceIndex="0" Dvendor="Freescale:78" Dfamily="KVxx Series"/>
+      <feature type="ODbg"      n="1"              name="OpenSDA debug circuit with Mini USB connector and virtual serial port"/>
+      <feature type="PWR"       n="5"              name="USB Powered"/>
+      <feature type="ConnOther" n="2"              name="Motor Control Auxiliary Connector"/>
+      <feature type="ConnOther" n="2"              name="Tower connectivity for access to USB, Ethernet, RS232/RS485, CAN, SPI, I²C, Flexbus, etc."/>
+      <feature type="Button"    n="2"/>
+      <feature type="LED"       n="9"              name="Eight user-controlled LEDs with connected buffers to PWM channels for dimming"/>
+      <feature type="CAN"       n="1"              name="FlexCAN interface"/>
+      <feature type="TempSens"  n="4"              name="Thermistors"/>
+      <debugInterface adapter="JTAG/SW"   connector="10 pin Cortex debug (0.05 inch connector)"/>
+      <debugInterface adapter="CMSIS-DAP" connector="USB Mini-B"/>
+      <feature type="TowerFF"   n="1"/>
+    </board>
+  </boards>
+
+  <examples>
+    <!-- TWR-KV10Z32 Development Board -->
+    <example name="Blinky" doc="Abstract.txt" folder="Boards/Freescale/TWR-KV10Z32/Blinky">
+      <description>Blinky example</description>
+      <board name="TWR-KV10Z32" vendor="Freescale" Dvendor="Freescale:78" Dname="MKV10Z32xxx7"/>
+      <project>
+        <environment name="uv" load="Blinky.uvprojx"/>
+      </project>
+      <attributes>
+        <component Cclass="CMSIS" Cgroup="CORE"/>
+        <component Cclass="Device" Cgroup="Startup"/>
+        <category>Getting Started</category>
+      </attributes>
+    </example>
+    <example name="CMSIS-RTOS Blinky" doc="Abstract.txt" folder="Boards/Freescale/TWR-KV10Z32/RTX_Blinky">
+      <description>CMSIS-RTOS based Blinky example</description>
+      <board name="TWR-KV10Z32" vendor="Freescale" Dvendor="Freescale:78" Dname="MKV10Z32xxx7"/>
+      <project>
+        <environment name="uv" load="Blinky.uvprojx"/>
+      </project>
+      <attributes>
+        <component Cclass="CMSIS" Cgroup="CORE"/>
+        <component Cclass="Device" Cgroup="Startup"/>
+        <component Cclass="CMSIS" Cgroup="RTOS"/>
+        <category>Getting Started</category>
+        <category>CMSIS-RTX</category>
+      </attributes>
+    </example>
+
+    <!-- TWR-KV11Z75M Tower Board -->
+    <example name="CMSIS-RTOS Blinky" doc="Abstract.txt" folder="Boards/Freescale/TWR-KV11Z75M/Blinky">
+      <description>CMSIS-RTOS based Blinky example</description>
+      <board name="TWR-KV11Z75M" vendor="Freescale" Dvendor="Freescale:78" Dname="MKV11Z128xxx7"/>
+      <project>
+        <environment name="uv" load="Blinky.uvprojx"/>
+      </project>
+      <attributes>
+        <component Cclass="CMSIS" Cgroup="CORE"/>
+        <component Cclass="Device" Cgroup="Startup"/>
+        <component Cclass="CMSIS" Cgroup="RTOS"/>
+        <category>Getting Started</category>
+        <category>CMSIS-RTX</category>
+      </attributes>
+    </example>
+
+    <!-- TWR-KV46F150M Development Board -->
+    <example name="CMSIS-RTOS Blinky" doc="Abstract.txt" folder="Boards/Freescale/TWR-KV46F150M/Blinky">
+      <description>CMSIS-RTOS based Blinky example</description>
+      <board name="TWR-KV46F150M" vendor="Freescale" Dvendor="Freescale:78" Dname="MKV46F256xxx16"/>
+      <project>
+        <environment name="uv" load="Blinky.uvprojx"/>
+      </project>
+      <attributes>
+        <component Cclass="CMSIS" Cgroup="CORE"/>
+        <component Cclass="Device" Cgroup="Startup"/>
+        <component Cclass="CMSIS" Cgroup="RTOS"/>
+        <category>Getting Started</category>
+        <category>CMSIS-RTX</category>
+      </attributes>
+    </example>
+  </examples>
+
+</package>

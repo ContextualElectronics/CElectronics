@@ -1,0 +1,1697 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<package schemaVersion="1.2" xmlns:xs="http://www.w3.org/2001/XMLSchema-instance" xs:noNamespaceSchemaLocation="PACK.xsd">
+  <vendor>Keil</vendor>
+  <url>http://www.keil.com/pack/</url>
+  <name>STM32L0xx_DFP</name>
+  <description>STMicroelectronics STM32L0 Series Device Support and Examples</description>
+
+  <releases>
+    <release version="1.5.0" date="2016-04-04">
+      Aligned devices with list of STM32Cube Firmware Library (V 1.5.0).
+      Corrected RAM1 according data sheets
+      Updated documentation
+      Updated SVD files fixing name of Bit9 of PWR Peripheral CR Register
+    </release>
+    <release version="1.4.0" date="2015-11-11">
+      Added subfamilies STM32L011/21, STM32L031/41, STM32L071/72/73, STM32L081/82/83.
+      Added Option Byte (OPT), EEPROM Flash Algorithm.
+      Updated STM32L0xx device support files.
+      Updated user manuals, datasheets.
+      Updated RTX Blinky examples.
+    </release>
+    <release version="1.3.0" date="2015-02-23">
+      Added Board Support for STM32L053-Discovery board.
+    </release>
+    <release version="1.2.0" date="2014-11-18">
+      Reworked STM32L0xx Flash Programming Algorithm to improve programming speed.
+    </release>
+    <release version="1.1.0" date="2014-09-30">
+      Added devices STM32L051T6, STM32L051T8, STM32L052T6, STM32L052T8.
+      Added SVD files.
+      Updated documentation.
+      Removed ST-Link Add-On installer from PACK
+    </release>
+    <release version="1.0.0">
+      First Release version of STM32L0 Device Family Pack.
+    </release>
+  </releases>
+
+  <devices>
+
+    <family Dfamily="STM32L0 Series" Dvendor="STMicroelectronics:13">
+      <processor Dcore="Cortex-M0+" DcoreVersion="r0p0" Dfpu="0" Dmpu="0" Dendian="Little-endian"/>
+      <book name="Documents/dui0662a_cortex_m0p_r0p0_dgug.pdf" title="Cortex-M0+ Generic User Guide"/>
+      <description>
+The STM32L0 devices provides high power efficiency for a wide range of performance. It is achieved with a large choice of internal and external clock sources, an internal voltage adaptation and several low-power modes.
+Typical applications include application control and user interfaces, handheld equipment, A/V receivers and digital TV, PC peripherals, gaming and GPS platforms, industrial applications, PLCs, inverters, printers, scanners, alarm systems, video intercoms, and HVACs
+
+  - CRC calculation unit, 96-bit unique ID
+  - USB 2.0 crystal-less, battery charging detection and LPM
+  - True RNG and firewall protection
+      </description>
+
+      <feature type="Other"         n="1"                           name="20-byte backup register"/>
+      <feature type="RNG"           n="1"                           name="True Random Number Generator"/>
+      <feature type="Other"         n="1"/>
+      <feature type="MemoryOther"   n="1"                           name="2048 Bytes EEPROM"/>
+      <feature type="DMA"           n="7"/>
+      <feature type="Timer"         n="5"       m="16"/>
+      <feature type="WDT"           n="2"/>
+      <feature type="RTC"           n="32768"/>
+      <feature type="USART"         n="3"       m="4000000"/>
+      <feature type="I2C"           n="2"/>
+      <feature type="Temp"          n="-40"     m="85"/>
+      <feature type="VCC"           n="1.65"    m="3.60"/>
+
+      <!-- ************************  Subfamily 'STM32L011'  **************************** -->
+      <subFamily DsubFamily="STM32L011">
+        <processor Dclock="32000000"/>
+        <compile header="Device/Include/stm32l0xx.h" define="STM32L011xx"/>
+        <debug svd="SVD/STM32L0x1.svd"/>
+        <algorithm name="Flash/STM32L01_2x_EEPROM.FLM" start="0x08080000" size="0x00000200" default="0"/>
+        <algorithm name="Flash/STM32L0xx_OPT.FLM"      start="0x1FF80000" size="0x00000014" default="0"/>
+
+        <book name="Documents/DM00108282.pdf" title="STM32L0x1 Reference Manual"/>
+        <book name="Documents/DM00206508.pdf" title="STM32L011xx Data Sheet"/>
+
+        <!-- *************************  Device 'STM32L011D3'  ***************************** -->
+        <device Dname="STM32L011D3">
+          <memory id="IROM1"                        start="0x08000000" size="0x00002000" startup="1" default="1"/>
+          <memory id="IRAM1"                        start="0x20000000" size="0x00000800" init   ="0" default="1"/>
+          <algorithm name="Flash/STM32L0xx_8.FLM"   start="0x08000000" size="0x00002000"             default="1"/>
+
+          <variant Dvariant="STM32L011D3Px"> <feature type="SOP" n="14"/> </variant>
+        </device>
+
+        <!-- *************************  Device 'STM32L011D4'  ***************************** -->
+        <device Dname="STM32L011D4">
+          <memory id="IROM1"                        start="0x08000000" size="0x00004000" startup="1" default="1"/>
+          <memory id="IRAM1"                        start="0x20000000" size="0x00000800" init   ="0" default="1"/>
+          <algorithm name="Flash/STM32L0xx_16.FLM"  start="0x08000000" size="0x00004000"             default="1"/>
+
+          <variant Dvariant="STM32L011D4Px"> <feature type="SOP" n="14"/> </variant>
+        </device>
+
+        <!-- *************************  Device 'STM32L011E3'  ***************************** -->
+        <!--device Dname="STM32L011E3">
+          <memory id="IROM1"                        start="0x08000000" size="0x00002000" startup="1" default="1"/>
+          <memory id="IRAM1"                        start="0x20000000" size="0x00000800" init   ="0" default="1"/>
+          <algorithm name="Flash/STM32L0xx_8.FLM"   start="0x08000000" size="0x00002000"             default="1"/>
+
+          <variant Dvariant="STM32L011E3Yx"> <feature type="CSP" n="25"/> </variant>
+        </device-->
+
+        <!-- *************************  Device 'STM32L011E4'  ***************************** -->
+        <device Dname="STM32L011E4">
+          <memory id="IROM1"                        start="0x08000000" size="0x00004000" startup="1" default="1"/>
+          <memory id="IRAM1"                        start="0x20000000" size="0x00000800" init   ="0" default="1"/>
+          <algorithm name="Flash/STM32L0xx_16.FLM"  start="0x08000000" size="0x00004000"             default="1"/>
+
+          <variant Dvariant="STM32L011E4Yx"> <feature type="CSP" n="25"/> </variant>
+        </device>
+
+        <!-- *************************  Device 'STM32L011F3'  ***************************** -->
+        <device Dname="STM32L011F3">
+          <memory id="IROM1"                        start="0x08000000" size="0x00002000" startup="1" default="1"/>
+          <memory id="IRAM1"                        start="0x20000000" size="0x00000800" init   ="0" default="1"/>
+          <algorithm name="Flash/STM32L0xx_8.FLM"   start="0x08000000" size="0x00002000"             default="1"/>
+
+          <variant Dvariant="STM32L011F3Px"> <feature type="SOP" n="20"/> </variant>
+          <variant Dvariant="STM32L011F3Ux"> <feature type="QFN" n="20"/> </variant>
+        </device>
+
+        <!-- *************************  Device 'STM32L011F4'  ***************************** -->
+        <device Dname="STM32L011F4">
+          <memory id="IROM1"                        start="0x08000000" size="0x00004000" startup="1" default="1"/>
+          <memory id="IRAM1"                        start="0x20000000" size="0x00000800" init   ="0" default="1"/>
+          <algorithm name="Flash/STM32L0xx_16.FLM"  start="0x08000000" size="0x00004000"             default="1"/>
+
+          <variant Dvariant="STM32L011F4Px"> <feature type="SOP" n="20"/> </variant>
+          <variant Dvariant="STM32L011F4Ux"> <feature type="QFN" n="20"/> </variant>
+        </device>
+
+        <!-- *************************  Device 'STM32L011G3'  ***************************** -->
+        <device Dname="STM32L011G3">
+          <memory id="IROM1"                        start="0x08000000" size="0x00002000" startup="1" default="1"/>
+          <memory id="IRAM1"                        start="0x20000000" size="0x00000800" init   ="0" default="1"/>
+          <algorithm name="Flash/STM32L0xx_8.FLM"   start="0x08000000" size="0x00002000"             default="1"/>
+
+          <variant Dvariant="STM32L011G3Ux"> <feature type="QFN" n="28"/> </variant>
+        </device>
+
+        <!-- *************************  Device 'STM32L011G4'  ***************************** -->
+        <device Dname="STM32L011G4">
+          <memory id="IROM1"                        start="0x08000000" size="0x00004000" startup="1" default="1"/>
+          <memory id="IRAM1"                        start="0x20000000" size="0x00000800" init   ="0" default="1"/>
+          <algorithm name="Flash/STM32L0xx_16.FLM"  start="0x08000000" size="0x00004000"             default="1"/>
+
+          <variant Dvariant="STM32L011G4Ux"> <feature type="QFN" n="28"/> </variant>
+        </device>
+
+        <!-- *************************  Device 'STM32L011K3'  ***************************** -->
+        <device Dname="STM32L011K3">
+          <memory id="IROM1"                        start="0x08000000" size="0x00002000" startup="1" default="1"/>
+          <memory id="IRAM1"                        start="0x20000000" size="0x00000800" init   ="0" default="1"/>
+          <algorithm name="Flash/STM32L0xx_8.FLM"   start="0x08000000" size="0x00002000"             default="1"/>
+
+          <variant Dvariant="STM32L011K3Tx"> <feature type="QFP" n="32"/> </variant>
+          <variant Dvariant="STM32L011K3Ux"> <feature type="QFN" n="32"/> </variant>
+        </device>
+
+        <!-- *************************  Device 'STM32L011K4'  ***************************** -->
+        <device Dname="STM32L011K4">
+          <memory id="IROM1"                        start="0x08000000" size="0x00004000" startup="1" default="1"/>
+          <memory id="IRAM1"                        start="0x20000000" size="0x00000800" init   ="0" default="1"/>
+          <algorithm name="Flash/STM32L0xx_16.FLM"  start="0x08000000" size="0x00004000"             default="1"/>
+
+          <variant Dvariant="STM32L011K4Tx"> <feature type="QFP" n="32"/> </variant>
+          <variant Dvariant="STM32L011K4Ux"> <feature type="QFN" n="32"/> </variant>
+        </device>
+      </subFamily>
+
+      <!-- ************************  Subfamily 'STM32L021'  **************************** -->
+      <subFamily DsubFamily="STM32L021">
+        <processor Dclock="32000000"/>
+        <compile header="Device/Include/stm32l0xx.h" define="STM32L021xx"/>
+        <debug svd="SVD/STM32L0x1.svd"/>
+        <algorithm name="Flash/STM32L01_2x_EEPROM.FLM" start="0x08080000" size="0x00000200" default="0"/>
+        <algorithm name="Flash/STM32L0xx_OPT.FLM"      start="0x1FF80000" size="0x00000014" default="0"/>
+
+        <book name="Documents/DM00108282.pdf" title="STM32L0x1 Reference Manual"/>
+        <book name="Documents/DM00206858.pdf" title="STM32L021xx Data Sheet"/>
+
+        <!-- *************************  Device 'STM32L021D4'  ***************************** -->
+        <device Dname="STM32L021D4">
+          <memory id="IROM1"                        start="0x08000000" size="0x00004000" startup="1" default="1"/>
+          <memory id="IRAM1"                        start="0x20000000" size="0x00000800" init   ="0" default="1"/>
+          <algorithm name="Flash/STM32L0xx_16.FLM"  start="0x08000000" size="0x00004000"             default="1"/>
+
+          <variant Dvariant="STM32L021D4Px"> <feature type="SOP" n="13"/> </variant>
+        </device>
+
+        <!-- *************************  Device 'STM32L021F4'  ***************************** -->
+        <device Dname="STM32L021F4">
+          <memory id="IROM1"                        start="0x08000000" size="0x00004000" startup="1" default="1"/>
+          <memory id="IRAM1"                        start="0x20000000" size="0x00000800" init   ="0" default="1"/>
+          <algorithm name="Flash/STM32L0xx_16.FLM"  start="0x08000000" size="0x00004000"             default="1"/>
+
+          <variant Dvariant="STM32L021F4Px"> <feature type="SOP" n="20"/> </variant>
+          <variant Dvariant="STM32L021F4Ux"> <feature type="QFN" n="20"/> </variant>
+        </device>
+
+        <!-- *************************  Device 'STM32L021G4'  ***************************** -->
+        <device Dname="STM32L021G4">
+          <memory id="IROM1"                        start="0x08000000" size="0x00004000" startup="1" default="1"/>
+          <memory id="IRAM1"                        start="0x20000000" size="0x00000800" init   ="0" default="1"/>
+          <algorithm name="Flash/STM32L0xx_16.FLM"  start="0x08000000" size="0x00004000"             default="1"/>
+
+          <variant Dvariant="STM32L021G4Ux"> <feature type="QFN" n="28"/> </variant>
+        </device>
+
+        <!-- *************************  Device 'STM32L021K4'  ***************************** -->
+        <device Dname="STM32L021K4">
+          <memory id="IROM1"                        start="0x08000000" size="0x00004000" startup="1" default="1"/>
+          <memory id="IRAM1"                        start="0x20000000" size="0x00000800" init   ="0" default="1"/>
+          <algorithm name="Flash/STM32L0xx_16.FLM"  start="0x08000000" size="0x00004000"             default="1"/>
+
+          <variant Dvariant="STM32L021K4Tx"> <feature type="QFP" n="32"/> </variant>
+          <variant Dvariant="STM32L021K4Ux"> <feature type="QFN" n="32"/> </variant>
+        </device>
+      </subFamily>
+
+      <!-- ************************  Subfamily 'STM32L031'  **************************** -->
+      <subFamily DsubFamily="STM32L031">
+        <processor Dclock="32000000"/>
+        <compile header="Device/Include/stm32l0xx.h" define="STM32L031xx"/>
+        <debug svd="SVD/STM32L0x1.svd"/>
+        <algorithm name="Flash/STM32L03_4x_EEPROM.FLM" start="0x08080000" size="0x00000400" default="0"/>
+        <algorithm name="Flash/STM32L0xx_OPT.FLM"      start="0x1FF80000" size="0x00000014" default="0"/>
+
+        <book name="Documents/DM00108282.pdf" title="STM32L0x1 Reference Manual"/>
+        <book name="Documents/DM00140359.pdf" title="STM32L031xx Data Sheet"/>
+
+        <!-- *************************  Device 'STM32L031C4'  ***************************** -->
+        <device Dname="STM32L031C4">
+          <memory id="IROM1"                        start="0x08000000" size="0x00004000" startup="1" default="1"/>
+          <memory id="IRAM1"                        start="0x20000000" size="0x00002000" init   ="0" default="1"/>
+          <algorithm name="Flash/STM32L0xx_16.FLM"  start="0x08000000" size="0x00004000"             default="1"/>
+
+          <variant Dvariant="STM32L031C4Tx"> <feature type="QFP" n="48"/> </variant>
+        </device>
+
+        <!-- *************************  Device 'STM32L031C6'  ***************************** -->
+        <device Dname="STM32L031C6">
+          <memory id="IROM1"                        start="0x08000000" size="0x00008000" startup="1" default="1"/>
+          <memory id="IRAM1"                        start="0x20000000" size="0x00002000" init   ="0" default="1"/>
+          <algorithm name="Flash/STM32L0xx_32.FLM"  start="0x08000000" size="0x00008000"             default="1"/>
+
+          <variant Dvariant="STM32L031C6Tx"> <feature type="QFP" n="48"/> </variant>
+        </device>
+
+        <!-- *************************  Device 'STM32L031E4'  ***************************** -->
+        <device Dname="STM32L031E4">
+          <memory id="IROM1"                        start="0x08000000" size="0x00004000" startup="1" default="1"/>
+          <memory id="IRAM1"                        start="0x20000000" size="0x00002000" init   ="0" default="1"/>
+          <algorithm name="Flash/STM32L0xx_16.FLM"  start="0x08000000" size="0x00004000"             default="1"/>
+
+          <variant Dvariant="STM32L031E4Yx"> <feature type="CSP" n="25"/> </variant>
+        </device>
+
+        <!-- *************************  Device 'STM32L031E6'  ***************************** -->
+        <device Dname="STM32L031E6">
+          <memory id="IROM1"                        start="0x08000000" size="0x00008000" startup="1" default="1"/>
+          <memory id="IRAM1"                        start="0x20000000" size="0x00002000" init   ="0" default="1"/>
+          <algorithm name="Flash/STM32L0xx_32.FLM"  start="0x08000000" size="0x00008000"             default="1"/>
+
+          <variant Dvariant="STM32L031E6Yx"> <feature type="CSP" n="25"/> </variant>
+        </device>
+
+        <!-- *************************  Device 'STM32L031F4'  ***************************** -->
+        <device Dname="STM32L031F4">
+          <memory id="IROM1"                        start="0x08000000" size="0x00004000" startup="1" default="1"/>
+          <memory id="IRAM1"                        start="0x20000000" size="0x00002000" init   ="0" default="1"/>
+          <algorithm name="Flash/STM32L0xx_16.FLM"  start="0x08000000" size="0x00004000"             default="1"/>
+
+          <variant Dvariant="STM32L031F4Px"> <feature type="SOP" n="20"/> </variant>
+        </device>
+
+        <!-- *************************  Device 'STM32L031F6'  ***************************** -->
+        <device Dname="STM32L031F6">
+          <memory id="IROM1"                        start="0x08000000" size="0x00008000" startup="1" default="1"/>
+          <memory id="IRAM1"                        start="0x20000000" size="0x00002000" init   ="0" default="1"/>
+          <algorithm name="Flash/STM32L0xx_32.FLM"  start="0x08000000" size="0x00008000"             default="1"/>
+
+          <variant Dvariant="STM32L031F6Px"> <feature type="SOP" n="20"/> </variant>
+        </device>
+
+        <!-- *************************  Device 'STM32L031G4'  ***************************** -->
+        <device Dname="STM32L031G4">
+          <memory id="IROM1"                        start="0x08000000" size="0x00004000" startup="1" default="1"/>
+          <memory id="IRAM1"                        start="0x20000000" size="0x00002000" init   ="0" default="1"/>
+          <algorithm name="Flash/STM32L0xx_16.FLM"  start="0x08000000" size="0x00004000"             default="1"/>
+
+          <variant Dvariant="STM32L031G4Ux"> <feature type="QFN" n="28"/> </variant>
+        </device>
+
+        <!-- *************************  Device 'STM32L031G6'  ***************************** -->
+        <device Dname="STM32L031G6">
+          <memory id="IROM1"                        start="0x08000000" size="0x00008000" startup="1" default="1"/>
+          <memory id="IRAM1"                        start="0x20000000" size="0x00002000" init   ="0" default="1"/>
+          <algorithm name="Flash/STM32L0xx_32.FLM"  start="0x08000000" size="0x00008000"             default="1"/>
+
+          <variant Dvariant="STM32L031G6Ux"> <feature type="QFN" n="28"/> </variant>
+          <variant Dvariant="STM32L031G6UxS"> <feature type="QFN" n="28"/> </variant>
+        </device>
+
+        <!-- *************************  Device 'STM32L031K4'  ***************************** -->
+        <device Dname="STM32L031K4">
+          <memory id="IROM1"                        start="0x08000000" size="0x00004000" startup="1" default="1"/>
+          <memory id="IRAM1"                        start="0x20000000" size="0x00002000" init   ="0" default="1"/>
+          <algorithm name="Flash/STM32L0xx_16.FLM"  start="0x08000000" size="0x00004000"             default="1"/>
+
+          <variant Dvariant="STM32L031K4Tx"> <feature type="QFP" n="32"/> </variant>
+          <variant Dvariant="STM32L031K4Ux"> <feature type="QFN" n="32"/> </variant>
+        </device>
+
+        <!-- *************************  Device 'STM32L031K6'  ***************************** -->
+        <device Dname="STM32L031K6">
+          <memory id="IROM1"                        start="0x08000000" size="0x00008000" startup="1" default="1"/>
+          <memory id="IRAM1"                        start="0x20000000" size="0x00002000" init   ="0" default="1"/>
+          <algorithm name="Flash/STM32L0xx_32.FLM"  start="0x08000000" size="0x00008000"             default="1"/>
+
+          <variant Dvariant="STM32L031K6Tx"> <feature type="QFP" n="32"/> </variant>
+          <variant Dvariant="STM32L031K6Ux"> <feature type="QFN" n="32"/> </variant>
+        </device>
+      </subFamily>
+
+      <!-- ************************  Subfamily 'STM32L041'  **************************** -->
+      <subFamily DsubFamily="STM32L041">
+        <processor Dclock="32000000"/>
+        <compile header="Device/Include/stm32l0xx.h" define="STM32L041xx"/>
+        <debug svd="SVD/STM32L0x1.svd"/>
+        <algorithm name="Flash/STM32L03_4x_EEPROM.FLM" start="0x08080000" size="0x00000400" default="0"/>
+        <algorithm name="Flash/STM32L0xx_OPT.FLM"      start="0x1FF80000" size="0x00000014" default="0"/>
+
+        <book name="Documents/DM00108282.pdf" title="STM32L0x1 Reference Manual"/>
+        <book name="Documents/DM00152023.pdf" title="STM32L041xx Data Sheet"/>
+
+        <!-- *************************  Device 'STM32L041C4'  ***************************** -->
+        <device Dname="STM32L041C4">
+          <memory id="IROM1"                        start="0x08000000" size="0x00004000" startup="1" default="1"/>
+          <memory id="IRAM1"                        start="0x20000000" size="0x00002000" init   ="0" default="1"/>
+          <algorithm name="Flash/STM32L0xx_16.FLM"  start="0x08000000" size="0x00004000"             default="1"/>
+
+          <variant Dvariant="STM32L041C4Tx"> <feature type="QFP" n="48"/> </variant>
+        </device>
+
+        <!-- *************************  Device 'STM32L041C6'  ***************************** -->
+        <device Dname="STM32L041C6">
+          <memory id="IROM1"                        start="0x08000000" size="0x00008000" startup="1" default="1"/>
+          <memory id="IRAM1"                        start="0x20000000" size="0x00002000" init   ="0" default="1"/>
+          <algorithm name="Flash/STM32L0xx_32.FLM"  start="0x08000000" size="0x00008000"             default="1"/>
+
+          <variant Dvariant="STM32L041C6Tx"> <feature type="QFP" n="48"/> </variant>
+        </device>
+
+        <!-- *************************  Device 'STM32L041F6'  ***************************** -->
+        <device Dname="STM32L041F6">
+          <memory id="IROM1"                        start="0x08000000" size="0x00008000" startup="1" default="1"/>
+          <memory id="IRAM1"                        start="0x20000000" size="0x00002000" init   ="0" default="1"/>
+          <algorithm name="Flash/STM32L0xx_32.FLM"  start="0x08000000" size="0x00008000"             default="1"/>
+
+          <variant Dvariant="STM32L041F6Px"> <feature type="SOP" n="20"/> </variant>
+        </device>
+
+        <!-- *************************  Device 'STM32L041G6'  ***************************** -->
+        <device Dname="STM32L041G6">
+          <memory id="IROM1"                        start="0x08000000" size="0x00008000" startup="1" default="1"/>
+          <memory id="IRAM1"                        start="0x20000000" size="0x00002000" init   ="0" default="1"/>
+          <algorithm name="Flash/STM32L0xx_32.FLM"  start="0x08000000" size="0x00008000"             default="1"/>
+
+          <variant Dvariant="STM32L041G6Ux"> <feature type="QFN" n="28"/> </variant>
+        </device>
+
+        <!-- *************************  Device 'STM32L041K6'  ***************************** -->
+        <device Dname="STM32L041K6">
+          <memory id="IROM1"                        start="0x08000000" size="0x00008000" startup="1" default="1"/>
+          <memory id="IRAM1"                        start="0x20000000" size="0x00002000" init   ="0" default="1"/>
+          <algorithm name="Flash/STM32L0xx_32.FLM"  start="0x08000000" size="0x00008000"             default="1"/>
+
+          <variant Dvariant="STM32L041K6Tx"> <feature type="QFP" n="32"/> </variant>
+          <variant Dvariant="STM32L041K6Ux"> <feature type="QFN" n="32"/> </variant>
+        </device>
+      </subFamily>
+
+      <!-- ************************  Subfamily 'STM32L051'  **************************** -->
+      <subFamily DsubFamily="STM32L051">
+        <processor Dclock="32000000"/>
+        <compile header="Device/Include/stm32l0xx.h" define="STM32L051xx"/>
+        <debug svd="SVD/STM32L051x.svd"/>
+        <algorithm name="Flash/STM32L05_6x_EEPROM.FLM" start="0x08080000" size="0x00000800" default="0"/>
+        <algorithm name="Flash/STM32L0xx_OPT.FLM"      start="0x1FF80000" size="0x00000014" default="0"/>
+
+        <book name="Documents/DM00108282.pdf" title="STM32L0x1 Reference Manual"/>
+        <book name="Documents/DM00108219.pdf" title="STM32L051xx Data Sheet"/>
+
+        <feature type="SPI"           n="2"       m="16000000"/>
+
+        <!-- *************************  Device 'STM32L051C6'  ***************************** -->
+        <device Dname="STM32L051C6">
+          <memory id="IROM1"                        start="0x08000000" size="0x00008000" startup="1" default="1"/>
+          <memory id="IRAM1"                        start="0x20000000" size="0x00002000" init   ="0" default="1"/>
+          <algorithm name="Flash/STM32L0xx_32.FLM"  start="0x08000000" size="0x00008000"             default="1"/>
+
+          <feature type="ADC"           n="10"      m="12"/>
+          <feature type="IOs"           n="37"/>
+          <feature type="UART"          n="1"       m="9600"            name="Low power universal asynchronous receiver transmitter"/>
+
+          <variant Dvariant="STM32L051C6Tx"> <feature type="QFP" n="48"/> </variant>
+        </device>
+
+        <!-- *************************  Device 'STM32L051C8'  ***************************** -->
+        <device Dname="STM32L051C8">
+          <memory id="IROM1"                        start="0x08000000" size="0x00010000" startup="1" default="1"/>
+          <memory id="IRAM1"                        start="0x20000000" size="0x00002000" init   ="0" default="1"/>
+          <algorithm name="Flash/STM32L0xx_64.FLM"  start="0x08000000" size="0x00010000"             default="1"/>
+
+          <feature type="ADC"           n="10"      m="12"/>
+          <feature type="IOs"           n="37"/>
+          <feature type="UART"          n="1"       m="9600"            name="Low power universal asynchronous receiver transmitter"/>
+
+          <variant Dvariant="STM32L051C8Tx"> <feature type="QFP" n="48"/> </variant>
+        </device>
+
+        <!-- *************************  Device 'STM32L051K6'  ***************************** -->
+        <device Dname="STM32L051K6">
+          <memory id="IROM1"                        start="0x08000000" size="0x00008000" startup="1" default="1"/>
+          <memory id="IRAM1"                        start="0x20000000" size="0x00002000" init   ="0" default="1"/>
+          <algorithm name="Flash/STM32L0xx_32.FLM"  start="0x08000000" size="0x00008000"             default="1"/>
+
+          <feature type="ADC"           n="10"      m="12"/>
+          <feature type="IOs"           n="27"/>
+
+          <variant Dvariant="STM32L051K6Tx"> <feature type="QFP" n="32"/> </variant>
+          <variant Dvariant="STM32L051K6Ux"> <feature type="QFN" n="32"/> </variant>
+        </device>
+
+        <!-- *************************  Device 'STM32L051K8'  ***************************** -->
+        <device Dname="STM32L051K8">
+          <memory id="IROM1"                        start="0x08000000" size="0x00010000" startup="1" default="1"/>
+          <memory id="IRAM1"                        start="0x20000000" size="0x00002000" init   ="0" default="1"/>
+          <algorithm name="Flash/STM32L0xx_64.FLM"  start="0x08000000" size="0x00010000"             default="1"/>
+
+          <feature type="ADC"           n="10"      m="12"/>
+          <feature type="IOs"           n="27"/>
+
+          <variant Dvariant="STM32L051K8Tx"> <feature type="QFP" n="32"/> </variant>
+          <variant Dvariant="STM32L051K8Ux"> <feature type="QFN" n="32"/> </variant>
+        </device>
+
+        <!-- *************************  Device 'STM32L051R6'  ***************************** -->
+        <device Dname="STM32L051R6">
+          <memory id="IROM1"                        start="0x08000000" size="0x00008000" startup="1" default="1"/>
+          <memory id="IRAM1"                        start="0x20000000" size="0x00002000" init   ="0" default="1"/>
+          <algorithm name="Flash/STM32L0xx_32.FLM"  start="0x08000000" size="0x00008000"             default="1"/>
+
+          <feature type="ADC"           n="16"      m="12"/>
+          <feature type="IOs"           n="51"/>
+          <feature type="UART"          n="1"       m="9600"            name="Low power universal asynchronous receiver transmitter"/>
+
+          <variant Dvariant="STM32L051R6Hx"> <feature type="BGA" n="64"/> </variant>
+          <variant Dvariant="STM32L051R6Tx"> <feature type="QFP" n="64"/> </variant>
+        </device>
+
+        <!-- *************************  Device 'STM32L051R8'  ***************************** -->
+        <device Dname="STM32L051R8">
+          <memory id="IROM1"                        start="0x08000000" size="0x00010000" startup="1" default="1"/>
+          <memory id="IRAM1"                        start="0x20000000" size="0x00002000" init   ="0" default="1"/>
+          <algorithm name="Flash/STM32L0xx_64.FLM"  start="0x08000000" size="0x00010000"             default="1"/>
+
+          <feature type="ADC"           n="16"      m="12"/>
+          <feature type="IOs"           n="51"/>
+          <feature type="UART"          n="1"       m="9600"            name="Low power universal asynchronous receiver transmitter"/>
+
+          <variant Dvariant="STM32L051R8Hx"> <feature type="BGA" n="64"/> </variant>
+          <variant Dvariant="STM32L051R8Tx"> <feature type="QFP" n="64"/> </variant>
+        </device>
+
+        <!-- *************************  Device 'STM32L051T6'  ***************************** -->
+        <device Dname="STM32L051T6">
+          <memory id="IROM1"                        start="0x08000000" size="0x00008000" startup="1" default="1"/>
+          <memory id="IRAM1"                        start="0x20000000" size="0x00002000" init   ="0" default="1"/>
+          <algorithm name="Flash/STM32L0xx_32.FLM"  start="0x08000000" size="0x00008000"             default="1"/>
+
+          <feature type="ADC"           n="10"      m="12"/>
+          <feature type="IOs"           n="37"/>
+          <feature type="UART"          n="1"       m="9600"            name="Low power universal asynchronous receiver transmitter"/>
+
+          <variant Dvariant="STM32L051T6Yx"> <feature type="CSP" n="36"/> </variant>
+        </device>
+
+        <!-- *************************  Device 'STM32L051T8'  ***************************** -->
+        <device Dname="STM32L051T8">
+          <memory id="IROM1"                        start="0x08000000" size="0x00010000" startup="1" default="1"/>
+          <memory id="IRAM1"                        start="0x20000000" size="0x00002000" init   ="0" default="1"/>
+          <algorithm name="Flash/STM32L0xx_64.FLM"  start="0x08000000" size="0x00010000"             default="1"/>
+
+          <feature type="ADC"           n="10"      m="12"/>
+          <feature type="IOs"           n="37"/>
+          <feature type="UART"          n="1"       m="9600"            name="Low power universal asynchronous receiver transmitter"/>
+
+          <variant Dvariant="STM32L051T8Yx"> <feature type="CSP" n="36"/> </variant>
+        </device>
+      </subFamily>
+
+      <!-- ************************  Subfamily 'STM32L052'  **************************** -->
+      <subFamily DsubFamily="STM32L052">
+        <processor Dclock="32000000"/>
+        <compile header="Device/Include/stm32l0xx.h" define="STM32L052xx"/>
+        <debug svd="SVD/STM32L052x.svd"/>
+        <algorithm name="Flash/STM32L05_6x_EEPROM.FLM" start="0x08080000" size="0x00000800" default="0"/>
+        <algorithm name="Flash/STM32L0xx_OPT.FLM"      start="0x1FF80000" size="0x00000014" default="0"/>
+
+        <book name="Documents/DM00108281.pdf" title="STM32L0x2 Reference Manual"/>
+          <book name="Documents/DM00108217.pdf" title="STM32L052xx Data Sheet"/>
+
+        <feature type="Touch"         n="24"                          name="Capacitive sensing channels supporting touchkey, linear and rotary touch sensors"/>
+        <feature type="DAC"           n="1"       m="12"/>
+        <feature type="USBD"          n="1"                           name="USB 2.0 crystal-less, battery charging detection and LPM"/>
+        <feature type="SPI"           n="2"       m="16000000"/>
+
+        <!-- *************************  Device 'STM32L052C6'  ***************************** -->
+        <device Dname="STM32L052C6">
+          <memory id="IROM1"                        start="0x08000000" size="0x00008000" startup="1" default="1"/>
+          <memory id="IRAM1"                        start="0x20000000" size="0x00002000" init   ="0" default="1"/>
+          <algorithm name="Flash/STM32L0xx_32.FLM"  start="0x08000000" size="0x00008000"             default="1"/>
+
+          <feature type="ADC"           n="10"      m="12"/>
+          <feature type="IOs"           n="37"/>
+          <feature type="UART"          n="1"       m="9600"            name="Low power universal asynchronous receiver transmitter"/>
+
+          <variant Dvariant="STM32L052C6Tx"> <feature type="QFP" n="48"/> </variant>
+        </device>
+
+        <!-- *************************  Device 'STM32L052C8'  ***************************** -->
+        <device Dname="STM32L052C8">
+          <memory id="IROM1"                        start="0x08000000" size="0x00010000" startup="1" default="1"/>
+          <memory id="IRAM1"                        start="0x20000000" size="0x00002000" init   ="0" default="1"/>
+          <algorithm name="Flash/STM32L0xx_64.FLM"  start="0x08000000" size="0x00010000"             default="1"/>
+
+          <feature type="ADC"           n="10"      m="12"/>
+          <feature type="IOs"           n="37"/>
+          <feature type="UART"          n="1"       m="9600"            name="Low power universal asynchronous receiver transmitter"/>
+
+          <variant Dvariant="STM32L052C8Tx"> <feature type="QFP" n="48"/> </variant>
+        </device>
+
+        <!-- *************************  Device 'STM32L052K6'  ***************************** -->
+        <device Dname="STM32L052K6">
+          <memory id="IROM1"                        start="0x08000000" size="0x00008000" startup="1" default="1"/>
+          <memory id="IRAM1"                        start="0x20000000" size="0x00002000" init   ="0" default="1"/>
+          <algorithm name="Flash/STM32L0xx_32.FLM"  start="0x08000000" size="0x00008000"             default="1"/>
+
+          <feature type="ADC"           n="10"      m="12"/>
+          <feature type="IOs"           n="27"/>
+
+          <variant Dvariant="STM32L052K6Tx"> <feature type="QFP" n="32"/> </variant>
+          <variant Dvariant="STM32L052K6Ux"> <feature type="QFN" n="32"/> </variant>
+        </device>
+
+        <!-- *************************  Device 'STM32L052K8'  ***************************** -->
+        <device Dname="STM32L052K8">
+          <memory id="IROM1"                        start="0x08000000" size="0x00010000" startup="1" default="1"/>
+          <memory id="IRAM1"                        start="0x20000000" size="0x00002000" init   ="0" default="1"/>
+          <algorithm name="Flash/STM32L0xx_64.FLM"  start="0x08000000" size="0x00010000"             default="1"/>
+
+          <feature type="ADC"           n="10"      m="12"/>
+          <feature type="IOs"           n="27"/>
+
+          <variant Dvariant="STM32L052K8Tx"> <feature type="QFP" n="32"/> </variant>
+          <variant Dvariant="STM32L052K8Ux"> <feature type="QFN" n="32"/> </variant>
+        </device>
+
+        <!-- *************************  Device 'STM32L052R6'  ***************************** -->
+        <device Dname="STM32L052R6">
+          <memory id="IROM1"                        start="0x08000000" size="0x00008000" startup="1" default="1"/>
+          <memory id="IRAM1"                        start="0x20000000" size="0x00002000" init   ="0" default="1"/>
+          <algorithm name="Flash/STM32L0xx_32.FLM"  start="0x08000000" size="0x00008000"             default="1"/>
+
+          <feature type="ADC"           n="16"      m="12"/>
+          <feature type="IOs"           n="51"/>
+          <feature type="UART"          n="1"       m="9600"            name="Low power universal asynchronous receiver transmitter"/>
+
+          <variant Dvariant="STM32L052R6Hx"> <feature type="BGA" n="64"/> </variant>
+          <variant Dvariant="STM32L052R6Tx"> <feature type="QFP" n="64"/> </variant>
+        </device>
+
+        <!-- *************************  Device 'STM32L052R8'  ***************************** -->
+        <device Dname="STM32L052R8">
+          <memory id="IROM1"                        start="0x08000000" size="0x00010000" startup="1" default="1"/>
+          <memory id="IRAM1"                        start="0x20000000" size="0x00002000" init   ="0" default="1"/>
+          <algorithm name="Flash/STM32L0xx_64.FLM"  start="0x08000000" size="0x00010000"             default="1"/>
+
+          <feature type="ADC"           n="16"      m="12"/>
+          <feature type="IOs"           n="51"/>
+          <feature type="UART"          n="1"       m="9600"            name="Low power universal asynchronous receiver transmitter"/>
+
+          <variant Dvariant="STM32L052R8Hx"> <feature type="BGA" n="64"/> </variant>
+          <variant Dvariant="STM32L052R8Tx"> <feature type="QFP" n="64"/> </variant>
+        </device>
+
+        <!-- *************************  Device 'STM32L052T6'  ***************************** -->
+        <device Dname="STM32L052T6">
+          <memory id="IROM1"                        start="0x08000000" size="0x00008000" startup="1" default="1"/>
+          <memory id="IRAM1"                        start="0x20000000" size="0x00002000" init   ="0" default="1"/>
+          <algorithm name="Flash/STM32L0xx_32.FLM"  start="0x08000000" size="0x00008000"             default="1"/>
+
+          <feature type="ADC"           n="10"      m="12"/>
+          <feature type="IOs"           n="37"/>
+
+          <variant Dvariant="STM32L052T6Yx"> <feature type="CSP" n="36"/> </variant>
+        </device>
+
+        <!-- *************************  Device 'STM32L052T8'  ***************************** -->
+        <device Dname="STM32L052T8">
+          <memory id="IROM1"                        start="0x08000000" size="0x00010000" startup="1" default="1"/>
+          <memory id="IRAM1"                        start="0x20000000" size="0x00002000" init   ="0" default="1"/>
+          <algorithm name="Flash/STM32L0xx_64.FLM"  start="0x08000000" size="0x00010000"             default="1"/>
+
+          <feature type="ADC"           n="10"      m="12"/>
+          <feature type="IOs"           n="37"/>
+
+          <variant Dvariant="STM32L052T8Yx"> <feature type="CSP" n="36"/> </variant>
+        </device>
+      </subFamily>
+
+      <!-- ************************  Subfamily 'STM32L053'  **************************** -->
+      <subFamily DsubFamily="STM32L053">
+        <processor Dclock="32000000"/>
+        <compile header="Device/Include/stm32l0xx.h" define="STM32L053xx"/>
+        <debug svd="SVD/STM32L053x.svd"/>
+        <algorithm name="Flash/STM32L05_6x_EEPROM.FLM" start="0x08080000" size="0x00000800" default="0"/>
+        <algorithm name="Flash/STM32L0xx_OPT.FLM"      start="0x1FF80000" size="0x00000014" default="0"/>
+
+        <book name="Documents/DM00095744.pdf" title="STM32L0x3 Reference Manual"/>
+        <book name="Documents/DM00105960.pdf" title="STM32L053xx Data Sheet"/>
+
+        <feature type="Touch"         n="24"                          name="Capacitive sensing channels supporting touchkey, linear and rotary touch sensors"/>
+        <feature type="DAC"           n="1"       m="12"/>
+        <feature type="UART"          n="1"       m="9600"            name="Low power universal asynchronous receiver transmitter"/>
+        <feature type="USBD"          n="1"                           name="USB 2.0 crystal-less, battery charging detection and LPM"/>
+        <feature type="SPI"           n="2"       m="16000000"/>
+
+        <!-- *************************  Device 'STM32L053C6'  ***************************** -->
+        <device Dname="STM32L053C6">
+          <memory id="IROM1"                        start="0x08000000" size="0x00008000" startup="1" default="1"/>
+          <memory id="IRAM1"                        start="0x20000000" size="0x00002000" init   ="0" default="1"/>
+          <algorithm name="Flash/STM32L0xx_32.FLM"  start="0x08000000" size="0x00008000"             default="1"/>
+
+          <feature type="ADC"           n="10"      m="12"/>
+          <feature type="IOs"           n="37"/>
+          <feature type="LCD"           n="1"       m="4.18"/>
+
+          <variant Dvariant="STM32L053C6Tx"> <feature type="QFP" n="48"/> </variant>
+        </device>
+
+        <!-- *************************  Device 'STM32L053C8'  ***************************** -->
+        <device Dname="STM32L053C8">
+          <memory id="IROM1"                        start="0x08000000" size="0x00010000" startup="1" default="1"/>
+          <memory id="IRAM1"                        start="0x20000000" size="0x00002000" init   ="0" default="1"/>
+          <algorithm name="Flash/STM32L0xx_64.FLM"  start="0x08000000" size="0x00010000"             default="1"/>
+
+          <feature type="ADC"           n="10"      m="12"/>
+          <feature type="IOs"           n="37"/>
+          <feature type="LCD"           n="1"       m="4.18"/>
+
+          <variant Dvariant="STM32L053C8Tx"> <feature type="QFP" n="48"/> </variant>
+        </device>
+
+        <!-- *************************  Device 'STM32L053R6'  ***************************** -->
+        <device Dname="STM32L053R6">
+          <memory id="IROM1"                        start="0x08000000" size="0x00008000" startup="1" default="1"/>
+          <memory id="IRAM1"                        start="0x20000000" size="0x00002000" init   ="0" default="1"/>
+          <algorithm name="Flash/STM32L0xx_32.FLM"  start="0x08000000" size="0x00008000"             default="1"/>
+
+          <feature type="ADC"           n="16"      m="12"/>
+          <feature type="IOs"           n="51"/>
+          <feature type="LCD"           n="1"       m="4.31"/>
+          <feature type="LCD"           n="1"       m="8.28"/>
+
+          <variant Dvariant="STM32L053R6Hx"> <feature type="BGA" n="64"/> </variant>
+          <variant Dvariant="STM32L053R6Tx"> <feature type="QFP" n="64"/> </variant>
+        </device>
+
+        <!-- *************************  Device 'STM32L053R8'  ***************************** -->
+        <device Dname="STM32L053R8">
+          <memory id="IROM1"                        start="0x08000000" size="0x00010000" startup="1" default="1"/>
+          <memory id="IRAM1"                        start="0x20000000" size="0x00002000" init   ="0" default="1"/>
+          <algorithm name="Flash/STM32L0xx_64.FLM"  start="0x08000000" size="0x00010000"             default="1"/>
+
+          <feature type="ADC"           n="16"      m="12"/>
+          <feature type="IOs"           n="51"/>
+          <feature type="LCD"           n="1"       m="4.31"/>
+          <feature type="LCD"           n="1"       m="8.28"/>
+
+          <variant Dvariant="STM32L053R8Hx"> <feature type="BGA" n="64"/> </variant>
+          <variant Dvariant="STM32L053R8Tx"> <feature type="QFP" n="64"/> </variant>
+        </device>
+      </subFamily>
+
+      <!-- ************************  Subfamily 'STM32L062'  **************************** -->
+      <subFamily DsubFamily="STM32L062">
+        <processor Dclock="32000000"/>
+        <compile header="Device/Include/stm32l0xx.h" define="STM32L062xx"/>
+        <debug svd="SVD/STM32L062x.svd"/>
+        <algorithm name="Flash/STM32L05_6x_EEPROM.FLM" start="0x08080000" size="0x00000800" default="0"/>
+        <algorithm name="Flash/STM32L0xx_OPT.FLM"      start="0x1FF80000" size="0x00000014" default="0"/>
+
+        <book name="Documents/DM00108281.pdf" title="STM32L0x2 Reference Manual"/>
+        <book name="Documents/DM00108218.pdf" title="STM32L062K8 Data Sheet"/>
+
+        <!-- *************************  Device 'STM32L062K8'  ***************************** -->
+        <device Dname="STM32L062K8">
+          <memory id="IROM1"                        start="0x08000000" size="0x00010000" startup="1" default="1"/>
+          <memory id="IRAM1"                        start="0x20000000" size="0x00002000" init   ="0" default="1"/>
+          <algorithm name="Flash/STM32L0xx_64.FLM"  start="0x08000000" size="0x00010000"             default="1"/>
+
+
+          <feature type="Touch"         n="24"                          name="Capacitive sensing channels supporting touchkey, linear and rotary touch sensors"/>
+          <feature type="Crypto"        n="1"                           name="Hardware Encryption Engine AES 128-bit"/>
+          <feature type="ADC"           n="10"      m="12"/>
+          <feature type="IOs"           n="27"/>
+          <feature type="DAC"           n="1"       m="12"/>
+          <feature type="USBD"          n="1"                           name="USB 2.0 crystal-less, battery charging detection and LPM"/>
+          <feature type="I2S"           n="2"/>
+
+          <variant Dvariant="STM32L062K8Tx"> <feature type="QFP" n="32"/> </variant>
+          <variant Dvariant="STM32L062K8Ux"> <feature type="QFN" n="32"/> </variant>
+        </device>
+      </subFamily>
+
+      <!-- ************************  Subfamily 'STM32L063'  **************************** -->
+      <subFamily DsubFamily="STM32L063">
+        <processor Dclock="32000000"/>
+        <compile header="Device/Include/stm32l0xx.h" define="STM32L063xx"/>
+        <debug svd="SVD/STM32L063x.svd"/>
+        <algorithm name="Flash/STM32L05_6x_EEPROM.FLM" start="0x08080000" size="0x00000800" default="0"/>
+        <algorithm name="Flash/STM32L0xx_OPT.FLM"      start="0x1FF80000" size="0x00000014" default="0"/>
+
+        <book name="Documents/DM00095744.pdf" title="STM32L0x3 Reference Manual"/>
+        <book name="Documents/DM00102435.pdf" title="STM32L063xx Data Sheet"/>
+
+        <feature type="Touch"         n="24"                          name="Capacitive sensing channels supporting touchkey, linear and rotary touch sensors"/>
+        <feature type="Crypto"        n="1"                           name="Hardware Encryption Engine AES 128-bit"/>
+        <feature type="DAC"           n="1"       m="12"/>
+        <feature type="UART"          n="1"       m="9600"            name="Low power universal asynchronous receiver transmitter"/>
+        <feature type="USBD"          n="1"                           name="USB 2.0 crystal-less, battery charging detection and LPM"/>
+        <feature type="SPI"           n="2"       m="16000000"/>
+
+        <!-- *************************  Device 'STM32L063C8'  ***************************** -->
+        <device Dname="STM32L063C8">
+          <memory id="IROM1"                        start="0x08000000" size="0x00010000" startup="1" default="1"/>
+          <memory id="IRAM1"                        start="0x20000000" size="0x00002000" init   ="0" default="1"/>
+          <algorithm name="Flash/STM32L0xx_64.FLM"  start="0x08000000" size="0x00010000"             default="1"/>
+
+          <feature type="ADC"           n="10"      m="12"/>
+          <feature type="IOs"           n="37"/>
+          <feature type="LCD"           n="1"       m="4.18"/>
+
+          <variant Dvariant="STM32L063C8Tx"> <feature type="QFP" n="48"/> </variant>
+        </device>
+
+        <!-- *************************  Device 'STM32L063R8'  ***************************** -->
+        <device Dname="STM32L063R8">
+          <memory id="IROM1"                        start="0x08000000" size="0x00010000" startup="1" default="1"/>
+          <memory id="IRAM1"                        start="0x20000000" size="0x00002000" init   ="0" default="1"/>
+          <algorithm name="Flash/STM32L0xx_64.FLM"  start="0x08000000" size="0x00010000"             default="1"/>
+
+          <feature type="ADC"           n="16"      m="12"/>
+          <feature type="IOs"           n="51"/>
+          <feature type="LCD"           n="1"       m="4.31"/>
+          <feature type="LCD"           n="1"       m="8.28"/>
+
+          <variant Dvariant="STM32L063R8Tx"> <feature type="QFP" n="64"/> </variant>
+        </device>
+      </subFamily>
+
+      <!-- ************************  Subfamily 'STM32L071'  **************************** -->
+      <subFamily DsubFamily="STM32L071">
+        <processor Dclock="32000000"/>
+        <compile header="Device/Include/stm32l0xx.h" define="STM32L071xx"/>
+        <debug svd="SVD/STM32L0x1.svd"/>
+        <algorithm name="Flash/STM32L0xx_OPT.FLM"    start="0x1FF80000" size="0x00000014" default="0"/>
+
+        <book name="Documents/DM00108282.pdf" title="STM32L0x1 Reference Manual"/>
+        <book name="Documents/DM00141136.pdf" title="STM32L071xx Data Sheet"/>
+
+        <!-- *************************  Device 'STM32L071C8'  ***************************** -->
+        <device Dname="STM32L071C8">
+          <memory id="IROM1"                              start="0x08000000" size="0x00010000" startup="1" default="1"/>
+          <memory id="IRAM1"                              start="0x20000000" size="0x00005000" init   ="0" default="1"/>
+          <algorithm name="Flash/STM32L0xx_64.FLM"        start="0x08000000" size="0x00010000"             default="1"/>
+          <algorithm name="Flash/STM32L07x_64_EEPROM.FLM" start="0x08080C00" size="0x00000800"             default="0"/>
+
+          <variant Dvariant="STM32L071C8Tx"> <feature type="QFP" n="48"/> </variant>
+        </device>
+
+        <!-- *************************  Device 'STM32L071CB'  ***************************** -->
+        <device Dname="STM32L071CB">
+          <memory id="IROM1"                             start="0x08000000" size="0x00020000" startup="1" default="1"/>
+          <memory id="IRAM1"                             start="0x20000000" size="0x00005000" init   ="0" default="1"/>
+          <algorithm name="Flash/STM32L0xx_128.FLM"      start="0x08000000" size="0x00020000"             default="1"/>
+          <algorithm name="Flash/STM32L07_8x_EEPROM.FLM" start="0x08080000" size="0x00001800"             default="0"/>
+
+          <variant Dvariant="STM32L071CBTx"> <feature type="QFP" n="48"/> </variant>
+          <variant Dvariant="STM32L071CBYx"> <feature type="CSP" n="49"/> </variant>
+        </device>
+
+        <!-- *************************  Device 'STM32L071CZ'  ***************************** -->
+        <device Dname="STM32L071CZ">
+          <memory id="IROM1"                             start="0x08000000" size="0x00030000" startup="1" default="1"/>
+          <memory id="IRAM1"                             start="0x20000000" size="0x00005000" init   ="0" default="1"/>
+          <algorithm name="Flash/STM32L0xx_192.FLM"      start="0x08000000" size="0x00030000"             default="1"/>
+          <algorithm name="Flash/STM32L07_8x_EEPROM.FLM" start="0x08080000" size="0x00001800"             default="0"/>
+
+          <variant Dvariant="STM32L071CZTx"> <feature type="QFP" n="48"/> </variant>
+          <variant Dvariant="STM32L071CZYx"> <feature type="CSP" n="49"/> </variant>
+        </device>
+
+        <!-- *************************  Device 'STM32L071K8'  ***************************** -->
+        <device Dname="STM32L071K8">
+          <memory id="IROM1"                              start="0x08000000" size="0x00010000" startup="1" default="1"/>
+          <memory id="IRAM1"                              start="0x20000000" size="0x00005000" init   ="0" default="1"/>
+          <algorithm name="Flash/STM32L0xx_64.FLM"        start="0x08000000" size="0x00010000"             default="1"/>
+          <algorithm name="Flash/STM32L07x_64_EEPROM.FLM" start="0x08080C00" size="0x00000800"             default="0"/>
+
+          <variant Dvariant="STM32L071K8Ux"> <feature type="QFN" n="32"/> </variant>
+        </device>
+
+        <!-- *************************  Device 'STM32L071KB'  ***************************** -->
+        <device Dname="STM32L071KB">
+          <memory id="IROM1"                             start="0x08000000" size="0x00020000" startup="1" default="1"/>
+          <memory id="IRAM1"                             start="0x20000000" size="0x00005000" init   ="0" default="1"/>
+          <algorithm name="Flash/STM32L0xx_128.FLM"      start="0x08000000" size="0x00020000"             default="1"/>
+          <algorithm name="Flash/STM32L07_8x_EEPROM.FLM" start="0x08080000" size="0x00001800"             default="0"/>
+
+          <variant Dvariant="STM32L071KBTx"> <feature type="QFP" n="32"/> </variant>
+          <variant Dvariant="STM32L071KBUx"> <feature type="QFN" n="32"/> </variant>
+        </device>
+
+        <!-- *************************  Device 'STM32L071KZ'  ***************************** -->
+        <device Dname="STM32L071KZ">
+          <memory id="IROM1"                             start="0x08000000" size="0x00030000" startup="1" default="1"/>
+          <memory id="IRAM1"                             start="0x20000000" size="0x00005000" init   ="0" default="1"/>
+          <algorithm name="Flash/STM32L0xx_192.FLM"      start="0x08000000" size="0x00030000"             default="1"/>
+          <algorithm name="Flash/STM32L07_8x_EEPROM.FLM" start="0x08080000" size="0x00001800"             default="0"/>
+
+          <variant Dvariant="STM32L071KZTx"> <feature type="QFP" n="32"/> </variant>
+          <variant Dvariant="STM32L071KZUx"> <feature type="QFN" n="32"/> </variant>
+        </device>
+
+        <!-- *************************  Device 'STM32L071RB'  ***************************** -->
+        <device Dname="STM32L071RB">
+          <memory id="IROM1"                             start="0x08000000" size="0x00020000" startup="1" default="1"/>
+          <memory id="IRAM1"                             start="0x20000000" size="0x00005000" init   ="0" default="1"/>
+          <algorithm name="Flash/STM32L0xx_128.FLM"      start="0x08000000" size="0x00020000"             default="1"/>
+          <algorithm name="Flash/STM32L07_8x_EEPROM.FLM" start="0x08080000" size="0x00001800"             default="0"/>
+
+          <variant Dvariant="STM32L071RBHx"> <feature type="BGA" n="64"/> </variant>
+          <variant Dvariant="STM32L071RBTx"> <feature type="QFP" n="64"/> </variant>
+        </device>
+
+        <!-- *************************  Device 'STM32L071RZ'  ***************************** -->
+        <device Dname="STM32L071RZ">
+          <memory id="IROM1"                             start="0x08000000" size="0x00030000" startup="1" default="1"/>
+          <memory id="IRAM1"                             start="0x20000000" size="0x00005000" init   ="0" default="1"/>
+          <algorithm name="Flash/STM32L0xx_192.FLM"      start="0x08000000" size="0x00030000"             default="1"/>
+          <algorithm name="Flash/STM32L07_8x_EEPROM.FLM" start="0x08080000" size="0x00001800"             default="0"/>
+
+          <variant Dvariant="STM32L071RZHx"> <feature type="BGA" n="64"/> </variant>
+          <variant Dvariant="STM32L071RZTx"> <feature type="QFP" n="64"/> </variant>
+        </device>
+
+        <!-- *************************  Device 'STM32L071V8'  ***************************** -->
+        <device Dname="STM32L071V8">
+          <memory id="IROM1"                              start="0x08000000" size="0x00010000" startup="1" default="1"/>
+          <memory id="IRAM1"                              start="0x20000000" size="0x00005000" init   ="0" default="1"/>
+          <algorithm name="Flash/STM32L0xx_64.FLM"        start="0x08000000" size="0x00010000"             default="1"/>
+          <algorithm name="Flash/STM32L07x_64_EEPROM.FLM" start="0x08080C00" size="0x00000800"             default="0"/>
+
+          <variant Dvariant="STM32L071V8Ix"> <feature type="BGA" n="100"/> </variant>
+          <variant Dvariant="STM32L071V8Tx"> <feature type="QFP" n="100"/> </variant>
+        </device>
+
+        <!-- *************************  Device 'STM32L071VB'  ***************************** -->
+        <device Dname="STM32L071VB">
+          <memory id="IROM1"                             start="0x08000000" size="0x00020000" startup="1" default="1"/>
+          <memory id="IRAM1"                             start="0x20000000" size="0x00005000" init   ="0" default="1"/>
+          <algorithm name="Flash/STM32L0xx_128.FLM"      start="0x08000000" size="0x00020000"             default="1"/>
+          <algorithm name="Flash/STM32L07_8x_EEPROM.FLM" start="0x08080000" size="0x00001800"             default="0"/>
+
+          <variant Dvariant="STM32L071VBIx"> <feature type="BGA" n="100"/> </variant>
+          <variant Dvariant="STM32L071VBTx"> <feature type="QFP" n="100"/> </variant>
+        </device>
+
+        <!-- *************************  Device 'STM32L071VZ'  ***************************** -->
+        <device Dname="STM32L071VZ">
+          <memory id="IROM1"                             start="0x08000000" size="0x00030000" startup="1" default="1"/>
+          <memory id="IRAM1"                             start="0x20000000" size="0x00005000" init   ="0" default="1"/>
+          <algorithm name="Flash/STM32L0xx_192.FLM"      start="0x08000000" size="0x00030000"             default="1"/>
+          <algorithm name="Flash/STM32L07_8x_EEPROM.FLM" start="0x08080000" size="0x00001800"             default="0"/>
+
+          <variant Dvariant="STM32L071VZIx"> <feature type="BGA" n="100"/> </variant>
+          <variant Dvariant="STM32L071VZTx"> <feature type="QFP" n="100"/> </variant>
+        </device>
+      </subFamily>
+
+      <!-- ************************  Subfamily 'STM32L072'  **************************** -->
+      <subFamily DsubFamily="STM32L072">
+        <processor Dclock="32000000"/>
+        <compile header="Device/Include/stm32l0xx.h" define="STM32L072xx"/>
+        <debug svd="SVD/STM32L07x.svd"/>
+        <algorithm name="Flash/STM32L0xx_OPT.FLM"    start="0x1FF80000" size="0x00000014" default="0"/>
+
+        <book name="Documents/DM00108281.pdf" title="STM32L0x2 Reference Manual"/>
+        <book name="Documents/DM00141133.pdf" title="STM32L072xx Data Sheet"/>
+
+        <!-- *************************  Device 'STM32L072CB'  ***************************** -->
+        <device Dname="STM32L072CB">
+          <memory id="IROM1"                             start="0x08000000" size="0x00020000" startup="1" default="1"/>
+          <memory id="IRAM1"                             start="0x20000000" size="0x00005000" init   ="0" default="1"/>
+          <algorithm name="Flash/STM32L0xx_128.FLM"      start="0x08000000" size="0x00020000"             default="1"/>
+          <algorithm name="Flash/STM32L07_8x_EEPROM.FLM" start="0x08080000" size="0x00001800"             default="0"/>
+
+          <variant Dvariant="STM32L072CBTx"> <feature type="QFP" n="48"/> </variant>
+          <variant Dvariant="STM32L072CBYx"> <feature type="CSP" n="49"/> </variant>
+        </device>
+
+        <!-- *************************  Device 'STM32L072CZ'  ***************************** -->
+        <device Dname="STM32L072CZ">
+          <memory id="IROM1"                             start="0x08000000" size="0x00030000" startup="1" default="1"/>
+          <memory id="IRAM1"                             start="0x20000000" size="0x00005000" init   ="0" default="1"/>
+          <algorithm name="Flash/STM32L0xx_192.FLM"      start="0x08000000" size="0x00030000"             default="1"/>
+          <algorithm name="Flash/STM32L07_8x_EEPROM.FLM" start="0x08080000" size="0x00001800"             default="0"/>
+
+          <variant Dvariant="STM32L072CZTx"> <feature type="QFP" n="48"/> </variant>
+          <variant Dvariant="STM32L072CZYx"> <feature type="CSP" n="49"/> </variant>
+        </device>
+
+        <!-- *************************  Device 'STM32L072KB'  ***************************** -->
+        <device Dname="STM32L072KB">
+          <memory id="IROM1"                             start="0x08000000" size="0x00020000" startup="1" default="1"/>
+          <memory id="IRAM1"                             start="0x20000000" size="0x00005000" init   ="0" default="1"/>
+          <algorithm name="Flash/STM32L0xx_128.FLM"      start="0x08000000" size="0x00020000"             default="1"/>
+          <algorithm name="Flash/STM32L07_8x_EEPROM.FLM" start="0x08080000" size="0x00001800"             default="0"/>
+
+          <variant Dvariant="STM32L072KBTx"> <feature type="QFP" n="32"/> </variant>
+          <variant Dvariant="STM32L072KBUx"> <feature type="QFN" n="32"/> </variant>
+        </device>
+
+        <!-- *************************  Device 'STM32L072KZ'  ***************************** -->
+        <device Dname="STM32L072KZ">
+          <memory id="IROM1"                             start="0x08000000" size="0x00030000" startup="1" default="1"/>
+          <memory id="IRAM1"                             start="0x20000000" size="0x00005000" init   ="0" default="1"/>
+          <algorithm name="Flash/STM32L0xx_192.FLM"      start="0x08000000" size="0x00030000"             default="1"/>
+          <algorithm name="Flash/STM32L07_8x_EEPROM.FLM" start="0x08080000" size="0x00001800"             default="0"/>
+
+          <variant Dvariant="STM32L072KZTx"> <feature type="QFP" n="32"/> </variant>
+          <variant Dvariant="STM32L072KZUx"> <feature type="QFN" n="32"/> </variant>
+        </device>
+
+        <!-- *************************  Device 'STM32L072RB'  ***************************** -->
+        <device Dname="STM32L072RB">
+          <memory id="IROM1"                             start="0x08000000" size="0x00020000" startup="1" default="1"/>
+          <memory id="IRAM1"                             start="0x20000000" size="0x00005000" init   ="0" default="1"/>
+          <algorithm name="Flash/STM32L0xx_128.FLM"      start="0x08000000" size="0x00020000"             default="1"/>
+          <algorithm name="Flash/STM32L07_8x_EEPROM.FLM" start="0x08080000" size="0x00001800"             default="0"/>
+
+          <variant Dvariant="STM32L072RBHx"> <feature type="BGA" n="64"/> </variant>
+          <variant Dvariant="STM32L072RBIx"> <feature type="BGA" n="64"/> </variant>
+          <variant Dvariant="STM32L072RBTx"> <feature type="QFP" n="64"/> </variant>
+        </device>
+
+        <!-- *************************  Device 'STM32L072RZ'  ***************************** -->
+        <device Dname="STM32L072RZ">
+          <memory id="IROM1"                             start="0x08000000" size="0x00030000" startup="1" default="1"/>
+          <memory id="IRAM1"                             start="0x20000000" size="0x00005000" init   ="0" default="1"/>
+          <algorithm name="Flash/STM32L0xx_192.FLM"      start="0x08000000" size="0x00030000"             default="1"/>
+          <algorithm name="Flash/STM32L07_8x_EEPROM.FLM" start="0x08080000" size="0x00001800"             default="0"/>
+
+          <variant Dvariant="STM32L072RZHx"> <feature type="BGA" n="64"/> </variant>
+          <variant Dvariant="STM32L072RZIx"> <feature type="BGA" n="64"/> </variant>
+          <variant Dvariant="STM32L072RZTx"> <feature type="QFP" n="64"/> </variant>
+        </device>
+
+        <!-- *************************  Device 'STM32L072V8'  ***************************** -->
+        <device Dname="STM32L072V8">
+          <memory id="IROM1"                               start="0x08000000" size="0x00010000" startup="1" default="1"/>
+          <memory id="IRAM1"                               start="0x20000000" size="0x00005000" init   ="0" default="1"/>
+          <algorithm name="Flash/STM32L0xx_64.FLM"         start="0x08000000" size="0x00010000"             default="1"/>
+          <algorithm name="Flash/STM32L07x_64_EEPROM.FLM"  start="0x08080C00" size="0x00000800"             default="0"/>
+
+          <variant Dvariant="STM32L072V8Ix"> <feature type="BGA" n="100"/> </variant>
+          <variant Dvariant="STM32L072V8Tx"> <feature type="QFP" n="100"/> </variant>
+        </device>
+
+        <!-- *************************  Device 'STM32L072VB'  ***************************** -->
+        <device Dname="STM32L072VB">
+          <memory id="IROM1"                             start="0x08000000" size="0x00020000" startup="1" default="1"/>
+          <memory id="IRAM1"                             start="0x20000000" size="0x00005000" init   ="0" default="1"/>
+          <algorithm name="Flash/STM32L0xx_128.FLM"      start="0x08000000" size="0x00020000"             default="1"/>
+          <algorithm name="Flash/STM32L07_8x_EEPROM.FLM" start="0x08080000" size="0x00001800"             default="0"/>
+
+          <variant Dvariant="STM32L072VBIx"> <feature type="BGA" n="100"/> </variant>
+          <variant Dvariant="STM32L072VBTx"> <feature type="QFP" n="100"/> </variant>
+        </device>
+
+        <!-- *************************  Device 'STM32L072VZ'  ***************************** -->
+        <device Dname="STM32L072VZ">
+          <memory id="IROM1"                             start="0x08000000" size="0x00030000" startup="1" default="1"/>
+          <memory id="IRAM1"                             start="0x20000000" size="0x00005000" init   ="0" default="1"/>
+          <algorithm name="Flash/STM32L0xx_192.FLM"      start="0x08000000" size="0x00030000"             default="1"/>
+          <algorithm name="Flash/STM32L07_8x_EEPROM.FLM" start="0x08080000" size="0x00001800"             default="0"/>
+
+          <variant Dvariant="STM32L072VZIx"> <feature type="BGA" n="100"/> </variant>
+          <variant Dvariant="STM32L072VZTx"> <feature type="QFP" n="100"/> </variant>
+        </device>
+      </subFamily>
+
+      <!-- ************************  Subfamily 'STM32L073'  **************************** -->
+      <subFamily DsubFamily="STM32L073">
+        <processor Dclock="32000000"/>
+        <compile header="Device/Include/stm32l0xx.h" define="STM32L073xx"/>
+        <debug svd="SVD/STM32L07x.svd"/>
+        <algorithm name="Flash/STM32L0xx_OPT.FLM"    start="0x1FF80000" size="0x00000014" default="0"/>
+
+        <book name="Documents/DM00095744.pdf" title="STM32L0x3 Reference Manual"/>
+        <book name="Documents/DM00141036.pdf" title="STM32L073xx Data Sheet"/>
+
+        <!-- *************************  Device 'STM32L073CB'  ***************************** -->
+        <device Dname="STM32L073CB">
+          <memory id="IROM1"                             start="0x08000000" size="0x00020000" startup="1" default="1"/>
+          <memory id="IRAM1"                             start="0x20000000" size="0x00005000" init   ="0" default="1"/>
+          <algorithm name="Flash/STM32L0xx_128.FLM"      start="0x08000000" size="0x00020000"             default="1"/>
+          <algorithm name="Flash/STM32L07_8x_EEPROM.FLM" start="0x08080000" size="0x00001800"             default="0"/>
+
+          <variant Dvariant="STM32L073CBTx"> <feature type="QFP" n="48"/> </variant>
+        </device>
+
+        <!-- *************************  Device 'STM32L073CZ'  ***************************** -->
+        <device Dname="STM32L073CZ">
+          <memory id="IROM1"                             start="0x08000000" size="0x00030000" startup="1" default="1"/>
+          <memory id="IRAM1"                             start="0x20000000" size="0x00005000" init   ="0" default="1"/>
+          <algorithm name="Flash/STM32L0xx_192.FLM"      start="0x08000000" size="0x00030000"             default="1"/>
+          <algorithm name="Flash/STM32L07_8x_EEPROM.FLM" start="0x08080000" size="0x00001800"             default="0"/>
+
+          <variant Dvariant="STM32L073CZTx"> <feature type="QFP" n="48"/> </variant>
+        </device>
+
+        <!-- *************************  Device 'STM32L073RB'  ***************************** -->
+        <device Dname="STM32L073RB">
+          <memory id="IROM1"                             start="0x08000000" size="0x00020000" startup="1" default="1"/>
+          <memory id="IRAM1"                             start="0x20000000" size="0x00005000" init   ="0" default="1"/>
+          <algorithm name="Flash/STM32L0xx_128.FLM"      start="0x08000000" size="0x00020000"             default="1"/>
+          <algorithm name="Flash/STM32L07_8x_EEPROM.FLM" start="0x08080000" size="0x00001800"             default="0"/>
+
+          <variant Dvariant="STM32L073RBHx"> <feature type="BGA" n="64"/> </variant>
+          <variant Dvariant="STM32L073RBTx"> <feature type="QFP" n="64"/> </variant>
+        </device>
+
+        <!-- *************************  Device 'STM32L073RZ'  ***************************** -->
+        <device Dname="STM32L073RZ">
+          <memory id="IROM1"                             start="0x08000000" size="0x00030000" startup="1" default="1"/>
+          <memory id="IRAM1"                             start="0x20000000" size="0x00005000" init   ="0" default="1"/>
+          <algorithm name="Flash/STM32L0xx_192.FLM"      start="0x08000000" size="0x00030000"             default="1"/>
+          <algorithm name="Flash/STM32L07_8x_EEPROM.FLM" start="0x08080000" size="0x00001800"             default="0"/>
+
+          <variant Dvariant="STM32L073RZHx"> <feature type="BGA" n="64"/> </variant>
+          <variant Dvariant="STM32L073RZTx"> <feature type="QFP" n="64"/> </variant>
+        </device>
+
+        <!-- *************************  Device 'STM32L073V8'  ***************************** -->
+        <device Dname="STM32L073V8">
+          <memory id="IROM1"                              start="0x08000000" size="0x00010000" startup="1" default="1"/>
+          <memory id="IRAM1"                              start="0x20000000" size="0x00005000" init   ="0" default="1"/>
+          <algorithm name="Flash/STM32L0xx_64.FLM"        start="0x08000000" size="0x00010000"             default="1"/>
+          <algorithm name="Flash/STM32L07x_64_EEPROM.FLM" start="0x08080C00" size="0x00000800"             default="0"/>
+
+          <variant Dvariant="STM32L073V8Ix"> <feature type="BGA" n="100"/> </variant>
+          <variant Dvariant="STM32L073V8Tx"> <feature type="QFP" n="100"/> </variant>
+        </device>
+
+        <!-- *************************  Device 'STM32L073VB'  ***************************** -->
+        <device Dname="STM32L073VB">
+          <memory id="IROM1"                             start="0x08000000" size="0x00020000" startup="1" default="1"/>
+          <memory id="IRAM1"                             start="0x20000000" size="0x00005000" init   ="0" default="1"/>
+          <algorithm name="Flash/STM32L0xx_128.FLM"      start="0x08000000" size="0x00020000"             default="1"/>
+          <algorithm name="Flash/STM32L07_8x_EEPROM.FLM" start="0x08080000" size="0x00001800"             default="0"/>
+
+          <variant Dvariant="STM32L073VBIx"> <feature type="BGA" n="100"/> </variant>
+          <variant Dvariant="STM32L073VBTx"> <feature type="QFP" n="100"/> </variant>
+        </device>
+
+        <!-- *************************  Device 'STM32L073VZ'  ***************************** -->
+        <device Dname="STM32L073VZ">
+          <memory id="IROM1"                             start="0x08000000" size="0x00030000" startup="1" default="1"/>
+          <memory id="IRAM1"                             start="0x20000000" size="0x00005000" init   ="0" default="1"/>
+          <algorithm name="Flash/STM32L0xx_192.FLM"      start="0x08000000" size="0x00030000"             default="1"/>
+          <algorithm name="Flash/STM32L07_8x_EEPROM.FLM" start="0x08080000" size="0x00001800"             default="0"/>
+
+          <variant Dvariant="STM32L073VZIx"> <feature type="BGA" n="100"/> </variant>
+          <variant Dvariant="STM32L073VZTx"> <feature type="QFP" n="100"/> </variant>
+        </device>
+      </subFamily>
+
+      <!-- ************************  Subfamily 'STM32L081'  **************************** -->
+      <subFamily DsubFamily="STM32L081">
+        <processor Dclock="32000000"/>
+        <compile header="Device/Include/stm32l0xx.h" define="STM32L081xx"/>
+        <debug svd="SVD/STM32L0x1.svd"/>
+        <algorithm name="Flash/STM32L0xx_OPT.FLM"    start="0x1FF80000" size="0x00000014" default="0"/>
+
+        <book name="Documents/DM00108281.pdf" title="STM32L0x1 Reference Manual"/>
+        <book name="Documents/DM00162467.pdf" title="STM32L081xx Data Sheet"/>
+
+        <!-- *************************  Device 'STM32L081CZ'  ***************************** -->
+        <device Dname="STM32L081CZ">
+          <memory id="IROM1"                             start="0x08000000" size="0x00030000" startup="1" default="1"/>
+          <memory id="IRAM1"                             start="0x20000000" size="0x00005000" init   ="0" default="1"/>
+          <algorithm name="Flash/STM32L0xx_192.FLM"      start="0x08000000" size="0x00030000"             default="1"/>
+          <algorithm name="Flash/STM32L07_8x_EEPROM.FLM" start="0x08080000" size="0x00001800"             default="0"/>
+
+          <variant Dvariant="STM32L081CZTx"> <feature type="QFP" n="48"/> </variant>
+        </device>
+
+        <!-- *************************  Device 'STM32L081KZ'  ***************************** -->
+        <device Dname="STM32L081KZ">
+          <memory id="IROM1"                             start="0x08000000" size="0x00030000" startup="1" default="1"/>
+          <memory id="IRAM1"                             start="0x20000000" size="0x00005000" init   ="0" default="1"/>
+          <algorithm name="Flash/STM32L0xx_192.FLM"      start="0x08000000" size="0x00030000"             default="1"/>
+          <algorithm name="Flash/STM32L07_8x_EEPROM.FLM" start="0x08080000" size="0x00001800"             default="0"/>
+
+          <variant Dvariant="STM32L081KZTx"> <feature type="QFP" n="32"/> </variant>
+        </device>
+      </subFamily>
+
+      <!-- ************************  Subfamily 'STM32L082'  **************************** -->
+      <subFamily DsubFamily="STM32L082">
+        <processor Dclock="32000000"/>
+        <compile header="Device/Include/stm32l0xx.h" define="STM32L082xx"/>
+        <debug svd="SVD/STM32L07x.svd"/>
+        <algorithm name="Flash/STM32L0xx_OPT.FLM"        start="0x1FF80000" size="0x00000014" default="0"/>
+        <algorithm name="Flash/STM32L07_8x_EEPROM.FLM"   start="0x08080000" size="0x00001800" default="0"/>
+
+        <book name="Documents/DM00108281.pdf" title="STM32L0x2 Reference Manual"/>
+        <book name="Documents/DM00141132.pdf" title="STM32L082xx Data Sheet"/>
+
+        <!-- *************************  Device 'STM32L082KB'  ***************************** -->
+        <device Dname="STM32L082KB">
+          <memory id="IROM1"                        start="0x08000000" size="0x00020000" startup="1" default="1"/>
+          <memory id="IRAM1"                        start="0x20000000" size="0x00005000" init   ="0" default="1"/>
+          <algorithm name="Flash/STM32L0xx_128.FLM" start="0x08000000" size="0x00020000"             default="1"/>
+
+          <variant Dvariant="STM32L082KBTx"> <feature type="QFP" n="32"/> </variant>
+          <variant Dvariant="STM32L082KBUx"> <feature type="QFN" n="32"/> </variant>
+        </device>
+
+        <!-- *************************  Device 'STM32L082KZ'  ***************************** -->
+        <device Dname="STM32L082KZ">
+          <memory id="IROM1"                        start="0x08000000" size="0x00030000" startup="1" default="1"/>
+          <memory id="IRAM1"                        start="0x20000000" size="0x00005000" init   ="0" default="1"/>
+          <algorithm name="Flash/STM32L0xx_192.FLM" start="0x08000000" size="0x00030000"             default="1"/>
+
+          <variant Dvariant="STM32L082KZTx"> <feature type="QFP" n="32"/> </variant>
+          <variant Dvariant="STM32L082KZUx"> <feature type="QFN" n="32"/> </variant>
+        </device>
+      </subFamily>
+
+      <!-- ************************  Subfamily 'STM32L083'  **************************** -->
+      <subFamily DsubFamily="STM32L083">
+        <processor Dclock="32000000"/>
+        <compile header="Device/Include/stm32l0xx.h" define="STM32L083xx"/>
+        <debug svd="SVD/STM32L07x.svd"/>
+        <algorithm name="Flash/STM32L0xx_OPT.FLM"    start="0x1FF80000" size="0x00000014" default="0"/>
+
+        <book name="Documents/DM00095744.pdf" title="STM32L0x3 Reference Manual"/>
+        <book name="Documents/DM00140762.pdf" title="STM32L083xx Data Sheet"/>
+
+        <!-- *************************  Device 'STM32L083CB'  ***************************** -->
+        <device Dname="STM32L083CB">
+          <memory id="IROM1"                             start="0x08000000" size="0x00020000" startup="1" default="1"/>
+          <memory id="IRAM1"                             start="0x20000000" size="0x00005000" init   ="0" default="1"/>
+          <algorithm name="Flash/STM32L0xx_128.FLM"      start="0x08000000" size="0x00020000"             default="1"/>
+          <algorithm name="Flash/STM32L07_8x_EEPROM.FLM" start="0x08080000" size="0x00001800"             default="0"/>
+
+          <variant Dvariant="STM32L083CBTx"> <feature type="QFP" n="48"/> </variant>
+        </device>
+
+        <!-- *************************  Device 'STM32L083CZ'  ***************************** -->
+        <device Dname="STM32L083CZ">
+          <memory id="IROM1"                             start="0x08000000" size="0x00030000" startup="1" default="1"/>
+          <memory id="IRAM1"                             start="0x20000000" size="0x00005000" init   ="0" default="1"/>
+          <algorithm name="Flash/STM32L0xx_192.FLM"      start="0x08000000" size="0x00030000"             default="1"/>
+          <algorithm name="Flash/STM32L07_8x_EEPROM.FLM" start="0x08080000" size="0x00001800"             default="0"/>
+
+          <variant Dvariant="STM32L083CZTx"> <feature type="QFP" n="48"/> </variant>
+        </device>
+
+        <!-- *************************  Device 'STM32L083RB'  ***************************** -->
+        <device Dname="STM32L083RB">
+          <memory id="IROM1"                             start="0x08000000" size="0x00020000" startup="1" default="1"/>
+          <memory id="IRAM1"                             start="0x20000000" size="0x00005000" init   ="0" default="1"/>
+          <algorithm name="Flash/STM32L0xx_128.FLM"      start="0x08000000" size="0x00020000"             default="1"/>
+          <algorithm name="Flash/STM32L07_8x_EEPROM.FLM" start="0x08080000" size="0x00001800"             default="0"/>
+
+          <variant Dvariant="STM32L083RBHx"> <feature type="BGA" n="64"/> </variant>
+          <variant Dvariant="STM32L083RBTx"> <feature type="QFP" n="64"/> </variant>
+        </device>
+
+        <!-- *************************  Device 'STM32L083RZ'  ***************************** -->
+        <device Dname="STM32L083RZ">
+          <memory id="IROM1"                             start="0x08000000" size="0x00030000" startup="1" default="1"/>
+          <memory id="IRAM1"                             start="0x20000000" size="0x00005000" init   ="0" default="1"/>
+          <algorithm name="Flash/STM32L0xx_192.FLM"      start="0x08000000" size="0x00030000"             default="1"/>
+          <algorithm name="Flash/STM32L07_8x_EEPROM.FLM" start="0x08080000" size="0x00001800"             default="0"/>
+
+          <variant Dvariant="STM32L083RZHx"> <feature type="BGA" n="64"/> </variant>
+          <variant Dvariant="STM32L083RZTx"> <feature type="QFP" n="64"/> </variant>
+        </device>
+
+        <!-- *************************  Device 'STM32L083V8'  ***************************** -->
+        <device Dname="STM32L083V8">
+          <memory id="IROM1"                              start="0x08000000" size="0x00010000" startup="1" default="1"/>
+          <memory id="IRAM1"                              start="0x20000000" size="0x00050000" init   ="0" default="1"/>
+          <algorithm name="Flash/STM32L0xx_64.FLM"        start="0x08000000" size="0x00010000"             default="1"/>
+          <algorithm name="Flash/STM32L07x_64_EEPROM.FLM" start="0x08080C00" size="0x00000800"             default="0"/>
+
+          <variant Dvariant="STM32L083V8Ix"> <feature type="BGA" n="100"/> </variant>
+          <variant Dvariant="STM32L083V8Tx"> <feature type="QFP" n="100"/> </variant>
+        </device>
+
+        <!-- *************************  Device 'STM32L083VB'  ***************************** -->
+        <device Dname="STM32L083VB">
+          <memory id="IROM1"                             start="0x08000000" size="0x00020000" startup="1" default="1"/>
+          <memory id="IRAM1"                             start="0x20000000" size="0x00005000" init   ="0" default="1"/>
+          <algorithm name="Flash/STM32L0xx_128.FLM"      start="0x08000000" size="0x00020000"             default="1"/>
+          <algorithm name="Flash/STM32L07_8x_EEPROM.FLM" start="0x08080000" size="0x00001800"             default="0"/>
+
+          <variant Dvariant="STM32L083VBIx"> <feature type="BGA" n="100"/> </variant>
+          <variant Dvariant="STM32L083VBTx"> <feature type="QFP" n="100"/> </variant>
+        </device>
+
+        <!-- *************************  Device 'STM32L083VZ'  ***************************** -->
+        <device Dname="STM32L083VZ">
+          <memory id="IROM1"                             start="0x08000000" size="0x00030000" startup="1" default="1"/>
+          <memory id="IRAM1"                             start="0x20000000" size="0x00005000" init   ="0" default="1"/>
+          <algorithm name="Flash/STM32L0xx_192.FLM"      start="0x08000000" size="0x00030000"             default="1"/>
+          <algorithm name="Flash/STM32L07_8x_EEPROM.FLM" start="0x08080000" size="0x00001800"             default="0"/>
+
+          <variant Dvariant="STM32L083VZIx"> <feature type="BGA" n="100"/> </variant>
+          <variant Dvariant="STM32L083VZTx"> <feature type="QFP" n="100"/> </variant>
+        </device>
+      </subFamily>
+
+    </family>
+  </devices>
+
+  <conditions>
+    <!-- Compiler Conditions -->
+    <condition id="Compiler ARMCC">
+      <require Tcompiler="ARMCC"/>
+    </condition>
+
+    <!-- Device Conditions -->
+    <condition id="STM32L011">
+      <description>STMicroelectronics STM32L011 Devices</description>
+      <accept  Dvendor="STMicroelectronics:13" Dname="STM32L011*"/>
+    </condition>
+    <condition id="STM32L021">
+      <description>STMicroelectronics STM32L021 Devices</description>
+      <accept  Dvendor="STMicroelectronics:13" Dname="STM32L021*"/>
+    </condition>
+    <condition id="STM32L031">
+      <description>STMicroelectronics STM32L031 Devices</description>
+      <accept  Dvendor="STMicroelectronics:13" Dname="STM32L031*"/>
+    </condition>
+    <condition id="STM32L041">
+      <description>STMicroelectronics STM32L041 Devices</description>
+      <accept  Dvendor="STMicroelectronics:13" Dname="STM32L041*"/>
+    </condition>
+    <condition id="STM32L051">
+      <description>STMicroelectronics STM32L051 Devices</description>
+      <accept  Dvendor="STMicroelectronics:13" Dname="STM32L051*"/>
+    </condition>
+    <condition id="STM32L052">
+      <description>STMicroelectronics STM32L052 Devices</description>
+      <accept  Dvendor="STMicroelectronics:13" Dname="STM32L052*"/>
+    </condition>
+    <condition id="STM32L053">
+      <description>STMicroelectronics STM32L053 Devices</description>
+      <accept  Dvendor="STMicroelectronics:13" Dname="STM32L053*"/>
+    </condition>
+    <!--condition id="STM32L061">
+      <description>STMicroelectronics STM32L061 Devices</description>
+      <accept  Dvendor="STMicroelectronics:13" Dname="STM32L061*"/>
+    </condition-->
+    <condition id="STM32L062">
+      <description>STMicroelectronics STM32L062 Devices</description>
+      <accept  Dvendor="STMicroelectronics:13" Dname="STM32L062*"/>
+    </condition>
+    <condition id="STM32L063">
+      <description>STMicroelectronics STM32L063 Devices</description>
+      <accept  Dvendor="STMicroelectronics:13" Dname="STM32L063*"/>
+    </condition>
+    <condition id="STM32L071">
+      <description>STMicroelectronics STM32L071 Devices</description>
+      <accept  Dvendor="STMicroelectronics:13" Dname="STM32L071*"/>
+    </condition>
+    <condition id="STM32L072">
+      <description>STMicroelectronics STM32L072 Devices</description>
+      <accept  Dvendor="STMicroelectronics:13" Dname="STM32L072*"/>
+    </condition>
+    <condition id="STM32L073">
+      <description>STMicroelectronics STM32L073 Devices</description>
+      <accept  Dvendor="STMicroelectronics:13" Dname="STM32L073*"/>
+    </condition>
+    <condition id="STM32L081">
+      <description>STMicroelectronics STM32L081 Devices</description>
+      <accept  Dvendor="STMicroelectronics:13" Dname="STM32L081*"/>
+    </condition>
+    <condition id="STM32L082">
+      <description>STMicroelectronics STM32L082 Devices</description>
+      <accept  Dvendor="STMicroelectronics:13" Dname="STM32L082*"/>
+    </condition>
+    <condition id="STM32L083">
+      <description>STMicroelectronics STM32L083 Devices</description>
+      <accept  Dvendor="STMicroelectronics:13" Dname="STM32L083*"/>
+    </condition>
+
+    <!-- Device + CMSIS Conditions -->
+    <condition id="STM32L011 CMSIS">
+      <description>STMicroelectronics STM32L011 Devices and CMSIS-Core</description>
+      <require condition="STM32L011"/>
+      <require Cclass="CMSIS" Cgroup="CORE"/>
+    </condition>
+    <condition id="STM32L021 CMSIS">
+      <description>STMicroelectronics STM32L021 Devices and CMSIS-Core</description>
+      <require condition="STM32L021"/>
+      <require Cclass="CMSIS" Cgroup="CORE"/>
+    </condition>
+    <condition id="STM32L031 CMSIS">
+      <description>STMicroelectronics STM32L031 Devices and CMSIS-Core</description>
+      <require condition="STM32L031"/>
+      <require Cclass="CMSIS" Cgroup="CORE"/>
+    </condition>
+    <condition id="STM32L041 CMSIS">
+      <description>STMicroelectronics STM32L041 Devices and CMSIS-Core</description>
+      <require condition="STM32L041"/>
+      <require Cclass="CMSIS" Cgroup="CORE"/>
+    </condition>
+    <condition id="STM32L051 CMSIS">
+      <description>STMicroelectronics STM32L051 Devices and CMSIS-Core</description>
+      <require condition="STM32L051"/>
+      <require Cclass="CMSIS" Cgroup="CORE"/>
+    </condition>
+    <condition id="STM32L052 CMSIS">
+      <description>STMicroelectronics STM32L052 Devices and CMSIS-Core</description>
+      <require condition="STM32L052"/>
+      <require Cclass="CMSIS" Cgroup="CORE"/>
+    </condition>
+    <condition id="STM32L053 CMSIS">
+      <description>STMicroelectronics STM32L053 Devices and CMSIS-Core</description>
+      <require condition="STM32L053"/>
+      <require Cclass="CMSIS" Cgroup="CORE"/>
+    </condition>
+    <!--condition id="STM32L061 CMSIS">
+      <description>STMicroelectronics STM32L061 Devices and CMSIS-Core</description>
+      <require condition="STM32L061"/>
+      <require Cclass="CMSIS" Cgroup="CORE"/>
+    </condition-->
+    <condition id="STM32L062 CMSIS">
+      <description>STMicroelectronics STM32L062 Devices and CMSIS-Core</description>
+      <require condition="STM32L062"/>
+      <require Cclass="CMSIS" Cgroup="CORE"/>
+    </condition>
+    <condition id="STM32L063 CMSIS">
+      <description>STMicroelectronics STM32L063 Devices and CMSIS-Core</description>
+      <require condition="STM32L063"/>
+      <require Cclass="CMSIS" Cgroup="CORE"/>
+    </condition>
+    <condition id="STM32L071 CMSIS">
+      <description>STMicroelectronics STM32L071 Devices and CMSIS-Core</description>
+      <require condition="STM32L071"/>
+      <require Cclass="CMSIS" Cgroup="CORE"/>
+    </condition>
+    <condition id="STM32L072 CMSIS">
+      <description>STMicroelectronics STM32L072 Devices and CMSIS-Core</description>
+      <require condition="STM32L072"/>
+      <require Cclass="CMSIS" Cgroup="CORE"/>
+    </condition>
+    <condition id="STM32L073 CMSIS">
+      <description>STMicroelectronics STM32L073 Devices and CMSIS-Core</description>
+      <require condition="STM32L073"/>
+      <require Cclass="CMSIS" Cgroup="CORE"/>
+    </condition>
+    <condition id="STM32L081 CMSIS">
+      <description>STMicroelectronics STM32L081 Devices and CMSIS-Core</description>
+      <require condition="STM32L081"/>
+      <require Cclass="CMSIS" Cgroup="CORE"/>
+    </condition>
+    <condition id="STM32L082 CMSIS">
+      <description>STMicroelectronics STM32L082 Devices and CMSIS-Core</description>
+      <require condition="STM32L082"/>
+      <require Cclass="CMSIS" Cgroup="CORE"/>
+    </condition>
+    <condition id="STM32L083 CMSIS">
+      <description>STMicroelectronics STM32L083 Devices and CMSIS-Core</description>
+      <require condition="STM32L083"/>
+      <require Cclass="CMSIS" Cgroup="CORE"/>
+    </condition>
+  </conditions>
+
+  <components>
+    <!-- Startup STM32L011 -->
+    <component Cclass="Device" Cgroup="Startup" Cversion="1.4.0" condition="STM32L011 CMSIS">
+      <description>System Startup for STMicroelectronics STM32L011 Devices</description>
+      <files>
+        <file category="include"  name="Device/Include/"/>
+        <file category="source"   name="Device/Source/ARM/startup_stm32l011xx.s" attr="config"   version="1.4.0" condition="Compiler ARMCC"/>
+        <file category="source"   name="Device/Source/system_stm32l0xx.c"        attr="config"   version="1.4.0"/>
+        <file category="source"   name="Device/Source/ARM/STM32L0xx_OPT.s"       attr="template" version="1.0.0" condition="Compiler ARMCC" select="Flash Option Bytes"/>
+      </files>
+    </component>
+
+    <!-- Startup STM32L021 -->
+    <component Cclass="Device" Cgroup="Startup" Cversion="1.4.0" condition="STM32L021 CMSIS">
+      <description>System Startup for STMicroelectronics STM32L021 Devices</description>
+      <files>
+        <file category="include"  name="Device/Include/"/>
+        <file category="source"   name="Device/Source/ARM/startup_stm32l021xx.s" attr="config"   version="1.4.0" condition="Compiler ARMCC"/>
+        <file category="source"   name="Device/Source/system_stm32l0xx.c"        attr="config"   version="1.4.0"/>
+        <file category="source"   name="Device/Source/ARM/STM32L0xx_OPT.s"       attr="template" version="1.0.0" condition="Compiler ARMCC" select="Flash Option Bytes"/>
+      </files>
+    </component>
+
+    <!-- Startup STM32L031 -->
+    <component Cclass="Device" Cgroup="Startup" Cversion="1.4.0" condition="STM32L031 CMSIS">
+      <description>System Startup for STMicroelectronics STM32L031 Devices</description>
+      <files>
+        <file category="include"  name="Device/Include/"/>
+        <file category="source"   name="Device/Source/ARM/startup_stm32l031xx.s" attr="config"   version="1.4.0" condition="Compiler ARMCC"/>
+        <file category="source"   name="Device/Source/system_stm32l0xx.c"        attr="config"   version="1.4.0"/>
+        <file category="source"   name="Device/Source/ARM/STM32L0xx_OPT.s"       attr="template" version="1.0.0" condition="Compiler ARMCC" select="Flash Option Bytes"/>
+      </files>
+    </component>
+
+    <!-- Startup STM32L041 -->
+    <component Cclass="Device" Cgroup="Startup" Cversion="1.4.0" condition="STM32L041 CMSIS">
+      <description>System Startup for STMicroelectronics STM32L041 Devices</description>
+      <files>
+        <file category="include"  name="Device/Include/"/>
+        <file category="source"   name="Device/Source/ARM/startup_stm32l041xx.s" attr="config"   version="1.4.0" condition="Compiler ARMCC"/>
+        <file category="source"   name="Device/Source/system_stm32l0xx.c"        attr="config"   version="1.4.0"/>
+        <file category="source"   name="Device/Source/ARM/STM32L0xx_OPT.s"       attr="template" version="1.0.0" condition="Compiler ARMCC" select="Flash Option Bytes"/>
+      </files>
+    </component>
+
+    <!-- Startup STM32L051 -->
+    <component Cclass="Device" Cgroup="Startup" Cversion="1.4.0" condition="STM32L051 CMSIS">
+      <description>System Startup for STMicroelectronics STM32L051 Devices</description>
+      <files>
+        <file category="include"  name="Device/Include/"/>
+        <file category="source"   name="Device/Source/ARM/startup_stm32l051xx.s" attr="config"   version="1.4.0" condition="Compiler ARMCC"/>
+        <file category="source"   name="Device/Source/system_stm32l0xx.c"        attr="config"   version="1.4.0"/>
+        <file category="source"   name="Device/Source/ARM/STM32L0xx_OPT.s"       attr="template" version="1.0.0" condition="Compiler ARMCC" select="Flash Option Bytes"/>
+      </files>
+    </component>
+
+    <!-- Startup STM32L052 -->
+    <component Cclass="Device" Cgroup="Startup" Cversion="1.4.0" condition="STM32L052 CMSIS">
+      <description>System Startup for STMicroelectronics STM32L052 Devices</description>
+      <files>
+        <file category="include"  name="Device/Include/"/>
+        <file category="source"   name="Device/Source/ARM/startup_stm32l052xx.s" attr="config"   version="1.4.0" condition="Compiler ARMCC"/>
+        <file category="source"   name="Device/Source/system_stm32l0xx.c"        attr="config"   version="1.4.0"/>
+        <file category="source"   name="Device/Source/ARM/STM32L0xx_OPT.s"       attr="template" version="1.0.0" condition="Compiler ARMCC" select="Flash Option Bytes"/>
+      </files>
+    </component>
+
+    <!-- Startup STM32L053 -->
+    <component Cclass="Device" Cgroup="Startup" Cversion="1.4.0" condition="STM32L053 CMSIS">
+      <description>System Startup for STMicroelectronics STM32L053 Devices</description>
+      <files>
+        <file category="include"  name="Device/Include/"/>
+        <file category="source"   name="Device/Source/ARM/startup_stm32l053xx.s" attr="config"   version="1.4.0" condition="Compiler ARMCC"/>
+        <file category="source"   name="Device/Source/system_stm32l0xx.c"        attr="config"   version="1.4.0"/>
+        <file category="source"   name="Device/Source/ARM/STM32L0xx_OPT.s"       attr="template" version="1.0.0" condition="Compiler ARMCC" select="Flash Option Bytes"/>
+      </files>
+    </component>
+
+    <!-- Startup STM32L061 -->
+    <!--component Cclass="Device" Cgroup="Startup" Cversion="1.4.0" condition="STM32L061 CMSIS">
+      <description>System Startup for STMicroelectronics STM32L061 Devices</description>
+      <files>
+        <file category="include"  name="Device/Include/"/>
+        <file category="source"   name="Device/Source/ARM/startup_stm32l061xx.s" attr="config"   version="1.4.0" condition="Compiler ARMCC"/>
+        <file category="source"   name="Device/Source/system_stm32l0xx.c"        attr="config"   version="1.4.0"/>
+        <file category="source"   name="Device/Source/ARM/STM32L0xx_OPT.s"       attr="template" version="1.0.0" condition="Compiler ARMCC" select="Flash Option Bytes"/>
+      </files>
+    </component-->
+
+    <!-- Startup STM32L062 -->
+    <component Cclass="Device" Cgroup="Startup" Cversion="1.4.0" condition="STM32L062 CMSIS">
+      <description>System Startup for STMicroelectronics STM32L062 Devices</description>
+      <files>
+        <file category="include"  name="Device/Include/"/>
+        <file category="source"   name="Device/Source/ARM/startup_stm32l062xx.s" attr="config"   version="1.4.0" condition="Compiler ARMCC"/>
+        <file category="source"   name="Device/Source/system_stm32l0xx.c"        attr="config"   version="1.4.0"/>
+        <file category="source"   name="Device/Source/ARM/STM32L0xx_OPT.s"       attr="template" version="1.0.0" condition="Compiler ARMCC" select="Flash Option Bytes"/>
+      </files>
+    </component>
+
+    <!-- Startup STM32L063 -->
+    <component Cclass="Device" Cgroup="Startup" Cversion="1.4.0" condition="STM32L063 CMSIS">
+      <description>System Startup for STMicroelectronics STM32L063 Devices</description>
+      <files>
+        <file category="include"  name="Device/Include/"/>
+        <file category="source"   name="Device/Source/ARM/startup_stm32l063xx.s" attr="config"   version="1.4.0" condition="Compiler ARMCC"/>
+        <file category="source"   name="Device/Source/system_stm32l0xx.c"        attr="config"   version="1.4.0"/>
+        <file category="source"   name="Device/Source/ARM/STM32L0xx_OPT.s"       attr="template" version="1.0.0" condition="Compiler ARMCC" select="Flash Option Bytes"/>
+      </files>
+    </component>
+
+    <!-- Startup STM32L071 -->
+    <component Cclass="Device" Cgroup="Startup" Cversion="1.4.0" condition="STM32L071 CMSIS">
+      <description>System Startup for STMicroelectronics STM32L071 Devices</description>
+      <files>
+        <file category="include"  name="Device/Include/"/>
+        <file category="source"   name="Device/Source/ARM/startup_stm32l071xx.s" attr="config"   version="1.4.0" condition="Compiler ARMCC"/>
+        <file category="source"   name="Device/Source/system_stm32l0xx.c"        attr="config"   version="1.4.0"/>
+        <file category="source"   name="Device/Source/ARM/STM32L0xx_OPT.s"       attr="template" version="1.0.0" condition="Compiler ARMCC" select="Flash Option Bytes"/>
+      </files>
+    </component>
+
+    <!-- Startup STM32L072 -->
+    <component Cclass="Device" Cgroup="Startup" Cversion="1.4.0" condition="STM32L072 CMSIS">
+      <description>System Startup for STMicroelectronics STM32L072 Devices</description>
+      <files>
+        <file category="include"  name="Device/Include/"/>
+        <file category="source"   name="Device/Source/ARM/startup_stm32l072xx.s" attr="config"   version="1.4.0" condition="Compiler ARMCC"/>
+        <file category="source"   name="Device/Source/system_stm32l0xx.c"        attr="config"   version="1.4.0"/>
+        <file category="source"   name="Device/Source/ARM/STM32L0xx_OPT.s"       attr="template" version="1.0.0" condition="Compiler ARMCC" select="Flash Option Bytes"/>
+      </files>
+    </component>
+
+    <!-- Startup STM32L073 -->
+    <component Cclass="Device" Cgroup="Startup" Cversion="1.4.0" condition="STM32L073 CMSIS">
+      <description>System Startup for STMicroelectronics STM32L073 Devices</description>
+      <files>
+        <file category="include"  name="Device/Include/"/>
+        <file category="source"   name="Device/Source/ARM/startup_stm32l073xx.s" attr="config"   version="1.4.0" condition="Compiler ARMCC"/>
+        <file category="source"   name="Device/Source/system_stm32l0xx.c"        attr="config"   version="1.4.0"/>
+        <file category="source"   name="Device/Source/ARM/STM32L0xx_OPT.s"       attr="template" version="1.0.0" condition="Compiler ARMCC" select="Flash Option Bytes"/>
+      </files>
+    </component>
+
+    <!-- Startup STM32L081 -->
+    <component Cclass="Device" Cgroup="Startup" Cversion="1.4.0" condition="STM32L081 CMSIS">
+      <description>System Startup for STMicroelectronics STM32L081 Devices</description>
+      <files>
+        <file category="include"  name="Device/Include/"/>
+        <file category="source"   name="Device/Source/ARM/startup_stm32l081xx.s" attr="config"   version="1.4.0" condition="Compiler ARMCC"/>
+        <file category="source"   name="Device/Source/system_stm32l0xx.c"        attr="config"   version="1.4.0"/>
+        <file category="source"   name="Device/Source/ARM/STM32L0xx_OPT.s"       attr="template" version="1.0.0" condition="Compiler ARMCC" select="Flash Option Bytes"/>
+      </files>
+    </component>
+
+    <!-- Startup STM32L082 -->
+    <component Cclass="Device" Cgroup="Startup" Cversion="1.4.0" condition="STM32L082 CMSIS">
+      <description>System Startup for STMicroelectronics STM32L082 Devices</description>
+      <files>
+        <file category="include"  name="Device/Include/"/>
+        <file category="source"   name="Device/Source/ARM/startup_stm32l082xx.s" attr="config"   version="1.4.0" condition="Compiler ARMCC"/>
+        <file category="source"   name="Device/Source/system_stm32l0xx.c"        attr="config"   version="1.4.0"/>
+        <file category="source"   name="Device/Source/ARM/STM32L0xx_OPT.s"       attr="template" version="1.0.0" condition="Compiler ARMCC" select="Flash Option Bytes"/>
+      </files>
+    </component>
+
+    <!-- Startup STM32L083 -->
+    <component Cclass="Device" Cgroup="Startup" Cversion="1.4.0" condition="STM32L083 CMSIS">
+      <description>System Startup for STMicroelectronics STM32L083 Devices</description>
+      <files>
+        <file category="include"  name="Device/Include/"/>
+        <file category="source"   name="Device/Source/ARM/startup_stm32l083xx.s" attr="config"   version="1.4.0" condition="Compiler ARMCC"/>
+        <file category="source"   name="Device/Source/system_stm32l0xx.c"        attr="config"   version="1.4.0"/>
+        <file category="source"   name="Device/Source/ARM/STM32L0xx_OPT.s"       attr="template" version="1.0.0" condition="Compiler ARMCC" select="Flash Option Bytes"/>
+      </files>
+    </component>
+
+    <!-- STM32L053-Discovery Board Support -->
+    <bundle Cbundle="STM32L053-Discovery" Cclass="Board Support" Cversion="1.0.0">
+      <description>STMicroelectronics STM32L053-Discovery Board</description>
+      <doc></doc>
+      <component Cgroup="LED" Capiversion="1.00" condition="STM32L053 CMSIS">
+      <description>LED driver for STMicroelectronics STM32L053-Discovery Board</description>
+        <files>
+          <file category="source" name="Boards/ST/STM32L053-Discovery/Common/LED_STM32L053-Discovery.c"/>
+        </files>
+      </component>
+      <component Cgroup="Buttons" Capiversion="1.00" condition="STM32L053 CMSIS">
+      <description>Button driver for STMicroelectronics STM32L053-Discovery Board</description>
+        <files>
+        <file category="sourceC" name="Boards/ST/STM32L053-Discovery/Common/Buttons_STM32L053-Discovery.c"/>
+        </files>
+      </component>
+    </bundle>
+
+    <!-- STM32L073Z-EVAL Board Support -->
+    <bundle Cbundle="STM32L073Z-EVAL" Cclass="Board Support" Cversion="1.0.0">
+      <description>STMicroelectronics STM32L073Z-EVAL Board</description>
+      <doc></doc>
+      <component Cgroup="LED" Capiversion="1.00" condition="STM32L073 CMSIS">
+      <description>LED driver for STMicroelectronics STM32L073Z-EVAL Board</description>
+        <files>
+          <file category="source" name="Boards/ST/STM32L073Z-EVAL/Common/LED_STM32L073Z-EVAL.c"/>
+        </files>
+      </component>
+      <component Cgroup="Buttons" Capiversion="1.00" condition="STM32L073 CMSIS">
+      <description>Button driver for STMicroelectronics STM32L073Z-EVAL Board</description>
+        <files>
+        <file category="sourceC" name="Boards/ST/STM32L073Z-EVAL/Common/Buttons_STM32L073Z-EVAL.c"/>
+        </files>
+      </component>
+    </bundle>
+  </components>
+
+  <boards>
+    <!-- STM32L053-Discovery Board Support -->
+    <board vendor="STMicroelectronics" name="STM32L053-Discovery" revision="Rev.B"
+           salesContact="http://www.st.com/stonline/contactus/contacts/index.php"
+           orderForm   ="http://www.st.com/web/en/estore">
+      <description>Discovery kit with STM32L053C8T6 MCU</description>
+      <image small="Boards/ST/STM32L053-Discovery/Documents/STM32L053-Discovery_small.jpg"
+             large="Boards/ST/STM32L053-Discovery/Documents/STM32L053-Discovery_large.jpg"/>
+      <book category="overview"  name="http://www.st.com/web/catalog/tools/FM116/SC959/SS1532/LN1848/PF260319" title="STM32L053-Discovery Web Page"/>
+      <book category="other"     name="Boards/ST/STM32L053-Discovery/Documents/DM00122138.pdf" title="Data Brief"/>
+      <book category="manual"    name="Boards/ST/STM32L053-Discovery/Documents/DM00118944.pdf" title="User Manual"/>
+      <book category="schematic" name="Boards/ST/STM32L053-Discovery/Documents/MB1143.pdf"     title="Schematics"/>
+      <mountedDevice    deviceIndex="0" Dvendor="STMicroelectronics:13" Dname="STM32L053C8"/>
+      <compatibleDevice deviceIndex="0" Dvendor="STMicroelectronics:13" DsubFamily="STM32L053"/>
+      <feature type="ODbg"      n="1"              name="On-board ST-LINK/V2"/>
+      <feature type="XTAL"      n="8000000"/>
+      <feature type="PWR"       n="5"              name="USB Powered"/>
+      <feature type="PWR"       n="3"  m="5"       name="External Supply"/>
+      <feature type="USB"       n="1"              name="User USB with Mini-B connector"/>
+      <feature type="Button"    n="2"              name="User, Reset"/>
+      <feature type="GLCD"      n="1"  m="172.72"  name="2.04” E-paper display, 172x72 pixels"/>
+      <feature type="Touch"     n="1"              name="Linear Touch Sensor or four Touch Keys"/>
+      <feature type="LED"       n="4"              name="USB COM, 3.3 V Power, 2 user"/>
+      <debugInterface adapter="ST-Link" connector="Mini-USB"/>
+    </board>
+
+    <!-- STM32L073Z-EVAL Board Support -->
+    <board vendor="STMicroelectronics" name="STM32L073Z-EVAL" revision="Rev.A"
+           salesContact="http://www.st.com/stonline/contactus/contacts/index.php"
+           orderForm   ="http://www.st.com/web/en/estore">
+      <description>Evaluation Board with STM32L073VZ MCU</description>
+      <mountedDevice    deviceIndex="0" Dvendor="STMicroelectronics:13" Dname="STM32L073VZ"/>
+      <compatibleDevice deviceIndex="0" Dvendor="STMicroelectronics:13" DsubFamily="STM32L073"/>
+    </board>
+  </boards>
+
+  <examples>
+    <!-- STM32L053-Discovery Board -->
+    <example name="CMSIS-RTOS Blinky" doc="Abstract.txt" folder="Boards/ST/STM32L053-Discovery/RTX_Blinky">
+      <description>CMSIS-RTOS based Blinky example</description>
+      <board name="STM32L053-Discovery" vendor="STMicroelectronics"/>
+      <project>
+        <environment name="uv" load="RTX_Blinky.uvprojx"/>
+      </project>
+      <attributes>
+        <component Cclass="CMSIS" Cgroup="CORE"/>
+        <component Cclass="Device" Cgroup="Startup"/>
+        <component Cclass="CMSIS" Cgroup="RTOS"/>
+        <category>Getting Started</category>
+        <category>CMSIS-RTX</category>
+      </attributes>
+    </example>
+
+    <!-- STM32L073Z-EVAL Board -->
+    <example name="CMSIS-RTOS Blinky" doc="Abstract.txt" folder="Boards/ST/STM32L073Z-EVAL/Blinky">
+      <description>CMSIS-RTOS based Blinky example</description>
+      <board name="STM32L073Z-EVAL" vendor="STMicroelectronics"/>
+      <project>
+        <environment name="uv" load="Blinky.uvprojx"/>
+      </project>
+      <attributes>
+        <component Cclass="CMSIS" Cgroup="CORE"/>
+        <component Cclass="Device" Cgroup="Startup"/>
+        <component Cclass="CMSIS" Cgroup="RTOS"/>
+        <category>Getting Started</category>
+        <category>CMSIS-RTX</category>
+      </attributes>
+    </example>
+  </examples>
+
+</package>

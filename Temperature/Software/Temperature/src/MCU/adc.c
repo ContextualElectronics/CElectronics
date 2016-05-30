@@ -12,6 +12,7 @@
 void ADC_On(void)
 {
 	RCC->APB2RSTR |= RCC_APB2RSTR_ADCRST;
+	RCC->APB2RSTR &= ~RCC_APB2RSTR_ADCRST;
 	RCC->APB2ENR |= RCC_APB2ENR_ADCEN;
 
 	ADC->CCR |= ADC_CCR_TSEN; // enable the temperature sensor.

@@ -1,0 +1,1166 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<package schemaVersion="1.2" xmlns:xs="http://www.w3.org/2001/XMLSchema-instance" xs:noNamespaceSchemaLocation="PACK.xsd">
+  <vendor>Keil</vendor>
+  <url>http://www.keil.com/pack/</url>
+  <name>Kinetis_K20_DFP</name>
+  <description>Freescale Kinetis K20 Series Device Support and Examples</description>
+
+  <releases>
+    <release version="1.3.0" date="2015-06-03">
+      Added MK22FA12 and MK26FN2M0xxx18 device support.
+      Updated MK21F12, MK22F12, MK26F18 device support and documentation.
+    </release>
+    <release version="1.2.0" date="2014-07-30">
+      Added MK21DX128Axxx5, MK21DX256Axxx5, MK21DN512Axxx5 devices
+      Added MK21FX512Axxx12, MK21FN1M0Axxx12 devices
+      Added TWR-K24F120M examples
+    </release>
+    <release version="1.1.0" date="2014-06-24">
+      Added MK24FN256xxx12 device
+      Updated K22F CMSIS files.
+    </release>
+   <release version="1.0.2">
+      USB Device Driver: Endpoint read fixed
+    </release>
+    <release version="1.0.1">
+      Added GPIO, DMA and USBD drivers for MK20D5 devices.
+      New Device: MK24FN1M0xxx12
+    </release>
+    <release version="1.0.0">
+      First Release version of K20 Device Family Pack.
+    </release>
+  </releases>
+
+  <keywords>
+    <!-- keywords for indexing -->
+    <keyword>Freescale</keyword>
+    <keyword>Device Support</keyword>
+    <keyword>Device Family Package Freescale</keyword>
+    <keyword>K20</keyword>
+  </keywords>
+
+  <devices>
+    <family Dfamily="K20 Series" Dvendor="Freescale:78">
+      <processor Dcore="Cortex-M4" DcoreVersion="r0p1"/>
+      <book name="Documents\dui0553a_cortex_m4_dgug.pdf"           title="Cortex-M4 Generic User Guide"/>
+      <book name="Documents\K20PB.pdf"                             title="K20 Family Product Brief"/>
+      <description>
+The Kinetis K2x MCU family is pin-peripheral and software-compatible with many of the Kinetis K series MCU families, offering full and high-speed USB 2.0 On-The-Go, in addition to other features like device charge detect capability and USB crystal-less functionality.
+Devices start from 32 KB of flash in 5 x 5 mm 32-pin QFN packages extending up to 2 MB in a 144-pin MAPBGA package.
+These devices offer various levels of integration, with a rich suite of analog, communication, timing and control peripherals.
+Next-generation Kinetis K2x MCUs are further optimized for performance with industry-leading power consumption and offer more streamlined integration for further BOM cost reductions.
+The K2x USB MCUs are Energy-Efficient Product Solutions by Freescale.
+      </description>
+
+      <!-- ******************************  MK20DN128xxx5  ****************************** -->
+      <device Dname="MK20DN128xxx5">
+        <processor Dfpu="0" Dmpu="0" Dendian="Little-endian" Dclock="50000000"/>
+        <compile header="Device\Include\MK20D5.h"  define="MK20DN128xxx5"/>
+        <debug      svd="SVD\MK20D5.svd"/>
+        <memory     id="IROM1"                      start="0x00000000"  size="0x20000"    startup="1"   default="1"/>
+        <memory     id="IRAM1"                      start="0x20000000"  size="0x2000"     init   ="0"   default="1"/>
+        <memory     id="IRAM2"                      start="0x1FFFE000"  size="0x2000"     init   ="0"   default="0"/>
+        <algorithm  name="Flash\MK_P128_50MHZ.FLM"  start="0x00000000"  size="0x20000"                  default="1"/>
+        <book name="Documents\K20P64M50SF0RM.pdf"          title="MK20DN128xxx5 Reference Manual"/>
+        <book name="Documents\K20P64M50SF0.pdf"            title="MK20DN128xxx5 Data Sheet"/>
+      </device>
+
+      <!-- ******************************  MK20DN32xxx5  ****************************** -->
+      <device Dname="MK20DN32xxx5">
+        <processor Dfpu="0" Dmpu="0" Dendian="Little-endian" Dclock="50000000"/>
+        <compile header="Device\Include\MK20D5.h"  define="MK20DN32xxx5"/>
+        <debug      svd="SVD\MK20D5.svd"/>
+        <memory     id="IROM1"                      start="0x00000000"  size="0x8000"     startup="1"   default="1"/>
+        <memory     id="IRAM1"                      start="0x20000000"  size="0x1000"     init   ="0"   default="1"/>
+        <memory     id="IRAM2"                      start="0x1FFFF000"  size="0x1000"     init   ="0"   default="0"/>
+        <algorithm  name="Flash\MK_P32_50MHZ.FLM"   start="0x00000000"  size="0x8000"                   default="1"/>
+        <book name="Documents\K20P64M50SF0RM.pdf"          title="MK20DN32xxx5 Reference Manual"/>
+        <book name="Documents\K20P64M50SF0.pdf"            title="MK20DN32xxx5 Data Sheet"/>
+      </device>
+
+      <!-- ******************************  MK20DN64xxx5  ****************************** -->
+      <device Dname="MK20DN64xxx5">
+        <processor Dfpu="0" Dmpu="0" Dendian="Little-endian" Dclock="50000000"/>
+        <compile header="Device\Include\MK20D5.h"  define="MK20DN64xxx5"/>
+        <debug      svd="SVD\MK20D5.svd"/>
+        <memory     id="IROM1"                      start="0x00000000"  size="0x10000"    startup="1"   default="1"/>
+        <memory     id="IRAM1"                      start="0x20000000"  size="0x2000"     init   ="0"   default="1"/>
+        <memory     id="IRAM2"                      start="0x1FFFE000"  size="0x2000"     init   ="0"   default="0"/>
+        <algorithm  name="Flash\MK_P64_50MHZ.FLM"   start="0x00000000"  size="0x10000"                  default="1"/>
+        <book name="Documents\K20P64M50SF0RM.pdf"          title="MK20DN64xxx5 Reference Manual"/>
+        <book name="Documents\K20P64M50SF0.pdf"            title="MK20DN64xxx5 Data Sheet"/>
+      </device>
+
+      <!-- ******************************  MK20DX128xxx5  ****************************** -->
+      <device Dname="MK20DX128xxx5">
+        <processor Dfpu="0" Dmpu="0" Dendian="Little-endian" Dclock="50000000"/>
+        <compile header="Device\Include\MK20D5.h"  define="MK20DX128xxx5"/>
+        <debug      svd="SVD\MK20D5.svd"/>
+        <memory     id="IROM1"                      start="0x00000000"  size="0x20000"    startup="1"   default="1"/>
+        <memory     id="IROM2"                      start="0x10000000"  size="0x8000"     startup="0"   default="0"/>
+        <memory     id="IRAM1"                      start="0x20000000"  size="0x2000"     init   ="0"   default="1"/>
+        <memory     id="IRAM2"                      start="0x1FFFE000"  size="0x2000"     init   ="0"   default="0"/>
+        <algorithm  name="Flash\MK_P128_50MHZ.FLM"  start="0x00000000"  size="0x20000"                  default="1"/>
+        <algorithm  name="Flash\MK_D32_50MHZ.FLM"   start="0x10000000"  size="0x8000"                   default="1"/>
+        <book name="Documents\K20P64M50SF0RM.pdf"          title="MK20DX128xxx5 Reference Manual"/>
+        <book name="Documents\K20P64M50SF0.pdf"            title="MK20DX128xxx5 Data Sheet"/>
+      </device>
+
+      <!-- ******************************  MK20DX32xxx5  ****************************** -->
+      <device Dname="MK20DX32xxx5">
+        <processor Dfpu="0" Dmpu="0" Dendian="Little-endian" Dclock="50000000"/>
+        <compile header="Device\Include\MK20D5.h"  define="MK20DX32xxx5"/>
+        <debug      svd="SVD\MK20D5.svd"/>
+        <memory     id="IROM1"                      start="0x00000000"  size="0x8000"     startup="1"   default="1"/>
+        <memory     id="IROM2"                      start="0x10000000"  size="0x8000"     startup="0"   default="0"/>
+        <memory     id="IRAM1"                      start="0x20000000"  size="0x1000"     init   ="0"   default="1"/>
+        <memory     id="IRAM2"                      start="0x1FFFF000"  size="0x1000"     init   ="0"   default="0"/>
+        <algorithm  name="Flash\MK_P32_50MHZ.FLM"   start="0x00000000"  size="0x8000"                   default="1"/>
+        <algorithm  name="Flash\MK_D32_50MHZ.FLM"   start="0x10000000"  size="0x8000"                   default="1"/>
+        <book name="Documents\K20P64M50SF0RM.pdf"          title="MK20DX32xxx5 Reference Manual"/>
+        <book name="Documents\K20P64M50SF0.pdf"            title="MK20DX32xxx5 Data Sheet"/>
+      </device>
+
+      <!-- ******************************  MK20DX64xxx5  ****************************** -->
+      <device Dname="MK20DX64xxx5">
+        <processor Dfpu="0" Dmpu="0" Dendian="Little-endian" Dclock="50000000"/>
+        <compile header="Device\Include\MK20D5.h"  define="MK20DX64xxx5"/>
+        <debug      svd="SVD\MK20D5.svd"/>
+        <memory     id="IROM1"                      start="0x00000000"  size="0x10000"    startup="1"   default="1"/>
+        <memory     id="IROM2"                      start="0x10000000"  size="0x8000"     startup="0"   default="0"/>
+        <memory     id="IRAM1"                      start="0x20000000"  size="0x2000"     init   ="0"   default="1"/>
+        <memory     id="IRAM2"                      start="0x1FFFE000"  size="0x2000"     init   ="0"   default="0"/>
+        <algorithm  name="Flash\MK_P64_50MHZ.FLM"   start="0x00000000"  size="0x10000"                  default="1"/>
+        <algorithm  name="Flash\MK_D32_50MHZ.FLM"   start="0x10000000"  size="0x8000"                   default="1"/>
+        <book name="Documents\K20P64M50SF0RM.pdf"          title="MK20DX64xxx5 Reference Manual"/>
+        <book name="Documents\K20P64M50SF0.pdf"            title="MK20DX64xxx5 Data Sheet"/>
+      </device>
+
+      <!-- ******************************  MK20DX128xxx7  ****************************** -->
+      <device Dname="MK20DX128xxx7">
+        <processor Dfpu="0" Dmpu="0" Dendian="Little-endian" Dclock="72000000"/>
+        <compile header="Device\Include\MK20D7.h"  define="MK20DX128xxx7"/>
+        <debug      svd="SVD\MK20D7.svd"/>
+        <memory     id="IROM1"                      start="0x00000000"  size="0x20000"    startup="1"   default="1"/>
+        <memory     id="IROM2"                      start="0x10000000"  size="0x8000"     startup="0"   default="0"/>
+        <memory     id="IRAM1"                      start="0x20000000"  size="0x4000"     init   ="0"   default="1"/>
+        <memory     id="IRAM2"                      start="0x1FFFC000"  size="0x4000"     init   ="0"   default="0"/>
+        <algorithm  name="Flash\MK_P128.FLM"        start="0x00000000"  size="0x20000"                  default="1"/>
+        <algorithm  name="Flash\MK_D32_72MHZ.FLM"   start="0x10000000"  size="0x8000"                   default="1"/>
+        <book name="Documents\K20P100M72SF1RM.pdf"         title="MK20DX128xxx7 Reference Manual"/>
+        <book name="Documents\K20P100M72SF1.pdf"           title="MK20DX128xxx7 Data Sheet"/>
+      </device>
+
+      <!-- ******************************  MK20DX256xxx7  ****************************** -->
+      <device Dname="MK20DX256xxx7">
+        <processor Dfpu="0" Dmpu="0" Dendian="Little-endian" Dclock="72000000"/>
+        <compile header="Device\Include\MK20D7.h"  define="MK20DX256xxx7"/>
+        <debug      svd="SVD\MK20D7.svd"/>
+        <memory     id="IROM1"                      start="0x00000000"  size="0x40000"    startup="1"   default="1"/>
+        <memory     id="IROM2"                      start="0x10000000"  size="0x8000"     startup="0"   default="0"/>
+        <memory     id="IRAM1"                      start="0x20000000"  size="0x8000"     init   ="0"   default="1"/>
+        <memory     id="IRAM2"                      start="0x1FFF8000"  size="0x8000"     init   ="0"   default="0"/>
+        <algorithm  name="Flash\MK_P256.FLM"        start="0x00000000"  size="0x40000"                  default="1"/>
+        <algorithm  name="Flash\MK_D32_72MHZ.FLM"   start="0x10000000"  size="0x8000"                   default="1"/>
+        <book name="Documents\K20P100M72SF1RM.pdf"         title="MK20DX256xxx7 Reference Manual"/>
+        <book name="Documents\K20P100M72SF1.pdf"           title="MK20DX256xxx7 Data Sheet"/>
+      </device>
+
+      <!-- ******************************  MK20DX64xxx7  ****************************** -->
+      <device Dname="MK20DX64xxx7">
+        <processor Dfpu="0" Dmpu="0" Dendian="Little-endian" Dclock="72000000"/>
+        <compile header="Device\Include\MK20D7.h"  define="MK20DX64xxx7"/>
+        <debug      svd="SVD\MK20D7.svd"/>
+        <memory     id="IROM1"                      start="0x00000000"  size="0x10000"    startup="1"   default="1"/>
+        <memory     id="IROM2"                      start="0x10000000"  size="0x8000"     startup="0"   default="0"/>
+        <memory     id="IRAM1"                      start="0x20000000"  size="0x2000"     init   ="0"   default="1"/>
+        <memory     id="IRAM2"                      start="0x1FFFE000"  size="0x2000"     init   ="0"   default="0"/>
+        <algorithm  name="Flash\MK_P64.FLM"         start="0x00000000"  size="0x10000"                  default="1"/>
+        <algorithm  name="Flash\MK_D32_72MHZ.FLM"   start="0x10000000"  size="0x8000"                   default="1"/>
+        <book name="Documents\K20P100M72SF1RM.pdf"         title="MK20DX64xxx7 Reference Manual"/>
+        <book name="Documents\K20P100M72SF1.pdf"           title="MK20DX64xxx7 Data Sheet"/>
+      </device>
+
+      <!-- ******************************  MK20DN512xxx10  ****************************** -->
+      <device Dname="MK20DN512xxx10">
+        <processor Dfpu="0" Dmpu="0" Dendian="Little-endian" Dclock="100000000"/>
+        <compile header="Device\Include\MK20D10.h"  define="MK20DN512xxx10"/>
+        <debug      svd="SVD\MK20D10.svd"/>
+        <memory     id="IROM1"                      start="0x00000000"  size="0x80000"    startup="1"   default="1"/>
+        <memory     id="IRAM1"                      start="0x20000000"  size="0x10000"    init   ="0"   default="1"/>
+        <memory     id="IRAM2"                      start="0x1FFF0000"  size="0x10000"    init   ="0"   default="0"/>
+        <algorithm  name="Flash\MK_P512.FLM"        start="0x00000000"  size="0x80000"                  default="1"/>
+        <book name="Documents\K20P81M100SF2RM.pdf"         title="MK20DN512xxx10 Reference Manual"/>
+        <book name="Documents\K20P81M100SF2V2.pdf"         title="MK20DN512xxx10 Data Sheet"/>
+      </device>
+
+      <!-- ******************************  MK20DX128xxx10  ****************************** -->
+      <device Dname="MK20DX128xxx10">
+        <processor Dfpu="0" Dmpu="0" Dendian="Little-endian" Dclock="100000000"/>
+        <compile header="Device\Include\MK20D10.h"  define="MK20DX128xxx10"/>
+        <debug      svd="SVD\MK20D10.svd"/>
+        <memory     id="IROM1"                      start="0x00000000"  size="0x20000"    startup="1"   default="1"/>
+        <memory     id="IROM2"                      start="0x10000000"  size="0x20000"    startup="0"   default="0"/>
+        <memory     id="IRAM1"                      start="0x20000000"  size="0x4000"     init   ="0"   default="1"/>
+        <memory     id="IRAM2"                      start="0x1FFFC000"  size="0x4000"     init   ="0"   default="0"/>
+        <algorithm  name="Flash\MK_P128.FLM"        start="0x00000000"  size="0x20000"                  default="1"/>
+        <algorithm  name="Flash\MK_D128.FLM"        start="0x10000000"  size="0x20000"                  default="1"/>
+        <book name="Documents\K20P144M100SF2RM.pdf"        title="MK20DX128xxx10 Reference Manual"/>
+        <book name="Documents\K20P144M100SF2V2.pdf"        title="MK20DX128xxx10 Data Sheet"/>
+      </device>
+
+      <!-- ******************************  MK20DX256xxx10  ****************************** -->
+      <device Dname="MK20DX256xxx10">
+        <processor Dfpu="0" Dmpu="0" Dendian="Little-endian" Dclock="100000000"/>
+        <compile header="Device\Include\MK20D10.h"  define="MK20DX256xxx10"/>
+        <debug      svd="SVD\MK20D10.svd"/>
+        <memory     id="IROM1"                      start="0x00000000"  size="0x40000"    startup="1"   default="1"/>
+        <memory     id="IROM2"                      start="0x10000000"  size="0x40000"    startup="0"   default="0"/>
+        <memory     id="IRAM1"                      start="0x20000000"  size="0x8000"     init   ="0"   default="1"/>
+        <memory     id="IRAM2"                      start="0x1FFF8000"  size="0x8000"     init   ="0"   default="0"/>
+        <algorithm  name="Flash\MK_P256.FLM"        start="0x00000000"  size="0x40000"                  default="1"/>
+        <algorithm  name="Flash\MK_D256.FLM"        start="0x10000000"  size="0x40000"                  default="1"/>
+        <book name="Documents\K20P81M100SF2RM.pdf"         title="MK20DX256xxx10 Reference Manual"/>
+        <book name="Documents\K20P81M100SF2V2.pdf"         title="MK20DX256xxx10 Data Sheet"/>
+      </device>
+
+      <!-- ******************************  MK20FN1M0xxx12  ****************************** -->
+      <device Dname="MK20FN1M0xxx12">
+        <processor Dfpu="1" Dmpu="0" Dendian="Little-endian" Dclock="120000000"/>
+        <compile header="Device\Include\MK20F12.h"  define="MK20FN1M0xxx12"/>
+        <debug      svd="SVD\MK20F12.svd"/>
+        <memory     id="IROM1"                      start="0x00000000"  size="0x100000"   startup="1"   default="1"/>
+        <memory     id="IRAM1"                      start="0x20000000"  size="0x10000"    init   ="0"   default="1"/>
+        <memory     id="IRAM2"                      start="0x1FFF0000"  size="0x10000"    init   ="0"   default="0"/>
+        <algorithm  name="Flash\MK_P1M0.FLM"        start="0x00000000"  size="0x100000"                 default="1"/>
+        <book name="Documents\K20P144M120SF3RM.pdf"        title="MK20FN1M0xxx12 Reference Manual"/>
+        <book name="Documents\K20P144M120SF3.pdf"          title="MK20FN1M0xxx12 Data Sheet"/>
+      </device>
+
+      <!-- ******************************  MK20FX512xxx12  ****************************** -->
+      <device Dname="MK20FX512xxx12">
+        <processor Dfpu="1" Dmpu="0" Dendian="Little-endian" Dclock="120000000"/>
+        <compile header="Device\Include\MK20F12.h"  define="MK20FX512xxx12"/>
+        <debug      svd="SVD\MK20F12.svd"/>
+        <memory     id="IROM1"                      start="0x00000000"  size="0x80000"    startup="1"   default="1"/>
+        <memory     id="IROM2"                      start="0x10000000"  size="0x80000"    startup="0"   default="0"/>
+        <memory     id="IRAM1"                      start="0x20000000"  size="0x10000"    init   ="0"   default="1"/>
+        <memory     id="IRAM2"                      start="0x1FFF0000"  size="0x10000"    init   ="0"   default="0"/>
+        <algorithm  name="Flash\MK_P512X.FLM"       start="0x00000000"  size="0x80000"                  default="1"/>
+        <algorithm  name="Flash\MK_D512.FLM"        start="0x10000000"  size="0x80000"                  default="1"/>
+        <book name="Documents\K20P144M120SF3RM.pdf"        title="MK20FX512xxx12 Reference Manual"/>
+        <book name="Documents\K20P144M120SF3.pdf"          title="MK20FX512xxx12 Data Sheet"/>
+      </device>
+
+      <!-- ******************************  MK21DN512xxx5  ****************************** -->
+      <device Dname="MK21DN512xxx5">
+        <processor Dfpu="0" Dmpu="0" Dendian="Little-endian" Dclock="50000000"/>
+        <compile header="Device\Include\MK21D5.h"  define="MK21DN512xxx5"/>
+        <debug      svd="SVD\MK21D5.svd"/>
+        <memory     id="IROM1"                      start="0x00000000"  size="0x80000"    startup="1"   default="1"/>
+        <memory     id="IRAM1"                      start="0x20000000"  size="0x8000"     init   ="0"   default="1"/>
+        <memory     id="IRAM2"                      start="0x1FFF8000"  size="0x8000"     init   ="0"   default="0"/>
+        <algorithm  name="Flash\MK_P512_50MHZ.FLM"  start="0x00000000"  size="0x80000"                  default="1"/>
+        <book name="Documents\K21P80M50SF4RM.pdf"          title="MK21DN512xxx5 Reference Manual"/>
+        <book name="Documents\K21P80M50SF4.pdf"            title="MK21DN512xxx5 Data Sheet"/>
+      </device>
+
+      <!-- ******************************  MK21DX128xxx5  ****************************** -->
+      <device Dname="MK21DX128xxx5">
+        <processor Dfpu="0" Dmpu="0" Dendian="Little-endian" Dclock="50000000"/>
+        <compile header="Device\Include\MK21D5.h"  define="MK21DX128xxx5"/>
+        <debug      svd="SVD\MK21D5.svd"/>
+        <memory     id="IROM1"                      start="0x00000000"  size="0x20000"    startup="1"   default="1"/>
+        <memory     id="IROM2"                      start="0x10000000"  size="0x10000"    startup="0"   default="0"/>
+        <memory     id="IRAM1"                      start="0x20000000"  size="0x4000"     init   ="0"   default="1"/>
+        <memory     id="IRAM2"                      start="0x1FFFC000"  size="0x4000"     init   ="0"   default="0"/>
+        <algorithm  name="Flash\MK_P128_50MHZ.FLM"  start="0x00000000"  size="0x20000"                  default="1"/>
+        <algorithm  name="Flash\MK_D64_50MHZ.FLM"   start="0x10000000"  size="0x10000"                  default="1"/>
+        <book name="Documents\K21P80M50SF4RM.pdf"          title="MK21DX128xxx5 Reference Manual"/>
+        <book name="Documents\K21P80M50SF4.pdf"            title="MK21DX128xxx5 Data Sheet"/>
+      </device>
+
+      <!-- ******************************  MK21DX256xxx5  ****************************** -->
+      <device Dname="MK21DX256xxx5">
+        <processor Dfpu="0" Dmpu="0" Dendian="Little-endian" Dclock="50000000"/>
+        <compile header="Device\Include\MK21D5.h"  define="MK21DX256xxx5"/>
+        <debug      svd="SVD\MK21D5.svd"/>
+        <memory     id="IROM1"                      start="0x00000000"  size="0x40000"    startup="1"   default="1"/>
+        <memory     id="IROM2"                      start="0x10000000"  size="0x10000"    startup="0"   default="0"/>
+        <memory     id="IRAM1"                      start="0x20000000"  size="0x4000"     init   ="0"   default="1"/>
+        <memory     id="IRAM2"                      start="0x1FFFC000"  size="0x4000"     init   ="0"   default="0"/>
+        <algorithm  name="Flash\MK_P256_50MHZ.FLM"  start="0x00000000"  size="0x40000"                  default="1"/>
+        <algorithm  name="Flash\MK_D64_50MHZ.FLM"   start="0x10000000"  size="0x10000"                  default="1"/>
+        <book name="Documents\K21P80M50SF4RM.pdf"          title="MK21DX256xxx5 Reference Manual"/>
+        <book name="Documents\K21P80M50SF4.pdf"            title="MK21DX256xxx5 Data Sheet"/>
+      </device>
+
+      <!-- ******************************  MK21FN1M0xxx10  ****************************** -->
+      <device Dname="MK21FN1M0xxx10">
+        <processor Dfpu="1" Dmpu="0" Dendian="Little-endian" Dclock="100000000"/>
+        <compile header="Device\Include\MK21F10.h"  define="MK21FN1M0xxx10"/>
+        <debug      svd="SVD\MK21F10.svd"/>
+        <memory     id="IROM1"                      start="0x00000000"  size="0x100000"   startup="1"   default="1"/>
+        <memory     id="IRAM1"                      start="0x20000000"  size="0x10000"    init   ="0"   default="1"/>
+        <memory     id="IRAM2"                      start="0x1FFF0000"  size="0x10000"    init   ="0"   default="0"/>
+        <algorithm  name="Flash\MK_P1M0.FLM"        start="0x00000000"  size="0x100000"                 default="1"/>
+      </device>
+
+      <!-- ******************************  MK21FX512xxx10  ****************************** -->
+      <device Dname="MK21FX512xxx10">
+        <processor Dfpu="1" Dmpu="0" Dendian="Little-endian" Dclock="100000000"/>
+        <compile header="Device\Include\MK21F10.h"  define="MK21FX512xxx10"/>
+        <debug      svd="SVD\MK21F10.svd"/>
+        <memory     id="IROM1"                      start="0x00000000"  size="0x80000"    startup="1"   default="1"/>
+        <memory     id="IROM2"                      start="0x10000000"  size="0x20000"    startup="0"   default="0"/>
+        <memory     id="IRAM1"                      start="0x20000000"  size="0x10000"    init   ="0"   default="1"/>
+        <memory     id="IRAM2"                      start="0x1FFF0000"  size="0x10000"    init   ="0"   default="0"/>
+        <algorithm  name="Flash\MK_P512X.FLM"       start="0x00000000"  size="0x80000"                  default="1"/>
+        <algorithm  name="Flash\MKD128_4KB_SECTOR.FLM" start="0x10000000" size="0x20000"                default="1"/>
+      </device>
+
+      <!-- ******************************  MK21FN1M0xxx12  ****************************** -->
+      <device Dname="MK21FN1M0xxx12">
+        <processor Dfpu="1" Dmpu="0" Dendian="Little-endian" Dclock="120000000"/>
+        <compile header="Device\Include\MK21F12.h"  define="MK21FN1M0xxx12"/>
+        <debug      svd="SVD\MK21F12.svd"/>
+        <memory     id="IROM1"                      start="0x00000000"  size="0x100000"   startup="1"   default="1"/>
+        <memory     id="IRAM1"                      start="0x20000000"  size="0x10000"    init   ="0"   default="1"/>
+        <memory     id="IRAM2"                      start="0x1FFF0000"  size="0x10000"    init   ="0"   default="0"/>
+        <algorithm  name="Flash\MK_P1M0.FLM"        start="0x00000000"  size="0x100000"                 default="1"/>
+
+        <book name="Documents\K21P144M120SF5RM.pdf" title="MK21FN1M0xxx12 Reference Manual"/>
+        <book name="Documents\K21P144M120SF5.pdf"  title="MK21FN1M0xxx12 Data Sheet"/>
+      </device>
+
+      <!-- ******************************  MK21FX512xxx12  ****************************** -->
+      <device Dname="MK21FX512xxx12">
+        <processor Dfpu="1" Dmpu="0" Dendian="Little-endian" Dclock="120000000"/>
+        <compile header="Device\Include\MK21F12.h"  define="MK21FX512xxx12"/>
+        <debug      svd="SVD\MK21F12.svd"/>
+        <memory     id="IROM1"                      start="0x00000000"  size="0x80000"    startup="1"   default="1"/>
+        <memory     id="IROM2"                      start="0x10000000"  size="0x20000"    startup="0"   default="0"/>
+        <memory     id="IRAM1"                      start="0x20000000"  size="0x10000"    init   ="0"   default="1"/>
+        <memory     id="IRAM2"                      start="0x1FFF0000"  size="0x10000"    init   ="0"   default="0"/>
+        <algorithm  name="Flash\MK_P512X.FLM"       start="0x00000000"  size="0x80000"                  default="1"/>
+        <algorithm  name="Flash\MKD128_4KB_SECTOR.FLM" start="0x10000000" size="0x20000"                default="1"/>
+
+        <book name="Documents\K21P144M120SF5RM.pdf" title="MK21FX512xxx12 Reference Manual"/>
+        <book name="Documents\K21P144M120SF5.pdf"   title="MK21FX512xxx12 Data Sheet"/>
+      </device>
+
+      <!-- ******************************  MK22DN512xxx5  ****************************** -->
+      <device Dname="MK22DN512xxx5">
+        <processor Dfpu="0" Dmpu="0" Dendian="Little-endian" Dclock="50000000"/>
+        <compile header="Device\Include\MK22D5.h"  define="MK22DN512xxx5"/>
+        <debug      svd="SVD\MK22D5.svd"/>
+        <memory     id="IROM1"                      start="0x00000000"  size="0x80000"    startup="1"   default="1"/>
+        <memory     id="IRAM1"                      start="0x20000000"  size="0x8000"     init   ="0"   default="1"/>
+        <memory     id="IRAM2"                      start="0x1FFF8000"  size="0x8000"     init   ="0"   default="0"/>
+        <algorithm  name="Flash\MK_P512_50MHZ.FLM"  start="0x00000000"  size="0x80000"                  default="1"/>
+        <book name="Documents\K22P121M50SF4RM.pdf"         title="MK22DN512xxx5 Reference Manual"/>
+        <book name="Documents\K22P121M50SF4.pdf"           title="MK22DN512xxx5 Data Sheet"/>
+      </device>
+
+      <!-- ******************************  MK22DX128xxx5  ****************************** -->
+      <device Dname="MK22DX128xxx5">
+        <processor Dfpu="0" Dmpu="0" Dendian="Little-endian" Dclock="50000000"/>
+        <compile header="Device\Include\MK22D5.h"  define="MK22DX128xxx5"/>
+        <debug      svd="SVD\MK22D5.svd"/>
+        <memory     id="IROM1"                      start="0x00000000"  size="0x20000"    startup="1"   default="1"/>
+        <memory     id="IROM2"                      start="0x10000000"  size="0x10000"    startup="0"   default="0"/>
+        <memory     id="IRAM1"                      start="0x20000000"  size="0x4000"     init   ="0"   default="1"/>
+        <memory     id="IRAM2"                      start="0x1FFFC000"  size="0x4000"     init   ="0"   default="0"/>
+        <algorithm  name="Flash\MK_P128_50MHZ.FLM"  start="0x00000000"  size="0x20000"                  default="1"/>
+        <algorithm  name="Flash\MK_D64_50MHZ.FLM"   start="0x10000000"  size="0x10000"                  default="1"/>
+        <book name="Documents\K22P121M50SF4RM.pdf"         title="MK22DX128xxx5 Reference Manual"/>
+        <book name="Documents\K22P121M50SF4.pdf"           title="MK22DX128xxx5 Data Sheet"/>
+      </device>
+
+      <!-- ******************************  MK22DX256xxx5  ****************************** -->
+      <device Dname="MK22DX256xxx5">
+        <processor Dfpu="0" Dmpu="0" Dendian="Little-endian" Dclock="50000000"/>
+        <compile header="Device\Include\MK22D5.h"  define="MK22DX256xxx5"/>
+        <debug      svd="SVD\MK22D5.svd"/>
+        <memory     id="IROM1"                      start="0x00000000"  size="0x40000"    startup="1"   default="1"/>
+        <memory     id="IROM2"                      start="0x10000000"  size="0x10000"    startup="0"   default="0"/>
+        <memory     id="IRAM1"                      start="0x20000000"  size="0x4000"     init   ="0"   default="1"/>
+        <memory     id="IRAM2"                      start="0x1FFFC000"  size="0x4000"     init   ="0"   default="0"/>
+        <algorithm  name="Flash\MK_P256_50MHZ.FLM"  start="0x00000000"  size="0x40000"                  default="1"/>
+        <algorithm  name="Flash\MK_D64_50MHZ.FLM"   start="0x10000000"  size="0x10000"                  default="1"/>
+        <book name="Documents\K22P121M50SF4RM.pdf"         title="MK22DX256xxx5 Reference Manual"/>
+        <book name="Documents\K22P121M50SF4.pdf"           title="MK22DX256xxx5 Data Sheet"/>
+      </device>
+
+      <!-- ******************************  MK22FN128xxx10  ****************************** -->
+      <device Dname="MK22FN128xxx10">
+        <processor Dfpu="1" Dmpu="0" Dendian="Little-endian" Dclock="100000000"/>
+        <compile header="Device\Include\MK22F12810.h"  define="MK22FN128xxx10"/>
+        <debug      svd="SVD\MK22F12810.svd"/>
+        <memory     id="IROM1"                      start="0x00000000"  size="0x20000"    startup="1"   default="1"/>
+        <memory     id="IRAM1"                      start="0x20000000"  size="0x4000"     init   ="0"   default="1"/>
+        <memory     id="IRAM2"                      start="0x1FFFE000"  size="0x2000"     init   ="0"   default="0"/>
+        <algorithm  name="Flash\MK_P128.FLM"        start="0x00000000"  size="0x20000"                  default="1"/>
+      </device>
+
+      <!-- ******************************  MK22FN1M0xxx10  ****************************** -->
+      <device Dname="MK22FN1M0xxx10">
+        <processor Dfpu="1" Dmpu="0" Dendian="Little-endian" Dclock="100000000"/>
+        <compile header="Device\Include\MK22F10.h"  define="MK22FN1M0xxx10"/>
+        <debug      svd="SVD\MK22F10.svd"/>
+        <memory     id="IROM1"                      start="0x00000000"  size="0x100000"   startup="1"   default="1"/>
+        <memory     id="IRAM1"                      start="0x20000000"  size="0x10000"    init   ="0"   default="1"/>
+        <memory     id="IRAM2"                      start="0x1FFF0000"  size="0x10000"    init   ="0"   default="0"/>
+        <algorithm  name="Flash\MK_P1M0.FLM"        start="0x00000000"  size="0x100000"                 default="1"/>
+      </device>
+
+      <!-- ******************************  MK22FN256xxx12  ****************************** -->
+      <device Dname="MK22FN256xxx12">
+        <processor Dfpu="1" Dmpu="0" Dendian="Little-endian" Dclock="120000000"/>
+        <compile header="Device\Include\MK22F25612.h"  define="MK22FN256xxx12"/>
+        <debug      svd="SVD\MK22F25612.svd"/>
+        <memory     id="IROM1"                      start="0x00000000"  size="0x40000"    startup="1"   default="1"/>
+        <memory     id="IRAM1"                      start="0x20000000"  size="0x8000"     init   ="0"   default="1"/>
+        <memory     id="IRAM2"                      start="0x1FFFC000"  size="0x4000"     init   ="0"   default="0"/>
+        <algorithm  name="Flash\MK_P256.FLM"        start="0x00000000"  size="0x40000"                  default="1"/>
+      </device>
+
+      <!-- ******************************  MK22FN512xxx12  ****************************** -->
+      <device Dname="MK22FN512xxx12">
+        <processor Dfpu="1" Dmpu="0" Dendian="Little-endian" Dclock="120000000"/>
+        <compile header="Device\Include\MK22F51212.h"  define="MK22FN512xxx12"/>
+        <debug      svd="SVD\MK22F51212.svd"/>
+        <memory     id="IROM1"                      start="0x00000000"  size="0x80000"    startup="1"   default="1"/>
+        <memory     id="IRAM1"                      start="0x20000000"  size="0x10000"     init   ="0"   default="1"/>
+        <memory     id="IRAM2"                      start="0x1FFF0000"  size="0x10000"     init   ="0"   default="0"/>
+        <algorithm  name="Flash\MK_P512.FLM"        start="0x00000000"  size="0x80000"                  default="1"/>
+      </device>
+
+      <!-- ******************************  MK22FX512xxx10  ****************************** -->
+      <device Dname="MK22FX512xxx10">
+        <processor Dfpu="1" Dmpu="0" Dendian="Little-endian" Dclock="100000000"/>
+        <compile header="Device\Include\MK22F10.h"  define="MK22FX512xxx10"/>
+        <debug      svd="SVD\MK22F10.svd"/>
+        <memory     id="IROM1"                      start="0x00000000"  size="0x80000"    startup="1"   default="1"/>
+        <memory     id="IROM2"                      start="0x10000000"  size="0x20000"    startup="0"   default="0"/>
+        <memory     id="IRAM1"                      start="0x20000000"  size="0x10000"    init   ="0"   default="1"/>
+        <memory     id="IRAM2"                      start="0x1FFF0000"  size="0x10000"    init   ="0"   default="0"/>
+        <algorithm  name="Flash\MK_P512X.FLM"       start="0x00000000"  size="0x80000"                  default="1"/>
+        <algorithm  name="Flash\MKD128_4KB_SECTOR.FLM" start="0x10000000" size="0x20000"                default="1"/>
+      </device>
+
+      <!-- ******************************  MK22FX512xxx12  ****************************** -->
+      <device Dname="MK22FX512xxx12">
+        <processor Dfpu="1" Dmpu="0" Dendian="Little-endian" Dclock="120000000"/>
+        <compile header="Device\Include\MK22F12.h"  define="MK22FX512xxx12"/>
+        <debug      svd="SVD\MK22F12.svd"/>
+        <memory     id="IROM1"                      start="0x00000000"  size="0x80000"    startup="1"   default="1"/>
+        <memory     id="IROM2"                      start="0x10000000"  size="0x20000"    startup="0"   default="0"/>
+        <memory     id="IRAM1"                      start="0x20000000"  size="0x10000"    init   ="0"   default="1"/>
+        <memory     id="IRAM2"                      start="0x1FFF0000"  size="0x10000"    init   ="0"   default="0"/>
+        <algorithm  name="Flash\MK_P512X.FLM"       start="0x00000000"  size="0x80000"                  default="1"/>
+        <algorithm  name="Flash\MKD128_4KB_SECTOR.FLM" start="0x10000000" size="0x20000"                default="1"/>
+
+        <book name="Documents\K22P144M120SF5RM.pdf"        title="MK22FX512xxx12 Reference Manual"/>
+        <book name="Documents\K22P144M120SF5.pdf"          title="MK22FX512xxx12 Data Sheet"/>
+      </device>
+
+      <!-- ******************************  MK22FN1M0xxx12  ****************************** -->
+      <device Dname="MK22FN1M0xxx12">
+        <processor Dfpu="1" Dmpu="0" Dendian="Little-endian" Dclock="120000000"/>
+        <compile header="Device\Include\MK22F12.h"  define="MK22FN1M0xxx12"/>
+        <debug      svd="SVD\MK22F12.svd"/>
+        <memory     id="IROM1"                      start="0x00000000"  size="0x100000"   startup="1"   default="1"/>
+        <memory     id="IRAM1"                      start="0x20000000"  size="0x10000"    init   ="0"   default="1"/>
+        <memory     id="IRAM2"                      start="0x1FFF0000"  size="0x10000"    init   ="0"   default="0"/>
+        <algorithm  name="Flash\MK_P1M0.FLM"        start="0x00000000"  size="0x100000"                 default="1"/>
+
+        <book name="Documents\K22P144M120SF5RM.pdf"        title="MK22FN1M0xxx12 Reference Manual"/>
+        <book name="Documents\K22P144M120SF5.pdf"          title="MK22FN1M0xxx12 Data Sheet"/>
+      </device>
+
+      <!-- ******************************  MK24FN1M0xxx12  ****************************** -->
+      <device Dname="MK24FN1M0xxx12">
+        <processor Dfpu="1" Dmpu="0" Dendian="Little-endian" Dclock="120000000"/>
+        <compile header="Device\Include\MK24F12.h"  define="MK24FN1M0xxx12"/>
+        <debug      svd="SVD\MK24F12.svd"/>
+        <memory     id="IROM1"                      start="0x00000000"  size="0x100000"   startup="1"   default="1"/>
+        <memory     id="IRAM1"                      start="0x20000000"  size="0x10000"    init   ="0"   default="1"/>
+        <memory     id="IRAM2"                      start="0x1FFF0000"  size="0x10000"    init   ="0"   default="0"/>
+        <algorithm  name="Flash\MK_P1M0.FLM"        start="0x00000000"  size="0x100000"                 default="1"/>
+      </device>
+
+      <!-- ******************************  MK24FN256xxx12  ****************************** -->
+      <device Dname="MK24FN256xxx12">
+        <processor Dfpu="1" Dmpu="0" Dendian="Little-endian" Dclock="120000000"/>
+        <compile header="Device\Include\MK24F25612.h"  define="MK24FN256xxx12"/>
+        <debug      svd="SVD\MK24F25612.svd"/>
+        <memory     id="IROM1"                      start="0x00000000"  size="0x40000"    startup="1"   default="1"/>
+        <memory     id="IRAM1"                      start="0x20000000"  size="0x30000"     init   ="0"  default="1"/>
+        <memory     id="IRAM2"                      start="0x1FFF0000"  size="0x10000"     init   ="0"  default="0"/>
+        <algorithm  name="Flash\MKP256_4KB_SECTOR.FLM"        start="0x00000000"  size="0x40000"                  default="1"/>
+      </device>
+
+<!-- MK21DA5 Devices -->
+      <!-- ******************************  MK21DX128Axxx5  ***************************** -->
+      <device Dname="MK21DX128Axxx5">
+        <processor Dfpu="0" Dmpu="0" Dendian="Little-endian" Dclock="50000000"/>
+        <compile header="Device\Include\MK21DA5.h"  define="MK21DX128Axxx5"/>
+        <debug      svd="SVD\MK21DA5.svd"/>
+        <memory     id="IROM1"                      start="0x00000000"  size="0x20000"    startup="1"   default="1"/>
+        <memory     id="IROM2"                      start="0x10000000"  size="0x10000"    startup="0"   default="0"/>
+        <memory     id="IRAM1"                      start="0x20000000"  size="0x4000"     init   ="0"   default="1"/>
+        <memory     id="IRAM2"                      start="0x1FFFC000"  size="0x4000"     init   ="0"   default="0"/>
+        <algorithm  name="Flash\MK_P128.FLM"        start="0x00000000"  size="0x20000"                  default="1"/>
+        <algorithm  name="Flash\MK_D64.FLM"         start="0x10000000"  size="0x10000"                  default="1"/>
+        <book name="Documents\K21P121M50SF4V2RM.pdf"          title="MK21DX128Axxx5 Reference Manual"/>
+        <book name="Documents\K21P121M50SF4V2.pdf"            title="MK21DX128Axxx5 Data Sheet"/>
+      </device>
+
+      <!-- ******************************  MK21DX256Axxx5  ***************************** -->
+      <device Dname="MK21DX256Axxx5">
+        <processor Dfpu="0" Dmpu="0" Dendian="Little-endian" Dclock="50000000"/>
+        <compile header="Device\Include\MK21DA5.h"  define="MK21DX256Axxx5"/>
+        <debug      svd="SVD\MK21DA5.svd"/>
+        <memory     id="IROM1"                      start="0x00000000"  size="0x40000"    startup="1"   default="1"/>
+        <memory     id="IROM2"                      start="0x10000000"  size="0x10000"    startup="0"   default="0"/>
+        <memory     id="IRAM1"                      start="0x20000000"  size="0x4000"     init   ="0"   default="1"/>
+        <memory     id="IRAM2"                      start="0x1FFFC000"  size="0x4000"     init   ="0"   default="0"/>
+        <algorithm  name="Flash\MK_P256.FLM"        start="0x00000000"  size="0x40000"                  default="1"/>
+        <algorithm  name="Flash\MK_D64.FLM"         start="0x10000000"  size="0x10000"                  default="1"/>
+        <book name="Documents\K21P121M50SF4V2RM.pdf"          title="MK21DX256Axxx5 Reference Manual"/>
+        <book name="Documents\K21P121M50SF4V2.pdf"            title="MK21DX256Axxx5 Data Sheet"/>
+      </device>
+
+      <!-- ******************************  MK21DN512Axxx5  ***************************** -->
+      <device Dname="MK21DN512Axxx5">
+        <processor Dfpu="0" Dmpu="0" Dendian="Little-endian" Dclock="50000000"/>
+        <compile header="Device\Include\MK21DA5.h"  define="MK21DN512Axxx5"/>
+        <debug      svd="SVD\MK21DA5.svd"/>
+        <memory     id="IROM1"                      start="0x00000000"  size="0x80000"    startup="1"   default="1"/>
+        <memory     id="IRAM1"                      start="0x20000000"  size="0x8000"     init   ="0"   default="1"/>
+        <memory     id="IRAM2"                      start="0x1FFF8000"  size="0x8000"     init   ="0"   default="0"/>
+        <algorithm  name="Flash\MK_P512.FLM"        start="0x00000000"  size="0x80000"                  default="1"/>
+        <book name="Documents\K21P121M50SF4V2RM.pdf"          title="MK21DN512Axxx5 Reference Manual"/>
+        <book name="Documents\K21P121M50SF4V2.pdf"            title="MK21DN512Axxx5 Data Sheet"/>
+      </device>
+
+<!-- MK21FA12 Devices -->
+      <!-- ******************************  MK21FX512Axxx12  **************************** -->
+      <device Dname="MK21FX512Axxx12">
+        <processor Dfpu="1" Dmpu="0" Dendian="Little-endian" Dclock="120000000"/>
+        <compile header="Device\Include\MK21FA12.h" define="MK21FX512Axxx12"/>
+        <debug      svd="SVD\MK21FA12.svd"/>
+        <memory     id="IROM1"                         start="0x00000000"  size="0x80000"    startup="1"   default="1"/>
+        <memory     id="IROM2"                         start="0x10000000"  size="0x20000"    startup="0"   default="0"/>
+        <memory     id="IRAM1"                         start="0x20000000"  size="0x10000"    init   ="0"   default="1"/>
+        <memory     id="IRAM2"                         start="0x1FFF0000"  size="0x10000"    init   ="0"   default="0"/>
+        <algorithm  name="Flash\MK_P512X.FLM"          start="0x00000000"  size="0x80000"                  default="1"/>
+        <algorithm  name="Flash\MKD128_4KB_SECTOR.FLM" start="0x10000000"  size="0x20000"                  default="1"/>
+
+        <book name="Documents\K21P144M120SF5V2RM.pdf"        title="MK21FX512Axxx12 Reference Manual"/>
+        <book name="Documents\K21P144M120SF5V2.pdf"          title="MK21FX512Axxx12 Data Sheet"/>
+      </device>
+
+      <!-- ******************************  MK21FN1M0Axxx12  **************************** -->
+      <device Dname="MK21FN1M0Axxx12">
+        <processor Dfpu="1" Dmpu="0" Dendian="Little-endian" Dclock="120000000"/>
+        <compile header="Device\Include\MK21FA12.h" define="MK21FN1M0Axxx12"/>
+        <debug      svd="SVD\MK21FA12.svd"/>
+        <memory     id="IROM1"                      start="0x00000000"  size="0x100000"   startup="1"   default="1"/>
+        <memory     id="IRAM1"                      start="0x20000000"  size="0x10000"    init   ="0"   default="1"/>
+        <memory     id="IRAM2"                      start="0x1FFF0000"  size="0x10000"    init   ="0"   default="0"/>
+        <algorithm  name="Flash\MK_P1M0.FLM"        start="0x00000000"  size="0x100000"                 default="1"/>
+        <book name="Documents\K21P144M120SF5V2RM.pdf" title="MK21FN1M0Axxx12 Reference Manual"/>
+        <book name="Documents\K21P144M120SF5V2.pdf"   title="MK21FN1M0Axxx12 Data Sheet"/>
+      </device>
+
+<!-- MK22FA12 Devices -->
+      <!-- ******************************  MK22FX512Axxx12  ****************************** -->
+      <device Dname="MK22FX512Axxx12">
+        <processor Dfpu="1" Dmpu="0" Dendian="Little-endian" Dclock="120000000"/>
+        <compile header="Device\Include\MK22FA12.h"  define="MK22FX512Axxx12"/>
+        <debug svd="SVD\MK22FA12.svd"/>
+        <memory id="IROM1"                            start="0x00000000" size="0x00080000" startup="1" default="1"/>
+        <memory id="IROM2"                            start="0x10000000" size="0x00020000" startup="0" default="0"/>
+        <memory id="IRAM1"                            start="0x20000000" size="0x00010000" init   ="0" default="1"/>
+        <memory id="IRAM2"                            start="0x1FFF0000" size="0x00010000" init   ="0" default="0"/>
+        <algorithm name="Flash\MK_P512X.FLM"          start="0x00000000" size="0x00080000"             default="1"/>
+        <algorithm name="Flash\MKD128_4KB_SECTOR.FLM" start="0x10000000" size="0x00020000"             default="1"/>
+
+        <book name="Documents\K22P144M120SF5V2RM.pdf" title="MK22FX512Axxx12 Reference Manual"/>
+        <book name="Documents\K22P144M120SF5V2.pdf"   title="MK22FX512Axxx12 Data Sheet"/>
+      </device>
+
+      <!-- ******************************  MK22FN1M0Axxx12  ****************************** -->
+      <device Dname="MK22FN1M0Axxx12">
+        <processor Dfpu="1" Dmpu="0" Dendian="Little-endian" Dclock="120000000"/>
+        <compile header="Device\Include\MK22FA12.h"  define="MK22FN1M0Axxx12"/>
+        <debug svd="SVD\MK22FA12.svd"/>
+        <memory id="IROM1"                  start="0x00000000" size="0x00100000" startup="1" default="1"/>
+        <memory id="IRAM1"                  start="0x20000000" size="0x00010000" init   ="0" default="1"/>
+        <memory id="IRAM2"                  start="0x1FFF0000" size="0x00010000" init   ="0" default="0"/>
+        <algorithm name="Flash\MK_P1M0.FLM" start="0x00000000" size="0x00100000"             default="1"/>
+
+        <book name="Documents\K22P144M120SF5V2RM.pdf" title="MK22FN1M0Axxx12 Reference Manual"/>
+        <book name="Documents\K22P144M120SF5V2.pdf"   title="MK22FN1M0Axxx12 Data Sheet"/>
+      </device>
+
+<!-- MK26F18 Devices -->
+      <!-- ******************************  MK26FN2M0xxx18  ****************************** -->
+      <device Dname="MK26FN2M0xxx18">
+        <processor Dfpu="1" Dmpu="0" Dendian="Little-endian" Dclock="180000000"/>
+        <compile header="Device\Include\MK26F18.h"  define="MK26FN2M0xxx18"/>
+        <debug      svd="SVD\MK26F18.svd"/>
+        <memory     id="IROM1"                      start="0x00000000"  size="0x200000"   startup="1"   default="1"/>
+        <memory     id="IRAM1"                      start="0x20000000"  size="0x30000"    init   ="0"   default="1"/>
+        <memory     id="IRAM2"                      start="0x1FFF0000"  size="0x10000"    init   ="0"   default="0"/>
+        <algorithm  name="Flash\MK_P2M0.FLM"        start="0x00000000"  size="0x200000"                 default="1"/>
+
+        <book name="Documents\K26P169M180SF5RM.pdf" title="MK26FN2M0xxx18 Reference Manual"/>
+        <book name="Documents\K26P169M180SF5.pdf"   title="MK26FN2M0xxx18 Data Sheet"/>
+      </device>
+
+    </family>
+  </devices>
+
+  <conditions>
+    <!-- Compiler Conditions -->
+    <condition id="Compiler ARMCC">
+      <require Tcompiler="ARMCC"/>
+    </condition>
+
+    <condition id="K20 CMSIS Device">
+      <!-- conditions selecting Devices -->
+      <description>Freescale Kinetis K20 device series</description>
+      <require Cclass ="CMSIS" Cgroup="CORE" Csub=""/>
+      <require Dvendor="Freescale:78" Dname="MK2*"/>
+    </condition>
+
+    <condition id="K20 50MHz">
+      <description>Freescale Kinetis K20 device series</description>
+      <require Dvendor="Freescale:78" Dname="MK20DX128xxx5"/>
+    </condition>
+
+    <condition id="MK20D5">
+      <description>Freescale Kinetis K20D5  Device</description>
+      <require Dvendor="Freescale:78"/>
+      <accept  Dname="MK20DN128xxx5"/>
+      <accept  Dname="MK20DN32xxx5"/>
+      <accept  Dname="MK20DN64xxx5"/>
+      <accept  Dname="MK20DX128xxx5"/>
+      <accept  Dname="MK20DX32xxx5"/>
+      <accept  Dname="MK20DX64xxx5"/>
+    </condition>
+
+    <condition id="MK20D10">
+      <description>Freescale Kinetis K20D10  Device</description>
+      <require Dvendor="Freescale:78"/>
+      <accept  Dname="MK20DN512xxx10"/>
+      <accept  Dname="MK20DX128xxx10"/>
+      <accept  Dname="MK20DX256xxx10"/>
+    </condition>
+
+    <condition id="MK20D7">
+      <description>Freescale Kinetis K20D7  Device</description>
+      <require Dvendor="Freescale:78"/>
+      <accept  Dname="MK20DX128xxx7"/>
+      <accept  Dname="MK20DX256xxx7"/>
+      <accept  Dname="MK20DX64xxx7"/>
+    </condition>
+
+    <condition id="MK20F12">
+      <description>Freescale Kinetis K20  Device</description>
+      <require Dvendor="Freescale:78"/>
+      <accept  Dname="MK20FN1M0xxx12"/>
+      <accept  Dname="MK20FX512xxx12"/>
+    </condition>
+
+    <condition id="MK21D5">
+      <description>Freescale Kinetis K21D5  Device</description>
+      <require Dvendor="Freescale:78"/>
+      <accept  Dname="MK21DN512xxx5"/>
+      <accept  Dname="MK21DX128xxx5"/>
+      <accept  Dname="MK21DX256xxx5"/>
+    </condition>
+
+    <condition id="MK21F10">
+      <description>Freescale Kinetis K21F10  Device</description>
+      <require Dvendor="Freescale:78"/>
+      <accept  Dname="MK21FN1M0xxx10"/>
+      <accept  Dname="MK21FX512xxx10"/>
+    </condition>
+
+    <condition id="MK22D5">
+      <description>Freescale Kinetis K22D5  Device</description>
+      <require Dvendor="Freescale:78"/>
+      <accept  Dname="MK22DN512xxx5"/>
+      <accept  Dname="MK22DX128xxx5"/>
+      <accept  Dname="MK22DX256xxx5"/>
+    </condition>
+
+    <condition id="MK22F10">
+      <description>Freescale Kinetis K22F10  Device</description>
+      <require Dvendor="Freescale:78"/>
+      <accept  Dname="MK22FN1M0xxx10"/>
+      <accept  Dname="MK22FX512xxx10"/>
+    </condition>
+
+    <condition id="MK24F12">
+      <description>Freescale Kinetis K24F12  Device</description>
+      <require Dvendor="Freescale:78"/>
+      <accept  Dname="MK24FN1M0xxx12"/>
+    </condition>
+
+    <condition id="MK22F12810">
+      <description>Freescale Kinetis MK22FN128xxx10  Device</description>
+      <require Dvendor="Freescale:78"/>
+      <accept  Dname="MK22FN128xxx10"/>
+    </condition>
+
+    <condition id="MK22F25612">
+      <description>Freescale Kinetis MK22FN256xxx12  Device</description>
+      <require Dvendor="Freescale:78"/>
+      <accept  Dname="MK22FN256xxx12"/>
+    </condition>
+
+    <condition id="MK22F51212">
+      <description>Freescale Kinetis MK22FN512xxx12  Device</description>
+      <require Dvendor="Freescale:78"/>
+      <accept  Dname="MK22FN512xxx12"/>
+    </condition>
+
+    <condition id="MK24F25612">
+      <description>Freescale Kinetis MK24FN256xxx12  Device</description>
+      <require Dvendor="Freescale:78"/>
+      <accept  Dname="MK24FN256xxx12"/>
+    </condition>
+
+    <!-- Device Conditions -->
+    <condition id="MK21F12">
+      <description>Freescale Kinetis K21F12 devices</description>
+      <require Dvendor="Freescale:78"/>
+      <accept  Dname="MK21FN1M0xxx12"/>
+      <accept  Dname="MK21FX512xxx12"/>
+    </condition>
+
+    <condition id="MK21FA12">
+      <description>Freescale Kinetis MK21FA12 devices</description>
+      <require Dvendor="Freescale:78"/>
+      <accept  Dname="MK21FX512Axxx12"/>
+      <accept  Dname="MK21FN1M0Axxx12"/>
+    </condition>
+
+    <condition id="MK22F12">
+      <description>Freescale Kinetis K22F12  Device</description>
+      <require Dvendor="Freescale:78"/>
+      <accept  Dname="MK22FN1M0xxx12"/>
+      <accept  Dname="MK22FX512xxx12"/>
+    </condition>
+
+    <condition id="MK22FA12">
+      <description>Freescale Kinetis K22FA12 device</description>
+      <require Dvendor="Freescale:78"/>
+      <accept  Dname="MK22FN1M0Axxx12"/>
+      <accept  Dname="MK22FX512Axxx12"/>
+    </condition>
+
+    <condition id="K21DA5">
+      <description>Freescale Kinetis K21DA 50MHz devices</description>
+      <!--require Dvendor="Freescale:78" Dname="MK21D????Axxx5"/-->
+      <require Dvendor="Freescale:78"/>
+      <accept  Dname="MK21DX128Axxx5"/>
+      <accept  Dname="MK21DX256Axxx5"/>
+      <accept  Dname="MK21DN512Axxx5"/>
+    </condition>
+
+
+    <!-- Device + CMSIS Conditions -->
+    <condition id="MK21F12 CMSIS">
+      <description>Freescale Kinetis K21F12 devices and CMSIS-CORE</description>
+      <require condition="MK21F12"/>
+      <require Cclass="CMSIS" Cgroup="CORE"/>
+    </condition>
+
+    <condition id="MK22F12 CMSIS">
+      <description>Freescale Kinetis K22F12 devices and CMSIS-CORE</description>
+      <require condition="MK22F12"/>
+      <require Cclass="CMSIS" Cgroup="CORE"/>
+    </condition>
+
+    <condition id="MK22FA12 CMSIS">
+      <description>Freescale Kinetis K22FA12 devices and CMSIS-CORE</description>
+      <require condition="MK22FA12"/>
+      <require Cclass="CMSIS" Cgroup="CORE"/>
+    </condition>
+
+    <condition id="K21DA5 CMSIS">
+      <description>Freescale Kinetis K21DA 50MHz devices and CMSIS-CORE</description>
+      <require condition="K21DA5"/>
+      <require Cclass="CMSIS" Cgroup="CORE"/>
+    </condition>
+
+    <condition id="MK21FA12 CMSIS">
+      <description>Freescale Kinetis MK21FA12 120MHz devices and CMSIS-CORE</description>
+      <require condition="MK21FA12"/>
+      <require Cclass="CMSIS" Cgroup="CORE"/>
+    </condition>
+
+    <condition id="MK20D5 GPIO DMA">
+      <description>Freescale Kinetis K20D5 Series with GPIO and DMA Driver</description>
+      <require condition="MK20D5"/>
+      <require Cclass ="Device" Cgroup="GPIO" />
+      <require Cclass ="Device" Cgroup="DMA" />
+    </condition>
+
+    <condition id="MK20D5 CMSIS RTOS">
+      <description>Freescale Kinetis K20D5 Series with CMSIS and RTOS</description>
+      <require condition="MK20D5"/>
+      <require Cclass ="CMSIS" Cgroup="CORE"/>
+      <require Cclass ="CMSIS" Cgroup="RTOS"/>
+    </condition>
+
+    <condition id="MK26F18 CMSIS">
+      <description>Freescale Kinetis K26F 180MHz devices and CMSIS-CORE</description>
+      <require Cclass="CMSIS" Cgroup="CORE"/>
+      <require Dvendor="Freescale:78"/>
+      <accept  Dname="MK26FN2M0xxx18"/>
+    </condition>
+  </conditions>
+
+  <components>
+    <component Cclass="Device" Cgroup="Startup" Cversion="0.0.1" condition="K20 CMSIS Device">  <!-- Cversion is necessary -->
+      <description>System Startup for Kinetis K20 device series</description>
+      <RTE_Components_h>
+        <!-- the following content goes into file 'RTE_Components.h' -->
+        #define RTE_DEVICE_STARTUP_MK20xx    /* Device Startup for K20 device Series */
+      </RTE_Components_h>
+      <files>
+        <!--  include folder -->
+        <file category="include" name="Device\Include\"/>
+
+        <!-- startup files -->
+        <file category="source" name="Device\Source\ARM\startup_MK20D5.s"    	        attr="config"  condition="MK20D5"/>
+        <file category="source" name="Device\Source\ARM\startup_MK20D10.s"    	      attr="config"  condition="MK20D10"/>
+        <file category="source" name="Device\Source\ARM\startup_MK20D7.s"    	        attr="config"  condition="MK20D7"/>
+        <file category="source" name="Device\Source\ARM\startup_MK20F12.s"    	      attr="config"  condition="MK20F12"/>
+        <file category="source" name="Device\Source\ARM\startup_MK21D5.s"    	        attr="config"  condition="MK21D5"/>
+        <file category="source" name="Device\Source\ARM\startup_MK21F10.s"    	      attr="config"  condition="MK21F10"/>
+        <file category="source" name="Device\Source\ARM\startup_MK22D5.s"    	        attr="config"  condition="MK22D5"/>
+        <file category="source" name="Device\Source\ARM\startup_MK22F10.s"    	      attr="config"  condition="MK22F10"/>
+        <file category="source" name="Device\Source\ARM\startup_MK24F12.s"    	      attr="config"  condition="MK24F12"/>
+        <file category="source" name="Device\Source\ARM\startup_MK22F12810.s"  	      attr="config"  condition="MK22F12810"/>
+        <file category="source" name="Device\Source\ARM\startup_MK22F25612.s"  	      attr="config"  condition="MK22F25612"/>
+        <file category="source" name="Device\Source\ARM\startup_MK24F25612.s"  	      attr="config"  condition="MK24F25612"/>
+        <file category="source" name="Device\Source\ARM\startup_MK22F51212.s"  	      attr="config"  condition="MK22F51212"/>
+        <!-- system file -->
+        <file category="source" name="Device\Source\system_MK20D5.c"    	            attr="config"  condition="MK20D5"/>
+        <file category="source" name="Device\Source\system_MK20D10.c"    	            attr="config"  condition="MK20D10"/>
+        <file category="source" name="Device\Source\system_MK20D7.c"    	            attr="config"  condition="MK20D7"/>
+        <file category="source" name="Device\Source\system_MK20F12.c"    	            attr="config"  condition="MK20F12"/>
+        <file category="source" name="Device\Source\system_MK21D5.c"    	            attr="config"  condition="MK21D5"/>
+        <file category="source" name="Device\Source\system_MK21F10.c"    	            attr="config"  condition="MK21F10"/>
+        <file category="source" name="Device\Source\system_MK22D5.c"    	            attr="config"  condition="MK22D5"/>
+        <file category="source" name="Device\Source\system_MK22F10.c"    	            attr="config"  condition="MK22F10"/>
+        <file category="source" name="Device\Source\system_MK24F12.c"    	            attr="config"  condition="MK24F12"/>
+        <file category="source" name="Device\Source\system_MK22F12810.c"  	          attr="config"  condition="MK22F12810"/>
+        <file category="source" name="Device\Source\system_MK22F25612.c"  	          attr="config"  condition="MK22F25612"/>
+        <file category="source" name="Device\Source\system_MK24F25612.c"  	          attr="config"  condition="MK24F25612"/>
+        <file category="source" name="Device\Source\system_MK22F51212.c"  	          attr="config"  condition="MK22F51212"/>
+
+        <!-- system header file -->
+        <file category="source" name="Device\Source\system_MK22F12810.h"              attr="config" version="1.0.0" condition="MK22F12810"/>
+        <file category="source" name="Device\Source\system_MK22F25612.h"              attr="config" version="1.0.0" condition="MK22F25612"/>
+        <file category="source" name="Device\Source\system_MK24F25612.h"              attr="config" version="1.0.0" condition="MK24F25612"/>
+
+        <!-- device configuration required by drivers at the moment -->
+        <file category="header" name="RTE_Driver\Config\RTE_Device.h" attr="config"/>
+      </files>
+    </component>
+
+    <!-- Startup MK21F12 -->
+    <component Cclass="Device" Cgroup="Startup" Cversion="1.9.0" condition="MK21F12 CMSIS">
+      <description>System Startup for Freescale Kinetis MK21F12 devices</description>
+      <files>
+        <!-- include folder / file -->
+        <file category="header"  name="Device\Include\MK21F12.h"/>
+        <!-- startup / system file -->
+        <file category="source" name="Device\Source\ARM\startup_MK21F12.s"  attr="config" version="1.9.0" condition="Compiler ARMCC"/>
+        <file category="source" name="Device\Source\system_MK21F12.c"       attr="config" version="1.9.0"/>
+        <file category="header" name="Device\Source\system_MK21F12.h"       attr="config" version="1.9.0"/>
+      </files>
+    </component>
+
+    <!-- Startup MK21FA12 -->
+    <component Cclass="Device" Cgroup="Startup" Cversion="1.0.0" condition="MK21FA12 CMSIS">
+      <description>System Startup for Freescale Kinetis MK21FA12 120MHz devices</description>
+      <files>
+        <!-- include folder / file -->
+        <file category="header"  name="Device\Include\MK21FA12.h"/>
+        <!-- startup / system file -->
+        <file category="source" name="Device\Source\ARM\startup_MK21FA12.s"  attr="config" version="1.0.0" condition="Compiler ARMCC"/>
+        <file category="source" name="Device\Source\system_MK21FA12.c"       attr="config" version="1.0.0"/>
+        <file category="header" name="Device\Source\system_MK21FA12.h"       attr="config" version="1.0.0"/>
+      </files>
+    </component>
+
+    <!-- Startup MK22F12 -->
+    <component Cclass="Device" Cgroup="Startup" Cversion="1.9.0" condition="MK22F12 CMSIS">
+      <description>System Startup for Freescale Kinetis MK22F12 devices</description>
+      <files>
+        <!-- include folder / file -->
+        <file category="header"  name="Device\Include\MK22F12.h"/>
+        <!-- startup / system file -->
+        <file category="source" name="Device\Source\ARM\startup_MK22F12.s"  attr="config" version="1.9.0" condition="Compiler ARMCC"/>
+        <file category="source" name="Device\Source\system_MK22F12.c"       attr="config" version="1.9.0"/>
+        <file category="header" name="Device\Source\system_MK22F12.h"       attr="config" version="1.9.0"/>
+      </files>
+    </component>
+
+    <!-- Startup MK22FA12 -->
+    <component Cclass="Device" Cgroup="Startup" Cversion="1.9.0" condition="MK22FA12 CMSIS">
+      <description>System Startup for Freescale Kinetis MK22FA12 devices</description>
+      <files>
+        <!-- include folder / file -->
+        <file category="header"  name="Device\Include\MK22FA12.h"/>
+        <!-- startup / system file -->
+        <file category="source" name="Device\Source\ARM\startup_MK22FA12.s"  attr="config" version="1.9.0" condition="Compiler ARMCC"/>
+        <file category="source" name="Device\Source\system_MK22FA12.c"       attr="config" version="1.9.0"/>
+        <file category="header" name="Device\Source\system_MK22FA12.h"       attr="config" version="1.9.0"/>
+      </files>
+    </component>
+
+    <!-- Startup MK21DA5 -->
+    <component Cclass="Device" Cgroup="Startup" Cversion="1.0.0" condition="K21DA5 CMSIS">
+      <description>System Startup for Freescale Kinetis K21DA 50MHz devices</description>
+      <files>
+        <!-- include folder / file -->
+        <file category="header"  name="Device\Include\MK21DA5.h"/>
+        <!-- startup / system file -->
+        <file category="source" name="Device\Source\ARM\startup_MK21DA5.s"  attr="config" version="1.0.0" condition="Compiler ARMCC"/>
+        <file category="source" name="Device\Source\system_MK21DA5.c"       attr="config" version="1.0.0"/>
+        <file category="header" name="Device\Source\system_MK21DA5.h"       attr="config" version="1.0.0"/>
+      </files>
+    </component>
+
+    <!-- Startup MK26F18 -->
+    <component Cclass="Device" Cgroup="Startup" Cversion="2.0.0" condition="MK26F18 CMSIS">
+      <description>System Startup for Freescale MK26F18 Devices</description>
+      <files>
+        <file category="include" name="Device\Include\"/>
+        <file category="source"  name="Device\Source\ARM\startup_MK26F18.s" attr="config" version="2.0.0" condition="Compiler ARMCC"/>
+        <file category="source"  name="Device\Source\system_MK26F18.c"      attr="config" version="2.0.0"/>
+        <file category="header"  name="Device\Source\system_MK26F18.h"      attr="config" version="2.0.0"/>
+      </files>
+    </component>
+
+    <component Cclass="Device" Cgroup="GPIO" Cversion="1.0.0" condition="MK20D5">
+      <description>GPIO driver used by RTE Drivers for Kinetis K20 Series</description>
+      <files>
+        <file category="header" name="RTE_Driver\GPIO_K20.h"/>
+        <file category="source" name="RTE_Driver\GPIO_K20.c"/>
+      </files>
+    </component>
+
+    <component Cclass="Device" Cgroup="DMA" Cversion="1.0.0" condition="MK20D5">
+      <description>DMA driver used by RTE Drivers for Kinetis K20 Series</description>
+      <files>
+        <file category="header" name="RTE_Driver\DMA_K20.h"/>
+        <file category="source" name="RTE_Driver\DMA_K20.c"/>
+      </files>
+    </component>
+
+    <component Cclass="Drivers" Cgroup="UART" Cversion="1.0.0" condition="MK20D5 GPIO DMA">
+      <description>UART Driver for Kinetis K20 Series</description>
+      <RTE_Components_h>  <!-- the following content goes into file 'RTE_Components.h' -->
+        #define RTE_Drivers_UART0               /* Driver UART0 */
+        #define RTE_Drivers_UART1               /* Driver UART1 */
+        #define RTE_Drivers_UART2               /* Driver UART2 */
+      </RTE_Components_h>
+      <files>
+        <file category="source" name="RTE_Driver\UART_K20.c"/>
+      </files>
+    </component>
+
+    <component Cclass="Drivers" Cgroup="USB Device" Cversion="1.01.0" condition="MK20D5 CMSIS RTOS">
+      <description>USB Device Driver for Kinetis K20 Series</description>
+      <RTE_Components_h>  <!-- the following content goes into file 'RTE_Components.h' -->
+        #define RTE_Drivers_USBD0               /* Driver USBD0 */
+      </RTE_Components_h>
+      <files>
+        <file category="source" name="RTE_Driver\USBD_K20.c"/>
+      </files>
+    </component>
+
+    <!-- TWR-K20D50M Development Board -->
+    <component Cclass="Board Support" Cgroup="TWR-K20D50M" Csub="LED" Cversion="0.0.1" condition="K20 50MHz">
+      <description>LED driver for Freescale TWR-K20D50M Development Board</description>
+      <files>
+        <file category="header" name="Boards\Freescale\TWR-K20D50M\Common\LED.h"/>
+        <file category="source" name="Boards\Freescale\TWR-K20D50M\Common\LED.c"/>
+      </files>
+    </component>
+
+  </components>
+
+  <boards>
+    <board name="TWR-K24F120M" vendor="Freescale" revision="Rev. A" salesContact="https://www.freescale.com/webapp/servicerequest.create_SR.framework">
+      <description>The TWR-K24F120M is a development tool for the 120 MHz K20 families of Kinetis microcontrollers.</description>
+      <mountedDevice     deviceIndex="0" Dvendor="Freescale:78" Dname="MK24FN256xxx12"/>
+      <compatibleDevice  deviceIndex="0" Dvendor="Freescale:78" Dfamily="K20 Series"/>
+      <feature type="ODbg"      n="1"              name="Integrated open-source JTAG via USB"/>
+      <feature type="PWR"       n="5"              name="USB Powered"/>
+      <feature type="Batt"      n="1"              name="Battery holder for 20mm lithium battery (e.g. 2032, 2025)"/>
+      <feature type="USB"       n="1"              name="USB Micro-AB Connector"/>
+      <feature type="ConnOther" n="1"              name="Touch Tower Plug-in Socket"/>
+      <feature type="ConnOther" n="1"              name="General purpose Tower Plug-in (TWRPI) socket"/>
+      <feature type="ConnOther" n="2"              name="Tower connectivity for access to USB, Ethernet, RS232/RS485, CAN, SPI, I2C, Flexbus, etc."/>
+      <feature type="Poti"      n="1"/>
+      <feature type="Button"    n="3"/>
+      <feature type="Accelerometer" n="1"          name="Three axis accelerometer (MMA8451Q)"/>
+      <feature type="LED"       n="4"              name="Four user-controlled status LEDs"/>
+      <feature type="TowerFF"   n="1"/>
+    </board>
+
+    <board name="TWR-K20D50M" vendor="Freescale" revision="Rev. A" salesContact="https://www.freescale.com/webapp/servicerequest.create_SR.framework">
+      <description>The TWR-K20D50M is a development tool for the 50 MHz K20 families of Kinetis microcontrollers.</description>
+      <mountedDevice     deviceIndex="0" Dvendor="Freescale:78" Dname="MK20DX128xxx5"/>
+      <compatibleDevice  deviceIndex="0" Dvendor="Freescale:78" Dfamily="K20 Series"/>
+    </board>
+
+    <board name="TWR-K20D72M" vendor="Freescale" revision="Rev. A" salesContact="https://www.freescale.com/webapp/servicerequest.create_SR.framework">
+      <description>The TWR-K20D72M is a development tool for the 72 MHz K20 families of Kinetis microcontrollers.</description>
+      <mountedDevice     deviceIndex="0" Dvendor="Freescale:78" Dname="MK20DX256xxx7"/>
+      <compatibleDevice  deviceIndex="0" Dvendor="Freescale:78" Dfamily="K20 Series"/>
+    </board>
+
+    <board name="TWR-K22F120M" vendor="Freescale" revision="Rev. A" salesContact="https://www.freescale.com/webapp/servicerequest.create_SR.framework">
+      <description>The TWR-K22F120M is a development tool for the 120 MHz K20 families of Kinetis microcontrollers.</description>
+      <mountedDevice     deviceIndex="0" Dvendor="Freescale:78" Dname="MK22FN512xxx12"/>
+      <compatibleDevice  deviceIndex="0" Dvendor="Freescale:78" Dfamily="K20 Series"/>
+    </board>
+
+    <board name="FRDM-K20D50M" vendor="Freescale" revision="Rev. A" salesContact="https://www.freescale.com/webapp/servicerequest.create_SR.framework">
+      <description>The FRDM-K20D50M is a development tool for the 50 MHz K20 families of Kinetis microcontrollers.</description>
+      <mountedDevice     deviceIndex="0" Dvendor="Freescale:78" Dname="MK20DX128xxx5"/>
+      <compatibleDevice  deviceIndex="0" Dvendor="Freescale:78" Dfamily="K20 Series"/>
+    </board>
+
+  </boards>
+
+  <examples>
+    <!-- TWR-K20D50M Development Board -->
+    <example name="Blinky" doc="Abstract.txt" folder="Boards\Freescale\TWR-K20D50M\Blinky">
+      <description>Blinky example</description>
+      <board name="TWR-K20D50M" vendor="Freescale" Dvendor="Freescale:78" Dname="MK20DX128xxx5"/>
+      <project>
+        <environment name="uv" load="Blinky.uvprojx"/>
+      </project>
+      <attributes>
+        <component Cclass="CMSIS" Cgroup="CORE"/>
+        <component Cclass="Device" Cgroup="Startup"/>
+        <category>Getting Started</category>
+      </attributes>
+    </example>
+    <example name="CMSIS-RTOS Blinky" doc="Abstract.txt" folder="Boards\Freescale\TWR-K20D50M\RTX_Blinky">
+      <description>CMSIS-RTOS based Blinky example</description>
+      <board name="TWR-K20D50M" vendor="Freescale" Dvendor="Freescale:78" Dname="MK20DX128xxx5"/>
+      <project>
+        <environment name="uv" load="Blinky.uvprojx"/>
+      </project>
+      <attributes>
+        <component Cclass="CMSIS" Cgroup="CORE"/>
+        <component Cclass="Device" Cgroup="Startup"/>
+        <component Cclass="CMSIS" Cgroup="RTOS"/>
+        <category>Getting Started</category>
+        <category>CMSIS-RTX</category>
+      </attributes>
+    </example>
+    <example name="CMSIS-RTOS Blinky" doc="Abstract.txt" folder="Boards\Freescale\FRDM-K20D50M\RTX_Blinky">
+      <description>CMSIS-RTOS based Blinky example</description>
+      <board name="FRDM-K20D50M" vendor="Freescale" Dvendor="Freescale:78" Dname="MK20DX128xxx5"/>
+      <project>
+        <environment name="uv" load="Blinky.uvprojx"/>
+      </project>
+      <attributes>
+        <component Cclass="CMSIS" Cgroup="CORE"/>
+        <component Cclass="Device" Cgroup="Startup"/>
+        <component Cclass="CMSIS" Cgroup="RTOS"/>
+        <category>Getting Started</category>
+        <category>CMSIS-RTX</category>
+      </attributes>
+    </example>
+    <example name="CMSIS-RTOS Blinky" doc="Abstract.txt" folder="Boards\Freescale\TWR-K20D72M\RTX_Blinky">
+      <description>CMSIS-RTOS based Blinky example</description>
+      <board name="TWR-K20D72M" vendor="Freescale" Dvendor="Freescale:78" Dname="MK20DX256xxx7"/>
+      <project>
+        <environment name="uv" load="Blinky.uvprojx"/>
+      </project>
+      <attributes>
+        <component Cclass="CMSIS" Cgroup="CORE"/>
+        <component Cclass="Device" Cgroup="Startup"/>
+        <component Cclass="CMSIS" Cgroup="RTOS"/>
+        <category>Getting Started</category>
+        <category>CMSIS-RTX</category>
+      </attributes>
+    </example>
+
+    <!-- TWR-K22F120M Development Board -->
+    <example name="Blinky" doc="Abstract.txt" folder="Boards\Freescale\TWR-K22F120M\Blinky">
+      <description>Blinky example</description>
+      <board name="TWR-K22F120M" vendor="Freescale" Dvendor="Freescale:78" Dname="MK22FN512xxx12"/>
+      <project>
+        <environment name="uv" load="Blinky.uvprojx"/>
+      </project>
+      <attributes>
+        <component Cclass="CMSIS" Cgroup="CORE"/>
+        <component Cclass="Device" Cgroup="Startup"/>
+        <category>Getting Started</category>
+      </attributes>
+    </example>
+    <example name="CMSIS-RTOS Blinky" doc="Abstract.txt" folder="Boards\Freescale\TWR-K22F120M\RTX_Blinky">
+      <description>CMSIS-RTOS based Blinky example</description>
+      <board name="TWR-K22F120M" vendor="Freescale" Dvendor="Freescale:78" Dname="MK22FN512xxx12"/>
+      <project>
+        <environment name="uv" load="Blinky.uvprojx"/>
+      </project>
+      <attributes>
+        <component Cclass="CMSIS" Cgroup="CORE"/>
+        <component Cclass="Device" Cgroup="Startup"/>
+        <component Cclass="CMSIS" Cgroup="RTOS"/>
+        <category>Getting Started</category>
+        <category>CMSIS-RTX</category>
+      </attributes>
+    </example>
+
+    <!-- TWR-K24F120M Development Board -->
+    <example name="Blinky" doc="Abstract.txt" folder="Boards\Freescale\TWR-K24F120M\Blinky">
+      <description>Blinky example</description>
+      <board name="TWR-K24F120M" vendor="Freescale" Dvendor="Freescale:78" Dname="MK24FN256xxx12"/>
+      <project>
+        <environment name="uv" load="Blinky.uvprojx"/>
+      </project>
+      <attributes>
+        <component Cclass="CMSIS" Cgroup="CORE"/>
+        <component Cclass="Device" Cgroup="Startup"/>
+        <category>Getting Started</category>
+      </attributes>
+    </example>
+    <example name="CMSIS-RTOS Blinky" doc="Abstract.txt" folder="Boards\Freescale\TWR-K24F120M\RTX_Blinky">
+      <description>CMSIS-RTOS based Blinky example</description>
+      <board name="TWR-K24F120M" vendor="Freescale" Dvendor="Freescale:78" Dname="MK24FN256xxx12"/>
+      <project>
+        <environment name="uv" load="Blinky.uvprojx"/>
+      </project>
+      <attributes>
+        <component Cclass="CMSIS" Cgroup="CORE"/>
+        <component Cclass="Device" Cgroup="Startup"/>
+        <component Cclass="CMSIS" Cgroup="RTOS"/>
+        <category>Getting Started</category>
+        <category>CMSIS-RTX</category>
+      </attributes>
+    </example>
+  </examples>
+
+</package>
