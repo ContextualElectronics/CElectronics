@@ -1,16 +1,11 @@
-16:04:08 **** Incremental Build of configuration Debug for project Temperature ****
+16:43:07 **** Incremental Build of configuration Debug for project Temperature ****
 make all 
-Building file: ../src/MCU/adc.c
-Invoking: Cross ARM C Compiler
-arm-none-eabi-gcc -mcpu=cortex-m0 -mthumb -Og -fmessage-length=0 -fsigned-char -ffunction-sections -fdata-sections -ffreestanding -fno-move-loop-invariants -Wall -Wextra  -g3 -DDEBUG -DUSE_FULL_ASSERT -DTRACE -DOS_USE_TRACE_SEMIHOSTING_DEBUG -DSTM32F030 -DUSE_STDPERIPH_DRIVER -DHSE_VALUE=8000000 -I"../include" -I"../system/include" -I"../system/include/cmsis" -I"../system/include/stm32f0-stdperiph" -std=gnu11 -MMD -MP -MF"src/MCU/adc.d" -MT"src/MCU/adc.o" -c -o "src/MCU/adc.o" "../src/MCU/adc.c"
-../src/MCU/adc.c:121:9: error: conflicting types for 'ADC_ReturnCalibratedTemperature'
- int32_t ADC_ReturnCalibratedTemperature(uint_fast16_t rawData)
-         ^
-In file included from ../src/MCU/adc.c:7:0:
-../include/MCU/adc.h:15:8: note: previous declaration of 'ADC_ReturnCalibratedTemperature' was here
-  float ADC_ReturnCalibratedTemperature(uint_fast16_t rawData);
-        ^
-make: *** [src/MCU/adc.o] Error 1
+Invoking: Cross ARM GNU Print Size
+arm-none-eabi-size --format=berkeley "Temperature.elf"
+   text	   data	    bss	    dec	    hex	filename
+  26016	    268	   3272	  29556	   7374	Temperature.elf
+Finished building: Temperature.siz
+ 
 
-16:04:09 Build Finished (took 1s.68ms)
+16:43:07 Build Finished (took 193ms)
 

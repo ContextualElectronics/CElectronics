@@ -118,7 +118,7 @@ uint_fast8_t ADC_ReadNorm(uint_fast32_t channel, float * destination)
 ///	\return returns the converted value
 ///	\sa ADC_Read()
 /////////////////////////////////////////////////////////////////////////
-float ADC_ReturnCalibratedTemperature(uint_fast16_t rawData)
+int32_t ADC_ReturnCalibratedTemperature(uint_fast16_t rawData)
 {
 	int32_t Temperature; /* will contain the temperature in degree Fahrenheit */
 	Temperature = (((int32_t) rawData * VDD_APPLI / VDD_CALIB) - (int32_t) *TEMP30_CAL_ADDR );
@@ -126,5 +126,5 @@ float ADC_ReturnCalibratedTemperature(uint_fast16_t rawData)
 	Temperature = Temperature / (int32_t)(*TEMP110_CAL_ADDR - *TEMP30_CAL_ADDR);
 	Temperature = Temperature + 30;
 
-	return ((float)(Temperature - 32.0) * ((float)(5.0/9.0)));
+	return Temperature;
 }

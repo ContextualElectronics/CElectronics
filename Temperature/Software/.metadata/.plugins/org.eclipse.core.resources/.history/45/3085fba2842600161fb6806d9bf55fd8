@@ -283,7 +283,7 @@ static int_fast8_t RunCommand(ListOfParameterStructureType *source)
 
 				ADC_ReadNorm(source->List[1].Value.ui32_t[0], &ADCSampleNorm);
 
-				snprintf(&Message[0], 50, "%d\t%d\t%d\n\r", ADCSample, ((uint32_t)Temperature*100), (uint32_t)(ADCSampleNorm*1000000));
+				snprintf(&Message[0], 50, "%d\t%d\t%d", ADCSample, Temperature, (uint32_t)(ADCSampleNorm*1000000));
 
 				// Send new line feed and prompt
 				SerialPort2.SendString(&Message[0]);
@@ -324,7 +324,8 @@ int_fast8_t Terminal_Process(void)
 
 	if ('\r' == SerialTempData)
 	{
-		SerialPort2.SendString((uint8_t*)"\n\r");
+		// Send new line feed and prompt
+		SerialPort2.SendString((uint8_t*)"\n> ");
 
 		if (NumberOfByteReceived)
 		{
@@ -342,8 +343,6 @@ int_fast8_t Terminal_Process(void)
 		{
 			Result =  FALSE;
 		}
-		// Send new line feed and prompt
-		SerialPort2.SendString((uint8_t*)"\n\r> ");
 	}
 	else if ( (SerialTempData >= '0' && SerialTempData <= '9') ||
 			(SerialTempData >= 'A' && SerialTempData <= 'Z') ||

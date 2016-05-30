@@ -324,7 +324,7 @@ int_fast8_t Terminal_Process(void)
 
 	if ('\r' == SerialTempData)
 	{
-		SerialPort2.SendString((uint8_t*)"\n\r");
+
 
 		if (NumberOfByteReceived)
 		{
