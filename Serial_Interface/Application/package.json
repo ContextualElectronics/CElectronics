@@ -1,0 +1,11 @@
+{
+  "name": "ce_serial_app",
+  "version": "0.0.0",
+  "description": "The is the CE serial demo application",
+  "main": "index.js",
+  "scripts": {
+    "test" : "node index.js"
+  },
+  "author": "Ronald Sousa",
+  "license": "ISC"
+}
