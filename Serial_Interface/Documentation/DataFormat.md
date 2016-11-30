@@ -20,6 +20,8 @@ In this document we will go through the format of the serial data as well as pro
 - If receive the {END} byte too early then we discard the current message
 - Whenever we receive the {ESCAPE} byte, the next byte will be inverted.
 - Discard any messages with invalid checksum
+- If Payload_Len is equal to zero then the parser will go start to reading the checksum. this allows for command with zero payload to be received.
+- Parser will check if the payload_Len is within the maximun the system can handle.
 
 # Example
 
